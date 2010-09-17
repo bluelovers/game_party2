@@ -26,6 +26,7 @@ sub side_menu {
 		<div class="menu_button"><a href="contest.cgi$yid">＠フォトコン<div class="text_small">みんなが撮ったｽｸｰﾌﾟ映像</div></a></div>
 		<div class="menu_button"><a href="$htmldir/player_list.html">＠ﾌﾟﾚｲﾔｰ一覧<div class="text_small">転職回数、レベル順</div></a></div>
 		<div class="menu_button"><a href="guild_list.cgi$yid">＠ギルド勢力<div class="text_small">各ギルドとそのメンバー</div></a></div>
+		<div class="menu_button"><a href="challenge.cgi$yid">＠世界記録<div class="text_small">＠チャレンジの最高記録保持者</div></a></div>
 		<div class="menu_button"><a href="ranking.cgi$yid">＠ランキング<div class="text_small">撃退数トッププレイヤー</div></a></div>
 		<div class="menu_button"><a href="legend.cgi$yid">＠伝説のﾌﾟﾚｲﾔｰ<div class="text_small">コンプリートプレイヤー</div></a></div>
 		<div class="menu_button"><a href="job_ranking.cgi$yid">＠職業ランキング<div class="text_small">人気の職業は！？</div></a></div>

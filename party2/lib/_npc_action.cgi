@@ -261,9 +261,10 @@ sub add_boss {
 	$npc_com .= "があらわれた！";
 }
 sub add_monster {
-	my $c = int(rand( 2.5 + @partys * 0.6 )); # 出現数
+	my $c = shift || int(rand( 2.5 + @partys * 0.6 )); # 出現数
+	my $s = shift || 1; # 強さ補正
 	my @alfas = ('A'..'H'); # 同じ名前のモンスターを識別するために名前の後につけるもの
-	
+
 	for my $i (0 .. $c) {
 		my $no = @appears ? $appears[int(rand(@appears))] : int(rand(@monsters)); # 出現モンスター
 		$no = 0 unless defined $monsters[$no]; # 存在しないNoだったら
@@ -275,7 +276,7 @@ sub add_monster {
 		
 		# 初期データセット(読み込んだデータにすでに値がある場合はそっちを優先)
 		for my $k (qw/hp mp at df ag/) {
-			$ms{$name}{$k} = int($ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) ); # パーティー人数による強さ補正
+			$ms{$name}{$k} = int( $ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) * $s ); # パーティー人数による強さ補正
 			$ms{$name}{'m'.$k} ||= $ms{$name}{$k};
 		}
 		$ms{$name}{name}  = $name;

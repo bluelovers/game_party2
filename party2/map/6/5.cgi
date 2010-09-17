@@ -32,8 +32,8 @@ sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 
 sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">©¬‚³‚¢y—§‚ÄDz‘å‚«‚¢¨</span>|; }
-sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(3)<1) { &get_monster_data1; &add_monster; } else { &get_monster_data2; &add_monster; };  }
-sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(7)<1) { &get_monster_data3; &add_monster; } else { &get_monster_data4; &add_monster; };  }
+sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(3)<1) { &get_monster_data1; &_add_monster; } else { &get_monster_data2; &_add_monster; };  }
+sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(7)<1) { &get_monster_data3; &_add_monster; } else { &get_monster_data4; &_add_monster; };  }
 
 sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">©‘Sˆõy—§‚ÄDz‚Pl¨</span>|; }
 sub event_C { return if $event =~ /C|D/; $event .= 'C'; if (rand(3)<1) { $npc_com.= "<b>IIIIH</b>°‚É•`‚©‚ê‚Ä‚¢‚é–‚–@w‚ª”½‰‚µ‚½I"; &_heals(rand(100), '–³'); } else { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½I"; &_trap_d(120); };  }

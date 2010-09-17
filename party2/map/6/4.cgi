@@ -41,7 +41,7 @@ sub event_C { return if $event =~ /C|D/; $event .= 'C'; $npc_com .= "‚È‚ñ‚ÆI•Ç‚
 sub event_D { return if $event =~ /C|D/; $event .= 'D'; }
 
 sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">©À—Íy—§‚ÄDz‰^¨</span>|; }
-sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(2)<1) { &add_boss; } else { &add_monster; }; }
+sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(2)<1) { &add_boss; } else { &_add_monster; }; }
 sub event_F { return if $event =~ /E|F/; $event .= 'F'; if (rand(2)<1) { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½I"; &_trap_d(120); } else { $npc_com.= "<b>IIIIH</b>“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½Ic$m‚½‚¿‚Í‚©‚ë‚¤‚¶‚Ä‚©‚í‚·‚±‚Æ‚ª‚Å‚«‚½I"; };		 }
 
 

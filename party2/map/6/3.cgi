@@ -41,7 +41,7 @@ sub event_C { return if $event =~ /C|D/; $event .= 'C'; }
 sub event_D { return if $event =~ /C|D/; $event .= 'D'; $npc_com .= "なんと！行き止まりではなく隠し通路になっていた！"; }
 
 sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">←実力【立て札】運→</span>|; }
-sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(2)<1) { &add_boss; } else { &add_monster; }; }
+sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(2)<1) { &add_boss; } else { &_add_monster; }; }
 sub event_F { return if $event =~ /E|F/; $event .= 'F'; if (rand(2)<1) { $npc_com.= "<b>！！！！？</b>ｶﾞﾗｶﾞﾗｶﾞﾗｯ！頭上から大きな岩が落ちてきた！"; &_trap_d(120); } else { $npc_com.= "<b>！！！！？</b>頭上から大きな岩が落ちてきた！…$mたちはかろうじてかわすことができた！"; };		 }
 
 

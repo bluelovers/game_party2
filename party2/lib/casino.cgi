@@ -411,7 +411,7 @@ sub add_member {
 	
 	# Q‰ÁğŒOK
 	my($color) ||= (split /<>/, $lines[1])[2];
-	my $new_line = &get_battle_line($color,$type);
+	my $new_line = &get_battle_line($color);
 	push @lines, "$new_line\n";
 	seek  $fh, 0, 0;
 	truncate $fh, 0;

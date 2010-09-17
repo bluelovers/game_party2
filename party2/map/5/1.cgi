@@ -21,7 +21,7 @@ sub event_I { return if $event =~ /L/; $npc_com .= "なんと！壁ではなく隠し通路に
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_4 { return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_T { $npc_com.= "<b>！！！！？</b>周りの壁から毒ガスがふきだしてきた！"; for my $y (@partys) { $ms{$y}{state} = '猛毒'; }; &add_monster; }
+sub event_T { $npc_com.= "<b>！！！！？</b>周りの壁から毒ガスがふきだしてきた！"; for my $y (@partys) { $ms{$y}{state} = '猛毒'; }; &_add_monster; }
 sub event_t { $npc_com.= "<b>！！！！？</b>頭上から矢の雨がふりそそいできた！"; &_trap_d(80); }
 sub event_H {
 	return if $event =~ /H/;

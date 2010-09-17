@@ -1,5 +1,6 @@
 #=================================================
 # 冒険準備・作成 Created by Merino
+# type: 1:通常,2:ダンジョン,3:チャレンジ,4:闘技場,5:ギルド戦,6:封印戦
 #=================================================
 # 場所名
 $this_title = '冒険中のパーティー';
@@ -71,7 +72,7 @@ sub quest_html {
 
 		open my $fh, "< $questdir/$dir_name/member.cgi";
 		my $head_line = <$fh>;
-		my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$is_king,$map,$py,$px,$event) = split /<>/, $head_line;
+		my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$type,$map,$py,$px,$event) = split /<>/, $head_line;
 		my $count = 1;
 		my $p = qq| <span onclick="text_set('＠しらべる>$leader ')"><img src="$icondir/etc/mark_leader.gif" alt="リーダー" />$leader</span> / |;
 		while (my $line = <$fh>) {
@@ -84,10 +85,12 @@ sub quest_html {
 		close $fh;
 		
 		my $party_data = qq|$p_name <img src="$speeds{$speed}[1]" alt="$speeds{$speed}[0]" /> |;
-		$party_data .= $map     ? qq|<img src="$icondir/etc/mark_dungeon.gif" alt="ダンジョン" />$dungeons[$stage]|
-					:  $bet     ? qq|<img src="$icondir/etc/mark_arena.gif" alt="闘技場" /> 賭け金 <b>$bet</b>Ｇ|
-					:  $win     ? qq|<img src="$icondir/etc/mark_guild.gif" alt="ギルド戦" />|
-					:  $is_king ? '' : qq|$stages[$stage]|;
+		$party_data .= $type eq '1' ? qq|$stages[$stage]|
+					:  $type eq '2' ? qq|<img src="$icondir/etc/mark_dungeon.gif" alt="ダンジョン" />$dungeons[$stage]|
+					:  $type eq '3' ? qq|<img src="$icondir/etc/mark_challenge.gif" alt="チャレンジ" />$challenges[$stage]|
+					:  $type eq '4' ? qq|<img src="$icondir/etc/mark_arena.gif" alt="闘技場" /> 賭け金 <b>$bet</b>Ｇ|
+					:  $type eq '5' ? qq|<img src="$icondir/etc/mark_guild.gif" alt="ギルド戦" />|
+					:  '' ;
 		$party_data .= qq| 【<b>$count</b>/<b>$p_join</b>】|;
 		
 		if ($need_join) {
@@ -106,7 +109,7 @@ sub quest_html {
 			}
 		}
 		my $aikotoba = $p_pass ? '＠あいことば>' : ' ';
-		if ($is_king) {
+		if ($type eq '6') {
 			print $count >= $p_join || $round > 1
 				? qq|<span onclick="text_set('＠けんがく>$p_name')"><img src="$icondir/etc/vs_king.gif" alt="封印戦" /> $party_data</span>$p<hr size="1" />|
 				: qq|<span onclick="text_set('＠さんか>$p_name')"><img src="$icondir/etc/vs_king.gif" alt="封印戦" /> $party_data</span>$p<hr size="1" />|;
@@ -154,6 +157,7 @@ $actions{'パーティー'}   = sub{ &party };
 $actions{'とうぎじょう'} = sub{ &tougijyou }; 
 $actions{'ギルドバトル'} = sub{ &girudobatoru }; 
 $actions{'ダンジョン'}   = sub{ &dungeon }; 
+$actions{'チャレンジ'}   = sub{ &challenge }; 
 
 
 #=================================================
@@ -176,6 +180,14 @@ sub tsukuru {
 	}
 	$dungeon_select .= qq|</select>|;
 	
+	# チャレンジ
+	my $challenge_select = qq|<select name="stage" class="select1">|;
+	for my $i (0 .. $#challenges) {
+		$challenge_select .= qq|<option value="$i">$challenges[$i]</option>|;
+		last if ($i+1) * 3 >= $m{job_lv};
+	}
+	$challenge_select .= qq|</select>|;
+
 	# 対戦数(闘技場用)
 	my $round_select = qq|<select name="win" class="select1">|;
 	for my $i (1 .. 3) {
@@ -255,6 +267,18 @@ EOM
 		<tr><td>参加条件：</td><td>$need_join</td></tr>
 		<tr><td>合言葉：</td><td><input type="text" name="p_pass" class="text_box_s" />　</td></tr>
 		<tr><td>見学可：<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="＠ダンジョン" /></td></tr>
+	</table>
+</form>
+</td></tr><tr><td valign="top">
+<form method="$method" action="$script">
+	<input type="hidden" name="comment" value="＠チャレンジ" />
+	<input type="hidden" name="id" value="$id"><input type="hidden" name="pass" value="$pass" />
+	<table class="table1">
+		<tr><td>チャレンジ名：</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
+		<tr><td>進行速度：</td><td>$speed_select</td></tr>
+		<tr><td>挑戦場所：</td><td>$challenge_select</td></tr>
+		<tr><td>合言葉：</td><td><input type="text" name="p_pass" class="text_box_s" /></td></tr>
+		<tr><td>見学可：<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="＠チャレンジ" /></td></tr>
 	</table>
 </form>
 EOM
@@ -343,6 +367,9 @@ sub check_create_quest {
 		$mes = "参加人数が異常です"		if $in{p_join} < 1 || $in{p_join} > $max_party;
 		$mes = "冒険場所が異常です"		if $in{stage}  < 0 || $in{stage} > $#dungeons || $in{stage} * 2 > $m{job_lv}+1;
 	}
+	elsif ($p_name eq 'チャレンジ') {
+
+	}
 	else {
 		$mes = "参加人数が異常です"		if $in{p_join} < 2 || $in{p_join} > $max_colosseum;
 		$mes = "対戦回数が異常です"		if $in{win}    < 1 || $in{win} > 4;
@@ -372,7 +399,7 @@ sub party {
 	# 新規パーティー作成
 	mkdir "$questdir/$quest_id", $mkdir or &error("$questdir/$quest_idディレクトリが作成できません");
 	open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
-	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>0<>0<>$in{is_visit}<>$in{need_join}<>0<><>0<>0<><>\n";
+	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>0<>0<>$in{is_visit}<>$in{need_join}<>1<><>0<>0<><>\n";
 	my $new_line = &get_battle_line($m{color},0);
 	print $fh "$new_line\n";
 	close $fh;
@@ -411,7 +438,7 @@ sub dungeon {
 	# 新規パーティー作成
 	mkdir "$questdir/$quest_id", $mkdir or &error("$questdir/$quest_idディレクトリが作成できません");
 	open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
-	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>0<>0<>$in{is_visit}<>$in{need_join}<>0<>$in{map}<>$in{py}<>$in{px}<>S<>\n";
+	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>0<>0<>$in{is_visit}<>$in{need_join}<>2<>$in{map}<>$in{py}<>$in{px}<>S<>\n";
 	my $new_line = &get_battle_line($m{color},0);
 	print $fh "$new_line\n";
 	close $fh;
@@ -463,6 +490,68 @@ sub get_dungeon_data {
 	
 	&error("$in{map} スタート地点が見つかりません");
 }
+
+#=================================================
+# ＠チャレンジ
+#=================================================
+sub challenge {
+	$mes = "冒険場所が異常です"		if $in{stage}  < 0 || $in{stage} > $#challenges || $in{stage} * 2 > $m{job_lv}+1;
+	$mes = "レベルアップをストックした状態で挑戦することはできません" if $m{lv} < 99 && $m{exp} >= $m{lv} * $m{lv} * 10;
+	return if $mes;
+
+	require "$challengedir/$in{stage}.cgi";
+
+	$in{p_join}    = $k{p_join};
+	$in{need_join} = $k{need_join};
+
+	&check_create_quest('チャレンジ');
+	return if $mes;
+
+	my $quest_id = unpack 'H*', $in{p_name};
+	$mes = "同じクエスト名($in{p_name})がすでに存在します" if -d "$questdir/$quest_id";
+	return if $mes;
+	
+	# 最高記録を取得
+	my $max_round = &get_max_round($in{stage});
+
+	# 新規パーティー作成
+	mkdir "$questdir/$quest_id", $mkdir or &error("$questdir/$quest_idディレクトリが作成できません");
+	open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
+	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>$max_round<>0<>$in{is_visit}<>$in{need_join}<>3<><>0<>0<><>\n";
+	my $new_line = &get_battle_line($m{color},0);
+	print $fh "$new_line\n";
+	close $fh;
+	chmod $chmod, "$questdir/$quest_id/member.cgi";
+	
+	open my $fh2, "> $questdir/$quest_id/log.cgi" or &error("$questdir/$quest_id/log.cgiファイルが作成できません");
+	close $fh2;
+	chmod $chmod, "$questdir/$quest_id/log.cgi";
+	
+	$m{lib}   = 'vs_challenge';
+	$m{quest} = $quest_id;
+	
+	$com = "<b>＠チャレンジ>$in{p_name}＠冒険場所>$challenges[$in{stage}]＠参加人数>$in{p_join}人＠$speeds{$in{speed}}[0]";
+ 	if ($in{p_pass}) {
+		$com .= "＠合言葉>必要";
+	}
+	else {
+		$in{p_pass} = 'なし' ;
+	}
+	$com .= "</b>";
+	&reload("$challenges[$in{stage}] に挑戦します！<br />$speeds{$in{speed}}[0]，合言葉：$in{p_pass}，参加人数：$in{p_join}人");
+	&leave_member($m);
+}
+sub get_max_round {
+	my $stage = shift;
+	
+	open my $fh, "< $logdir/challenge$stage.cgi" or "$logdir/challenge$stage.cgiファイルが読み込めません";
+	my $line = <$fh>;
+	close $fh;
+	my($max_round) = (split /<>/, $line)[0];
+
+	return $max_round;
+}
+
 #=================================================
 # ＠とうぎじょう
 #=================================================
@@ -477,7 +566,7 @@ sub tougijyou {
 	# 新規闘技場作成
 	mkdir "$questdir/$quest_id", $mkdir or &error("$questdir/$quest_idディレクトリが作成できません");
 	open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
-	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>$in{win}<>$in{bet}<>$in{is_visit}<>$in{need_join}<>0<><>0<>0<><>\n";
+	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>$in{win}<>$in{bet}<>$in{is_visit}<>$in{need_join}<>4<><>0<>0<><>\n";
 	my $new_line = &get_battle_line($default_color, 1);
 	print $fh "$new_line\n";
 	close $fh;
@@ -520,7 +609,7 @@ sub girudobatoru {
 	# 新規闘技場作成
 	mkdir "$questdir/$quest_id", $mkdir or &error("$questdir/$quest_idディレクトリが作成できません");
 	open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
-	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>$in{win}<>0<>$in{is_visit}<>$in{need_join}<>0<><>0<>0<><>\n";
+	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>$in{win}<>0<>$in{is_visit}<>$in{need_join}<>5<><>0<>0<><>\n";
 	my $new_line = &get_battle_line($gcolor, 1);
 	print $fh "$new_line\n";
 	close $fh;
@@ -589,16 +678,10 @@ sub add_member {
 	open my $fh, "+< $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
-	my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$is_king,$map,$py,$px,$event) = split /<>/, $head_line;
-	my $type = $bet > 0 ? '闘技場'
-			 : $win > 0 ? 'ギルド戦'
-			 : $is_king ? '封印戦'
-			 : $map     ? 'ダンジョン'
-			 :            'パーティー';
-	
+	my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$type,$map,$py,$px,$event) = split /<>/, $head_line;
 	$mes = "$p_nameに参加するための賭け金が足りません"	if $bet > $m{money};
 	$mes = "$p_nameに参加するための合言葉が違います"	if $p_pass ne '' && $p_pass ne $join_pass;
-	$mes = "クエスト途中から参加することはできません"	if $round > 1 || ($round > 0 && !$is_king);
+	$mes = "クエスト途中から参加することはできません"	if $round > 1 || ($round > 0 && $type ne '6'); # 封印戦以外
 	return if $mes;
 	
 	if ($need_join) {
@@ -611,14 +694,18 @@ sub add_member {
 	}
 
 	my $color = '';
-	if ($type eq 'ギルド戦') {
+	if ($type eq '5') { # ギルド戦
 		$color = &_check_guild_battle($quest_id);
 		return if $mes || !$color;
+	}
+	elsif ($type eq '3' && $m{lv} < 99 && $m{exp} >= $m{lv} * $m{lv} * 10) { # チャレンジ
+		$mes = "レベルアップをストックした状態で参加することはできません";
+		return;
 	}
 	
 	push @lines, $head_line;
 
-	my $count = $type eq '封印戦' ? 1 : 0;
+	my $count = $type eq '6' ? 1 : 0; # 封印戦？
 	my %same_colors = ();
 	while (my $line = <$fh>) {
 		my($name,$laddr,$gcolor) = (split /<>/, $line)[0..2];
@@ -643,7 +730,7 @@ sub add_member {
 		$mes = "$p_nameは定員がいっぱいで参加することができません";
 		return;
 	}
-	elsif ($type eq 'ギルド戦' && $same_colors{ $color } >= 4) {
+	elsif ($type eq '5' && $same_colors{ $color } >= 4) { # ギルド戦
 		$mes = "同じギルドメンバー５人以上は参加することができません";
 		return;
 	}
@@ -657,30 +744,34 @@ sub add_member {
 	print $fh @lines;
 	close $fh;
 	
-	if ($map) {
+	if    ($type eq '1') {
+		$m{lib} = 'vs_monster';
+		&reload("$p_nameのパーティーに参加します");
+	}
+	elsif ($type eq '2') {
 		$m{lib} = 'vs_dungeon';
 		&reload("$p_nameのパーティーに参加します");
 	}
-	elsif ($type eq '闘技場') {
+	elsif ($type eq '3') {
+		$m{lib} = 'vs_challenge';
+		&reload("$p_nameに参加します");
+	}
+	elsif ($type eq '4') { # 闘技場
 		&add_bet($quest_id, $bet);
 		$m{money} -= $bet;
 		$m{lib}    = 'vs_player';
 		$com      .="賭け金 $bet Gを支払いました";
 		&reload("賭け金 $bet Gを支払い $p_nameの闘技場に参加します");
 	}
-	elsif ($type eq 'ギルド戦') {
+	elsif ($type eq '5') { # ギルド戦
 		&add_bet($quest_id, 1);
 		$m{lib}    = 'vs_guild';
 		&reload("$p_nameのギルド戦に参加します");
 	}
-	elsif ($type eq '封印戦') {
+	elsif ($type eq '6') { # 封印戦
 		$m{lib} = 'vs_king';
 		$m{tired} += 20;
 		&reload("$p_nameの封印戦に参加します");
-	}
-	else {
-		$m{lib} = 'vs_monster';
-		&reload("$p_nameのパーティーに参加します");
 	}
 	$m{quest} = $quest_id;
 	&leave_member($m);
@@ -728,7 +819,7 @@ sub kengaku {
 		my $head_line = <$fh>;
 		close $fh;
 
-		my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$is_king,$map,$py,$px,$event) = split /<>/, $head_line;
+		my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$type,$map,$py,$px,$event) = split /<>/, $head_line;
 		if (!$is_visit) {
 			$mes = "$p_nameの見学はできません";
 			return;
@@ -738,11 +829,13 @@ sub kengaku {
 			return;
 		}
 		
-		$m{lib} = $bet > 0 ? 'vs_player'
-				: $win > 0 ? 'vs_guild'
-				: $is_king ? 'vs_king'
-				: $map     ? 'vs_dungeon'
-				:            'vs_monster';
+		$m{lib} = $type eq '1' ? 'vs_monster'
+				: $type eq '2' ? 'vs_dungeon'
+				: $type eq '3' ? 'vs_challenge'
+				: $type eq '4' ? 'vs_player'
+				: $type eq '5' ? 'vs_guild'
+				: $type eq '6' ? 'vs_king'
+				: '';
 		$m{quest} = $quest_id;
 		$mes = "$p_nameを見学します";
 		&reload("$p_nameを見学します");
@@ -763,7 +856,7 @@ sub get_battle_line {
 	
 	$m{is_get} = 0;  # 宝取得フラグをリセット
 	$m{event}  = ''; # イベントフラグをリセット
-	$p{color} = $type eq '闘技場' || !defined($color) || $color eq $npc_color ? $default_color : $color;
+	$p{color} = $type eq '4' || !defined($color) || $color eq $npc_color ? $default_color : $color; # 闘技場かカラー未定義か敵色か
 	
 	# %mにはないKey
 	$p{get_exp}   = $m{lv} + $m{job_lv};

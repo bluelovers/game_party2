@@ -20,7 +20,7 @@ $max_round = 30;
 $map_imgs{F} = '“Ê';
 $map_imgs{B} = '' if $event !~ /B/;
 sub event_F { for my $y (@partys) { $ms{$y}{state} = 'U••' }; $map="__1"; $npc_com.="$p_name‚ÍŸ‚ÌŠK‚Ö‚Æi‚ñ‚¾c"; }
-sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if rand(2) > 1; &add_monster; } # “¹
+sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if rand(2) > 1; &_add_monster; } # “¹
 sub event_B { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if $event =~ /B/; $event .= 'B'; &add_boss; } # ƒ{ƒX
 
 

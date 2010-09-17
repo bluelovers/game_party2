@@ -21,7 +21,7 @@ $map_imgs{D} = '岩' if $event !~ /D|K/;
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_4 { return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_T { $npc_com.= "<b>！！！！？</b>しびれるようなガスが$mたちをつつみこんだ！"; for my $y (@partys) { $ms{$y}{state} = '麻痺'; }; &add_monster; }
+sub event_T { $npc_com.= "<b>！！！！？</b>しびれるようなガスが$mたちをつつみこんだ！"; for my $y (@partys) { $ms{$y}{state} = '麻痺'; }; &_add_monster; }
 sub event_t { $npc_com.= "<b>！！！！？</b>高熱のガスがふきだしてきた！"; &_trap_d(150); }
 sub event_A { return if $event =~ /A/; $event .= 'A'; $npc_com.="ただならぬ気配を感じる…。どうやら、このダンジョンのボスのようだ！<br />"; &add_boss } # ボス
 sub event_b { return if $event =~ /b/; $event .= 'b'; $npc_com.="ただならぬ気配を感じる…。どうやら、このダンジョンのボスのようだ！<br />"; &add_boss } # ボス

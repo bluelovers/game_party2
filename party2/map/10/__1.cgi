@@ -24,7 +24,7 @@ $map_imgs{C} = '◎' if $event !~ /C/;
 sub event_2 { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_4 { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_0 { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if rand(2) > 1; &add_monster; } # 道
+sub event_0 { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if rand(2) > 1; &_add_monster; } # 道
 sub event_C { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if $event =~ /C/; $event .= 'C'; $npc_com.="ただならぬ気配を感じる…。どうやら、このダンジョンのボスのようだ！<br />"; &add_boss; } # ボス
 
 

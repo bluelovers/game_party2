@@ -33,11 +33,11 @@ sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 
 sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">©Yesy•ó” ‚ª‘åD‚«‚¾zNo¨</span>|; }
 sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(5)<1) { &_add_treasure; } else { &get_boss_data1; &add_boss; };  }
-sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(3)<1) { &add_boss; } else { &add_monster; }; }
+sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(3)<1) { &add_boss; } else { &_add_monster; }; }
 
 sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">©Yesy‹­‚¢“G‚Æí‚¢‚½‚¢zNo¨</span>|; }
 sub event_C { return if $event =~ /C|D/; $event .= 'C'; &add_boss; }
-sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(3)<1) { &add_monster; } else { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½I"; &_trap_d(120); }; }
+sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(3)<1) { &_add_monster; } else { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½I"; &_trap_d(120); }; }
 
 sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">©Yesy”L‚æ‚èŒ¢”h‚¾zNo¨</span>|; }
 sub event_E { return if $event =~ /E|F/; $event .= 'E'; &get_boss_data2; &add_boss; }

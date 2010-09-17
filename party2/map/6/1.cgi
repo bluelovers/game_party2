@@ -32,15 +32,15 @@ sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 
 sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">←Yes【小さいより大きい方がいい】No→</span>|; }
-sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(3)<1) { &get_monster_data1; &add_monster; } else { &get_monster_data2; &add_monster; };  }
-sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(7)<1) { &get_monster_data3; &add_monster; } else { &get_monster_data4; &add_monster; };  }
+sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(3)<1) { &get_monster_data1; &_add_monster; } else { &get_monster_data2; &_add_monster; };  }
+sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(7)<1) { &get_monster_data3; &_add_monster; } else { &get_monster_data4; &_add_monster; };  }
 
 sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">←Yes【命よりお金が大事】No→</span>|; }
 sub event_C { return if $event =~ /C|D/; $event .= 'C'; if (rand(2)<1) { &_trap_d(rand(200));       } else { my $v = int(rand(2000)); $m{money}+=$v; $npc_com.="$mは ${v}G 拾った！"; };  }
 sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(2)<1) {  &_heals(rand(100), '無'); } else { my $v = int(rand(2000)); $m{money}-=$v; $npc_com.="$mは ${v}G 落としてしまった！"; $m{money}-=0 if $m{money} < 0; };  }
 
 sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">←Yes【ワナは大嫌いだ】No→</span>|; }
-sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(3)<1) { &add_boss; } else { &add_monster; }; }
+sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(3)<1) { &add_boss; } else { &_add_monster; }; }
 sub event_F { return if $event =~ /E|F/; $event .= 'F'; if (rand(3)<1) { $npc_com.= "<b>！！！！？</b>ｶﾞﾗｶﾞﾗｶﾞﾗｯ！頭上から大きな岩が落ちてきた！"; &_trap_d(120); } else { $npc_com.= "<b>！！！！？</b>ｶﾞﾗｶﾞﾗｶﾞﾗｯ！頭上から大きな岩が落ちてきた！…しかし、$mたちはあらかじめ予\想していたのでかわすことができた！"; };		 }
 
 

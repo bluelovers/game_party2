@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 require 'config.cgi';
 require '_side_menu.cgi';
+$sleep_time *= 2;
 #================================================
 # 救出処理 Created by Merino
 #================================================
@@ -25,7 +26,7 @@ sub run {
 		<li>この処理は本当にどうしようもなくなった時以外は使用しないように！</li>
 		<li>まずは、二次被害三次被害にならないように掲示板などに報告すること</li>
 		<li>何をしていて、どのタイミングでそうなってしまったのかバグった内容を詳しく報告</li>
-		<li><font color="#FF0000">使用ペナルティ：罰金(-100Ｇ)</font></li>
+		<li><font color="#FF0000">使用ペナルティ：$sleep_time分睡眠</font></li>
 		<li>寝ている状態などの待ち時間を解除するものではありません</li>
 	</ul>
 </div>
@@ -51,7 +52,7 @@ sub refresh_player {
 	
 	if ($m{lib}) {
 		$m{lib} = '';
-		$m{money} -= 100;
+		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
 		$contents = qq|<div class="mes"><p>$m{name}を救出処理しました</p></div>|;
 	}

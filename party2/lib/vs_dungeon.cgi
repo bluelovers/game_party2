@@ -93,7 +93,7 @@ sub _susumu {
 	&auto_reload;
 }
 
-sub event_0 { return if rand(2) > 1; &add_monster; } # 道
+sub event_0 { return if rand(2) > 1; &add_monster(); } # 道
 sub event_1 { return } # 壁
 sub event_S { return } # スタート地点
 sub event_B { return if $event =~ /B/; $event .= 'B'; $npc_com.="ただならぬ気配を感じる…。どうやら、このダンジョンのボスのようだ！<br />"; &add_boss } # ボス
@@ -119,6 +119,12 @@ sub chizu {
 sub _add_treasure {
 	&add_treasure();
 }
+
+# ＠ダンジョン用の敵の数
+sub _add_monster {
+	&add_monster();
+}
+
 
 # 味方全体ワナダメージ
 sub _trap_d {

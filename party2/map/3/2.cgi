@@ -24,7 +24,7 @@ sub event_D { $py=4; $px=3; }
 sub event_E { $py=3; $px=4; }
 sub event_F { $py=6; $px=2; }
 sub event_G { $py=2; $px=2; }
-sub event_T { $npc_com.= "<b>！！！！？</b>幻覚の霧が$mたちをつつみこんだ！"; for my $y (@partys) { $ms{$y}{state} = '混乱'; }; &add_monster; }
+sub event_T { $npc_com.= "<b>！！！！？</b>幻覚の霧が$mたちをつつみこんだ！"; for my $y (@partys) { $ms{$y}{state} = '混乱'; }; &_add_monster; }
 sub event_b { return if $event =~ /b/; $event .= 'b'; $npc_com.="ただならぬ気配を感じる…。どうやら、このダンジョンのボスのようだ！<br />"; &add_boss } # ボス
 
 

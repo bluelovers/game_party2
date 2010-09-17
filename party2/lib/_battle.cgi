@@ -40,7 +40,7 @@ sub defeat {
 			my $par = 2; # 仲間になる確率(自分より弱い)
 			if ( &is_strong(%{ $ms{$y} }) ) { # 自分より強い判定
 				$win ? $m{kill_p}++ : $m{kill_m}++;
-				$par = 1 unless $ms{$m}{job} eq '12'; # 仲間になる確率(自分より強い)。ただし、魔物使いかなら確率下がらず。
+				$par = 1 unless $ms{$m}{job} eq '12'; # 仲間になる確率(自分より強い)。ただし、魔物使いなら確率下がらず。
 			}
 			$par += 2 if $m{ite} eq '77'; # 魔物のｴｻ
 			
@@ -162,7 +162,7 @@ sub read_member {
 	open $FH, "+< $questdir/$m{quest}/member.cgi" or do{ $m{lib} = $m{guild}; $m{quest} = ''; &write_user; &error("すでにパーティーが解散してしまったようです"); };
 	eval { flock $FH, 2; };
 	my $head_line = <$FH>;
-	($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$is_king,$map,$py,$px,$event) = split /<>/, $head_line;
+	($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$type,$map,$py,$px,$event) = split /<>/, $head_line;
 	$act_time = $speed;
 	while (my $line = <$FH>) {
 		my @datas = split /<>/, $line;
@@ -199,7 +199,7 @@ sub read_member {
 sub write_member {
 	return unless -d "$questdir/$m{quest}";
 	
-	my $head_line = "$speed<>$stage<>$round<>$leader<>$p_name<>$p_pass<>$p_join<>$win<>$bet<>$is_visit<>$need_join<>$is_king<>$map<>$py<>$px<>$event<>\n";
+	my $head_line = "$speed<>$stage<>$round<>$leader<>$p_name<>$p_pass<>$p_join<>$win<>$bet<>$is_visit<>$need_join<>$type<>$map<>$py<>$px<>$event<>\n";
 	my @lines = ($head_line);
 	for my $name (@members) {
 		next if $name =~ /^@/ && $ms{$name}{hp} <= 0; # やられたNPCや身代わりを除く
@@ -371,14 +371,17 @@ sub nigeru {
 	
 	if ($round <= 0 && $win > 0) {
 		# 闘技場で開始前に抜けた場合。返金
-		if ($bet) {
+		if ($type eq '4') {
 			$m{money} += $bet;
 			&add_bet($m{quest}, "-$bet");
 			&reload("戦闘から逃げ出しました<br />賭け金の $bet Gが返金されました");
 		}
 		# ギルド戦で抜けた場合。優勝ギルドポイント減
-		else {
+		elsif($type eq '5') {
 			&add_bet($m{quest}, "-2");
+			&reload("戦闘から逃げ出しました");
+		}
+		else {
 			&reload("戦闘から逃げ出しました");
 		}
 	}
@@ -387,7 +390,7 @@ sub nigeru {
 	}
 
 	# 誰もいなくなったらクエストを削除
-	if (@members < 1 && (!$is_king || ($is_king && $ms{$leader}{hp} <= 0)) ) { # 封印戦じゃない時でプレイヤーが０人か、封印戦でボスのＨＰが０以下
+	if (@members < 1 && ($type ne '6' || ($type eq '6' && $ms{$leader}{hp} <= 0)) ) { # 封印戦じゃない時でプレイヤーが０人か、封印戦でボスのＨＰが０以下
 		&write_member;
 		$this_file = "$logdir/quest";
 		&delete_directory("$questdir/$m{quest}");

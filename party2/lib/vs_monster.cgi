@@ -1,6 +1,5 @@
 require "./lib/_battle.cgi";
 require "./lib/_npc_action.cgi";
-
 #=================================================
 # 冒険(VS モンスター) Created by Merino
 #=================================================
@@ -76,10 +75,10 @@ sub set_monster {
 		&make_vs_king if $stage eq '19';
 	}
 	elsif ($round eq $boss_round) { # ボス戦(デフォルト10階)
-		&add_boss;
+		&add_boss();
 	}
 	else {
-		&add_monster;
+		&add_monster();
 	}
 }
 # ------------------
@@ -101,7 +100,7 @@ sub make_vs_king {
 		# 新規パーティー作成
 		mkdir "$questdir/$quest_id" or &error("$questdir/$quest_idディレクトリが作成できません");
 		open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiファイルが作成できません");
-		print $fh "$k{speed}<>$k_stage<>1<>$boss_name<>$k{p_name}<><>$k{p_join}<>0<>0<>1<>$k{need_join}<>1<><>0<>0<><>\n";
+		print $fh "$k{speed}<>$k_stage<>1<>$boss_name<>$k{p_name}<><>$k{p_join}<>0<>0<>1<>$k{need_join}<>6<><>0<>0<><>\n";
 		
 		my @lines = ();
 		for my $no (0 .. $#bosses) {
