@@ -14,13 +14,16 @@ $this_file  = "$logdir/exile";
 $bgimg   = "$bgimgdir/exile.gif";
 
 # 誤った判断をした申請者への拘束時間(日)
-$penalty_day = 10;
+$penalty_day = 25;
 
 # 追放に必要な票数
 $need_vote = 40;
 
 # 1人が追放申請できる限度(申請中のが解決すると再度申請可能)
 $max_violator = 1;
+
+# 申請取り消し禁止時間(時)。誰かが投票を行ってからこの時間以内は取り消しできない。
+$c_hour = 3;
 
 
 #=================================================
@@ -130,9 +133,16 @@ sub vote {
 
 		# 追放申請取り消し
 		if ($name eq $m && $vote eq 'no') {
-			$npc_com = "$violatorの追放申\請を取り消しました";
-			&write_news(qq|<span class="revive">$mが$violatorの追放申\請を取り消しました</span>|);
-			next;
+			my $ftime = (stat "$logdir/violator.cgi")[9];
+			if ($ftime + $c_hour * 3600 > $time) {
+				$mes = "投票後しばらくは取り消すことはできません";
+				return;
+			}
+			else {
+				$npc_com = "$violatorの追放申\請を取り消しました";
+				&write_news(qq|<span class="revive">$mが$violatorの追放申\請を取り消しました</span>|);
+				next;
+			}
 		}
 		
 		if ($target eq $violator) {

@@ -50,7 +50,7 @@ sub read_member {
 	%ms = (); # Members
 
 	my $count = 0;
-	open $FH, "+< $casinodir/$m{quest}/member.cgi" or do{ $m{lib} = $m{guild}; $m{quest} = ''; &write_user; &error("すでにパーティーが解散してしまったようです"); };
+	open $FH, "+< $casinodir/$m{quest}/member.cgi" or do{ $m{lib} = ''; $m{quest} = ''; &write_user; &error("すでにパーティーが解散してしまったようです"); };
 	eval { flock $FH, 2; };
 	my $head_line = <$FH>;
 	($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$now_bet,$max_bet) = split /<>/, $head_line;

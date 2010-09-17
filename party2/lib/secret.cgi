@@ -46,8 +46,11 @@ $actions{'ぱふぱふ'} = sub{ &pafupafu };
 sub kau {
 	my $target = shift;
 	
+	my $h_no = &get_helper_item(3);
+
 	my $p = qq|<table class="table1"><tr><th>名前</th><th>値段</th></tr>|;
 	for my $i (@sales) {
+		next if $h_no =~ /,$i,/; # 手助けクエストで依頼されているアイテムは除く
 		$ites[$i][2] *= 3; # 特別なので3倍の値段
 		if ($ites[$i][1] eq $target) {
 			if ($m{money} >= $ites[$i][2]) {

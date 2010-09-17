@@ -23,6 +23,7 @@ sub run {
 	print qq|<tr><td>武器コンプリート率《<b>$pars{1}</b>％》</td></tr>|;
 	print qq|<tr><td>防具コンプリート率《<b>$pars{2}</b>％》</td></tr>|;
 	print qq|<tr><td>道具コンプリート率《<b>$pars{3}</b>％》</td></tr>|;
+	print qq|<tr><td>錬金コンプリート率《<b>$pars{4}</b>％》</td></tr>|;
 	print qq|</table>|;
 	
 	open my $fh, "< $userdir/$in{id}/memory.cgi" or &error("$userdir/$in{id}/memory.cgiファイルが読み込めません");
@@ -64,5 +65,26 @@ sub collection_pars {
 	}
 	close $fh;
 	
+	$pars{4} = &get_recipe_pars();
+
 	return %pars;
 }
+
+sub get_recipe_pars {
+	require './lib/_alchemy_recipe.cgi';
+	my $all_c = map { keys %{ $recipes{$_} } } keys %recipes;
+
+	my $comp_c = 0;
+	open my $fh, "< $userdir/$in{id}/recipe.cgi" or &errror("$userdir/$in{id}/recipe.cgiファイルが読み込めません");
+	while (my $line = <$fh>) {
+		my($is_make) = (split /<>/, $line)[0];
+		++$comp_c if $is_make;
+	}
+	close $fh;
+
+	my $comp_par = int($comp_c / $all_c * 100);
+	$comp_par = 100 if $comp_par >= 100;
+	
+	return $comp_par;
+}
+

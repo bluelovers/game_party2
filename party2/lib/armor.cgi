@@ -49,9 +49,13 @@ $actions{'うる'} = sub{ &uru };
 #=================================================
 sub kau {
 	my $target = shift;
+
+	my $h_no = &get_helper_item(2);
 	
 	my $p = qq|<table class="table1"><tr><th>名前</th><th>値段</th><th>強さ</th><th>重さ</th></tr>|;
 	for my $i (@sales) {
+		next if $h_no =~ /,$i,/; # 手助けクエストで依頼されているアイテムは除く
+		$arms[$i][2] *= 2; # 錬金できるので２倍
 		if ($arms[$i][1] eq $target) {
 			if ($m{money} >= $arms[$i][2]) {
 				if ($m{arm}) {

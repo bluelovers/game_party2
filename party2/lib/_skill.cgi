@@ -728,7 +728,7 @@ sub skill_44 { # ﾁｮｺﾎﾞ
 		[60,	8,		'チョコアタック',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 2.0, '攻'); return if $v <= 0; &_risk($v * 0.07);	}],
 		[80,	14,		'チョコボール',		sub{ &_damage(shift, 170, '魔', 1);	}],
 		[100,	7,		'チョコケアル',		sub{ &_heal(shift, 150, '魔');	}],
-		[120,	15,		'チョコボックル',	sub{ &_damage(shift, $ms{$m}{ag} * 1.8, '魔', 1);		}],
+		[120,	15,		'チョコボックル',	sub{ &_damage(shift, $ms{$m}{ag} * 1.5, '魔', 1);		}],
 	);
 }
 sub skill_45 { # ﾓｰｸﾞﾘ
@@ -744,7 +744,7 @@ sub skill_45 { # ﾓｰｸﾞﾘ
 }
 sub skill_46 { # ｷﾞｬﾝﾌﾞﾗｰ
 	return (
-		[10,	7,		'ヘブンスロット',		sub{ my @m = ('∞','♪','†','★','７'); my @s = (); $s[$_] = int(rand(@m)) for (0 .. 2); $com .= "【$m[$s[0]]】【$m[$s[1]]】【$m[$s[2]]】"; if ($s[0] == $s[1] && $s[1] == $s[2]) { my $v = int( ($s[0]+2) * 100 ); $s[0] == $#m ? &_deaths('即死', '無', 80) : $s[0] == 0 || $s[0] == 2 ? &_heals($v, '無') : &_damages($v, '無'); } else { my $v = int( ($s[0] + $s[1] + $s[2]) * 7 ); &_damages($v, '無', 1); };		}],
+		[10,	7,		'ヘブンスロット',		sub{ my @m = ('∞','♪','†','★','７'); my @s = (); $s[$_] = int(rand(@m)) for (0 .. 2); $com .= "【$m[$s[0]]】【$m[$s[1]]】【$m[$s[2]]】"; if ($s[0] == $s[1] && $s[1] == $s[2]) { my $v = int( ($s[0]+2) * 100 ); $s[0] == $#m ? &_deaths('即死', '無', 90) : $s[0] == 0 || $s[0] == 2 ? &_heals($v, '無') : &_damages($v, '無'); } else { my $v = int( ($s[0] + $s[1] + $s[2]) * 7 ); &_damages($v, '無', 1); };		}],
 		[30,	14,		'いちげきのダーツ',		sub{ &_death(shift, '即死', '攻', 20);	}],
 		[60,	6,		'あくまのダイス',		sub{ my $d1 = int(rand(6)+1); my $d2 = int(rand(6)+1); my $d3 = int(rand(6)+1); my $v = int(($d1*100+$d2*10+$d1)*0.5); $com.="[$d1][$d2][$d3]"; &_damage(shift, $v, '魔', 1); return if $v <= 0; &_risk((6-$d1)*10+(6-$d2)+(6-$d1)*0.1);		}],
 		[80,	4,		'しのルーレット',		sub{ return if &is_bad_state('魔'); my $y=$members[int(rand(@members))]; $y = $m if $ms{$y}{hp} <= 0; $com.="死のルーレットが廻りだした！…ﾋﾟｯ…ﾋﾟｯ…ﾋﾟｯﾋﾟｯﾋﾟ-[>[$y] "; if ($ms{$y}{hp} > 999 || $ms{$y}{df} > 999) { $com .= "$yにはきかなかった…"; } else { $com .= qq|<span class="die">$yは死んでしまった！</span>|; &defeat($y); };	}],
@@ -797,7 +797,7 @@ sub skill_51 { # 光魔道士
 		[80,	16,		'あやしいひかり',		sub{ my @randoms = ('混乱', '眠り'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], '魔', 50); };		}],
 		[110,	34,		'ひかりのさばき',		sub{ &_damages(170, '魔', 1);	}],
 		[130,	30,		'きぼうのひかり',		sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(5) < 1) { $com.=qq|なんと、<b>$y</b>が <span class="heal">生き返り</span> ました！|; $ms{$y}{hp}=$ms{$y}{mhp}; } else { $com.=qq|しかし、<b>$y</b>は生き返らなかった…|; }; }; 	}],
-		[160,	46,		'ぜつぼうのひかり',		sub{ $is_add_effect = 1; &_deaths('即死', '無', 10); &_damages(70, '魔', 1); 		}],
+		[160,	46,		'ぜつぼうのひかり',		sub{ $is_add_effect = 1; &_deaths('即死', '魔', 10); &_damages(70, '魔', 1); 		}],
 	);
 }
 sub skill_52 { # 魔人

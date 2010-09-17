@@ -1,6 +1,6 @@
 require './lib/system.cgi';
 #================================================
-$VERSION = '1.30';
+$VERSION = '1.43';
 # 設定ファイル Created by Merino
 #================================================
 # 管理画面のURL
@@ -20,7 +20,7 @@ $act_time = 7;
 $gage_width = 140;
 
 # 睡眠時間「＠ねる」の拘束時間(分)
-$sleep_time = 10;
+$sleep_time = 15;
 
 # gzip圧縮転送(わからない・使わない場合は空欄 '' )
 $gzip = '';
@@ -99,7 +99,7 @@ $npc_color = '#FF69B4',
 
 # ----------------------------
 # 戦闘に必要な変数(追加可能)
-@battle_datas = (qw/name addr color time ten job sp old_job old_sp mhp hp mmp mp mat at mdf df mag ag hit state tmp get_exp get_money icon wea arm/);
+@battle_datas = (qw/name addr color time ten job sp old_job old_sp mhp hp mmp mp mat at mdf df mag ag hit state tmp get_exp get_money icon wea arm ite/);
 
 # カジノに必要な変数(追加可能)
 @casino_datas = (qw/name addr color time icon action card/);
@@ -155,6 +155,9 @@ $npc_color = '#FF69B4',
 	['ギルド協会',			'join_guild'],
 	['命名の館',			'name_change'],
 	['追放騎士団',			'exile'],
+
+	['何でも屋',			'helper'],
+	['錬金場',				'alchemy'],
 );
 
 #=================================================

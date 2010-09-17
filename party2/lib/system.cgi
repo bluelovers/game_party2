@@ -57,12 +57,12 @@ sub write_user {
 		login_time ldate name pass addr host lib wt sleep
 		ltime quest home guild job_lv lv exp money medal coin coupon rare
 		tired sex icon color job sp old_job old_sp mhp hp mmp mp at df ag wea arm ite
-		orb is_full is_get is_eat kill_p kill_m mes cas_c hero_c mao_c event
+		orb is_full is_get is_eat kill_p kill_m cas_c hero_c mao_c alc_c help_c event recipe mes
 	/);
 	# ﾛｸﾞｲﾝした時間　最終ﾛｸﾞｲﾝ日　名前　ﾊﾟｽﾜｰﾄﾞ　IP　Host　lib　待ち時間　拘束時間
 	# 最終ﾛｸﾞｲﾝ時間　参加ｸｴｽﾄ　滞在家　ｷﾞﾙﾄﾞ　転職回数　レベル経験値　お金　小さなメダル　福引券　レアポイント
 	# 疲労度　性別　ｱｲｺﾝ　色　職業　ＳＰ　前職業　ＳＰ　最大HP　HP　最大MP　MP　攻　守　素　武器　防具　道具
-	# ｵｰﾌﾞ　預かり所満杯ﾌﾗｸﾞ　宝取得ﾌﾗｸﾞ　飲食ﾌﾗｸﾞ　ﾌﾟﾚｲﾔｰ撃退数　ﾓﾝｽﾀｰ撃退数　ﾒｯｾｰｼﾞ　カジノ熟練度　勇者熟練度　魔王熟練度　ﾀﾞﾝｼﾞｮﾝｲﾍﾞﾝﾄ
+	# ｵｰﾌﾞ　預かり所満杯ﾌﾗｸﾞ　宝取得ﾌﾗｸﾞ　飲食ﾌﾗｸﾞ　ﾌﾟﾚｲﾔｰ撃退数　ﾓﾝｽﾀｰ撃退数　カジノ熟練度　勇者熟練度　魔王熟練度　錬金数　手助け数　ダンジョンイベント　錬金レシピ　ﾒｯｾｰｼﾞ
 	
 	my $line;
 	for my $k (@keys) {
@@ -491,7 +491,7 @@ sub action {
 	my $action = $1;
 	my $target = $2 ? $2 : '';
 	return unless defined $actions{$action};
- 	if ($nokori >= 0) {
+ 	if ($nokori > 0) {
 		$mes = "まだ行動することはできません";
 		return;
 	}
@@ -510,7 +510,6 @@ sub write_comment {
 	my @lines = ();
 	open my $fh, "+< $this_file.cgi" or &error("$this_file.cgi ファイルが開けません");
 	eval { flock $fh, 2; };
-	my ($btime,$bdate,$bname,$baddr,$bcolor,$bcomment,$bto_name) = split /<>/, $line;
 	while (my $line = <$fh>) {
 		push @lines, $line;
 		last if @lines >= $max_log-1;
@@ -1076,7 +1075,7 @@ sub write_memory {
 #=================================================
 sub get_depot_c {
 	# 最大預かり所での保存数
-	my $max_depot = $m{job_lv} >= 16 ? 80 : $m{job_lv} * 5 + 5;
+	my $max_depot = $m{job_lv} >= 20 ? 100 : $m{job_lv} * 5 + 5;
 
 	my $count = 0;
 	open my $fh, "< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiファイルが読み込めません");
@@ -1186,7 +1185,23 @@ sub get_login_member {
 	my $login_count = @lines;
 	return ($list, $login_count);
 }
+sub get_header_data { return }
 
+#=========================================================
+# 手助けクエストで依頼されているアイテムNoの取得 weapon.cgi, armor.cgi, item.cgi, secret.cgi
+#=========================================================
+sub get_helper_item {
+	my $gkind = shift;
+
+	my $gno = ',';
+	open my $fh, "< $logdir/helper_quest.cgi" or &error("$logdir/helper_quest.cgiファイルが開けません");
+	while (my $line = <$fh>) {
+		my($limit_time,$limit_date,$name,$is_guild,$pay,$kind,$no,$need_c) = split /<>/, $line;
+		$gno .= "$no," if $gkind eq $kind;
+	}
+	close $fh;
+	return $gno;
+}
 
 sub get_header_data { return }
 

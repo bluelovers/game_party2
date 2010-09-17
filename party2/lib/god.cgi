@@ -31,6 +31,7 @@ $bgimg   = "$bgimgdir/god.gif";
 	['オルテガを生き返らして',		'自分の家に…',		sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiファイルが開けません"); print $fh "$time<>1<>ｵﾙﾃｶﾞ<>0<>chr/029.gif<>$npc_color<>\n"; close $fh;		}],
 	['猫を飼いたい',				'自分の家に…',		sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiファイルが開けません"); if (rand(2) < 1) { print $fh "$time<>1<>白猫<>0<>chr/030.gif<>$npc_color<>\n"; }else{ print $fh "$time<>1<>黒猫<>0<>chr/031.gif<>$npc_color<>\n"; }; close $fh;		}],
 	['エッチな本がほしい',			'アイテム',			sub{ &send_item($m, 3, 58);		}],
+	['錬金ﾚｼﾋﾟがほしい',			'アイテム',			sub{ &send_item( $m, 3, int(rand(2)+128) );	}],
 	['素敵な恋人がほしい',			'恋人が…',			sub{ $mes = 'それは無理な願いだ…。アドバイスとしては積極的にアピールするのだ…';		}],
 
 	# シークレット

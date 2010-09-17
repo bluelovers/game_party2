@@ -14,11 +14,11 @@ $this_file  = "$logdir/item";
 $bgimg = "$bgimgdir/item.gif";
 
 # 売っている道具(No)
-@sales = $m{job_lv} >= 7 ? (1,2,3,7,8,9,11,76,14,79,102,41,42,101)
-	   : $m{job_lv} >= 5 ? (1,2,3,7,8,9,11,76,14,79,41,42,101)
-	   : $m{job_lv} >= 3 ? (1,2,7,8,9,11,14,79,41,42)
-	   : $m{job_lv} >= 1 ? (1,2,7,8,9,11,14,79)
-	   :                   (1,7,8,9)
+@sales = $m{job_lv} >= 7 ? (1,2,3,7,8,9,11,76,14,79,102,41,42,101,127)
+	   : $m{job_lv} >= 5 ? (1,2,3,7,8,9,11,76,14,79,41,42,101,127)
+	   : $m{job_lv} >= 3 ? (1,2,7,8,9,11,14,79,41,42,127)
+	   : $m{job_lv} >= 1 ? (1,2,7,8,9,11,14,79,127)
+	   :                   (1,7,8,9,127)
 	   ;
 
 
@@ -72,8 +72,12 @@ sub himitsunomise {
 sub kau {
 	my $target = shift;
 	
+	my $h_no = &get_helper_item(3);
+
 	my $p = qq|<table class="table1"><tr><th>名前</th><th>値段</th></tr>|;
 	for my $i (@sales) {
+		next if $h_no =~ /,$i,/; # 手助けクエストで依頼されているアイテムは除く
+		$ites[$i][2] *= 2; # 錬金できるので２倍
 		if ($ites[$i][1] eq $target) {
 			if ($m{money} >= $ites[$i][2]) {
 				if ($m{ite}) {

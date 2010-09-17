@@ -28,7 +28,7 @@ $min_bet = 10;
 #	秒数	=> ['セレクト名', "画像ファイル"],
 	12		=> ['さくさく', "$icondir/etc/speed_sakusaku.gif"],
 	18		=> ['まったり', "$icondir/etc/speed_mattari.gif"],
-	28		=> ['じっくり', "$icondir/etc/speed_jikkuri.gif"],
+	25		=> ['じっくり', "$icondir/etc/speed_jikkuri.gif"],
 );
 
 
@@ -337,6 +337,7 @@ sub check_create_quest {
 		$mes = "賭け金は最低でも 1 G必要です"			if $in{bet} < 1;
 		$mes = "賭け金が足りません"						if $in{bet} > $m{money};
 		$mes = "賭け金が異常です"						if $in{bet} =~ /[^0-9]/;
+		$in{bet} = int($in{bet});
 	}
 	elsif ($p_name eq 'ギルド戦') {
 		if ($m{guild}) {
@@ -544,7 +545,7 @@ sub challenge {
 sub get_max_round {
 	my $stage = shift;
 	
-	open my $fh, "< $logdir/challenge$stage.cgi" or "$logdir/challenge$stage.cgiファイルが読み込めません";
+	open my $fh, "< $logdir/challenge$stage.cgi" or &error("$logdir/challenge$stage.cgiファイルが読み込めません");
 	my $line = <$fh>;
 	close $fh;
 	my($max_round) = (split /<>/, $line)[0];
@@ -870,6 +871,7 @@ sub get_battle_line {
 	$p{at}  = $m{at} + $weas[$m{wea}][3];
 	$p{df}  = $m{df} + $arms[$m{arm}][3];
 	$p{ag}  = $m{ag} - $weas[$m{wea}][4] - $arms[$m{arm}][4];
+	%p = &{ $ites[$p{ite}][4] }(%p) if $ites[$p{ite}][3] eq '4'; # 装飾品(戦闘開始時、死亡時、いてつくはどうなど &reset_statusの時)
 
 	my $line = '';
 	for my $k (@battle_datas) {

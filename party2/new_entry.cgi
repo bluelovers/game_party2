@@ -37,7 +37,8 @@ sub new_form {
 	<input type="hidden" name="yid" value="$yid" />
 	<ul>
 		<li>記号(,;"'&<>\\/@)や空白は使えません。</li>
-		<li><b>多重登録は禁止です。見つけ次第削除します。</b></li>
+		<li>ネットマナーを守って楽しく遊びましょう。</li>
+		<li><b>他人が不愉快になるような書き込みや多重登録は禁止です。見つけ次第削除します。</b></li>
 	</ul>
 	<table class="table1">
 		<tr><td>プレイヤー名：</td><td><input type="text" name="name" class="text_box1" /></td></th></tr>
@@ -139,7 +140,7 @@ sub create_user {
 	
 	# フォルダ・ファイル作成
 	mkdir "$userdir/$id", $mkdir or &error("その名前はすでに登録されています");
-	for my $file_name (qw/collection depot hanasu home home_member item_send_mes job_master letter letter_log memory money monster monster_book profile reload screen_shot send_item_mes stock user/) {
+	for my $file_name (qw/collection depot hanasu home home_member item_send_mes job_master letter letter_log memory money monster monster_book profile recipe reload screen_shot send_item_mes stock user/) {
 		my $output_file = "$userdir/$id/$file_name.cgi";
 		open my $fh, "> $output_file" or &error("$output_file ファイルが作れませんでした");
 		close $fh;
@@ -154,7 +155,7 @@ sub create_user {
 	$m{pass} = $in{pass};
 	$m{job}  = $in{job};
 	$m{sex}  = $in{sex};
-	$m{money} = 100;
+	$m{money} = 200;
 	$m{mhp}  = int(rand(3)) + 30;
 	$m{mmp}  = int(rand(3)) + 6;
 	$m{at}   = int(rand(3)) + 6;

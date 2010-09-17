@@ -159,7 +159,7 @@ sub read_member {
 	%ms = (); # Members
 
 	my $count = 0;
-	open $FH, "+< $questdir/$m{quest}/member.cgi" or do{ $m{lib} = $m{guild}; $m{quest} = ''; &write_user; &error("すでにパーティーが解散してしまったようです"); };
+	open $FH, "+< $questdir/$m{quest}/member.cgi" or do{ $m{lib} = ''; $m{quest} = ''; &write_user; &error("すでにパーティーが解散してしまったようです"); };
 	eval { flock $FH, 2; };
 	my $head_line = <$FH>;
 	($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$type,$map,$py,$px,$event) = split /<>/, $head_line;
@@ -427,6 +427,7 @@ sub reset_status {
 	$ms{$y}{at} = $ms{$y}{mat} + $weas[$ms{$y}{wea}][3];
 	$ms{$y}{df} = $ms{$y}{mdf} + $arms[$ms{$y}{arm}][3];
 	$ms{$y}{ag} = $ms{$y}{mag} - $weas[$ms{$y}{wea}][4] - $arms[$ms{$y}{arm}][4];
+	&{ $ites[$ms{$y}{ite}][4] }($y) if $ites[$ms{$y}{ite}][3] eq '3'; # 装飾品(戦闘開始時、死亡時、いてつくはどうなど &reset_statusの時)
 	$ms{$y}{ag} = 0 if $ms{$y}{ag} < 0;
 }
 sub reset_status_all {

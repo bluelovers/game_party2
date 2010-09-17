@@ -142,6 +142,15 @@ sub write_player_list_html {
 		next if $dir_name =~ /\./;
 		my %p = &get_you_datas($dir_name, 1);
 		
+		# データ破損チェック(バックアップがあれば復旧)
+		if (-s "$usrdir/$dir_name/user.cgi" <= 0) {
+			&copy("$usrdir/$dir_name/backup.cgi", "$usrdir/$dir_name/user.cgi") if -f "$usrdir/$dir_name/backup.cgi";
+		}
+		# バックアップ
+		else {
+			&copy("$usrdir/$dir_name/user.cgi", "$usrdir/$dir_name/backup.cgi");
+		}
+
 		# 自動削除期間
 		if ( ($time > $p{ltime} + $auto_delete_day * 3600 * 24)
 			|| ($p{job_lv} <= 0 && $p{lv} <= 2 && $time > $p{ltime} + 7 * 3600 * 24) ) { # 転職回数０でレベル2以下は７日で削除
@@ -150,8 +159,8 @@ sub write_player_list_html {
 				next;
 		}
 		++$count;
-		push @datas, [$p{name},$p{guild},$p{color},$p{icon},$p{mes},$p{kill_p},$p{kill_m},$p{cas_c},$p{mao_c},$p{hero_c}];
-		$html .= qq|<tr><td style="color: $p{color};"><img src="../$icondir/$p{icon}" /><a href="../player.cgi?id=$dir_name">$p{name}</a></td><td>$e2j{$p{sex}}</td><td>$p{guild}</td><td align="right">$p{lv}</td><td align="right">$p{job_lv}</td><td>$jobs[$p{job}][1]($p{sp})</td><td>$jobs[$p{old_job}][1]($p{old_sp})</td><td align="right">$p{mhp}</td><td align="right">$p{mmp}</td><td align="right">$p{at}</td><td align="right">$p{df}</td><td align="right">$p{ag}</td><td align="right">$p{money}</td><td align="right">$p{coin}</td><td align="right">$p{medal}</td><td>$weas[$p{wea}][1]</td><td>$arms[$p{arm}][1]</td><td>$ites[$p{ite}][1]</td><td align="right">$p{kill_m}</td><td align="right">$p{kill_p}</td><td align="right">$p{hero_c}</td><td align="right">$p{mao_c}</td><td align="right">$p{cas_c}</td><td>$p{ldate}</td></tr>\n|; 
+		push @datas, [$p{name},$p{guild},$p{color},$p{icon},$p{mes},$p{kill_p},$p{kill_m},$p{cas_c},$p{mao_c},$p{hero_c},$p{help_c},$p{alc_c}];
+		$html .= qq|<tr><td style="color: $p{color};"><a href="../player.cgi?id=$dir_name">$p{name}</a><img src="../$icondir/$p{icon}" /></td><td>$e2j{$p{sex}}</td><td>$p{guild}</td><td align="right">$p{lv}</td><td align="right">$p{job_lv}</td><td>$jobs[$p{job}][1]($p{sp})</td><td>$jobs[$p{old_job}][1]($p{old_sp})</td><td align="right">$p{mhp}</td><td align="right">$p{mmp}</td><td align="right">$p{at}</td><td align="right">$p{df}</td><td align="right">$p{ag}</td><td align="right">$p{money}</td><td align="right">$p{coin}</td><td align="right">$p{medal}</td><td>$weas[$p{wea}][1]</td><td>$arms[$p{arm}][1]</td><td>$ites[$p{ite}][1]</td><td align="right">$p{kill_m}</td><td align="right">$p{kill_p}</td><td align="right">$p{hero_c}</td><td align="right">$p{mao_c}</td><td align="right">$p{cas_c}</td><td>$p{ldate}</td></tr>\n|; 
 	}
 	closedir $dh;
 	
@@ -171,7 +180,7 @@ sub write_player_list_html {
 	&write_ranking(@datas);
 }
 #=================================================
-# 王者・英雄のデータ作成
+# ランキング系データ作成
 #=================================================
 sub write_ranking {
 	my @datas = @_;
@@ -180,6 +189,8 @@ sub write_ranking {
 	my @cas_cs   = sort { $b->[7] <=> $a->[7] } @datas;
 	my @mao_cs   = sort { $b->[8] <=> $a->[8] } @datas;
 	my @hero_cs  = sort { $b->[9] <=> $a->[9] } @datas;
+	my @help_cs  = sort { $b->[10] <=> $a->[10] } @datas;
+	my @alc_cs   = sort { $b->[11] <=> $a->[11] } @datas;
 	
 	# 王者リスト
 	my %sames = ();
@@ -241,6 +252,29 @@ sub write_ranking {
 	open my $fh5, "> $logdir/cas_c.cgi" or &error("$logdir/cas_c.cgiファイルが開けません");
 	print $fh5 $line;
 	close $fh5;
+
+	# 手助け者リスト
+	$count = 0;
+	$line  = '';
+	for my $ref (@help_cs) {
+		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[10]<>\n";
+		last if ++$count >= 10;
+	}
+	open my $fh10, "> $logdir/help_c.cgi" or &error("$logdir/help_c.cgiファイルが開けません");
+	print $fh10 $line;
+	close $fh10;
+
+	# 錬金者リスト
+	$count = 0;
+	$line  = '';
+	for my $ref (@alc_cs) {
+		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[11]<>\n";
+		last if ++$count >= 10;
+	}
+	open my $fh11, "> $logdir/alc_c.cgi" or &error("$logdir/alc_c.cgiファイルが開けません");
+	print $fh11 $line;
+	close $fh11;
+
 }
 
 

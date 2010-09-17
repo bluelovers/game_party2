@@ -78,7 +78,7 @@ sub chuumon {
 		open my $fh, "< $userdir/$id/profile.cgi";
 		my $line = <$fh>;
 		close $fh;
-		($like_food) = ($line =~ /<>like_food;(.+?)<>/);
+		($like_food) = ($line =~ /<>like_food;(.*?)<>/);
 	}
 	$foods[-1][0] = $like_food if $like_food;
 	

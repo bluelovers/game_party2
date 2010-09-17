@@ -135,13 +135,13 @@ sub get_all_users {
 			$line .= "$m{$k}<>";
 		}
 		push @lines, "$line\n";
-
-#		for my $k (qw/hanasu profile stock/) {
+		
+#		for my $k (qw/recipe/) {
 #			unless (-f "$userdir/$id/$k.cgi") {
 #				open my $fh, "> $userdir/$id/$k.cgi";
 #				close $fh;
+#				chmod $chmod, "$userdir/$id/$k.cgi";
 #			}
-#			chmod $chmod, "$userdir/$id/$k.cgi";
 #		}
 	}
 	closedir $dh;

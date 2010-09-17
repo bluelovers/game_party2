@@ -139,6 +139,8 @@ sub neru {
 			  : $login_count >= 20 ? $sleep_time * 60 * 2
 			  : 				     $sleep_time * 60;
 	$com .= qq|$mはベッドにもぐりこんだ！|;
+	
+	$m{recipe} =~ s/^0/1/o;
 }
 
 
@@ -369,6 +371,60 @@ sub kotobawooshieru {
 		print $fh @lines;
 		close $fh;
 	}
+}
+
+#================================================
+# レシピ使用
+#================================================
+sub learn_recipe {
+	my @learns = @_;
+
+	# レシピ一覧読み込み
+	require './lib/_alchemy_recipe.cgi';
+
+	# 完成させているレシピを除く
+	my @lines = ();
+	open my $fh, "+< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiファイルが読み込めません");
+	eval { flock $fh, 2; };
+	while (my $line = <$fh>) {
+		push @lines, $line;
+		my($base, $sozai) = (split /<>/, $line)[1,2];
+		delete($recipes{$base}{$sozai});
+	}
+
+	my %new_recipes = ();
+	if (@learns) { # 習得できるレシピ制限
+		for my $learn (@learns) {
+			$new_recipes{$learn} = $recipes{$learn} if defined($recipes{$learn}) && values %{ $recipes{$learn} };
+		}
+	}
+	else { # 全部習得可能(神のレシピ)
+		for my $k (keys %recipes) {
+			$new_recipes{$k} = $recipes{$k} if values %{ $recipes{$k} };
+		}
+	}
+	
+	my @bases = keys %new_recipes;
+	if (@bases) {
+		# 未習得のレシピをランダムで取得
+		my $base = $bases[int rand @bases];
+		my @sozais = keys %{ $recipes{$base} };
+		my $sozai = $sozais[int rand @sozais];
+		my $mix = $recipes{$base}{$sozai};
+
+		push @lines, "0<>$base<>$sozai<>$mix<>\n";
+		seek  $fh, 0, 0;
+		truncate $fh, 0;
+		print $fh @lines;
+		
+		$com = "$m は錬金レシピを読んだ！【$base × $sozai ＝ ？？？】の錬金方法を習得した！";
+
+	}
+	else {
+		$com = "この錬金レシピからこれ以上習得できる錬金方法はないようだ…";
+	}
+
+	close $fh;
 }
 
 

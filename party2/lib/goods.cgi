@@ -14,7 +14,8 @@ $this_file  = "$logdir/goods";
 $bgimg = "$bgimgdir/goods.gif";
 
 # 売っている道具(No)
-@sales = $m{job_lv} > 9 ? (44..56) : (44..46+$m{job_lv});
+@sales = $m{job_lv} > 10  ? (44..56) : (44..45+$m{job_lv});
+push @sales, (138..141) if $m{job_lv} > 15;
 
 #=================================================
 # はなす言葉
@@ -59,8 +60,11 @@ sub yamiichiba {
 sub kau {
 	my $target = shift;
 	
+	my $h_no = &get_helper_item(3);
+
 	my $p = qq|<table class="table1"><tr><th>名前</th><th>値段</th></tr>|;
 	for my $i (@sales) {
+		next if $h_no =~ /,$i,/; # 手助けクエストで依頼されているアイテムは除く
 		if ($ites[$i][1] eq $target) {
 			if ($m{money} >= $ites[$i][2]) {
 				if ($m{ite}) {

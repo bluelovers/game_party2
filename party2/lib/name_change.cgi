@@ -14,7 +14,7 @@ $this_file  = "$logdir/name_change";
 $bgimg   = "$bgimgdir/name_change.gif";
 
 # 名前の変更にかかるお金
-$need_money_name = 300000;
+$need_money_name = 500000;
 
 # 性別の変更にかかるお金
 $need_money_sex  = 10000;
@@ -110,6 +110,10 @@ sub namae {
 		$mes = qq|名前を変更するには、一度ギルドを脱退する必要があるぞ|;
 		return;
 	}
+	elsif (&is_join_exile) {
+		$mes = qq|追放投票に関わっている場合は、名前を変更することはできんぞ|;
+		return;
+	}
 
 	my $new_id = unpack 'H*', $y;
 	$mes = "プレイヤー名に不正な文字( ,;\"\'&<>\\\/@ )が含まれています"	if $y =~ /[,;\"\'&<>\\\/@]/;
@@ -152,6 +156,19 @@ sub pasuwado {
 	$to_name = $m;
 	$pass = $m{pass} = $y;
 }
+
+# 追放投票に関わっているかどうか
+sub is_join_exile {
+	open my $fh, "+< $logdir/violator.cgi" or &error("$logdir/violator.cgiファイルが開けません");
+	while (my $line = <$fh>) {
+		my($name, $violator, $message, $yess, $noss) = split /<>/, $line;
+		return 1 if ($yess =~ /\Q$m,\E/) || ($noss =~ /\Q$m,\E/) || ($name eq $m) || ($violator eq $m);
+	}
+	close $fh;
+
+	return 0;
+}
+
 
 
 1; # 削除不可

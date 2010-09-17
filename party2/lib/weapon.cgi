@@ -15,7 +15,7 @@ $bgimg = "$bgimgdir/weapon.gif";
 
 
 # 売っている武器(No)
-@sales = $m{job_lv} > 11 ? (1..16) : (1..5+$m{job_lv});
+@sales = $m{job_lv} > 11 ? (1..5,43,6..16) : (1..5,43,6+$m{job_lv});
 
 
 #=================================================
@@ -52,8 +52,12 @@ $actions{'うる'} = sub{ &uru };
 sub kau {
 	my $target = shift;
 	
+	my $h_no = &get_helper_item(1);
+	
 	my $p = qq|<table class="table1"><tr><th>名前</th><th>値段</th><th>強さ</th><th>重さ</th></tr>|;
 	for my $i (@sales) {
+		next if $h_no =~ /,$i,/; # 手助けクエストで依頼されているアイテムは除く
+		$weas[$i][2] *= 2; # 錬金できるので２倍
 		if ($weas[$i][1] eq $target) {
 			if ($m{money} >= $weas[$i][2]) {
 				if ($m{wea}) {
