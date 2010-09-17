@@ -23,7 +23,7 @@ sub html {
 	}
 	close $fh;
 	
-	my $comp_par = int($count / $#jobs * 100);
+	my $comp_par = int($count / $#jobs-1 * 100);
 	$comp_par = 100 if $comp_par > 100;
 
 	print qq|<h2>$m{home}のジョブマスター率《<b>$comp_par</b>％》</h2><table class="table1"><tr>|;

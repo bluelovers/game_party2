@@ -16,15 +16,15 @@ $bgimg   = "$bgimgdir/god.gif";
 # 願い事
 @prizes = (
 # 	['ねがいごと名',				'補足説明',			sub{ 処理($mesに何か文字を入れるとキャンセル)  }],	
-	['強くなりたい',				'全ｽﾃｰﾀｽ 30 ｱｯﾌﾟ',	sub{ for my $k (qw/mhp mmp at df ag/) { $m{$k}+=30; };	}],
-	['スキルを覚えたい',			'Sp 40 ｱｯﾌﾟ',		sub{ $m{sp}     += 40;		}],
+	['強くなりたい',				'全ｽﾃｰﾀｽ 40 ｱｯﾌﾟ',	sub{ for my $k (qw/mhp mmp at df ag/) { $m{$k}+=40; };	}],
+	['スキルを覚えたい',			'Sp 50 ｱｯﾌﾟ',		sub{ $m{sp}     += 50;		}],
 	['お金がほしい',				'10 万G',			sub{ $m{money}  += 100000;		}],
 	['カジノコインがほしい',		'5 万枚',			sub{ $m{coin}   += 50000;		}],
 	['小さなメダルがほしい',		'20 枚',			sub{ $m{medal}  += 20;		}],
 	['福引券がほしい',				'1000 枚',			sub{ $m{coupon} += 1000;	}],
 	['ギルドランクをあげたい',		'1000 ﾎﾟｲﾝﾄ',		sub{ return unless $m{guild}; &regist_guild_data('point', 1000, $m{guild});	}],
 	['ギルドをゴージャスにしたい',	'ギルドが…',		sub{ return unless $m{guild}; my $gid = unpack 'H*', $m{guild}; return unless -f "$guilddir/$gid/log_member.cgi"; open my $fh, ">> $guilddir/$gid/log_member.cgi" or &error("$guilddir/$gid/log_member.cgiファイルが開けません"); print $fh "$time<>1<>金ﾒﾀﾞﾙ<>0<>etc/win_medal3.gif<>$npc_color<>\n"; close $fh; &regist_guild_data('bgimg', 'god.gif', $m{guild});		}],
-	['元気いっぱいになりたい',		'疲労度 -200 %',	sub{ $m{tired}  -= 200;		}],
+	['元気いっぱいになりたい',		'疲労度 -150 %',	sub{ $m{tired} -= 150;		}],
 	['新しい冒険場所に行きたい',	'全オーブ',			sub{ $m{orb}    = 'byrpgs';		}],
 	['天竜人になりたい',			'転職',				sub{ if ($m{job} eq '70' || $m{old_job} eq '70') { $mes="ふむ。すでに$mは天竜人だぞ…"; return; }; &job_change(70);		}],
 	['新世界の神になりたい',		'自分の家が…',		sub{ $m{icon} = 'chr/052.gif'; &copy("$bgimgdir/god.gif", "$userdir/$id/bgimg.gif");		}],
@@ -175,7 +175,7 @@ sub add_job_master {
 	close $fh;
 	
 	# 全ジョブコンプリート
-	if ($mastered_count eq $#jobs && !-f "$userdir/$id/comp_job_flag.cgi") { 
+	if ($mastered_count eq $#jobs-1 && !-f "$userdir/$id/comp_job_flag.cgi") { 
 		open my $fh2, "> $userdir/$id/comp_job_flag.cgi" or &error("$userdir/$id/comp_job_flag.cgiファイルが開けません");
 		close $fh2;
 		

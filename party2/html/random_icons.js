@@ -21,7 +21,7 @@ else if(h >= 6 && h < 9) {
 
 
 for (var i = 1; i <= 8; i++) {
-	var n = Math.floor(Math.random() * 70) + 1;
+	var n = Math.floor(Math.random() * 73) + 1;
 	
 	// ’j«ê—pE
 	if (n == 13 || n == 15 || n == 17 || n == 19 || n == 47) {

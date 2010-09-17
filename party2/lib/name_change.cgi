@@ -14,7 +14,7 @@ $this_file  = "$logdir/name_change";
 $bgimg   = "$bgimgdir/name_change.gif";
 
 # –¼‘O‚Ì•ÏX‚É‚©‚©‚é‚¨‹à
-$need_money_name = 50000;
+$need_money_name = 300000;
 
 # «•Ê‚Ì•ÏX‚É‚©‚©‚é‚¨‹à
 $need_money_sex  = 10000;

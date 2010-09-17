@@ -277,6 +277,7 @@ sub indian {
 	$in{stage} = 'インディアン';
 	$in{now_bet} = $in{bet};
 	&_create_room;
+	return if $mes;
 	$m{lib} = 'casino_indian';
 }
 #=================================================
@@ -288,6 +289,7 @@ sub highlow {
 	$in{stage} = 'ハイロウ';
 	$in{now_bet} = $in{bet};
 	&_create_room;
+	return if $mes;
 	$m{lib} = 'casino_highlow';
 }
 #=================================================
@@ -299,6 +301,7 @@ sub doppel {
 	$in{stage} = 'ドッペル';
 	$in{now_bet} = 1;
 	&_create_room;
+	return if $mes;
 	$m{lib} = 'casino_doppel';
 }
 

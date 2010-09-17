@@ -135,7 +135,7 @@ sub profile {
 sub neru {
 	my($login_list, $login_count) = &get_login_member;
 	
-	$m{sleep} = $login_count >= 40 ? $sleep_time * 60 * 3
+	$m{sleep} = $login_count >= 30 ? $sleep_time * 60 * 3
 			  : $login_count >= 20 ? $sleep_time * 60 * 2
 			  : 				     $sleep_time * 60;
 	$com .= qq|$mはベッドにもぐりこんだ！|;

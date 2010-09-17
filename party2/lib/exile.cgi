@@ -17,7 +17,7 @@ $bgimg   = "$bgimgdir/exile.gif";
 $penalty_day = 10;
 
 # 追放に必要な票数
-$need_vote = 20;
+$need_vote = 40;
 
 # 1人が追放申請できる限度(申請中のが解決すると再度申請可能)
 $max_violator = 1;

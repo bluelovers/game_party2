@@ -246,7 +246,7 @@ sub add_boss {
 		$ms{$name}{hit} = 95 unless $ms{$name}{hit};
 		$ms{$name}{ten} = 1   unless $ms{$name}{ten};
 		for my $k (qw/hp mp at df ag/) {
-			$ms{$name}{$k} = int($ms{$name}{$k} * (1 + (@partys - 2) * 0.1) );
+			$ms{$name}{$k} = int($ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) ); # パーティー人数による強さ補正
 			$ms{$name}{'m'.$k} = $ms{$name}{$k} unless $ms{$name}{'m'.$k};
 		}
 		$ms{$name}{name} = $name;
@@ -275,7 +275,7 @@ sub add_monster {
 		
 		# 初期データセット(読み込んだデータにすでに値がある場合はそっちを優先)
 		for my $k (qw/hp mp at df ag/) {
-			$ms{$name}{$k} = int($ms{$name}{$k} * (1 + (@partys - 2) * 0.05) ); # パーティー人数による強さ補正
+			$ms{$name}{$k} = int($ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) ); # パーティー人数による強さ補正
 			$ms{$name}{'m'.$k} ||= $ms{$name}{$k};
 		}
 		$ms{$name}{name}  = $name;

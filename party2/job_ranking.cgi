@@ -29,7 +29,7 @@ sub run {
 		++$count;
 
 		$contents .= qq|<tr><td><b>$count</b>ˆÊ</td><td>$jobs[$job_no][1]</td><td>$icon_img</td><td><img src="$htmldir/space.gif" style="background-color: #66F; height: 5px; width: $male_par;" alt="$male_par%" /><img src="$htmldir/space.gif" style="background-color: #F99; height: 5px; width: $female_par;" alt="$female_par%" /></td></tr>\n|;
-		$contents .= qq|</table></td><td valign="top"><table class="table1"><tr><th>‡ˆÊ</th><th>E‹Æ–¼</th><th>‰æ‘œ</th><th>’j—”ä</th></tr>\n| if $count % 35 == 0 && $#jobs != $count;
+		$contents .= qq|</table></td><td valign="top"><table class="table1"><tr><th>‡ˆÊ</th><th>E‹Æ–¼</th><th>‰æ‘œ</th><th>’j—”ä</th></tr>\n| if $count % 37 == 0 && $#jobs != $count;
 	}
 	close $fh;
 	$contents .= qq|</table></table>|;

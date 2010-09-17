@@ -28,7 +28,7 @@ if ($c_member < 10) { # 10人未満ならイベント起こらず
 }
 elsif ($c_member >= 30) {
 	# 売っている道具(No)
-	@sales = (90..100);
+	@sales = (90..100,108);
 	$bgimg = "$bgimgdir/event3.gif";
 }
 elsif ($c_member >= 20) {

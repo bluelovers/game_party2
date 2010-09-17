@@ -46,6 +46,8 @@ $bgimg   = "$bgimgdir/job_change.gif";
 	'ﾊﾞﾌﾞﾙﾏｽﾀｰ'		=> 1,
 	'ｺﾛﾋｰﾛｰ'		=> 1,
 	'ﾌﾟﾁﾋｰﾛｰ'		=> 1,
+	'ﾁｮｺﾎﾞﾗｲﾀﾞｰ'	=> 1,
+	'算術士'		=> 1,
 );
 
 #=================================================
@@ -221,7 +223,7 @@ sub add_job_master {
 	close $fh;
 	
 	# 全ジョブコンプリート
-	if ($mastered_count eq $#jobs && !-f "$userdir/$id/comp_job_flag.cgi") { 
+	if ($mastered_count eq $#jobs-1 && !-f "$userdir/$id/comp_job_flag.cgi") { 
 		open my $fh2, "> $userdir/$id/comp_job_flag.cgi" or &error("$userdir/$id/comp_job_flag.cgiファイルが開けません");
 		close $fh2;
 		

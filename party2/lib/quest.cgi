@@ -312,6 +312,7 @@ sub check_create_quest {
 		$mes = "“q‚¯‹à‚ÍÅ’á‚Å‚à $min_bet G•K—v‚Å‚·"	if $in{bet} < $min_bet;
 		$mes = "“q‚¯‹à‚ÍÅ’á‚Å‚à 1 G•K—v‚Å‚·"			if $in{bet} < 1;
 		$mes = "“q‚¯‹à‚ª‘«‚è‚Ü‚¹‚ñ"						if $in{bet} > $m{money};
+		$mes = "“q‚¯‹à‚ªˆÙí‚Å‚·"						if $in{bet} =~ /[^0-9]/;
 	}
 	elsif ($p_name eq 'ƒMƒ‹ƒhí') {
 		if ($m{guild}) {

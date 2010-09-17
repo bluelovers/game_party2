@@ -328,7 +328,7 @@ sub skill_7 { # 商人
 		[12,	6,		'すなけむり',		sub{ &_st_downs(0.2, '息', 'hit');	}],
 		[20,	0,		'とうぞくのはな',	sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); if ($y =~ /^@.+宝箱.$/) { my $item_name = $ms{$y}{get_money} eq '0' ? 'からっぽ' : $ms{$y}{get_exp} eq '1' ? $weas[$ms{$y}{get_money}][1] : $ms{$y}{get_exp} eq '2' ? $arms[$ms{$y}{get_money}][1] : $ites[$ms{$y}{get_money}][1]; $com.="宝箱の中身は $item_name のようだ…"; } else { my @smells=(qw/いい おいしそうな バラの あまい 変な やばい さわやかな ワイルドな/); my $v=int(rand(@smells)); $com.="$yは $smells[$v] においがする"; };	}],
 		[35,	4,		'たいあたり',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 1.6, '攻'); return if $v <= 0; &_risk($v * 0.07);		}],
-		[45,	1,		'マホアゲル',		sub{ my($y) = &_check_party(shift, '魔与', '魔'); return if !$y; $v = int($ms{$m}{mp} * 0.5); $ms{$m}{mp} -= $v; $com.= qq|$mは$e2j{mmp}を$yに <span class="heal">$v</span> あたえた！|; &_mp_h($y, $v, '魔');	}],
+		[45,	1,		'マホアゲル',		sub{ my($y) = &_check_party(shift, '魔与', '魔'); return if !$y; my$v = int($ms{$m}{mp} * 0.5); $v = 100 if $v >= 100; $ms{$m}{mp} -= $v; $com.= qq|$mは$e2j{mmp}を$yに <span class="heal">$v</span> あたえた！|; &_mp_h($y, $v, '魔');	}],
 		[65,	7,		'メダパニダンス',	sub{ &_st_ds('混乱', '踊', 60);	}],
 		[80,	1,		'メガンテ',			sub{ $com.=qq|<span class="die">$mは自爆した！</span>|; &_deaths('即死', '無', 60); &defeat($m); $ms{$m}{mp} = 1; 	}],
 	);
@@ -595,7 +595,7 @@ sub skill_31 { # 青魔道士
 		[77,	34,		'マイティガード',		sub{ &_st_ups(0.5, '魔', 'df'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '魔軽減'; $com.=qq|<span class="tmp">$yは魔法の光で守られた！</span>|;};	}],
 		[94,	24,		'ＭＰ４グラビガ',		sub{ return if &is_bad_state('魔'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 4 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = int($ms{$y}{hp}*0.25); $ms{$y}{hp} = 1 if $ms{$y}{hp} <= 0; $com.=qq|$yは<span class="st_down">$e2j{mhp}が1/4になった！</span>|; };	}],
 		[121,	36,		'ホワイトウィンド',		sub{ &_heals($ms{$m}{hp}, '魔');	}],
-		[155,	25,		'ＭＰ５デス',			sub{ return if &is_bad_state('魔'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 5 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = 0; $com.=qq|<span class="die">$yは死んでしまった！</span>|; };	}],
+		[155,	25,		'ＭＰ５デス',			sub{ return if &is_bad_state('魔'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 5 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = 0; $com.=qq|<span class="die">$yは死んでしまった！</span>|; &defeat; };	}],
 	);
 }
 sub skill_32 { # 召喚士
@@ -707,7 +707,7 @@ sub skill_42 { # ｱｻｼﾝ
 		[80,	4,		'どくこうげき',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.1, '攻'); return if !$y || $ms{$y}{hp} <= 0;  &_st_d($y, '猛毒', '攻', 70);	}],
 		[100,	8,		'まひこうげき',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, '攻'); return if !$y || $ms{$y}{hp} <= 0;  &_st_d($y, '麻痺', '攻', 35);	}],
 		[120,	42,		'しのせんこく',		sub{ my($y) = &_check_enemy(shift, '瀕死', '魔'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yにはきかなかった！"; } elsif (rand(1.5)<1) { &_st_down($y, 0.75, '魔', 'hp'); $ms{$y}{state}='猛毒'; } else { $com.="$yはかわした！"; };	}],
-		[150,	24,		'あんさつけん',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.7, '攻'); return if !$y || $ms{$y}{hp} <= 0; &_death($y, '即死', '攻', 25);	}],
+		[150,	24,		'あんさつけん',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.7, '攻'); return if !$y || $ms{$y}{hp} <= 0; &_death($y, '即死', '攻', 30);	}],
 	);
 }
 sub skill_43 { # 医術士
@@ -936,10 +936,10 @@ sub skill_65 { # ｹﾓﾉﾏｽﾀｰ
 	return (
 		[10,	30,		'よびだす',				sub{ my $n = '@ｹﾓﾉ@'; if (defined $ms{$n}{name}) { $com.="$nを呼び出すのに失敗した…"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/200.gif', 100, 60, 100, 60, 180) : $m{lv} < 70 ? &_add_party($n, 'mon/206.gif', 210, 90, 300, 80, 280) : &_add_party($n, 'mon/203.gif', 400, 230, 500, 160, 400); $com.="$nが戦闘に参加した！"; 	}],
 		[11,	0,		'にげろ',				sub{ my $n = '@ｹﾓﾉ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nが戦闘から逃げ出した！"; 	}],
-		[12,	0,		'こうげきめいれい',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$n： ＠こうげき "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'ひっさつめいれい',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$n： "; if (rand(2)<1) { $com.='＠ひっかく '; &_damage(shift, $ms{$n}{at} * 1.5, '攻'); }elsif(rand(2)<1){ $com.='＠かみつく '; &_damage(shift, $ms{$n}{at} * 1.2, '攻', 1); }else{ $com.='＠とつげき '; &_damage(shift, $ms{$n}{at} * 2.0, '攻'); }; 	}],
-		[100,	10,		'ぼうぎょめいれい',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '防御'; $com.=qq|$n： ＠ぼうぎょ <span class="tmp">$nは身を固めた！</span>|;	}],
-		[150,	40,		'どとうのけもの',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$n}{ag} * 2.0, '攻'); };	}],
+		[12,	0,		'こうげきめいれい',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $com.="$n： ＠こうげき "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ひっさつめいれい',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $com.="$n： "; if (rand(2)<1) { $com.='＠ひっかく '; &_damage(shift, $ms{$n}{at} * 1.5, '攻'); }elsif(rand(2)<1){ $com.='＠かみつく '; &_damage(shift, $ms{$n}{at} * 1.2, '攻', 1); }else{ $com.='＠とつげき '; &_damage(shift, $ms{$n}{at} * 2.0, '攻'); }; 	}],
+		[100,	10,		'ぼうぎょめいれい',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '防御'; $com.=qq|$n： ＠ぼうぎょ <span class="tmp">$nは身を固めた！</span>|;	}],
+		[150,	40,		'どとうのけもの',		sub{ my $n = '@ｹﾓﾉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$n}{ag} * 2.0, '攻'); };	}],
 	);
 }
 sub skill_66 { # ﾄﾞｸﾛﾏｽﾀｰ
@@ -989,6 +989,36 @@ sub skill_70 { # 天竜人
 		[150,	40,		'ギガデイン',		sub{ &_damages(180, '魔', 1);			}],
 		[200,	27,		'てんしのうたごえ',	sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|なんと、<b>$y</b>が <span class="heal">生き返り</span> ました！|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|しかし、<b>$y</b>は生き返らなかった…|; }; }; 	}],
 	);
+}
+# Ver1.20～追加分
+sub skill_71 { # ﾁｮｺﾎﾞﾗｲﾀﾞｰ
+	return (
+		[10,	30,		'よびだす',				sub{ my $n = '@ﾁｮｺﾎﾞ@'; if (defined $ms{$n}{name}) { $com.="$nを呼び出すのに失敗した…"; return; }; $m{lv} < 40 ? &_add_party($n, 'job/44_m.gif', 150, 70, 100, 50, 180) : $m{lv} < 70 ? &_add_party($n, 'chr/032.gif', 270, 50, 270, 70, 270) : &_add_party($n, 'chr/033.gif', 500, 30, 300, 300, 10); $com.="$nが戦闘に参加した！"; 	}],
+		[11,	0,		'にげろ',				sub{ my $n = '@ﾁｮｺﾎﾞ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nが戦闘から逃げ出した！"; 	}],
+		[12,	0,		'こうげきめいれい',		sub{ my $n = '@ﾁｮｺﾎﾞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$n： ＠こうげき "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ひっさつめいれい',		sub{ my $n = '@ﾁｮｺﾎﾞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$n： "; if (rand(3)<1) { $com.='＠チョコボキック '; &_damage(shift, $ms{$n}{at} * 1.4, '攻'); }elsif(rand(2)<1){ $com.='＠チョコケアル '; &_heal(shift, 150, '魔'); }else{ $com.='＠チョコダンス '; &_st_ds('動封', '踊', 80); }		}],
+		[100,	10,		'ぼうぎょめいれい',		sub{ my $n = '@ﾁｮｺﾎﾞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '防御'; $com.=qq|$n： ＠ぼうぎょ <span class="tmp">$nは身を固めた！</span>|;	}],
+		[150,	100,	'がったい',				sub{ my $n = '@ﾁｮｺﾎﾞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$mと$nは合体した！</span>|; $ms{$m}{icon}="job/71_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+	);
+}
+sub skill_72 { # 算術士
+	return (
+		[0,		15,		'ＭＰ５',		sub{ return if &is_bad_state('魔'); $com =~ /＠(.+?)(?:(?:\x20|　)?＠(×.+?)(?:\x20|　)|\x20|　)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 5; &{ $actions{$action2}[1] }; } else { $com.=qq|詠唱失敗！|; };	}],
+		[100,	14,		'ＭＰ４',		sub{ return if &is_bad_state('魔'); $com =~ /＠(.+?)(?:(?:\x20|　)?＠(×.+?)(?:\x20|　)|\x20|　)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 4; &{ $actions{$action2}[1] }; } else { $com.=qq|詠唱失敗！|; };	}],
+		[150,	13,		'ＭＰ３',		sub{ return if &is_bad_state('魔'); $com =~ /＠(.+?)(?:(?:\x20|　)?＠(×.+?)(?:\x20|　)|\x20|　)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 3; &{ $actions{$action2}[1] }; } else { $com.=qq|詠唱失敗！|; };	}],
+		[20,	0,		'×フレア',		sub{ return if &is_bad_state('魔'); if (!$_mp_num) { $com.=qq|詠唱失敗！|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; my $v=int(260 * (rand(0.3)+0.9)); $v=int(rand(2)+1) if $ms{$y}{mdf} > 999; $ms{$y}{hp}-=$v; $com.=qq|<b>$y</b>に <span class="damage">$v</span> のダメージ！|; if ($ms{$y}{hp} <= 0) { $ms{$y}{hp}=0; $com .= qq|<span class="die">$yをたおした！</span>|; &defeat($y); }; };		}],
+		[40,	0,		'×リフレク',	sub{ return if &is_bad_state('魔'); if (!$_mp_num) { $com.=qq|詠唱失敗！|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; $ms{$y}{tmp}='魔反撃'; $com.=qq|<span class="tmp">$yは魔法の壁で守られた！</span>|; };		}],
+		[70,	0,		'×ケアルガ',	sub{ return if &is_bad_state('魔'); if (!$_mp_num) { $com.=qq|詠唱失敗！|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; my $v=int(500 * (rand(0.3)+0.9)); $ms{$y}{hp}+=$v; $ms{$y}{hp}=$ms{$y}{mhp} if $ms{$y}{hp} > $ms{$y}{mhp}; $com.=qq|<b>$y</b>の$e2j{mhp}が <span class="heal">$v</span> 回復した！|; };		}],
+		[120,	0,		'×アレイズ',	sub{ return if &is_bad_state('魔'); if (!$_mp_num) { $com.=qq|詠唱失敗！|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} >  0; next if $ms{$y}{mp} % $_mp_num != 0; $ms{$y}{hp}=$ms{$y}{mhp}; $com.=qq|なんと、<span class="revive">$yが生き返りました！</span>|; };		}],
+		[180,	0,		'×デス',		sub{ return if &is_bad_state('魔'); if (!$_mp_num) { $com.=qq|詠唱失敗！|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp}=0; $com.=qq|<span class="die">$yは死んでしまった！</span>|; &defeat($y); };		}],
+
+	);
+}
+sub skill_73 { # すっぴん
+	my $v = ($ms{$m}{at} + $ms{$m}{df} + $ms{$m}{ag}) % 73;
+	# ※注意『$v eq '73'』は無限ループ防止(skill_73 が &{ skill_73 } を呼び続けてしまうので、『sub skill_73 {』と『…if $v eq '73'…』の数字は同じにすること！)
+	$v = 8 if $v eq '73' || $v <= 0;
+	return &{ 'skill_'.$v };
 }
 
 # 敵用
@@ -1546,7 +1576,7 @@ sub _parupunte {
 # ＠ゆびをふる
 #=================================================
 sub _yubiwofuru {
-	my @r_skills = &{ 'skill_'.int(rand(@jobs)+1) };
+	my @r_skills = &{ 'skill_'.int(rand($#jobs)+1) };
 	if (@r_skills <= 0) {
 		$com .= "しかし、何も起こらなかった…";
 		return;

@@ -89,6 +89,9 @@
 [68,	'ｺﾛﾋｰﾛｰ',		5,	2,	4,	3,	3,		sub{ &_is_need_job(68)   ||  $m{ite} eq '99' }],
 [69,	'ﾌﾟﾁﾋｰﾛｰ',		5,	2,	4,	3,	3,		sub{ &_is_need_job(69)   ||  $m{ite} eq '100' }],
 [70,	'天竜人',		4,	5,	3,	2,	3,		sub{ &_is_need_job(70) }],
+[71,	'ﾁｮｺﾎﾞﾗｲﾀﾞｰ',	5,	3,	2,	3,	2,		sub{ &_is_need_job(71)   ||  $m{ite} eq '108' }],
+[72,	'算術士',		3,	6,	1,	3,	3,		sub{ &_is_need_job(72)   ||  $m{ite} eq '109' }],
+[73,	'すっぴん',		5,	5,	4,	4,	4,		sub{ -f "$userdir/$id/comp_job_flag.cgi" }],
 );
 sub _is_need_job {
 	my @need_jobs = @_;
@@ -378,11 +381,13 @@ sub _is_need_job {
 	[100,	'ﾋｰﾛｰｿｰﾄﾞ2',		20000,		0,			sub{	}],
 	[101,	'小人のﾊﾟﾝ',		950,		1,			sub{ if ($m{lib} eq 'vs_dungeon') { &chizu(2); } else { &_mp_h(shift, 50, '道具'); };	}],
 	[102,	'ﾘｼﾞｪﾈﾎﾟｰｼｮﾝ',		700,		1,			sub{ my($y) = &_check_party(shift, '回復', '道具'); return if !$y; $ms{$y}{tmp}='回復'; $com.=qq|<span class="tmp">$yは優しい光に包まれた！</span>|;	}],
-	[103,	'復活の草',			10000,		1,			sub{ my($y) = &_check_party(shift, '復活', '道具'); return if !$y; $ms{$y}{tmp}='復活'; $com.=qq|<span class="tmp">$yは復活の草を食べた！</span>|;	}],
+	[103,	'復活の草',			1000,		1,			sub{ my($y) = &_check_party(shift, '復活', '道具'); return if !$y; $ms{$y}{tmp}='復活'; $com.=qq|<span class="tmp">$yは復活の草を食べた！</span>|;	}],
 	[104,	'次元のｶｹﾗ',		5000,		1,			sub{ if ($m{lib} eq 'vs_monster') { $stage = 21; $round = 1; $com.="$mたちは、$stages[$stage]に吸い込まれた！";	} else { $mes="しかし、何も起こらなかった…"; };	}],
 	[105,	'幸せのくつ',		777,		0,			sub{	}],
 	[106,	'金の鶏',			7000,		0,			sub{ 	}],
 	[107,	'宝物庫の鍵',		10000,		1,			sub{ if ($m{lib} eq 'vs_monster') { $round = 10; $com.="$mは宝物庫の鍵をかざした！…鍵はまばゆい光を放ちあたり一面を包み込んでいく！";	} else { $mes="しかし、何も起こらなかった…"; };	}],
+	[108,	'ﾁｮｺﾎﾞの羽',		20000,		0,			sub{ 	}],
+	[109,	'ｲﾝﾃﾘﾒｶﾞﾈ',			10000,		0,			sub{ 	}],
 );
 
 1; # 削除不可
