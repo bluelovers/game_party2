@@ -1,75 +1,75 @@
 #=================================================
-# —a‚©‚èŠ Created by Merino
+# é ã‹ã‚Šæ‰€ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = '—a‚©‚èŠ';
+# å ´æ‰€å
+$this_title = 'é ã‹ã‚Šæ‰€';
 
-# NPC–¼
-$npc_name   = '@Æ·°À';
+# NPCå
+$npc_name   = '@ãƒ‹ã‚­ãƒ¼ã‚¿';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/depot";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/depot.gif";
 
-# ‘—‚é‚Ì‹Ö~ƒAƒCƒeƒ€(—á„'wea' => [1,2,3,4,5],)
+# é€ã‚‹ã®ç¦æ­¢ã‚¢ã‚¤ãƒ†ãƒ (ä¾‹ï¼'wea' => [1,2,3,4,5],)
 %taboo_items = (
-	'wea' => [], # •Ší
-	'arm' => [], # –h‹ï
-	'ite' => [], # “¹‹ï
+	'wea' => [], # æ­¦å™¨
+	'arm' => [], # é˜²å…·
+	'ite' => [], # é“å…·
 );
 
 
 #=================================================
-# —‚Í‚È‚·‚Ì‰ï˜b
+# ï¼ ã¯ãªã™ã®ä¼šè©±
 #=================================================
 my($my_depot, $max_depot) = &get_depot_c;
 @words = (
-	"‚±‚±‚Í$this_title‚¾‚¯‚ÇA‰½‚©—p‚©‚¢H",
-	"$m‚ÍAÅ‘å$max_depotŒÂ‚Ü‚Å—a‚¯‚é‚±‚Æ‚ª‚Å‚«‚é‚º",
-	"“]E‰ñ”‚ª‘‚¦‚é‚²‚Æ‚É—a‚¯‚ç‚ê‚éŒÂ”‚à‘‚¦‚Ä‚¢‚­‚º",
-	"—‚¨‚­‚é‚ÍA‘—‚éƒAƒCƒeƒ€‚Æ‘Šè‚Ì–¼‘O‚ğ‹³‚¦‚Ä‚­‚ê‚È",
-	"—‚¹‚¢‚Æ‚ñ‚·‚é‚ÆA•ŠíA–h‹ïA“¹‹ï‚Ì‡‚É®“Ú‚Å‚«‚é‚º",
-	"—a‚©‚èŠ‚ª‚Ü‚ñ‚Ï‚ñ‚¾‚ÆA‘Šè‚©‚ç‚ÌƒAƒCƒeƒ€‚ªó‚¯æ‚ê‚È‚¢‚º",
-	"—a‚©‚èŠ‚ª‚Ü‚ñ‚Ï‚ñ‚¾‚ÆAƒNƒGƒXƒg‚Å‚Ì•ó•¨‚ğè‚É“ü‚ê‚é‚±‚Æ‚ª‚Å‚«‚È‚¢‚º",
-	"‚±‚±‚Å”„‚é‚Ì‚àê–å“X‚Å”„‚é‚Ì‚à”„’l‚Í•Ï‚í‚ç‚È‚¢‚º",
+	"ã“ã“ã¯$this_titleã ã‘ã©ã€ä½•ã‹ç”¨ã‹ã„ï¼Ÿ",
+	"$mã¯ã€æœ€å¤§$max_depotå€‹ã¾ã§é ã‘ã‚‹ã“ã¨ãŒã§ãã‚‹ãœ",
+	"è»¢è·å›æ•°ãŒå¢—ãˆã‚‹ã”ã¨ã«é ã‘ã‚‰ã‚Œã‚‹å€‹æ•°ã‚‚å¢—ãˆã¦ã„ããœ",
+	"ï¼ ãŠãã‚‹æ™‚ã¯ã€é€ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¨ç›¸æ‰‹ã®åå‰ã‚’æ•™ãˆã¦ãã‚Œãª",
+	"ï¼ ã›ã„ã¨ã‚“ã™ã‚‹ã¨ã€æ­¦å™¨ã€é˜²å…·ã€é“å…·ã®é †ã«æ•´é “ã§ãã‚‹ãœ",
+	"é ã‹ã‚Šæ‰€ãŒã¾ã‚“ã±ã‚“ã ã¨ã€ç›¸æ‰‹ã‹ã‚‰ã®ã‚¢ã‚¤ãƒ†ãƒ ãŒå—ã‘å–ã‚Œãªã„ãœ",
+	"é ã‹ã‚Šæ‰€ãŒã¾ã‚“ã±ã‚“ã ã¨ã€ã‚¯ã‚¨ã‚¹ãƒˆã§ã®å®ç‰©ã‚’æ‰‹ã«å…¥ã‚Œã‚‹ã“ã¨ãŒã§ããªã„ãœ",
+	"ã“ã“ã§å£²ã‚‹ã®ã‚‚å°‚é–€åº—ã§å£²ã‚‹ã®ã‚‚å£²å€¤ã¯å¤‰ã‚ã‚‰ãªã„ãœ",
 );
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚¤‚é';
-push @actions, '‚ ‚¸‚¯‚é';
-push @actions, '‚Ğ‚«‚¾‚·';
-push @actions, '‚¹‚¢‚Æ‚ñ';
-push @actions, '‚¨‚­‚é';
-$actions{'‚¤‚é'}     = sub{ &uru      }; 
-$actions{'‚ ‚¸‚¯‚é'} = sub{ &azukeru  }; 
-$actions{'‚Ğ‚«‚¾‚·'} = sub{ &hikidasu }; 
-$actions{'‚¹‚¢‚Æ‚ñ'} = sub{ &seiton   }; 
-$actions{'‚¨‚­‚é'  } = sub{ &okuru    }; 
+push @actions, 'ã†ã‚‹';
+push @actions, 'ã‚ãšã‘ã‚‹';
+push @actions, 'ã²ãã ã™';
+push @actions, 'ã›ã„ã¨ã‚“';
+push @actions, 'ãŠãã‚‹';
+$actions{'ã†ã‚‹'}     = sub{ &uru      }; 
+$actions{'ã‚ãšã‘ã‚‹'} = sub{ &azukeru  }; 
+$actions{'ã²ãã ã™'} = sub{ &hikidasu }; 
+$actions{'ã›ã„ã¨ã‚“'} = sub{ &seiton   }; 
+$actions{'ãŠãã‚‹'  } = sub{ &okuru    }; 
 
 
 #=================================================
-# ƒwƒbƒ_[•\¦
+# ãƒ˜ãƒƒãƒ€ãƒ¼è¡¨ç¤º
 #=================================================
 sub header_html {
 	my $my_at = $m{at} + $weas[$m{wea}][3];
 	my $my_df = $m{df} + $arms[$m{arm}][3];
 	my $my_ag = $m{ag} - $weas[$m{wea}][4] - $arms[$m{arm}][4];
 	$my_ag = 0 if $my_ag < 0;
-	print qq|<div class="mes">y$this_titlez ‘qŒÉF<b>$my_depot</b>/<b>$max_depot</b>ŒÂ / $e2j{money} <b>$m{money}</b>G|;
+	print qq|<div class="mes">ã€$this_titleã€‘ å€‰åº«ï¼š<b>$my_depot</b>/<b>$max_depot</b>å€‹ / $e2j{money} <b>$m{money}</b>G|;
 	print qq| / $e2j{at} <b>$my_at</b> / $e2j{df} <b>$my_df</b> / $e2j{ag} <b>$my_ag</b> /|;
-	print qq| EF$weas[$m{wea}][1]| if $m{wea};
-	print qq| EF$arms[$m{arm}][1]| if $m{arm};
-	print qq| EF$ites[$m{ite}][1]| if $m{ite};
+	print qq| Eï¼š$weas[$m{wea}][1]| if $m{wea};
+	print qq| Eï¼š$arms[$m{arm}][1]| if $m{arm};
+	print qq| Eï¼š$ites[$m{ite}][1]| if $m{ite};
 	print qq|</div>|;
 }
 
 #=================================================
-# —‚¤‚é
+# ï¼ ã†ã‚‹
 #=================================================
 sub uru {
 	my $target = shift;
@@ -77,43 +77,43 @@ sub uru {
 	my $is_find = 0;
 	my $p = '';
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($kind, $no) = split /<>/, $line;
-		if ($kind eq '1') { # •Ší
+		if ($kind eq '1') { # æ­¦å™¨
 			my $buy_price = int($weas[$no][2] * 0.5);
 			if (!$is_find && $weas[$no][1] eq $target) {
 				$is_find = 1;
-				$npc_com = "$weas[$no][1] ‚Ì”ƒæ‘ã‚Ì $buy_price G‚Å‚·I";
+				$npc_com = "$weas[$no][1] ã®è²·å–ä»£ã® $buy_price Gã§ã™ï¼";
 				$m{money} += $buy_price;
 			}
 			else {
-				$p .= qq|<span onclick="text_set('—‚¤‚é>$weas[$no][1] ')">$weas[$no][1] $buy_price G</span> / |;
+				$p .= qq|<span onclick="text_set('ï¼ ã†ã‚‹>$weas[$no][1] ')">$weas[$no][1] $buy_price G</span> / |;
 				push @lines, $line;
 			}
 		}
-		elsif ($kind eq '2') { # –h‹ï
+		elsif ($kind eq '2') { # é˜²å…·
 			my $buy_price = int($arms[$no][2] * 0.5);
 			if (!$is_find && $arms[$no][1] eq $target) {
 				$is_find = 1;
-				$npc_com = "$arms[$no][1] ‚Ì”ƒæ‘ã‚Ì $buy_price G‚Å‚·I";
+				$npc_com = "$arms[$no][1] ã®è²·å–ä»£ã® $buy_price Gã§ã™ï¼";
 				$m{money} += $buy_price;
 			}
 			else {
-				$p .= qq|<span onclick="text_set('—‚¤‚é>$arms[$no][1] ')">$arms[$no][1] $buy_price G</span> / |;
+				$p .= qq|<span onclick="text_set('ï¼ ã†ã‚‹>$arms[$no][1] ')">$arms[$no][1] $buy_price G</span> / |;
 				push @lines, $line;
 			}
 		}
-		elsif ($kind eq '3') { # “¹‹ï
+		elsif ($kind eq '3') { # é“å…·
 			my $buy_price = int($ites[$no][2] * 0.5);
 			if (!$is_find && $ites[$no][1] eq $target) {
 				$is_find = 1;
-				$npc_com = "$ites[$no][1] ‚Ì”ƒæ‘ã‚Ì $buy_price G‚Å‚·I";
+				$npc_com = "$ites[$no][1] ã®è²·å–ä»£ã® $buy_price Gã§ã™ï¼";
 				$m{money} += $buy_price;
 			}
 			else {
-				$p .= qq|<span onclick="text_set('—‚¤‚é>$ites[$no][1] ')">$ites[$no][1] $buy_price G</span> / |;
+				$p .= qq|<span onclick="text_set('ï¼ ã†ã‚‹>$ites[$no][1] ')">$ites[$no][1] $buy_price G</span> / |;
 				push @lines, $line;
 			}
 		}
@@ -128,33 +128,33 @@ sub uru {
 	}
 	close $fh;
 	
-	$mes = qq|‚Ç‚ê‚ğ”„‚è‚Ü‚·‚©H<br />$p|;
+	$mes = qq|ã©ã‚Œã‚’å£²ã‚Šã¾ã™ã‹ï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 #=================================================
-# —‚ ‚¸‚¯‚é
+# ï¼ ã‚ãšã‘ã‚‹
 #=================================================
 sub azukeru {
 	my $target = shift;
 	
 	if ($m{is_full}) {
-		$mes = "$max_depotŒÂ‚Ü‚Å‚µ‚©—a‚¯‚é‚±‚Æ‚Í‚Å‚«‚È‚¢";
+		$mes = "$max_depotå€‹ã¾ã§ã—ã‹é ã‘ã‚‹ã“ã¨ã¯ã§ããªã„";
 		return;
 	}
 	
 	if ($weas[$m{wea}][1] eq $target) {
-		$npc_com = "$weas[$m{wea}][1]‚ğ‚¨—a‚©‚è‚µ‚Ü‚µ‚½";
+		$npc_com = "$weas[$m{wea}][1]ã‚’ãŠé ã‹ã‚Šã—ã¾ã—ãŸ";
 		&send_item($m, 1, $m{wea});
 		$m{wea} = 0;
 	}
 	elsif ($arms[$m{arm}][1] eq $target) {
-		$npc_com = "$arms[$m{arm}][1]‚ğ‚¨—a‚©‚è‚µ‚Ü‚µ‚½";
+		$npc_com = "$arms[$m{arm}][1]ã‚’ãŠé ã‹ã‚Šã—ã¾ã—ãŸ";
 		&send_item($m, 2, $m{arm});
 		$m{arm} = 0;
 	}
 	elsif ($ites[$m{ite}][1] eq $target) {
-		$npc_com = "$ites[$m{ite}][1]‚ğ‚¨—a‚©‚è‚µ‚Ü‚µ‚½";
+		$npc_com = "$ites[$m{ite}][1]ã‚’ãŠé ã‹ã‚Šã—ã¾ã—ãŸ";
 		&send_item($m, 3, $m{ite});
 		$m{ite} = 0;
 	}
@@ -164,20 +164,20 @@ sub azukeru {
 		return;
 	}
 	
-	$mes = qq|‚Ç‚ê‚ğ—a‚¯‚éH<br />|;
-	$mes .= qq|<span onclick="text_set('—‚ ‚¸‚¯‚é>$weas[$m{wea}][1] ')">$weas[$m{wea}][1]</span> / | if $m{wea};
-	$mes .= qq|<span onclick="text_set('—‚ ‚¸‚¯‚é>$arms[$m{arm}][1] ')">$arms[$m{arm}][1]</span> / | if $m{arm};
-	$mes .= qq|<span onclick="text_set('—‚ ‚¸‚¯‚é>$ites[$m{ite}][1] ')">$ites[$m{ite}][1]</span> / | if $m{ite};
+	$mes = qq|ã©ã‚Œã‚’é ã‘ã‚‹ï¼Ÿ<br />|;
+	$mes .= qq|<span onclick="text_set('ï¼ ã‚ãšã‘ã‚‹>$weas[$m{wea}][1] ')">$weas[$m{wea}][1]</span> / | if $m{wea};
+	$mes .= qq|<span onclick="text_set('ï¼ ã‚ãšã‘ã‚‹>$arms[$m{arm}][1] ')">$arms[$m{arm}][1]</span> / | if $m{arm};
+	$mes .= qq|<span onclick="text_set('ï¼ ã‚ãšã‘ã‚‹>$ites[$m{ite}][1] ')">$ites[$m{ite}][1]</span> / | if $m{ite};
 	$act_time = 0;
 }
 
 #=================================================
-# —‚Ğ‚«‚¾‚·
+# ï¼ ã²ãã ã™
 #=================================================
 sub hikidasu {
 	my $target = shift;
 	
-	# ‘—‹à‚ª‚ ‚ê‚ÎÅ‰‚Éó‚¯æ‚é
+	# é€é‡‘ãŒã‚ã‚Œã°æœ€åˆã«å—ã‘å–ã‚‹
 	if (-s "$userdir/$id/money.cgi") {
 		&_get_money;
 		return;
@@ -186,52 +186,52 @@ sub hikidasu {
 	my $is_find = 0;
 	my $p = '';
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($kind, $no) = split /<>/, $line;
-		if ($kind eq '1') { # •Ší
-			if (!$is_find && $weas[$no][1] eq $target) { # ŒğŠ·
+		if ($kind eq '1') { # æ­¦å™¨
+			if (!$is_find && $weas[$no][1] eq $target) { # äº¤æ›
 				$is_find = 1;
 				if ($m{wea}) {
-					$npc_com .= "$weas[$m{wea}][1]‚ğ‚¨—a‚©‚è‚µ‚Ü‚µ‚½B";
+					$npc_com .= "$weas[$m{wea}][1]ã‚’ãŠé ã‹ã‚Šã—ã¾ã—ãŸã€‚";
 					push @lines, "1<>$m{wea}<>\n";
 				}
 				$m{wea} = $no;
-				$npc_com .= "$weas[$m{wea}][1]‚ğ‚¨•Ô‚µ‚µ‚Ü‚·";
+				$npc_com .= "$weas[$m{wea}][1]ã‚’ãŠè¿”ã—ã—ã¾ã™";
 			}
 			else {
-				$p .= qq|<span onclick="text_set('—‚Ğ‚«‚¾‚·>$weas[$no][1] ')">$weas[$no][1]</span> / |;
+				$p .= qq|<span onclick="text_set('ï¼ ã²ãã ã™>$weas[$no][1] ')">$weas[$no][1]</span> / |;
 				push @lines, $line;
 			}
 		}
-		elsif ($kind eq '2') { # –h‹ï
-			if (!$is_find && $arms[$no][1] eq $target) { # ŒğŠ·
+		elsif ($kind eq '2') { # é˜²å…·
+			if (!$is_find && $arms[$no][1] eq $target) { # äº¤æ›
 				$is_find = 1;
 				if ($m{arm}) {
-					$npc_com .= "$arms[$m{arm}][1]‚ğ‚¨—a‚©‚è‚µ‚Ü‚µ‚½B";
+					$npc_com .= "$arms[$m{arm}][1]ã‚’ãŠé ã‹ã‚Šã—ã¾ã—ãŸã€‚";
 					push @lines, "2<>$m{arm}<>\n";
 				}
 				$m{arm} = $no;
-				$npc_com .= "$arms[$m{arm}][1]‚ğ‚¨•Ô‚µ‚µ‚Ü‚·";
+				$npc_com .= "$arms[$m{arm}][1]ã‚’ãŠè¿”ã—ã—ã¾ã™";
 			}
 			else {
-				$p .= qq|<span onclick="text_set('—‚Ğ‚«‚¾‚·>$arms[$no][1] ')">$arms[$no][1]</span> / |;
+				$p .= qq|<span onclick="text_set('ï¼ ã²ãã ã™>$arms[$no][1] ')">$arms[$no][1]</span> / |;
 				push @lines, $line;
 			}
 		}
-		elsif ($kind eq '3') { # “¹‹ï
-			if (!$is_find && $ites[$no][1] eq $target) { # ŒğŠ·
+		elsif ($kind eq '3') { # é“å…·
+			if (!$is_find && $ites[$no][1] eq $target) { # äº¤æ›
 				$is_find = 1;
 				if ($m{ite}) {
-					$npc_com .= "$ites[$m{ite}][1]‚ğ‚¨—a‚©‚è‚µ‚Ü‚µ‚½B";
+					$npc_com .= "$ites[$m{ite}][1]ã‚’ãŠé ã‹ã‚Šã—ã¾ã—ãŸã€‚";
 					push @lines, "3<>$m{ite}<>\n";
 				}
 				$m{ite} = $no;
-				$npc_com .= "$ites[$m{ite}][1]‚ğ‚¨•Ô‚µ‚µ‚Ü‚·";
+				$npc_com .= "$ites[$m{ite}][1]ã‚’ãŠè¿”ã—ã—ã¾ã™";
 			}
 			else {
-				$p .= qq|<span onclick="text_set('—‚Ğ‚«‚¾‚·>$ites[$no][1] ')">$ites[$no][1]</span> / |;
+				$p .= qq|<span onclick="text_set('ï¼ ã²ãã ã™>$ites[$no][1] ')">$ites[$no][1]</span> / |;
 				push @lines, $line;
 			}
 		}
@@ -248,23 +248,23 @@ sub hikidasu {
 	}
 	close $fh;
 	
-	$mes = qq|‚Ç‚ê‚ğ‚Ğ‚«‚¾‚·H<br />$p|;
+	$mes = qq|ã©ã‚Œã‚’ã²ãã ã™ï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 # ------------------
-# ƒS[ƒ‹ƒh‚ğó‚¯‚Æ‚é
+# ã‚´ãƒ¼ãƒ«ãƒ‰ã‚’å—ã‘ã¨ã‚‹
 sub _get_money {
-	open my $fh, "+< $userdir/$id/money.cgi" or &error("$userdir/$id/money.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/money.cgi" or &error("$userdir/$id/money.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($money, $message) = split /<>/, $line;
 		$m{money} += $money;
 		if ($money >= 0) {
-			$mes.="$message ‚Æ‚µ‚Ä $money G‚ğó‚¯æ‚è‚Ü‚µ‚½<br />";
+			$mes.="$message ã¨ã—ã¦ $money Gã‚’å—ã‘å–ã‚Šã¾ã—ãŸ<br />";
 		}
 		else {
 			$money *= -1;
-			$mes.="$message ‚Æ‚µ‚Ä $money G‚ğx•¥‚¢‚Ü‚µ‚½<br />";
+			$mes.="$message ã¨ã—ã¦ $money Gã‚’æ”¯æ‰•ã„ã¾ã—ãŸ<br />";
 		}
 	}
 	seek  $fh, 0, 0;
@@ -274,11 +274,11 @@ sub _get_money {
 
 
 #=================================================
-# —‚¹‚¢‚Æ‚ñ
+# ï¼ ã›ã„ã¨ã‚“
 #=================================================
 sub seiton {
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	push @lines, $_ while <$fh>;
 	@lines = map { $_->[0] }
@@ -289,81 +289,81 @@ sub seiton {
 	print $fh @lines;
 	close $fh;
 	
-	$npc_com = "—a‚©‚Á‚Ä‚¢‚éƒAƒCƒeƒ€‚ğ‚¹‚¢‚Æ‚ñ‚µ‚½";
+	$npc_com = "é ã‹ã£ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚’ã›ã„ã¨ã‚“ã—ãŸ";
 }
 
 
 
 #=================================================
-# —‚¨‚­‚é
+# ï¼ ãŠãã‚‹
 #=================================================
 sub okuru {
 	my $target = shift;
-	my($send, $name) = split /—‚ ‚¢‚Ä&gt;/, $target;
+	my($send, $name) = split /ï¼ ã‚ã„ã¦&gt;/, $target;
 	
 #	if ($m{job_lv} < 1) {
-#		$mes = "–¢“]E‚Ì•û‚ÍA‘—‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB";
+#		$mes = "æœªè»¢è·ã®æ–¹ã¯ã€é€ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚";
 #		return;
 #	}
 
 	if ($name) {
 		my $yid = unpack 'H*', $name;
 		unless (-d "$userdir/$yid") {
-			$mes = "$name‚Æ‚¢‚¤ƒvƒŒƒCƒ„[‚Í‘¶İ‚µ‚Ü‚¹‚ñ";
+			$mes = "$nameã¨ã„ã†ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“";
 			return;
 		}
 		my %p = &get_you_datas($yid, 1);
 		if ($p{is_full}) {
-			$mes = "$name‚Ì—a‚©‚èŠ‚ª‚¢‚Á‚Ï‚¢‚Å‚·";
+			$mes = "$nameã®é ã‹ã‚Šæ‰€ãŒã„ã£ã±ã„ã§ã™";
 			return
 		}
 		
 		if ($send =~ /^([0-9]+)\x20?G?$/) {
 			my $send_money = int($1);
 			if ($send_money > $m{money}) {
-				$mes = "‚»‚ñ‚È‚É‚¨‹à‚ğ‚à‚Á‚Ä‚¢‚Ü‚¹‚ñ";
+				$mes = "ãã‚“ãªã«ãŠé‡‘ã‚’ã‚‚ã£ã¦ã„ã¾ã›ã‚“";
 				return;
 			}
 			elsif ($send_money <= 0) {
-				$mes = "‘—‹à‚ÍÅ’á‚Å‚à 1 GˆÈã‚Å‚·";
+				$mes = "é€é‡‘ã¯æœ€ä½ã§ã‚‚ 1 Gä»¥ä¸Šã§ã™";
 				return;
 			}
 			
 			$m{money} -= $send_money;
-			&send_money($name, $send_money, "$m‚©‚ç‚Ì‘—‹à");
-			$npc_com = "$send_money G‚ğ $name ‚É‘—‚è‚Ü‚µ‚½";
+			&send_money($name, $send_money, "$mã‹ã‚‰ã®é€é‡‘");
+			$npc_com = "$send_money Gã‚’ $name ã«é€ã‚Šã¾ã—ãŸ";
 			return;
 		}
 		elsif ($m{wea} && $weas[$m{wea}][1] eq $send) {
 			for my $taboo_item (@{ $taboo_items{wea} }) {
 				if ($weas[$taboo_item][1] eq $weas[$m{wea}][1]) {
-					$mes = "$weas[$m{wea}][1]‚Í‘—‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+					$mes = "$weas[$m{wea}][1]ã¯é€ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 					return;
 				}
 			}
-			$npc_com = "$weas[$m{wea}][1]‚ğ$name‚É‘—‚è‚Ü‚µ‚½";
+			$npc_com = "$weas[$m{wea}][1]ã‚’$nameã«é€ã‚Šã¾ã—ãŸ";
 			&send_item($name, 1, $m{wea}, $m);
 			$m{wea} = 0;
 		}
 		elsif ($m{arm} && $arms[$m{arm}][1] eq $send) {
 			for my $taboo_item (@{ $taboo_items{arm} }) {
 				if ($arms[$taboo_item][1] eq $arms[$m{arm}][1]) {
-					$mes = "$arms[$m{arm}][1]‚Í‘—‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+					$mes = "$arms[$m{arm}][1]ã¯é€ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 					return;
 				}
 			}
-			$npc_com = "$arms[$m{arm}][1]‚ğ$name‚É‘—‚è‚Ü‚µ‚½";
+			$npc_com = "$arms[$m{arm}][1]ã‚’$nameã«é€ã‚Šã¾ã—ãŸ";
 			&send_item($name, 2, $m{arm}, $m);
 			$m{arm} = 0;
 		}
 		elsif ($m{ite} && $ites[$m{ite}][1] eq $send) {
 			for my $taboo_item (@{ $taboo_items{ite} }) {
 				if ($ites[$taboo_item][1] eq $ites[$m{ite}][1]) {
-					$mes = "$ites[$m{ite}][1]‚Í‘—‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+					$mes = "$ites[$m{ite}][1]ã¯é€ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 					return;
 				}
 			}
-			$npc_com = "$ites[$m{ite}][1]‚ğ$name‚É‘—‚è‚Ü‚µ‚½";
+			$npc_com = "$ites[$m{ite}][1]ã‚’$nameã«é€ã‚Šã¾ã—ãŸ";
 			&send_item($name, 3, $m{ite}, $m);
 			$m{ite} = 0;
 		}
@@ -372,14 +372,14 @@ sub okuru {
 		return;
 	}
 	
-	$mes  = qq|‚Ç‚ê‚ğ‚¾‚ê‚É‘—‚éH<br />$p|;
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$weas[$m{wea}][1]—‚ ‚¢‚Ä')">$weas[$m{wea}][1]</span> / | if $m{wea};
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$arms[$m{arm}][1]—‚ ‚¢‚Ä')">$arms[$m{arm}][1]</span> / | if $m{arm};
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$ites[$m{ite}][1]—‚ ‚¢‚Ä')">$ites[$m{ite}][1]</span> / | if $m{ite};
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$m{money}G—‚ ‚¢‚Ä')">$m{money}G</span> / |;
+	$mes  = qq|ã©ã‚Œã‚’ã ã‚Œã«é€ã‚‹ï¼Ÿ<br />$p|;
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$weas[$m{wea}][1]ï¼ ã‚ã„ã¦')">$weas[$m{wea}][1]</span> / | if $m{wea};
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$arms[$m{arm}][1]ï¼ ã‚ã„ã¦')">$arms[$m{arm}][1]</span> / | if $m{arm};
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$ites[$m{ite}][1]ï¼ ã‚ã„ã¦')">$ites[$m{ite}][1]</span> / | if $m{ite};
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$m{money}Gï¼ ã‚ã„ã¦')">$m{money}G</span> / |;
 	$act_time = 0;
 }
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

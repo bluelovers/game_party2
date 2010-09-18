@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 60;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[2,1,0,1,4],
 	[B,0,T,1,0],
@@ -16,34 +16,34 @@ $max_round = 60;
 	[K,1,3,1,0],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{K} = 'š' if $event !~ /D|K/;
-$map_imgs{D} = 'Šâ' if $event !~ /D|K/;
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{K} = 'â˜…' if $event !~ /D|K/;
+$map_imgs{D} = 'å²©' if $event !~ /D|K/;
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_4 { return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_T { $npc_com.= "<b>IIIIH</b>‚µ‚Ñ‚ê‚é‚æ‚¤‚ÈƒKƒX‚ª$m‚½‚¿‚ğ‚Â‚Â‚İ‚±‚ñ‚¾I"; for my $y (@partys) { $ms{$y}{state} = '–ƒáƒ'; }; &_add_monster; }
-sub event_t { $npc_com.= "<b>IIIIH</b>‚”M‚ÌƒKƒX‚ª‚Ó‚«‚¾‚µ‚Ä‚«‚½I"; &_trap_d(150); }
-sub event_A { return if $event =~ /A/; $event .= 'A'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
-sub event_b { return if $event =~ /b/; $event .= 'b'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
-sub event_K { return if $event =~ /D|K/; $event .= 'K'; $npc_com.="$m‚Í‰½‚©ƒXƒCƒbƒ`‚Ì‚æ‚¤‚È‚à‚Ì‚ğ“¥‚ñ‚Å‚µ‚Ü‚Á‚½IcÄŞºŞµ««««İ¯IIc‰½‚©‚ª‰ó‚ê‚½‰¹‚ª‚µ‚½I";  }
+sub event_T { $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>ã—ã³ã‚Œã‚‹ã‚ˆã†ãªã‚¬ã‚¹ãŒ$mãŸã¡ã‚’ã¤ã¤ã¿ã“ã‚“ã ï¼"; for my $y (@partys) { $ms{$y}{state} = 'éº»ç—º'; }; &_add_monster; }
+sub event_t { $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>é«˜ç†±ã®ã‚¬ã‚¹ãŒãµãã ã—ã¦ããŸï¼"; &_trap_d(150); }
+sub event_A { return if $event =~ /A/; $event .= 'A'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
+sub event_b { return if $event =~ /b/; $event .= 'b'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
+sub event_K { return if $event =~ /D|K/; $event .= 'K'; $npc_com.="$mã¯ä½•ã‹ã‚¹ã‚¤ãƒƒãƒã®ã‚ˆã†ãªã‚‚ã®ã‚’è¸ã‚“ã§ã—ã¾ã£ãŸï¼â€¦ãƒ‰ã‚´ã‚ªã‚©ã‚©ã‚©ã‚©ãƒ³ãƒƒï¼ï¼â€¦ä½•ã‹ãŒå£Šã‚ŒãŸéŸ³ãŒã—ãŸï¼";  }
 sub event_D {
 	return if $event =~ /D|K/;
 	if ($m{job} eq '4' || $m{job} eq '25') {
 		$com .= "<br />$m{mes}" if $m{mes};
-		$npc_com .= "$m‚Í‘Sg‚Ì‹C‚ğŒ‚ÉW’†‚³‚¹‚½cÄŞºŞµ«««««««İ¯IIIŠâ‚ğ”j‰ó‚µ‚½I";
+		$npc_com .= "$mã¯å…¨èº«ã®æ°—ã‚’æ‹³ã«é›†ä¸­ã•ã›ãŸâ€¦ãƒ‰ã‚´ã‚ªã‚©ã‚©ã‚©ã‚©ã‚©ã‚©ã‚©ãƒ³ãƒƒï¼ï¼ï¼å²©ã‚’ç ´å£Šã—ãŸï¼";
 		$event .= 'D';
 	}
 	else {
-		$npc_com .= "‘å‚«‚ÈŠâ‚Å“¹‚ª‚Ó‚³‚ª‚ê‚Ä‚¢‚éI";
+		$npc_com .= "å¤§ããªå²©ã§é“ãŒãµã•ãŒã‚Œã¦ã„ã‚‹ï¼";
 		++$py;
 	}
 }
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 require "$mapdir/7/_data.cgi";
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

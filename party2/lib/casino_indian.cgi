@@ -1,23 +1,23 @@
 require "./lib/_casino.cgi";
 #=================================================
-# ƒCƒ“ƒfƒBƒAƒ“ƒ|[ƒJ[ Created by Merino
+# ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ãƒãƒ¼ã‚«ãƒ¼ Created by Merino
 #=================================================
 
-@cards = ('‚`','‚Q','‚R','‚S','‚T','‚U','‚V','‚W','‚X','10','‚i','‚p','‚j');
+@cards = ('ï¼¡','ï¼’','ï¼“','ï¼”','ï¼•','ï¼–','ï¼—','ï¼˜','ï¼™','10','ï¼ª','ï¼±','ï¼«');
 
 #=================================================
-# í“¬—pƒAƒNƒVƒ‡ƒ“ƒZƒbƒg(ƒvƒŒƒCƒ„[—p)
+# æˆ¦é—˜ç”¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚»ãƒƒãƒˆ(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”¨)
 #=================================================
 sub add_casino_action {
 	return if $round <= 0;
-	push @actions, ('‚Â‚Ã‚¯‚é','‚µ‚å‚¤‚Ô','‚¨‚è‚é',);
-	$actions{'‚Â‚Ã‚¯‚é'} = sub{ &tsuzukeru };
-	$actions{'‚µ‚å‚¤‚Ô'} = sub{ &shoubu };
-	$actions{'‚¨‚è‚é'}   = sub{ &oriru };
+	push @actions, ('ã¤ã¥ã‘ã‚‹','ã—ã‚‡ã†ã¶','ãŠã‚Šã‚‹',);
+	$actions{'ã¤ã¥ã‘ã‚‹'} = sub{ &tsuzukeru };
+	$actions{'ã—ã‚‡ã†ã¶'} = sub{ &shoubu };
+	$actions{'ãŠã‚Šã‚‹'}   = sub{ &oriru };
 }
 
 #=================================================
-# ƒƒ“ƒo[o—Í
+# ãƒ¡ãƒ³ãƒãƒ¼å‡ºåŠ›
 #=================================================
 sub member_html {
 	my $member_html = '';
@@ -25,93 +25,93 @@ sub member_html {
 	for my $name (@members) {
 		$member_html .= qq|<td onclick="text_set('>$name ')" align="center" valign="bottom"><span style="color: $ms{$name}{color}; font-size: 11px; background-color: #333;">|;
 		$member_html .= qq|$ms{$name}{action}| if $ms{$name}{action};
-		$member_html .= $m ne $name || $ms{$name}{action} =~ /^‚¨‚è‚é|‘Ò‹@’†/ ? qq|<br />$cards[$ms{$name}{card}]<br />| : qq|<br />H<br />|;
+		$member_html .= $m ne $name || $ms{$name}{action} =~ /^ãŠã‚Šã‚‹|å¾…æ©Ÿä¸­/ ? qq|<br />$cards[$ms{$name}{card}]<br />| : qq|<br />ï¼Ÿ<br />|;
 		$member_html .= qq|$name</span><br />|;
-		$member_html .= $ms{$name}{action} =~ /^‚¨‚è‚é|‘Ò‹@’†/ ? qq|<img src="$icondir/chr/099.gif" alt="$name" /></td>| : qq|<img src="$icondir/$ms{$name}{icon}" alt="$name" /></td>|;
+		$member_html .= $ms{$name}{action} =~ /^ãŠã‚Šã‚‹|å¾…æ©Ÿä¸­/ ? qq|<img src="$icondir/chr/099.gif" alt="$name" /></td>| : qq|<img src="$icondir/$ms{$name}{icon}" alt="$name" /></td>|;
 	}
 	$member_html .=  qq|</tr></table></div>|;
 	return $member_html;
 }
 
 #=================================================
-# —‚©‚¢‚µ
+# ï¼ ã‹ã„ã—
 #=================================================
 sub kaishi {
 	if (@members <= 1) {
-		$mes = "‘Îí‚·‚é‘Šè‚ª‚¢‚Ü‚¹‚ñ";
+		$mes = "å¯¾æˆ¦ã™ã‚‹ç›¸æ‰‹ãŒã„ã¾ã›ã‚“";
 		return;
 	}
 	elsif ($leader ne $m) {
-		$mes = "—‚©‚¢‚µ ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+		$mes = "ï¼ ã‹ã„ã— ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 		return;
 	}
 	
 	my $max_card = $#cards;
 	my @card_nos = (0..$max_card);
 	
-	# ƒJ[ƒh‚ğ”z‚é
+	# ã‚«ãƒ¼ãƒ‰ã‚’é…ã‚‹
 	for my $name (@members) {
 		$ms{$name}{action} = '';
 		$ms{$name}{card} = splice(@card_nos, int rand @card_nos, 1);
 	}
 
 	++$round;
-	$npc_com .= "ƒCƒ“ƒfƒBƒA`ƒ“ƒ|ƒJ[IIŠJnI";
+	$npc_com .= "ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ï½ãƒ³ãƒã‚«ãƒ¼ï¼ï¼é–‹å§‹ï¼";
 	&auto_reload;
 }
 
 #=================================================
-# —‚µ‚å‚¤‚Ô
+# ï¼ ã—ã‚‡ã†ã¶
 #=================================================
 sub shoubu {
 	if ($ms{$m}{action}) {
-		$mes = "‚·‚Å‚Éu—$ms{$m}{action}v‚ğéŒ¾‚µ‚Ä‚¢‚Ü‚·";
+		$mes = "ã™ã§ã«ã€Œï¼ $ms{$m}{action}ã€ã‚’å®£è¨€ã—ã¦ã„ã¾ã™";
 		return;
 	}
-	$ms{$m}{action} = '‚µ‚å‚¤‚Ô';
+	$ms{$m}{action} = 'ã—ã‚‡ã†ã¶';
 	&give_coin($now_bet);
 	&next_round;
 }
 #=================================================
-# —‚Â‚Ã‚¯‚é
+# ï¼ ã¤ã¥ã‘ã‚‹
 #=================================================
 sub tsuzukeru {
 	if ($ms{$m}{action}) {
-		$mes = "‚·‚Å‚Éu—$ms{$m}{action}v‚ğéŒ¾‚µ‚Ä‚¢‚Ü‚·";
+		$mes = "ã™ã§ã«ã€Œï¼ $ms{$m}{action}ã€ã‚’å®£è¨€ã—ã¦ã„ã¾ã™";
 		return;
 	}
-	elsif ($m{coin} < $now_bet) { # º²İ‚ª‘«‚ç‚È‚¢ê‡‚Í‹­§Ÿ•‰
+	elsif ($m{coin} < $now_bet) { # ã‚³ã‚¤ãƒ³ãŒè¶³ã‚‰ãªã„å ´åˆã¯å¼·åˆ¶å‹è² 
 		&shoubu;
 	}
 	else {
-		$ms{$m}{action} = '‚Â‚Ã‚¯‚é';
+		$ms{$m}{action} = 'ã¤ã¥ã‘ã‚‹';
 		&give_coin($now_bet);
 		&next_round;
 	}
 }
 
 #=================================================
-# —‚¨‚è‚é
+# ï¼ ãŠã‚Šã‚‹
 #=================================================
 sub oriru {
 	if ($ms{$m}{action}) {
-		$mes = "‚·‚Å‚Éu—$ms{$m}{action}v‚ğéŒ¾‚µ‚Ä‚¢‚Ü‚·";
+		$mes = "ã™ã§ã«ã€Œï¼ $ms{$m}{action}ã€ã‚’å®£è¨€ã—ã¦ã„ã¾ã™";
 		return;
 	}
-	$ms{$m}{action} = '‚¨‚è‚é';
+	$ms{$m}{action} = 'ãŠã‚Šã‚‹';
 	&give_coin($now_bet);
 	&next_round;
 }
 
 #=================================================
-# ‘Sˆõ‚ÌƒAƒNƒVƒ‡ƒ“‚ğƒ`ƒFƒbƒN‚µ‚ÄAŸ•‰‚©Ÿ‚Ìƒ‰ƒEƒ“ƒh‚Ö
+# å…¨å“¡ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ã€å‹è² ã‹æ¬¡ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¸
 #=================================================
 sub next_round {
 	return if $round <= 0;
 	my %as = (
-		'‚µ‚å‚¤‚Ô' => 0,
-		'‚Â‚Ã‚¯‚é' => 0,
-		'‚¨‚è‚é'   => 0,
+		'ã—ã‚‡ã†ã¶' => 0,
+		'ã¤ã¥ã‘ã‚‹' => 0,
+		'ãŠã‚Šã‚‹'   => 0,
 	);
 
 	my $count = 0;
@@ -121,39 +121,39 @@ sub next_round {
 		++$count;
 	}
 
-	if ($as{'‚¨‚è‚é'} eq @members-1) { # ‚PlˆÈŠO‘Sˆõ‚¨‚è
+	if ($as{'ãŠã‚Šã‚‹'} eq @members-1) { # ï¼‘äººä»¥å¤–å…¨å“¡ãŠã‚Š
 		&battle;
 	}
-	elsif ($count eq @members) { # ‘SˆõƒAƒNƒVƒ‡ƒ“Ï‚İ
-		if ($m{coin} <= 0 || $now_bet >= $max_bet || $as{'‚µ‚å‚¤‚Ô'} >= (@members - $as{'‚¨‚è‚é'}) * 0.5) { # ƒRƒCƒ“‚ª‚È‚­‚È‚Á‚½ or Å‘åƒŒ[ƒg or ‘SˆõŸ•‰
+	elsif ($count eq @members) { # å…¨å“¡ã‚¢ã‚¯ã‚·ãƒ§ãƒ³æ¸ˆã¿
+		if ($m{coin} <= 0 || $now_bet >= $max_bet || $as{'ã—ã‚‡ã†ã¶'} >= (@members - $as{'ãŠã‚Šã‚‹'}) * 0.5) { # ã‚³ã‚¤ãƒ³ãŒãªããªã£ãŸ or æœ€å¤§ãƒ¬ãƒ¼ãƒˆ or å…¨å“¡å‹è² 
 			&battle;
 		}
-		else { # Ÿ‚Ìƒ‰ƒEƒ“ƒh‚Ö
+		else { # æ¬¡ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¸
 			for my $name (@members) {
-				next if $ms{$name}{action} eq '‚¨‚è‚é';
-				next if $ms{$name}{action} eq '‘Ò‹@’†';
+				next if $ms{$name}{action} eq 'ãŠã‚Šã‚‹';
+				next if $ms{$name}{action} eq 'å¾…æ©Ÿä¸­';
 				$ms{$name}{action} = '';
 			}
 			$round++;
 			$now_bet += $bet;
-			$npc_com.=qq|<span class="lv_up">šƒQ[ƒ€‘±sšƒŒ[ƒg‚ªã‚ª‚è‚Ü‚µ‚½ôŒ»İ‚ÌƒŒ[ƒg‚Í <span class="damage">$now_bet</span> –‡‚Å‚·</span>|;
+			$npc_com.=qq|<span class="lv_up">â˜…ã‚²ãƒ¼ãƒ ç¶šè¡Œâ˜…ãƒ¬ãƒ¼ãƒˆãŒä¸ŠãŒã‚Šã¾ã—ãŸâ™ªç¾åœ¨ã®ãƒ¬ãƒ¼ãƒˆã¯ <span class="damage">$now_bet</span> æšã§ã™</span>|;
 		}
 	}
 }
 
 #=================================================
-# Ÿ•‰
+# å‹è² 
 #=================================================
 sub battle {
-	# Ü‹à
+	# è³é‡‘
 	my $get_coin = &get_coin;
 	return if $get_coin <= 0;
 
 	my $winner = '';
 	my $max_card = -1;
 	for my $name (@members) {
-		next if $ms{$name}{action} eq '‚¨‚è‚é'; # ‚¨‚è‚Ä‚¢‚él‚ÍƒXƒ‹[
-		next if $ms{$name}{action} eq '‘Ò‹@’†'; # ‘Ò‹@’†‚Ìl‚ÍƒXƒ‹[
+		next if $ms{$name}{action} eq 'ãŠã‚Šã‚‹'; # ãŠã‚Šã¦ã„ã‚‹äººã¯ã‚¹ãƒ«ãƒ¼
+		next if $ms{$name}{action} eq 'å¾…æ©Ÿä¸­'; # å¾…æ©Ÿä¸­ã®äººã¯ã‚¹ãƒ«ãƒ¼
 		if ($ms{$name}{card} > $max_card) {
 			$winner = $name;
 			$max_card = $ms{$name}{card};
@@ -164,10 +164,10 @@ sub battle {
 		my %p = &get_you_datas($winner);
 		&regist_you_data($winner, 'cas_c', ++$p{cas_c});
 		&regist_you_data($winner, 'coin', $p{coin}+$get_coin);
-		$npc_com .= qq|Ÿ•‰Ic<span class="get">ŸÒ‚Í $winner ‚³‚ñ‚Å‚·š ¶¼ŞÉº²İ <span class="damage">$get_coin</span> –‡‚ª‚¨‚­‚ç‚ê‚Ü‚·</span>|;
+		$npc_com .= qq|å‹è² ï¼â€¦<span class="get">å‹è€…ã¯ $winner ã•ã‚“ã§ã™â˜… ã‚«ã‚¸ãƒã‚³ã‚¤ãƒ³ <span class="damage">$get_coin</span> æšãŒãŠãã‚‰ã‚Œã¾ã™</span>|;
 	}
-	else { # Ÿ—˜Ò’E‘–
-		$npc_com .= qq|ŸÒ‚Í‚¢‚Ü‚¹‚ñ‚Å‚µ‚½c|;
+	else { # å‹åˆ©è€…è„±èµ°
+		$npc_com .= qq|å‹è€…ã¯ã„ã¾ã›ã‚“ã§ã—ãŸâ€¦|;
 	}
 
 	$round   = 0;
@@ -178,4 +178,4 @@ sub battle {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

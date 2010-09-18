@@ -1,47 +1,47 @@
 #=================================================
-# –`Œ¯€”õEì¬ Created by Merino
+# å†’é™ºæº–å‚™ãƒ»ä½œæˆ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'ƒJƒWƒm';
+# å ´æ‰€å
+$this_title = 'ã‚«ã‚¸ãƒ';
 
-# NPC–¼
-$npc_name = '@ÊŞÆ°';
+# NPCå
+$npc_name = '@ãƒãƒ‹ãƒ¼';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/casino";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/casino.gif";
 
-# •”‰®–¼‚ÌÅ‘å•¶š”(”¼Šp)
+# éƒ¨å±‹åã®æœ€å¤§æ–‡å­—æ•°(åŠè§’)
 $max_title = 50;
 
-# Å‘åQ‰Ál”
+# æœ€å¤§å‚åŠ äººæ•°
 $max_party = 8;
 
-# Å’á“q‚¯º²İ
+# æœ€ä½è³­ã‘ã‚³ã‚¤ãƒ³
 $min_bet   = 10;
 
-# “q‚¯ƒŒ[ƒg
+# è³­ã‘ãƒ¬ãƒ¼ãƒˆ
 @rates = (1, 5, 10, 20, 50, 100, 500, 1000, 5000);
 
-# isƒXƒs[ƒh
+# é€²è¡Œã‚¹ãƒ”ãƒ¼ãƒ‰
 %speeds = (
-#	•b”	=> ['ƒZƒŒƒNƒg–¼', "‰æ‘œƒtƒ@ƒCƒ‹"],
-	12		=> ['‚³‚­‚³‚­', "$icondir/etc/speed_sakusaku.gif"],
-	18		=> ['‚Ü‚Á‚½‚è', "$icondir/etc/speed_mattari.gif"],
-	28		=> ['‚¶‚Á‚­‚è', "$icondir/etc/speed_jikkuri.gif"],
+#	ç§’æ•°	=> ['ã‚»ãƒ¬ã‚¯ãƒˆå', "ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«"],
+	12		=> ['ã•ãã•ã', "$icondir/etc/speed_sakusaku.gif"],
+	18		=> ['ã¾ã£ãŸã‚Š', "$icondir/etc/speed_mattari.gif"],
+	28		=> ['ã˜ã£ãã‚Š', "$icondir/etc/speed_jikkuri.gif"],
 );
 
 
-# •ú’u•”‰®(ƒƒO‚ÌXV‚È‚µ)‚Ì©“®íœŠÔ(•b)
+# æ”¾ç½®éƒ¨å±‹(ãƒ­ã‚°ã®æ›´æ–°ãªã—)ã®è‡ªå‹•å‰Šé™¤æ™‚é–“(ç§’)
 $auto_delete_casino_time = 1800;
 
-# ŒğŠ·ƒŠƒXƒg
+# äº¤æ›ãƒªã‚¹ãƒˆ
 my @prizes = (
-# í—Ş 1=•Ší,2=–h‹ï,3=“¹‹ï 
-#*ŒğŠ·‚Í•K—v–‡”‚Å”»’f‚µ‚Ä‚¢‚é‚Ì‚ÅA“¯‚¶–‡”‚ª•¡”‚Íƒ_ƒ
-#  [0]*•K—v–‡”,[1]í—Ş,[2]No
+# ç¨®é¡ 1=æ­¦å™¨,2=é˜²å…·,3=é“å…· 
+#*äº¤æ›ã¯å¿…è¦æšæ•°ã§åˆ¤æ–­ã—ã¦ã„ã‚‹ã®ã§ã€åŒã˜æšæ•°ãŒè¤‡æ•°ã¯ãƒ€ãƒ¡
+#  [0]*å¿…è¦æšæ•°,[1]ç¨®é¡,[2]No
 	[0,			0,		0,	],
 	[100,		3,		4,	],
 	[300,		3,		12,	],
@@ -59,10 +59,10 @@ my @prizes = (
 
 
 #=================================================
-# ‰æ–Êƒwƒbƒ_[
+# ç”»é¢ãƒ˜ãƒƒãƒ€ãƒ¼
 #=================================================
 sub header_html {
-	print qq|<div class="mes">y$this_titlez ƒRƒCƒ“<b>$m{coin}</b>–‡ / ƒS[ƒ‹ƒh<b>$m{money}</b>G</div>|;
+	print qq|<div class="mes">ã€$this_titleã€‘ ã‚³ã‚¤ãƒ³<b>$m{coin}</b>æš / ã‚´ãƒ¼ãƒ«ãƒ‰<b>$m{money}</b>G</div>|;
 	print qq|<div class="view">|;
 	&casino_html;
 	print qq|</div>|;
@@ -70,50 +70,50 @@ sub header_html {
 
 
 #=================================================
-# ‚Í‚È‚·Œ¾—t
+# ã¯ãªã™è¨€è‘‰
 #=================================================
 @words = (
-	"ƒRƒCƒ“‚Í‚P–‡20G‚Å‚·™",
-	"ƒS[ƒ‹ƒh‚ğƒRƒCƒ“‚É—¼‘Ö‚µ‚Ä‚Ë™",
-	"Ü•i‚Í‘¼‚Å‚Í‚È‚©‚È‚©è‚É“ü‚ê‚é‚±‚Æ‚ª‚Å‚«‚È‚¢ƒŒƒA‚ÈƒAƒCƒeƒ€‚Î‚©‚è‚æ™",
-	"ƒXƒƒbƒg‚ÌŠG•¿‚ğ‚R‚Â‚»‚ë‚¦‚é‚ÆƒRƒCƒ“‚ª‘‚¦‚ÄK‚¹‚É‚È‚ê‚é‚í‚æ™",
-	"‚ä‚Á‚­‚è‚µ‚Ä‚¢‚Á‚Ä‚Ë™",
+	"ã‚³ã‚¤ãƒ³ã¯ï¼‘æš20Gã§ã™â˜†",
+	"ã‚´ãƒ¼ãƒ«ãƒ‰ã‚’ã‚³ã‚¤ãƒ³ã«ä¸¡æ›¿ã—ã¦ã­â˜†",
+	"è³å“ã¯ä»–ã§ã¯ãªã‹ãªã‹æ‰‹ã«å…¥ã‚Œã‚‹ã“ã¨ãŒã§ããªã„ãƒ¬ã‚¢ãªã‚¢ã‚¤ãƒ†ãƒ ã°ã‹ã‚Šã‚ˆâ˜†",
+	"ã‚¹ãƒ­ãƒƒãƒˆã®çµµæŸ„ã‚’ï¼“ã¤ãã‚ãˆã‚‹ã¨ã‚³ã‚¤ãƒ³ãŒå¢—ãˆã¦å¹¸ã›ã«ãªã‚Œã‚‹ã‚ã‚ˆâ˜†",
+	"ã‚†ã£ãã‚Šã—ã¦ã„ã£ã¦ã­â˜†",
 );
 
 sub shiraberu_npc {
-	$mes = "$npc_nameu‚«‚á‚Ÿƒb™ƒGƒbƒ`ƒB`™v";
+	$mes = "$npc_nameã€Œãã‚ƒããƒƒâ˜†ã‚¨ãƒƒãƒã‚£ï½â˜†ã€";
 }
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚Â‚­‚é';
-push @actions, '‚³‚ñ‚©';
-push @actions, '‚¯‚ñ‚ª‚­';
-push @actions, ('1‚·‚ë‚Á‚Æ', '10‚·‚ë‚Á‚Æ', '50‚·‚ë‚Á‚Æ','100‚·‚ë‚Á‚Æ', '‚±‚¤‚©‚ñ', '‚è‚å‚¤‚ª‚¦',);
-$actions{'‚Â‚­‚é'}   = sub{ &tsukuru }; 
-$actions{'‚³‚ñ‚©'}   = sub{ &sanka }; 
-$actions{'‚¯‚ñ‚ª‚­'} = sub{ &kengaku }; 
-$actions{'ƒhƒbƒyƒ‹'} = sub{ &doppel }; 
-$actions{'ƒnƒCƒƒE'} = sub{ &highlow }; 
-$actions{'ƒCƒ“ƒfƒBƒAƒ“'} = sub{ &indian }; 
-$actions{'1‚·‚ë‚Á‚Æ'}   = sub{ &slot_1   }; 
-$actions{'10‚·‚ë‚Á‚Æ'}  = sub{ &slot_10  }; 
-$actions{'50‚·‚ë‚Á‚Æ'}  = sub{ &slot_50  }; 
-$actions{'100‚·‚ë‚Á‚Æ'} = sub{ &slot_100 }; 
-$actions{'‚±‚¤‚©‚ñ'}      = sub{ &koukan  }; 
-$actions{'‚è‚å‚¤‚ª‚¦'}    = sub{ &ryougae }; 
+push @actions, 'ã¤ãã‚‹';
+push @actions, 'ã•ã‚“ã‹';
+push @actions, 'ã‘ã‚“ãŒã';
+push @actions, ('ï¼„1ã™ã‚ã£ã¨', 'ï¼„10ã™ã‚ã£ã¨', 'ï¼„50ã™ã‚ã£ã¨','ï¼„100ã™ã‚ã£ã¨', 'ã“ã†ã‹ã‚“', 'ã‚Šã‚‡ã†ãŒãˆ',);
+$actions{'ã¤ãã‚‹'}   = sub{ &tsukuru }; 
+$actions{'ã•ã‚“ã‹'}   = sub{ &sanka }; 
+$actions{'ã‘ã‚“ãŒã'} = sub{ &kengaku }; 
+$actions{'ãƒ‰ãƒƒãƒšãƒ«'} = sub{ &doppel }; 
+$actions{'ãƒã‚¤ãƒ­ã‚¦'} = sub{ &highlow }; 
+$actions{'ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³'} = sub{ &indian }; 
+$actions{'ï¼„1ã™ã‚ã£ã¨'}   = sub{ &slot_1   }; 
+$actions{'ï¼„10ã™ã‚ã£ã¨'}  = sub{ &slot_10  }; 
+$actions{'ï¼„50ã™ã‚ã£ã¨'}  = sub{ &slot_50  }; 
+$actions{'ï¼„100ã™ã‚ã£ã¨'} = sub{ &slot_100 }; 
+$actions{'ã“ã†ã‹ã‚“'}      = sub{ &koukan  }; 
+$actions{'ã‚Šã‚‡ã†ãŒãˆ'}    = sub{ &ryougae }; 
 
 #=================================================
-# •”‰®ˆê——
+# éƒ¨å±‹ä¸€è¦§
 #=================================================
 sub casino_html {
-	opendir my $dh, "$casinodir" or &error("$casinodirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, "$casinodir" or &error("$casinodirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $dir_name = readdir $dh) {
 		next if $dir_name =~ /\./;
 		
-		# •ú’u•”‰®íœ(30•ªˆÈãƒƒO‚ÌXV‚È‚µ)
+		# æ”¾ç½®éƒ¨å±‹å‰Šé™¤(30åˆ†ä»¥ä¸Šãƒ­ã‚°ã®æ›´æ–°ãªã—)
 		my($mtime) = (stat("$casinodir/$dir_name/log.cgi"))[9];
 		if ($time > $mtime + $auto_delete_casino_time) {
 			&auto_delete_casino($dir_name);
@@ -124,38 +124,38 @@ sub casino_html {
 		my $head_line = <$fh>;
 		my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$now_bet,$max_bet) = split /<>/, $head_line;
 		my $count = 1;
-		my $p = qq| <span onclick="text_set('—‚µ‚ç‚×‚é>$leader ')"><img src="$icondir/etc/mark_leader.gif" alt="ƒŠ[ƒ_[" />$leader</span> / |;
+		my $p = qq| <span onclick="text_set('ï¼ ã—ã‚‰ã¹ã‚‹>$leader ')"><img src="$icondir/etc/mark_leader.gif" alt="ãƒªãƒ¼ãƒ€ãƒ¼" />$leader</span> / |;
 		while (my $line = <$fh>) {
 			my($name,$laddr,$color) = split /<>/, $line;
 			next if $leader eq $name;
-			$p .= qq|<span onclick="text_set('—‚µ‚ç‚×‚é>$name ')">$name</span> / |;
+			$p .= qq|<span onclick="text_set('ï¼ ã—ã‚‰ã¹ã‚‹>$name ')">$name</span> / |;
 			++$count;
 		}
 		close $fh;
-		my $bet_name = $stage eq 'ƒhƒbƒyƒ‹' ? "“q‚¯º²İ<b>$bet</b>–‡" : "ƒŒ[ƒg<b>$bet</b>";
-		my $party_data = qq|$p_namey$stagez<img src="$speeds{$speed}[1]" alt="$speeds{$speed}[0]" /> <span class="">$bet_name</span> y<b>$count</b>/<b>$p_join</b>z|;
-		my $aikotoba = $p_pass ? '—‚ ‚¢‚±‚Æ‚Î>' : ' ';
+		my $bet_name = $stage eq 'ãƒ‰ãƒƒãƒšãƒ«' ? "è³­ã‘ã‚³ã‚¤ãƒ³<b>$bet</b>æš" : "ãƒ¬ãƒ¼ãƒˆ<b>$bet</b>";
+		my $party_data = qq|$p_nameã€$stageã€‘<img src="$speeds{$speed}[1]" alt="$speeds{$speed}[0]" /> <span class="">$bet_name</span> ã€<b>$count</b>/<b>$p_join</b>ã€‘|;
+		my $aikotoba = $p_pass ? 'ï¼ ã‚ã„ã“ã¨ã°>' : ' ';
 		if ($round > 0) {
 			if ($count >= $p_join) {
-				print !$is_visit ? qq|<img src="$icondir/etc/full.gif" alt="‘Îí’†" /> $party_data Œ©Šw~ $p<hr size="1" />|
-					: qq|<span onclick="text_set('—‚¯‚ñ‚ª‚­>$p_name$aikotoba')"><img src="$icondir/etc/playing.gif" alt="‘Îí’†" /> $party_data</span>$p<hr size="1" />|;
+				print !$is_visit ? qq|<img src="$icondir/etc/full.gif" alt="å¯¾æˆ¦ä¸­" /> $party_data è¦‹å­¦Ã— $p<hr size="1" />|
+					: qq|<span onclick="text_set('ï¼ ã‘ã‚“ãŒã>$p_name$aikotoba')"><img src="$icondir/etc/playing.gif" alt="å¯¾æˆ¦ä¸­" /> $party_data</span>$p<hr size="1" />|;
 			}
 			else {
-				print !$is_visit ? qq|<img src="$icondir/etc/playing.gif" alt="‘Îí’†" /> $party_data Œ©Šw~ $p<hr size="1" />|
-					: qq|<span onclick="text_set('—‚³‚ñ‚©>$p_name$aikotoba')"><img src="$icondir/etc/playing.gif" alt="‘Îí’†" /> $party_data</span>$p<hr size="1" />|;
+				print !$is_visit ? qq|<img src="$icondir/etc/playing.gif" alt="å¯¾æˆ¦ä¸­" /> $party_data è¦‹å­¦Ã— $p<hr size="1" />|
+					: qq|<span onclick="text_set('ï¼ ã•ã‚“ã‹>$p_name$aikotoba')"><img src="$icondir/etc/playing.gif" alt="å¯¾æˆ¦ä¸­" /> $party_data</span>$p<hr size="1" />|;
 			}
 		}
 		elsif ($count >= $p_join) {
-			print !$is_visit ? qq|<img src="$icondir/etc/full.gif" alt="‚Ü‚ñ‚¢‚ñ" /> $party_data Œ©Šw~ $p<hr size="1" />|
-				: qq|<span onclick="text_set('—‚¯‚ñ‚ª‚­>$p_name$aikotoba')"><img src="$icondir/etc/full.gif" alt="‚Ü‚ñ‚¢‚ñ" /> $party_data</span>$p<hr size="1" />|;
+			print !$is_visit ? qq|<img src="$icondir/etc/full.gif" alt="ã¾ã‚“ã„ã‚“" /> $party_data è¦‹å­¦Ã— $p<hr size="1" />|
+				: qq|<span onclick="text_set('ï¼ ã‘ã‚“ãŒã>$p_name$aikotoba')"><img src="$icondir/etc/full.gif" alt="ã¾ã‚“ã„ã‚“" /> $party_data</span>$p<hr size="1" />|;
 		}
 		else {
-			print qq|<span onclick="text_set('—‚³‚ñ‚©>$p_name$aikotoba')"><img src="$icondir/etc/waitting.gif" alt="‚½‚¢‚«’†" /> $party_data</span>$p<hr size="1" />|;
+			print qq|<span onclick="text_set('ï¼ ã•ã‚“ã‹>$p_name$aikotoba')"><img src="$icondir/etc/waitting.gif" alt="ãŸã„ãä¸­" /> $party_data</span>$p<hr size="1" />|;
 		}
 	}
 	closedir $dh;
 }
-sub auto_delete_casino { # •ú’u©“®íœ
+sub auto_delete_casino { # æ”¾ç½®è‡ªå‹•å‰Šé™¤
 	my $dir_name = shift;
 	open my $fh, "< $casinodir/$dir_name/member.cgi";
 	my $head_line = <$fh>;
@@ -170,25 +170,25 @@ sub auto_delete_casino { # •ú’u©“®íœ
 }
 
 #=================================================
-# —‚Â‚­‚é
+# ï¼ ã¤ãã‚‹
 #=================================================
 sub tsukuru {
-	# Q‰Ál”
+	# å‚åŠ äººæ•°
 	my $join_select = qq|<select name="p_join" class="select1">|;
 	for my $i (2 .. $max_party-1) {
-		$join_select .= qq|<option value="$i">$il</option>|;
+		$join_select .= qq|<option value="$i">$iäºº</option>|;
 	}
-	$join_select .= qq|<option value="$max_party" selected="selected">$max_partyl</option>|;
+	$join_select .= qq|<option value="$max_party" selected="selected">$max_partyäºº</option>|;
 	$join_select .= qq|</select>|;
 
-	# ƒŒ[ƒg
+	# ãƒ¬ãƒ¼ãƒˆ
 	my $rate_select = qq|<select name="bet" class="select1">|;
 	for my $i (0..$#rates) {
 		$rate_select .= qq|<option value="$i">$rates[$i]</option>|;
 	}
 	$rate_select .= qq|</select>|;
 
-	# is‘¬“x
+	# é€²è¡Œé€Ÿåº¦
 	my $speed_select = qq|<select name="speed" class="select1">|;
 	for my $k (sort { $a <=> $b } keys %speeds) {
 		$speed_select .= qq|<option value="$k">$speeds{$k}[0]</option>|;
@@ -198,107 +198,107 @@ sub tsukuru {
 	$mes = <<"EOM";
 <table><tr><td>
 <form method="$method" action="$script">
-	<input type="hidden" name="comment" value="—ƒCƒ“ƒfƒBƒAƒ“" />
+	<input type="hidden" name="comment" value="ï¼ ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³" />
 	<input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" />
 	<table class="table1">
-		<tr><th>—ƒCƒ“ƒfƒBƒAƒ“</th></tr>
-		<tr><td>•”‰®–¼F</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
-		<tr><td>is‘¬“xF</td><td>$speed_select</td></tr>
-		<tr><td>Q‰Ál”F</td><td>$join_select</td></tr>
-		<tr><td>ƒŒ[ƒgF</td><td>$rate_select</td></tr>
-		<tr><td>‡Œ¾—tF</td><td><input type="text" name="p_pass" class="text_box_s" />@</td></tr>
-		<tr><td>Œ©Šw‰ÂF<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="—ƒCƒ“ƒfƒBƒAƒ“" /></td></tr>
+		<tr><th>ï¼ ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³</th></tr>
+		<tr><td>éƒ¨å±‹åï¼š</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
+		<tr><td>é€²è¡Œé€Ÿåº¦ï¼š</td><td>$speed_select</td></tr>
+		<tr><td>å‚åŠ äººæ•°ï¼š</td><td>$join_select</td></tr>
+		<tr><td>ãƒ¬ãƒ¼ãƒˆï¼š</td><td>$rate_select</td></tr>
+		<tr><td>åˆè¨€è‘‰ï¼š</td><td><input type="text" name="p_pass" class="text_box_s" />ã€€</td></tr>
+		<tr><td>è¦‹å­¦å¯ï¼š<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="ï¼ ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³" /></td></tr>
 	</table>
 </form>
 </td><td>
 <form method="$method" action="$script">
-	<input type="hidden" name="comment" value="—ƒnƒCƒƒE" />
+	<input type="hidden" name="comment" value="ï¼ ãƒã‚¤ãƒ­ã‚¦" />
 	<input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" />
 	<table class="table1">
-		<tr><th>—ƒnƒCƒƒE</th></tr>
-		<tr><td>•”‰®–¼F</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
-		<tr><td>is‘¬“xF</td><td>$speed_select</td></tr>
-		<tr><td>Q‰Ál”F</td><td>$join_select</td></tr>
-		<tr><td>ƒŒ[ƒgF</td><td>$rate_select</td></tr>
-		<tr><td>‡Œ¾—tF</td><td><input type="text" name="p_pass" class="text_box_s" />@</td></tr>
-		<tr><td>Œ©Šw‰ÂF<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="—ƒnƒCƒƒE" /></td></tr>
+		<tr><th>ï¼ ãƒã‚¤ãƒ­ã‚¦</th></tr>
+		<tr><td>éƒ¨å±‹åï¼š</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
+		<tr><td>é€²è¡Œé€Ÿåº¦ï¼š</td><td>$speed_select</td></tr>
+		<tr><td>å‚åŠ äººæ•°ï¼š</td><td>$join_select</td></tr>
+		<tr><td>ãƒ¬ãƒ¼ãƒˆï¼š</td><td>$rate_select</td></tr>
+		<tr><td>åˆè¨€è‘‰ï¼š</td><td><input type="text" name="p_pass" class="text_box_s" />ã€€</td></tr>
+		<tr><td>è¦‹å­¦å¯ï¼š<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="ï¼ ãƒã‚¤ãƒ­ã‚¦" /></td></tr>
 	</table>
 </form>
 </td><td>
 <form method="$method" action="$script">
-	<input type="hidden" name="comment" value="—ƒhƒbƒyƒ‹" />
+	<input type="hidden" name="comment" value="ï¼ ãƒ‰ãƒƒãƒšãƒ«" />
 	<input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" />
 	<table class="table1">
-		<tr><th>—ƒhƒbƒyƒ‹</th></tr>
-		<tr><td>•”‰®–¼F</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
-		<tr><td>is‘¬“xF</td><td>$speed_select</td></tr>
-		<tr><td>Q‰Ál”F</td><td>$join_select</td></tr>
-		<tr><td>“q‚¯º²İF</td><td><input type="text" name="bet" class="text_box_s" style="text-align: right;" value="$min_bet" />–‡</td></tr>
-		<tr><td>‡Œ¾—tF</td><td><input type="text" name="p_pass" class="text_box_s" />@</td></tr>
-		<tr><td>Œ©Šw‰ÂF<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="—ƒhƒbƒyƒ‹" /></td></tr>
+		<tr><th>ï¼ ãƒ‰ãƒƒãƒšãƒ«</th></tr>
+		<tr><td>éƒ¨å±‹åï¼š</td><td><input type="text" name="p_name" class="text_box1" /></td></tr>
+		<tr><td>é€²è¡Œé€Ÿåº¦ï¼š</td><td>$speed_select</td></tr>
+		<tr><td>å‚åŠ äººæ•°ï¼š</td><td>$join_select</td></tr>
+		<tr><td>è³­ã‘ã‚³ã‚¤ãƒ³ï¼š</td><td><input type="text" name="bet" class="text_box_s" style="text-align: right;" value="$min_bet" />æš</td></tr>
+		<tr><td>åˆè¨€è‘‰ï¼š</td><td><input type="text" name="p_pass" class="text_box_s" />ã€€</td></tr>
+		<tr><td>è¦‹å­¦å¯ï¼š<input type="checkbox" name="is_visit" value="1" checked="checked"></td><td><input type="submit" value="ï¼ ãƒ‰ãƒƒãƒšãƒ«" /></td></tr>
 	</table>
 </form>
 </td></tr></table>
 EOM
 }
 #=================================================
-# “ü—Íƒ`ƒFƒbƒN
+# å…¥åŠ›ãƒã‚§ãƒƒã‚¯
 #=================================================
 sub check_create_casino {
 	my($p_name) = @_;
 	
-	if ($p_name eq 'ƒhƒbƒyƒ‹') {
-		$mes = "“q‚¯º²İ‚ÍÅ’á‚Å‚à $min_bet –‡•K—v‚Å‚·"	if $in{bet} < $min_bet;
-		$mes = "“q‚¯º²İ‚ÍÅ’á‚Å‚à 1 –‡•K—v‚Å‚·"			if $in{bet} < 1;
-		$mes = "“q‚¯º²İ‚ª‘«‚è‚Ü‚¹‚ñ"					if $in{bet} > $m{coin};
+	if ($p_name eq 'ãƒ‰ãƒƒãƒšãƒ«') {
+		$mes = "è³­ã‘ã‚³ã‚¤ãƒ³ã¯æœ€ä½ã§ã‚‚ $min_bet æšå¿…è¦ã§ã™"	if $in{bet} < $min_bet;
+		$mes = "è³­ã‘ã‚³ã‚¤ãƒ³ã¯æœ€ä½ã§ã‚‚ 1 æšå¿…è¦ã§ã™"			if $in{bet} < 1;
+		$mes = "è³­ã‘ã‚³ã‚¤ãƒ³ãŒè¶³ã‚Šã¾ã›ã‚“"					if $in{bet} > $m{coin};
 	}
 	else {
-		$mes = "ƒŒ[ƒg‚ªˆÙí‚Å‚·"							if $in{bet} < 0 || $in{bet} > @rates;
+		$mes = "ãƒ¬ãƒ¼ãƒˆãŒç•°å¸¸ã§ã™"							if $in{bet} < 0 || $in{bet} > @rates;
 		$in{bet} = $rates[$in{bet}];
-		$mes = "ƒŒ[ƒg$in{bet}‚Å—V‚Ô‚½‚ß‚Ìº²İ‚ª‘«‚è‚Ü‚¹‚ñ"	if $m{coin} < $in{bet} * 5;
+		$mes = "ãƒ¬ãƒ¼ãƒˆ$in{bet}ã§éŠã¶ãŸã‚ã®ã‚³ã‚¤ãƒ³ãŒè¶³ã‚Šã¾ã›ã‚“"	if $m{coin} < $in{bet} * 5;
 	}
-	$mes = "Q‰Ál”‚ªˆÙí‚Å‚·"		if $in{p_join} < 2 || $in{p_join} > $max_party;
+	$mes = "å‚åŠ äººæ•°ãŒç•°å¸¸ã§ã™"		if $in{p_join} < 2 || $in{p_join} > $max_party;
 	return if $mes;
 
 	$in{is_visit} = 1 if $in{is_visit} =~ /[^01]/;
-	$mes = "is‘¬“x‚ªˆÙí‚Å‚·"		unless defined $speeds{$in{speed}};
-	$mes = "•”‰®–¼‚Í”¼Šp$max_title•¶š‚Ü‚Å‚Å‚·"						if length($in{p_name}) > $max_title;
-	$mes = "•”‰®–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"						if $in{p_name} =~ /@|\s/;
-	$mes = "•”‰®–¼‚É•s³‚È•¶š( ,;\"\'&<>\\\/@ )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"	if $in{p_name} =~ /[,;\"\'&<>\\\/@]/;
-	$mes = "•”‰®–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"				if $in{p_name} =~ /—/;
-	$mes = "•”‰®–¼‚ğŒˆ‚ß‚Ä‚­‚¾‚³‚¢"	unless $in{p_name};
+	$mes = "é€²è¡Œé€Ÿåº¦ãŒç•°å¸¸ã§ã™"		unless defined $speeds{$in{speed}};
+	$mes = "éƒ¨å±‹åã¯åŠè§’$max_titleæ–‡å­—ã¾ã§ã§ã™"						if length($in{p_name}) > $max_title;
+	$mes = "éƒ¨å±‹åã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"						if $in{p_name} =~ /ã€€|\s/;
+	$mes = "éƒ¨å±‹åã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<>\\\/@ )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"	if $in{p_name} =~ /[,;\"\'&<>\\\/@]/;
+	$mes = "éƒ¨å±‹åã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"				if $in{p_name} =~ /ï¼ /;
+	$mes = "éƒ¨å±‹åã‚’æ±ºã‚ã¦ãã ã•ã„"	unless $in{p_name};
 }
 #=================================================
-# —ƒCƒ“ƒfƒBƒAƒ“
+# ï¼ ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³
 #=================================================
 sub indian {
-	&check_create_casino('ƒCƒ“ƒfƒBƒAƒ“');
+	&check_create_casino('ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³');
 	return if $mes;
-	$in{stage} = 'ƒCƒ“ƒfƒBƒAƒ“';
+	$in{stage} = 'ã‚¤ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³';
 	$in{now_bet} = $in{bet};
 	&_create_room;
 	return if $mes;
 	$m{lib} = 'casino_indian';
 }
 #=================================================
-# —ƒnƒCƒƒE
+# ï¼ ãƒã‚¤ãƒ­ã‚¦
 #=================================================
 sub highlow {
-	&check_create_casino('ƒnƒCƒƒE');
+	&check_create_casino('ãƒã‚¤ãƒ­ã‚¦');
 	return if $mes;
-	$in{stage} = 'ƒnƒCƒƒE';
+	$in{stage} = 'ãƒã‚¤ãƒ­ã‚¦';
 	$in{now_bet} = $in{bet};
 	&_create_room;
 	return if $mes;
 	$m{lib} = 'casino_highlow';
 }
 #=================================================
-# —ƒhƒbƒyƒ‹
+# ï¼ ãƒ‰ãƒƒãƒšãƒ«
 #=================================================
 sub doppel {
-	&check_create_casino('ƒhƒbƒyƒ‹');
+	&check_create_casino('ãƒ‰ãƒƒãƒšãƒ«');
 	return if $mes;
-	$in{stage} = 'ƒhƒbƒyƒ‹';
+	$in{stage} = 'ãƒ‰ãƒƒãƒšãƒ«';
 	$in{now_bet} = 1;
 	&_create_room;
 	return if $mes;
@@ -307,17 +307,17 @@ sub doppel {
 
 
 
-# V‹K•”‰®ì¬
+# æ–°è¦éƒ¨å±‹ä½œæˆ
 sub _create_room {
 	my $casino_id = unpack 'H*', $in{p_name};
-	$mes = "“¯‚¶•”‰®–¼($in{p_name})‚ª‚·‚Å‚É‘¶İ‚µ‚Ü‚·" if -d "$casinodir/$casino_id";
+	$mes = "åŒã˜éƒ¨å±‹å($in{p_name})ãŒã™ã§ã«å­˜åœ¨ã—ã¾ã™" if -d "$casinodir/$casino_id";
 	return if $mes;
 
-	my $bet_name = $in{stage} eq 'ƒhƒbƒyƒ‹' ? "“q‚¯º²İ$in{bet}–‡" : "ƒŒ[ƒg$in{bet}";
+	my $bet_name = $in{stage} eq 'ãƒ‰ãƒƒãƒšãƒ«' ? "è³­ã‘ã‚³ã‚¤ãƒ³$in{bet}æš" : "ãƒ¬ãƒ¼ãƒˆ$in{bet}";
 
 	my $max_bet = $in{bet} * 5;
-	mkdir "$casinodir/$casino_id", $mkdir or &error("$casinodir/$casino_idƒfƒBƒŒƒNƒgƒŠ‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
-	open my $fh, "> $casinodir/$casino_id/member.cgi" or &error("$casinodir/$casino_id/member.cgiƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
+	mkdir "$casinodir/$casino_id", $mkdir or &error("$casinodir/$casino_idãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒä½œæˆã§ãã¾ã›ã‚“");
+	open my $fh, "> $casinodir/$casino_id/member.cgi" or &error("$casinodir/$casino_id/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ãã¾ã›ã‚“");
 	print $fh "$in{speed}<>$in{stage}<>0<>$m<>$in{p_name}<>$in{p_pass}<>$in{p_join}<>0<>$in{bet}<>$in{is_visit}<>$in{now_bet}<>$max_bet<>\n";
 	my $new_line = &get_battle_line($m{color},0);
 	print $fh "$new_line\n";
@@ -325,65 +325,65 @@ sub _create_room {
 	chmod $chmod, "$casinodir/$casino_id/member.cgi";
 	
 	for my $k (qw/log bet win/) {
-		open my $fh2, "> $casinodir/$casino_id/$k.cgi" or &error("$casinodir/$casino_id/$k.cgiƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
+		open my $fh2, "> $casinodir/$casino_id/$k.cgi" or &error("$casinodir/$casino_id/$k.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ãã¾ã›ã‚“");
 		close $fh2;
 		chmod $chmod, "$casinodir/$casino_id/$k.cgi";
 	}
 	
-	$com = "<b>—$in{stage}>$in{p_name}—$bet_name—Q‰Ál”>$in{p_join}l—$speeds{$in{speed}}[0]";
+	$com = "<b>ï¼ $in{stage}>$in{p_name}ï¼ $bet_nameï¼ å‚åŠ äººæ•°>$in{p_join}äººï¼ $speeds{$in{speed}}[0]";
  	if ($in{p_pass}) {
-		$com .= "—‡Œ¾—t>•K—v";
+		$com .= "ï¼ åˆè¨€è‘‰>å¿…è¦";
 	}
 	else {
-		$in{p_pass} = '‚È‚µ' ;
+		$in{p_pass} = 'ãªã—' ;
 	}
 	$com .= "</b>";
 
 	$m{quest} = $casino_id;
-	&reload("$in{p_name}•”‰®y$in{stage}z‚ğì‚è‚Ü‚µ‚½I<br />$bet_name, $speeds{$in{speed}}[0]C‡Œ¾—tF$in{p_pass}CQ‰Ál”F$in{p_join}l");
+	&reload("$in{p_name}éƒ¨å±‹ã€$in{stage}ã€‘ã‚’ä½œã‚Šã¾ã—ãŸï¼<br />$bet_name, $speeds{$in{speed}}[0]ï¼Œåˆè¨€è‘‰ï¼š$in{p_pass}ï¼Œå‚åŠ äººæ•°ï¼š$in{p_join}äºº");
 	&leave_member($m);
 }
 #=================================================
-# —‚³‚ñ‚©
+# ï¼ ã•ã‚“ã‹
 #=================================================
 sub sanka {
 	my $target = shift;
 
-	$mes = qq|<span onclick="text_set('—‚Ù[‚Ş ')">$e2j{tired}‚ª‚½‚Ü‚Á‚Ä‚¢‚Ü‚·Bu—‚Ù[‚Şv‚Å‰Æ‚É‹A‚èu—‚Ë‚év‚Å‹x‚ñ‚Å‚­‚¾‚³‚¢</span>|	if $m{tired} >= 100;
+	$mes = qq|<span onclick="text_set('ï¼ ã»ãƒ¼ã‚€ ')">$e2j{tired}ãŒãŸã¾ã£ã¦ã„ã¾ã™ã€‚ã€Œï¼ ã»ãƒ¼ã‚€ã€ã§å®¶ã«å¸°ã‚Šã€Œï¼ ã­ã‚‹ã€ã§ä¼‘ã‚“ã§ãã ã•ã„</span>|	if $m{tired} >= 100;
 	return if $mes;
 
 	unless ($target) {
-		$mes = "‚Ç‚Ì•”‰®‚ÉQ‰Á‚µ‚Ü‚·‚©H";
+		$mes = "ã©ã®éƒ¨å±‹ã«å‚åŠ ã—ã¾ã™ã‹ï¼Ÿ";
 		return;
 	}
 	
-	my($p_name, $join_pass) = split /—‚ ‚¢‚±‚Æ‚Î&gt;/, $target;
+	my($p_name, $join_pass) = split /ï¼ ã‚ã„ã“ã¨ã°&gt;/, $target;
 	my $casino_id = unpack 'H*', $p_name;
-	$com =~ s/(.+)—‚ ‚¢‚±‚Æ‚Î&gt;(.+)/$1/; # ”­Œ¾‚µ‚½—‚ ‚¢‚±‚Æ‚Î`‚ğíœ
+	$com =~ s/(.+)ï¼ ã‚ã„ã“ã¨ã°&gt;(.+)/$1/; # ç™ºè¨€ã—ãŸï¼ ã‚ã„ã“ã¨ã°ï½ã‚’å‰Šé™¤
 
 	if ($p_name && -d "$casinodir/$casino_id") {
 		&add_member($casino_id,$join_pass);
 	}
 	else {
-		$mes = "Q‰Á‚µ‚æ‚¤‚Æ‚µ‚½•”‰®‚ÍA‰ğU‚µ‚Ä‚µ‚Ü‚Á‚½‚æ‚¤‚Å‚·";
+		$mes = "å‚åŠ ã—ã‚ˆã†ã¨ã—ãŸéƒ¨å±‹ã¯ã€è§£æ•£ã—ã¦ã—ã¾ã£ãŸã‚ˆã†ã§ã™";
 	}
 }
 
 #=================================================
-# —‚³‚ñ‚©ˆ—
+# ï¼ ã•ã‚“ã‹å‡¦ç†
 #=================================================
 sub add_member {
 	my($casino_id,$join_pass) = @_;
 	
 	my @lines = ();
-	open my $fh, "+< $casinodir/$casino_id/member.cgi" or &error("$casinodir/$casino_id/member.cgiƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
+	open my $fh, "+< $casinodir/$casino_id/member.cgi" or &error("$casinodir/$casino_id/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ãã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit) = split /<>/, $head_line;
 	
-	$mes = "$p_name‚ÉQ‰Á‚·‚é‚½‚ß‚Ìº²İ‚ª‘«‚è‚Ü‚¹‚ñ"		if $bet > $m{coin};
-	$mes = "$p_name‚ÉQ‰Á‚·‚é‚½‚ß‚Ì‡Œ¾—t‚ªˆá‚¢‚Ü‚·"	if $p_pass ne '' && $p_pass ne $join_pass;
-#	$mes = "‘Îí“r’†‚©‚çQ‰Á‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"		if $round > 0;
+	$mes = "$p_nameã«å‚åŠ ã™ã‚‹ãŸã‚ã®ã‚³ã‚¤ãƒ³ãŒè¶³ã‚Šã¾ã›ã‚“"		if $bet > $m{coin};
+	$mes = "$p_nameã«å‚åŠ ã™ã‚‹ãŸã‚ã®åˆè¨€è‘‰ãŒé•ã„ã¾ã™"	if $p_pass ne '' && $p_pass ne $join_pass;
+#	$mes = "å¯¾æˆ¦é€”ä¸­ã‹ã‚‰å‚åŠ ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“"		if $round > 0;
 	return if $mes;
 	
 	push @lines, $head_line;
@@ -391,25 +391,25 @@ sub add_member {
 	while (my $line = <$fh>) {
 		my($name,$laddr,$gcolor) = (split /<>/, $line)[0..2];
 		if ($name eq $m) {
-			$mes = "“¯‚¶–¼‘O‚ÌƒvƒŒƒCƒ„[‚ª‚·‚Å‚ÉQ‰Á‚µ‚Ä‚¢‚Ü‚·";
+			$mes = "åŒã˜åå‰ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã™ã§ã«å‚åŠ ã—ã¦ã„ã¾ã™";
 			return;
 		}
 		elsif ($addr eq $laddr) {
-			$mes = "‚h‚oƒAƒhƒŒƒX‚ª“¯‚¶ƒvƒŒƒCƒ„[‚ª‚·‚Å‚ÉQ‰Á‚µ‚Ä‚¢‚Ü‚·B";
-#			$mes .= "<br />‘½d“o˜^—e‹^‚Å’Ç•ú‹Rm’c‚É’Ç‰Á\\¿‚³‚ê‚Ü‚µ‚½B";
+			$mes = "ï¼©ï¼°ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒåŒã˜ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã™ã§ã«å‚åŠ ã—ã¦ã„ã¾ã™ã€‚";
+#			$mes .= "<br />å¤šé‡ç™»éŒ²å®¹ç–‘ã§è¿½æ”¾é¨å£«å›£ã«è¿½åŠ ç”³\è«‹ã•ã‚Œã¾ã—ãŸã€‚";
 #			$m{wt} = $time;
-#			&add_exile($m,    "y‘½d“o˜^—e‹^z$name‚Æ“¯‚¶IPƒAƒhƒŒƒX");
-#			&add_exile($name, "y‘½d“o˜^—e‹^z$m‚Æ“¯‚¶IPƒAƒhƒŒƒX");
+#			&add_exile($m,    "ã€å¤šé‡ç™»éŒ²å®¹ç–‘ã€‘$nameã¨åŒã˜IPã‚¢ãƒ‰ãƒ¬ã‚¹");
+#			&add_exile($name, "ã€å¤šé‡ç™»éŒ²å®¹ç–‘ã€‘$mã¨åŒã˜IPã‚¢ãƒ‰ãƒ¬ã‚¹");
 			return;
 		}
 		push @lines, $line;
 	}
 	if (@lines-1 >= $p_join) {
-		$mes = "$p_name‚Í’èˆõ‚ª‚¢‚Á‚Ï‚¢‚ÅQ‰Á‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "$p_nameã¯å®šå“¡ãŒã„ã£ã±ã„ã§å‚åŠ ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 		return;
 	}
 	
-	# Q‰ÁğŒOK
+	# å‚åŠ æ¡ä»¶OK
 	my($color) ||= (split /<>/, $lines[1])[2];
 	my $new_line = &get_battle_line($color);
 	push @lines, "$new_line\n";
@@ -418,61 +418,61 @@ sub add_member {
 	print $fh @lines;
 	close $fh;
 	
-	$m{lib} = $stage eq 'ƒhƒbƒyƒ‹' ? 'casino_doppel'
-			: $stage eq 'ƒnƒCƒƒE' ? 'casino_highlow'
+	$m{lib} = $stage eq 'ãƒ‰ãƒƒãƒšãƒ«' ? 'casino_doppel'
+			: $stage eq 'ãƒã‚¤ãƒ­ã‚¦' ? 'casino_highlow'
 			:                        'casino_indian';
 	$m{quest} = $casino_id;
-	&reload("$p_name‚ÉQ‰Á‚µ‚Ü‚·");
+	&reload("$p_nameã«å‚åŠ ã—ã¾ã™");
 
 	&leave_member($m);
 }
 
 #=================================================
-# —‚¯‚ñ‚ª‚­
+# ï¼ ã‘ã‚“ãŒã
 #=================================================
 sub kengaku {
 	my $target = shift;
 
 	unless ($target) {
-		$mes = "‚Ç‚Ì•”‰®‚ğŒ©Šw‚µ‚Ü‚·‚©H";
+		$mes = "ã©ã®éƒ¨å±‹ã‚’è¦‹å­¦ã—ã¾ã™ã‹ï¼Ÿ";
 		return;
 	}
 	
-	my($p_name, $join_pass) = split /—‚ ‚¢‚±‚Æ‚Î&gt;/, $target;
+	my($p_name, $join_pass) = split /ï¼ ã‚ã„ã“ã¨ã°&gt;/, $target;
 	my $casino_id = unpack 'H*', $p_name;
-	$com =~ s/(.+)—‚ ‚¢‚±‚Æ‚Î&gt;(.+)/$1/; # ”­Œ¾‚µ‚½—‚ ‚¢‚±‚Æ‚Î`‚ğíœ
+	$com =~ s/(.+)ï¼ ã‚ã„ã“ã¨ã°&gt;(.+)/$1/; # ç™ºè¨€ã—ãŸï¼ ã‚ã„ã“ã¨ã°ï½ã‚’å‰Šé™¤
 
 	if ($p_name && -d "$casinodir/$casino_id") {
-		open my $fh, "< $casinodir/$casino_id/member.cgi" or &error("$casinodir/$casino_id/member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+		open my $fh, "< $casinodir/$casino_id/member.cgi" or &error("$casinodir/$casino_id/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 		my $head_line = <$fh>;
 		close $fh;
 
 		my($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit) = split /<>/, $head_line;
 		if (!$is_visit) {
-			$mes = "$p_name‚ÌŒ©Šw‚Í‚Å‚«‚Ü‚¹‚ñ";
+			$mes = "$p_nameã®è¦‹å­¦ã¯ã§ãã¾ã›ã‚“";
 			return;
 		}
 		elsif ($p_pass ne '' && $p_pass ne $join_pass) {
-			$mes = "$p_name‚ğŒ©Šw‚·‚é‚½‚ß‚Ì‡Œ¾—t‚ªˆá‚¢‚Ü‚·";
+			$mes = "$p_nameã‚’è¦‹å­¦ã™ã‚‹ãŸã‚ã®åˆè¨€è‘‰ãŒé•ã„ã¾ã™";
 			return;
 		}
 		
-		$m{lib} = $stage eq 'ƒhƒbƒyƒ‹' ? 'casino_doppel'
-				: $stage eq 'ƒnƒCƒƒE' ? 'casino_highlow'
+		$m{lib} = $stage eq 'ãƒ‰ãƒƒãƒšãƒ«' ? 'casino_doppel'
+				: $stage eq 'ãƒã‚¤ãƒ­ã‚¦' ? 'casino_highlow'
 				:                        'casino_indian';
 		$m{quest} = $casino_id;
-		$mes = "$p_name‚ğŒ©Šw‚µ‚Ü‚·";
-		&reload("$p_name‚ğŒ©Šw‚µ‚Ü‚·");
+		$mes = "$p_nameã‚’è¦‹å­¦ã—ã¾ã™";
+		&reload("$p_nameã‚’è¦‹å­¦ã—ã¾ã™");
 		&leave_member($m);
 	}
 	else {
-		$mes = "Œ©Šw‚µ‚æ‚¤‚Æ‚µ‚½•”‰®‚ÍA‰ğU‚µ‚Ä‚µ‚Ü‚Á‚½‚æ‚¤‚Å‚·";
+		$mes = "è¦‹å­¦ã—ã‚ˆã†ã¨ã—ãŸéƒ¨å±‹ã¯ã€è§£æ•£ã—ã¦ã—ã¾ã£ãŸã‚ˆã†ã§ã™";
 	}
 }
 
 
 #=================================================
-# —‚·‚ë‚Á‚Æ
+# ï¼ ã™ã‚ã£ã¨
 #=================================================
 sub slot_1   { &_slot(1) }
 sub slot_10  { &_slot(10) }
@@ -482,49 +482,49 @@ sub _slot {
 	my $bet = shift;
 	
 	if ($m{tired} >= 100) {
-		$mes = qq|<span onclick="text_set('—‚Ù[‚Ş ')">$e2j{tired}‚ª‚½‚Ü‚Á‚Ä‚¢‚Ü‚·Bu—‚Ù[‚Şv‚Å‰Æ‚É‹A‚èu—‚Ë‚év‚Å‹x‚ñ‚Å‚­‚¾‚³‚¢</span>|;
+		$mes = qq|<span onclick="text_set('ï¼ ã»ãƒ¼ã‚€ ')">$e2j{tired}ãŒãŸã¾ã£ã¦ã„ã¾ã™ã€‚ã€Œï¼ ã»ãƒ¼ã‚€ã€ã§å®¶ã«å¸°ã‚Šã€Œï¼ ã­ã‚‹ã€ã§ä¼‘ã‚“ã§ãã ã•ã„</span>|;
 		return;
 	}
 	if ($m{coin} < $bet) {
-		$mes = qq|<span onclick="text_set('—‚è‚å‚¤‚ª‚¦ ')">$betƒXƒƒbƒg‚ğ‚·‚éƒRƒCƒ“‚ª‘«‚è‚Ü‚¹‚ñBu—‚è‚å‚¤‚ª‚¦v‚ÅƒRƒCƒ“‚ğ—¼‘Ö‚µ‚Ä‚­‚¾‚³‚¢</span>|;
+		$mes = qq|<span onclick="text_set('ï¼ ã‚Šã‚‡ã†ãŒãˆ ')">ï¼„$betã‚¹ãƒ­ãƒƒãƒˆã‚’ã™ã‚‹ã‚³ã‚¤ãƒ³ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚ã€Œï¼ ã‚Šã‚‡ã†ãŒãˆã€ã§ã‚³ã‚¤ãƒ³ã‚’ä¸¡æ›¿ã—ã¦ãã ã•ã„</span>|;
 		return;
 	}
 	
-	my @m = ('‡','ô','õ','š','‚V');
-	my @o = (3,10, 20,  50,  70,  100); # ƒIƒbƒY ˆê”Ô¶‚Íƒ`ƒFƒŠ[‚ª2‚Â‚»‚ë‚¢‚Ì‚Æ‚«
+	my @m = ('âˆ','â™ª','â€ ','â˜…','ï¼—');
+	my @o = (3,10, 20,  50,  70,  100); # ã‚ªãƒƒã‚º ä¸€ç•ªå·¦ã¯ãƒã‚§ãƒªãƒ¼ãŒ2ã¤ãã‚ã„ã®ã¨ã
 	my @s = ();
 	$s[$_] = int(rand(@m)) for (0 .. 2);
-	$mes .= qq|<span onclick="text_set('—$bet‚·‚ë‚Á‚Æ')">|;
-	$mes .= "\$$betƒXƒƒbƒg<br />";
-	$mes .= "y$m[$s[0]]zy$m[$s[1]]zy$m[$s[2]]z<br />";
+	$mes .= qq|<span onclick="text_set('ï¼ ï¼„$betã™ã‚ã£ã¨')">|;
+	$mes .= "\$$betã‚¹ãƒ­ãƒƒãƒˆ<br />";
+	$mes .= "ã€$m[$s[0]]ã€‘ã€$m[$s[1]]ã€‘ã€$m[$s[2]]ã€‘<br />";
 	$m{coin} -= $bet;
 
-	# ˜A‘Å–h~ô
+	# é€£æ‰“é˜²æ­¢ç­–
 	$act_time *= 0.5;
 	$m{wt}  = $time + $act_time;
 	$nokori = $act_time;
 
-	if ($s[0] == $s[1]) { # 1‚Â–Ú‚Æ2‚Â–Ú
-		if ($s[1] == $s[2]) { # 2‚Â–Ú‚Æ3‚Â–Ú
-			my $v = $bet * $o[$s[0]+1]; # +1 = ƒ`ƒFƒŠ[2‚»‚ë‚¢
+	if ($s[0] == $s[1]) { # 1ã¤ç›®ã¨2ã¤ç›®
+		if ($s[1] == $s[2]) { # 2ã¤ç›®ã¨3ã¤ç›®
+			my $v = $bet * $o[$s[0]+1]; # +1 = ãƒã‚§ãƒªãƒ¼2ãã‚ã„
 			$m{coin} += $v;
-			$mes .= "‚È‚ñ‚Æ!! $m[$s[0]] ‚ª3‚Â‚»‚ë‚¢‚Ü‚µ‚½!!<br />";
-			$mes .= "‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·!!<br />";
-			$mes .= "***** ƒRƒCƒ“ $v –‡ GET !! *****<br />";
+			$mes .= "ãªã‚“ã¨!! $m[$s[0]] ãŒ3ã¤ãã‚ã„ã¾ã—ãŸ!!<br />";
+			$mes .= "ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™!!<br />";
+			$mes .= "***** ã‚³ã‚¤ãƒ³ $v æš GET !! *****<br />";
 		}
-		elsif ($s[0] == 0) { # ƒ`ƒFƒŠ[‚Ì‚İ1‚Â–Ú‚Æ2‚Â–Ú‚ª‚»‚ë‚¦‚Î‚æ‚¢
+		elsif ($s[0] == 0) { # ãƒã‚§ãƒªãƒ¼ã®ã¿1ã¤ç›®ã¨2ã¤ç›®ãŒãã‚ãˆã°ã‚ˆã„
 			my $v = $bet * $o[0];
 			$m{coin} += $v;
-			$mes .= "ƒ`ƒFƒŠ[‚ª2‚Â‚»‚ë‚¢‚Ü‚µ‚½ô<br />";
-			$mes .= "ƒRƒCƒ“ $v –‡Upô<br />";
+			$mes .= "ãƒã‚§ãƒªãƒ¼ãŒ2ã¤ãã‚ã„ã¾ã—ãŸâ™ª<br />";
+			$mes .= "ã‚³ã‚¤ãƒ³ $v æšUpâ™ª<br />";
 		}
 		else {
-			$mes .= "ƒnƒYƒŒ<br />";
+			$mes .= "ãƒã‚ºãƒ¬<br />";
 			$m{tired} += 1;
 		}
 	}
 	else {
-		$mes .= "ƒnƒYƒŒ<br />";
+		$mes .= "ãƒã‚ºãƒ¬<br />";
 		$m{tired} += 1;
 	}
 	$mes .= "</span>";
@@ -532,81 +532,81 @@ sub _slot {
 
 
 #=================================================
-# —‚±‚¤‚©‚ñ
+# ï¼ ã“ã†ã‹ã‚“
 #=================================================
 sub koukan {
 	my $target = shift;
 	
-	my $p = qq|<table class="table1"><tr><th>Ü•i</th><th>º²İ</th></tr>|;
+	my $p = qq|<table class="table1"><tr><th>è³å“</th><th>ã‚³ã‚¤ãƒ³</th></tr>|;
 	for my $i (1 .. $#prizes) {
-		if ("$prizes[$i][0]–‡" eq $target) {
+		if ("$prizes[$i][0]æš" eq $target) {
 			if ($m{coin} >= $prizes[$i][0]) {
 				if ($prizes[$i][1] eq '1') {
 					&send_item($m, $prizes[$i][1], $prizes[$i][2]);
-					$npc_com = "ƒRƒCƒ“$target‚ÌÜ•i‚ÆŒğŠ·‚Å‚·‚ËI$weas[ $prizes[$i][2] ][1]‚Í$m‚Ì—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚«‚Ü‚µ‚½";
+					$npc_com = "ã‚³ã‚¤ãƒ³$targetã®è³å“ã¨äº¤æ›ã§ã™ã­ï¼$weas[ $prizes[$i][2] ][1]ã¯$mã®é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠãã¾ã—ãŸ";
 				}
 				elsif ($prizes[$i][1] eq '2') {
 					&send_item($m, $prizes[$i][1], $prizes[$i][2]);
-					$npc_com = "ƒRƒCƒ“$target‚ÌÜ•i‚ÆŒğŠ·‚Å‚·‚ËI$arms[ $prizes[$i][2] ][1]‚Í$m‚Ì—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚«‚Ü‚µ‚½";
+					$npc_com = "ã‚³ã‚¤ãƒ³$targetã®è³å“ã¨äº¤æ›ã§ã™ã­ï¼$arms[ $prizes[$i][2] ][1]ã¯$mã®é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠãã¾ã—ãŸ";
 				}
 				else {
 					&send_item($m, $prizes[$i][1], $prizes[$i][2]);
-					$npc_com = "ƒRƒCƒ“$target‚ÌÜ•i‚ÆŒğŠ·‚Å‚·‚ËI$ites[ $prizes[$i][2] ][1]‚Í$m‚Ì—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚«‚Ü‚µ‚½";
+					$npc_com = "ã‚³ã‚¤ãƒ³$targetã®è³å“ã¨äº¤æ›ã§ã™ã­ï¼$ites[ $prizes[$i][2] ][1]ã¯$mã®é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠãã¾ã—ãŸ";
 				}
 				$m{coin} -= $prizes[$i][0];
 			}
 			else {
-				$mes = "ƒRƒCƒ“$target‚ÌÜ•i‚ÆŒğŠ·‚·‚é‚Ì‚ÉƒRƒCƒ“‚ª‘«‚è‚Ü‚¹‚ñ";
+				$mes = "ã‚³ã‚¤ãƒ³$targetã®è³å“ã¨äº¤æ›ã™ã‚‹ã®ã«ã‚³ã‚¤ãƒ³ãŒè¶³ã‚Šã¾ã›ã‚“";
 			}
 			return;
 		}
 	
-		$p .= qq|<tr onclick="text_set('—‚±‚¤‚©‚ñ>$prizes[$i][0]–‡ ')"><td>|;
+		$p .= qq|<tr onclick="text_set('ï¼ ã“ã†ã‹ã‚“>$prizes[$i][0]æš ')"><td>|;
 		$p .= $prizes[$i][1] eq '1' ? $weas[$prizes[$i][2]][1]
 		    : $prizes[$i][1] eq '2' ? $arms[$prizes[$i][2]][1]
 		    :                         $ites[$prizes[$i][2]][1]
 		    ;
-		$p .= qq|</td><td align="right">$prizes[$i][0]–‡</td></tr>|;
+		$p .= qq|</td><td align="right">$prizes[$i][0]æš</td></tr>|;
 	}
 	$p  .= qq|</table>|;
-	$mes = qq|‚Ç‚ê‚ÆŒğŠ·‚µ‚Ü‚·‚©H<br />$p|;
+	$mes = qq|ã©ã‚Œã¨äº¤æ›ã—ã¾ã™ã‹ï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
 #=================================================
-# —‚è‚å‚¤‚ª‚¦
+# ï¼ ã‚Šã‚‡ã†ãŒãˆ
 #=================================================
 sub ryougae {
 	my $target = shift;
-	$target =~ s/–‡//;
+	$target =~ s/æš//;
 
 	if ($target < 1 || $target =~ /[^0-9]/) {
-		$mes = qq|<span onclick="text_set('—‚è‚å‚¤‚ª‚¦>')">ƒRƒCƒ“‚P–‡ 20 G‚Å‚·B‚¢‚­‚ç—¼‘Ö‚µ‚Ü‚·‚©H</span>|;
+		$mes = qq|<span onclick="text_set('ï¼ ã‚Šã‚‡ã†ãŒãˆ>')">ã‚³ã‚¤ãƒ³ï¼‘æš 20 Gã§ã™ã€‚ã„ãã‚‰ä¸¡æ›¿ã—ã¾ã™ã‹ï¼Ÿ</span>|;
 		return;
 	}
 
 	my $need_money = $target * 20;
 	if ($need_money > $m{money}) {
-		$mes = "ƒS[ƒ‹ƒh‚ª‘«‚è‚Ü‚¹‚ñBƒRƒCƒ“$target–‡‚ğ—¼‘Ö‚·‚é‚É‚Í $need_money G•K—v‚Å‚·";
+		$mes = "ã‚´ãƒ¼ãƒ«ãƒ‰ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚ã‚³ã‚¤ãƒ³$targetæšã‚’ä¸¡æ›¿ã™ã‚‹ã«ã¯ $need_money Gå¿…è¦ã§ã™";
 		return;
 	}
 	
 	$m{coin}  += $target;
 	$m{money} -= $need_money;
-	$npc_com = "$target–‡‚ÌƒRƒCƒ“‚Æ—¼‘Ö‚µ‚Ü‚µ‚½";
+	$npc_com = "$targetæšã®ã‚³ã‚¤ãƒ³ã¨ä¸¡æ›¿ã—ã¾ã—ãŸ";
 }
 
 
 #=================================================
-# ƒoƒgƒ‹—pƒf[ƒ^ì¬ @casino_datas‚Ì’l‚ğƒZƒbƒg
+# ãƒãƒˆãƒ«ç”¨ãƒ‡ãƒ¼ã‚¿ä½œæˆ @casino_datasã®å€¤ã‚’ã‚»ãƒƒãƒˆ
 #=================================================
 sub get_battle_line {
 	my $color = shift;
 	my %p = %m;
 	
 	$p{card}   = 0;
-	$p{action} = '‘Ò‹@’†';
+	$p{action} = 'å¾…æ©Ÿä¸­';
 	
 	my $line = '';
 	for my $k (@casino_datas) {
@@ -616,4 +616,4 @@ sub get_battle_line {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

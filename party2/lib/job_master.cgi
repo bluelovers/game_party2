@@ -1,7 +1,7 @@
 #=================================================
-# ƒWƒ‡ƒuƒ}ƒXƒ^[ Created by Merino
+# ã‚¸ãƒ§ãƒ–ãƒã‚¹ã‚¿ãƒ¼ Created by Merino
 #=================================================
-$m{lib} = 'home'; # –ß‚éƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚ç‹­§“I‚É‰Æ‚É–ß‚é
+$m{lib} = 'home'; # æˆ»ã‚‹ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰å¼·åˆ¶çš„ã«å®¶ã«æˆ»ã‚‹
 
 sub read_member { return }
 sub set_action  { return }
@@ -10,12 +10,12 @@ sub set_action  { return }
 sub html {
 	print qq|<form method="$method" action="$script">|;
 	print qq|<input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" />|;
-	print qq|<input type="submit" value="–ß‚é" /></form>|;
+	print qq|<input type="submit" value="æˆ»ã‚‹" /></form>|;
 	
 	my $yid = unpack 'H*', $m{home};
 	my %jobs_data = ();
 	my $count = 0;
-	open my $fh, "< $userdir/$yid/job_master.cgi" or &error("$userdir/$yid/job_master.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$yid/job_master.cgi" or &error("$userdir/$yid/job_master.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($job_no, $job_sex, $job_point, $is_master) = split /<>/, $line;
 		$jobs_data{$job_no} = [$job_sex, $job_point, $is_master];
@@ -26,11 +26,11 @@ sub html {
 	my $comp_par = int($count / $#jobs-1 * 100);
 	$comp_par = 100 if $comp_par > 100;
 
-	print qq|<h2>$m{home}‚ÌƒWƒ‡ƒuƒ}ƒXƒ^[—¦s<b>$comp_par</b>“t</h2><table class="table1"><tr>|;
+	print qq|<h2>$m{home}ã®ã‚¸ãƒ§ãƒ–ãƒã‚¹ã‚¿ãƒ¼ç‡ã€Š<b>$comp_par</b>ï¼…ã€‹</h2><table class="table1"><tr>|;
 	for my $i (1..$#jobs) {
 		if (defined $jobs_data{$i}) {
 			print qq|<td align="center">|;
-			print $jobs_data{$i}[2] ? qq|<div style="color: #FF0;">šSP$jobs_data{$i}[1]</div>| : qq|<br />|;
+			print $jobs_data{$i}[2] ? qq|<div style="color: #FF0;">â˜…SP$jobs_data{$i}[1]</div>| : qq|<br />|;
 			print qq|<img src="$icondir/job/${i}_$jobs_data{$i}[0].gif" alt="$jobs[$i][1]" /><br />$jobs[$i][1]</td>|;
 		}
 		else {
@@ -40,9 +40,9 @@ sub html {
 	}
 	
 	my $mod = int(10 - $#jobs % 10);
-	print qq|<td>@</td>| for (1..$mod);
+	print qq|<td>ã€€</td>| for (1..$mod);
 	print qq|</tr></table>|;
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

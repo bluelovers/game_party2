@@ -1,99 +1,99 @@
 #=================================================
-# ƒMƒ‹ƒhİ—§ Created by Merino
+# ã‚®ãƒ«ãƒ‰è¨­ç«‹ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'ƒMƒ‹ƒh';
+# å ´æ‰€å
+$this_title = 'ã‚®ãƒ«ãƒ‰';
 
-# NPC–¼
-$npc_name   = '@x”zl';
+# NPCå
+$npc_name   = '@æ”¯é…äºº';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/join_guild";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/join_guild.gif";
 
-# ƒMƒ‹ƒhİ—§‹à
+# ã‚®ãƒ«ãƒ‰è¨­ç«‹é‡‘
 $make_money = 5000;
 
-# ƒfƒtƒHƒ‹ƒg‚ÌƒMƒ‹ƒhƒ}[ƒNƒAƒCƒRƒ“
+# ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã‚¢ã‚¤ã‚³ãƒ³
 $default_mark = "$icondir/mark/000.gif";
 
-# ƒMƒ‹ƒhƒ}[ƒN•ÏX—¿‹à
+# ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯å¤‰æ›´æ–™é‡‘
 $mark_money = 3000;
 
-# Å‘åƒMƒ‹ƒh–¼•¶š”(”¼Šp)
+# æœ€å¤§ã‚®ãƒ«ãƒ‰åæ–‡å­—æ•°(åŠè§’)
 $max_guild_name = 16;
 
-# ƒMƒ‹ƒh©“®íœB‚±‚Ì“ú”ŠÔu—‚¬‚é‚Çv‚É‚æ‚éo“ü‚è‚ª‚È‚¢ê‡©“®íœ(“ú)
+# ã‚®ãƒ«ãƒ‰è‡ªå‹•å‰Šé™¤ã€‚ã“ã®æ—¥æ•°é–“ã€Œï¼ ãã‚‹ã©ã€ã«ã‚ˆã‚‹å‡ºå…¥ã‚ŠãŒãªã„å ´åˆè‡ªå‹•å‰Šé™¤(æ—¥)
 $auto_delete_guild_day = 20;
 
 #=================================================
-# ‚Í‚È‚·Œ¾—t
+# ã¯ãªã™è¨€è‘‰
 #=================================================
 @words = (
-	"$auto_delete_guild_day “úˆÈãu—‚¬‚é‚Çv‚É‚æ‚éo“ü‚è‚ª‚È‚¢ê‡‚ÍA©“®“I‚Éíœ‚Æ‚È‚è‚Ü‚·",
-	"ƒMƒ‹ƒh‚Æ‚ÍA‹C‚ª‡‚¤ƒƒ“ƒo[‚ÌW‚Ü‚è‚Å‚·",
-	"ƒMƒ‹ƒh–¼‚ÍA“r’†‚Å•Ï‚¦‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ‚Ì‚ÅA‚¶‚Á‚­‚èl‚¦‚Ä‚­‚¾‚³‚¢",
-	"ƒMƒ‹ƒ}ƒX‚Æ‚ÍAƒMƒ‹ƒhƒ}ƒXƒ^[‚Ì—ªÌ‚Å‚·B‚»‚ÌƒMƒ‹ƒh“à‚Åˆê”Ô‚ÌŒ ŒÀ‚ª‚ ‚è‚Ü‚·",
-	"ƒMƒ‹ƒ}ƒX‚ÍAƒƒ“ƒo[‚É–ğE–¼‚ğ‚ ‚½‚¦‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚Å‚·",
-	"ƒMƒ‹ƒhƒ}[ƒN‚â•Ç†‚ÍA‚¨‹à‚ª‚©‚©‚è‚Ü‚·‚ª‰½“x‚Å‚à•Ï‚¦‚é‚±‚Æ‚ª‰Â”\‚Å‚·",
-	"ƒMƒ‹ƒhQ‰ÁÒ‚ÍAƒMƒ‹ƒhí‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·",
-	"ƒMƒ‹ƒh‚ğV‚µ‚­ì‚é‚É‚ÍA$make_money G•K—v‚Å‚·",
-	"ƒMƒ‹ƒhƒ}[ƒN‚ğ•ÏX‚·‚é‚É‚ÍA$mark_money G•K—v‚Å‚·",
-	"ƒMƒ‹ƒhí‚Å—DŸ‚·‚é‚ÆŸ—˜ƒƒ_ƒ‹‚ªƒMƒ‹ƒh“à‚Éü‚ç‚ê‚Ä‚¢‚«‚Ü‚·",
+	"$auto_delete_guild_day æ—¥ä»¥ä¸Šã€Œï¼ ãã‚‹ã©ã€ã«ã‚ˆã‚‹å‡ºå…¥ã‚ŠãŒãªã„å ´åˆã¯ã€è‡ªå‹•çš„ã«å‰Šé™¤ã¨ãªã‚Šã¾ã™",
+	"ã‚®ãƒ«ãƒ‰ã¨ã¯ã€æ°—ãŒåˆã†ãƒ¡ãƒ³ãƒãƒ¼ã®é›†ã¾ã‚Šã§ã™",
+	"ã‚®ãƒ«ãƒ‰åã¯ã€é€”ä¸­ã§å¤‰ãˆã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã®ã§ã€ã˜ã£ãã‚Šè€ƒãˆã¦ãã ã•ã„",
+	"ã‚®ãƒ«ãƒã‚¹ã¨ã¯ã€ã‚®ãƒ«ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã®ç•¥ç§°ã§ã™ã€‚ãã®ã‚®ãƒ«ãƒ‰å†…ã§ä¸€ç•ªã®æ¨©é™ãŒã‚ã‚Šã¾ã™",
+	"ã‚®ãƒ«ãƒã‚¹ã¯ã€ãƒ¡ãƒ³ãƒãƒ¼ã«å½¹è·åã‚’ã‚ãŸãˆã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã§ã™",
+	"ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã‚„å£ç´™ã¯ã€ãŠé‡‘ãŒã‹ã‹ã‚Šã¾ã™ãŒä½•åº¦ã§ã‚‚å¤‰ãˆã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™",
+	"ã‚®ãƒ«ãƒ‰å‚åŠ è€…ã¯ã€ã‚®ãƒ«ãƒ‰æˆ¦ãŒã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™",
+	"ã‚®ãƒ«ãƒ‰ã‚’æ–°ã—ãä½œã‚‹ã«ã¯ã€$make_money Gå¿…è¦ã§ã™",
+	"ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã‚’å¤‰æ›´ã™ã‚‹ã«ã¯ã€$mark_money Gå¿…è¦ã§ã™",
+	"ã‚®ãƒ«ãƒ‰æˆ¦ã§å„ªå‹ã™ã‚‹ã¨å‹åˆ©ãƒ¡ãƒ€ãƒ«ãŒã‚®ãƒ«ãƒ‰å†…ã«é£¾ã‚‰ã‚Œã¦ã„ãã¾ã™",
 );
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚³‚ñ‚©';
-push @actions, '‚Â‚­‚é';
-push @actions, '‚Ü[‚­';
-push @actions, '‚©‚×‚ª‚İ';
-#push @actions, '‚©‚¢‚ß‚¢'; # ‚±‚±‚Æ«‚Ì#$actions{'‚©‚¢‚ß‚¢'}‚ÌƒRƒƒ“ƒg‚ğŠO‚·‚ÆƒMƒ‹ƒh‚ğ‰ü–¼‚Å‚«‚éB
-push @actions, '‚¾‚Á‚½‚¢';
-push @actions, '‚©‚¢‚³‚ñ';
-$actions{'‚³‚ñ‚©'}   = sub{ &sanka }; 
-$actions{'‚Â‚­‚é'}   = sub{ &tsukuru }; 
-$actions{'‚Ü[‚­'}   = sub{ &mark }; 
-$actions{'‚©‚×‚ª‚İ'} = sub{ &kabegami }; 
-#$actions{'‚©‚¢‚ß‚¢'} = sub{ &kaimei }; 
-$actions{'‚¾‚Á‚½‚¢'} = sub{ &dattai }; 
-$actions{'‚©‚¢‚³‚ñ'} = sub{ &kaisan }; 
+push @actions, 'ã•ã‚“ã‹';
+push @actions, 'ã¤ãã‚‹';
+push @actions, 'ã¾ãƒ¼ã';
+push @actions, 'ã‹ã¹ãŒã¿';
+#push @actions, 'ã‹ã„ã‚ã„'; # ã“ã“ã¨â†“ã®#$actions{'ã‹ã„ã‚ã„'}ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’å¤–ã™ã¨ã‚®ãƒ«ãƒ‰ã‚’æ”¹åã§ãã‚‹ã€‚
+push @actions, 'ã ã£ãŸã„';
+push @actions, 'ã‹ã„ã•ã‚“';
+$actions{'ã•ã‚“ã‹'}   = sub{ &sanka }; 
+$actions{'ã¤ãã‚‹'}   = sub{ &tsukuru }; 
+$actions{'ã¾ãƒ¼ã'}   = sub{ &mark }; 
+$actions{'ã‹ã¹ãŒã¿'} = sub{ &kabegami }; 
+#$actions{'ã‹ã„ã‚ã„'} = sub{ &kaimei }; 
+$actions{'ã ã£ãŸã„'} = sub{ &dattai }; 
+$actions{'ã‹ã„ã•ã‚“'} = sub{ &kaisan }; 
 
 
 sub header_html { 
-	print qq|<div class="mes">y$this_titlez $e2j{money} <b>$m{money}</b>G|;
-	print qq| / ƒMƒ‹ƒhy$m{guild}z| if $m{guild};
+	print qq|<div class="mes">ã€$this_titleã€‘ $e2j{money} <b>$m{money}</b>G|;
+	print qq| / ã‚®ãƒ«ãƒ‰ã€$m{guild}ã€‘| if $m{guild};
 	print qq|</div>|;
 }
 
 #=================================================
-# —‚©‚×‚ª‚İ
+# ï¼ ã‹ã¹ãŒã¿
 #=================================================
 sub kabegami {
 	my $target = shift;
 	
 	if ($target) {
 		unless ($m{guild}) {
-			$mes = "ƒMƒ‹ƒh‚ÉŠ‘®‚µ‚Ä‚¢‚Ü‚¹‚ñ";
+			$mes = "ã‚®ãƒ«ãƒ‰ã«æ‰€å±ã—ã¦ã„ã¾ã›ã‚“";
 			return;
 		}
 
 		my $gid = unpack 'H*', $m{guild};
 		unless (-d "$guilddir/$gid") {
-			$mes = "$m{guild}ƒMƒ‹ƒh‚ª‘¶İ‚µ‚Ü‚¹‚ñ";
+			$mes = "$m{guild}ã‚®ãƒ«ãƒ‰ãŒå­˜åœ¨ã—ã¾ã›ã‚“";
 			$m{guild} = "";
 			return;
 		}
 		unless (&is_guild_master($gid)) {
-			$mes = "•Ç†‚ğ•ÏX‚Å‚«‚é‚Ì‚ÍAƒMƒ‹ƒhƒ}ƒXƒ^[‚¾‚¯‚Å‚·";
+			$mes = "å£ç´™ã‚’å¤‰æ›´ã§ãã‚‹ã®ã¯ã€ã‚®ãƒ«ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã ã‘ã§ã™";
 			return;
 		}
 		if (defined $kabes{$target} && $m{money} < $kabes{$target}) {
-			$mes = "‚¨‹à‚ª‘«‚è‚Ü‚¹‚ñ";
+			$mes = "ãŠé‡‘ãŒè¶³ã‚Šã¾ã›ã‚“";
 			return;
 		}
 	}
@@ -102,54 +102,54 @@ sub kabegami {
 	my $p = qq|<table><tr>|;
 	for my $k (sort { $kabes{$a} <=> $kabes{$b} } keys %kabes) {
 		my $base_name = $k;
-		$base_name =~ s/(.+)\..+/$1/; # Œ©‰h‚¦‚ªˆ«‚¢‚Ì‚ÅŠg’£q‚ğœ‚­
+		$base_name =~ s/(.+)\..+/$1/; # è¦‹æ „ãˆãŒæ‚ªã„ã®ã§æ‹¡å¼µå­ã‚’é™¤ã
 		if ($base_name eq $target) {
 			&regist_guild_data('bgimg', $k, $m{guild});
 
-			$npc_com   = qq|$m{guild}‚Ì•Ç†‚ğ $base_name ‚É•ÏX‚µ‚Ü‚µ‚½|;
+			$npc_com   = qq|$m{guild}ã®å£ç´™ã‚’ $base_name ã«å¤‰æ›´ã—ã¾ã—ãŸ|;
 			$m{money} -= $kabes{$k};
 			return;
 		}
-		$p .= qq|<td valign="bottom" align="right"><span onclick="text_set('—‚©‚×‚ª‚İ>$base_name ')"><img src="$bgimgdir/$k" title="$k" /><br />$kabes{$k} G</span></td>|;
+		$p .= qq|<td valign="bottom" align="right"><span onclick="text_set('ï¼ ã‹ã¹ãŒã¿>$base_name ')"><img src="$bgimgdir/$k" title="$k" /><br />$kabes{$k} G</span></td>|;
 		$p .= qq|</tr><tr>| if ++$count % 10 == 0;
 	}
 	$p .= qq|</tr></table>|;
 
-	$mes = qq|‚Ç‚Ì•Ç†‚É‚µ‚Ü‚·‚©H<br />$p|;
+	$mes = qq|ã©ã®å£ç´™ã«ã—ã¾ã™ã‹ï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
 #=================================================
-# —‚Ü[‚­
+# ï¼ ã¾ãƒ¼ã
 #=================================================
 sub mark {
 	my $target = shift;
 	
 	if ($target) {
 		unless ($m{guild}) {
-			$mes = "ƒMƒ‹ƒh‚ÉŠ‘®‚µ‚Ä‚¢‚Ü‚¹‚ñ";
+			$mes = "ã‚®ãƒ«ãƒ‰ã«æ‰€å±ã—ã¦ã„ã¾ã›ã‚“";
 			return;
 		}
 
 		my $gid = unpack 'H*', $m{guild};
 		unless (-d "$guilddir/$gid") {
-			$mes = "$m{guild}ƒMƒ‹ƒh‚ª‘¶İ‚µ‚Ü‚¹‚ñ";
+			$mes = "$m{guild}ã‚®ãƒ«ãƒ‰ãŒå­˜åœ¨ã—ã¾ã›ã‚“";
 			$m{guild} = "";
 			return;
 		}
 		unless (&is_guild_master($gid)) {
-			$mes = "ƒMƒ‹ƒhƒ}[ƒN‚ğ•ÏX‚Å‚«‚é‚Ì‚ÍAƒMƒ‹ƒhƒ}ƒXƒ^[‚¾‚¯‚Å‚·";
+			$mes = "ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã‚’å¤‰æ›´ã§ãã‚‹ã®ã¯ã€ã‚®ãƒ«ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã ã‘ã§ã™";
 			return;
 		}
 		if ($m{money} < $mark_money) {
-			$mes = "ƒMƒ‹ƒhƒ}[ƒN‚ğ•ÏX‚·‚é‚Ì‚É <b>$mark_money</b> G•K—v‚Å‚·";
+			$mes = "ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã‚’å¤‰æ›´ã™ã‚‹ã®ã« <b>$mark_money</b> Gå¿…è¦ã§ã™";
 			return;
 		}
 	}
 	
 	my $p = '';
-	opendir my $dh, "$icondir/mark" or &error("$icondir/markƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, "$icondir/mark" or &error("$icondir/markãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $file_name = readdir $dh) {
 		next if $file_name =~ /^\./;
 
@@ -158,189 +158,189 @@ sub mark {
 
 		if ($m{guild} && $no eq $target) {
 			my $gid = unpack 'H*', $m{guild};
-			# ƒMƒ‹ƒhƒ}[ƒN‰æ‘œ‚ğƒRƒs[
+			# ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ç”»åƒã‚’ã‚³ãƒ”ãƒ¼
 			&copy("$icondir/mark/$file_name", "$guilddir/$gid/mark.gif");
 
-			$npc_com   = qq|$m{guild}‚ÌƒMƒ‹ƒhƒ}[ƒN‚ğ <img src="$icondir/mark/$file_name" /> ‚É•ÏX‚µ‚Ü‚µ‚½|;
+			$npc_com   = qq|$m{guild}ã®ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã‚’ <img src="$icondir/mark/$file_name" /> ã«å¤‰æ›´ã—ã¾ã—ãŸ|;
 			$m{money} -= $mark_money;
 			return;
 		}
-		$p .= qq|<span onclick="text_set('—‚Ü[‚­>$no ')"><img src="$icondir/mark/$file_name" title="$no" /></span> |;
+		$p .= qq|<span onclick="text_set('ï¼ ã¾ãƒ¼ã>$no ')"><img src="$icondir/mark/$file_name" title="$no" /></span> |;
 	}
 	closedir $dh;
 
-	$mes = qq|ƒMƒ‹ƒhƒ}[ƒN‚Ì•ÏX‚É‚Í $mark_money G‚©‚©‚è‚Ü‚·B‚Ç‚ÌƒMƒ‹ƒhƒ}[ƒN‚É‚µ‚Ü‚·‚©H<br />$p|;
+	$mes = qq|ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã®å¤‰æ›´ã«ã¯ $mark_money Gã‹ã‹ã‚Šã¾ã™ã€‚ã©ã®ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯ã«ã—ã¾ã™ã‹ï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
 
 #=================================================
-# —‚³‚ñ‚©
+# ï¼ ã•ã‚“ã‹
 #=================================================
 sub sanka {
 	my $target = shift;
 	
 	if ($m{guild}) {
-		$mes = "$m{guild}‚ÉQ‰Á‚µ‚Ä‚¢‚Ü‚·B‘¼‚ÌƒMƒ‹ƒh‚ÉQ‰Á‚µ‚½‚¢ê‡‚ÍA¡‚ÌƒMƒ‹ƒh‚ğ’E‘Ş‚µ‚Ä‚­‚¾‚³‚¢B";
+		$mes = "$m{guild}ã«å‚åŠ ã—ã¦ã„ã¾ã™ã€‚ä»–ã®ã‚®ãƒ«ãƒ‰ã«å‚åŠ ã—ãŸã„å ´åˆã¯ã€ä»Šã®ã‚®ãƒ«ãƒ‰ã‚’è„±é€€ã—ã¦ãã ã•ã„ã€‚";
 		return;
 	}
 	
 	my $p = '';
-	opendir my $dh, $guilddir or &error("$guilddirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, $guilddir or &error("$guilddirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $gid = readdir $dh) {
 		next if $gid =~ /\./;
 		my $gname = pack 'H*', $gid;
 		
 		if ($target eq $gname) {
-			open my $fh, "+< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh, "+< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			eval { flock $fh, 2; };
 			my $head_line = <$fh>;
 			my @lines = ($head_line);
 			while ($line = <$fh>) {
 				my($name, $position) = split /<>/, $line;
 				if ($name eq $m) {
-					$mes = "$target‚É‚Í‚·‚Å‚ÉQ‰Á\\¿‚ğo‚µ‚Ä‚¢‚Ü‚·";
+					$mes = "$targetã«ã¯ã™ã§ã«å‚åŠ ç”³\è«‹ã‚’å‡ºã—ã¦ã„ã¾ã™";
 					return;
 				}
 				push @lines, $line;
 			}
-			push @lines, "$m<>Q‰Á\\¿’†<>\n";
+			push @lines, "$m<>å‚åŠ ç”³\è«‹ä¸­<>\n";
 			seek  $fh, 0, 0;
 			truncate $fh, 0;
 			print $fh @lines;
 			close $fh;
 			
 			my($guild_master) = (split /<>/, $head_line)[0];
-			&send_letter($guild_master, "y{Q‰Á\\¿{z$gname “ü’cŠó–]Ò $m");
-			$npc_com = "$gname‚ÌƒMƒ‹ƒ}ƒX $guild_master ‚ÉQ‰Á\\¿‚Ìè†‚ğ‘—‚è‚Ü‚µ‚½BƒMƒ‹ƒ}ƒX‚©‚ç‚Ì•Ô–‚ğ‘Ò‚¿‚Ü‚µ‚å‚¤";
+			&send_letter($guild_master, "ã€ï¼‹å‚åŠ ç”³\è«‹ï¼‹ã€‘$gname å…¥å›£å¸Œæœ›è€… $m");
+			$npc_com = "$gnameã®ã‚®ãƒ«ãƒã‚¹ $guild_master ã«å‚åŠ ç”³\è«‹ã®æ‰‹ç´™ã‚’é€ã‚Šã¾ã—ãŸã€‚ã‚®ãƒ«ãƒã‚¹ã‹ã‚‰ã®è¿”äº‹ã‚’å¾…ã¡ã¾ã—ã‚‡ã†";
 			return;
 		}
-		$p .= qq|<span onclick="text_set('—‚³‚ñ‚©>$gname ')">$gname</span> / |;
+		$p .= qq|<span onclick="text_set('ï¼ ã•ã‚“ã‹>$gname ')">$gname</span> / |;
 	}
 	closedir $dh;
 	
-	$mes = "‚Ç‚ÌƒMƒ‹ƒh‚ÉQ‰Á‚µ‚Ü‚·‚©H<br />$p";
+	$mes = "ã©ã®ã‚®ãƒ«ãƒ‰ã«å‚åŠ ã—ã¾ã™ã‹ï¼Ÿ<br />$p";
 }
 
 #=================================================
-# —‚Â‚­‚é
+# ï¼ ã¤ãã‚‹
 #=================================================
 sub tsukuru {
 	my $target = shift;
 	
 	if ($m{guild}) {
-		$mes = "$m{guild}‚ÉQ‰Á‚µ‚Ä‚¢‚Ü‚·BV‹K‚ÉƒMƒ‹ƒh‚ğİ—§‚·‚éê‡‚ÍA¡‚ÌƒMƒ‹ƒh‚ğ’E‘Ş‚µ‚Ä‚­‚¾‚³‚¢B";
+		$mes = "$m{guild}ã«å‚åŠ ã—ã¦ã„ã¾ã™ã€‚æ–°è¦ã«ã‚®ãƒ«ãƒ‰ã‚’è¨­ç«‹ã™ã‚‹å ´åˆã¯ã€ä»Šã®ã‚®ãƒ«ãƒ‰ã‚’è„±é€€ã—ã¦ãã ã•ã„ã€‚";
 		return;
 	}
 	
 	my $max_guild_name_z = int($max_guild_name * 0.5);
 	unless ($target) {
-		$mes  = "İ—§‹à‚Æ‚µ‚Ä $make_money G‚©‚©‚è‚Ü‚·B<br />";
-		$mes .= "—‚Â‚­‚é>››› ›››‚É‚ÍƒMƒ‹ƒh–¼‚ğ‚¢‚ê‚Ä‚­‚¾‚³‚¢(Å‘å‘SŠp$max_guild_name_z•¶š[”¼Šp$max_guild_name•¶š]‚Ü‚Å)";
+		$mes  = "è¨­ç«‹é‡‘ã¨ã—ã¦ $make_money Gã‹ã‹ã‚Šã¾ã™ã€‚<br />";
+		$mes .= "ï¼ ã¤ãã‚‹>â—‹â—‹â—‹ â—‹â—‹â—‹ã«ã¯ã‚®ãƒ«ãƒ‰åã‚’ã„ã‚Œã¦ãã ã•ã„(æœ€å¤§å…¨è§’$max_guild_name_zæ–‡å­—[åŠè§’$max_guild_nameæ–‡å­—]ã¾ã§)";
 		return;
 	}
-	$mes = "ƒMƒ‹ƒh–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"								if $target =~ /@|\s/;
-	$mes = "ƒMƒ‹ƒh–¼‚É•s³‚È•¶š( ,;\"\'&<>\@ )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"				if $target =~ /[,;\"\'&<>\@]/;
-	$mes = "ƒMƒ‹ƒh–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"							if $target =~ /—/;
-	$mes = "ƒMƒ‹ƒh–¼‚Í$max_guild_name_z•¶š[”¼Šp$max_guild_name•¶š]‚Ü‚Å‚Å‚·"	if length $target > $max_guild_name;
-	$mes = "ƒMƒ‹ƒhİ—§‹à‚Ì $make_money G‚ª‘«‚è‚Ü‚¹‚ñ"							if $make_money > $m{money};
+	$mes = "ã‚®ãƒ«ãƒ‰åã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"								if $target =~ /ã€€|\s/;
+	$mes = "ã‚®ãƒ«ãƒ‰åã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<>\@ )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"				if $target =~ /[,;\"\'&<>\@]/;
+	$mes = "ã‚®ãƒ«ãƒ‰åã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"							if $target =~ /ï¼ /;
+	$mes = "ã‚®ãƒ«ãƒ‰åã¯$max_guild_name_zæ–‡å­—[åŠè§’$max_guild_nameæ–‡å­—]ã¾ã§ã§ã™"	if length $target > $max_guild_name;
+	$mes = "ã‚®ãƒ«ãƒ‰è¨­ç«‹é‡‘ã® $make_money GãŒè¶³ã‚Šã¾ã›ã‚“"							if $make_money > $m{money};
 	return if $mes;
 	
 	my $gid = unpack 'H*', $target;
 	if (-d "$guilddir/$gid") {
-		$mes = "‚·‚Å‚É“¯‚¶–¼‘O‚ÌƒMƒ‹ƒh‚ª‘¶İ‚µ‚Ü‚·";
+		$mes = "ã™ã§ã«åŒã˜åå‰ã®ã‚®ãƒ«ãƒ‰ãŒå­˜åœ¨ã—ã¾ã™";
 		return;
 	}
 	
-	# V‹KƒMƒ‹ƒhì¬
-	mkdir "$guilddir/$gid", $mkdir or &error("$guilddir/$gidƒfƒBƒŒƒNƒgƒŠ‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
+	# æ–°è¦ã‚®ãƒ«ãƒ‰ä½œæˆ
+	mkdir "$guilddir/$gid", $mkdir or &error("$guilddir/$gidãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒä½œæˆã§ãã¾ã›ã‚“");
 	
 	my %guild_dirs = (
-		log			=> "$time<>$date<>$npc_name<><>$npc_color<>ƒMƒ‹ƒh‚Ìİ—§‚ğ‹–‰Â‚µ‚Ü‚·—ƒMƒ‹ƒh>$target<><>\n",
+		log			=> "$time<>$date<>$npc_name<><>$npc_color<>ã‚®ãƒ«ãƒ‰ã®è¨­ç«‹ã‚’è¨±å¯ã—ã¾ã™ï¼ ã‚®ãƒ«ãƒ‰>$target<><>\n",
 #		log_member	=> "$time<>1<>$target<>0.0.0.0<>$m{color}<>\n",
 		log_member	=> "",
-		member		=> "$m<>ƒMƒ‹ƒ}ƒX<>\n",
-		data		=> "$target<>$m<>$default_color<><>$dateİ—§<>0<>"
+		member		=> "$m<>ã‚®ãƒ«ãƒã‚¹<>\n",
+		data		=> "$target<>$m<>$default_color<><>$dateè¨­ç«‹<>0<>"
 	);
 	for my $k (keys %guild_dirs) {
-		open my $fh, "> $guilddir/$gid/$k.cgi" or &error("$guilddir/$gid/$k.cgiƒtƒ@ƒCƒ‹‚ªì‚ê‚Ü‚¹‚ñ");
+		open my $fh, "> $guilddir/$gid/$k.cgi" or &error("$guilddir/$gid/$k.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œã‚Œã¾ã›ã‚“");
 		print $fh $guild_dirs{$k};
 		close $fh;
 		chmod $chmod, "$guilddir/$gid/$k.cgi";
 	}
 	
-	# ‰æ‘œ‚ğƒRƒs[
+	# ç”»åƒã‚’ã‚³ãƒ”ãƒ¼
 	&copy($default_mark, "$guilddir/$gid/mark.gif");
 	$m{lib}    = 'guild';
 	$m{guild}  = $target;
 	$m{money} -= $make_money;
 	
-	$npc_com = qq|<span class="st_up">—VƒMƒ‹ƒh <b>$target</b>‚Ìİ—§‚ğ‹–‰Â‚µ‚Ü‚·I</span>|;
-	&write_memory(qq|<span class="st_up">VƒMƒ‹ƒh<b>$target</b>‚ğİ—§I</span>|);
-	&write_news(qq|<span class="st_up">$m‚ªV‚µ‚­<b>$target</b>ƒMƒ‹ƒh‚ğİ—§‚µ‚Ü‚µ‚½I</span>|);
+	$npc_com = qq|<span class="st_up">ï¼ æ–°ã‚®ãƒ«ãƒ‰ <b>$target</b>ã®è¨­ç«‹ã‚’è¨±å¯ã—ã¾ã™ï¼</span>|;
+	&write_memory(qq|<span class="st_up">æ–°ã‚®ãƒ«ãƒ‰<b>$target</b>ã‚’è¨­ç«‹ï¼</span>|);
+	&write_news(qq|<span class="st_up">$mãŒæ–°ã—ã<b>$target</b>ã‚®ãƒ«ãƒ‰ã‚’è¨­ç«‹ã—ã¾ã—ãŸï¼</span>|);
 	
 	&check_dead_guild;
 }
 #=================================================
-# —‚©‚¢‚ß‚¢
+# ï¼ ã‹ã„ã‚ã„
 #=================================================
 sub kaimei {
 	my $target = shift;
 	
 	unless ($m{guild}) {
-		$mes = "ƒMƒ‹ƒh‚ÉŠ‘®‚µ‚Ä‚¢‚Ü‚¹‚ñ";
+		$mes = "ã‚®ãƒ«ãƒ‰ã«æ‰€å±ã—ã¦ã„ã¾ã›ã‚“";
 		return;
 	}
 
 	my $old_gid = unpack 'H*', $m{guild};
 	unless (-d "$guilddir/$old_gid") {
-		$mes = "$m{guild}ƒMƒ‹ƒh‚ª‘¶İ‚µ‚Ü‚¹‚ñ";
+		$mes = "$m{guild}ã‚®ãƒ«ãƒ‰ãŒå­˜åœ¨ã—ã¾ã›ã‚“";
 		$m{guild} = "";
 		return;
 	}
 	unless (&is_guild_master($old_gid)) {
-		$mes = "ƒMƒ‹ƒh–¼‚ğ•ÏX‚Å‚«‚é‚Ì‚ÍAƒMƒ‹ƒhƒ}ƒXƒ^[‚¾‚¯‚Å‚·";
+		$mes = "ã‚®ãƒ«ãƒ‰åã‚’å¤‰æ›´ã§ãã‚‹ã®ã¯ã€ã‚®ãƒ«ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã ã‘ã§ã™";
 		return;
 	}
 
-	$mes = "ƒMƒ‹ƒh–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"					if $target =~ /@|\s/;
-	$mes = "ƒMƒ‹ƒh–¼‚É•s³‚È•¶š( ,;\"\'&<>\@ )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"	if $target =~ /[,;\"\'&<>\@]/;
-	$mes = "ƒMƒ‹ƒh–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"				if $target =~ /—/;
-	$mes = "ƒMƒ‹ƒh–¼‚Í”¼Šp$max_guild_name•¶š‚Ü‚Å‚Å‚·"				if length $target > $max_guild_name;
-	$mes = "ƒMƒ‹ƒh–¼‚ğ•ÏX‚·‚é‚Ì‚É <b>$make_money</b> G•K—v‚Å‚·"	if $make_money > $m{money};
+	$mes = "ã‚®ãƒ«ãƒ‰åã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"					if $target =~ /ã€€|\s/;
+	$mes = "ã‚®ãƒ«ãƒ‰åã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<>\@ )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"	if $target =~ /[,;\"\'&<>\@]/;
+	$mes = "ã‚®ãƒ«ãƒ‰åã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"				if $target =~ /ï¼ /;
+	$mes = "ã‚®ãƒ«ãƒ‰åã¯åŠè§’$max_guild_nameæ–‡å­—ã¾ã§ã§ã™"				if length $target > $max_guild_name;
+	$mes = "ã‚®ãƒ«ãƒ‰åã‚’å¤‰æ›´ã™ã‚‹ã®ã« <b>$make_money</b> Gå¿…è¦ã§ã™"	if $make_money > $m{money};
 	return if $mes;
 	
 	my $gid = unpack 'H*', $target;
 	if (-d "$guilddir/$gid") {
-		$mes = "‚·‚Å‚É“¯‚¶–¼‘O‚ÌƒMƒ‹ƒh‚ª‘¶İ‚µ‚Ü‚·";
+		$mes = "ã™ã§ã«åŒã˜åå‰ã®ã‚®ãƒ«ãƒ‰ãŒå­˜åœ¨ã—ã¾ã™";
 		return;
 	}
 	
-	# V‹KƒMƒ‹ƒhì¬{ƒf[ƒ^ƒRƒs[
-	mkdir "$guilddir/$gid", $mkdir or &error("$guilddir/$gidƒfƒBƒŒƒNƒgƒŠ‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
-	opendir my $dh, "$guilddir/$old_gid" or &error("$guilddir/$old_gidƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	# æ–°è¦ã‚®ãƒ«ãƒ‰ä½œæˆï¼‹ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ”ãƒ¼
+	mkdir "$guilddir/$gid", $mkdir or &error("$guilddir/$gidãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒä½œæˆã§ãã¾ã›ã‚“");
+	opendir my $dh, "$guilddir/$old_gid" or &error("$guilddir/$old_gidãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $file_name = readdir $dh) {
 		next if $file =~ /^\./;
 		&copy("$guilddir/$old_gid/$file", "$guildir/$gid/$file");
 	}
 	closedir $dh;
 	
-	# Š‘®‚µ‚Ä‚¢‚éƒƒ“ƒo[‚ÌƒMƒ‹ƒh–¼‚ğ•ÏX
-	open my $fh, "< $guilddir/$dir_name/member.cgi" or &error("$guilddir/$dir_name/member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	# æ‰€å±ã—ã¦ã„ã‚‹ãƒ¡ãƒ³ãƒãƒ¼ã®ã‚®ãƒ«ãƒ‰åã‚’å¤‰æ›´
+	open my $fh, "< $guilddir/$dir_name/member.cgi" or &error("$guilddir/$dir_name/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($name, $position) = split /<>/, $line;
-		next if $position eq 'Q‰Á\¿’†';
+		next if $position eq 'å‚åŠ ç”³è«‹ä¸­';
 		&regist_you_data($name, 'guild', $target);
 	}
 	close $fh;
 	
-	# ‹ŒƒMƒ‹ƒh‚Ìíœ
+	# æ—§ã‚®ãƒ«ãƒ‰ã®å‰Šé™¤
 	&delete_directory("$guilddir/$old_gid");
 	
-	$npc_com = qq|<span class="st_up">—ƒMƒ‹ƒh‰ü–¼<b>$m{guild}</b>‚ ‚ç‚½‚ß<b>$target</b>ƒMƒ‹ƒh‚É‰ü–¼‚µ‚Ü‚·</span>|;
-	&write_memory(qq|<span class="st_up">ƒMƒ‹ƒh–¼‚ğ<b>$target</b>‚É•ÏX</span>|);
-	&write_news(qq|<span class="st_up">$m‚ª $m{guild} ƒMƒ‹ƒh‚ğ <b>$target</b> ƒMƒ‹ƒh‚É•ÏX‚µ‚Ü‚µ‚½I</span>|);
+	$npc_com = qq|<span class="st_up">ï¼ ã‚®ãƒ«ãƒ‰æ”¹å<b>$m{guild}</b>ã‚ã‚‰ãŸã‚<b>$target</b>ã‚®ãƒ«ãƒ‰ã«æ”¹åã—ã¾ã™</span>|;
+	&write_memory(qq|<span class="st_up">ã‚®ãƒ«ãƒ‰åã‚’<b>$target</b>ã«å¤‰æ›´</span>|);
+	&write_news(qq|<span class="st_up">$mãŒ $m{guild} ã‚®ãƒ«ãƒ‰ã‚’ <b>$target</b> ã‚®ãƒ«ãƒ‰ã«å¤‰æ›´ã—ã¾ã—ãŸï¼</span>|);
 
 	$m{lib}    = 'guild';
 	$m{guild}  = $target;
@@ -349,54 +349,54 @@ sub kaimei {
 
 
 #=================================================
-# —‚¾‚Á‚½‚¢
+# ï¼ ã ã£ãŸã„
 #=================================================
 sub dattai {
 	unless ($m{guild}) {
-		$mes = "ƒMƒ‹ƒh‚ÉŠ‘®‚µ‚Ä‚¢‚Ü‚¹‚ñ";
+		$mes = "ã‚®ãƒ«ãƒ‰ã«æ‰€å±ã—ã¦ã„ã¾ã›ã‚“";
 		return;
 	}
 
 	&delete_guild_member($m{guild}, $m);
-	&write_memory("$m{guild}‚©‚ç’E‘Ş‚·‚é");
-	$npc_com .= "$m{guild}‚©‚ç’E‘Ş‚µ‚Ü‚µ‚½";
+	&write_memory("$m{guild}ã‹ã‚‰è„±é€€ã™ã‚‹");
+	$npc_com .= "$m{guild}ã‹ã‚‰è„±é€€ã—ã¾ã—ãŸ";
 	$m{guild} = '';
 }
 
 #=================================================
-# —‚©‚¢‚³‚ñ
+# ï¼ ã‹ã„ã•ã‚“
 #=================================================
 sub kaisan {
 	unless ($m{guild}) {
-		$mes = "ƒMƒ‹ƒh‚ÉŠ‘®‚µ‚Ä‚¢‚Ü‚¹‚ñ";
+		$mes = "ã‚®ãƒ«ãƒ‰ã«æ‰€å±ã—ã¦ã„ã¾ã›ã‚“";
 		return;
 	}
 	
 	my $gid = unpack 'H*', $m{guild};
 	unless (-d "$guilddir/$gid") {
-		$mes = "$m{guild}ƒMƒ‹ƒh‚ª‘¶İ‚µ‚Ü‚¹‚ñ";
+		$mes = "$m{guild}ã‚®ãƒ«ãƒ‰ãŒå­˜åœ¨ã—ã¾ã›ã‚“";
 		$m{guild} = "";
 		return;
 	}
 	
 	if (&is_guild_master($gid)) {
 		&delete_directory("$guilddir/$gid");
-		&write_memory("$m{guild}‚ğ‰ğU‚³‚¹‚é");
-		$npc_com  = "$m{guild}‚ğ‰ğU‚³‚¹‚Ü‚µ‚½";
-		&write_news(qq|<span class="die">$m{guild} ƒMƒ‹ƒh‚ª‰ğU‚µ‚Ü‚µ‚½</span>|);
+		&write_memory("$m{guild}ã‚’è§£æ•£ã•ã›ã‚‹");
+		$npc_com  = "$m{guild}ã‚’è§£æ•£ã•ã›ã¾ã—ãŸ";
+		&write_news(qq|<span class="die">$m{guild} ã‚®ãƒ«ãƒ‰ãŒè§£æ•£ã—ã¾ã—ãŸ</span>|);
 		$m{guild} = "";
 	}
 	else {
-		$mes = "‰ğU‚³‚¹‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒMƒ‹ƒ}ƒX‚¾‚¯‚Å‚·";
+		$mes = "è§£æ•£ã•ã›ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ã‚®ãƒ«ãƒã‚¹ã ã‘ã§ã™";
 	}
 }
 
 # ------------------
-# ƒMƒ‹ƒhƒ}ƒXƒ^[‚©‚Ç‚¤‚©
+# ã‚®ãƒ«ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã‹ã©ã†ã‹
 sub is_guild_master {
 	my $gid = shift;
 
-	open my $fh, "< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $line = <$fh>;
 	close $fh;
 	my($guild_master) = (split /<>/, $line)[0];
@@ -406,20 +406,20 @@ sub is_guild_master {
 
 
 # ------------------
-# ”“úˆÈã’N‚ào“ü‚è‚µ‚Ä‚¢‚È‚¢ƒMƒ‹ƒh‚Ì©“®íœ
+# æ•°æ—¥ä»¥ä¸Šèª°ã‚‚å‡ºå…¥ã‚Šã—ã¦ã„ãªã„ã‚®ãƒ«ãƒ‰ã®è‡ªå‹•å‰Šé™¤
 sub check_dead_guild {
-	opendir my $dh, $guilddir or &error("$guilddirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, $guilddir or &error("$guilddirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $gid = readdir $dh) {
 		next if $gid =~ /\./;
 		my($mtime) = (stat("$guilddir/$gid/log_member.cgi"))[9];
 		if ($time > $mtime + $auto_delete_guild_day * 3600 * 24) {
 			&delete_directory("$guilddir/$gid");
 			my $gname = pack 'H*', $gid;
-			&write_news(qq|<span class="die">$gname ƒMƒ‹ƒh‚ª‰ğU‚µ‚Ü‚µ‚½</span>|);
+			&write_news(qq|<span class="die">$gname ã‚®ãƒ«ãƒ‰ãŒè§£æ•£ã—ã¾ã—ãŸ</span>|);
 		}
 	}
 	closedir $dh;
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

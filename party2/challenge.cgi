@@ -3,7 +3,7 @@ require 'config.cgi';
 require '_side_menu.cgi';
 require './lib/_data.cgi';
 #================================================
-# ƒ`ƒƒƒŒƒ“ƒW‹L˜^•\¦ Created by Merino
+# ãƒãƒ£ãƒ¬ãƒ³ã‚¸è¨˜éŒ²è¡¨ç¤º Created by Merino
 #================================================
 &decode;
 &header;
@@ -19,12 +19,12 @@ sub run {
 		$contents .= $i eq $in{no} ? qq|$challenges[$i] / | : qq|<a href="challenge.cgi?no=$i">$challenges[$i]</a> / |;
 	}
 
-	open my $fh, "< $logdir/challenge$in{no}.cgi" or &error("$logdir/challenge$in{no}.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/challenge$in{no}.cgi" or &error("$logdir/challenge$in{no}.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $head_line = <$fh>;
 	my($round, $ldate, $p_name, $color) = split /<>/, $head_line;
 
-	$contents .= qq|</p><h2>y$challenges[$in{no}]z$p_name Lv.$round ($ldate)</h2>|;
-	$contents .= qq|<table class="table1"><tr><th>–¼‘O</th><th>E‹Æ</th><th>ƒXƒe[ƒ^ƒX</th></tr>|;
+	$contents .= qq|</p><h2>ã€$challenges[$in{no}]ã€‘$p_name Lv.$round ($ldate)</h2>|;
+	$contents .= qq|<table class="table1"><tr><th>åå‰</th><th>è·æ¥­</th><th>ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹</th></tr>|;
 	
 	while (my $line = <$fh>) {
 		my($name, $icon, $job, $old_job, $hp, $mp, $at, $df, $ag) = split /<>/, $line;

@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 30;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[0,2,0],
 	[1,X,1],
@@ -23,34 +23,34 @@ $max_round = 30;
 	[1,S,1],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{X} = '' if $event !~ /X/;
-$map_imgs{2} = '•ó' if $event !~ /2/;
-$map_imgs{3} = '•ó' if $event !~ /3/;
-sub event_X { return if $event =~ /X/; $event .= 'X'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{X} = 'â—' if $event !~ /X/;
+$map_imgs{2} = 'å®' if $event !~ /2/;
+$map_imgs{3} = 'å®' if $event !~ /3/;
+sub event_X { return if $event =~ /X/; $event .= 'X'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 
-sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">©Yesy¬‚³‚¢‚æ‚è‘å‚«‚¢•û‚ª‚¢‚¢zNo¨</span>|; }
+sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">â†Yesã€å°ã•ã„ã‚ˆã‚Šå¤§ãã„æ–¹ãŒã„ã„ã€‘Noâ†’</span>|; }
 sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(3)<1) { &get_monster_data1; &_add_monster; } else { &get_monster_data2; &_add_monster; };  }
 sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(7)<1) { &get_monster_data3; &_add_monster; } else { &get_monster_data4; &_add_monster; };  }
 
-sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">©Yesy–½‚æ‚è‚¨‹à‚ª‘å–zNo¨</span>|; }
-sub event_C { return if $event =~ /C|D/; $event .= 'C'; if (rand(2)<1) { &_trap_d(rand(200));       } else { my $v = int(rand(2000)); $m{money}+=$v; $npc_com.="$m‚Í ${v}G E‚Á‚½I"; };  }
-sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(2)<1) {  &_heals(rand(100), '–³'); } else { my $v = int(rand(2000)); $m{money}-=$v; $npc_com.="$m‚Í ${v}G —‚Æ‚µ‚Ä‚µ‚Ü‚Á‚½I"; $m{money}-=0 if $m{money} < 0; };  }
+sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">â†Yesã€å‘½ã‚ˆã‚ŠãŠé‡‘ãŒå¤§äº‹ã€‘Noâ†’</span>|; }
+sub event_C { return if $event =~ /C|D/; $event .= 'C'; if (rand(2)<1) { &_trap_d(rand(200));       } else { my $v = int(rand(2000)); $m{money}+=$v; $npc_com.="$mã¯ ${v}G æ‹¾ã£ãŸï¼"; };  }
+sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(2)<1) {  &_heals(rand(100), 'ç„¡'); } else { my $v = int(rand(2000)); $m{money}-=$v; $npc_com.="$mã¯ ${v}G è½ã¨ã—ã¦ã—ã¾ã£ãŸï¼"; $m{money}-=0 if $m{money} < 0; };  }
 
-sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">©Yesyƒƒi‚Í‘åŒ™‚¢‚¾zNo¨</span>|; }
+sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">â†Yesã€ãƒ¯ãƒŠã¯å¤§å«Œã„ã ã€‘Noâ†’</span>|; }
 sub event_E { return if $event =~ /E|F/; $event .= 'E'; if (rand(3)<1) { &add_boss; } else { &_add_monster; }; }
-sub event_F { return if $event =~ /E|F/; $event .= 'F'; if (rand(3)<1) { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½I"; &_trap_d(120); } else { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½Ic‚µ‚©‚µA$m‚½‚¿‚Í‚ ‚ç‚©‚¶‚ß—\\‘z‚µ‚Ä‚¢‚½‚Ì‚Å‚©‚í‚·‚±‚Æ‚ª‚Å‚«‚½I"; };		 }
+sub event_F { return if $event =~ /E|F/; $event .= 'F'; if (rand(3)<1) { $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>ã‚¬ãƒ©ã‚¬ãƒ©ã‚¬ãƒ©ãƒƒï¼é ­ä¸Šã‹ã‚‰å¤§ããªå²©ãŒè½ã¡ã¦ããŸï¼"; &_trap_d(120); } else { $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>ã‚¬ãƒ©ã‚¬ãƒ©ã‚¬ãƒ©ãƒƒï¼é ­ä¸Šã‹ã‚‰å¤§ããªå²©ãŒè½ã¡ã¦ããŸï¼â€¦ã—ã‹ã—ã€$mãŸã¡ã¯ã‚ã‚‰ã‹ã˜ã‚äºˆ\æƒ³ã—ã¦ã„ãŸã®ã§ã‹ã‚ã™ã“ã¨ãŒã§ããŸï¼"; };		 }
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 require "$mapdir/6/_data.cgi";
 
 sub get_monster_data1 {
 	@monsters = (
 		{
-			name		=> 'ÒÀÙ½×²Ñ',
+			name		=> 'ãƒ¡ã‚¿ãƒ«ã‚¹ãƒ©ã‚¤ãƒ ',
 			hp			=> 8,
 			at			=> 70,
 			df			=> 2500,
@@ -58,19 +58,19 @@ sub get_monster_data1 {
 			get_exp		=> 250,
 			get_money	=> 10,
 			icon		=> 'mon/004.gif',
-			job			=> 39, # ƒXƒ‰ƒCƒ€ƒMƒ‰
+			job			=> 39, # ã‚¹ãƒ©ã‚¤ãƒ ã‚®ãƒ©
 			sp			=> 3,
-			old_job		=> 99, # “¦‚°‚é
+			old_job		=> 99, # é€ƒã’ã‚‹
 			old_sp		=> 0,
 			mp			=> 31,
-			tmp			=> '–‚–³Œø',
+			tmp			=> 'é­”ç„¡åŠ¹',
 		},
 	);
 }
 sub get_monster_data2 {
 	@monsters = (
 		{
-			name		=> '½×²Ñ',
+			name		=> 'ã‚¹ãƒ©ã‚¤ãƒ ',
 			hp			=> 500,
 			at			=> 200,
 			df			=> 100,
@@ -78,7 +78,7 @@ sub get_monster_data2 {
 			get_exp		=> 50,
 			get_money	=> 30,
 			icon		=> 'mon/002.gif',
-			job			=> 40, # Ê¸ŞÚÒÀÙ
+			job			=> 40, # ãƒã‚°ãƒ¬ãƒ¡ã‚¿ãƒ«
 			sp			=> 999,
 			old_sp		=> 20,
 			mp			=> 149,
@@ -88,7 +88,7 @@ sub get_monster_data2 {
 sub get_monster_data3 {
 	@monsters = (
 		{
-			name		=> 'ÒÀÙ·İ¸Ş',
+			name		=> 'ãƒ¡ã‚¿ãƒ«ã‚­ãƒ³ã‚°',
 			hp			=> 25,
 			at			=> 200,
 			df			=> 6000,
@@ -96,19 +96,19 @@ sub get_monster_data3 {
 			get_exp		=> 4000,
 			get_money	=> 100,
 			icon		=> 'mon/517.gif',
-			job			=> 40, # Ê¸ŞÚÒÀÙ
+			job			=> 40, # ãƒã‚°ãƒ¬ãƒ¡ã‚¿ãƒ«
 			sp			=> 999,
-			old_job		=> 99, # “¦‚°‚é
+			old_job		=> 99, # é€ƒã’ã‚‹
 			old_sp		=> 0,
 			mp			=> 299,
-			tmp			=> '–‚–³Œø',
+			tmp			=> 'é­”ç„¡åŠ¹',
 		},
 	);
 }
 sub get_monster_data4 {
 	@monsters = (
 		{
-			name		=> '·İ¸Ş½×²Ñ',
+			name		=> 'ã‚­ãƒ³ã‚°ã‚¹ãƒ©ã‚¤ãƒ ',
 			hp			=> 2000,
 			at			=> 250,
 			df			=> 150,
@@ -117,11 +117,11 @@ sub get_monster_data4 {
 			get_money	=> 200,
 			icon		=> 'mon/516.gif',
 			old_sp		=> 20,
-			hit			=> 150, # ’·Šúí—p–½’†—¦150%
-			job			=> 21, # ‹¶ím‚½‚¢‚ ‚½‚è
+			hit			=> 150, # é•·æœŸæˆ¦ç”¨å‘½ä¸­ç‡150%
+			job			=> 21, # ç‹‚æˆ¦å£«ãŸã„ã‚ãŸã‚Š
 			sp			=> 5,
 			mp			=> 400,
-			tmp			=> 'U–³Œø',
+			tmp			=> 'æ”»ç„¡åŠ¹',
 		},
 	);
 }
@@ -129,4 +129,4 @@ sub get_monster_data4 {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

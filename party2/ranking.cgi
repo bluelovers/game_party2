@@ -2,17 +2,17 @@
 require 'config.cgi';
 require '_side_menu.cgi';
 #================================================
-# ‰¤ÒE‰p—Y Created by Merino
+# ç‹è€…ãƒ»è‹±é›„ Created by Merino
 #================================================
 my @files = (
-#	[ 'ƒ^ƒCƒgƒ‹', 'ƒƒOƒtƒ@ƒCƒ‹–¼'],
-	['‰¤Òƒ‰ƒ“ƒLƒ“ƒO',	'kill_p'],
-	['‰p—Yƒ‰ƒ“ƒLƒ“ƒO',	'kill_m'],
-	['–‚‰¤ƒ‰ƒ“ƒLƒ“ƒO',	'mao_c'],
-	['—EÒƒ‰ƒ“ƒLƒ“ƒO',	'hero_c'],
-	['Ÿ•‰tƒ‰ƒ“ƒLƒ“ƒO','cas_c'],
-	['è•‚¯ƒ‰ƒ“ƒLƒ“ƒO','help_c'],
-	['˜B‹àƒ‰ƒ“ƒLƒ“ƒO',	'alc_c'],
+#	[ 'ã‚¿ã‚¤ãƒˆãƒ«', 'ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«å'],
+	['ç‹è€…ãƒ©ãƒ³ã‚­ãƒ³ã‚°',	'kill_p'],
+	['è‹±é›„ãƒ©ãƒ³ã‚­ãƒ³ã‚°',	'kill_m'],
+	['é­”ç‹ãƒ©ãƒ³ã‚­ãƒ³ã‚°',	'mao_c'],
+	['å‹‡è€…ãƒ©ãƒ³ã‚­ãƒ³ã‚°',	'hero_c'],
+	['å‹è² å¸«ãƒ©ãƒ³ã‚­ãƒ³ã‚°','cas_c'],
+	['æ‰‹åŠ©ã‘ãƒ©ãƒ³ã‚­ãƒ³ã‚°','help_c'],
+	['éŒ¬é‡‘ãƒ©ãƒ³ã‚­ãƒ³ã‚°',	'alc_c'],
 );
 
 #================================================
@@ -33,13 +33,13 @@ sub run {
 	$in{no} ||= $nos[0] || 0;
 	$in{no} = 0 if $in{no} >= @files;
 
-	$contents .= qq!</p><h2>$files[$in{no}][0]</h2><table class="table1"><tr><th>ƒ‰ƒ“ƒN</th><th>ƒ|ƒCƒ“ƒg</th><th>–¼‘O—ƒMƒ‹ƒh</th><th>ƒRƒƒ“ƒg</th></tr>!;
+	$contents .= qq!</p><h2>$files[$in{no}][0]</h2><table class="table1"><tr><th>ãƒ©ãƒ³ã‚¯</th><th>ãƒã‚¤ãƒ³ãƒˆ</th><th>åå‰ï¼ ã‚®ãƒ«ãƒ‰</th><th>ã‚³ãƒ¡ãƒ³ãƒˆ</th></tr>!;
 	my $count = 1;
-	open my $fh, "< $logdir/$files[$in{no}][1].cgi" or &error("$logdir/$files[$in{no}][1]ƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/$files[$in{no}][1].cgi" or &error("$logdir/$files[$in{no}][1]ãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($name, $guild, $color, $icon, $message, $point) = split /<>/, $line;
-		$name .= "—$guild" if $guild;
-		$contents .= qq|<tr><td align="center">$countˆÊ</td><td align="center"><b>$point</b></td><td style="color: $color;"><img src="$icondir/$icon">$name</td><td>$message</td></tr>\n|;
+		$name .= "ï¼ $guild" if $guild;
+		$contents .= qq|<tr><td align="center">$countä½</td><td align="center"><b>$point</b></td><td style="color: $color;"><img src="$icondir/$icon">$name</td><td>$message</td></tr>\n|;
 		++$count;
 	}
 	close $fh;

@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 30;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[2,3,4],
 	[1,0,1],
@@ -27,21 +27,21 @@ $max_round = 30;
 	[1,S,1],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{2} = '•ó' if $event !~ /2/;
-$map_imgs{3} = '•ó' if $event !~ /3/;
-$map_imgs{4} = '•ó' if $event !~ /4/;
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{2} = 'å®' if $event !~ /2/;
+$map_imgs{3} = 'å®' if $event !~ /3/;
+$map_imgs{4} = 'å®' if $event !~ /4/;
 sub event_2 { return if $event =~ /2/; $event .= '2'; my $_s = int(rand(9)+13); require "$stagedir/$_s.cgi"; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; my $_s = int(rand(9)+13); require "$stagedir/$_s.cgi"; &_add_treasure; }
 sub event_4 { return if $event =~ /4/; $event .= '4'; my $_s = int(rand(9)+13); require "$stagedir/$_s.cgi"; &_add_treasure; }
 
-$map_imgs{A} = '' if $event !~ /A/;
-$map_imgs{B} = '' if $event !~ /B/;
-$map_imgs{C} = '' if $event !~ /C/;
-$map_imgs{D} = '' if $event !~ /D/;
-$map_imgs{E} = '' if $event !~ /E/;
-$map_imgs{F} = '' if $event !~ /F/;#17
-sub event_A { return if $event =~ /A/; $event .= 'A';  $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &get_boss_data; &add_boss; }
+$map_imgs{A} = 'â—' if $event !~ /A/;
+$map_imgs{B} = 'â—' if $event !~ /B/;
+$map_imgs{C} = 'â—' if $event !~ /C/;
+$map_imgs{D} = 'â—' if $event !~ /D/;
+$map_imgs{E} = 'â—' if $event !~ /E/;
+$map_imgs{F} = 'â—' if $event !~ /F/;#17
+sub event_A { return if $event =~ /A/; $event .= 'A';  $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &get_boss_data; &add_boss; }
 sub event_B { return if $event =~ /B/; $event .= 'B'; require "$stagedir/20.cgi"; &add_boss; }
 sub event_C { return if $event =~ /C/; $event .= 'C'; require "$stagedir/17.cgi"; &add_boss; }
 sub event_D { return if $event =~ /D/; $event .= 'D'; require "$stagedir/11.cgi"; &add_boss; }
@@ -49,10 +49,10 @@ sub event_E { return if $event =~ /E/; $event .= 'E'; require "$stagedir/9.cgi";
 sub event_F { return if $event =~ /F/; $event .= 'F'; require "$stagedir/8.cgi"; &add_boss; }
 sub event_H {
 	return if $event =~ /H/;
-	$npc_com.="ƒe[ƒuƒ‹‚Ìã‚É‰½‚â‚ç‚ ‚â‚µ‚°‚È–ò‚â‚“x‚ÈˆãŠw‘‚ªU‚ç‚Î‚Á‚Ä‚¢‚éc";
+	$npc_com.="ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä¸Šã«ä½•ã‚„ã‚‰ã‚ã‚„ã—ã’ãªè–¬ã‚„é«˜åº¦ãªåŒ»å­¦æ›¸ãŒæ•£ã‚‰ã°ã£ã¦ã„ã‚‹â€¦";
 	if ($m{job} eq '43') {
 		$event .= 'H';
-		$npc_com.="$m‚Í–{‚É‘‚¢‚Ä‚ ‚é‚±‚Æ‚ğ‰ğ“Ç‚µ‰ñ•œ–ò‚ğì‚èo‚µ‚½I‘Sˆõ‚Ì‚g‚o‚Æ‚l‚o‚ª‰ñ•œ‚µ‚½I";
+		$npc_com.="$mã¯æœ¬ã«æ›¸ã„ã¦ã‚ã‚‹ã“ã¨ã‚’è§£èª­ã—å›å¾©è–¬ã‚’ä½œã‚Šå‡ºã—ãŸï¼å…¨å“¡ã®ï¼¨ï¼°ã¨ï¼­ï¼°ãŒå›å¾©ã—ãŸï¼";
 		for my $y (@partys) {
 			$ms{$y}{hp} = $ms{$y}{mhp};
 			$ms{$y}{mp} = $ms{$y}{mmp};
@@ -64,7 +64,7 @@ sub event_H {
 sub get_boss_data {
 	@bosses= (
 		{
-			name		=> '€‚Ì‰ŠA',
+			name		=> 'æ­»ã®ç‚A',
 			hp			=> 6666,
 			at			=> 666,
 			df			=> 222,
@@ -73,15 +73,15 @@ sub get_boss_data {
 			get_money	=> 222,
 			icon		=> 'mon/695.gif',
 			
-			job			=> 93, # ‘¦€
+			job			=> 93, # å³æ­»
 			sp			=> 999,
-			old_job		=> 41, # ÄŞ×ºŞİ
+			old_job		=> 41, # ãƒ‰ãƒ©ã‚´ãƒ³
 			old_sp		=> 999,
 			mp			=> 999,
-			tmp			=> '–‚‹zû',
+			tmp			=> 'é­”å¸å',
 		},
 		{
-			name		=> 'Ù¼Ì§°',
+			name		=> 'ãƒ«ã‚·ãƒ•ã‚¡ãƒ¼',
 			hp			=> 15000,
 			at			=> 650,
 			df			=> 200,
@@ -90,15 +90,15 @@ sub get_boss_data {
 			get_money	=> 500,
 			icon		=> 'mon/704.gif',
 			
-			hit			=> 400, # ’·Šúí—p–½’†—¦
-			job			=> 98, # ’´–‚–@Œ^
+			hit			=> 400, # é•·æœŸæˆ¦ç”¨å‘½ä¸­ç‡
+			job			=> 98, # è¶…é­”æ³•å‹
 			sp			=> 999,
 			mmp			=> 9999999,
 			mp			=> 99999,
 			ten			=> 8,
 		},
 		{
-			name		=> '€‚Ì‰ŠB',
+			name		=> 'æ­»ã®ç‚B',
 			hp			=> 6666,
 			at			=> 666,
 			df			=> 222,
@@ -107,21 +107,21 @@ sub get_boss_data {
 			get_money	=> 222,
 			icon		=> 'mon/695.gif',
 			
-			job			=> 35, # –‚‰¤
+			job			=> 35, # é­”ç‹
 			sp			=> 999,
-			old_job		=> 51, # Œõ–‚“¹m
+			old_job		=> 51, # å…‰é­”é“å£«
 			old_sp		=> 999,
 			mp			=> 999,
-			tmp			=> '–‚‹zû',
+			tmp			=> 'é­”å¸å',
 		},
 	);
 }
 
-# ƒ‚ƒ“ƒXƒ^[
+# ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 @appears = ();
 @monsters = (
 	{
-		name		=> '”š’e‰¤',
+		name		=> 'çˆ†å¼¾ç‹',
 		hp			=> 300,
 		at			=> 500,
 		df			=> 400,
@@ -130,12 +130,12 @@ sub get_boss_data {
 		get_money	=> 30,
 		icon		=> 'mon/579.gif',
 
-		job			=> 94, # ©”šƒƒKƒ“ƒeA‚Ë‚é
+		job			=> 94, # è‡ªçˆ†ãƒ¡ã‚¬ãƒ³ãƒ†ã€ã­ã‚‹
 		sp			=> 20,
 		mp			=> 42,
 	},
 	{
-		name		=> 'ËŞ¯¸ÎŞÑ',
+		name		=> 'ãƒ“ãƒƒã‚¯ãƒœãƒ ',
 		hp			=> 600,
 		at			=> 400,
 		df			=> 200,
@@ -144,12 +144,12 @@ sub get_boss_data {
 		get_money	=> 50,
 		icon		=> 'mon/577.gif',
 
-		job			=> 31, # Â–‚“¹m‚¶‚Î‚­
+		job			=> 31, # é’é­”é“å£«ã˜ã°ã
 		sp			=> 20,
 		mp			=> 42,
 	},
 	{
-		name		=> '·×°ÎŞÑ',
+		name		=> 'ã‚­ãƒ©ãƒ¼ãƒœãƒ ',
 		hp			=> 250,
 		at			=> 500,
 		df			=> 250,
@@ -158,12 +158,12 @@ sub get_boss_data {
 		get_money	=> 50,
 		icon		=> 'mon/209.gif',
 
-		job			=> 94, # ©”šƒƒKƒ“ƒe
+		job			=> 94, # è‡ªçˆ†ãƒ¡ã‚¬ãƒ³ãƒ†
 		sp			=> 10,
 		mp			=> 42,
 	},
 	{
-		name		=> 'ÁËŞÎŞÑ',
+		name		=> 'ãƒãƒ“ãƒœãƒ ',
 		hp			=> 100,
 		at			=> 50,
 		df			=> 600,
@@ -172,13 +172,13 @@ sub get_boss_data {
 		get_money	=> 1,
 		icon		=> 'mon/208.gif',
 
-		job			=> 94, # ©”šƒƒKƒ“ƒe
+		job			=> 94, # è‡ªçˆ†ãƒ¡ã‚¬ãƒ³ãƒ†
 		sp			=> 10,
 		mp			=> 42,
-		tmp			=> '–‚–³Œø',
+		tmp			=> 'é­”ç„¡åŠ¹',
 	},
 	{
-		name		=> 'ÄİÍŞØ',
+		name		=> 'ãƒˆãƒ³ãƒ™ãƒª',
 		hp			=> 300,
 		at			=> 500,
 		df			=> 200,
@@ -187,7 +187,7 @@ sub get_boss_data {
 		get_money	=> 99,
 		icon		=> 'mon/599.gif',
 
-		job			=> 100, # ÄİÍŞØ
+		job			=> 100, # ãƒˆãƒ³ãƒ™ãƒª
 		sp			=> 999,
 		mp			=> 161,
 	},
@@ -195,4 +195,4 @@ sub get_boss_data {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

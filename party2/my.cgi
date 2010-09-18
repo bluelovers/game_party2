@@ -2,7 +2,7 @@
 require './config.cgi';
 require './lib/_data.cgi';
 #================================================
-# ƒuƒƒOƒp[ƒc‚P Created by Merino
+# ãƒ–ãƒ­ã‚°ãƒ‘ãƒ¼ãƒ„ï¼‘ Created by Merino
 #================================================
 print "Content-type: text/html; charset=Shift_JIS\n\n";
 &run;
@@ -15,7 +15,7 @@ sub run {
 	
 	if (-f "$userdir/$yid/user.cgi") {
 		my %m = &get_you_datas($yid, 1);
-		my $latest = $time < $m{login_time} + $login_time * 60 ? qq|<b style="color:#FF0;">ƒƒOƒCƒ“’†</b>| : qq|ÅIXV“ú<br />$m{ldate}|;
+		my $latest = $time < $m{login_time} + $login_time * 60 ? qq|<b style="color:#FF0;">ãƒ­ã‚°ã‚¤ãƒ³ä¸­</b>| : qq|æœ€çµ‚æ›´æ–°æ—¥<br />$m{ldate}|;
 		my $mes    = $m{mes} ? $m{mes} : $title;
 
 		my $html =<<"EOM";
@@ -39,7 +39,7 @@ sub run {
 		<tr><td align="left">$e2j{at}</td><td align="right">$m{at}</td></tr>
 		<tr><td align="left">$e2j{df}</td><td align="right">$m{df}</td></tr>
 		<tr><td align="left">$e2j{ag}</td><td align="right">$m{ag}</td></tr>
-		<tr><td align="left">‚r‚o</td><td align="right">$m{sp}</td></tr>
+		<tr><td align="left">ï¼³ï¼°</td><td align="right">$m{sp}</td></tr>
 		<tr><td align="left">$e2j{mhp}</td><td align="right">$m{mhp}</td></tr>
 		<tr><td align="left">$e2j{mmp}</td><td align="right">$m{mmp}</td></tr>
 		<tr><td align="left">$e2j{exp}</td><td align="right">$m{exp}</td></tr>
@@ -50,11 +50,11 @@ sub run {
 </td></tr></table>
 EOM
 
-		$html =~ tr/\x0D\x0A//d; # ‰üsíœ
-		$html =~ tr/\t//d; # ƒ^ƒuíœ
+		$html =~ tr/\x0D\x0A//d; # æ”¹è¡Œå‰Šé™¤
+		$html =~ tr/\t//d; # ã‚¿ãƒ–å‰Šé™¤
 		print qq|document.write('$html');|;
 	}
 	else {
-		print qq|document.write("ƒvƒŒƒCƒ„[ƒf[ƒ^‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");|;
+		print qq|document.write("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒ‡ãƒ¼ã‚¿ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");|;
 	}
 }

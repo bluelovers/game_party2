@@ -1,74 +1,74 @@
 #=================================================
-# —a‚©‚èŠ Created by Merino
+# é ã‹ã‚Šæ‰€ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'ƒtƒHƒgƒRƒ“‰ïê';
+# å ´æ‰€å
+$this_title = 'ãƒ•ã‚©ãƒˆã‚³ãƒ³ä¼šå ´';
 
-# NPC–¼
-$npc_name   = '@Üº°Ù';
+# NPCå
+$npc_name   = '@ãƒ¯ã‚³ãƒ¼ãƒ«';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/photo";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/photo.gif";
 
-# ˜A‘±ƒGƒ“ƒgƒŠ[(0:•s‰Â”\[Œ»ƒRƒ“ƒeƒXƒg‚ÉƒGƒ“ƒgƒŠ[‚µ‚Ä‚¢‚éê‡‚ÍAŸ‰ñ‚ÌƒRƒ“ƒeƒXƒg‚ÉQ‰Á‚Å‚«‚È‚¢],1:‰Â”\)
+# é€£ç¶šã‚¨ãƒ³ãƒˆãƒªãƒ¼(0:ä¸å¯èƒ½[ç¾ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã—ã¦ã„ã‚‹å ´åˆã¯ã€æ¬¡å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«å‚åŠ ã§ããªã„],1:å¯èƒ½)
 $is_renzoku_entry_contest = 0;
 
 
 #=================================================
-# —‚Í‚È‚·‚Ì‰ï˜b
+# ï¼ ã¯ãªã™ã®ä¼šè©±
 #=================================================
 @words = (
-	"ƒtƒHƒgƒRƒ“ƒeƒXƒg‚Ì‰ïêA—ª‚µ‚ÄƒtƒHƒgƒRƒ“‰ïê‚Ö‚æ‚¤‚±‚»B„‚ªåÃÒ‚ÌƒƒR[ƒ‹‚´‚Ü‚·",
-	"‚±‚±‚Å‚ÍA$m‚ªB‚Á‚½ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg‚ğÁ‚µ‚½‚èAƒRƒ“ƒeƒXƒg‚É‰•å‚µ‚½‚è‚Å‚«‚é‚´‚Ü‚·",
-	"ƒRƒ“ƒeƒXƒgãˆÊ“üÜÒ‚É‚ÍAƒS[ƒ‹ƒh‚ÆÜ•i‚ªö—^‚³‚ê‚é‚´‚Ü‚·",
-	"ƒRƒ“ƒeƒXƒg‚PˆÊ‚Ìì•i‚É“Š•[‚µ‚½Q‰ÁÒ‚É‚à¬‚³‚Èƒƒ_ƒ‹‚ª”z‚ç‚ê‚é‚´‚Ü‚·",
-	"ƒtƒHƒgƒRƒ“‚Åd—v‚È‚Ì‚ÍA‰½‚ªÊ‚Á‚Ä‚¢‚é‚©‚Í‚à‚¿‚ë‚ñBƒ^ƒCƒgƒ‹‚âƒRƒƒ“ƒg‚È‚Ç‚àd—v‚Èƒ|ƒCƒ“ƒg‚´‚Ü‚·",
-	"©•ª‚ÅB‚Á‚½ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg‚ğŒ©‚½‚èÁ‚·‚±‚Æ‚ª‚Å‚«‚é‚´‚Ü‚·",
-	"‚½‚¾B‚é‚¾‚¯‚Å‚Í‚È‚­AƒRƒXƒvƒŒ‚µ‚½‚èFX‚ÆH•v‚·‚é‚±‚Æ‚ª‘å–‚´‚Ü‚·",
-	"ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg‚ÍÅ‘å$max_screen_shot–‡‚Ü‚ÅŠ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚´‚Ü‚·B‚»‚êˆÈã‚ÍA—‚¯‚·•K—v‚ª‚ ‚é‚´‚Ü‚·",
+	"ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆã®ä¼šå ´ã€ç•¥ã—ã¦ãƒ•ã‚©ãƒˆã‚³ãƒ³ä¼šå ´ã¸ã‚ˆã†ã“ãã€‚ç§ãŒä¸»å‚¬è€…ã®ãƒ¯ã‚³ãƒ¼ãƒ«ã–ã¾ã™",
+	"ã“ã“ã§ã¯ã€$mãŒæ’®ã£ãŸã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆã‚’æ¶ˆã—ãŸã‚Šã€ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«å¿œå‹Ÿã—ãŸã‚Šã§ãã‚‹ã–ã¾ã™",
+	"ã‚³ãƒ³ãƒ†ã‚¹ãƒˆä¸Šä½å…¥è³è€…ã«ã¯ã€ã‚´ãƒ¼ãƒ«ãƒ‰ã¨è³å“ãŒæˆä¸ã•ã‚Œã‚‹ã–ã¾ã™",
+	"ã‚³ãƒ³ãƒ†ã‚¹ãƒˆï¼‘ä½ã®ä½œå“ã«æŠ•ç¥¨ã—ãŸå‚åŠ è€…ã«ã‚‚å°ã•ãªãƒ¡ãƒ€ãƒ«ãŒé…ã‚‰ã‚Œã‚‹ã–ã¾ã™",
+	"ãƒ•ã‚©ãƒˆã‚³ãƒ³ã§é‡è¦ãªã®ã¯ã€ä½•ãŒå†™ã£ã¦ã„ã‚‹ã‹ã¯ã‚‚ã¡ã‚ã‚“ã€‚ã‚¿ã‚¤ãƒˆãƒ«ã‚„ã‚³ãƒ¡ãƒ³ãƒˆãªã©ã‚‚é‡è¦ãªãƒã‚¤ãƒ³ãƒˆã–ã¾ã™",
+	"è‡ªåˆ†ã§æ’®ã£ãŸã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆã‚’è¦‹ãŸã‚Šæ¶ˆã™ã“ã¨ãŒã§ãã‚‹ã–ã¾ã™",
+	"ãŸã æ’®ã‚‹ã ã‘ã§ã¯ãªãã€ã‚³ã‚¹ãƒ—ãƒ¬ã—ãŸã‚Šè‰²ã€…ã¨å·¥å¤«ã™ã‚‹ã“ã¨ãŒå¤§äº‹ã–ã¾ã™",
+	"ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆã¯æœ€å¤§$max_screen_shotæšã¾ã§æ‰€æŒã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã–ã¾ã™ã€‚ãã‚Œä»¥ä¸Šã¯ã€ï¼ ã‘ã™å¿…è¦ãŒã‚ã‚‹ã–ã¾ã™",
 );
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚İ‚é';
-push @actions, '‚¯‚·';
-push @actions, '‚Æ‚¤‚Ğ‚å‚¤';
-push @actions, '‚¦‚ñ‚Æ‚è[';
-$actions{'‚İ‚é'}       = sub{ &miru }; 
-$actions{'‚¯‚·'}       = sub{ &kesu }; 
-$actions{'‚Æ‚¤‚Ğ‚å‚¤'} = sub{ &touhyou }; 
-$actions{'‚¦‚ñ‚Æ‚è['} = sub{ &entori  }; 
+push @actions, 'ã¿ã‚‹';
+push @actions, 'ã‘ã™';
+push @actions, 'ã¨ã†ã²ã‚‡ã†';
+push @actions, 'ãˆã‚“ã¨ã‚Šãƒ¼';
+$actions{'ã¿ã‚‹'}       = sub{ &miru }; 
+$actions{'ã‘ã™'}       = sub{ &kesu }; 
+$actions{'ã¨ã†ã²ã‚‡ã†'} = sub{ &touhyou }; 
+$actions{'ãˆã‚“ã¨ã‚Šãƒ¼'} = sub{ &entori  }; 
 
 
 #=================================================
-# —‚İ‚é
+# ï¼ ã¿ã‚‹
 #=================================================
 sub miru {
-	$mes = qq|<form action="screen_shot.cgi"><input type="hidden" name="path" value="$userdir/$id" /><input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" /><input type="submit" value="$m‚ÌƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg" /></form>|;
+	$mes = qq|<form action="screen_shot.cgi"><input type="hidden" name="path" value="$userdir/$id" /><input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" /><input type="submit" value="$mã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆ" /></form>|;
 }
 
 #=================================================
-# —‚¯‚·
+# ï¼ ã‘ã™
 #=================================================
 sub kesu {
 	my $target = shift;
 	my $count = 0;
 	my @lines = ();
 	my $p = '';
-	open my $fh, "+< $userdir/$id/screen_shot.cgi" or &error("$userdir/$id/screen_shot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/screen_shot.cgi" or &error("$userdir/$id/screen_shot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while ($line = <$fh>) {
 		++$count;
-		if ($target eq "$count–‡–Ú") {
-			$mes = "$count–‡–Ú‚ÌƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg‚ğíœ‚µ‚Ü‚µ‚½‚í‚æ";
+		if ($target eq "$countæšç›®") {
+			$mes = "$countæšç›®ã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆã‚’å‰Šé™¤ã—ã¾ã—ãŸã‚ã‚ˆ";
 		}
 		else {
 			push @lines, $line;
-			$p .= qq|<span onclick="text_set('—‚¯‚·>$count–‡–Ú ')">$count–‡–Ú<br>$line</span>|;
+			$p .= qq|<span onclick="text_set('ï¼ ã‘ã™>$countæšç›® ')">$countæšç›®<br>$line</span>|;
 		}
 	}
 	if ($mes) {
@@ -80,48 +80,48 @@ sub kesu {
 	}
 	close $fh;
 
-	$mes = qq|‚Ç‚ÌƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg‚ğÁ‚µ‚Ü‚·‚©H<br><div class="view" style="font-weight: normal; color: #FFF;">$p</div>|;
+	$mes = qq|ã©ã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆã‚’æ¶ˆã—ã¾ã™ã‹ï¼Ÿ<br><div class="view" style="font-weight: normal; color: #FFF;">$p</div>|;
 }
 
 #=================================================
-# —‚¦‚ñ‚Æ‚è[
+# ï¼ ãˆã‚“ã¨ã‚Šãƒ¼
 #=================================================
 sub entori {
 	my $target = shift;
-	my($photo, $ptitle) = split /—‚¾‚¢‚ß‚¢&gt;/, $target;
+	my($photo, $ptitle) = split /ï¼ ã ã„ã‚ã„&gt;/, $target;
 	
 	if (!$is_renzoku_entry_contest && &is_entry_contest) {
-		$mes = "˜A‘±‚ÅƒRƒ“ƒeƒXƒg‚ÉƒGƒ“ƒgƒŠ[‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ<br />Ÿ‰ñ‚ÌƒRƒ“ƒeƒXƒg‚Ü‚Å‚¨‘Ò‚¿‚­‚¾‚³‚¢";
+		$mes = "é€£ç¶šã§ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“<br />æ¬¡å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã¾ã§ãŠå¾…ã¡ãã ã•ã„";
 		return;
 	}
 	
 	my $entry_photo = '';
 	my $count = 0;
-	open my $fh2, "< $userdir/$id/screen_shot.cgi" or &error("$userdir/$id/screen_shot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh2, "< $userdir/$id/screen_shot.cgi" or &error("$userdir/$id/screen_shot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	while ($line2 = <$fh2>) {
 		$line2 =~ tr/\x0D\x0A//d;
 		++$count;
-		if ($photo eq "$count–‡–Ú") {
+		if ($photo eq "$countæšç›®") {
 			$entry_photo = $line2;
 			last;
 		}
-		$p .= qq|<span onclick="text_set('—‚¦‚ñ‚Æ‚è[>$count–‡–Ú—‚¾‚¢‚ß‚¢>')">$count–‡–Ú<br>$line2</span>|;
+		$p .= qq|<span onclick="text_set('ï¼ ãˆã‚“ã¨ã‚Šãƒ¼>$countæšç›®ï¼ ã ã„ã‚ã„>')">$countæšç›®<br>$line2</span>|;
 	}
 	close $fh2;
 	
 	unless ($entry_photo) {
-		$mes = qq|‚Ç‚Ìì•i‚ğƒGƒ“ƒgƒŠ[‚µ‚Ü‚·‚©H<br><div class="view" style="font-weight: normal; color: #FFF;">$p</div>|;
+		$mes = qq|ã©ã®ä½œå“ã‚’ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã—ã¾ã™ã‹ï¼Ÿ<br><div class="view" style="font-weight: normal; color: #FFF;">$p</div>|;
 		return;
 	}
 
-	$mes = "‘è–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"					if $ptitle =~ /@|\s/;
-	$mes = "‘è–¼‚É•s³‚È•¶š( ,;\"\'&<>\@ )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·" 	if $ptitle =~ /[,;\"\'&<>\@]/;
-	$mes = "‘è–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·" 			if $ptitle =~ /—/;
-	$mes = "‘è–¼‚Í‘SŠp20•¶š[”¼Šp40•¶š]‚Ü‚Å‚Å‚·"				if length($ptitle) > 40;
-	$mes = "‘è–¼‚ğ‹L“ü‚µ‚Ä‚­‚¾‚³‚¢"								unless $ptitle;
+	$mes = "é¡Œåã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"					if $ptitle =~ /ã€€|\s/;
+	$mes = "é¡Œåã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<>\@ )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™" 	if $ptitle =~ /[,;\"\'&<>\@]/;
+	$mes = "é¡Œåã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™" 			if $ptitle =~ /ï¼ /;
+	$mes = "é¡Œåã¯å…¨è§’20æ–‡å­—[åŠè§’40æ–‡å­—]ã¾ã§ã§ã™"				if length($ptitle) > 40;
+	$mes = "é¡Œåã‚’è¨˜å…¥ã—ã¦ãã ã•ã„"								unless $ptitle;
 	return if $mes;
 
-	open my $fh, "+< $logdir/contest_prepare.cgi" or &error("$logdir/contest_prepare.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_prepare.cgi" or &error("$logdir/contest_prepare.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	my($etime, $round) = split /<>/, $head_line;
@@ -130,11 +130,11 @@ sub entori {
 		my($stitle, $name, $guild, $vote, $comment, $vote_names, $content) = split /<>/, $line;
 		
 		if ($name eq $m) {
-			$mes = "y$stitlez‚Æ‚¢‚¤ì•i‚ÅA‚·‚Å‚ÉƒGƒ“ƒgƒŠ[Ï‚İ‚Å‚·";
+			$mes = "ã€$stitleã€‘ã¨ã„ã†ä½œå“ã§ã€ã™ã§ã«ã‚¨ãƒ³ãƒˆãƒªãƒ¼æ¸ˆã¿ã§ã™";
 			return;
 		}
 		elsif ($ptitle eq $stitle) {
-			$mes = "“¯‚¶ƒ^ƒCƒgƒ‹‚Ìì•i‚ª‚·‚Å‚ÉƒGƒ“ƒgƒŠ[‚³‚ê‚Ä‚¢‚Ü‚·";
+			$mes = "åŒã˜ã‚¿ã‚¤ãƒˆãƒ«ã®ä½œå“ãŒã™ã§ã«ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã•ã‚Œã¦ã„ã¾ã™";
 			return;
 		}
 		push @lines, $line;
@@ -145,10 +145,10 @@ sub entori {
 	print $fh @lines;
 	close $fh;
 
-	$npc_com .= "‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg‚Éw$ptitlex‚Æ‚¢‚¤‘è–¼‚ÅƒGƒ“ƒgƒŠ[‚µ‚Ü‚µ‚½";
+	$npc_com .= "ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ã€$ptitleã€ã¨ã„ã†é¡Œåã§ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã—ã¾ã—ãŸ";
 }
 sub is_entry_contest {
-	open my $fh, "< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $head_line = <$fh>;
 	while (my $line = <$fh>) {
 		my($stitle, $name, $guild, $vote, $comment, $vote_names, $content) = split /<>/, $line;
@@ -160,15 +160,15 @@ sub is_entry_contest {
 
 
 #=================================================
-# —‚Æ‚¤‚Ğ‚å‚¤
+# ï¼ ã¨ã†ã²ã‚‡ã†
 #=================================================
 sub touhyou {
 	my $target = shift;
-	my($ptitle, $pcom) = split /—‚±‚ß‚ñ‚Æ&gt;/, $target;
+	my($ptitle, $pcom) = split /ï¼ ã“ã‚ã‚“ã¨&gt;/, $target;
 
 	my $count = 0;
 	my $p = '';
-	open my $fh, "+< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	my($etime, $round) = split /<>/, $head_line;
@@ -178,19 +178,19 @@ sub touhyou {
 		
 		if ($ptitle eq $stitle) {
 			if (&add_vote_name) {
-				$mes = "‘æ$round‰ñ‚ÌƒtƒHƒgƒRƒ“ƒeƒXƒg‚É‚ÍA‚·‚Å‚É“Š•[Ï‚İ‚Å‚·";
+				$mes = "ç¬¬$roundå›ã®ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ã¯ã€ã™ã§ã«æŠ•ç¥¨æ¸ˆã¿ã§ã™";
 				return;
 			}
 			else {
 				++$vote;
 				$vote_names .= "$m,";
-				$comment .= "$mw$pcomx," if $pcom;
-				$mes = "$stitle‚É“Š•[‚µ‚Ü‚µ‚½";
+				$comment .= "$mã€$pcomã€," if $pcom;
+				$mes = "$stitleã«æŠ•ç¥¨ã—ã¾ã—ãŸ";
 			}
 		}
 		else {
 			++$count;
-			$p .= qq|<hr color="#CCCC00"/><span onclick="text_set('—‚Æ‚¤‚Ğ‚å‚¤>$stitle—‚±‚ß‚ñ‚Æ>')"><span class="strong">ì•iNo.$countw$stitlex</span><br>$content</span>|;
+			$p .= qq|<hr color="#CCCC00"/><span onclick="text_set('ï¼ ã¨ã†ã²ã‚‡ã†>$stitleï¼ ã“ã‚ã‚“ã¨>')"><span class="strong">ä½œå“No.$countã€$stitleã€</span><br>$content</span>|;
 		}
 		push @lines, "$stitle<>$name<>$guild<>$vote<>$comment<>$vote_names<>$content<>\n";
 	}
@@ -203,11 +203,11 @@ sub touhyou {
 	}
 	close $fh;
 
-	$mes = qq|‚Ç‚Ìì•i‚É“Š•[‚µ‚Ü‚·‚©H<br><div class="view" style="font-weight: normal; color: #FFF;">$p</div>|;
+	$mes = qq|ã©ã®ä½œå“ã«æŠ•ç¥¨ã—ã¾ã™ã‹ï¼Ÿ<br><div class="view" style="font-weight: normal; color: #FFF;">$p</div>|;
 }
 # ------------------
 sub add_vote_name {
-	open my $fh, "+< $logdir/contest_vote_name.cgi" or &error("$logdir/contest_vote_name.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_vote_name.cgi" or &error("$logdir/contest_vote_name.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $line = <$fh>;
 	$line =~ tr/\x0D\x0A//d;
@@ -224,4 +224,4 @@ sub add_vote_name {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

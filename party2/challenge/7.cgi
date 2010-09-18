@@ -1,28 +1,28 @@
-# �ݒ�
+# 設定
 %k = (
-	p_join		=> 1,			# �퓬�Q�����(�l)
-	need_join	=> '0',			# �Q������(./lib/quest.cgi 192�s�ڂ�������Q�l)
+	p_join		=> 1,			# 戦闘参加上限(人)
+	need_join	=> '0',			# 参加条件(./lib/quest.cgi 192行目あたりを参考)
 );
 
-# �󕔉�(30�K�`50�K�ȏ�B��ʊK�قǊm���A�b�v)
+# 宝部屋(30階～50階以上。上位階ほど確率アップ)
 $tresure_round = int(rand(21)+30);
 
 
-# ��̒��g
+# 宝の中身
 @treasures = (
-[], # ����No
-[], # �h��No
-[5..6,10..13,23,57,72..74,85..87,101..103], # ����No
+[], # 武器No
+[], # 防具No
+[5..6,10..13,23,57,72..74,85..87,101..103], # 道具No
 );
 
 
-# �o����(@monsters�̔z��ԍ���������Α����قǏo���B�ϓ��ȏo�����̏ꍇ�́A����w()�x)
+# 出現率(@monstersの配列番号が多ければ多いほど出現。均等な出現率の場合は、から『()』)
 @appears = ();
 
-# �����X�^�[
+# モンスター
 @monsters = (
 	{
-		name		=> '�l�ʎ�',
+		name		=> '人面樹',
 		hp			=> 400,
 		at			=> 350,
 		df			=> 140,
@@ -31,13 +31,13 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 100,
 		icon		=> 'mon/503.gif',
 		old_sp		=> 20,
-		job			=> 7, # ���l
+		job			=> 7, # 商人
 		sp			=> 999,
 		mp			=> 123,
-		tmp			=> '����',
+		tmp			=> '復活',
 	},
 	{
-		name		=> '�S�쌕�m',
+		name		=> '亡霊剣士',
 		hp			=> 460,
 		at			=> 400,
 		df			=> 200,
@@ -46,13 +46,13 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 40,
 		icon		=> 'mon/500.gif',
 		old_sp		=> 20,
-		job			=> 2, # ���m
+		job			=> 2, # 剣士
 		sp			=> 999,
 		mp			=> 93,
-		tmp			=> '�U����',
+		tmp			=> '攻反撃',
 	},
 	{
-		name		=> '����ټ��',
+		name		=> 'デビルシェル',
 		hp			=> 300,
 		at			=> 300,
 		df			=> 450,
@@ -60,14 +60,14 @@ $tresure_round = int(rand(21)+30);
 		get_exp		=> 80,
 		get_money	=> 200,
 		icon		=> 'mon/506.gif',
-		job			=> 5, # �m��
+		job			=> 5, # 僧侶
 		old_sp		=> 30,
 		sp			=> 999,
 		mp			=> 240,
-		tmp			=> '������',
+		tmp			=> '魔反撃',
 	},
 	{
-		name		=> '�ް��',
+		name		=> 'ゴーレム',
 		hp			=> 500,
 		at			=> 350,
 		df			=> 350,
@@ -76,13 +76,13 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 100,
 		icon		=> 'mon/546.gif',
 		old_sp		=> 30,
-		job			=> 27, # �����m
+		job			=> 27, # 風水士
 		sp			=> 999,
 		mp			=> 150,
-		tmp			=> '�U�y��',
+		tmp			=> '攻軽減',
 	},
 	{
-		name		=> '�ł̖��p�m',
+		name		=> '闇の魔術士',
 		hp			=> 350,
 		at			=> 250,
 		df			=> 120,
@@ -90,13 +90,13 @@ $tresure_round = int(rand(21)+30);
 		get_exp		=> 110,
 		get_money	=> 180,
 		icon		=> 'mon/510.gif',
-		job			=> 40, # ʸ�����
+		job			=> 40, # ハグレメタル
 		sp			=> 999,
 		mp			=> 150,
-		tmp			=> '���z��',
+		tmp			=> '魔吸収',
 	},
 	{
-		name		=> '�޶��ý',
+		name		=> 'ギガンテス',
 		hp			=> 700,
 		at			=> 500,
 		df			=> 100,
@@ -105,13 +105,13 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 5,
 		icon		=> 'mon/563.gif',
 		old_sp		=> 20,
-		job			=> 21, # ����m
+		job			=> 21, # 狂戦士
 		sp			=> 999,
 		mp			=> 80,
 		ten			=> 8,
 	},
 	{
-		name		=> '�Ђ����ǂ�',
+		name		=> 'ひくいどり',
 		hp			=> 480,
 		at			=> 320,
 		df			=> 160,
@@ -119,15 +119,15 @@ $tresure_round = int(rand(21)+30);
 		get_exp		=> 100,
 		get_money	=> 100,
 		icon		=> 'mon/530.gif',
-		job			=> 26, # �E��
+		job			=> 26, # 忍者
 		sp			=> 999,
-		old_job		=> 27, # �����t
+		old_job		=> 27, # 風水師
 		old_sp		=> 999,
 		mp			=> 297,
-		tmp			=> '���y��',
+		tmp			=> '息軽減',
 	},
 	{
-		name		=> '��˰ӽ',
+		name		=> 'ベヒーモス',
 		hp			=> 555,
 		at			=> 333,
 		df			=> 155,
@@ -135,15 +135,15 @@ $tresure_round = int(rand(21)+30);
 		get_exp		=> 133,
 		get_money	=> 33,
 		icon		=> 'mon/553.gif',
-		job			=> 23, # ���R�m
+		job			=> 23, # 竜騎士
 		sp			=> 999,
-		old_job		=> 25, # �����N
+		old_job		=> 25, # モンク
 		old_sp		=> 999,
 		mp			=> 120,
-		tmp			=> '��h��',
+		tmp			=> '大防御',
 	},
 	{
-		name		=> '�ݸ޽ײ�',
+		name		=> 'キングスライム',
 		hp			=> 500,
 		at			=> 250,
 		df			=> 100,
@@ -152,13 +152,13 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 20,
 		icon		=> 'mon/516.gif',
 		old_sp		=> 20,
-		job			=> 21, # ����m
+		job			=> 21, # 狂戦士
 		sp			=> 999,
 		mp			=> 300,
-		tmp			=> '��',
+		tmp			=> '回復',
 	},
 	{
-		name		=> '����̋R�m',
+		name		=> '死霊の騎士',
 		hp			=> 610,
 		at			=> 333,
 		df			=> 180,
@@ -166,15 +166,15 @@ $tresure_round = int(rand(21)+30);
 		get_exp		=> 190,
 		get_money	=> 120,
 		icon		=> 'mon/566.gif',
-		job			=> 24, # �����m
+		job			=> 24, # 魔剣士
 		sp			=> 999,
-		old_job		=> 2, # ���m
+		old_job		=> 2, # 剣士
 		old_sp		=> 999,
 		mp			=> 220,
-		tmp			=> '�󗬂�',
+		tmp			=> '受流し',
 	},
 	{
-		name		=> '����',
+		name		=> '竜王',
 		hp			=> 650,
 		at			=> 300,
 		df			=> 200,
@@ -182,15 +182,15 @@ $tresure_round = int(rand(21)+30);
 		get_exp		=> 200,
 		get_money	=> 50,
 		icon		=> 'mon/560.gif',
-		job			=> 41, # ��׺��
+		job			=> 41, # ドラゴン
 		sp			=> 999,
-		old_job		=> 25, # �ݸ�A
+		old_job		=> 25, # モンク、
 		old_sp		=> 999,
 		mp			=> 200,
 		ten			=> 3,
 	},
 	{
-		name		=> '�З��̓V�g',
+		name		=> '片翼の天使',
 		hp			=> 700,
 		at			=> 300,
 		df			=> 150,
@@ -199,15 +199,15 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 100,
 		icon		=> 'mon/569.gif',
 		
-		job			=> 98, # �����@�^
+		job			=> 98, # 超魔法型
 		sp			=> 999,
-		old_job		=> 48, # �V�g
+		old_job		=> 48, # 堕天使
 		old_sp		=> 999,
 		mp			=> 999,
 		ten			=> 3,
 	},
 	{
-		name		=> '�ި���۽',
+		name		=> 'ディアボロス',
 		hp			=> 750,
 		at			=> 400,
 		df			=> 200,
@@ -216,13 +216,13 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 100,
 		icon		=> 'mon/650.gif',
 		
-		job			=> 97, # ���U���^
+		job			=> 97, # 超攻撃型
 		sp			=> 999,
 		mp			=> 999,
 		ten			=> 3,
 	},
 	{
-		name		=> '��ϰ',
+		name		=> 'ボマー',
 		hp			=> 600,
 		at			=> 200,
 		df			=> 250,
@@ -231,17 +231,17 @@ $tresure_round = int(rand(21)+30);
 		get_money	=> 0,
 		icon		=> 'mon/652.gif',
 		
-		job			=> 94, # ���K���e,�Q��
+		job			=> 94, # メガンテ,寝る
 		sp			=> 20,
-		old_job		=> 8, # �V�ѐl
+		old_job		=> 8, # 遊び人
 		old_sp		=> 999,
 		mp			=> 999,
-		state		=> '�唚��',
-		tmp			=> '���邼',
+		state		=> '大爆発',
+		tmp			=> 'するぞ',
 		ten			=> 3,
 	},
 );
 
 
 
-1; # �폜�s��
+1; # 削除不可

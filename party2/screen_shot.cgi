@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 require 'config.cgi';
 #================================================
-# ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒgˆê——•\¦ Created by Merino
-# •Û‘¶”‚Í config.cgi‚Ì$max_log
+# ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆä¸€è¦§è¡¨ç¤º Created by Merino
+# ä¿å­˜æ•°ã¯ config.cgiã®$max_log
 #================================================
 &decode;
 &header;
@@ -13,11 +13,11 @@ exit;
 sub run {
 	$in{path} ||= "$logdir";
 	my $back = $id && $pass
-		? qq|<form action="$script"><input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" /><input type="submit" value="–ß‚é" /></form>|
-		: qq|<form action="$script_index"><input type="submit" value="‚s‚n‚o‚Ö–ß‚é" /></form>|
+		? qq|<form action="$script"><input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" /><input type="submit" value="æˆ»ã‚‹" /></form>|
+		: qq|<form action="$script_index"><input type="submit" value="ï¼´ï¼¯ï¼°ã¸æˆ»ã‚‹" /></form>|
 		;
 	print $back;
-	open my $fh, "< $in{path}/screen_shot.cgi" or &error("$in{path}/screen_shot.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $in{path}/screen_shot.cgi" or &error("$in{path}/screen_shot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	print $_ while <$fh>;
 	close $fh;
 	print $back;

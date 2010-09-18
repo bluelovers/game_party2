@@ -1,16 +1,16 @@
 #!/usr/local/bin/perl
 require 'config.cgi';
 #================================================
-# ƒvƒŒƒCƒ„[ˆê——HTMLì¬ + ŠúŒÀØ‚êƒvƒŒƒCƒ„[íœ
-# & CookieƒZƒbƒg Created by Merino
+# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§HTMLä½œæˆ + æœŸé™åˆ‡ã‚Œãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å‰Šé™¤
+# & Cookieã‚»ãƒƒãƒˆ Created by Merino
 #================================================
-# ƒvƒŒƒCƒ„[ˆê——HTMLXVüŠú(“ú) 1“ú`
+# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§HTMLæ›´æ–°å‘¨æœŸ(æ—¥) 1æ—¥ï½
 my $update_cycle_day = 1;
 
-# Cookie•Û‘¶ŠúŠÔ(“ú)
+# Cookieä¿å­˜æœŸé–“(æ—¥)
 my $limit_cookie_day = 30;
 
-# ƒƒbƒZ[ƒW‚ÌÅ‘å•¶š”(”¼Šp)
+# ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æœ€å¤§æ–‡å­—æ•°(åŠè§’)
 my $max_login_message = 60;
 
 $htmldir = './html';
@@ -18,14 +18,14 @@ $htmldir = './html';
 
 #================================================
 &decode;
-&error("ƒƒbƒZ[ƒW‚É•s³‚È•¶š( ,;\"\'&<> )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·",1)	if $in{login_message} =~ /[,;\"\'&<>]/;
-&error("ƒƒbƒZ[ƒW‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·",1)					if $in{login_message} =~ /@|\s/;
-&error("ƒƒbƒZ[ƒW‚ª’·‚·‚¬‚Ü‚·(”¼Šp$max_login_message•¶š‚Ü‚Å)",1)	if length $in{login_message} > $max_login_message; # Å‘å•¶š”§ŒÀ
+&error("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<> )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™",1)	if $in{login_message} =~ /[,;\"\'&<>]/;
+&error("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™",1)					if $in{login_message} =~ /ã€€|\s/;
+&error("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒé•·ã™ãã¾ã™(åŠè§’$max_login_messageæ–‡å­—ã¾ã§)",1)	if length $in{login_message} > $max_login_message; # æœ€å¤§æ–‡å­—æ•°åˆ¶é™
 $in{is_cookie} ? &set_cookie($in{login_name},$in{pass},$in{login_message}) : &del_cookie;
-# XV˜A‘Å‚µ‚Ä‚¢‚½ê‡‚Ìƒyƒiƒ‹ƒeƒB
+# æ›´æ–°é€£æ‰“ã—ã¦ã„ãŸå ´åˆã®ãƒšãƒŠãƒ«ãƒ†ã‚£
 &read_user(1);
 if (-s "$userdir/$id/reload.cgi") {
-	open my $fh, "+< $userdir/$id/reload.cgi" or &error("$userdir/$id/reload.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ", 1);
+	open my $fh, "+< $userdir/$id/reload.cgi" or &error("$userdir/$id/reload.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“", 1);
 	my $line = <$fh>;
 	my @lines = split /<>/, $line;
 	seek  $fh, 0, 0;
@@ -36,37 +36,37 @@ if (-s "$userdir/$id/reload.cgi") {
 #		&add_black_list($addr);
 #		&delete_guild_member($m{guild}, $m{name}) if $m{guild};
 #		&delete_directory("$userdir/$id");
-#		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª30‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅAíœ‚Æ‚È‚è‚Ü‚·</span>|, 1);
+#		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ30å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€å‰Šé™¤ã¨ãªã‚Šã¾ã™</span>|, 1);
 		$sleep_time = 7 * 24 * 60;
 		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
-		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª30‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅA$sleep_time•ªŠÔ‡–°ó‘Ô‚Æ‚È‚è‚Ü‚·</span>|, 1);
+		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ30å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€$sleep_timeåˆ†é–“ç¡çœ çŠ¶æ…‹ã¨ãªã‚Šã¾ã™</span>|, 1);
 	}
 	elsif (@lines > 25) {
 #		&add_black_list($addr);
-#		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª25‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅAƒuƒ‰ƒbƒNƒŠƒXƒg’Ç‰Á‚Æ‚È‚è$sleep_time•ªŠÔ‡–°ó‘Ô‚Æ‚È‚è‚Ü‚·</span>|, 1);
+#		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ25å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆè¿½åŠ ã¨ãªã‚Š$sleep_timeåˆ†é–“ç¡çœ çŠ¶æ…‹ã¨ãªã‚Šã¾ã™</span>|, 1);
 		$sleep_time = 3 * 24 * 60;
 		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
-		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª25‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅA$sleep_time•ªŠÔ‡–°ó‘Ô‚Æ‚È‚è‚Ü‚·</span>|, 1);
+		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ25å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€$sleep_timeåˆ†é–“ç¡çœ çŠ¶æ…‹ã¨ãªã‚Šã¾ã™</span>|, 1);
 	}
 	elsif (@lines > 20) {
 		$sleep_time = 24 * 60;
 		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
-		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª20‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅA$sleep_time•ªŠÔ‡–°ó‘Ô‚Æ‚È‚è‚Ü‚·</span>|, 1);
+		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ20å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€$sleep_timeåˆ†é–“ç¡çœ çŠ¶æ…‹ã¨ãªã‚Šã¾ã™</span>|, 1);
 	}
 	elsif (@lines > 15) {
 		$sleep_time = 6 * 60;
 		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
-		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª15‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅA$sleep_time•ªŠÔ‡–°ó‘Ô‚Æ‚È‚è‚Ü‚·</span>|, 1);
+		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ15å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€$sleep_timeåˆ†é–“ç¡çœ çŠ¶æ…‹ã¨ãªã‚Šã¾ã™</span>|, 1);
 	}
 	elsif (@lines > 10) {
 		$sleep_time = 60;
 		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
-		&error(qq|<span class="die">‘O‰ñ‚ÌƒvƒŒƒC‚ÉXV˜A‘Å‚ª10‰ñ‚ğ’´‚¦‚Ä‚¢‚½‚Ì‚ÅA$sleep_time•ªŠÔ‡–°ó‘Ô‚Æ‚È‚è‚Ü‚·</span>|, 1);
+		&error(qq|<span class="die">å‰å›ã®ãƒ—ãƒ¬ã‚¤æ™‚ã«æ›´æ–°é€£æ‰“ãŒ10å›ã‚’è¶…ãˆã¦ã„ãŸã®ã§ã€$sleep_timeåˆ†é–“ç¡çœ çŠ¶æ…‹ã¨ãªã‚Šã¾ã™</span>|, 1);
 	}
 }
 
@@ -87,7 +87,7 @@ exit;
 
 sub write_top_message {
 	my @lines = ();
-	open my $fh, "+< $logdir/login.cgi" or &error("$logdir/login.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/login.cgi" or &error("$logdir/login.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	push @lines, $_ while <$fh>;
 	unshift @lines, "$time<>$m{name}<>$m{color}<>$m{guild}<>$m{mes}<>$m{icon}<>\n";
@@ -99,12 +99,12 @@ sub write_top_message {
 
 
 #=================================================
-# ƒNƒbƒL[ƒZƒbƒg
+# ã‚¯ãƒƒã‚­ãƒ¼ã‚»ãƒƒãƒˆ
 #=================================================
 sub set_cookie {
 	my @cooks = @_;
 
-	local($csec,$cmin,$chour,$cmday,$cmon,$cyear,$cwday) = gmtime(time + $limit_cookie_day * 24 * 60 * 60); # 60“ú 24ŠÔ * 60•ª * 60•b
+	local($csec,$cmin,$chour,$cmday,$cmon,$cyear,$cwday) = gmtime(time + $limit_cookie_day * 24 * 60 * 60); # 60æ—¥ 24æ™‚é–“ * 60åˆ† * 60ç§’
 	local @mons = ('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 	local @week = ('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 
@@ -119,41 +119,41 @@ sub set_cookie {
 	print "Set-Cookie: party=$cook; expires=$expirese_time\n";
 }
 # ------------------
-# ƒNƒbƒL[íœ
+# ã‚¯ãƒƒã‚­ãƒ¼å‰Šé™¤
 sub del_cookie {
 	my $expires_time = 'Thu, 01-Jan-1970 00:00:00 GMT';
 	print "Set-Cookie: party=dummy; expires=$expires_time\n";
 }
 
 #=================================================
-# ƒvƒŒƒCƒ„[ˆê——ì¬
+# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§ä½œæˆ
 #=================================================
 sub write_player_list_html {
 	my $count = 0;
 	my $html = qq|<table class="tablesorter"><thead><tr>|;
-	for my $k (qw/–¼‘O «•Ê ƒMƒ‹ƒh Lv “]E E‹Æ ‘OE‹Æ ‚g‚o ‚l‚o UŒ‚ ç”õ ‘f‘ ºŞ°ÙÄŞ º²İ ÒÀŞÙ •Ší –h‹ï “¹‹ï Óİ½À°Œ‚‘Ş ÌßÚ²Ô°Œ‚‘Ş ••ˆó ‰ğ•ú ¶¼ŞÉ ÅIƒƒOƒCƒ“/) {
+	for my $k (qw/åå‰ æ€§åˆ¥ ã‚®ãƒ«ãƒ‰ Lv è»¢è· è·æ¥­ å‰è·æ¥­ ï¼¨ï¼° ï¼­ï¼° æ”»æ’ƒ å®ˆå‚™ ç´ æ—© ã‚´ãƒ¼ãƒ«ãƒ‰ ã‚³ã‚¤ãƒ³ ãƒ¡ãƒ€ãƒ« æ­¦å™¨ é˜²å…· é“å…· ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ’ƒé€€ ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æ’ƒé€€ å°å° è§£æ”¾ ã‚«ã‚¸ãƒ æœ€çµ‚ãƒ­ã‚°ã‚¤ãƒ³/) {
 		$html .= qq|<th>$k</th>|;
 	}
 	$html .= qq|</tr></thead><tbody>\n|;
 	
 	my @datas = ();
-	opendir my $dh, $userdir or &error("$userdirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, $userdir or &error("$userdirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $dir_name = readdir $dh) {
 		next if $dir_name =~ /\./;
 		my %p = &get_you_datas($dir_name, 1);
 		
-		# ƒf[ƒ^”j‘¹ƒ`ƒFƒbƒN(ƒoƒbƒNƒAƒbƒv‚ª‚ ‚ê‚Î•œ‹Œ)
+		# ãƒ‡ãƒ¼ã‚¿ç ´æãƒã‚§ãƒƒã‚¯(ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãŒã‚ã‚Œã°å¾©æ—§)
 		if (-s "$usrdir/$dir_name/user.cgi" <= 0) {
 			&copy("$usrdir/$dir_name/backup.cgi", "$usrdir/$dir_name/user.cgi") if -f "$usrdir/$dir_name/backup.cgi";
 		}
-		# ƒoƒbƒNƒAƒbƒv
+		# ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
 		else {
 			&copy("$usrdir/$dir_name/user.cgi", "$usrdir/$dir_name/backup.cgi");
 		}
 
-		# ©“®íœŠúŠÔ
+		# è‡ªå‹•å‰Šé™¤æœŸé–“
 		if ( ($time > $p{ltime} + $auto_delete_day * 3600 * 24)
-			|| ($p{job_lv} <= 0 && $p{lv} <= 2 && $time > $p{ltime} + 7 * 3600 * 24) ) { # “]E‰ñ”‚O‚ÅƒŒƒxƒ‹2ˆÈ‰º‚Í‚V“ú‚Åíœ
+			|| ($p{job_lv} <= 0 && $p{lv} <= 2 && $time > $p{ltime} + 7 * 3600 * 24) ) { # è»¢è·å›æ•°ï¼ã§ãƒ¬ãƒ™ãƒ«2ä»¥ä¸‹ã¯ï¼—æ—¥ã§å‰Šé™¤
 				&delete_guild_member($p{guild}, $p{name}) if $p{guild};
 				&delete_directory("$userdir/$dir_name");
 				next;
@@ -166,21 +166,21 @@ sub write_player_list_html {
 	
 	$html .= qq|\n</tbody></table>\n|;
 	
-	open my $fh, "> $htmldir/player_list.html" or &error("$htmldir/player_list.htmlƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "> $htmldir/player_list.html" or &error("$htmldir/player_list.htmlãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh &html_player_header;
 	print $fh $html;
 	print $fh &html_player_footer;
 	close $fh;
 
-	# “o˜^l”•â³
-	open my $fh2, "> $logdir/entry.cgi" or &error("$logdir/entry.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	# ç™»éŒ²äººæ•°è£œæ­£
+	open my $fh2, "> $logdir/entry.cgi" or &error("$logdir/entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	print $fh2 "$count<><>";
 	close $fh2;
 	
 	&write_ranking(@datas);
 }
 #=================================================
-# ƒ‰ƒ“ƒLƒ“ƒOŒnƒf[ƒ^ì¬
+# ãƒ©ãƒ³ã‚­ãƒ³ã‚°ç³»ãƒ‡ãƒ¼ã‚¿ä½œæˆ
 #=================================================
 sub write_ranking {
 	my @datas = @_;
@@ -192,7 +192,7 @@ sub write_ranking {
 	my @help_cs  = sort { $b->[10] <=> $a->[10] } @datas;
 	my @alc_cs   = sort { $b->[11] <=> $a->[11] } @datas;
 	
-	# ‰¤ÒƒŠƒXƒg
+	# ç‹è€…ãƒªã‚¹ãƒˆ
 	my %sames = ();
 	my $count = 0;
 	my $line  = '';
@@ -201,23 +201,23 @@ sub write_ranking {
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[5]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh, "> $logdir/kill_p.cgi" or &error("$logdir/kill_p.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "> $logdir/kill_p.cgi" or &error("$logdir/kill_p.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh $line;
 	close $fh;
 	
-	# ‰p—YƒŠƒXƒg
+	# è‹±é›„ãƒªã‚¹ãƒˆ
 	$count = 0;
 	$line  = '';
 	for my $ref (@kills_ms) {
-		next if $sames{ $ref->[0] }; # ‰¤Òƒ‰ƒ“ƒLƒ“ƒOÒ‚Í”rœ
+		next if $sames{ $ref->[0] }; # ç‹è€…ãƒ©ãƒ³ã‚­ãƒ³ã‚°è€…ã¯æ’é™¤
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[6]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh2, "> $logdir/kill_m.cgi" or &error("$logdir/kill_m.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh2, "> $logdir/kill_m.cgi" or &error("$logdir/kill_m.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh2 $line;
 	close $fh2;
 
-	# –‚‰¤ƒŠƒXƒg
+	# é­”ç‹ãƒªã‚¹ãƒˆ
 	%sames = ();
 	$count = 0;
 	$line  = '';
@@ -226,52 +226,52 @@ sub write_ranking {
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[8]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh3, "> $logdir/mao_c.cgi" or &error("$logdir/mao_c.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh3, "> $logdir/mao_c.cgi" or &error("$logdir/mao_c.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh3 $line;
 	close $fh3;
 
-	# —EÒƒŠƒXƒg
+	# å‹‡è€…ãƒªã‚¹ãƒˆ
 	$count = 0;
 	$line  = '';
 	for my $ref (@hero_cs) {
-		next if $sames{ $ref->[0] }; # –‚‰¤ƒ‰ƒ“ƒLƒ“ƒOÒ‚Í”rœ
+		next if $sames{ $ref->[0] }; # é­”ç‹ãƒ©ãƒ³ã‚­ãƒ³ã‚°è€…ã¯æ’é™¤
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[9]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh4, "> $logdir/hero_c.cgi" or &error("$logdir/hero_c.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh4, "> $logdir/hero_c.cgi" or &error("$logdir/hero_c.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh4 $line;
 	close $fh4;
 
-	# ƒJƒWƒmŸÒƒŠƒXƒg
+	# ã‚«ã‚¸ãƒå‹è€…ãƒªã‚¹ãƒˆ
 	$count = 0;
 	$line  = '';
 	for my $ref (@cas_cs) {
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[7]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh5, "> $logdir/cas_c.cgi" or &error("$logdir/cas_c.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh5, "> $logdir/cas_c.cgi" or &error("$logdir/cas_c.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh5 $line;
 	close $fh5;
 
-	# è•‚¯ÒƒŠƒXƒg
+	# æ‰‹åŠ©ã‘è€…ãƒªã‚¹ãƒˆ
 	$count = 0;
 	$line  = '';
 	for my $ref (@help_cs) {
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[10]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh10, "> $logdir/help_c.cgi" or &error("$logdir/help_c.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh10, "> $logdir/help_c.cgi" or &error("$logdir/help_c.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh10 $line;
 	close $fh10;
 
-	# ˜B‹àÒƒŠƒXƒg
+	# éŒ¬é‡‘è€…ãƒªã‚¹ãƒˆ
 	$count = 0;
 	$line  = '';
 	for my $ref (@alc_cs) {
 		$line .= "$ref->[0]<>$ref->[1]<>$ref->[2]<>$ref->[3]<>$ref->[4]<>$ref->[11]<>\n";
 		last if ++$count >= 10;
 	}
-	open my $fh11, "> $logdir/alc_c.cgi" or &error("$logdir/alc_c.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh11, "> $logdir/alc_c.cgi" or &error("$logdir/alc_c.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh11 $line;
 	close $fh11;
 
@@ -279,12 +279,12 @@ sub write_ranking {
 
 
 # ------------------
-# ƒvƒŒƒCƒ„[ˆê——‚Ìƒwƒbƒ_[
+# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§ã®ãƒ˜ãƒƒãƒ€ãƒ¼
 sub html_player_header {
 	return <<"EOM";
 <html>
 <head>
-<title>$title / ƒvƒŒƒCƒ„[ˆê——</title>
+<title>$title / ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§</title>
 <link rel="stylesheet" type="text/css" href="party.css">
 <link rel="stylesheet" type="text/css" href="./jQuery/themes/green/style.css">
 <script type="text/javascript" src="./jQuery/jquery-latest.js"></script>
@@ -308,8 +308,8 @@ sub html_player_header {
 </script>
 </head>
 <body>
-<form action="../index.cgi"><input type="submit" value="‚s‚n‚o‚Ö–ß‚é" /></form>
-<p>XV“ú $date</p>
+<form action="../index.cgi"><input type="submit" value="ï¼´ï¼¯ï¼°ã¸æˆ»ã‚‹" /></form>
+<p>æ›´æ–°æ—¥æ™‚ $date</p>
 <div id="pager" class="pager">
 	<form>
 		<img src="./jQuery/addons/pager/icons/first.png" class="first" />
@@ -328,12 +328,12 @@ EOM
 }
 
 # ------------------
-# ƒvƒŒƒCƒ„[ˆê——‚Ìƒtƒbƒ^[
+# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§ã®ãƒ•ãƒƒã‚¿ãƒ¼
 sub html_player_footer {
 	return <<"EOM";
 <br />
 <div align="right" style="font-size:11px">
-—ƒp[ƒeƒB[II Ver$VERSION<br /><a href="http://cgi-sweets.com/" target="_blank">CGI-Sweets</a><br /><a href="http://amaraku.net/" target="_blank">AmaŠy.net</a><br />
+ï¼ ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼II Ver$VERSION<br /><a href="http://cgi-sweets.com/" target="_blank">CGI-Sweets</a><br /><a href="http://amaraku.net/" target="_blank">Amaæ¥½.net</a><br />
 $copyright
 </div>
 </body>
@@ -343,11 +343,11 @@ EOM
 
 
 #=================================================
-# ƒMƒ‹ƒh¨—Íì¬
+# ã‚®ãƒ«ãƒ‰å‹¢åŠ›ä½œæˆ
 #=================================================
 sub write_guild_list_html {
 	my @guild_list = ();
-	opendir my $dh, $guilddir or &error("$guilddirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, $guilddir or &error("$guilddirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $dir_name = readdir $dh) {
 		next if $dir_name =~ /\./;
 		
@@ -355,7 +355,7 @@ sub write_guild_list_html {
 		eval { flock $fh, 2; };
 		my $line = <$fh>;
 		my($gname,$gmaster,$gcolor,$gbgimg,$gmes,$gpoint) = split /<>/, $line;
-		$gpoint = int($gpoint * 0.8); # ƒMƒ‹ƒhƒ|ƒCƒ“ƒg‚ğ‚PŠ„Œ¸
+		$gpoint = int($gpoint * 0.8); # ã‚®ãƒ«ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’ï¼‘å‰²æ¸›
 		seek  $fh, 0, 0;
 		truncate $fh, 0;
 		print $fh "$gname<>$gmaster<>$gcolor<>$gbgimg<>$gmes<>$gpoint<>";
@@ -363,11 +363,11 @@ sub write_guild_list_html {
 		
 		my $gmembers = '';
 		my $gcount = 0;
-		open my $fh2, "< $guilddir/$dir_name/member.cgi" or &error("$guilddir/$dir_name/member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+		open my $fh2, "< $guilddir/$dir_name/member.cgi" or &error("$guilddir/$dir_name/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 		while (my $line2 = <$fh2>) {
 			my($name, $position) = split /<>/, $line2;
-			next if $position eq 'Q‰Á\¿’†';
-			$gmembers .= "$name—$position<>";
+			next if $position eq 'å‚åŠ ç”³è«‹ä¸­';
+			$gmembers .= "$nameï¼ $position<>";
 			++$gcount;
 		}
 		close $fh2;
@@ -376,7 +376,7 @@ sub write_guild_list_html {
 	}
 	closedir $dh;
 	
-	# ƒMƒ‹ƒhƒ|ƒCƒ“ƒgAl”‚ª‘½‚¢‡‚Éƒ\[ƒg
+	# ã‚®ãƒ«ãƒ‰ãƒã‚¤ãƒ³ãƒˆã€äººæ•°ãŒå¤šã„é †ã«ã‚½ãƒ¼ãƒˆ
 	@guild_list = map { $_->[0] } sort { $b->[5] <=> $a->[5] || $b->[2] <=> $a->[2] } map { [$_, split /<>/] } @guild_list;
 	
 	open my $fh3, "> $logdir/guild_list.cgi";

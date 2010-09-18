@@ -1,30 +1,30 @@
 $is_npc_action = 1;
 
 #=================================================
-# —‚µ‚ç‚×‚é
+# ï¼ ã—ã‚‰ã¹ã‚‹
 #=================================================
 sub shiraberu {
 	my $y = shift;
 
-	return unless defined $ms{$y}{name}; # ‘¶İ‚µ‚È‚¢•ó” –¼
+	return unless defined $ms{$y}{name}; # å­˜åœ¨ã—ãªã„å®ç®±å
 	return unless $ms{$y}{color} eq $npc_color;
 	if ($ms{$y}{hp} <= 0) {
-		$mes = "‚µ‚©‚µA•ó” ‚Ì’†g‚Í‚©‚ç‚Á‚Û‚¾‚Á‚½c";
+		$mes = "ã—ã‹ã—ã€å®ç®±ã®ä¸­èº«ã¯ã‹ã‚‰ã£ã½ã ã£ãŸâ€¦";
 		return;
 	}
 	elsif ($map) {
 		if ($m{event} =~ /$maps[$py][$px]/) {
-			$mes = "‚Pl‚PŒÂ‚Ü‚Å‚µ‚©ŠJ‚¯‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+			$mes = "ï¼‘äººï¼‘å€‹ã¾ã§ã—ã‹é–‹ã‘ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 			return;
 		}
-		$m{event} = $maps[$py][$px]; # ‚Pl‚P” ‚Ì‚½‚ß‚ÌŠJ‚¯‚½‚©ƒtƒ‰ƒO
+		$m{event} = $maps[$py][$px]; # ï¼‘äººï¼‘ç®±ã®ãŸã‚ã®é–‹ã‘ãŸã‹ãƒ•ãƒ©ã‚°
 	}
 	else {
 		if ($m{is_get}) {
-			$mes = "‚Pl‚PŒÂ‚Ü‚Å‚µ‚©ŠJ‚¯‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+			$mes = "ï¼‘äººï¼‘å€‹ã¾ã§ã—ã‹é–‹ã‘ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 			return;
 		}
-		$m{is_get} = 1; # ‚Pl‚P” ‚Ì‚½‚ß‚ÌŠJ‚¯‚½‚©ƒtƒ‰ƒO
+		$m{is_get} = 1; # ï¼‘äººï¼‘ç®±ã®ãŸã‚ã®é–‹ã‘ãŸã‹ãƒ•ãƒ©ã‚°
 	}
 	
 	$ms{$y}{hp} = 0;
@@ -34,35 +34,35 @@ sub shiraberu {
 					  : $ms{$y}{get_exp} eq '2' ? $arms[$ms{$y}{get_money}][1]
 					  :                           $ites[$ms{$y}{get_money}][1];
 
-		$npc_com .= "•ó” ‚Ì’†g‚Íc <b>$item_name</b> ‚Å‚µ‚½I";
+		$npc_com .= "å®ç®±ã®ä¸­èº«ã¯â€¦ <b>$item_name</b> ã§ã—ãŸï¼";
 		if ($ms{$y}{get_exp} eq '3' && !$m{ite}) {
-			$npc_com .= "$item_name‚ğè‚É“ü‚ê‚Ü‚µ‚½I";
+			$npc_com .= "$item_nameã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸï¼";
 			$m{ite} = $ms{$y}{get_money};
 			require "./lib/_add_collection.cgi";
 			&add_collection;
 		}
 		elsif ($m{is_full}) {
-			$npc_com .= "‚µ‚©‚µA$m‚Ì—a‚©‚èŠ‚Í‚¢‚Á‚Ï‚¢‚¾‚Á‚½cB$m‚Í$item_name‚ğ‚ ‚«‚ç‚ß‚½";
+			$npc_com .= "ã—ã‹ã—ã€$mã®é ã‹ã‚Šæ‰€ã¯ã„ã£ã±ã„ã ã£ãŸâ€¦ã€‚$mã¯$item_nameã‚’ã‚ãã‚‰ã‚ãŸ";
 		}
 		else {
-			$npc_com .= "$item_name‚Í—a‚©‚èŠ‚É‘—‚ç‚ê‚Ü‚µ‚½";
+			$npc_com .= "$item_nameã¯é ã‹ã‚Šæ‰€ã«é€ã‚‰ã‚Œã¾ã—ãŸ";
 			&send_item($m, $ms{$y}{get_exp}, $ms{$y}{get_money});
 		}
 	}
 	else {
-		$npc_com .= "‚µ‚©‚µA•ó” ‚Ì’†g‚Í‚©‚ç‚Á‚Û‚¾‚Á‚½c";
+		$npc_com .= "ã—ã‹ã—ã€å®ç®±ã®ä¸­èº«ã¯ã‹ã‚‰ã£ã½ã ã£ãŸâ€¦";
 	}
 }
 
 #=================================================
-# NPC‚Ì”½Œ‚(‰½“x‚à“¯‚¶NPC‚ªUŒ‚‚µ‚È‚¢‚æ‚¤‚É•À‚Ñ‘Ö‚¦‚é)
+# NPCã®åæ’ƒ(ä½•åº¦ã‚‚åŒã˜NPCãŒæ”»æ’ƒã—ãªã„ã‚ˆã†ã«ä¸¦ã³æ›¿ãˆã‚‹)
 #=================================================
 sub npc_turn {
 	for my $y (@enemys) {
 		next if $ms{$y}{hp} <= 0;
 		next if $time - $ms{$y}{time} < $act_time;
 		
-		# s“®‚Å‚«‚éNPC‚ª‚¢‚½ê‡
+		# è¡Œå‹•ã§ãã‚‹NPCãŒã„ãŸå ´åˆ
 		my $buf_m   = $m;
 		my $buf_com = $com;
 		$com = '';
@@ -88,14 +88,14 @@ sub npc_turn {
 		$m   = $buf_m;
 		$com = $buf_com;
 		
-		# s“®‚µ‚½ƒLƒƒƒ‰‚ğÅŒã”ö‚É•À‚Ñ‘Ö‚¦
+		# è¡Œå‹•ã—ãŸã‚­ãƒ£ãƒ©ã‚’æœ€å¾Œå°¾ã«ä¸¦ã³æ›¿ãˆ
 		my $name = shift @enemys;
 		@members = (@partys,@enemys,$name);
 		last;
 	}
 }
 # ------------------
-# NPC‚ÌƒAƒNƒVƒ‡ƒ“ˆ—
+# NPCã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å‡¦ç†
 sub npc_action {
 	push @npc_skills, &{ 'skill_'.$ms{$m}{job}     };
 	
@@ -115,66 +115,66 @@ sub npc_action {
 		$npc_actions{$npc_skills[$i][2]} = [ $npc_skills[$i][1], $npc_skills[$i][3] ];
 	}
 	
-	# ó‘ÔˆÙí
-	if ($ms{$m}{state} eq '“®••') {
+	# çŠ¶æ…‹ç•°å¸¸
+	if ($ms{$m}{state} eq 'å‹•å°') {
 		$ms{$m}{state} = '';
-		$com .="‚µ‚©‚µA$m‚Í“®‚­‚±‚Æ‚ª‚Å‚«‚È‚¢I";
+		$com .="ã—ã‹ã—ã€$mã¯å‹•ãã“ã¨ãŒã§ããªã„ï¼";
 	}
-	elsif ($ms{$m}{state} eq '–ƒáƒ') {
+	elsif ($ms{$m}{state} eq 'éº»ç—º') {
 		if (rand(3) < 1) {
-			$com .="$m‚Ì‚µ‚Ñ‚ê‚ª‚È‚­‚È‚è‚Ü‚µ‚½I";
+			$com .="$mã®ã—ã³ã‚ŒãŒãªããªã‚Šã¾ã—ãŸï¼";
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "$m‚Í‚µ‚Ñ‚ê‚Ä“®‚­‚±‚Æ‚ª‚Å‚«‚È‚¢I";
+			$com .= "$mã¯ã—ã³ã‚Œã¦å‹•ãã“ã¨ãŒã§ããªã„ï¼";
 		}
 	}
-	elsif ($ms{$m}{state} eq '–°‚è') {
+	elsif ($ms{$m}{state} eq 'çœ ã‚Š') {
 		if (rand(3) < 1) {
-			$com .="$m‚Í–°‚è‚©‚ç‚³‚ß‚Ü‚µ‚½I";
+			$com .="$mã¯çœ ã‚Šã‹ã‚‰ã•ã‚ã¾ã—ãŸï¼";
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "$m‚Í–°‚Á‚Ä‚¢‚éI";
+			$com .= "$mã¯çœ ã£ã¦ã„ã‚‹ï¼";
 		}
 	}
-	else { # ³í
-		if ($ms{$m}{state} eq '¬—') {
+	else { # æ­£å¸¸
+		if ($ms{$m}{state} eq 'æ··ä¹±') {
 			if (rand(3) < 1) {
-				$com .="$m‚Í¬—‚ª‚È‚¨‚è‚Ü‚µ‚½I";
+				$com .="$mã¯æ··ä¹±ãŒãªãŠã‚Šã¾ã—ãŸï¼";
 				$ms{$m}{state} = '';
 			}
 			else {
-				$com .= "$m‚Í¬—‚µ‚Ä‚¢‚éI";
+				$com .= "$mã¯æ··ä¹±ã—ã¦ã„ã‚‹ï¼";
 			}
 		}
 		
 		my $npc_action = $npc_actions[int(rand(@npc_actions))];
-		$com .= "—$npc_action ";
-		$ms{$m}{tmp} = '' if $ms{$m}{tmp} =~ /–hŒä|”½Œ‚/ || rand(3) < 1; # –hŒä‚Æ”½Œ‚ˆÈŠO‚Í”ƒ^[ƒ“c‚é
+		$com .= "ï¼ $npc_action ";
+		$ms{$m}{tmp} = '' if $ms{$m}{tmp} =~ /é˜²å¾¡|åæ’ƒ/ || rand(3) < 1; # é˜²å¾¡ã¨åæ’ƒä»¥å¤–ã¯æ•°ã‚¿ãƒ¼ãƒ³æ®‹ã‚‹
 		&{ $npc_actions{$npc_action}[1] };
 		$ms{$m}{mp} -= $npc_actions{$npc_action}[0];
 		$ms{$m}{mp}  = 0 if $ms{$m}{mp} < 0;
 		
 		if ($ms{$m}{hp} > 0) {
-			if ($ms{$m}{state} eq '–Ò“Å') {
+			if ($ms{$m}{state} eq 'çŒ›æ¯’') {
 				my $v = int($ms{$m}{mhp}*0.1);
 				$v = int(rand(100)+950) if $v > 999;
 				$ms{$m}{hp} -= $v;
-				$com.=qq|$m‚Í–Ò“Å‚É‚æ‚è <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒW‚ğ‚¤‚¯‚½I|;
+				$com.=qq|$mã¯çŒ›æ¯’ã«ã‚ˆã‚Š <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ã†ã‘ãŸï¼|;
 				
 				if ($ms{$m}{hp} <= 0) {
 					$ms{$m}{hp} = 0;
 					&reset_status($m);
-					$com .= qq!<span class="die">$m‚Í“|‚ê‚½I</span>!;
+					$com .= qq!<span class="die">$mã¯å€’ã‚ŒãŸï¼</span>!;
 					&defeat($m);
 				}
 			}
-			if ($ms{$m}{tmp} eq '‰ñ•œ' && $ms{$m}{hp} > 0) { # ©“®‰ñ•œ
+			if ($ms{$m}{tmp} eq 'å›å¾©' && $ms{$m}{hp} > 0) { # è‡ªå‹•å›å¾©
 				my $v = $ms{$m}{mhp} > 999 ? int(rand(100)) : int($ms{$m}{mhp} * (rand(0.1)+0.1));
 				$ms{$m}{hp} += $v;
 				$ms{$m}{hp} = $ms{$m}{mhp} if $ms{$m}{hp} > $ms{$m}{mhp};
-				$com .= qq|<b>$m</b>‚Ì$e2j{mhp}‚ª <span class="heal">$v</span> ‰ñ•œ‚µ‚½I|;
+				$com .= qq|<b>$m</b>ã®$e2j{mhp}ãŒ <span class="heal">$v</span> å›å¾©ã—ãŸï¼|;
 			}
 		}
 	}
@@ -188,21 +188,21 @@ sub add_treasure {
 		--$count if $ms{$name}{hp} <= 0;
 	}
 
-	# •ó” ‚Ì–¼‘O‚â‰æ‘œ
+	# å®ç®±ã®åå‰ã‚„ç”»åƒ
 	my @boxes = (
-		{ name => "•’Ê‚Ì•ó” ",		icon => "mon/900.gif", },
-		{ name => "‘å‚«‚¢•ó” ",		icon => "mon/901.gif", },
-		{ name => "¬‚³‚¢•ó” ",		icon => "mon/902.gif", },
-		{ name => "•‚¢•ó” ",		icon => "mon/903.gif", },
-		{ name => "Â‚¢•ó” ",		icon => "mon/904.gif", },
-		{ name => "ŒÃ‚¢•ó” ",		icon => "mon/905.gif", },
-		{ name => "ŠÛ‚¢•ó” ",		icon => "mon/906.gif", },
+		{ name => "æ™®é€šã®å®ç®±",		icon => "mon/900.gif", },
+		{ name => "å¤§ãã„å®ç®±",		icon => "mon/901.gif", },
+		{ name => "å°ã•ã„å®ç®±",		icon => "mon/902.gif", },
+		{ name => "é»’ã„å®ç®±",		icon => "mon/903.gif", },
+		{ name => "é’ã„å®ç®±",		icon => "mon/904.gif", },
+		{ name => "å¤ã„å®ç®±",		icon => "mon/905.gif", },
+		{ name => "ä¸¸ã„å®ç®±",		icon => "mon/906.gif", },
 	);
 	
-	$npc_com .= "$p_name ‚Í•ó” ‚ğ”­Œ©‚µ‚½I";
+	$npc_com .= "$p_name ã¯å®ç®±ã‚’ç™ºè¦‹ã—ãŸï¼";
 	for my $i (0 .. $count) {
 		my $no = int(rand(@boxes));
-		my @alfas = ('A'..'Z'); # “¯‚¶–¼‘O‚ğ¯•Ê‚·‚é‚½‚ß‚É–¼‘O‚ÌŒã‚É‚Â‚¯‚é‚à‚Ì
+		my @alfas = ('A'..'Z'); # åŒã˜åå‰ã‚’è­˜åˆ¥ã™ã‚‹ãŸã‚ã«åå‰ã®å¾Œã«ã¤ã‘ã‚‹ã‚‚ã®
 		my $name = '@'.$boxes[$no]{name}.$alfas[$i];
 		
 		for my $k (@battle_datas) {
@@ -216,15 +216,15 @@ sub add_treasure {
 		
 		$ms{$name}{name}  = $name;
 		$ms{$name}{color} = $npc_color;
-		$ms{$name}{tmp} = '–‚–³Œø';
+		$ms{$name}{tmp} = 'é­”ç„¡åŠ¹';
 		$ms{$name}{state} = '';
 		
-		# —j“ú•Ê‚Éµ°ÌŞ‚ğ’Ç‰Á(—j“ú•Ê‚É‚¹‚¸–`Œ¯êŠŒÅ’è‚É‚·‚éê‡‚ÍA«OsƒRƒƒ“ƒgƒAƒEƒg‚µ‚ÄA./stage/**.cgi‚Ì@treasures‚Ì“¹‹ï‚Éµ°ÌŞ‚ğ’Ç‰Á)
-		my @orbs = (int(rand(6)+60), 60..65); # “ú—j‚Íƒ‰ƒ“ƒ_ƒ€
+		# æ›œæ—¥åˆ¥ã«ã‚ªãƒ¼ãƒ–ã‚’è¿½åŠ (æ›œæ—¥åˆ¥ã«ã›ãšå†’é™ºå ´æ‰€å›ºå®šã«ã™ã‚‹å ´åˆã¯ã€â†“ä¸‰è¡Œã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã—ã¦ã€./stage/**.cgiã®@treasuresã®é“å…·ã«ã‚ªãƒ¼ãƒ–ã‚’è¿½åŠ )
+		my @orbs = (int(rand(6)+60), 60..65); # æ—¥æ›œã¯ãƒ©ãƒ³ãƒ€ãƒ 
 		my $wday = (localtime($time))[6];
 		push @{$treasures[2]}, $orbs[$wday];
 		
-		# “¹‹ï‚ªo‚éŠm—¦‚ğã‚°‚é 1,2,3,3
+		# é“å…·ãŒå‡ºã‚‹ç¢ºç‡ã‚’ä¸Šã’ã‚‹ 1,2,3,3
 		my $v = int(rand(4)) + 1;
 		$v = 3 if $v > 3 || @{$treasures[$v-1]} <= 0;
 		$ms{$name}{get_exp} = $v;
@@ -242,11 +242,11 @@ sub add_boss {
 			$ms{$name}{$k} = defined $bosses[$no]{$k} ? $bosses[$no]{$k} : 0;
 		}
 		
-		# ‰Šúƒf[ƒ^ƒZƒbƒg(“Ç‚İ‚ñ‚¾ƒf[ƒ^‚É‚·‚Å‚É’l‚ª‚ ‚éê‡‚Í‚»‚Á‚¿‚ğ—Dæ)
+		# åˆæœŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ(èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã«ã™ã§ã«å€¤ãŒã‚ã‚‹å ´åˆã¯ãã£ã¡ã‚’å„ªå…ˆ)
 		$ms{$name}{hit} = 95 unless $ms{$name}{hit};
 		$ms{$name}{ten} = 1   unless $ms{$name}{ten};
 		for my $k (qw/hp mp at df ag/) {
-			$ms{$name}{$k} = int($ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) ); # ƒp[ƒeƒB[l”‚É‚æ‚é‹­‚³•â³
+			$ms{$name}{$k} = int($ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) ); # ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼äººæ•°ã«ã‚ˆã‚‹å¼·ã•è£œæ­£
 			$ms{$name}{'m'.$k} = $ms{$name}{$k} unless $ms{$name}{'m'.$k};
 		}
 		$ms{$name}{name} = $name;
@@ -258,25 +258,25 @@ sub add_boss {
 		push @members, $name;
 	}
 	chop $npc_com;
-	$npc_com .= "‚ª‚ ‚ç‚í‚ê‚½I";
+	$npc_com .= "ãŒã‚ã‚‰ã‚ã‚ŒãŸï¼";
 }
 sub add_monster {
-	my $c = shift || int(rand( 2.5 + @partys * 0.6 )); # oŒ»”
-	my $s = shift || 1; # ‹­‚³•â³
-	my @alfas = ('A'..'H'); # “¯‚¶–¼‘O‚Ìƒ‚ƒ“ƒXƒ^[‚ğ¯•Ê‚·‚é‚½‚ß‚É–¼‘O‚ÌŒã‚É‚Â‚¯‚é‚à‚Ì
+	my $c = shift || int(rand( 2.5 + @partys * 0.6 )); # å‡ºç¾æ•°
+	my $s = shift || 1; # å¼·ã•è£œæ­£
+	my @alfas = ('A'..'H'); # åŒã˜åå‰ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’è­˜åˆ¥ã™ã‚‹ãŸã‚ã«åå‰ã®å¾Œã«ã¤ã‘ã‚‹ã‚‚ã®
 
 	for my $i (0 .. $c) {
-		my $no = @appears ? $appears[int(rand(@appears))] : int(rand(@monsters)); # oŒ»ƒ‚ƒ“ƒXƒ^[
-		$no = 0 unless defined $monsters[$no]; # ‘¶İ‚µ‚È‚¢No‚¾‚Á‚½‚ç
+		my $no = @appears ? $appears[int(rand(@appears))] : int(rand(@monsters)); # å‡ºç¾ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
+		$no = 0 unless defined $monsters[$no]; # å­˜åœ¨ã—ãªã„Noã ã£ãŸã‚‰
 		my $name = '@'.$monsters[$no]{name}.$alfas[$i];
 		
 		for my $k (@battle_datas) {
 			$ms{$name}{$k} = defined $monsters[$no]{$k} ? $monsters[$no]{$k} : 0;
 		}
 		
-		# ‰Šúƒf[ƒ^ƒZƒbƒg(“Ç‚İ‚ñ‚¾ƒf[ƒ^‚É‚·‚Å‚É’l‚ª‚ ‚éê‡‚Í‚»‚Á‚¿‚ğ—Dæ)
+		# åˆæœŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ(èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã«ã™ã§ã«å€¤ãŒã‚ã‚‹å ´åˆã¯ãã£ã¡ã‚’å„ªå…ˆ)
 		for my $k (qw/hp mp at df ag/) {
-			$ms{$name}{$k} = int( $ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) * $s ); # ƒp[ƒeƒB[l”‚É‚æ‚é‹­‚³•â³
+			$ms{$name}{$k} = int( $ms{$name}{$k} * (0.9 + rand(0.3) + (@partys - 2) * 0.1) * $s ); # ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼äººæ•°ã«ã‚ˆã‚‹å¼·ã•è£œæ­£
 			$ms{$name}{'m'.$k} ||= $ms{$name}{$k};
 		}
 		$ms{$name}{name}  = $name;
@@ -290,9 +290,9 @@ sub add_monster {
 		push @members, $name;
 	}
 	chop $npc_com;
-	$npc_com .= "‚ª‚ ‚ç‚í‚ê‚½I";
+	$npc_com .= "ãŒã‚ã‚‰ã‚ã‚ŒãŸï¼";
 }
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

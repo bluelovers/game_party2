@@ -1,13 +1,13 @@
 #=================================================
-# ƒRƒŒƒNƒVƒ‡ƒ“’Ç‰Á Created by Merino
-# collction.cgi,depot.cgi,weapon.cgi,armor.cgi,item.cgi‚Åg—p
+# ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³è¿½åŠ  Created by Merino
+# collction.cgi,depot.cgi,weapon.cgi,armor.cgi,item.cgiã§ä½¿ç”¨
 #=================================================
-# g‚¢•û:ƒRƒŒƒNƒVƒ‡ƒ“‚É’Ç‰Á‚µ‚½‚¢ƒ^ƒCƒ~ƒ“ƒO‚Å‰º“ñs
+# ä½¿ã„æ–¹:ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«è¿½åŠ ã—ãŸã„ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ä¸‹äºŒè¡Œ
 # require './lib/_add_collection.cgi';
 # &add_collection;
 
 #================================================
-# ©•ª‚ÌƒRƒŒƒNƒVƒ‡ƒ“ƒf[ƒ^æ“¾ + ¡‘•”õ’†‚Ì•¨‚ªƒRƒŒƒNƒVƒ‡ƒ“‚É‚È‚¢‚È‚ç’Ç‰Á
+# è‡ªåˆ†ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿å–å¾— + ä»Šè£…å‚™ä¸­ã®ç‰©ãŒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«ãªã„ãªã‚‰è¿½åŠ 
 #=================================================
 sub add_collection {
 	my @kinds = ('', 'wea', 'arm', 'ite');
@@ -15,12 +15,12 @@ sub add_collection {
 	my $is_rewrite = 0;
 	my @lines = ();
 	
-	open my $fh, "+< $userdir/$id/collection.cgi" or &error("ƒRƒŒƒNƒVƒ‡ƒ“ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/collection.cgi" or &error("ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
-		$line =~ tr/\x0D\x0A//d; # \n‰üsíœ
+		$line =~ tr/\x0D\x0A//d; # \næ”¹è¡Œå‰Šé™¤
 		
-		# ’Ç‰Á
+		# è¿½åŠ 
 		if ($m{ $kinds[$kind] } && $line !~ /,$m{ $kinds[$kind] },/) {
 			$is_rewrite = 1;
 			$line .= "$m{ $kinds[$kind] },";
@@ -29,7 +29,7 @@ sub add_collection {
 					  : $kind eq '2' ? "<b>$arms[$m{arm}][1]"
 					  :                "<b>$ites[$m{ite}][1]"
 					  ;
-			$npc_com .= '‚ªV‚µ‚­ƒAƒCƒeƒ€}ŠÓ‚É“o˜^‚³‚ê‚Ü‚µ‚½</b>';
+			$npc_com .= 'ãŒæ–°ã—ãã‚¢ã‚¤ãƒ†ãƒ å›³é‘‘ã«ç™»éŒ²ã•ã‚Œã¾ã—ãŸ</b>';
 			
 			# sort
 			$line  = join ",", sort { $a <=> $b } split /,/, $line;
@@ -50,13 +50,13 @@ sub add_collection {
 }
 
 #================================================
-# “Ç‚İ‚İ‚Ì‚İ(‘Šè‚ÌƒRƒŒƒNƒVƒ‡ƒ“ƒf[ƒ^‚ğŒ©‚é‚Æ‚«‚È‚Ç)
+# èª­ã¿è¾¼ã¿ã®ã¿(ç›¸æ‰‹ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿ã‚’è¦‹ã‚‹ã¨ããªã©)
 #=================================================
 sub read_collection {
 	my $yid = shift || $id;
 	
 	my @lines = ();
-	open my $fh, "< $userdir/$yid/collection.cgi" or &error("$userdir/$yid/collection.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$yid/collection.cgi" or &error("$userdir/$yid/collection.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		push @lines, $line;
 	}
@@ -66,4 +66,4 @@ sub read_collection {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

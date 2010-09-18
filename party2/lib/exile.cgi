@@ -1,97 +1,97 @@
 #=================================================
-# r‚ç‚µ’Ç•ú Created by Merino
+# è’ã‚‰ã—è¿½æ”¾ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'r‚ç‚µ’Ç•ú‹Rm’c';
+# å ´æ‰€å
+$this_title = 'è’ã‚‰ã—è¿½æ”¾é¨å£«å›£';
 
-# NPC–¼
-$npc_name   = '@’Ç•ú‹Rm';
+# NPCå
+$npc_name   = '@è¿½æ”¾é¨å£«';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/exile";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/exile.gif";
 
-# Œë‚Á‚½”»’f‚ğ‚µ‚½\¿Ò‚Ö‚ÌS‘©ŠÔ(“ú)
+# èª¤ã£ãŸåˆ¤æ–­ã‚’ã—ãŸç”³è«‹è€…ã¸ã®æ‹˜æŸæ™‚é–“(æ—¥)
 $penalty_day = 25;
 
-# ’Ç•ú‚É•K—v‚È•[”
+# è¿½æ”¾ã«å¿…è¦ãªç¥¨æ•°
 $need_vote = 40;
 
-# 1l‚ª’Ç•ú\¿‚Å‚«‚éŒÀ“x(\¿’†‚Ì‚ª‰ğŒˆ‚·‚é‚ÆÄ“x\¿‰Â”\)
+# 1äººãŒè¿½æ”¾ç”³è«‹ã§ãã‚‹é™åº¦(ç”³è«‹ä¸­ã®ãŒè§£æ±ºã™ã‚‹ã¨å†åº¦ç”³è«‹å¯èƒ½)
 $max_violator = 1;
 
-# \¿æ‚èÁ‚µ‹Ö~ŠÔ()B’N‚©‚ª“Š•[‚ğs‚Á‚Ä‚©‚ç‚±‚ÌŠÔˆÈ“à‚Íæ‚èÁ‚µ‚Å‚«‚È‚¢B
+# ç”³è«‹å–ã‚Šæ¶ˆã—ç¦æ­¢æ™‚é–“(æ™‚)ã€‚èª°ã‹ãŒæŠ•ç¥¨ã‚’è¡Œã£ã¦ã‹ã‚‰ã“ã®æ™‚é–“ä»¥å†…ã¯å–ã‚Šæ¶ˆã—ã§ããªã„ã€‚
 $c_hour = 3;
 
 
 #=================================================
-# ‚Í‚È‚·Œ¾—t
+# ã¯ãªã™è¨€è‘‰
 #=================================================
 @words = (
-	"‚±‚±‚Ír‚ç‚µ’Ç•ú‹Rm’cIr‚ç‚µ‚â•s³ƒvƒŒƒCƒ„[‚ğæ‚è’÷‚Ü‚Á‚Ä‚¢‚éI",
-	"r‚ç‚µ‚â•s³ƒvƒŒƒCƒ„[‚È‚Ç‚ğ’Ç•ú‚µ‚ÄAŠy‚µ‚¢ŠÂ‹«‚ğì‚ë‚¤I",
-	"r‚ç‚µ‚ğŒ©‚©‚¯‚½‚ç‚±‚±‚Å’Ç•ú“Š•[‚ğ‚µ‚Ä‚­‚êIr‚ç‚µ‚Ì‚¢‚È‚¢Šy‚µ‚¢ŠÂ‹«‚Í‚¨‘O’B‚ª‚Â‚­‚Á‚Ä‚¢‚­‚Ì‚¾B",
-	"r‚ç‚µ‚Ì”­Œ¾‚É‘Î‚µ‚Ä”½‰‚µ‚Ä‚Í‚¢‚¯‚È‚¢B‘Šè‚Ì”½‰‚ğŠy‚µ‚Ş‚Ì‚ªr‚ç‚µ‚È‚Ì‚¾B–³‹‚ªˆê”ÔŒø‰Ê“I‚¾B",
-	"r‚ç‚µ‚Ì•s‰õ‚ÈŒ¾—t‚É•s‰õ‚ÈŒ¾—t‚Å•Ô‚µ‚Ä‚µ‚Ü‚¤‚Ì‚ÍAr‚ç‚µ‚Æˆê‚Ér‚ç‚µ‚Ä‚¢‚é‚Ì‚Æ“¯‚¶‚±‚Æ‚¾B",
-	"Š´î“I‚É‚È‚Á‚Ä‚¢‚é‚Æ‚«‚ÍAƒN[ƒ‹‚É‚È‚êI—âÃ‚È‚±‚»³‚µ‚¢”»’f‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Í‚¸‚¾B",
-	"‚È‚ñ‚Æ‚È‚­ƒ€ƒJ‚Â‚­‚È‚Ç‚ÌŠ´î“I‚È”»’f‚ÅŒë‚Á‚½’Ç•ú\\¿‚ğ‚µ‚½ê‡A\\¿Ò‚ª‹t‚É”±‚ğó‚¯‚é‚±‚Æ‚É‚È‚é‚¼B",
-	"”»Œˆ‚É•K—v‚È•[”‚Í$need_vote•[•K—v‚¾I",
-	"“Š•[‚Å‚«‚é‚Ì‚ÍA“]E‰ñ”‚ª‚P‰ñˆÈã‚ÌƒvƒŒƒCƒ„[‚Ì‚İ‚¾I",
+	"ã“ã“ã¯è’ã‚‰ã—è¿½æ”¾é¨å£«å›£ï¼è’ã‚‰ã—ã‚„ä¸æ­£ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å–ã‚Šç· ã¾ã£ã¦ã„ã‚‹ï¼",
+	"è’ã‚‰ã—ã‚„ä¸æ­£ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãªã©ã‚’è¿½æ”¾ã—ã¦ã€æ¥½ã—ã„ç’°å¢ƒã‚’ä½œã‚ã†ï¼",
+	"è’ã‚‰ã—ã‚’è¦‹ã‹ã‘ãŸã‚‰ã“ã“ã§è¿½æ”¾æŠ•ç¥¨ã‚’ã—ã¦ãã‚Œï¼è’ã‚‰ã—ã®ã„ãªã„æ¥½ã—ã„ç’°å¢ƒã¯ãŠå‰é”ãŒã¤ãã£ã¦ã„ãã®ã ã€‚",
+	"è’ã‚‰ã—ã®ç™ºè¨€ã«å¯¾ã—ã¦åå¿œã—ã¦ã¯ã„ã‘ãªã„ã€‚ç›¸æ‰‹ã®åå¿œã‚’æ¥½ã—ã‚€ã®ãŒè’ã‚‰ã—ãªã®ã ã€‚ç„¡è¦–ãŒä¸€ç•ªåŠ¹æœçš„ã ã€‚",
+	"è’ã‚‰ã—ã®ä¸å¿«ãªè¨€è‘‰ã«ä¸å¿«ãªè¨€è‘‰ã§è¿”ã—ã¦ã—ã¾ã†ã®ã¯ã€è’ã‚‰ã—ã¨ä¸€ç·’ã«è’ã‚‰ã—ã¦ã„ã‚‹ã®ã¨åŒã˜ã“ã¨ã ã€‚",
+	"æ„Ÿæƒ…çš„ã«ãªã£ã¦ã„ã‚‹ã¨ãã¯ã€ã‚¯ãƒ¼ãƒ«ã«ãªã‚Œï¼å†·é™ãªæ™‚ã“ãæ­£ã—ã„åˆ¤æ–­ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã¯ãšã ã€‚",
+	"ãªã‚“ã¨ãªããƒ ã‚«ã¤ããªã©ã®æ„Ÿæƒ…çš„ãªåˆ¤æ–­ã§èª¤ã£ãŸè¿½æ”¾ç”³\è«‹ã‚’ã—ãŸå ´åˆã€ç”³\è«‹è€…ãŒé€†ã«ç½°ã‚’å—ã‘ã‚‹ã“ã¨ã«ãªã‚‹ãã€‚",
+	"åˆ¤æ±ºã«å¿…è¦ãªç¥¨æ•°ã¯$need_voteç¥¨å¿…è¦ã ï¼",
+	"æŠ•ç¥¨ã§ãã‚‹ã®ã¯ã€è»¢è·å›æ•°ãŒï¼‘å›ä»¥ä¸Šã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã¿ã ï¼",
 );
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚Â‚¢‚Ù‚¤';
-push @actions, '‚³‚ñ‚¹‚¢';
-push @actions, '‚Í‚ñ‚½‚¢';
-$actions{'‚Â‚¢‚Ù‚¤'} = sub{ &tuihou; }; 
-$actions{'‚³‚ñ‚¹‚¢'} = sub{ &sansei; }; 
-$actions{'‚Í‚ñ‚½‚¢'} = sub{ &hantai; }; 
+push @actions, 'ã¤ã„ã»ã†';
+push @actions, 'ã•ã‚“ã›ã„';
+push @actions, 'ã¯ã‚“ãŸã„';
+$actions{'ã¤ã„ã»ã†'} = sub{ &tuihou; }; 
+$actions{'ã•ã‚“ã›ã„'} = sub{ &sansei; }; 
+$actions{'ã¯ã‚“ãŸã„'} = sub{ &hantai; }; 
 
 
 #=================================================
-# —‚Â‚¢‚Ù‚¤
+# ï¼ ã¤ã„ã»ã†
 #=================================================
 sub tuihou {
 	my $target = shift;
-	my($bad_name, $because) = split /—‚è‚ä‚¤&gt;/, $target;
+	my($bad_name, $because) = split /ï¼ ã‚Šã‚†ã†&gt;/, $target;
 
 	if ($bad_name eq '' || $because eq '') {
-		$mes = "w—‚Â‚¢‚Ù‚¤>›››—‚è‚ä‚¤>¢¢¢x›››‚É‚Ír‚ç‚µ‚Ì–¼‘OA¢¢¢‚É‚Í‚È‚º’Ç•ú‚µ‚½‚¢‚Ì‚©‚Ì——R‚ğ‘‚¢‚Ä‚­‚ê";
+		$mes = "ã€ï¼ ã¤ã„ã»ã†>â—‹â—‹â—‹ï¼ ã‚Šã‚†ã†>â–³â–³â–³ã€â—‹â—‹â—‹ã«ã¯è’ã‚‰ã—ã®åå‰ã€â–³â–³â–³ã«ã¯ãªãœè¿½æ”¾ã—ãŸã„ã®ã‹ã®ç†ç”±ã‚’æ›¸ã„ã¦ãã‚Œ";
 		return;
 	}
 
 	if ($m{job_lv} < 1) {
-		$mes = "–¢“]E‚Ì•û‚ÍA\\¿‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "æœªè»¢è·ã®æ–¹ã¯ã€ç”³\è«‹ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	elsif ($bad_name eq $m) {
-		$mes = "©•ª©g‚ğ\\¿‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "è‡ªåˆ†è‡ªèº«ã‚’ç”³\è«‹ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 
 	my $yid = unpack 'H*', $bad_name;
 	if (!-d "$userdir/$yid") {
-		$mes = "$bad_name‚Æ‚¢‚¤ƒvƒŒƒCƒ„[‚Í‘¶İ‚µ‚Ü‚¹‚ñ";
+		$mes = "$bad_nameã¨ã„ã†ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“";
 		return;
 	}
 	
 	my %sames = ();
 	my @lines = ();
-	open my $fh, "+< $logdir/violator.cgi" or &error("$logdir/violator.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/violator.cgi" or &error("$logdir/violator.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($name, $violator, $message, $yess, $noss) = split /<>/, $line;
 		if ($violator eq $bad_name) {
-			$mes = "$bad_name‚Í‚·‚Å‚É’Ç•ú\\¿‚³‚ê‚Ä‚¢‚Ü‚·";
+			$mes = "$bad_nameã¯ã™ã§ã«è¿½æ”¾ç”³\è«‹ã•ã‚Œã¦ã„ã¾ã™";
 			return;
 		}
 		elsif (++$sames{$name} > $max_violator) {
-			$mes = "\\¿‚µ‚½’Ç•úÒ‚Ì”»Œˆ‚ğ‘Ò‚Á‚Ä‚­‚¾‚³‚¢";
+			$mes = "ç”³\è«‹ã—ãŸè¿½æ”¾è€…ã®åˆ¤æ±ºã‚’å¾…ã£ã¦ãã ã•ã„";
 			return;
 		}
 		
@@ -103,12 +103,12 @@ sub tuihou {
 	print $fh @lines;
 	close $fh;
 	
-	$npc_com = qq|<span class="damage">$bad_name‚ğ’Ç•úÒƒŠƒXƒg‚É’Ç‰Á‚µ‚Ä‚¨‚¢‚½‚¼B”»Œˆ‚ª‚­‚¾‚é‚Ì‚ğ‘Ò‚ÄI</span>|;
-	&write_news(qq|<span class="damage">$m‚ª$bad_name‚ğ$because‚Ì——R‚Å’Ç•ú\\¿‚µ‚Ü‚µ‚½</span>|);
+	$npc_com = qq|<span class="damage">$bad_nameã‚’è¿½æ”¾è€…ãƒªã‚¹ãƒˆã«è¿½åŠ ã—ã¦ãŠã„ãŸãã€‚åˆ¤æ±ºãŒãã ã‚‹ã®ã‚’å¾…ã¦ï¼</span>|;
+	&write_news(qq|<span class="damage">$mãŒ$bad_nameã‚’$becauseã®ç†ç”±ã§è¿½æ”¾ç”³\è«‹ã—ã¾ã—ãŸ</span>|);
 }
 
 #=================================================
-# —‚³‚ñ‚¹‚¢—‚Í‚ñ‚½‚¢
+# ï¼ ã•ã‚“ã›ã„ï¼ ã¯ã‚“ãŸã„
 #=================================================
 sub sansei { &vote('yes', shift); }
 sub hantai { &vote('no',  shift); }
@@ -116,84 +116,84 @@ sub vote {
 	my($vote, $target) = @_;
 	
 	if ($m{job_lv} < 1) {
-		$mes = "–¢“]E‚Ì•û‚ÍA“Š•[‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "æœªè»¢è·ã®æ–¹ã¯ã€æŠ•ç¥¨ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	
 	my @lines = ();
 	my $p = '';
-	open my $fh, "+< $logdir/violator.cgi" or &error("$logdir/violator.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/violator.cgi" or &error("$logdir/violator.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($name, $violator, $message, $yess, $noss) = split /<>/, $line;
 		my $y_c = split /,/, $yess;
 		my $n_c = split /,/, $noss;
-		$p .= qq|<hr>\\¿F$name / ’Ç•úF$violator / ——RF$message<br /><span onclick="text_set('—‚³‚ñ‚¹‚¢>$violator ')">^¬ <b>$y_c</b> •[F$yess</span>@<span onclick="text_set('—‚Í‚ñ‚½‚¢>$violator ')">”½‘Î <b>$n_c</b> •[F$noss</span><br />\n|;
+		$p .= qq|<hr>ç”³\è«‹ï¼š$name / è¿½æ”¾ï¼š$violator / ç†ç”±ï¼š$message<br /><span onclick="text_set('ï¼ ã•ã‚“ã›ã„>$violator ')">è³›æˆ <b>$y_c</b> ç¥¨ï¼š$yess</span>ã€€<span onclick="text_set('ï¼ ã¯ã‚“ãŸã„>$violator ')">åå¯¾ <b>$n_c</b> ç¥¨ï¼š$noss</span><br />\n|;
 		next if $target eq '';
 
-		# ’Ç•ú\¿æ‚èÁ‚µ
+		# è¿½æ”¾ç”³è«‹å–ã‚Šæ¶ˆã—
 		if ($name eq $m && $vote eq 'no') {
 			my $ftime = (stat "$logdir/violator.cgi")[9];
 			if ($ftime + $c_hour * 3600 > $time) {
-				$mes = "“Š•[Œã‚µ‚Î‚ç‚­‚Íæ‚èÁ‚·‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+				$mes = "æŠ•ç¥¨å¾Œã—ã°ã‚‰ãã¯å–ã‚Šæ¶ˆã™ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 				return;
 			}
 			else {
-				$npc_com = "$violator‚Ì’Ç•ú\\¿‚ğæ‚èÁ‚µ‚Ü‚µ‚½";
-				&write_news(qq|<span class="revive">$m‚ª$violator‚Ì’Ç•ú\\¿‚ğæ‚èÁ‚µ‚Ü‚µ‚½</span>|);
+				$npc_com = "$violatorã®è¿½æ”¾ç”³\è«‹ã‚’å–ã‚Šæ¶ˆã—ã¾ã—ãŸ";
+				&write_news(qq|<span class="revive">$mãŒ$violatorã®è¿½æ”¾ç”³\è«‹ã‚’å–ã‚Šæ¶ˆã—ã¾ã—ãŸ</span>|);
 				next;
 			}
 		}
 		
 		if ($target eq $violator) {
 			if ($yess =~ /\Q$m,\E/ || $noss =~ /\Q$m,\E/) {
-				$mes = "‚·‚Å‚É’Ç•ú“Š•[‚ÉQ‰Á‚µ‚Ä‚¢‚Ü‚·";
+				$mes = "ã™ã§ã«è¿½æ”¾æŠ•ç¥¨ã«å‚åŠ ã—ã¦ã„ã¾ã™";
 				return;
 			}
 			elsif ($violator eq $m) {
-				$mes = "\\¿‚³‚ê‚Ä‚¢‚él‚Í“Š•[‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+				$mes = "ç”³\è«‹ã•ã‚Œã¦ã„ã‚‹äººã¯æŠ•ç¥¨ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 				return;
 			}
 			my $yid = unpack 'H*', $violator;
 			if (!-d "$userdir/$yid") {
-				$npc_com = "$violator‚Æ‚¢‚¤ƒvƒŒƒCƒ„[‚Í‘¶İ‚µ‚Ü‚¹‚ñ";
+				$npc_com = "$violatorã¨ã„ã†ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“";
 				next;
 			}
 			elsif ($vote eq 'yes') {
 				++$y_c;
-				# ’Ç•ú
+				# è¿½æ”¾
 				if ($y_c >= $need_vote) {
 					my %p = &get_you_datas($yid, 1);
 					&add_black_list($p{host});
 					&delete_guild_member($p{guild}, $p{name}) if $p{guild};
 					&delete_directory("$userdir/$yid");
 					&minus_entry_count;
-					$npc_com = qq|<span class="die">y‹cŒˆz^¬ $y_c •[ / ”½‘Î $n_c •[B‚æ‚Á‚Ä $violator‚Í—LßI’Ç•ú‚Æ‚·‚éIˆÈãI</span>|;
-					&write_news(qq|<span class="die">y‹cŒˆz^¬ $y_c •[ / ”½‘Î $n_c •[B‚æ‚Á‚Ä $violator‚Í—Lß‚Æ‚µ‚Ä’Ç•ú‚³‚ê‚Ü‚µ‚½</span>|);
+					$npc_com = qq|<span class="die">ã€è­°æ±ºã€‘è³›æˆ $y_c ç¥¨ / åå¯¾ $n_c ç¥¨ã€‚ã‚ˆã£ã¦ $violatorã¯æœ‰ç½ªï¼è¿½æ”¾ã¨ã™ã‚‹ï¼ä»¥ä¸Šï¼</span>|;
+					&write_news(qq|<span class="die">ã€è­°æ±ºã€‘è³›æˆ $y_c ç¥¨ / åå¯¾ $n_c ç¥¨ã€‚ã‚ˆã£ã¦ $violatorã¯æœ‰ç½ªã¨ã—ã¦è¿½æ”¾ã•ã‚Œã¾ã—ãŸ</span>|);
 				}
 				else {
 					push @lines, "$name<>$violator<>$message<>$m,$yess<>$noss<>\n";
-					$npc_com = "$violator‚Ì’Ç•úF^¬ $y_c •[ / ”½‘Î $n_c •[";
+					$npc_com = "$violatorã®è¿½æ”¾ï¼šè³›æˆ $y_c ç¥¨ / åå¯¾ $n_c ç¥¨";
 				}
 			}
 			elsif ($vote eq 'no') {
 				++$n_c;
-				# \¿Ò‚Éƒyƒiƒ‹ƒeƒB
+				# ç”³è«‹è€…ã«ãƒšãƒŠãƒ«ãƒ†ã‚£
 				if ($n_c >= $need_vote) {
 					$pid = unpack 'H*', $name;
 					&regist_you_data($name, 'sleep', $penalty_day * 24 * 3600) if -d "$userdir/$pid";
-					$npc_com  = qq|<span class="revive">y‹cŒˆz^¬ $y_c •[ / ”½‘Î $n_c•[B‚æ‚Á‚Ä $violator‚Í–³ßI</span>|;
-					&write_news(qq|<span class="revive">y‹cŒˆz^¬ $y_c •[ / ”½‘Î $n_c •[B‚æ‚Á‚Ä $violator‚Í–³ß‚Æ‚È‚è‚Ü‚µ‚½</span>|);
+					$npc_com  = qq|<span class="revive">ã€è­°æ±ºã€‘è³›æˆ $y_c ç¥¨ / åå¯¾ $n_cç¥¨ã€‚ã‚ˆã£ã¦ $violatorã¯ç„¡ç½ªï¼</span>|;
+					&write_news(qq|<span class="revive">ã€è­°æ±ºã€‘è³›æˆ $y_c ç¥¨ / åå¯¾ $n_c ç¥¨ã€‚ã‚ˆã£ã¦ $violatorã¯ç„¡ç½ªã¨ãªã‚Šã¾ã—ãŸ</span>|);
 					
 					if ($name && $name !~ /^@/) {
-						$npc_com .= qq|<span class="die">\\¿Ò‚Ì$name‚Í $penalty_day“úŠÔ‚Ì–°‚è‚ÌŒY‚Æ‚·‚éI</span>|;
-						&write_news(qq|<span class="die">\\¿Ò‚Ì$name‚Í $penalty_day“úŠÔ‚Ì–°‚è‚ÌŒY‚Æ‚È‚è‚Ü‚µ‚½</span>|);
+						$npc_com .= qq|<span class="die">ç”³\è«‹è€…ã®$nameã¯ $penalty_dayæ—¥é–“ã®çœ ã‚Šã®åˆ‘ã¨ã™ã‚‹ï¼</span>|;
+						&write_news(qq|<span class="die">ç”³\è«‹è€…ã®$nameã¯ $penalty_dayæ—¥é–“ã®çœ ã‚Šã®åˆ‘ã¨ãªã‚Šã¾ã—ãŸ</span>|);
 					}
-					$npc_com .= "ˆÈãI</b>";
+					$npc_com .= "ä»¥ä¸Šï¼</b>";
 				}
 				else {
 					push @lines, "$name<>$violator<>$message<>$yess<>$m,$noss<>\n";
-					$npc_com = "$violator‚Ì’Ç•ú‚Ì^¬ $y_c •[ / ”½‘Î $n_c •[";
+					$npc_com = "$violatorã®è¿½æ”¾ã®è³›æˆ $y_c ç¥¨ / åå¯¾ $n_c ç¥¨";
 				}
 			}
 			else {
@@ -210,7 +210,7 @@ sub vote {
 		print $fh @lines;
 	}
 	else {
-		$mes = qq|’Ç•úÒ\\¿ƒŠƒXƒg<br />$p|;
+		$mes = qq|è¿½æ”¾è€…ç”³\è«‹ãƒªã‚¹ãƒˆ<br />$p|;
 	}
 	close $fh;
 }
@@ -218,4 +218,4 @@ sub vote {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

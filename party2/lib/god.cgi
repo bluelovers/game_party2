@@ -1,76 +1,76 @@
 #=================================================
-# “V‹ó Created by Merino
+# å¤©ç©º Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = "“VŠE";
+# å ´æ‰€å
+$this_title = "å¤©ç•Œ";
 
-# NPC–¼
-$npc_name   = '@_';
+# NPCå
+$npc_name   = '@ç¥';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/god";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/god.gif";
 
-# Šè‚¢–
+# é¡˜ã„äº‹
 @prizes = (
-# 	['‚Ë‚ª‚¢‚²‚Æ–¼',				'•â‘«à–¾',			sub{ ˆ—($mes‚É‰½‚©•¶š‚ğ“ü‚ê‚é‚ÆƒLƒƒƒ“ƒZƒ‹)  }],	
-	['‹­‚­‚È‚è‚½‚¢',				'‘S½Ã°À½ 40 ±¯Ìß',	sub{ for my $k (qw/mhp mmp at df ag/) { $m{$k}+=40; };	}],
-	['ƒXƒLƒ‹‚ğŠo‚¦‚½‚¢',			'Sp 50 ±¯Ìß',		sub{ $m{sp}     += 50;		}],
-	['‚¨‹à‚ª‚Ù‚µ‚¢',				'10 –œG',			sub{ $m{money}  += 100000;		}],
-	['ƒJƒWƒmƒRƒCƒ“‚ª‚Ù‚µ‚¢',		'5 –œ–‡',			sub{ $m{coin}   += 50000;		}],
-	['¬‚³‚Èƒƒ_ƒ‹‚ª‚Ù‚µ‚¢',		'20 –‡',			sub{ $m{medal}  += 20;		}],
-	['•ŸˆøŒ”‚ª‚Ù‚µ‚¢',				'1000 –‡',			sub{ $m{coupon} += 1000;	}],
-	['ƒMƒ‹ƒhƒ‰ƒ“ƒN‚ğ‚ ‚°‚½‚¢',		'1000 Îß²İÄ',		sub{ return unless $m{guild}; &regist_guild_data('point', 1000, $m{guild});	}],
-	['ƒMƒ‹ƒh‚ğƒS[ƒWƒƒƒX‚É‚µ‚½‚¢',	'ƒMƒ‹ƒh‚ªc',		sub{ return unless $m{guild}; my $gid = unpack 'H*', $m{guild}; return unless -f "$guilddir/$gid/log_member.cgi"; open my $fh, ">> $guilddir/$gid/log_member.cgi" or &error("$guilddir/$gid/log_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ"); print $fh "$time<>1<>‹àÒÀŞÙ<>0<>etc/win_medal3.gif<>$npc_color<>\n"; close $fh; &regist_guild_data('bgimg', 'god.gif', $m{guild});		}],
-	['Œ³‹C‚¢‚Á‚Ï‚¢‚É‚È‚è‚½‚¢',		'”æ˜J“x -150 %',	sub{ $m{tired} -= 150;		}],
-	['V‚µ‚¢–`Œ¯êŠ‚És‚«‚½‚¢',	'‘SƒI[ƒu',			sub{ $m{orb}    = 'byrpgs';		}],
-	['“V—³l‚É‚È‚è‚½‚¢',			'“]E',				sub{ if ($m{job} eq '70' || $m{old_job} eq '70') { $mes="‚Ó‚ŞB‚·‚Å‚É$m‚Í“V—³l‚¾‚¼c"; return; }; &job_change(70);		}],
-	['V¢ŠE‚Ì_‚É‚È‚è‚½‚¢',		'©•ª‚Ì‰Æ‚ªc',		sub{ $m{icon} = 'chr/052.gif'; &copy("$bgimgdir/god.gif", "$userdir/$id/bgimg.gif");		}],
-	['ƒIƒ‹ƒeƒK‚ğ¶‚«•Ô‚ç‚µ‚Ä',		'©•ª‚Ì‰Æ‚Éc',		sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ"); print $fh "$time<>1<>µÙÃ¶Ş<>0<>chr/029.gif<>$npc_color<>\n"; close $fh;		}],
-	['”L‚ğ”‚¢‚½‚¢',				'©•ª‚Ì‰Æ‚Éc',		sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ"); if (rand(2) < 1) { print $fh "$time<>1<>”’”L<>0<>chr/030.gif<>$npc_color<>\n"; }else{ print $fh "$time<>1<>•”L<>0<>chr/031.gif<>$npc_color<>\n"; }; close $fh;		}],
-	['ƒGƒbƒ`‚È–{‚ª‚Ù‚µ‚¢',			'ƒAƒCƒeƒ€',			sub{ &send_item($m, 3, 58);		}],
-	['˜B‹àÚ¼Ëß‚ª‚Ù‚µ‚¢',			'ƒAƒCƒeƒ€',			sub{ &send_item( $m, 3, int(rand(2)+128) );	}],
-	['‘f“G‚È—öl‚ª‚Ù‚µ‚¢',			'—öl‚ªc',			sub{ $mes = '‚»‚ê‚Í–³—‚ÈŠè‚¢‚¾cBƒAƒhƒoƒCƒX‚Æ‚µ‚Ä‚ÍÏ‹É“I‚ÉƒAƒs[ƒ‹‚·‚é‚Ì‚¾c';		}],
+# 	['ã­ãŒã„ã”ã¨å',				'è£œè¶³èª¬æ˜',			sub{ å‡¦ç†($mesã«ä½•ã‹æ–‡å­—ã‚’å…¥ã‚Œã‚‹ã¨ã‚­ãƒ£ãƒ³ã‚»ãƒ«)  }],	
+	['å¼·ããªã‚ŠãŸã„',				'å…¨ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ 40 ã‚¢ãƒƒãƒ—',	sub{ for my $k (qw/mhp mmp at df ag/) { $m{$k}+=40; };	}],
+	['ã‚¹ã‚­ãƒ«ã‚’è¦šãˆãŸã„',			'Sp 50 ã‚¢ãƒƒãƒ—',		sub{ $m{sp}     += 50;		}],
+	['ãŠé‡‘ãŒã»ã—ã„',				'10 ä¸‡G',			sub{ $m{money}  += 100000;		}],
+	['ã‚«ã‚¸ãƒã‚³ã‚¤ãƒ³ãŒã»ã—ã„',		'5 ä¸‡æš',			sub{ $m{coin}   += 50000;		}],
+	['å°ã•ãªãƒ¡ãƒ€ãƒ«ãŒã»ã—ã„',		'20 æš',			sub{ $m{medal}  += 20;		}],
+	['ç¦å¼•åˆ¸ãŒã»ã—ã„',				'1000 æš',			sub{ $m{coupon} += 1000;	}],
+	['ã‚®ãƒ«ãƒ‰ãƒ©ãƒ³ã‚¯ã‚’ã‚ã’ãŸã„',		'1000 ãƒã‚¤ãƒ³ãƒˆ',		sub{ return unless $m{guild}; &regist_guild_data('point', 1000, $m{guild});	}],
+	['ã‚®ãƒ«ãƒ‰ã‚’ã‚´ãƒ¼ã‚¸ãƒ£ã‚¹ã«ã—ãŸã„',	'ã‚®ãƒ«ãƒ‰ãŒâ€¦',		sub{ return unless $m{guild}; my $gid = unpack 'H*', $m{guild}; return unless -f "$guilddir/$gid/log_member.cgi"; open my $fh, ">> $guilddir/$gid/log_member.cgi" or &error("$guilddir/$gid/log_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“"); print $fh "$time<>1<>é‡‘ãƒ¡ãƒ€ãƒ«<>0<>etc/win_medal3.gif<>$npc_color<>\n"; close $fh; &regist_guild_data('bgimg', 'god.gif', $m{guild});		}],
+	['å…ƒæ°—ã„ã£ã±ã„ã«ãªã‚ŠãŸã„',		'ç–²åŠ´åº¦ -150 %',	sub{ $m{tired} -= 150;		}],
+	['æ–°ã—ã„å†’é™ºå ´æ‰€ã«è¡ŒããŸã„',	'å…¨ã‚ªãƒ¼ãƒ–',			sub{ $m{orb}    = 'byrpgs';		}],
+	['å¤©ç«œäººã«ãªã‚ŠãŸã„',			'è»¢è·',				sub{ if ($m{job} eq '70' || $m{old_job} eq '70') { $mes="ãµã‚€ã€‚ã™ã§ã«$mã¯å¤©ç«œäººã ãâ€¦"; return; }; &job_change(70);		}],
+	['æ–°ä¸–ç•Œã®ç¥ã«ãªã‚ŠãŸã„',		'è‡ªåˆ†ã®å®¶ãŒâ€¦',		sub{ $m{icon} = 'chr/052.gif'; &copy("$bgimgdir/god.gif", "$userdir/$id/bgimg.gif");		}],
+	['ã‚ªãƒ«ãƒ†ã‚¬ã‚’ç”Ÿãè¿”ã‚‰ã—ã¦',		'è‡ªåˆ†ã®å®¶ã«â€¦',		sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“"); print $fh "$time<>1<>ã‚ªãƒ«ãƒ†ã‚¬<>0<>chr/029.gif<>$npc_color<>\n"; close $fh;		}],
+	['çŒ«ã‚’é£¼ã„ãŸã„',				'è‡ªåˆ†ã®å®¶ã«â€¦',		sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“"); if (rand(2) < 1) { print $fh "$time<>1<>ç™½çŒ«<>0<>chr/030.gif<>$npc_color<>\n"; }else{ print $fh "$time<>1<>é»’çŒ«<>0<>chr/031.gif<>$npc_color<>\n"; }; close $fh;		}],
+	['ã‚¨ãƒƒãƒãªæœ¬ãŒã»ã—ã„',			'ã‚¢ã‚¤ãƒ†ãƒ ',			sub{ &send_item($m, 3, 58);		}],
+	['éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ãŒã»ã—ã„',			'ã‚¢ã‚¤ãƒ†ãƒ ',			sub{ &send_item( $m, 3, int(rand(2)+128) );	}],
+	['ç´ æ•µãªæ‹äººãŒã»ã—ã„',			'æ‹äººãŒâ€¦',			sub{ $mes = 'ãã‚Œã¯ç„¡ç†ãªé¡˜ã„ã â€¦ã€‚ã‚¢ãƒ‰ãƒã‚¤ã‚¹ã¨ã—ã¦ã¯ç©æ¥µçš„ã«ã‚¢ãƒ”ãƒ¼ãƒ«ã™ã‚‹ã®ã â€¦';		}],
 
-	# ƒV[ƒNƒŒƒbƒg
-	['ƒƒCƒh‚ğŒÙ‚¢‚½‚¢',			'‚¨¢˜bŒW',			sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ"); print $fh "$time<>1<>Ò²ÄŞ<>0<>chr/026.gif<>$npc_color<>\n"; close $fh;		}],
+	# ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆ
+	['ãƒ¡ã‚¤ãƒ‰ã‚’é›‡ã„ãŸã„',			'ãŠä¸–è©±ä¿‚',			sub{ open my $fh, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“"); print $fh "$time<>1<>ãƒ¡ã‚¤ãƒ‰<>0<>chr/026.gif<>$npc_color<>\n"; close $fh;		}],
 );
 
-# ”L‚ğ”‚¢‚½‚¢
-# ×°Ğ§‚ğ”‚¢‚½‚¢
-# •Ï‚È
+# çŒ«ã‚’é£¼ã„ãŸã„
+# ãƒ©ãƒ¼ãƒŸã‚¡ã‚’é£¼ã„ãŸã„
+# å¤‰ãª
 
 #=================================================
-# —‚µ‚ç‚×‚é>NPC
+# ï¼ ã—ã‚‰ã¹ã‚‹>NPC
 #=================================================
 sub shiraberu_npc {
-	$mes = qq|<span onclick="text_set('—‚Ë‚ª‚¤>ƒƒCƒh‚ğŒÙ‚¢‚½‚¢')">$npc_nameu–{“–‚ÌŠè‚¢‚Í©•ª‚Ì—Í‚ÅŠ‚¦‚é‚Ì‚¾cv</span>|;
+	$mes = qq|<span onclick="text_set('ï¼ ã­ãŒã†>ãƒ¡ã‚¤ãƒ‰ã‚’é›‡ã„ãŸã„')">$npc_nameã€Œæœ¬å½“ã®é¡˜ã„ã¯è‡ªåˆ†ã®åŠ›ã§å¶ãˆã‚‹ã®ã â€¦ã€</span>|;
 }
 
 #=================================================
-# ‚Í‚È‚·Œ¾—t
+# ã¯ãªã™è¨€è‘‰
 #=================================================
 @words = (
-	"$m‚æB‚æ‚­‚¼‚±‚±‚Ü‚Å‚«‚½B$m‚ÌŠè‚¢‚ğˆê‚Â‚¾‚¯Š‚¦‚Ä‚â‚ë‚¤",
+	"$mã‚ˆã€‚ã‚ˆããã“ã“ã¾ã§ããŸã€‚$mã®é¡˜ã„ã‚’ä¸€ã¤ã ã‘å¶ãˆã¦ã‚„ã‚ã†",
 );
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚Ë‚ª‚¤';
-$actions{ '‚Ë‚ª‚¤' } = sub{ &negau };
+push @actions, 'ã­ãŒã†';
+$actions{ 'ã­ãŒã†' } = sub{ &negau };
 
 #=================================================
-# ƒXƒe[ƒ^ƒX•\¦
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¡¨ç¤º
 #=================================================
 sub header_html {
-	print qq|<div class="mes">y$this_titlez</div>|;
+	print qq|<div class="mes">ã€$this_titleã€‘</div>|;
 }
 
 #=================================================
-# —‚Ë‚ª‚¤
+# ï¼ ã­ãŒã†
 #=================================================
 sub negau {
 	my $target = shift;
@@ -81,37 +81,37 @@ sub negau {
 			&{ $prizes[$i][2] };
 			return if $mes;
 			
-			$npc_com = "‚Ó‚ŞB$m‚ÌŠè‚¢‚Íu$prizes[$i][0]v‚¾‚ÈB<br />$m‚ÌŠè‚¢‚ğŠ‚¦‚½‚¼cB‹@‰ï‚ª‚ ‚ê‚Î‚Ü‚½‚ ‚¦‚é‚¾‚ë‚¤cB‚³‚ç‚Î‚¾c";
+			$npc_com = "ãµã‚€ã€‚$mã®é¡˜ã„ã¯ã€Œ$prizes[$i][0]ã€ã ãªã€‚<br />$mã®é¡˜ã„ã‚’å¶ãˆãŸãâ€¦ã€‚æ©Ÿä¼šãŒã‚ã‚Œã°ã¾ãŸã‚ãˆã‚‹ã ã‚ã†â€¦ã€‚ã•ã‚‰ã°ã â€¦";
 			$m{lib} = 'home';
-			&write_memory("$m‚ÌŠè‚¢w$prizes[$i][0]x‚ğŠ‚¦‚Ä‚à‚ç‚¤");
+			&write_memory("$mã®é¡˜ã„ã€$prizes[$i][0]ã€ã‚’å¶ãˆã¦ã‚‚ã‚‰ã†");
 			return;
 		}
-		$p .= qq|<tr onclick="text_set('—‚Ë‚ª‚¤>$prizes[$i][0] ')"><td>$prizes[$i][0]($prizes[$i][1])</td></tr>|;
+		$p .= qq|<tr onclick="text_set('ï¼ ã­ãŒã†>$prizes[$i][0] ')"><td>$prizes[$i][0]($prizes[$i][1])</td></tr>|;
 	}
 	$p  .= qq|</table>|;
-	$mes = qq|Šè‚¢‚ğˆê‚Â‚¾‚¯Š‚¦‚Ä‚â‚ë‚¤c<br />$p|;
+	$mes = qq|é¡˜ã„ã‚’ä¸€ã¤ã ã‘å¶ãˆã¦ã‚„ã‚ã†â€¦<br />$p|;
 	$act_time = 0;
 }
 
 # ------------------
-# “]Eˆ— ./lib/job_change.cgi‚©‚çƒRƒs[
+# è»¢è·å‡¦ç† ./lib/job_change.cgiã‹ã‚‰ã‚³ãƒ”ãƒ¼
 sub job_change {
 	my $job = shift;
 	
 	&add_all_job_master;
 	my $mastered_point = &add_job_master($job);
 	
-	# ˆá‚¤E‹Æ‚É“]E‚µ‚½ê‡‚Ìˆ—(“¯‚¶E‹Æ‚É“]E‚µ‚½ê‡‚ÍAƒŒƒxƒ‹‚ÆƒXƒe[ƒ^ƒX‚ğ‰º‚°‚é‚¾‚¯)
+	# é•ã†è·æ¥­ã«è»¢è·ã—ãŸå ´åˆã®å‡¦ç†(åŒã˜è·æ¥­ã«è»¢è·ã—ãŸå ´åˆã¯ã€ãƒ¬ãƒ™ãƒ«ã¨ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ä¸‹ã’ã‚‹ã ã‘)
 	unless ($m{job} eq $job) {
 		my $buf_sp  = $m{old_sp};
 		$m{old_sp}  = $m{sp};
-		$m{sp}      = $job eq $m{old_job} ? $buf_sp : $mastered_point; # ‘OE‹Æ‚É“]E‚·‚éê‡‚Í‘OE‹Æ‚ÌSP
+		$m{sp}      = $job eq $m{old_job} ? $buf_sp : $mastered_point; # å‰è·æ¥­ã«è»¢è·ã™ã‚‹å ´åˆã¯å‰è·æ¥­ã®SP
 		$m{old_job} = $m{job};
 		$m{job}     = $job;
 		$m{icon}    = "job/$m{job}_$m{sex}.gif";
 	}
 	
-	# ƒXƒe[ƒ^ƒXƒ_ƒEƒ“
+	# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ€ã‚¦ãƒ³
 	for my $k (qw/mhp mmp at df ag/) {
 		$m{$k} = int($m{$k} * 0.5); 
 		$m{$k} = 10 if $m{$k} < 10;
@@ -124,7 +124,7 @@ sub job_change {
 	$m{job_lv}++;
 }
 
-# K“¾ƒWƒ‡ƒu
+# ç¿’å¾—ã‚¸ãƒ§ãƒ–
 sub add_job_master {
 	my $job = shift;
 
@@ -135,7 +135,7 @@ sub add_job_master {
 	my $mastered_count = 0;
 	my $is_find = 0;
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/job_master.cgi" or &error("$userdir/$id/job_master.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/job_master.cgi" or &error("$userdir/$id/job_master.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($job_no, $job_sex, $job_point, $is_master) = split /<>/, $line;
@@ -144,8 +144,8 @@ sub add_job_master {
 			$is_find = 1;
 			if (!$is_master && $m{sp} >= $skills[-1][0]) {
 				$is_master = 1;
-				$com .= qq|<span class="comp">$m‚Í <b>$jobs[$m{job}][1]</b> ‚ğƒ}ƒXƒ^[‚µ‚Ü‚µ‚½I</span>|;
-				&write_memory("<b>š $jobs[$m{job}][1] Job Master! š</b>");
+				$com .= qq|<span class="comp">$mã¯ <b>$jobs[$m{job}][1]</b> ã‚’ãƒã‚¹ã‚¿ãƒ¼ã—ã¾ã—ãŸï¼</span>|;
+				&write_memory("<b>â˜… $jobs[$m{job}][1] Job Master! â˜…</b>");
 			}
 			push @lines, "$m{job}<>$m{sex}<>$m{sp}<>$is_master<>\n";
 		}
@@ -163,8 +163,8 @@ sub add_job_master {
 		
 		if ($m{sp} >= $skills[-1][0]) {
 			$is_master = 1;
-			$com .= qq|<span class="comp">$m‚Í <b>$jobs[$m{job}][1]</b> ‚ğƒ}ƒXƒ^[‚µ‚Ü‚µ‚½I</span>|;
-			&write_memory("<b>š $jobs[$m{job}][1] Job Master! š</b>");
+			$com .= qq|<span class="comp">$mã¯ <b>$jobs[$m{job}][1]</b> ã‚’ãƒã‚¹ã‚¿ãƒ¼ã—ã¾ã—ãŸï¼</span>|;
+			&write_memory("<b>â˜… $jobs[$m{job}][1] Job Master! â˜…</b>");
 		}
 		push @lines, "$m{job}<>$m{sex}<>$m{sp}<>$is_master<>\n";
 	}
@@ -175,28 +175,28 @@ sub add_job_master {
 	print $fh @lines;
 	close $fh;
 	
-	# ‘SƒWƒ‡ƒuƒRƒ“ƒvƒŠ[ƒg
+	# å…¨ã‚¸ãƒ§ãƒ–ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆ
 	if ($mastered_count eq $#jobs-1 && !-f "$userdir/$id/comp_job_flag.cgi") { 
-		open my $fh2, "> $userdir/$id/comp_job_flag.cgi" or &error("$userdir/$id/comp_job_flag.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		open my $fh2, "> $userdir/$id/comp_job_flag.cgi" or &error("$userdir/$id/comp_job_flag.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		close $fh2;
 		
 		&write_legend('comp_job');
 		&write_memory(qq|<span class="comp">All Job Complete!!</span>|);
-		&write_news(qq|<span class="comp">$m‚ª‘S‚Ä‚ÌE‹Æ‚ğƒ}ƒXƒ^[‚µ‚Ü‚µ‚½I</span>|);
-		$com .= qq|<div class="comp">$m‚Í <b>‘SƒWƒ‡ƒu</b> ‚ğƒRƒ“ƒvƒŠ[ƒg‚µ‚Ü‚µ‚½I</div>|;
+		&write_news(qq|<span class="comp">$mãŒå…¨ã¦ã®è·æ¥­ã‚’ãƒã‚¹ã‚¿ãƒ¼ã—ã¾ã—ãŸï¼</span>|);
+		$com .= qq|<div class="comp">$mã¯ <b>å…¨ã‚¸ãƒ§ãƒ–</b> ã‚’ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã—ã¾ã—ãŸï¼</div>|;
 	}
 	
 	return $mastered_job_sp;
 }
 
-# ‘S‘Ì‚Ì“]E‚ÌŒXŒü
+# å…¨ä½“ã®è»¢è·ã®å‚¾å‘
 sub add_all_job_master {
 	my $is_find = 0;
 	
 	my $add_point = int($m{lv} * 0.5);
 	
 	my @lines = ();
-	open my $fh, "+< $logdir/job_ranking.cgi" or &error("$logdir/job_ranking.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/job_ranking.cgi" or &error("$logdir/job_ranking.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $totale_point = <$fh>;
 	$totale_point =~ tr/\x0D\x0A//d;
@@ -230,4 +230,4 @@ sub add_all_job_master {
 	close $fh;
 }
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

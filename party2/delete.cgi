@@ -2,7 +2,7 @@
 require 'config.cgi';
 require '_side_menu.cgi';
 #================================================
-# ƒZƒ‹ƒtƒf[ƒ^íœ Created by Merino
+# ã‚»ãƒ«ãƒ•ãƒ‡ãƒ¼ã‚¿å‰Šé™¤ Created by Merino
 #================================================
 &decode;
 &header;
@@ -16,22 +16,22 @@ sub run {
 		return;
 	}
 	my $contents = <<"EOM";
-<h2>ƒvƒŒƒCƒf[ƒ^‚ğíœ‚·‚é</h2>
+<h2>ãƒ—ãƒ¬ã‚¤ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹</h2>
 
 <div class="mes" style="width: 600px; background: #F00;">
 	<ul>
-		<li>“o˜^‚µ‚Ä‚¢‚é©•ª‚Ìƒf[ƒ^‚ğ‘S‚Äíœ</li>
-		<li>¦íœ‚µ‚½ƒf[ƒ^‚Í“ñ“x‚ÆŒ³‚É–ß‚è‚Ü‚¹‚ñ</li>
-		<li>¦Šm”F‰æ–Ê‚Ío‚Ü‚¹‚ñBíœƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚çíœ‚Æ‚È‚è‚Ü‚·</li>
-		<li>¦“o˜^Ë‘¦íœËÄ“o˜^‚Í‚Å‚«‚Ü‚¹‚ñ(‚µ‚Î‚ç‚­ŠÔ‚ğ‚ ‚¯‚È‚¢‚Æ‘½d“o˜^ˆµ‚¢‚É‚È‚è‚Ü‚·)</li>
+		<li>ç™»éŒ²ã—ã¦ã„ã‚‹è‡ªåˆ†ã®ãƒ‡ãƒ¼ã‚¿ã‚’å…¨ã¦å‰Šé™¤</li>
+		<li>â€»å‰Šé™¤ã—ãŸãƒ‡ãƒ¼ã‚¿ã¯äºŒåº¦ã¨å…ƒã«æˆ»ã‚Šã¾ã›ã‚“</li>
+		<li>â€»ç¢ºèªç”»é¢ã¯å‡ºã¾ã›ã‚“ã€‚å‰Šé™¤ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰å‰Šé™¤ã¨ãªã‚Šã¾ã™</li>
+		<li>â€»ç™»éŒ²â‡’å³å‰Šé™¤â‡’å†ç™»éŒ²ã¯ã§ãã¾ã›ã‚“(ã—ã°ã‚‰ãæ™‚é–“ã‚’ã‚ã‘ãªã„ã¨å¤šé‡ç™»éŒ²æ‰±ã„ã«ãªã‚Šã¾ã™)</li>
 	</ul>
 </div>
 <br />
 <form method="$method" action="delete.cgi">
 <table class="table1">
-	<tr><th>˜ƒvƒŒƒCƒ„[˜</th></tr><tr><td><input type="text" name="login_name" class="text_box1" /></td></tr>
-	<tr><th>˜ƒpƒXƒ[ƒh˜</th></tr><tr><td><input type="password" name="pass" class="text_box1" /></td></tr>
-	<tr><th><input type="submit" value="—ƒf[ƒ^‚ğíœ‚·‚é" /></th></tr>
+	<tr><th>Â§ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼Â§</th></tr><tr><td><input type="text" name="login_name" class="text_box1" /></td></tr>
+	<tr><th>Â§ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰Â§</th></tr><tr><td><input type="password" name="pass" class="text_box1" /></td></tr>
+	<tr><th><input type="submit" value="ï¼ ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹" /></th></tr>
 </table>
 </form>
 EOM
@@ -40,14 +40,14 @@ EOM
 }
 
 #=========================================================
-# íœˆ—
+# å‰Šé™¤å‡¦ç†
 #=========================================================
 sub delete_myself {
 	&read_user;
 	
 	&delete_guild_member($m{guild}, $m{name}) if $m{guild};
 	&delete_directory("$userdir/$id");
-	my $contents .= qq|<div class="mes" style="background: #F00;"><p>ƒvƒŒƒCƒ„[w <b>$m</b> x‚Ìƒf[ƒ^‚ğíœ‚µ‚Ü‚µ‚½</p></div>|;
+	my $contents .= qq|<div class="mes" style="background: #F00;"><p>ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€ <b>$m</b> ã€ã®ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã—ã¾ã—ãŸ</p></div>|;
 	
 	&minus_entry_count(1);
 

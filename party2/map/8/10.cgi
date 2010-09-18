@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 50;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[4,0,0,0,0,0,0,0,0,A],
 	[B,0,0,0,0,0,0,0,0,0],
@@ -17,21 +17,21 @@ $max_round = 50;
 	[0,C,0,0,0,0,4,0,0,C],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{1} = ' ';
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{1} = 'â–¡';
 sub event_W { $py=int(rand(5)+3); $px=int(rand(5)+3); }
 sub event_1 { $py=int(rand(5)+3); $px=int(rand(5)+3); }
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_4 { return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_A { return if $event =~ /A/; $event .= 'A'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
-sub event_C { return if $event =~ /C/; $event .= 'C'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
-sub event_D { return if $event =~ /D/; $event .= 'D'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
+sub event_A { return if $event =~ /A/; $event .= 'A'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
+sub event_C { return if $event =~ /C/; $event .= 'C'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
+sub event_D { return if $event =~ /D/; $event .= 'D'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 my $_s = int(rand(5)+10);
 require "$stagedir/$_s.cgi";
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

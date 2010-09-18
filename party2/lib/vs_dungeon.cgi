@@ -1,54 +1,54 @@
 require "./lib/_battle.cgi";
 require "./lib/_npc_action.cgi";
 #=================================================
-# –`Œ¯(VS ƒ‚ƒ“ƒXƒ^[) Created by Merino
+# å†’é™º(VS ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼) Created by Merino
 #=================================================
 
 %map_imgs = (
-	0	=> ' ', # “¹
-	1	=> '¡', # •Ç
-	'm'	=> 'œ', # ©•ª
+	0	=> 'â–¡', # é“
+	1	=> 'â– ', # å£
+	'm'	=> 'â—', # è‡ªåˆ†
 );
 
 @npc_skills = (
-	[0,	0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-#	[0,	0,	'‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp} = '–hŒä'; $com.="$m‚Íg‚ğŒÅ‚ß‚Ä‚¢‚é";	}],
+	[0,	0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+#	[0,	0,	'ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp} = 'é˜²å¾¡'; $com.="$mã¯èº«ã‚’å›ºã‚ã¦ã„ã‚‹";	}],
 );
 
 #=================================================
-# ƒ^ƒCƒgƒ‹A”wŒi‰æ‘œ
+# ã‚¿ã‚¤ãƒˆãƒ«ã€èƒŒæ™¯ç”»åƒ
 #=================================================
 sub get_header_data {
 	require "$mapdir/$stage/$map.cgi";
-	$bgimg = "$bgimgdir/map$stage.gif"; # ”wŒi‰æ‘œ
+	$bgimg = "$bgimgdir/map$stage.gif"; # èƒŒæ™¯ç”»åƒ
 	$d_name ||= $dungeons[$stage];
-	$this_title = "$d_name ŒÀŠEƒ^[ƒ“ <b>$round</b>/<b>$max_round</b>";
+	$this_title = "$d_name é™ç•Œã‚¿ãƒ¼ãƒ³ <b>$round</b>/<b>$max_round</b>";
 }
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub add_battle_action {
 	if ($round eq '0') {
-		push @actions, '‚·‚·‚Ş';
-		$actions{'‚·‚·‚Ş'} = [0, sub{ &susumu }];
+		push @actions, 'ã™ã™ã‚€';
+		$actions{'ã™ã™ã‚€'} = [0, sub{ &susumu }];
 	}
 	elsif (@enemys <= 0) {
-		push @actions, ('‚É‚µ','‚«‚½','‚İ‚È‚İ','‚Ğ‚ª‚µ','‚¿‚¸');
-		$actions{'‚É‚µ'}   = [0,	sub{ &nishi }];
-		$actions{'‚«‚½'}   = [0,	sub{ &kita }];
-		$actions{'‚İ‚È‚İ'} = [0,	sub{ &minami }];
-		$actions{'‚Ğ‚ª‚µ'} = [0,	sub{ &higashi }];
-		$actions{'‚¿‚¸'}   = [0,	sub{ $m{job} eq '9' || $m{job} eq '26' || $m{job} eq '27' ? &chizu(2) : &chizu(); }];
+		push @actions, ('ã«ã—','ããŸ','ã¿ãªã¿','ã²ãŒã—','ã¡ãš');
+		$actions{'ã«ã—'}   = [0,	sub{ &nishi }];
+		$actions{'ããŸ'}   = [0,	sub{ &kita }];
+		$actions{'ã¿ãªã¿'} = [0,	sub{ &minami }];
+		$actions{'ã²ãŒã—'} = [0,	sub{ &higashi }];
+		$actions{'ã¡ãš'}   = [0,	sub{ $m{job} eq '9' || $m{job} eq '26' || $m{job} eq '27' ? &chizu(2) : &chizu(); }];
 	}
-	elsif ($enemys[0] =~ /^\@.+•ó” .$/) {
+	elsif ($enemys[0] =~ /^\@.+å®ç®±.$/) {
 		$is_npc_action = 0;
-		push @actions, '‚µ‚ç‚×‚é';
-		$actions{'‚µ‚ç‚×‚é'} = [0,	sub{ &shiraberu }];
+		push @actions, 'ã—ã‚‰ã¹ã‚‹';
+		$actions{'ã—ã‚‰ã¹ã‚‹'} = [0,	sub{ &shiraberu }];
 	}
 }
 sub susumu {
 	if ($round < 1 && $leader ne $m) {
-		$mes = "ˆê”Ôn‚ß‚Ì —‚·‚·‚Ş ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+		$mes = "ä¸€ç•ªå§‹ã‚ã® ï¼ ã™ã™ã‚€ ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 		return;
 	}
 	&reset_status_all;
@@ -57,27 +57,27 @@ sub susumu {
 }
 
 #=================================================
-# —‚É‚µ—‚«‚½—‚İ‚È‚İ—‚Ğ‚ª‚µ
+# ï¼ ã«ã—ï¼ ããŸï¼ ã¿ãªã¿ï¼ ã²ãŒã—
 #=================================================
-sub kita    { &_susumu('–k', $py-1, $px)   }
-sub minami  { &_susumu('“ì', $py+1, $px)   }
-sub higashi { &_susumu('“Œ', $py,   $px+1) }
-sub nishi   { &_susumu('¼', $py,   $px-1) }
+sub kita    { &_susumu('åŒ—', $py-1, $px)   }
+sub minami  { &_susumu('å—', $py+1, $px)   }
+sub higashi { &_susumu('æ±', $py,   $px+1) }
+sub nishi   { &_susumu('è¥¿', $py,   $px-1) }
 sub _susumu {
 	my($name, $y, $x) = @_;
 	$is_npc_action = 0;
-	if (@enemys > 0 && $event ne '•ó') {
-		$mes .= "¦“G‚ğ‘S‚Ä“|‚·‚Ü‚ÅAæ‚Éi‚Ş‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+	if (@enemys > 0 && $event ne 'å®') {
+		$mes .= "â€»æ•µã‚’å…¨ã¦å€’ã™ã¾ã§ã€å…ˆã«é€²ã‚€ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	elsif ($round >= $max_round) {
-		$mes .= "¦s“®ŒÀŠE’l‚ğ’´‚¦‚Ü‚µ‚½B‚±‚êˆÈã‚Í“®‚¯‚Ü‚¹‚ñB—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+		$mes .= "â€»è¡Œå‹•é™ç•Œå€¤ã‚’è¶…ãˆã¾ã—ãŸã€‚ã“ã‚Œä»¥ä¸Šã¯å‹•ã‘ã¾ã›ã‚“ã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 		return;
 	}
 	elsif ($y < 0 || $x < 0 || !defined $maps[$y][$x] || $maps[$y][$x] eq '1') {
-		my @tekitos = ('„ƒ','„oƒ','„_ƒ','.','~_~','~o~','~.~','PP;','P P;');
+		my @tekitos = ('ï¼ï¼œ','ï¼oï¼œ','ï¼_ï¼œ','ï¼.ï¼','Ã—_Ã—','Ã—oÃ—','Ã—.Ã—','ï¿£â—‡ï¿£;','ï¿£â–¡ï¿£;');
 		my $face = $tekitos[int rand @tekitos];
-		$com .= "$m ‚Í•Ç‚É‚Ô‚Â‚©‚Á‚½I$face";
+		$com .= "$m ã¯å£ã«ã¶ã¤ã‹ã£ãŸï¼$face";
 		$ms{$m}{state} = $face;
 		&event_1;
 		return;
@@ -87,58 +87,58 @@ sub _susumu {
 	$px = $x;
 	$py = $y;
 
-	$npc_com .= "$p_name‚Í $name‚Ö‚Æi‚İ‚Ü‚µ‚½c";
+	$npc_com .= "$p_nameã¯ $nameã¸ã¨é€²ã¿ã¾ã—ãŸâ€¦";
 	&{'event_' .$maps[$py][$px] };
 	&chizu();
 	&auto_reload;
 }
 
-sub event_0 { return if rand(2) > 1; &add_monster(); } # “¹
-sub event_1 { return } # •Ç
-sub event_S { return } # ƒXƒ^[ƒg’n“_
-sub event_B { return if $event =~ /B/; $event .= 'B'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
+sub event_0 { return if rand(2) > 1; &add_monster(); } # é“
+sub event_1 { return } # å£
+sub event_S { return } # ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹
+sub event_B { return if $event =~ /B/; $event .= 'B'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
 
 #=================================================
-# —‚¿‚¸
+# ï¼ ã¡ãš
 #=================================================
 sub chizu {
 	my $v = shift || 1;
 	$com .= '<br />';
 	for my $y (-$v .. $v) {
 		for my $x (-$v .. $v) {
-			$com .= $y eq '0' && $x eq '0' ? $map_imgs{m} # ©•ª‚ÌˆÊ’u 
-				  : $py+$y < 0 || $px+$x < 0 || !defined $maps[$py+$y][$px+$x] ? $map_imgs{1} # Map‚É‘¶İ‚µ‚È‚¢•”•ª‚Í•Ç
-				  : !defined $map_imgs{$maps[$py+$y][$px+$x]} eq '1' ? $map_imgs{0} # MapImgs‚É‘¶İ‚µ‚È‚¢•”•ª‚Í“¹
+			$com .= $y eq '0' && $x eq '0' ? $map_imgs{m} # è‡ªåˆ†ã®ä½ç½® 
+				  : $py+$y < 0 || $px+$x < 0 || !defined $maps[$py+$y][$px+$x] ? $map_imgs{1} # Mapã«å­˜åœ¨ã—ãªã„éƒ¨åˆ†ã¯å£
+				  : !defined $map_imgs{$maps[$py+$y][$px+$x]} eq '1' ? $map_imgs{0} # MapImgsã«å­˜åœ¨ã—ãªã„éƒ¨åˆ†ã¯é“
 				  :          $map_imgs{$maps[$py+$y][$px+$x]};
 		}
 		$com .= '<br />';
 	}
 }
 
-# —ƒ_ƒ“ƒWƒ‡ƒ“—p‚Ì•ó‚Ì”
+# ï¼ ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ç”¨ã®å®ã®æ•°
 sub _add_treasure {
 	&add_treasure();
 }
 
-# —ƒ_ƒ“ƒWƒ‡ƒ“—p‚Ì“G‚Ì”
+# ï¼ ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ç”¨ã®æ•µã®æ•°
 sub _add_monster {
 	&add_monster();
 }
 
 
-# –¡•û‘S‘Ìƒƒiƒ_ƒ[ƒW
+# å‘³æ–¹å…¨ä½“ãƒ¯ãƒŠãƒ€ãƒ¡ãƒ¼ã‚¸
 sub _trap_d {
 	my $d = shift;
 	for my $y (@partys) {
 		my $v = int($d * (rand(0.3)+0.9));
-		$npc_com .= qq|<b>$y</b>‚É <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒWI|;
+		$npc_com .= qq|<b>$y</b>ã« <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ï¼|;
 		$ms{$y}{hp} -= $v;
 		if ($ms{$y}{hp} <= 0) {
 			$ms{$y}{hp} = 0;
-			$npc_com .= qq!<span class="die">$y‚Í“|‚ê‚½I</span>!;
+			$npc_com .= qq!<span class="die">$yã¯å€’ã‚ŒãŸï¼</span>!;
 		}
 	}
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

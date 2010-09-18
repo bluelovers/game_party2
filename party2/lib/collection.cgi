@@ -1,16 +1,16 @@
 require './lib/_add_collection.cgi';
 #=================================================
-# ƒAƒCƒeƒ€}ŠÓ Created by Merino
+# ã‚¢ã‚¤ãƒ†ãƒ å›³é‘‘ Created by Merino
 #=================================================
 my @collections = (
-# ƒ^ƒCƒgƒ‹,ƒtƒ@ƒCƒ‹–¼
-	['•Ší}ŠÓ', 'comp_wea', 'Weapon'],
-	['–h‹ï}ŠÓ', 'comp_arm', 'Armor'],
-	['“¹‹ï}ŠÓ', 'comp_ite', 'Item'],
+# ã‚¿ã‚¤ãƒˆãƒ«,ãƒ•ã‚¡ã‚¤ãƒ«å
+	['æ­¦å™¨å›³é‘‘', 'comp_wea', 'Weapon'],
+	['é˜²å…·å›³é‘‘', 'comp_arm', 'Armor'],
+	['é“å…·å›³é‘‘', 'comp_ite', 'Item'],
 );
 
 #=================================================
-$m{lib} = 'home'; # XV‚µ‚½‚ç‹­§“I‚É‰Æ‚É–ß‚é
+$m{lib} = 'home'; # æ›´æ–°ã—ãŸã‚‰å¼·åˆ¶çš„ã«å®¶ã«æˆ»ã‚‹
 
 sub read_member { return }
 sub set_action  { return }
@@ -19,12 +19,12 @@ sub set_action  { return }
 sub html {
 	print qq|<form method="$method" action="$script">|;
 	print qq|<input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" />|;
-	print qq|<input type="submit" value="–ß‚é" /></form>|;
-	print qq|<h2>$m{home}‚ÌƒAƒCƒeƒ€}ŠÓ</h2>|;
+	print qq|<input type="submit" value="æˆ»ã‚‹" /></form>|;
+	print qq|<h2>$m{home}ã®ã‚¢ã‚¤ãƒ†ãƒ å›³é‘‘</h2>|;
 	
 	my $yid = unpack 'H*', $m{home};
 	unless (-f "$userdir/$yid/collection.cgi") {
-		print qq|<div class="strong">$m{home}‚ÌƒAƒCƒeƒ€}ŠÓ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ</div>|;
+		print qq|<div class="strong">$m{home}ã®ã‚¢ã‚¤ãƒ†ãƒ å›³é‘‘ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“</div>|;
 		return;
 	}
 	
@@ -36,7 +36,7 @@ sub html {
 		my $count = 0;
 		my $sub_mes = '';
 		for my $no (split /,/, $line) {
-			next if $no eq ''; # æ“ª‚Ì‹ó
+			next if $no eq ''; # å…ˆé ­ã®ç©º
 			++$count;
 			next unless $no;
 			if    ($kind eq '1') { $sub_mes .= qq|<tr><td>$weas[$no][1]</td><td align="right">$weas[$no][3]</td><td align="right">$weas[$no][4]</td><td align="right">$weas[$no][2] G</td></tr>|; }
@@ -48,21 +48,21 @@ sub html {
 		if ($kind eq '1') {
 			$comp_par = int($count / $#weas * 100);
 			&write_comp_legend($kind) if $m{home} eq $m && $count eq $#weas;
-			$sub_mes = qq|<table class="table1">\n<tr><th>–¼‘O</th><th>‹­‚³</th><th>d‚³</th><th>‰¿Ši</th></tr>\n$sub_mes\n</table>\n|;
+			$sub_mes = qq|<table class="table1">\n<tr><th>åå‰</th><th>å¼·ã•</th><th>é‡ã•</th><th>ä¾¡æ ¼</th></tr>\n$sub_mes\n</table>\n|;
 		}
 		elsif ($kind eq '2') {
 			$comp_par = int($count / $#arms * 100);
 			&write_comp_legend($kind) if $m{home} eq $m && $count eq $#arms;
-			$sub_mes = qq|<table class="table1">\n<tr><th>–¼‘O</th><th>‹­‚³</th><th>d‚³</th><th>‰¿Ši</th></tr>\n$sub_mes\n</table>\n|;
+			$sub_mes = qq|<table class="table1">\n<tr><th>åå‰</th><th>å¼·ã•</th><th>é‡ã•</th><th>ä¾¡æ ¼</th></tr>\n$sub_mes\n</table>\n|;
 		}
 		elsif ($kind eq '3') {
 			$comp_par = int($count / $#ites * 100);
 			&write_comp_legend($kind) if $m{home} eq $m && $count eq $#ites;
-			$sub_mes = qq|<table class="table1">\n<tr><th>–¼‘O</th><th>‰¿Ši</th></tr>\n$sub_mes\n</table>\n|;
+			$sub_mes = qq|<table class="table1">\n<tr><th>åå‰</th><th>ä¾¡æ ¼</th></tr>\n$sub_mes\n</table>\n|;
 		}
 		$comp_par = 100 if $comp_par > 100;
 		
-		print qq|<h2>$collections[$kind-1][0] sƒRƒ“ƒvƒŠ[ƒg—¦ <b>$comp_par</b>“t</h2>\n|;
+		print qq|<h2>$collections[$kind-1][0] ã€Šã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ <b>$comp_par</b>ï¼…ã€‹</h2>\n|;
 		print $sub_mes;
 		
 		++$kind;
@@ -70,24 +70,24 @@ sub html {
 }
 
 #=================================================
-# ƒRƒ“ƒvƒŠ[ƒgˆ—
+# ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆå‡¦ç†
 #=================================================
 sub write_comp_legend {
 	my $kind = shift;
 	
 	&write_legend($collections[$kind-1][1]);
 	&write_memory(qq|<span class="comp">$collections[$kind-1][2] Complete!!</span>|);
-	&write_news(qq|<span class="comp">$m‚ª$collections[$kind-1][2]‚ğƒRƒ“ƒvƒŠ[ƒg‚·‚éI</span>|);
+	&write_news(qq|<span class="comp">$mãŒ$collections[$kind-1][2]ã‚’ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã™ã‚‹ï¼</span>|);
 	print qq|<div class="comp">$collections[$kind-1][0] Complete!!</div>|;
 	
 	$kind--;
-	# 0 ‚ğ’Ç‰Á‚·‚é‚±‚Æ‚Å 100%‚ğ’´‚¦‚é‚±‚Æ‚É‚È‚é
+	# 0 ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã§ 100%ã‚’è¶…ãˆã‚‹ã“ã¨ã«ãªã‚‹
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/collection.cgi" or &error("ƒRƒŒƒNƒVƒ‡ƒ“ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/collection.cgi" or &error("ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		if ($kind eq @lines) {
-			$line =~ tr/\x0D\x0A//d; # \n‰üsíœ
+			$line =~ tr/\x0D\x0A//d; # \næ”¹è¡Œå‰Šé™¤
 			$line .= "0,\n";
 		}
 		push @lines, $line;
@@ -99,4 +99,4 @@ sub write_comp_legend {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

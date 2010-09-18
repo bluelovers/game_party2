@@ -1,45 +1,45 @@
 my $yid = unpack 'H*', $m{home};
-if (!$m{home} || !-d "$userdir/$yid") { my $yhome = $m{home}; $m{home} = $m; &write_user; &error("$yhome‚Æ‚¢‚¤‰Æ‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ"); }
+if (!$m{home} || !-d "$userdir/$yid") { my $yhome = $m{home}; $m{home} = $m; &write_user; &error("$yhomeã¨ã„ã†å®¶ã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“"); }
 #=================================================
-# ‡–°’† Created by Merino
+# ç¡çœ ä¸­ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = "$m{home}‚Ì‰Æ";
+# å ´æ‰€å
+$this_title = "$m{home}ã®å®¶";
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$userdir/$yid/home";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg  = "";
 
 
 #=================================================
-# ƒwƒbƒ_[•\¦
+# ãƒ˜ãƒƒãƒ€ãƒ¼è¡¨ç¤º
 #=================================================
 $m{sleep} -= int($time - $m{ltime}) if $m{sleep} > 0;
 sub header_html {
 	if ($m{sleep} > 0) {
-		my $wake_time  = sprintf("%d•ª%02d•b", int($m{sleep} / 60), int($m{sleep} % 60) );
+		my $wake_time  = sprintf("%dåˆ†%02dç§’", int($m{sleep} / 60), int($m{sleep} % 60) );
 		my $wake_html .= qq|<span id="wake_time">$wake_time</span>\n|;
 		$wake_html    .= qq|<script type="text/javascript"><!--\n wake_time($m{sleep});\n// --></script>\n|;
 		$wake_html    .= qq|<noscript>$wake_up_nokori</noscript>\n|;
 
-		print qq|<form method="$method" action="$script_index"><input type="submit" value="—ƒƒOƒAƒEƒg" class="button_s" /></form>|;
-		print qq|<div class="mes">y$this_titlez ‚¨‹x‚İ’†uZzz...v –ÚŠo‚ß‚é‚Ü‚Å $wake_html</div>|;
+		print qq|<form method="$method" action="$script_index"><input type="submit" value="ï¼ ãƒ­ã‚°ã‚¢ã‚¦ãƒˆ" class="button_s" /></form>|;
+		print qq|<div class="mes">ã€$this_titleã€‘ ãŠä¼‘ã¿ä¸­ã€ŒZzz...ã€ ç›®è¦šã‚ã‚‹ã¾ã§ $wake_html</div>|;
 	}
-	else { # –ÚŠo‚ß
+	else { # ç›®è¦šã‚
 		$m{tired} = 0;
 		$m{hp} = $m{mhp};
 		$m{mp} = $m{mmp};
 		$m{is_eat} = 0;
 		$m{icon}   = "job/$m{job}_$m{sex}.gif";
 
-		print qq|<div class="mes">y$this_titlez $m‚Ì$e2j{hp}$e2j{mp}$e2j{tired}‚ª‰ñ•œ‚µ‚½I</div>|;
+		print qq|<div class="mes">ã€$this_titleã€‘ $mã®$e2j{hp}$e2j{mp}$e2j{tired}ãŒå›å¾©ã—ãŸï¼</div>|;
 	}
 }
 
-# s“®‚Í‚Å‚«‚È‚¢
+# è¡Œå‹•ã¯ã§ããªã„
 sub set_action { return }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

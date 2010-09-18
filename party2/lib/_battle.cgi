@@ -1,61 +1,61 @@
 require "./lib/_skill.cgi";
 #=================================================
-# í“¬ˆ— Created by Merino
-# vs_player.cgi,vs_monster.cgi,vs_guild.cgi‹¤’ÊƒTƒuƒ‹[ƒ`ƒ“ 
+# æˆ¦é—˜å‡¦ç† Created by Merino
+# vs_player.cgi,vs_monster.cgi,vs_guild.cgiå…±é€šã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ 
 #=================================================
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file = "$questdir/$m{quest}/log";
 
 
 #=================================================
-# “|‚µ‚½‚Æ‚«‚Ìˆ—
+# å€’ã—ãŸã¨ãã®å‡¦ç†
 #=================================================
 sub defeat {
 	my $y = shift;
 	
-	# •œŠˆ‚Ìó‘Ô
-	if ($ms{$y}{tmp} eq '•œŠˆ') {
+	# å¾©æ´»ã®çŠ¶æ…‹
+	if ($ms{$y}{tmp} eq 'å¾©æ´»') {
 		$ms{$y}{tmp} = '';
 		$ms{$y}{hp}  = int($ms{$y}{mhp} * (rand(0.1)+0.1));
-		$com.=qq|<span class="revive">$y‚Í•m€‚Å‚æ‚İ‚ª‚¦‚Á‚½I</span>|;
+		$com.=qq|<span class="revive">$yã¯ç€•æ­»ã§ã‚ˆã¿ãŒãˆã£ãŸï¼</span>|;
 		&reset_status($y);
 		return;
 	}
 	
-	# ó‘Ô‚È‚Ç‰Šú‰»
+	# çŠ¶æ…‹ãªã©åˆæœŸåŒ–
 	$ms{$y}{hp} = 0;
 	&reset_status($y);
 	
-	# NPC‚ªƒvƒŒƒCƒ„[‚ğ“|‚µ‚½B‚Ü‚½‚Í©”š
+	# NPCãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å€’ã—ãŸæ™‚ã€‚ã¾ãŸã¯è‡ªçˆ†
 	return if $ms{$m}{color} eq $npc_color || $m eq $y;
 
-	$com .= qq|<br /><span class="get">$m‚½‚¿‚Í‚»‚ê‚¼‚ê $ms{$y}{get_exp} ‚Ì$e2j{exp}‚Æ $ms{$y}{get_money} G‚ğè‚É“ü‚ê‚½I</span>|;
+	$com .= qq|<br /><span class="get">$mãŸã¡ã¯ãã‚Œãã‚Œ $ms{$y}{get_exp} ã®$e2j{exp}ã¨ $ms{$y}{get_money} Gã‚’æ‰‹ã«å…¥ã‚ŒãŸï¼</span>|;
 	
 	for my $name (@partys) {
 		next if $ms{$name}{hp} <= 0;
-		if ($name eq $m) { # “|‚µ‚½l
+		if ($name eq $m) { # å€’ã—ãŸäºº
 			$m{exp}   += $ms{$y}{get_exp};
 			$m{money} += $ms{$y}{get_money};
 			
-			my $par = 2; # ’‡ŠÔ‚É‚È‚éŠm—¦(©•ª‚æ‚èã‚¢)
-			if ( &is_strong(%{ $ms{$y} }) ) { # ©•ª‚æ‚è‹­‚¢”»’è
+			my $par = 2; # ä»²é–“ã«ãªã‚‹ç¢ºç‡(è‡ªåˆ†ã‚ˆã‚Šå¼±ã„)
+			if ( &is_strong(%{ $ms{$y} }) ) { # è‡ªåˆ†ã‚ˆã‚Šå¼·ã„åˆ¤å®š
 				$win ? $m{kill_p}++ : $m{kill_m}++;
-				$par = 1 unless $ms{$m}{job} eq '12'; # ’‡ŠÔ‚É‚È‚éŠm—¦(©•ª‚æ‚è‹­‚¢)B‚½‚¾‚µA–‚•¨g‚¢‚È‚çŠm—¦‰º‚ª‚ç‚¸B
+				$par = 1 unless $ms{$m}{job} eq '12'; # ä»²é–“ã«ãªã‚‹ç¢ºç‡(è‡ªåˆ†ã‚ˆã‚Šå¼·ã„)ã€‚ãŸã ã—ã€é­”ç‰©ä½¿ã„ãªã‚‰ç¢ºç‡ä¸‹ãŒã‚‰ãšã€‚
 			}
-			$par += 2 if $m{ite} eq '77'; # –‚•¨‚Ì´»
+			$par += 2 if $m{ite} eq '77'; # é­”ç‰©ã®ã‚¨ã‚µ
 			
-			if (!$win && $ms{$y}{color} eq $npc_color && rand(200) < $par) { # ƒ‚ƒ“ƒXƒ^[ƒQƒbƒg
+			if (!$win && $ms{$y}{color} eq $npc_color && rand(200) < $par) { # ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚²ãƒƒãƒˆ
 				my $base_name = $y;
-				$base_name =~ s/^\@//; # í“¬‚Ì@‚ğœ‚­
-				$base_name =~ s/[A-Z]$//; # ––”ö‚ÌA`Z‚ğœ‚­
+				$base_name =~ s/^\@//; # æˆ¦é—˜ã®@ã‚’é™¤ã
+				$base_name =~ s/[A-Z]$//; # æœ«å°¾ã®Aï½Zã‚’é™¤ã
 				$npc_name = $base_name; 
 				$npc_com .= "<br />" if $npc_com;
-				$npc_com .= qq|‚È‚ñ‚Æ<img src="$icondir/$ms{$y}{icon}" />$base_name ‚ª‹N‚«ã‚ª‚è‚±‚¿‚ç‚ğŒ©‚Ä‚¢‚éB|;
+				$npc_com .= qq|ãªã‚“ã¨<img src="$icondir/$ms{$y}{icon}" />$base_name ãŒèµ·ãä¸ŠãŒã‚Šã“ã¡ã‚‰ã‚’è¦‹ã¦ã„ã‚‹ã€‚|;
 				if ( &is_full_monster($id) ) {
-					$npc_com .= "‚µ‚©‚µA$m‚Ìƒ‚ƒ“ƒXƒ^[—a‚©‚èŠ‚Í‚¢‚Á‚Ï‚¢‚¾‚Á‚½B$base_name‚Í”ß‚µ‚»‚¤‚É‹‚Á‚Ä‚¢‚Á‚½c";
+					$npc_com .= "ã—ã‹ã—ã€$mã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é ã‹ã‚Šæ‰€ã¯ã„ã£ã±ã„ã ã£ãŸã€‚$base_nameã¯æ‚²ã—ãã†ã«å»ã£ã¦ã„ã£ãŸâ€¦";
 				}
 				else {
-					$npc_com .= "$base_name‚Í‚¤‚ê‚µ‚»‚¤‚É$m‚Ìƒ‚ƒ“ƒXƒ^[—a‚©‚èŠ‚ÉŒü‚©‚Á‚½";
+					$npc_com .= "$base_nameã¯ã†ã‚Œã—ãã†ã«$mã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é ã‹ã‚Šæ‰€ã«å‘ã‹ã£ãŸ";
 					
 					open my $fh, ">> $userdir/$id/monster.cgi";
 					print $fh "$base_name<>$ms{$y}{icon}<>\n";
@@ -66,10 +66,10 @@ sub defeat {
 				}
 			}
 		}
-		else { # ’‡ŠÔƒƒ“ƒo[‚Ì‚»‚ê‚¼‚ê‚Ìƒtƒ@ƒCƒ‹‚ğŠJ‚¢‚Äƒvƒ‰ƒXˆ—
+		else { # ä»²é–“ãƒ¡ãƒ³ãƒãƒ¼ã®ãã‚Œãã‚Œã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã„ã¦ãƒ—ãƒ©ã‚¹å‡¦ç†
 			my $yid = unpack 'H*', $name;
 			next unless -f "$userdir/$yid/user.cgi";
-			open my $fh, ">> $userdir/$yid/stock.cgi" or &error("$userdir/$yid/stock.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh, ">> $userdir/$yid/stock.cgi" or &error("$userdir/$yid/stock.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			print $fh "$ms{$y}{get_exp}<>$ms{$y}{get_money}<>\n";
 			close $fh;
 		}
@@ -77,14 +77,14 @@ sub defeat {
 }
 
 #=================================================
-# ƒŒƒxƒ‹ƒAƒbƒv
+# ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—
 #=================================================
 sub lv_up {
 	++$m{lv};
 	++$m{sp};
 	++$ms{$m}{sp};
 	$npc_com .= "<br />" if $npc_com;
-	$npc_com .= qq|<span class="lv_up">$m‚ÌƒŒƒxƒ‹‚ªã‚ª‚Á‚½ô$e2j{lv}$m{lv}‚É‚È‚Á‚½I|;
+	$npc_com .= qq|<span class="lv_up">$mã®ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ãŸâ™ª$e2j{lv}$m{lv}ã«ãªã£ãŸï¼|;
 
 	my $i = 2;
 	for my $k (qw/hp mp at df ag/) {
@@ -101,39 +101,39 @@ sub lv_up {
 			$m{$k} += $v;
 		}
 		$ms{$m}{'m'.$k} += $v;
-		$npc_com .= "$e2j{$k}{$v ";
+		$npc_com .= "$e2j{$k}ï¼‹$v ";
 		++$i;
 	}
 	
 	my @skills = &{ 'skill_'.$ms{$m}{job} };
 	for my $i (0..$#skills) {
 		if ($skills[$i][0] eq $m{sp}) {
-			$npc_com .= qq|<br /><b>$m‚ÍV‚µ‚­ $skills[$i][2] ‚ğŠo‚¦‚½I</b>|;
+			$npc_com .= qq|<br /><b>$mã¯æ–°ã—ã $skills[$i][2] ã‚’è¦šãˆãŸï¼</b>|;
 		}
 	}
 	$npc_com .= qq|</span>|;
 }
 
 #=================================================
-# ƒXƒe[ƒ^ƒX•\¦
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¡¨ç¤º
 #=================================================
 sub header_html {
-	print qq|<div class="mes">y$this_titlez|;
+	print qq|<div class="mes">ã€$this_titleã€‘|;
 	print qq| $e2j{mhp}<b>$ms{$m}{hp}</b>/<b>$ms{$m}{mhp}</b> $e2j{mmp}<b>$ms{$m}{mp}</b>/<b>$ms{$m}{mmp}</b>|;
 	print qq| $e2j{at}<b>$ms{$m}{at}</b> $e2j{df}<b>$ms{$m}{df}</b> $e2j{ag}<b>$ms{$m}{ag}</b> $jobs[$m{job}][1](<b>$m{sp}</b>)|;
 	print qq| $jobs[$m{old_job}][1](<b>$m{old_sp}</b>)| if $m{old_job};
-	print qq| EF$ites[$m{ite}][1]| if $m{ite};
+	print qq| Eï¼š$ites[$m{ite}][1]| if $m{ite};
 	print qq|</div>|;
 }
 
 #=================================================
-# ƒƒ“ƒo[o—Í
+# ãƒ¡ãƒ³ãƒãƒ¼å‡ºåŠ›
 #=================================================
 sub member_html {
 	my $member_html = '';
 	$member_html .= qq|<div style="background: url($bgimg) #333 repeat-x center bottom;"><table><tr>|;
 	for my $name (@members) {
-		next if $ms{$name}{hp} <= 0 && ($ms{$m}{color} ne $ms{$name}{color} || $name =~ /^@/); # ‚â‚ç‚ê‚½“G‚âg‘ã‚í‚è‚ğœ‚­
+		next if $ms{$name}{hp} <= 0 && ($ms{$m}{color} ne $ms{$name}{color} || $name =~ /^@/); # ã‚„ã‚‰ã‚ŒãŸæ•µã‚„èº«ä»£ã‚ã‚Šã‚’é™¤ã
 		my $par = int($ms{$name}{hp} / $ms{$name}{mhp} * 100);
 		my $_mhp = $ms{$name}{mhp} > 999 ? '???' : $ms{$name}{mhp};
 		my $_hp  = $ms{$name}{hp}  > 999 ? '???' : $ms{$name}{hp};
@@ -147,10 +147,10 @@ sub member_html {
 }
 
 
-# $FH ”r‘¼§Œä‚ğ‚·‚é‚½‚ß‚ÌƒOƒ[ƒoƒ‹•Ï”(‚±‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ)B•¡”‚ÌƒvƒŒƒCƒ„[‚ª“¯‚¶ƒtƒ@ƒCƒ‹‚ğ‹¤—L‚·‚é‚½‚ßB
+# $FH æ’ä»–åˆ¶å¾¡ã‚’ã™ã‚‹ãŸã‚ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°(ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿)ã€‚è¤‡æ•°ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒåŒã˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å…±æœ‰ã™ã‚‹ãŸã‚ã€‚
 my $FH;
 #=================================================
-# ƒƒ“ƒo[“Ç‚İ‚İ
+# ãƒ¡ãƒ³ãƒãƒ¼èª­ã¿è¾¼ã¿
 #=================================================
 sub read_member {
 	@members = ();
@@ -159,7 +159,7 @@ sub read_member {
 	%ms = (); # Members
 
 	my $count = 0;
-	open $FH, "+< $questdir/$m{quest}/member.cgi" or do{ $m{lib} = ''; $m{quest} = ''; &write_user; &error("‚·‚Å‚Éƒp[ƒeƒB[‚ª‰ğU‚µ‚Ä‚µ‚Ü‚Á‚½‚æ‚¤‚Å‚·"); };
+	open $FH, "+< $questdir/$m{quest}/member.cgi" or do{ $m{lib} = ''; $m{quest} = ''; &write_user; &error("ã™ã§ã«ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãŒè§£æ•£ã—ã¦ã—ã¾ã£ãŸã‚ˆã†ã§ã™"); };
 	eval { flock $FH, 2; };
 	my $head_line = <$FH>;
 	($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$need_join,$type,$map,$py,$px,$event) = split /<>/, $head_line;
@@ -172,11 +172,11 @@ sub read_member {
 			$ms{$name}{$k} = $datas[$i];
 			++$i;
 		}
-		# ‰˜õƒ`ƒFƒbƒN(‚ ‚è‚¦‚È‚¢ƒf[ƒ^)B‹­§ƒNƒGƒXƒgíœB
+		# æ±šæŸ“ãƒã‚§ãƒƒã‚¯(ã‚ã‚Šãˆãªã„ãƒ‡ãƒ¼ã‚¿)ã€‚å¼·åˆ¶ã‚¯ã‚¨ã‚¹ãƒˆå‰Šé™¤ã€‚
 		if (!defined($ms{$name}{mhp}) || $ms{$name}{mhp} <= 0) {
 			close $FH;
 			&delete_directory("$questdir/$m{quest}");
-			&error("ƒf[ƒ^‚ª‰ó‚ê‚Ä‚¢‚Ü‚·BƒNƒGƒXƒg‚ğ‹­§I—¹‚µ‚Ü‚·");
+			&error("ãƒ‡ãƒ¼ã‚¿ãŒå£Šã‚Œã¦ã„ã¾ã™ã€‚ã‚¯ã‚¨ã‚¹ãƒˆã‚’å¼·åˆ¶çµ‚äº†ã—ã¾ã™");
 		}
 		push @members, $name;
 	}
@@ -194,7 +194,7 @@ sub read_member {
 
 
 #=================================================
-# ƒƒ“ƒo[‘‚«‚İ
+# ãƒ¡ãƒ³ãƒãƒ¼æ›¸ãè¾¼ã¿
 #=================================================
 sub write_member {
 	return unless -d "$questdir/$m{quest}";
@@ -202,7 +202,7 @@ sub write_member {
 	my $head_line = "$speed<>$stage<>$round<>$leader<>$p_name<>$p_pass<>$p_join<>$win<>$bet<>$is_visit<>$need_join<>$type<>$map<>$py<>$px<>$event<>\n";
 	my @lines = ($head_line);
 	for my $name (@members) {
-		next if $name =~ /^@/ && $ms{$name}{hp} <= 0; # ‚â‚ç‚ê‚½NPC‚âg‘ã‚í‚è‚ğœ‚­
+		next if $name =~ /^@/ && $ms{$name}{hp} <= 0; # ã‚„ã‚‰ã‚ŒãŸNPCã‚„èº«ä»£ã‚ã‚Šã‚’é™¤ã
 		my $line = '';
 		for my $k (@battle_datas) {
 			$line .= "$ms{$name}{$k}<>";
@@ -217,76 +217,76 @@ sub write_member {
 }
 
 #=================================================
-# í“¬ƒAƒNƒVƒ‡ƒ“
+# æˆ¦é—˜ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub action {
 	$com .= "\x20";
-	$com =~ /—(.+?)(?:(?:\x20|@)?&gt;(.+?)(?:\x20|@)|\x20|@)/;
+	$com =~ /ï¼ (.+?)(?:(?:\x20|ã€€)?&gt;(.+?)(?:\x20|ã€€)|\x20|ã€€)/;
 	my $action = $1;
 	my $target = $2 ? $2 : '';
 	return unless defined $actions{$action}[1];
 	if ($time - $ms{$m}{time} < $act_time) {
-		$mes = "‚Ü‚¾s“®‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "ã¾ã è¡Œå‹•ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	
-	if ($action eq '‚³‚³‚â‚«') {
+	if ($action eq 'ã•ã•ã‚„ã') {
 		&sasayaki($target);
 		return;
 	}
-	elsif ($action eq '‚·‚­‚µ‚å') {
+	elsif ($action eq 'ã™ãã—ã‚‡') {
 		&sukusho($target);
 		return;
 	}
 	elsif (!defined($ms{$m}{name}) || $ms{$m}{hp} <= 0) {
-		if ($action eq '‚É‚°‚é') {
+		if ($action eq 'ã«ã’ã‚‹') {
 			&nigeru;
 		}
-		elsif ($win && $action eq '‚©‚¢‚µ') { # ˆø•ª‚¯‚Ì—p
+		elsif ($win && $action eq 'ã‹ã„ã—') { # å¼•åˆ†ã‘ã®æ™‚ç”¨
 			&kaishi;
 			&write_member;
 		}
 		else {
-			$mes = 'í“¬•s”\‚É‚æ‚ès“®‚Å‚«‚Ü‚¹‚ñ';
+			$mes = 'æˆ¦é—˜ä¸èƒ½ã«ã‚ˆã‚Šè¡Œå‹•ã§ãã¾ã›ã‚“';
 		}
 		return;
 	}
 	
-	# ó‘ÔˆÙí
-	if ($ms{$m}{state} eq '“®••') {
+	# çŠ¶æ…‹ç•°å¸¸
+	if ($ms{$m}{state} eq 'å‹•å°') {
 		$ms{$m}{state} = '';
-		$com .="‚µ‚©‚µA$m‚Í“®‚­‚±‚Æ‚ª‚Å‚«‚È‚¢I";
+		$com .="ã—ã‹ã—ã€$mã¯å‹•ãã“ã¨ãŒã§ããªã„ï¼";
 	}
-	elsif ($ms{$m}{state} eq '–ƒáƒ') {
+	elsif ($ms{$m}{state} eq 'éº»ç—º') {
 		if (rand(3) < 1) {
-			$com .="$m‚Ì‚µ‚Ñ‚ê‚ª‚È‚­‚È‚è‚Ü‚µ‚½I";
+			$com .="$mã®ã—ã³ã‚ŒãŒãªããªã‚Šã¾ã—ãŸï¼";
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "$m‚Í‚µ‚Ñ‚ê‚Ä“®‚­‚±‚Æ‚ª‚Å‚«‚È‚¢I";
+			$com .= "$mã¯ã—ã³ã‚Œã¦å‹•ãã“ã¨ãŒã§ããªã„ï¼";
 		}
 	}
-	elsif ($ms{$m}{state} eq '–°‚è') {
+	elsif ($ms{$m}{state} eq 'çœ ã‚Š') {
 		if (rand(3) < 1) {
-			$com .="$m‚Í–°‚è‚©‚ç‚³‚ß‚Ü‚µ‚½I";
+			$com .="$mã¯çœ ã‚Šã‹ã‚‰ã•ã‚ã¾ã—ãŸï¼";
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "$m‚Í–°‚Á‚Ä‚¢‚éI";
+			$com .= "$mã¯çœ ã£ã¦ã„ã‚‹ï¼";
 		}
 	}
-	else { # ³í
-		if ($ms{$m}{state} eq '¬—') {
+	else { # æ­£å¸¸
+		if ($ms{$m}{state} eq 'æ··ä¹±') {
 			if (rand(5) < 1) {
-				$com .="$m‚Í¬—‚ª‚È‚¨‚è‚Ü‚µ‚½I";
+				$com .="$mã¯æ··ä¹±ãŒãªãŠã‚Šã¾ã—ãŸï¼";
 				$ms{$m}{state} = '';
 			}
 			else {
-				$com .= "$m‚Í¬—‚µ‚Ä‚¢‚éI";
+				$com .= "$mã¯æ··ä¹±ã—ã¦ã„ã‚‹ï¼";
 			}
 		}
 		
-		$ms{$m}{tmp} = '' if $ms{$m}{tmp} =~ /–hŒä|”½Œ‚/ || rand(3) < 1; # –hŒä‚Æ”½Œ‚ˆÈŠO‚Í”ƒ^[ƒ“c‚é
+		$ms{$m}{tmp} = '' if $ms{$m}{tmp} =~ /é˜²å¾¡|åæ’ƒ/ || rand(3) < 1; # é˜²å¾¡ã¨åæ’ƒä»¥å¤–ã¯æ•°ã‚¿ãƒ¼ãƒ³æ®‹ã‚‹
 		&{ $actions{$action}[1] }($target);
 		return if $mes;
 		
@@ -294,28 +294,28 @@ sub action {
 		$ms{$m}{mp}  = 0 if $ms{$m}{mp} < 0;
 		
 		if ($ms{$m}{hp} > 0) {
-			if ($ms{$m}{state} eq '–Ò“Å') {
+			if ($ms{$m}{state} eq 'çŒ›æ¯’') {
 				my $v = int($ms{$m}{mhp}*0.1);
 				$v = int(rand(100)+950) if $v > 999;
 				$ms{$m}{hp} -= $v;
-				$com.=qq|$m‚Í–Ò“Å‚É‚æ‚è <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒW‚ğ‚¤‚¯‚½I|;
+				$com.=qq|$mã¯çŒ›æ¯’ã«ã‚ˆã‚Š <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ã†ã‘ãŸï¼|;
 				
 				if ($ms{$m}{hp} <= 0) {
 					$ms{$m}{hp} = 0;
 					&reset_status($m);
-					$com .= qq!<span class="die">$m‚Í“|‚ê‚½I</span>!;
+					$com .= qq!<span class="die">$mã¯å€’ã‚ŒãŸï¼</span>!;
 					&defeat($m);
 				}
 			}
-			if ($ms{$m}{tmp} eq '‰ñ•œ' && $ms{$m}{hp} > 0) { # ©“®‰ñ•œ
+			if ($ms{$m}{tmp} eq 'å›å¾©' && $ms{$m}{hp} > 0) { # è‡ªå‹•å›å¾©
 				my $v = $ms{$m}{mhp} > 999 ? int(rand(100)) : int($ms{$m}{mhp} * (rand(0.1)+0.1));
 				$ms{$m}{hp} += $v;
 				$ms{$m}{hp} = $ms{$m}{mhp} if $ms{$m}{hp} > $ms{$m}{mhp};
-				$com .= qq|<b>$m</b>‚Ì$e2j{mhp}‚ª <span class="heal">$v</span> ‰ñ•œ‚µ‚½I|;
+				$com .= qq|<b>$m</b>ã®$e2j{mhp}ãŒ <span class="heal">$v</span> å›å¾©ã—ãŸï¼|;
 			}
 		}
 	}
-	&get_stock if -s "$userdir/$id/stock.cgi"; # æ“¾ŒoŒ±’lA‚¨‹à‚ğƒf[ƒ^‚É”½‰f
+	&get_stock if -s "$userdir/$id/stock.cgi"; # å–å¾—çµŒé¨“å€¤ã€ãŠé‡‘ã‚’ãƒ‡ãƒ¼ã‚¿ã«åæ˜ 
 	if ($m{lv} < 99 && $m{exp} >= $m{lv} * $m{lv} * 10) {
 		&lv_up;
 	}
@@ -331,13 +331,13 @@ sub action {
 
 
 #=================================================
-# —‚É‚°‚é
+# ï¼ ã«ã’ã‚‹
 #=================================================
 sub nigeru {
 	$is_npc_action = 0;
 	$m{lib} = 'quest';
 
-	# ƒNƒGƒXƒg‚Ìƒƒ“ƒo[ƒŠƒXƒg‚©‚çœ‚­
+	# ã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ¡ãƒ³ãƒãƒ¼ãƒªã‚¹ãƒˆã‹ã‚‰é™¤ã
 	my $is_join = 0;
 	my @new_members = ();
 	my @dummy_members = ();
@@ -350,64 +350,64 @@ sub nigeru {
 	}
 	@members = @new_members;
 
-	# Œ©ŠwÒ‚Í‚»‚Ì‚Ü‚Ü‹A‚·
+	# è¦‹å­¦è€…ã¯ãã®ã¾ã¾å¸°ã™
 	unless ($is_join) {
-		$mes ="$p_name‚ÌŒ©Šw‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½";
-		&reload("$p_name‚ÌŒ©Šw‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½");
+		$mes ="$p_nameã®è¦‹å­¦ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ";
+		&reload("$p_nameã®è¦‹å­¦ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ");
 		return;
 	}
 	
-	&get_stock if -s "$userdir/$id/stock.cgi"; # æ“¾ŒoŒ±’lA‚¨‹à‚ğƒf[ƒ^‚É”½‰f
+	&get_stock if -s "$userdir/$id/stock.cgi"; # å–å¾—çµŒé¨“å€¤ã€ãŠé‡‘ã‚’ãƒ‡ãƒ¼ã‚¿ã«åæ˜ 
 	
-	# ”æ˜J“xƒvƒ‰ƒX
+	# ç–²åŠ´åº¦ãƒ—ãƒ©ã‚¹
 	$m{tired} += $round * 3 + 1;
 	$m{is_eat} = 0;
 	$m{hp} = $ms{$m}{hp};
 	$m{mp} = $ms{$m}{mp};
 	$m{hp} = $m{mhp} if $m{hp} > $m{mhp};
 	$m{mp} = $m{mmp} if $m{mp} > $m{mmp};
-	$m{exp}   += $round * 20 if $m{ite} eq '105'; # K‚¹‚Ì‚­‚Â
-	$m{money} += int($round * rand(77)) if $m{ite} eq '106'; # ‹à‚ÌŒ{
+	$m{exp}   += $round * 20 if $m{ite} eq '105'; # å¹¸ã›ã®ãã¤
+	$m{money} += int($round * rand(77)) if $m{ite} eq '106'; # é‡‘ã®é¶
 	
 	if ($round <= 0 && $win > 0) {
-		# “¬‹Zê‚ÅŠJn‘O‚É”²‚¯‚½ê‡B•Ô‹à
+		# é—˜æŠ€å ´ã§é–‹å§‹å‰ã«æŠœã‘ãŸå ´åˆã€‚è¿”é‡‘
 		if ($type eq '4') {
 			$m{money} += $bet;
 			&add_bet($m{quest}, "-$bet");
-			&reload("í“¬‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½<br />“q‚¯‹à‚Ì $bet G‚ª•Ô‹à‚³‚ê‚Ü‚µ‚½");
+			&reload("æˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ<br />è³­ã‘é‡‘ã® $bet GãŒè¿”é‡‘ã•ã‚Œã¾ã—ãŸ");
 		}
-		# ƒMƒ‹ƒhí‚Å”²‚¯‚½ê‡B—DŸƒMƒ‹ƒhƒ|ƒCƒ“ƒgŒ¸
+		# ã‚®ãƒ«ãƒ‰æˆ¦ã§æŠœã‘ãŸå ´åˆã€‚å„ªå‹ã‚®ãƒ«ãƒ‰ãƒã‚¤ãƒ³ãƒˆæ¸›
 		elsif($type eq '5') {
 			&add_bet($m{quest}, "-2");
-			&reload("í“¬‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½");
+			&reload("æˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ");
 		}
 		else {
-			&reload("í“¬‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½");
+			&reload("æˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ");
 		}
 	}
 	else {
-		&reload("í“¬‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½");
+		&reload("æˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ");
 	}
 
-	# ’N‚à‚¢‚È‚­‚È‚Á‚½‚çƒNƒGƒXƒg‚ğíœ
-	if (@members < 1 && ($type ne '6' || ($type eq '6' && $ms{$leader}{hp} <= 0)) ) { # ••ˆóí‚¶‚á‚È‚¢‚ÅƒvƒŒƒCƒ„[‚ª‚Ol‚©A••ˆóí‚Åƒ{ƒX‚Ì‚g‚o‚ª‚OˆÈ‰º
+	# èª°ã‚‚ã„ãªããªã£ãŸã‚‰ã‚¯ã‚¨ã‚¹ãƒˆã‚’å‰Šé™¤
+	if (@members < 1 && ($type ne '6' || ($type eq '6' && $ms{$leader}{hp} <= 0)) ) { # å°å°æˆ¦ã˜ã‚ƒãªã„æ™‚ã§ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒï¼äººã‹ã€å°å°æˆ¦ã§ãƒœã‚¹ã®ï¼¨ï¼°ãŒï¼ä»¥ä¸‹
 		&write_member;
 		$this_file = "$logdir/quest";
 		&delete_directory("$questdir/$m{quest}");
-		$mes = "í“¬‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½";
+		$mes = "æˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ";
 	}
 	else {
-		# Ø°ÀŞ°‚¾‚Á‚½ê‡Ø°ÀŞ°Œğ‘ã
+		# ãƒªãƒ¼ãƒ€ãƒ¼ã ã£ãŸå ´åˆãƒªãƒ¼ãƒ€ãƒ¼äº¤ä»£
 		if ($leader eq $m) {
 			$leader = $members[0];
-			$npc_com = "$p_name‚ÌƒŠ[ƒ_[‚ª$leader‚É‚È‚è‚Ü‚µ‚½";
+			$npc_com = "$p_nameã®ãƒªãƒ¼ãƒ€ãƒ¼ãŒ$leaderã«ãªã‚Šã¾ã—ãŸ";
 		}
 		push @members, @dummy_members;
 		&write_member;
 	}
 }
 
-# ‹­‚³ŒvZ
+# å¼·ã•è¨ˆç®—
 sub strong {
 	my %p = @_;	
 	return int($p{mhp} + $p{mmp} + $p{at} + $p{df} * 0.5 + $p{ag});
@@ -417,7 +417,7 @@ sub is_strong {
 	&strong(%p) > &strong(%m) * 0.5 ? return 1 : return 0;
 }
 
-# ó‘Ô‚È‚Ç‚Ì’l‚ğƒfƒtƒHƒ‹ƒg‚É–ß‚·
+# çŠ¶æ…‹ãªã©ã®å€¤ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã«æˆ»ã™
 sub reset_status {
 	my $y = shift;
 	$ms{$y}{state} = '';
@@ -427,7 +427,7 @@ sub reset_status {
 	$ms{$y}{at} = $ms{$y}{mat} + $weas[$ms{$y}{wea}][3];
 	$ms{$y}{df} = $ms{$y}{mdf} + $arms[$ms{$y}{arm}][3];
 	$ms{$y}{ag} = $ms{$y}{mag} - $weas[$ms{$y}{wea}][4] - $arms[$ms{$y}{arm}][4];
-	&{ $ites[$ms{$y}{ite}][4] }($y) if $ites[$ms{$y}{ite}][3] eq '3'; # ‘•ü•i(í“¬ŠJnA€–SA‚¢‚Ä‚Â‚­‚Í‚Ç‚¤‚È‚Ç &reset_status‚Ì)
+	&{ $ites[$ms{$y}{ite}][4] }($y) if $ites[$ms{$y}{ite}][3] eq '3'; # è£…é£¾å“(æˆ¦é—˜é–‹å§‹æ™‚ã€æ­»äº¡æ™‚ã€ã„ã¦ã¤ãã¯ã©ã†ãªã© &reset_statusã®æ™‚)
 	$ms{$y}{ag} = 0 if $ms{$y}{ag} < 0;
 }
 sub reset_status_all {
@@ -438,22 +438,22 @@ sub reset_status_all {
 
 
 
-# •À‚Ñ‡‚ğF‚²‚Æ‚ÉƒVƒƒƒbƒtƒ‹
+# ä¸¦ã³é †ã‚’è‰²ã”ã¨ã«ã‚·ãƒ£ãƒƒãƒ•ãƒ«
 sub shuffle {
-	# ‘SFæ“¾
+	# å…¨è‰²å–å¾—
 	my %teams = ();
 	for my $name (@members) {
 		++$teams{ $ms{$name}{color} };
 	}
 	
-	# F‚ğƒVƒƒƒbƒtƒ‹
+	# è‰²ã‚’ã‚·ãƒ£ãƒƒãƒ•ãƒ«
 	my @new_team_colors = ();
 	my(@team_colors) = keys %teams;
 	while (@team_colors) {
 		push( @new_team_colors, splice(@team_colors, rand @team_colors, 1) );
 	}
 	
-	# F‡‚Éƒƒ“ƒo[‚ğ•À‚ÑŠ·‚¦
+	# è‰²é †ã«ãƒ¡ãƒ³ãƒãƒ¼ã‚’ä¸¦ã³æ›ãˆ
 	my @new_members = ();
 	for my $new_team_color (@new_team_colors) {
 		for my $name (@members) {
@@ -466,7 +466,7 @@ sub shuffle {
 }
 
 sub get_stock {
-	open my $fh, "+< $userdir/$id/stock.cgi" or &error("$userdir/$id/stock.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/stock.cgi" or &error("$userdir/$id/stock.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($exp, $money) = split /<>/, $line;
@@ -479,4 +479,4 @@ sub get_stock {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

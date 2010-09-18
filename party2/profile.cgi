@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 require 'config.cgi';
 #================================================
-# ƒvƒƒtƒB[ƒ‹•\¦(ƒvƒŒƒCƒ„[ˆê———p) Created by Merino
+# ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«è¡¨ç¤º(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§ç”¨) Created by Merino
 #================================================
 &decode;
 &header;
@@ -10,15 +10,15 @@ require 'config.cgi';
 exit;
 #================================================
 sub run {
-	&error("‚»‚Ì‚æ‚¤‚ÈƒvƒŒƒCƒ„[‚Í‘¶İ‚µ‚Ü‚¹‚ñ") unless $in{name};
+	&error("ãã®ã‚ˆã†ãªãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“") unless $in{name};
 	my $yid = unpack 'H*', $in{name};
-	&error("ƒvƒƒtƒB[ƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ") unless -f "$userdir/$yid/profile.cgi";
+	&error("ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“") unless -f "$userdir/$yid/profile.cgi";
 
 	$m{home} = $in{name};
 	$is_top_profile = 1;
 
 	require './lib/profile.cgi';
-	print qq|<table><tr><td><form action="player.cgi"><input type="hidden" name="id" value="$yid"><input type="submit" value="–ß‚é" /></form></td><td><form><input type="button" onclick="window.close(); return false;" value="•Â‚¶‚é"></form></td></tr></table>|;
+	print qq|<table><tr><td><form action="player.cgi"><input type="hidden" name="id" value="$yid"><input type="submit" value="æˆ»ã‚‹" /></form></td><td><form><input type="button" onclick="window.close(); return false;" value="é–‰ã˜ã‚‹"></form></td></tr></table>|;
 	&view_profile;
 }
 

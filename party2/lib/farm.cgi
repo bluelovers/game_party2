@@ -1,86 +1,86 @@
 #=================================================
-# ƒ‚ƒ“ƒXƒ^[‚¶‚¢‚³‚ñ Created by Merino
+# ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã˜ã„ã•ã‚“ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'ƒ‚ƒ“ƒXƒ^[‚¶‚¢‚³‚ñ';
+# å ´æ‰€å
+$this_title = 'ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã˜ã„ã•ã‚“';
 
-# NPC–¼
-$npc_name   = '@Óİ¼Ş¨';
+# NPCå
+$npc_name   = '@ãƒ¢ãƒ³ã‚¸ã‚£';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/farm";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/farm.gif";
 
-# ‰Æ‚É˜A‚ê‚Äs‚¯‚é”
+# å®¶ã«é€£ã‚Œã¦è¡Œã‘ã‚‹æ•°
 $max_monster = 8;
 
 #=================================================
-# —‚Í‚È‚·‚Ì‰ï˜b
+# ï¼ ã¯ãªã™ã®ä¼šè©±
 #=================================================
 @words = (
-	"‚í‚µ‚ª—L–¼‚È$npc_name‚¶‚áBƒ‚ƒ“ƒXƒ^[‚Ì‚±‚Æ‚È‚ç‰½‚Å‚à•·‚¢‚Ä‚­‚ê‚¢",
-	"‰½“x‚©ƒ‚ƒ“ƒXƒ^[‚ğ“|‚µ‚Ä‚¢‚é‚ÆA‚È‚Â‚¢‚Ä‚­‚éƒ‚ƒ“ƒXƒ^[‚ª‚¢‚é‚Ì‚¶‚á",
-	"lŠÔ‚ğD‚Şƒ‚ƒ“ƒXƒ^[‚à‚¢‚é‚Æ‚¢‚¤‚±‚Æ‚¶‚á",
-	"$m‚Ìƒˆ‚È‹­‚³‚Éƒ‚ƒ“ƒXƒ^[‚Í‚Ğ‚«‚Â‚¯‚ç‚ê‚é‚Ì‚¶‚á",
-	"©•ª‚Ì‰Æ‚É‚Í$max_monster•C‚Ü‚Åƒyƒbƒg‚ğ˜A‚ê‚Äs‚­‚±‚Æ‚ª‚Å‚«‚é‚¼‚¢",
-	"ƒ‚ƒ“ƒXƒ^[‚ÍÅ‘å30•C‚Ü‚Å—a‚©‚Á‚Ä‚¨‚¯‚é‚¼‚¢B‚»‚êˆÈã‚ÍAc”O‚¶‚á‚ª—‚í‚©‚ê‚é‚µ‚©‚È‚¢‚Ì‚§c",
-	"ƒ‚ƒ“ƒXƒ^[—a‚©‚èŠ‚ª‚Ü‚ñ‚Ï‚ñ‚Ìó‘Ô‚¾‚ÆAƒ‚ƒ“ƒXƒ^[‚Í’‡ŠÔ‚É‚È‚ç‚ñ‚©‚ç’ˆÓ‚¶‚á",
-	"©•ª‚ª‘Šè‚æ‚è‹­‚¢•û‚ª’‡ŠÔ‚É‚È‚è‚â‚·‚¢‚¼‚¢",
-	"‚Ó‚ª‚Ó‚ª‚Ó‚ª‚Ó‚ª‚Ó‚ª‚Ó‚ª‚Ó‚ª",
+	"ã‚ã—ãŒæœ‰åãª$npc_nameã˜ã‚ƒã€‚ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ã“ã¨ãªã‚‰ä½•ã§ã‚‚èã„ã¦ãã‚Œã„",
+	"ä½•åº¦ã‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’å€’ã—ã¦ã„ã‚‹ã¨ã€ãªã¤ã„ã¦ãã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãŒã„ã‚‹ã®ã˜ã‚ƒ",
+	"äººé–“ã‚’å¥½ã‚€ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚‚ã„ã‚‹ã¨ã„ã†ã“ã¨ã˜ã‚ƒ",
+	"$mã®ç´”ç²‹ãªå¼·ã•ã«ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã¯ã²ãã¤ã‘ã‚‰ã‚Œã‚‹ã®ã˜ã‚ƒ",
+	"è‡ªåˆ†ã®å®¶ã«ã¯$max_monsteråŒ¹ã¾ã§ãƒšãƒƒãƒˆã‚’é€£ã‚Œã¦è¡Œãã“ã¨ãŒã§ãã‚‹ãã„",
+	"ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã¯æœ€å¤§30åŒ¹ã¾ã§é ã‹ã£ã¦ãŠã‘ã‚‹ãã„ã€‚ãã‚Œä»¥ä¸Šã¯ã€æ®‹å¿µã˜ã‚ƒãŒï¼ ã‚ã‹ã‚Œã‚‹ã—ã‹ãªã„ã®ã‰â€¦",
+	"ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é ã‹ã‚Šæ‰€ãŒã¾ã‚“ã±ã‚“ã®çŠ¶æ…‹ã ã¨ã€ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã¯ä»²é–“ã«ãªã‚‰ã‚“ã‹ã‚‰æ³¨æ„ã˜ã‚ƒ",
+	"è‡ªåˆ†ãŒç›¸æ‰‹ã‚ˆã‚Šå¼·ã„æ–¹ãŒä»²é–“ã«ãªã‚Šã‚„ã™ã„ãã„",
+	"ãµãŒãµãŒãµãŒãµãŒãµãŒãµãŒãµãŒ",
 );
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚Â‚ê‚Ä‚­';
-push @actions, '‚È‚Ã‚¯‚é';
-push @actions, '‚ ‚¸‚¯‚é';
-push @actions, '‚¨‚­‚é';
-push @actions, '‚í‚©‚ê‚é';
-$actions{'‚Â‚ê‚Ä‚­'} = sub{ &tureteku }; 
-$actions{'‚È‚Ã‚¯‚é'} = sub{ &nazukeru }; 
-$actions{'‚ ‚¸‚¯‚é'} = sub{ &azukeru }; 
-$actions{'‚¨‚­‚é'}   = sub{ &okuru }; 
-$actions{'‚í‚©‚ê‚é'} = sub{ &wakareru }; 
+push @actions, 'ã¤ã‚Œã¦ã';
+push @actions, 'ãªã¥ã‘ã‚‹';
+push @actions, 'ã‚ãšã‘ã‚‹';
+push @actions, 'ãŠãã‚‹';
+push @actions, 'ã‚ã‹ã‚Œã‚‹';
+$actions{'ã¤ã‚Œã¦ã'} = sub{ &tureteku }; 
+$actions{'ãªã¥ã‘ã‚‹'} = sub{ &nazukeru }; 
+$actions{'ã‚ãšã‘ã‚‹'} = sub{ &azukeru }; 
+$actions{'ãŠãã‚‹'}   = sub{ &okuru }; 
+$actions{'ã‚ã‹ã‚Œã‚‹'} = sub{ &wakareru }; 
 
 #=================================================
-# —‚¨‚­‚é
+# ï¼ ãŠãã‚‹
 #=================================================
 sub okuru {
 	my $target = shift;
-	my($pet, $yname) = split /—‚ ‚¢‚Ä&gt;/, $target;
+	my($pet, $yname) = split /ï¼ ã‚ã„ã¦&gt;/, $target;
 	
 	if ($yname) {
 		my $yid = unpack 'H*', $yname;
 		unless (-f "$userdir/$yid/user.cgi") {
-			$mes = "$yname‚Æ‚¢‚¤ƒvƒŒƒCƒ„[‚Í‘¶İ‚µ‚Ü‚¹‚ñ";
+			$mes = "$ynameã¨ã„ã†ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“";
 			return;
 		}
 
 		if ( &is_full_monster($yid) ) {
-			$mes = "$name‚Ìƒ‚ƒ“ƒXƒ^[—a‚©‚èŠ‚ª‚¢‚Á‚Ï‚¢‚Å‚·";
+			$mes = "$nameã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é ã‹ã‚Šæ‰€ãŒã„ã£ã±ã„ã§ã™";
 			return
 		}
 	}
 
 	my $p = '';
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($mname, $micon) = split /<>/, $line;
 		if ($yname && !$npc_com && $pet eq $mname) {
 			my $yid = unpack 'H*', $yname;
-			open my $fh2, ">> $userdir/$yid/monster.cgi" or &error("$userdir/$yid/monster.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh2, ">> $userdir/$yid/monster.cgi" or &error("$userdir/$yid/monster.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			print $fh2 "$mname<>$micon<>\n";
 			close $fh2;
-			$npc_com .= "$mname‚ğ$yname‚Ìƒ‚ƒ“ƒXƒ^[—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚¢‚½‚¼";
+			$npc_com .= "$mnameã‚’$ynameã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠã„ãŸã";
 		}
 		else {
 			push @lines, $line;
-			$p .= qq|<span onclick="text_set('—‚¨‚­‚é>$mname—‚ ‚¢‚Ä')"><img src="$icondir/$micon" />$mname</span> |;
+			$p .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$mnameï¼ ã‚ã„ã¦')"><img src="$icondir/$micon" />$mname</span> |;
 		}
 	}
 	seek  $fh, 0, 0;
@@ -89,27 +89,27 @@ sub okuru {
 	close $fh;
 	
 	return if $npc_com;
-	$mes = qq|‚Ç‚Ìƒ‚ƒ“ƒXƒ^[‚ğ’N‚É‘—‚é‚Ì‚¶‚áH<br />$p|;
+	$mes = qq|ã©ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’èª°ã«é€ã‚‹ã®ã˜ã‚ƒï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 #=================================================
-# —‚í‚©‚ê‚é
+# ï¼ ã‚ã‹ã‚Œã‚‹
 #=================================================
 sub wakareru {
 	$y = shift;
 	
 	my $p = '';
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($name, $icon) = split /<>/, $line;
 		if (!$npc_com && $y eq $name) {
-			$npc_com = "$name‚ğ–ì¶‚É‹A‚µ‚Æ‚¢‚½‚¼";
+			$npc_com = "$nameã‚’é‡ç”Ÿã«å¸°ã—ã¨ã„ãŸã";
 		}
 		else {
 			push @lines, $line;
-			$p .= qq|<span onclick="text_set('—‚í‚©‚ê‚é>$name ')"><img src="$icondir/$icon" />$name</span> |;
+			$p .= qq|<span onclick="text_set('ï¼ ã‚ã‹ã‚Œã‚‹>$name ')"><img src="$icondir/$icon" />$name</span> |;
 		}
 	}
 	seek  $fh, 0, 0;
@@ -118,30 +118,30 @@ sub wakareru {
 	close $fh;
 	
 	return if $npc_com;
-	$mes = qq|‚Ç‚Ìƒ‚ƒ“ƒXƒ^[‚Æ•Ê‚ê‚é‚Ì‚¶‚áH<br />$p|;
+	$mes = qq|ã©ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã¨åˆ¥ã‚Œã‚‹ã®ã˜ã‚ƒï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 #=================================================
-# —‚Â‚ê‚Ä‚­
+# ï¼ ã¤ã‚Œã¦ã
 #=================================================
 sub tureteku {
 	my $y = shift;
 	
 	my $p = '';
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($name, $icon) = split /<>/, $line;
 		if (!$npc_com && $y eq $name) {
 			&_add_home_member($name, $icon);
 			return if $mes;
-			$npc_com = "$name‚ğ$m‚Ì‰Æ‚É‘—‚Á‚Ä‚¨‚¢‚½‚¼";
+			$npc_com = "$nameã‚’$mã®å®¶ã«é€ã£ã¦ãŠã„ãŸã";
 		}
 		else {
 			push @lines, $line;
-			$p .= qq|<span onclick="text_set('—‚Â‚ê‚Ä‚­>$name ')"><img src="$icondir/$icon" />$name</span> |;
+			$p .= qq|<span onclick="text_set('ï¼ ã¤ã‚Œã¦ã>$name ')"><img src="$icondir/$icon" />$name</span> |;
 		}
 	}
 	seek  $fh, 0, 0;
@@ -150,19 +150,19 @@ sub tureteku {
 	close $fh;
 
 	return if $npc_com;
-	$mes = qq|‚Ç‚Ìƒ‚ƒ“ƒXƒ^[‚ğ˜A‚ê‚Äs‚­‚Ì‚¶‚áH<br />$p|;
+	$mes = qq|ã©ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’é€£ã‚Œã¦è¡Œãã®ã˜ã‚ƒï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 sub _add_home_member {
 	my($add_name, $add_icon) = @_;
 
 	my $count = 0;
-	open my $fh, "< $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
 		next unless $is_npc;
 		if ($add_name eq $name) {
-			$mes = qq|<span onclick="text_set('—‚È‚Ã‚¯‚é>$add_name—‚È‚Ü‚¦>')">$m‚Ì‰Æ‚É“¯‚¶–¼‘O‚Ìƒ‚ƒ“ƒXƒ^[‚ª‚¢‚Ü‚·Bu—‚È‚Ã‚¯‚év‚Å–¼‘O‚ğ•Ï‚¦‚Ä‚­‚¾‚³‚¢</span>|;
+			$mes = qq|<span onclick="text_set('ï¼ ãªã¥ã‘ã‚‹>$add_nameï¼ ãªã¾ãˆ>')">$mã®å®¶ã«åŒã˜åå‰ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãŒã„ã¾ã™ã€‚ã€Œï¼ ãªã¥ã‘ã‚‹ã€ã§åå‰ã‚’å¤‰ãˆã¦ãã ã•ã„</span>|;
 			return;
 		}
 		++$count;
@@ -170,30 +170,30 @@ sub _add_home_member {
 	close $fh;
 
 	if ($count >= $max_monster) {
-		$mes = "‚±‚êˆÈãAƒ‚ƒ“ƒXƒ^[‚ğ‰Æ‚É˜A‚ê‚Äs‚­‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "ã“ã‚Œä»¥ä¸Šã€ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’å®¶ã«é€£ã‚Œã¦è¡Œãã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	else {
-		open my $fh2, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		open my $fh2, ">> $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		print $fh2 "$time<>1<>$add_name<>0<>$add_icon<>$npc_color<>\n";
 		close $fh2;
 	}
 }
 
 #=================================================
-# —‚ ‚¸‚¯‚é
+# ï¼ ã‚ãšã‘ã‚‹
 #=================================================
 sub azukeru {
 	my $y = shift;
 	
 	if ( &is_full_monster($id) ) {
-		$mes = "‚±‚êˆÈãAƒ‚ƒ“ƒXƒ^[‚ğ—a‚©‚é‚±‚Æ‚Í‚Å‚«‚ñ‚¼";
+		$mes = "ã“ã‚Œä»¥ä¸Šã€ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’é ã‹ã‚‹ã“ã¨ã¯ã§ãã‚“ã";
 		return;
 	}
 	
 	my $p = '';
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/home_member.cgi" or &error("$userdir/$id/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
@@ -202,14 +202,14 @@ sub azukeru {
 			next;
 		}
 		if (!$npc_com && $y eq $name) {
-			open my $fh2, ">> $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh2, ">> $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			print $fh2 "$name<>$icon<>\n";
 			close $fh2;
-			$npc_com = "$name‚ğ—a‚©‚Á‚Ä‚¨‚­‚¼";
+			$npc_com = "$nameã‚’é ã‹ã£ã¦ãŠãã";
 		}
 		else {
 			push @lines, $line;
-			$p .= qq|<span onclick="text_set('—‚ ‚¸‚¯‚é>$name ')"><img src="$icondir/$icon" />$name</span> |;
+			$p .= qq|<span onclick="text_set('ï¼ ã‚ãšã‘ã‚‹>$name ')"><img src="$icondir/$icon" />$name</span> |;
 		}
 	}
 	seek  $fh, 0, 0;
@@ -218,41 +218,41 @@ sub azukeru {
 	close $fh;
 
 	return if $npc_com;
-	$mes = qq|‚Ç‚Ìƒ‚ƒ“ƒXƒ^[‚ğ—a‚¯‚é‚Ì‚¶‚áH<br />$p|;
+	$mes = qq|ã©ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’é ã‘ã‚‹ã®ã˜ã‚ƒï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
 #=================================================
-# —‚È‚Ã‚¯‚é
+# ï¼ ãªã¥ã‘ã‚‹
 #=================================================
 sub nazukeru {
 	my $target = shift;
 	
-	my($y, $new_name) = split /—‚È‚Ü‚¦&gt;/, $target;
+	my($y, $new_name) = split /ï¼ ãªã¾ãˆ&gt;/, $target;
 	
 	if ($y && $new_name) {
-		$mes = qq|<span onclick="text_set('—‚È‚Ã‚¯‚é>$y—‚È‚Ü‚¦>')">ƒ‚ƒ“ƒXƒ^[–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·</span>|					if $new_name =~ /@|\s/;
-		$mes = qq|<span onclick="text_set('—‚È‚Ã‚¯‚é>$y—‚È‚Ü‚¦>')">ƒ‚ƒ“ƒXƒ^[–¼‚É•s³‚È•¶š( ,;\"\'&<> )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·</span>| 	    if $new_name =~ /[,;\"\'&<>]/;
-		$mes = qq|<span onclick="text_set('—‚È‚Ã‚¯‚é>$y—‚È‚Ü‚¦>')">ƒ‚ƒ“ƒXƒ^[–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·</span>| 			if $new_name =~ /—/;
-		$mes = qq|<span onclick="text_set('—‚È‚Ã‚¯‚é>$y—‚È‚Ü‚¦>')">ƒ‚ƒ“ƒXƒ^[–¼‚Í‘SŠp‚S•¶š[”¼Šp‚W•¶š]‚Ü‚Å‚Å‚·</span>|				if length($new_name) > 8;
+		$mes = qq|<span onclick="text_set('ï¼ ãªã¥ã‘ã‚‹>$yï¼ ãªã¾ãˆ>')">ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™</span>|					if $new_name =~ /ã€€|\s/;
+		$mes = qq|<span onclick="text_set('ï¼ ãªã¥ã‘ã‚‹>$yï¼ ãªã¾ãˆ>')">ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<> )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™</span>| 	    if $new_name =~ /[,;\"\'&<>]/;
+		$mes = qq|<span onclick="text_set('ï¼ ãªã¥ã‘ã‚‹>$yï¼ ãªã¾ãˆ>')">ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™</span>| 			if $new_name =~ /ï¼ /;
+		$mes = qq|<span onclick="text_set('ï¼ ãªã¥ã‘ã‚‹>$yï¼ ãªã¾ãˆ>')">ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åã¯å…¨è§’ï¼”æ–‡å­—[åŠè§’ï¼˜æ–‡å­—]ã¾ã§ã§ã™</span>|				if length($new_name) > 8;
 		return if $mes;
 	}
 
 	my @lines = ();
 	my $p = '';
-	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/monster.cgi" or &error("$userdir/$id/monster.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($name, $icon) = split /<>/, $line;
 		if (!$npc_com && $new_name && $y eq $name) {
 			push @lines, "$new_name<>$icon<>\n";
-			$npc_com = "$y‚ğ$new_name‚Æ–¼‚Ã‚¯‚½‚¼";
+			$npc_com = "$yã‚’$new_nameã¨åã¥ã‘ãŸã";
 		}
 		else {
 			push @lines, $line;
 		}
-		$p .= qq|<span onclick="text_set('—‚È‚Ã‚¯‚é>$name—‚È‚Ü‚¦>')"><img src="$icondir/$icon" />$name</span> |;
+		$p .= qq|<span onclick="text_set('ï¼ ãªã¥ã‘ã‚‹>$nameï¼ ãªã¾ãˆ>')"><img src="$icondir/$icon" />$name</span> |;
 	}
 	seek  $fh, 0, 0;
 	truncate $fh, 0;
@@ -260,9 +260,9 @@ sub nazukeru {
 	close $fh;
 	
 	return if $npc_com;
-	$mes = qq|‚Ç‚Ìƒ‚ƒ“ƒXƒ^[‚É‰½‚Æ–¼‚Ã‚¯‚é‚Ì‚¶‚áH<br />$p|;
+	$mes = qq|ã©ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã«ä½•ã¨åã¥ã‘ã‚‹ã®ã˜ã‚ƒï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

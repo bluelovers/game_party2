@@ -1,10 +1,10 @@
-# ƒ_ƒ“ƒWƒ‡ƒ“–¼
-$d_name = "$dungeons[$stage]‚RŠK";
+# ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³å
+$d_name = "$dungeons[$stage]ï¼“éš";
 
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 30;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[2,3,4],
 	[0,0,0],
@@ -16,25 +16,25 @@ $max_round = 30;
 );
 
 
-# ƒCƒxƒ“ƒg
-$map_imgs{2} = '•ó' if $event !~ /2/;
-$map_imgs{3} = '•ó' if $event !~ /3/;
-$map_imgs{4} = '•ó' if $event !~ /4/;
-$map_imgs{C} = '' if $event !~ /C/;
-sub event_2 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if $event =~ /2/; $event .= '2'; &_add_treasure; }
-sub event_3 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if $event =~ /3/; $event .= '3'; &_add_treasure; }
-sub event_4 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if rand(2) > 1; &_add_monster; } # “¹
-sub event_C { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if $event =~ /C/; $event .= 'C'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss; } # ƒ{ƒX
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{2} = 'å®' if $event !~ /2/;
+$map_imgs{3} = 'å®' if $event !~ /3/;
+$map_imgs{4} = 'å®' if $event !~ /4/;
+$map_imgs{C} = 'â—' if $event !~ /C/;
+sub event_2 { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if $event =~ /2/; $event .= '2'; &_add_treasure; }
+sub event_3 { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if $event =~ /3/; $event .= '3'; &_add_treasure; }
+sub event_4 { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if $event =~ /4/; $event .= '4'; &_add_treasure; }
+sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if rand(2) > 1; &_add_monster; } # é“
+sub event_C { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if $event =~ /C/; $event .= 'C'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss; } # ãƒœã‚¹
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 require "$mapdir/10/_data.cgi";
 
-# ƒ{ƒX
+# ãƒœã‚¹
 @bosses= (
 	{
-		name		=> '¸—ì',
+		name		=> 'ç²¾éœŠ',
 		hp			=> 5000,
 		at			=> 300,
 		df			=> 200,
@@ -42,15 +42,15 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 500,
 		get_money	=> 700,
 		icon		=> 'mon/661.gif',
-		job			=> 58, # ÀŞ°¸´ÙÌ
+		job			=> 58, # ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•
 		sp			=> 999,
-		old_job		=> 48, # ‘Â“Vg
+		old_job		=> 48, # å •å¤©ä½¿
 		old_sp		=> 160,
 		mmp			=> 99999,
 		mp			=> 9999,
 	},
 	{
-		name		=> '±ÙÃÏ',
+		name		=> 'ã‚¢ãƒ«ãƒ†ãƒ',
 		hp			=> 8000,
 		at			=> 400,
 		df			=> 400,
@@ -58,15 +58,15 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 3000,
 		get_money	=> 2500,
 		icon		=> 'mon/660.gif',
-		hit			=> 500, # ’·Šúí—p–½’†—¦
-		job			=> 98, # ’´–‚–@Œ^
+		hit			=> 500, # é•·æœŸæˆ¦ç”¨å‘½ä¸­ç‡
+		job			=> 98, # è¶…é­”æ³•å‹
 		sp			=> 999,
 		mmp			=> 99999,
 		mp			=> 9999,
-		tmp			=> '–‚–³Œø',
+		tmp			=> 'é­”ç„¡åŠ¹',
 	},
 	{
-		name		=> '–‚‹Ê',
+		name		=> 'é­”ç‰',
 		hp			=> 5000,
 		at			=> 300,
 		df			=> 600,
@@ -74,9 +74,9 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 666,
 		get_money	=> 666,
 		icon		=> 'mon/697.gif',
-		job			=> 95, # ¢Š«
+		job			=> 95, # å¬å–š
 		sp			=> 999,
-		old_job		=> 31, # Â–‚“¹m
+		old_job		=> 31, # é’é­”é“å£«
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 9999,
@@ -84,4 +84,4 @@ require "$mapdir/10/_data.cgi";
 );
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

@@ -1,10 +1,10 @@
-# ƒ_ƒ“ƒWƒ‡ƒ“–¼
-$d_name = "$dungeons[$stage]‚PŠK";
+# ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³å
+$d_name = "$dungeons[$stage]ï¼‘éš";
 
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 30;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[F,7,0],
 	[7,1,0],
@@ -13,15 +13,15 @@ $max_round = 30;
 	[S,0,0],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{F} = '“Ê';
-sub event_F { my $v = int(rand(3)+1); $map="_$v"; $npc_com.="$p_name‚ÍŸ‚ÌŠK‚Ö‚Æi‚ñ‚¾c"; }
-sub event_7 { return if $event =~ /7/; $event .= '7'; require "$stagedir/3.cgi"; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚ÌƒtƒƒA‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{F} = 'å‡¸';
+sub event_F { my $v = int(rand(3)+1); $map="_$v"; $npc_com.="$p_nameã¯æ¬¡ã®éšã¸ã¨é€²ã‚“ã â€¦"; }
+sub event_7 { return if $event =~ /7/; $event .= '7'; require "$stagedir/3.cgi"; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ•ãƒ­ã‚¢ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 my $_s = int(rand(3)+2);
 require "$stagedir/$_s.cgi";
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

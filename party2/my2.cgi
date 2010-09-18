@@ -2,7 +2,7 @@
 require './config.cgi';
 require './lib/_data.cgi';
 #================================================
-# ƒuƒƒOƒp[ƒc‚Q Created by Merino
+# ãƒ–ãƒ­ã‚°ãƒ‘ãƒ¼ãƒ„ï¼’ Created by Merino
 #================================================
 print "Content-type: text/html; charset=Shift_JIS\n\n";
 &run;
@@ -15,20 +15,20 @@ sub run {
 	
 	if (-f "$userdir/$yid/user.cgi") {
 		my %m = &get_you_datas($yid, 1);
-		my $latest = $time < $m{login_time} + $login_time * 60 ? qq|<b style="color:#FF0;">ƒƒOƒCƒ“’†</b>| : qq|ÅIXV“ú: $m{ldate}|;
+		my $latest = $time < $m{login_time} + $login_time * 60 ? qq|<b style="color:#FF0;">ãƒ­ã‚°ã‚¤ãƒ³ä¸­</b>| : qq|æœ€çµ‚æ›´æ–°æ—¥: $m{ldate}|;
 		my $mes    = $m{mes} ? $m{mes} : $title;
 
-		# —‚Í‚È‚·
+		# ï¼ ã¯ãªã™
 		my $hanasu;
-		open my $fh2, "< $userdir/$yid/hanasu.cgi" or &error("$userdir/$yid/hanasu.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+		open my $fh2, "< $userdir/$yid/hanasu.cgi" or &error("$userdir/$yid/hanasu.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 		rand($.) < 1 and $hanasu = $_ while <$fh2>;
 		close $fh2;
 
 		my $html;
-		$html .= qq|<table style="width: 120px; background: #000; font-size: 11px; color: #FFF;"><tr><td style="border:1px solid #FFF; background-color:#336;">y$m{name}‚Ì‰Æz</td></tr>|;
+		$html .= qq|<table style="width: 120px; background: #000; font-size: 11px; color: #FFF;"><tr><td style="border:1px solid #FFF; background-color:#336;">ã€$m{name}ã®å®¶ã€‘</td></tr>|;
 		$html .= qq|<tr><td><div style="background: url($game_path/$userdir/$yid/bgimg.gif) #333 repeat-x left bottom;"><table><tr>|;
 		my $count = 0;
-		open my $fh, "< $userdir/$yid/home_member.cgi" or &error("$userdir/$yid/home_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ"); 
+		open my $fh, "< $userdir/$yid/home_member.cgi" or &error("$userdir/$yid/home_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“"); 
 		while (my $line = <$fh>) {
 			my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
 			$html .= qq|<td align="center" valign="bottom"><span style="color: $color; font-size: 11px; background-color: #333;">$name</span><br /><img src="$game_path/$icondir/$icon" alt="$name" /></td>|;
@@ -39,10 +39,10 @@ sub run {
 		$html .= qq|$hanasu<hr size="1" />| if $hanasu;
 		$html .= qq|$latest<br /><a href="$game_path/index.cgi?$yid" style="color: #6CF;">$mes</a><hr size="1" /></td></tr></table>|;
 		
-		$html =~ tr/\x0D\x0A//d; # ‰üsíœ
+		$html =~ tr/\x0D\x0A//d; # æ”¹è¡Œå‰Šé™¤
 		print qq|document.write('$html');|;
 	}
 	else {
-		print qq|document.write("ƒvƒŒƒCƒ„[ƒf[ƒ^‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");|;
+		print qq|document.write("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒ‡ãƒ¼ã‚¿ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");|;
 	}
 }

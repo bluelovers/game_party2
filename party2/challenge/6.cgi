@@ -1,28 +1,28 @@
-# �ݒ�
+# 設定
 %k = (
-	p_join		=> 3,			# �퓬�Q�����(�l)
-	need_join	=> '0',			# �Q������(./lib/quest.cgi 192�s�ڂ�������Q�l)
+	p_join		=> 3,			# 戦闘参加上限(人)
+	need_join	=> '0',			# 参加条件(./lib/quest.cgi 192行目あたりを参考)
 );
 
-# �󕔉�(20�K�`30�K�ȏ�B��ʊK�قǊm���A�b�v)
+# 宝部屋(20階～30階以上。上位階ほど確率アップ)
 $tresure_round = int(rand(11)+20);
 
 
-# ��̒��g
+# 宝の中身
 @treasures = (
-[], # ����No
-[], # �h��No
-[4..6,10..13,23,57,72..74,85..87,101..103], # ����No
+[], # 武器No
+[], # 防具No
+[4..6,10..13,23,57,72..74,85..87,101..103], # 道具No
 );
 
 
-# �o����(@monsters�̔z��ԍ���������Α����قǏo���B�ϓ��ȏo�����̏ꍇ�́A����w()�x)
+# 出現率(@monstersの配列番号が多ければ多いほど出現。均等な出現率の場合は、から『()』)
 @appears = ();
 
-# �����X�^�[
+# モンスター
 @monsters = (
 	{
-		name		=> 'گ�޽İ�',
+		name		=> 'レッドストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -31,16 +31,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/190.gif',
 		
-		job			=> 26, # �E��
+		job			=> 26, # 忍者
 		sp			=> 999,
-		old_job		=> 6, # ���@�g��
+		old_job		=> 6, # 魔法使い
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '��ٰ�İ�',
+		name		=> 'ブルーストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -49,16 +49,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/191.gif',
 		
-		job			=> 33, # ����
+		job			=> 33, # 賢者
 		sp			=> 130,
-		old_job		=> 31, # �����m
+		old_job		=> 31, # 青魔道士
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '��۰�İ�',
+		name		=> 'イエローストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -67,16 +67,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/192.gif',
 		
-		job			=> 36, # ���̂܂ˎm
+		job			=> 36, # ものまね士
 		sp			=> 999,
-		old_job		=> 37, # ���E�m
+		old_job		=> 37, # 結界士
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '��ذݽİ�',
+		name		=> 'グリーンストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -85,16 +85,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/193.gif',
 		
-		job			=> 90, # �ǂ����������A�|�C�Y���A�����ǂ��̂���
+		job			=> 90, # どくこうげき、ポイズン、もうどくのきり
 		sp			=> 999,
-		old_job		=> 91, # �܂Ђ��������A���тꂤ���A�₫������
+		old_job		=> 91, # まひこうげき、しびれうち、やきつくいき
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '�߰��ٽİ�',
+		name		=> 'パープルストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -103,16 +103,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/194.gif',
 		
-		job			=> 35, # ����
+		job			=> 35, # 魔王
 		sp			=> 999,
-		old_job		=> 92, # �����z�[�A�˂ނ肱�������A���܂�����
+		old_job		=> 92, # ラリホー、ねむりこうげき、あまいいき
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '���ް�İ�',
+		name		=> 'シルバーストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -121,16 +121,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/196.gif',
 		
-		job			=> 19, # �Ŗ����m
+		job			=> 19, # 闇魔道士
 		sp			=> 999,
-		old_job		=> 20, # ����
+		old_job		=> 20, # 悪魔
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '��ׯ��İ�',
+		name		=> 'ブラックストーン',
 		hp			=> 5,
 		at			=> 200,
 		df			=> 2000,
@@ -139,16 +139,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 100,
 		icon		=> 'mon/195.gif',
 		
-		job			=> 58, # �ް����
+		job			=> 58, # ダークエルフ
 		sp			=> 999,
-		old_job		=> 53, # 峎t
+		old_job		=> 53, # 蟲師
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 99,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> '��ٽײ�',
+		name		=> 'メタルスライム',
 		hp			=> 6,
 		at			=> 200,
 		df			=> 1000,
@@ -157,16 +157,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 10,
 		icon		=> 'mon/004.gif',
 
-		job			=> 40, # ʸ�����
+		job			=> 40, # ハグレメタル
 		sp			=> 999,
-		old_job		=> 40, # ʸ�����
+		old_job		=> 40, # ハグレメタル
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 180,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 	{
-		name		=> 'ʸ�����',
+		name		=> 'ハグレメタル',
 		hp			=> 10,
 		at			=> 210,
 		df			=> 2000,
@@ -175,16 +175,16 @@ $tresure_round = int(rand(11)+20);
 		get_money	=> 20,
 		icon		=> 'mon/022.gif',
 
-		job			=> 40, # ʸ�����
+		job			=> 40, # ハグレメタル
 		sp			=> 999,
-		old_job		=> 40, # ʸ�����
+		old_job		=> 40, # ハグレメタル
 		old_sp		=> 999,
 		mmp			=> 99999,
 		mp			=> 180,
-		tmp			=> '������',
+		tmp			=> '魔無効',
 	},
 );
 
 
 
-1; # �폜�s��
+1; # 削除不可

@@ -2,18 +2,18 @@
 require 'config.cgi';
 require '_side_menu.cgi';
 #================================================
-# ƒRƒ“ƒeƒXƒg Created by Merino
-# past ‰ß‹, prepare ƒGƒ“ƒgƒŠ[ó•t(Ÿ‚ÌƒRƒ“ƒeƒXƒg), entry Œ»ƒRƒ“ƒeƒXƒg
+# ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ Created by Merino
+# past éå», prepare ã‚¨ãƒ³ãƒˆãƒªãƒ¼å—ä»˜(æ¬¡ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ), entry ç¾ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ
 #================================================
-# ƒRƒ“ƒeƒXƒgÀ{üŠú(“ú)
+# ã‚³ãƒ³ãƒ†ã‚¹ãƒˆå®Ÿæ–½å‘¨æœŸ(æ—¥)
 $contest_cycle_day = 10;
 
-# Å’áŒˆsl”(l)
+# æœ€ä½æ±ºè¡Œäººæ•°(äºº)
 $min_entry_contest = 5;
 
-# ƒRƒ“ƒeƒXƒg‚ÌÜ‹à
+# ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã®è³é‡‘
 @prizes = (
-# ¬‚³‚ÈÒÀŞÙ@Ü‹à@ƒMƒ‹ƒhƒ|ƒCƒ“ƒg
+# å°ã•ãªãƒ¡ãƒ€ãƒ«ã€€è³é‡‘ã€€ã‚®ãƒ«ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 	[10,	15000,	700],
 	[6,		 7000,	300],
 	[3,		 3000,	100],
@@ -30,77 +30,77 @@ else { &now_contest }
 &footer;
 exit;
 #================================================
-# ƒRƒ“ƒeƒXƒg—pheader
+# ã‚³ãƒ³ãƒ†ã‚¹ãƒˆç”¨header
 #================================================
 sub header_contest {
 	$contents .= '<p>';
-	$contents .= $in{mode} eq 'legend' ? qq|<a href="contest.cgi">Œ»İ‚ÌƒRƒ“ƒeƒXƒg</a> / <a href="contest.cgi?mode=past">‘O‰ñ‚ÌƒRƒ“ƒeƒXƒg</a> / “a“°“ü‚è|
-			   : $in{mode} eq 'past'   ? qq|<a href="contest.cgi">Œ»İ‚ÌƒRƒ“ƒeƒXƒg</a> / ‘O‰ñ‚ÌƒRƒ“ƒeƒXƒg / <a href="contest.cgi?mode=legend">“a“°“ü‚è</a>|
-			   :                         qq|Œ»İ‚ÌƒRƒ“ƒeƒXƒg / <a href="contest.cgi?mode=past">‘O‰ñ‚ÌƒRƒ“ƒeƒXƒg</a> / <a href="contest.cgi?mode=legend">“a“°“ü‚è</a>|
+	$contents .= $in{mode} eq 'legend' ? qq|<a href="contest.cgi">ç¾åœ¨ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</a> / <a href="contest.cgi?mode=past">å‰å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</a> / æ®¿å ‚å…¥ã‚Š|
+			   : $in{mode} eq 'past'   ? qq|<a href="contest.cgi">ç¾åœ¨ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</a> / å‰å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ / <a href="contest.cgi?mode=legend">æ®¿å ‚å…¥ã‚Š</a>|
+			   :                         qq|ç¾åœ¨ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ / <a href="contest.cgi?mode=past">å‰å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</a> / <a href="contest.cgi?mode=legend">æ®¿å ‚å…¥ã‚Š</a>|
 			   ;
 	$contents .= '</p>';
 }
 
 #================================================
-# “a“°“ü‚è
+# æ®¿å ‚å…¥ã‚Š
 #================================================
 sub legend {
-	$contents .= qq|<h2>“a“°“ü‚è</h2><hr />|;
-	open my $fh, "< $logdir/contest_legend.cgi" or &error("$logdir/contest_legend.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	$contents .= qq|<h2>æ®¿å ‚å…¥ã‚Š</h2><hr />|;
+	open my $fh, "< $logdir/contest_legend.cgi" or &error("$logdir/contest_legend.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($round, $stitle, $name, $guild, $vote, $ldate, $photo) = split /<>/, $line;
-		$name .= "—$guild" if $guild;
-		$contents .= qq|<h3>‘æ$round‰ñ—DGì•iw$stitlex <b>$vote</b>•[ ìF$name <span class="text_small">($ldate)</span></h3>$photo<br />|;
+		$name .= "ï¼ $guild" if $guild;
+		$contents .= qq|<h3>ç¬¬$roundå›å„ªç§€ä½œå“ã€$stitleã€ <b>$vote</b>ç¥¨ ä½œï¼š$name <span class="text_small">($ldate)</span></h3>$photo<br />|;
 	}
 	close $fh;
 }
 
 #================================================
-# ‘O‰ñ‚ÌƒRƒ“ƒeƒXƒgŒ‹‰Ê
+# å‰å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆçµæœ
 #================================================
 sub past {
 	if (-s "$logdir/contest_past.cgi") {
 		my $count = 1;
-		open my $fh, "< $logdir/contest_past.cgi" or &error("$logdir/contest_past.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+		open my $fh, "< $logdir/contest_past.cgi" or &error("$logdir/contest_past.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 		my $head_line = <$fh>;
 		my($etime, $round) = split /<>/, $head_line;
-		$contents .= qq|<h2>‘æ$round‰ñŒ‹‰Ê”­•\\</h2> ¦‚PˆÊ‚Ìì•i‚É“Š•[‚³‚ê‚½l‚É‚Í¬‚³‚Èƒƒ_ƒ‹‚ª‘—‚ç‚ê‚Ü‚·<hr />|;
+		$contents .= qq|<h2>ç¬¬$roundå›çµæœç™ºè¡¨\</h2> â€»ï¼‘ä½ã®ä½œå“ã«æŠ•ç¥¨ã•ã‚ŒãŸäººã«ã¯å°ã•ãªãƒ¡ãƒ€ãƒ«ãŒé€ã‚‰ã‚Œã¾ã™<hr />|;
 		while (my $line = <$fh>) {
 			my($stitle, $name, $guild, $vote, $comment, $vote_names, $photo) = split /<>/, $line;
-			$name .= "—$guild" if $guild;
+			$name .= "ï¼ $guild" if $guild;
 			$comment  .= qq|<hr />| if $comment;
-			$contents .= qq|<h3>$countˆÊ <b>$vote</b>•[ ‘è–¼w$stitlex ì:$name</h3>$photo$comment<br />\n|;
+			$contents .= qq|<h3>$countä½ <b>$vote</b>ç¥¨ é¡Œåã€$stitleã€ ä½œ:$name</h3>$photo$comment<br />\n|;
 			++$count;
 		}
 		close $fh;
 	}
 	else {
-		$contents .= qq|<p>‘O‰ñ‚ÌƒRƒ“ƒeƒXƒg‚ÍŠJÃ‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ</p>|;
+		$contents .= qq|<p>å‰å›ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã¯é–‹å‚¬ã•ã‚Œã¦ã„ã¾ã›ã‚“</p>|;
 	}
 }
 
 #================================================
-# Œ»İ‚ÌƒRƒ“ƒeƒXƒg
+# ç¾åœ¨ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ
 #================================================
 sub now_contest {
 	my $count = 0;
 	my $sub_mes = '';
-	open my $fh, "< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $head_line = <$fh>;
 	my($etime, $round) = split /<>/, $head_line;
 	while (my $line = <$fh>) {
 		my($stitle, $name, $guild, $vote, $comment, $vote_names, $photo) = split /<>/, $line;
-		$sub_mes .= qq|<h3>‘è–¼w$stitlex</h3>$photo<br />\n|;
+		$sub_mes .= qq|<h3>é¡Œåã€$stitleã€</h3>$photo<br />\n|;
 		++$count;
 	}
 	close $fh;
 	my($min,$hour,$day,$month) = (localtime($etime))[1..4];
 	++$month;
 	
-	# ‰ß‹ƒRƒ“ƒeƒXƒgíœ¨Œ»ƒRƒ“ƒeƒXƒg‚ğ‰ß‹ƒRƒ“ƒeƒXƒg¨ŸƒRƒ“ƒeƒXƒg‚ğŒ»ƒRƒ“ƒeƒXƒg‚É‚·‚éˆ—
+	# éå»ã‚³ãƒ³ãƒ†ã‚¹ãƒˆå‰Šé™¤â†’ç¾ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã‚’éå»ã‚³ãƒ³ãƒ†ã‚¹ãƒˆâ†’æ¬¡ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã‚’ç¾ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ã™ã‚‹å‡¦ç†
 	if ($time > $etime) {
-		$contents .= qq|<h2>‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg</h2>|;
-		$contents .= qq|<p>cWŒvˆ—’†c</p>|;
+		$contents .= qq|<h2>ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</h2>|;
+		$contents .= qq|<p>â€¦é›†è¨ˆå‡¦ç†ä¸­â€¦</p>|;
 
 		if ($count > 0) {
 			&_send_goods_to_creaters if -s "$logdir/contest_past.cgi";
@@ -109,23 +109,23 @@ sub now_contest {
 		&_start_contest;
 	}
 	elsif ($min_entry_contest > $count) {
-		$contents .= qq|<h2>‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg</h2>|;
-		$contents .= qq|y“Š•[I—¹“úEŸ‰ñƒRƒ“ƒeƒXƒg $monthŒ$day“ú$hour$min•ªz<hr />|;
-		$contents .= qq|“Šeì•i‚ªW‚Ü‚Á‚Ä‚¢‚È‚¢‚½‚ßŠJÃ‰„Šú’†‚Å‚·<br />|;
+		$contents .= qq|<h2>ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</h2>|;
+		$contents .= qq|ã€æŠ•ç¥¨çµ‚äº†æ—¥ãƒ»æ¬¡å›ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ $monthæœˆ$dayæ—¥$houræ™‚$minåˆ†ã€‘<hr />|;
+		$contents .= qq|æŠ•ç¨¿ä½œå“ãŒé›†ã¾ã£ã¦ã„ãªã„ãŸã‚é–‹å‚¬å»¶æœŸä¸­ã§ã™<br />|;
 	}
 	else {
-		$contents .= qq|<h2>‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg</h2>|;
-		$contents .= qq|y“Š•[I—¹“úEŸ‰ñƒRƒ“ƒeƒXƒg $monthŒ$day“ú$hour$min•ªz<hr />|;
+		$contents .= qq|<h2>ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ</h2>|;
+		$contents .= qq|ã€æŠ•ç¥¨çµ‚äº†æ—¥ãƒ»æ¬¡å›ã‚³ãƒ³ãƒ†ã‚¹ãƒˆ $monthæœˆ$dayæ—¥$houræ™‚$minåˆ†ã€‘<hr />|;
 		$contents .= $sub_mes;
 	}
 }
 
 
 # ------------------
-# ‰ß‹‚ÌƒRƒ“ƒeƒXƒgì•i‚ğìÒ‚É•Ô•i‚µƒtƒ@ƒCƒ‹EƒtƒHƒ‹ƒ_íœ
+# éå»ã®ã‚³ãƒ³ãƒ†ã‚¹ãƒˆä½œå“ã‚’ä½œè€…ã«è¿”å“ã—ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ãƒ•ã‚©ãƒ«ãƒ€å‰Šé™¤
 sub _send_goods_to_creaters {
 	my $count = 0;
-	open my $fh, "+< $logdir/contest_past.cgi" or &error("$logdir/contest_past.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_past.cgi" or &error("$logdir/contest_past.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	my($etime, $round) = split /<>/, $head_line;
@@ -138,17 +138,17 @@ sub _send_goods_to_creaters {
 	close $fh;
 }
 # ------------------
-# Œ‹‰Ê‚ğWŒv‚µ‚Ä‰ß‹ƒRƒ“ƒeƒXƒg‚ÉƒŠƒl[ƒ€
+# çµæœã‚’é›†è¨ˆã—ã¦éå»ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ãƒªãƒãƒ¼ãƒ 
 sub _result_contest {
 	my @lines = ();
-	open my $fh, "+< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	while (my $line = <$fh>) {
 		push @lines, $line;
 	}
 	
-	# ‘½‚¢‡‚Ésort
+	# å¤šã„é †ã«sort
 	@lines = map { $_->[0] } sort { $b->[4] <=> $a->[4] } map { [$_, split/<>/] } @lines;
 	
 	unshift @lines, $head_line;
@@ -159,13 +159,13 @@ sub _result_contest {
 	
 	rename "$logdir/contest_entry.cgi", "$logdir/contest_past.cgi" or &error("Cannot rename $logdir/contest_entry.cgi to $logdir/contest_past.cgi");
 	
-	# ì•i‚ğƒRƒs[‚µ‚Ä“a“°“ü‚è
+	# ä½œå“ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦æ®¿å ‚å…¥ã‚Š
 	&__copy_goods_to_legend($head_line, $lines[1]) if @lines > $min_entry_contest;
 	
 	&__send_prize(@lines);
 }
 
-# ãˆÊ‚ÉÜ•i‘—‚é
+# ä¸Šä½ã«è³å“é€ã‚‹
 sub __send_prize {
 	my @lines = @_;
 
@@ -179,7 +179,7 @@ sub __send_prize {
 		if ($count eq '1') {
 			for my $vname (split /,/, $vote_names) {
 				next unless $vname;
-				&send_item($vname, 3, 23, 'ƒtƒHƒgƒRƒ“ƒeƒXƒg');
+				&send_item($vname, 3, 23, 'ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ');
 			}
 		}
 		
@@ -191,12 +191,12 @@ sub __send_prize {
 			}
 			close $fh;
 			
-			&send_item($vname, 3, 23, 'ƒtƒHƒgƒRƒ“ƒeƒXƒg')
+			&send_item($vname, 3, 23, 'ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ')
 		}
-		&send_money($name, $prizes[$count-1][1], "‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg$countˆÊ‚ÌÜ‹à");
-		&write_memory("š‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg$countˆÊ“üÜš", $name);
+		&send_money($name, $prizes[$count-1][1], "ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ$countä½ã®è³é‡‘");
+		&write_memory("â˜…ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ$countä½å…¥è³â˜…", $name);
 		&regist_guild_data('point', $prizes[$count-1][2], $guild) if $guild;
-		&write_news(qq|<span class="comp">š‘æ$round‰ñƒtƒHƒgƒRƒ“ƒeƒXƒg$countˆÊ $nameš</span>|);
+		&write_news(qq|<span class="comp">â˜…ç¬¬$roundå›ãƒ•ã‚©ãƒˆã‚³ãƒ³ãƒ†ã‚¹ãƒˆ$countä½ $nameâ˜…</span>|);
 		last if ++$count > @prizes;
 	}
 }
@@ -207,7 +207,7 @@ sub __copy_goods_to_legend {
 	my($stitle, $name, $guild, $vote, $comment, $vote_names, $content) = split /<>/, $line;
 	
 	my @lines = ();
-	open my $fh, "+< $logdir/contest_legend.cgi" or &error("$logdir/contest_legend.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_legend.cgi" or &error("$logdir/contest_legend.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		push @lines, $line;
@@ -221,12 +221,12 @@ sub __copy_goods_to_legend {
 }
 
 # ------------------
-# ŸƒRƒ“ƒeƒXƒg‚ğŒ»ƒRƒ“ƒeƒXƒg‚ÉƒŠƒl[ƒ€
+# æ¬¡ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã‚’ç¾ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã«ãƒªãƒãƒ¼ãƒ 
 sub _start_contest {
 	my $end_time = $time + 24 * 60 * 60 * $contest_cycle_day;
 
 	my @lines = ();
-	open my $fh, "+< $logdir/contest_prepare.cgi" or &error("$logdir/contest_prepare.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/contest_prepare.cgi" or &error("$logdir/contest_prepare.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	my($etime, $round) = split /<>/, $head_line;
@@ -239,25 +239,25 @@ sub _start_contest {
 	print $fh @lines;
 	close $fh;
 
-	# ƒGƒ“ƒgƒŠ[”‚ªÅ’áƒGƒ“ƒgƒŠ[”‚ğ’´‚¦‚½ê‡‚ÍŠJÃ
+	# ã‚¨ãƒ³ãƒˆãƒªãƒ¼æ•°ãŒæœ€ä½ã‚¨ãƒ³ãƒˆãƒªãƒ¼æ•°ã‚’è¶…ãˆãŸå ´åˆã¯é–‹å‚¬
 	if ( @lines > $min_entry_contest ) {
 		rename "$logdir/contest_prepare.cgi", "$logdir/contest_entry.cgi" or &error("Cannot rename $logdir/contest_prepare.cgi to $logdir/contest_entry.cgi");
 		
-		# “Š•[/–¢“Š•[¯•Êƒtƒ@ƒCƒ‹‚ğ‰Šú‰»
-		open my $fh3, "> $logdir/contest_vote_name.cgi" or &error("$logdir/contest_vote_name.cgiƒtƒ@ƒCƒ‹‚ªì‚ê‚Ü‚¹‚ñ");
+		# æŠ•ç¥¨/æœªæŠ•ç¥¨è­˜åˆ¥ãƒ•ã‚¡ã‚¤ãƒ«ã‚’åˆæœŸåŒ–
+		open my $fh3, "> $logdir/contest_vote_name.cgi" or &error("$logdir/contest_vote_name.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œã‚Œã¾ã›ã‚“");
 		print $fh3 ",";
 		close $fh3;
 		
-		# ŸƒRƒ“ƒeƒXƒg‚ğ‰Šú‰»
+		# æ¬¡ã‚³ãƒ³ãƒ†ã‚¹ãƒˆã‚’åˆæœŸåŒ–
 		++$round;
-	 	open my $fh2, "> $logdir/contest_prepare.cgi" or &error("$logdir/contest_prepare.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	 	open my $fh2, "> $logdir/contest_prepare.cgi" or &error("$logdir/contest_prepare.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		print $fh2 "$end_time<>$round<>\n";
 		close $fh2;
 		chmod $chmod, "$logdir/contest_prepare.cgi";
 	}
 	else {
-		# ŠÔ‚ğ‰„’·
-	 	open my $fh2, "> $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		# æ™‚é–“ã‚’å»¶é•·
+	 	open my $fh2, "> $logdir/contest_entry.cgi" or &error("$logdir/contest_entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		print $fh2 "$end_time<>$round<>\n";
 		close $fh2;
 		chmod $chmod, "$logdir/contest_entry.cgi";

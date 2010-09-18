@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 60;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[0,1,0,0,0,1,4],
 	[0,1,0,2,0,1,0],
@@ -17,25 +17,25 @@ $max_round = 60;
 );
 
 
-# ƒCƒxƒ“ƒg
-$map_imgs{2} = '•ó' if $event !~ /2/;
-$map_imgs{3} = '•ó' if $event !~ /3/;
-$map_imgs{4} = '•ó' if $event !~ /4/;
-$map_imgs{A} = '' if $event !~ /A/;
-$map_imgs{B} = '' if $event !~ /B/;
-$map_imgs{C} = '' if $event !~ /C/;
-sub event_0 { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if rand(2) > 1; &_add_monster; } # “¹
-sub event_2 { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if $event =~ /2/; $event .= '2'; &_add_treasure; }
-sub event_3 { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if $event =~ /3/; $event .= '3'; &_add_treasure; }
-sub event_4 { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_A { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if $event =~ /A/; $event .= 'A'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
-sub event_B { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if $event =~ /B/; $event .= 'B'; my $_s = int(rand(5)+8); require "$stagedir/$_s.cgi"; &add_boss; } # ƒ{ƒX
-sub event_C { for my $y (@partys) { $ms{$y}{state} = '–‚••' }; return if $event =~ /C/; $event .= 'C'; my $_s = int(rand(5)+8); require "$stagedir/$_s.cgi"; &add_boss; } # ƒ{ƒX
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{2} = 'å®' if $event !~ /2/;
+$map_imgs{3} = 'å®' if $event !~ /3/;
+$map_imgs{4} = 'å®' if $event !~ /4/;
+$map_imgs{A} = 'â—' if $event !~ /A/;
+$map_imgs{B} = 'â—' if $event !~ /B/;
+$map_imgs{C} = 'â—' if $event !~ /C/;
+sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if rand(2) > 1; &_add_monster; } # é“
+sub event_2 { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if $event =~ /2/; $event .= '2'; &_add_treasure; }
+sub event_3 { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if $event =~ /3/; $event .= '3'; &_add_treasure; }
+sub event_4 { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if $event =~ /4/; $event .= '4'; &_add_treasure; }
+sub event_A { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if $event =~ /A/; $event .= 'A'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
+sub event_B { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if $event =~ /B/; $event .= 'B'; my $_s = int(rand(5)+8); require "$stagedir/$_s.cgi"; &add_boss; } # ãƒœã‚¹
+sub event_C { for my $y (@partys) { $ms{$y}{state} = 'é­”å°' }; return if $event =~ /C/; $event .= 'C'; my $_s = int(rand(5)+8); require "$stagedir/$_s.cgi"; &add_boss; } # ãƒœã‚¹
 
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 require "$mapdir/9/_data.cgi";
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

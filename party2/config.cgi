@@ -1,204 +1,204 @@
 require './lib/system.cgi';
 #================================================
 $VERSION = '1.43';
-# �ݒ�t�@�C�� Created by Merino
+# 設定ファイル Created by Merino
 #================================================
-# �Ǘ���ʂ�URL
-# http://������URL/party/admin.cgi?pass=�Ǘ��҃p�X���[�h
-# ���u������URL�v�Ƃ͂���CGI��ݒu�����ꏊ�܂ł̃A�h���X
+# 管理画面のURL
+# http://自分のURL/party/admin.cgi?pass=管理者パスワード
+# ※「自分のURL」とはこのCGIを設置した場所までのアドレス
 #================================================
-# �����e�i���X�\��(��) �ʏ�ғ����́u0�v
+# メンテナンス表示(分) 通常稼動時は「0」
 $mente_min = 0;
 
-# �Ǘ��p�X���[�h(�K���Ȕ��p�p�����ɕK���ύX���Ă�������)
+# 管理パスワード(適当な半角英数字に必ず変更してください)
 $admin_pass = '0123';
 
-# ���ɍs���ł���܂ł̑҂�����(�b)�B�퓬�p�̑҂����Ԃ́u./lib/quest.cgi��%speeds�v�Őݒ�
+# 次に行動できるまでの待ち時間(秒)。戦闘用の待ち時間は「./lib/quest.cgiの%speeds」で設定
 $act_time = 7;
 
-# �҂����Ԃ̃Q�[�W�̉���(px)
+# 待ち時間のゲージの横幅(px)
 $gage_width = 140;
 
-# �������ԁu���˂�v�̍S������(��)
+# 睡眠時間「＠ねる」の拘束時間(分)
 $sleep_time = 15;
 
-# gzip���k�]��(�킩��Ȃ��E�g��Ȃ��ꍇ�͋� '' )
+# gzip圧縮転送(わからない・使わない場合は空欄 '' )
 $gzip = '';
 
 # ----------------------------
-# �^�C�g��
-$title = '���p�[�e�B�[II';
+# タイトル
+$title = '＠パーティーII';
 
-# �^�C�g���摜(�K�v�Ȃ��ꍇ�́u''�v)
+# タイトル画像(必要ない場合は「''」)
 $title_img = './icon/etc/title.png';
 
-# �߂��URL
+# 戻り先URL
 $home = 'http://tenaku.com/';
 
-# �ݒuPath(/index.cgi��������http://�`��URL)�u���O�p�[�c�p�����N
+# 設置Path(/index.cgiを除いたhttp://～のURL)ブログパーツ用リンク
 $game_path = 'http://party.xii.jp';
 
 # ----------------------------
-# �ő�o�^�l��
+# 最大登録人数
 $max_entry = 200;
 
-# �ő働�O�C���l��
+# 最大ログイン人数
 $max_login = 30;
 
-# Top�̃��O�C�����X�g�ɕ\�����鎞��(��)
+# Topのログインリストに表示する時間(分)
 $login_time = 15;
 
-# �����폜����(��)�B���̓��ɂ��𒴂��Ă����O�C�����Ȃ����[�U�[�͍폜
+# 自動削除期間(日)。この日にちを超えてもログインしないユーザーは削除
 $auto_delete_day = 30;
 
 # ----------------------------
-# �E���ɕ\������钘��\���BHTML�^�O�g�p�\(�u$copyright = <<"EOM";�v�`�uEOM�v�̊ԂɋL�q)
+# 右下に表示される著作表示。HTMLタグ使用可能(「$copyright = <<"EOM";」～「EOM」の間に記述)
 $copyright = <<"EOM";
-<!-- �������� -->
+<!-- ここから -->
 
 
 
-<!-- �����܂� -->
+<!-- ここまで -->
 EOM
 
 # ----------------------------
-# �ő働�O�ۑ�����
+# 最大ログ保存件数
 $max_log     = 30;
 
-# �ő�R�����g������(���p)
+# 最大コメント文字数(半角)
 $max_comment = 500;
 
-# ���v���C���[�ɂ��莆�̘A���������݋֎~����(�b)
+# 同プレイヤーによる手紙の連続書き込み禁止時間(秒)
 $bad_time    = 30;
 
-# �ő�X�N���[���V���b�g������
+# 最大スクリーンショット所持数
 $max_screen_shot = 20;
 
 
 # ----------------------------
-# �����o�[�Ƃ��ĕ\������鎞��(�b)
+# メンバーとして表示される時間(秒)
 $limit_member_time = 60 * 5;
 
-# ���������[�h����(�b) ���ǉ�/�ύX/���ёւ����R
+# 自動リロード時間(秒) ◎追加/変更/並び替え自由
 @reload_times = (0, 10, 15, 20, 30, 60, 90);
 
-# �X�V(F5)�A�Ŗh�~�B���̕b���ԂɍX�V����ƃG���[(�b)
+# 更新(F5)連打防止。この秒数間に更新するとエラー(秒)
 $wait_time = 1;
 
 
 # ----------------------------
-# �f�t�H���g�J���[
+# デフォルトカラー
 $default_color = '#FFFFFF';
 
-# �f�t�H���g��NPC��
-$npc_name  = '��',
+# デフォルトのNPC名
+$npc_name  = '＠',
 
-# �f�t�H���g��NPC�J���[
+# デフォルトのNPCカラー
 $npc_color = '#FF69B4',
 
 
 # ----------------------------
-# �퓬�ɕK�v�ȕϐ�(�ǉ��\)
+# 戦闘に必要な変数(追加可能)
 @battle_datas = (qw/name addr color time ten job sp old_job old_sp mhp hp mmp mp mat at mdf df mag ag hit state tmp get_exp get_money icon wea arm ite/);
 
-# �J�W�m�ɕK�v�ȕϐ�(�ǉ��\)
+# カジノに必要な変数(追加可能)
 @casino_datas = (qw/name addr color time icon action card/);
 
 
-# �`���ꏊ(./stage/��.cgi�Ɗ֘A�Â��Ă���B���₷�ꍇ��./stage/��.cgi�����₷)
-@stages = ('�v�j�v�j����','�L�m�R�̐X','�H���','�C�ӂ̓��A','�n���̍��l','���p�t�̓�','�r��̏b��','�}�O�}�R','�d���̐X','�X���C�������h','����̏��n','�h���S���̒J','�Í�����','���̑�n','���E',
+# 冒険場所(./stage/○.cgiと関連づいている。増やす場合は./stage/○.cgiも増やす)
+@stages = ('プニプニ平原','キノコの森','幽霊城','海辺の洞窟','地獄の砂浜','魔術師の塔','荒野の獣道','マグマ山','妖精の森','スライムランド','死霊の沼地','ドラゴンの谷','暗黒魔城','死の大地','魔界',
 #           0              1            2        3            4            5            6            7          8          9                10           11             12         13         14
-           '���̐��E','�}�_���K�[�f��','���̔鋫','�ł̃����v','����̒n','�V���','�J�I�X�t�B�[���h',
+           '鏡の世界','マダムガーデン','幻の秘境','闇のランプ','封印の地','天空城','カオスフィールド',
 #           15         16               17         18           19         20       21
 );
 
-# ���_���W����(./map/��/�Ɗ֘A�Â��Ă���B���₷�ꍇ��./map/��/�����₷)
-@dungeons = ('�N���N�̓��A','���k�[����','�g�[�X��','�����̐X','���̑���H','���̐_�a','���҂̏���','���̓��A','��]�̍���','�͂̓��A','���@�̓�','�w�u���Y�h�A','�w���Y�Q�[�g');
+# ＠ダンジョン(./map/○/と関連づいている。増やす場合は./map/○/も増やす)
+@dungeons = ('クルクの洞窟','レヌール城','トース塔','迷いの森','死の大迷路','風の神殿','賢者の小道','炎の洞窟','絶望の砂漠','力の洞窟','魔法の塔','ヘブンズドア','ヘルズゲート');
 #             0              1            2          3          4            5          6            7          8            9          10         11,            12 
 
-# ���`�������W(./challenge/��/�Ɗ֘A�Â��Ă���B���₷�ꍇ��./challenge/��/�����₷)
-@challenges = ('�Ŏ�t�P','�{�r�q��','���|�̎�','���o�ғ�','��������','�ԉΑ��','�S�Ǘv��','�ŋ�����',);
+# ＠チャレンジ(./challenge/○/と関連づいている。増やす場合は./challenge/○/も増やす)
+@challenges = ('最弱逆襲','怒羊牧場','恐怖肝試','幻覚猛毒','即死博打','花火大会','鉄壁要塞','最強王者',);
 #               0          1          2          3          4          5          6          7
 
-# ���܂�
+# ＠まち
 @towns = (
-	['���P���P��',		'town1'], # 0
-	['�L�m�R��',		'town2'], # 1
-	['�X���C����',		'town3'], # 2
-	['�K�C�A��',		'town4'], # 3
+	['メケメケ村',		'town1'], # 0
+	['キノコ町',		'town2'], # 1
+	['スライム町',		'town3'], # 2
+	['ガイア国',		'town4'], # 3
 );
 
 
-# �����ǂ�
+# ＠いどう
 @places = (
-	# �ꏊ��,				�g�p���郉�C�u����(./lib/******.cgi)
-	['�`���ɏo��',			'quest'],
-	['�J�W�m',				'casino'],
-	['�a���菊',			'depot'],
-	['���퉮',				'weapon'],
-	['�h�',				'armor'],
-	['���',				'item'],
-	['���C�[�_�̎���',		'bar'],
+	# 場所名,				使用するライブラリ(./lib/******.cgi)
+	['冒険に出る',			'quest'],
+	['カジノ',				'casino'],
+	['預かり所',			'depot'],
+	['武器屋',				'weapon'],
+	['防具屋',				'armor'],
+	['道具屋',				'item'],
+	['ルイーダの酒場',		'bar'],
 
-	['������',				'lot'],
-	['�����X�^�[��������',	'farm'],
-	['�t�H�g�R�����',		'photo'],
-	['�I���N����',			'goods'],
-	['���_�����̏�',		'medal'],
-	['�_�[�}�_�a',			'job_change'],
-	['�𗬍L��',			'park'],
+	['福引所',				'lot'],
+	['モンスターじいさん',	'farm'],
+	['フォトコン会場',		'photo'],
+	['オラクル屋',			'goods'],
+	['メダル王の城',		'medal'],
+	['ダーマ神殿',			'job_change'],
+	['交流広場',			'park'],
 
-	['�I�[�N�V�������',	'auction'],
-	['�C�x���g�L��',		'event'],
-	['�肢�̐�',			'sp_change'],
-	['�����̍Ւd',			'reborn'],
-	['�M���h����',			'join_guild'],
-	['�����̊�',			'name_change'],
-	['�Ǖ��R�m�c',			'exile'],
+	['オークション会場',	'auction'],
+	['イベント広場',		'event'],
+	['願いの泉',			'sp_change'],
+	['復活の祭壇',			'reborn'],
+	['ギルド協会',			'join_guild'],
+	['命名の館',			'name_change'],
+	['追放騎士団',			'exile'],
 
-	['���ł���',			'helper'],
-	['�B����',				'alchemy'],
+	['何でも屋',			'helper'],
+	['錬金場',				'alchemy'],
 );
 
 #=================================================
-# �l�̓��{��ǂ� ���ǉ�/�ύX/���ёւ����R
+# 値の日本語読み ◎追加/変更/並び替え自由
 #=================================================
 %e2j = ( # English to Japanese
-	sex		=> '����',
-	m		=> '�j',
-	f		=> '��',
-	mhp		=> '�g�o',
-	mmp		=> '�l�o',
-	hp		=> '�g�o',
-	mp		=> '�l�o',
-	at		=> '�U����',
-	df		=> '�����',
-	ag		=> '�f����',
-	hit		=> '������',
-	state	=> '���',
+	sex		=> '性別',
+	m		=> '男',
+	f		=> '女',
+	mhp		=> 'ＨＰ',
+	mmp		=> 'ＭＰ',
+	hp		=> 'ＨＰ',
+	mp		=> 'ＭＰ',
+	at		=> '攻撃力',
+	df		=> '守備力',
+	ag		=> '素早さ',
+	hit		=> '命中率',
+	state	=> '状態',
 	sp		=> 'SP',
 	lv		=> 'Lv.',
-	exp		=> '�o���l',
-	money	=> '�S�[���h',
-	tired	=> '��J',
+	exp		=> '経験値',
+	money	=> 'ゴールド',
+	tired	=> '疲労',
 );
 
 
 
 #================================================
-# �X�p��/�r�炵�΍��ݒ�
+# スパム/荒らし対策設定
 #================================================
-# �A�N�Z�X���ێ҂ւ̃��b�Z�[�W
-$deny_message = '���Ȃ���IP�A�h���X�̓A�N�Z�X�������������Ă��܂�';
+# アクセス拒否者へのメッセージ
+$deny_message = 'あなたのIPアドレスはアクセス制限がかかっています';
 
-# �A�N�Z�X���ۃ��X�g�u '�֎~IP�A�h���X�܂��̓z�X�g��', �v
-# �A�X�^���X�N(*)�őO����v(��> '*.proxy',)�A�����v(��> '127.0.0.*',)
+# アクセス拒否リスト「 '禁止IPアドレスまたはホスト名', 」
+# アスタリスク(*)で前方一致(例> '*.proxy',)、後方一致(例> '127.0.0.*',)
 @deny_lists = (
 	'*.anonymizer.com',
 );
 
 #================================================
-# �e�t�@�C���ݒ�
+# 各ファイル設定
 #================================================
 $userdir  = './user';
 $icondir  = './icon';
@@ -219,4 +219,4 @@ $chmod  = 0666;
 $mkdir  = 0777;
 
 
-1; # �폜�s��
+1; # 削除不可

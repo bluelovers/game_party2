@@ -1,24 +1,24 @@
-# Ý’è
+# è¨­å®š
 %k = (
-	p_name		=> '@‘S‚Ä‚ðŽx”z‚·‚éŽÒ@',	# ƒNƒGƒXƒg–¼
-	p_join		=> 6,				# í“¬ŽQ‰ÁãŒÀ(l)
-	p_leader	=> 'ÄÞ°ÙÏ½À°',		# ƒNƒGƒXƒgƒŠ[ƒ_[–¼
-	speed		=> 12,				# isƒXƒs[ƒh(•b)
-	need_join	=> 'hp_200_o',		# ŽQ‰ÁðŒ(./lib/quest.cgi 192s–Ú‚ ‚½‚è‚ðŽQl)
+	p_name		=> '@å…¨ã¦ã‚’æ”¯é…ã™ã‚‹è€…@',	# ã‚¯ã‚¨ã‚¹ãƒˆå
+	p_join		=> 6,				# æˆ¦é—˜å‚åŠ ä¸Šé™(äºº)
+	p_leader	=> 'ãƒ‰ãƒ¼ãƒ«ãƒžã‚¹ã‚¿ãƒ¼',		# ã‚¯ã‚¨ã‚¹ãƒˆãƒªãƒ¼ãƒ€ãƒ¼å
+	speed		=> 12,				# é€²è¡Œã‚¹ãƒ”ãƒ¼ãƒ‰(ç§’)
+	need_join	=> 'hp_200_o',		# å‚åŠ æ¡ä»¶(./lib/quest.cgi 192è¡Œç›®ã‚ãŸã‚Šã‚’å‚è€ƒ)
 );
 
 
-# ••ˆóíí—˜•i(“¹‹ïNo)
+# å°å°æˆ¦æˆ¦åˆ©å“(é“å…·No)
 @treasures = (
-[], # •ŠíNo
-[], # –h‹ïNo
-[59,71,71,107], # “¹‹ïNo
+[], # æ­¦å™¨No
+[], # é˜²å…·No
+[59,71,71,107], # é“å…·No
 );
 
-# ƒ{ƒX
+# ãƒœã‚¹
 @bosses= (
 	{
-		name		=> 'ÄÞ°ÙÏ½À°',
+		name		=> 'ãƒ‰ãƒ¼ãƒ«ãƒžã‚¹ã‚¿ãƒ¼',
 		hp			=> 150000,
 		at			=> 500,
 		df			=> 250,
@@ -27,15 +27,15 @@
 		get_money	=> 4000,
 		icon		=> 'mon/705.gif',
 		
-		hit			=> 1000, # ’·Šúí—p–½’†—¦500%
-		job			=> 55, # —d¸
+		hit			=> 1000, # é•·æœŸæˆ¦ç”¨å‘½ä¸­çŽ‡500%
+		job			=> 55, # å¦–ç²¾
 		sp			=> 999,
-		old_job		=> 96, # ô”]
+		old_job		=> 96, # æ´—è„³
 		old_sp		=> 999,
 		mmp			=> 9999999,
 		mp			=> 999999,
-		tmp			=> '100”{',
-		state		=> '‘S••',
+		tmp			=> '100å€',
+		state		=> 'å…¨å°',
 	},
 );
 

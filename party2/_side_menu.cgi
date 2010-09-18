@@ -1,5 +1,5 @@
 #================================================
-# ƒTƒCƒhƒƒjƒ…[Eƒwƒbƒ_[Eƒtƒbƒ^[ Created by Merino
+# ã‚µã‚¤ãƒ‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒ»ãƒ˜ãƒƒãƒ€ãƒ¼ãƒ»ãƒ•ãƒƒã‚¿ãƒ¼ Created by Merino
 #================================================
 sub side_menu {
 	my($contents) = shift;
@@ -19,20 +19,20 @@ sub side_menu {
 		</td></tr></table>
 	</div>
 	<div id="navigation">
-		<div class="menu_button"><a href="$script_index$yid">—ƒgƒbƒv<div class="text_small">ƒgƒbƒvƒy[ƒW</div></a></div>
-		<div class="menu_button"><a href="new_entry.cgi$yid">—V‹K“o˜^<div class="text_small">à–¾‘‚Ì‰SŽÒÌßÚ²Á¬°Ä•K“Ç</div></a></div>
-		<div class="menu_button"><a href="http://www19.atwiki.jp/atparty2/">—à–¾‘<div class="text_small">—ƒp[ƒeƒB[II‚É‚Â‚¢‚Ä</div></a></div>
-		<div class="menu_button"><a href="news.cgi$yid">—ƒjƒ…[ƒX<div class="text_small">Å‹ß‚Ìo—ˆŽ–</div></a></div>
-		<div class="menu_button"><a href="contest.cgi$yid">—ƒtƒHƒgƒRƒ“<div class="text_small">‚Ý‚ñ‚È‚ªŽB‚Á‚½½¸°Ìß‰f‘œ</div></a></div>
-		<div class="menu_button"><a href="$htmldir/player_list.html">—ÌßÚ²Ô°ˆê——<div class="text_small">“]E‰ñ”AƒŒƒxƒ‹‡</div></a></div>
-		<div class="menu_button"><a href="guild_list.cgi$yid">—ƒMƒ‹ƒh¨—Í<div class="text_small">ŠeƒMƒ‹ƒh‚Æ‚»‚Ìƒƒ“ƒo[</div></a></div>
-		<div class="menu_button"><a href="challenge.cgi$yid">—¢ŠE‹L˜^<div class="text_small">—ƒ`ƒƒƒŒƒ“ƒW‚ÌÅ‚‹L˜^•ÛŽŽÒ</div></a></div>
-		<div class="menu_button"><a href="ranking.cgi$yid">—ƒ‰ƒ“ƒLƒ“ƒO<div class="text_small">Šˆ–ô‚µ‚Ä‚¢‚éƒgƒbƒvƒvƒŒƒCƒ„[</div></a></div>
-		<div class="menu_button"><a href="legend.cgi$yid">—“`à‚ÌÌßÚ²Ô°<div class="text_small">ƒRƒ“ƒvƒŠ[ƒgƒvƒŒƒCƒ„[</div></a></div>
-		<div class="menu_button"><a href="job_ranking.cgi$yid">—E‹Æƒ‰ƒ“ƒLƒ“ƒO<div class="text_small">l‹C‚ÌE‹Æ‚ÍIH</div></a></div>
-		<div class="menu_button"><a href="rescue.cgi$yid">—‹~oˆ—<div class="text_small">ƒoƒO‹~o</div></a></div>
-		<!-- div class="menu_button"><a href="delete.cgi$yid">—íœˆ—<div class="text_small">ƒf[ƒ^íœ</div></a></div -->
-		<div class="menu_button"><a href="$home">—‚g‚n‚l‚d<div class="text_small">ƒz[ƒ€ƒy[ƒW‚Ö</div></a></div>
+		<div class="menu_button"><a href="$script_index$yid">ï¼ ãƒˆãƒƒãƒ—<div class="text_small">ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸</div></a></div>
+		<div class="menu_button"><a href="new_entry.cgi$yid">ï¼ æ–°è¦ç™»éŒ²<div class="text_small">èª¬æ˜Žæ›¸ã®åˆå¿ƒè€…ãƒ—ãƒ¬ã‚¤ãƒãƒ£ãƒ¼ãƒˆå¿…èª­</div></a></div>
+		<div class="menu_button"><a href="http://www19.atwiki.jp/atparty2/">ï¼ èª¬æ˜Žæ›¸<div class="text_small">ï¼ ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼IIã«ã¤ã„ã¦</div></a></div>
+		<div class="menu_button"><a href="news.cgi$yid">ï¼ ãƒ‹ãƒ¥ãƒ¼ã‚¹<div class="text_small">æœ€è¿‘ã®å‡ºæ¥äº‹</div></a></div>
+		<div class="menu_button"><a href="contest.cgi$yid">ï¼ ãƒ•ã‚©ãƒˆã‚³ãƒ³<div class="text_small">ã¿ã‚“ãªãŒæ’®ã£ãŸã‚¹ã‚¯ãƒ¼ãƒ—æ˜ åƒ</div></a></div>
+		<div class="menu_button"><a href="$htmldir/player_list.html">ï¼ ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§<div class="text_small">è»¢è·å›žæ•°ã€ãƒ¬ãƒ™ãƒ«é †</div></a></div>
+		<div class="menu_button"><a href="guild_list.cgi$yid">ï¼ ã‚®ãƒ«ãƒ‰å‹¢åŠ›<div class="text_small">å„ã‚®ãƒ«ãƒ‰ã¨ãã®ãƒ¡ãƒ³ãƒãƒ¼</div></a></div>
+		<div class="menu_button"><a href="challenge.cgi$yid">ï¼ ä¸–ç•Œè¨˜éŒ²<div class="text_small">ï¼ ãƒãƒ£ãƒ¬ãƒ³ã‚¸ã®æœ€é«˜è¨˜éŒ²ä¿æŒè€…</div></a></div>
+		<div class="menu_button"><a href="ranking.cgi$yid">ï¼ ãƒ©ãƒ³ã‚­ãƒ³ã‚°<div class="text_small">æ´»èºã—ã¦ã„ã‚‹ãƒˆãƒƒãƒ—ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼</div></a></div>
+		<div class="menu_button"><a href="legend.cgi$yid">ï¼ ä¼èª¬ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼<div class="text_small">ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼</div></a></div>
+		<div class="menu_button"><a href="job_ranking.cgi$yid">ï¼ è·æ¥­ãƒ©ãƒ³ã‚­ãƒ³ã‚°<div class="text_small">äººæ°—ã®è·æ¥­ã¯ï¼ï¼Ÿ</div></a></div>
+		<div class="menu_button"><a href="rescue.cgi$yid">ï¼ æ•‘å‡ºå‡¦ç†<div class="text_small">ãƒã‚°æ•‘å‡º</div></a></div>
+		<!-- div class="menu_button"><a href="delete.cgi$yid">ï¼ å‰Šé™¤å‡¦ç†<div class="text_small">ãƒ‡ãƒ¼ã‚¿å‰Šé™¤</div></a></div -->
+		<div class="menu_button"><a href="$home">ï¼ ï¼¨ï¼¯ï¼­ï¼¥<div class="text_small">ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã¸</div></a></div>
 	</div>
 	<div id="contents">
 		$contents
@@ -46,7 +46,7 @@ EOM
 #================================================
 sub footer {
 	print qq|<div id="footer">|;
-	print qq|+ —ƒp[ƒeƒB[II Ver$VERSION <a href="http://cgi-sweets.com/" target="_blank">CGI-Sweets</a> <a href="http://amaraku.net/" target="_blank">AmaŠy.net</a>|; # ’˜ì•\Ž¦:íœE”ñ•\Ž¦ ‹ÖŽ~!!
+	print qq|+ ï¼ ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼II Ver$VERSION <a href="http://cgi-sweets.com/" target="_blank">CGI-Sweets</a> <a href="http://amaraku.net/" target="_blank">Amaæ¥½.net</a>|; # è‘—ä½œè¡¨ç¤º:å‰Šé™¤ãƒ»éžè¡¨ç¤º ç¦æ­¢!!
 	print qq|$copyright +</div></div></div></body></html>|;
 }
 

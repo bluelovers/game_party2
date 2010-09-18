@@ -1,30 +1,30 @@
-# Ý’è
+# è¨­å®š
 %k = (
-	p_join		=> 4,			# í“¬ŽQ‰ÁãŒÀ(l)
-	need_join	=> '0',			# ŽQ‰ÁðŒ(./lib/quest.cgi 192s–Ú‚ ‚½‚è‚ðŽQl)
+	p_join		=> 4,			# æˆ¦é—˜å‚åŠ ä¸Šé™(äºº)
+	need_join	=> '0',			# å‚åŠ æ¡ä»¶(./lib/quest.cgi 192è¡Œç›®ã‚ãŸã‚Šã‚’å‚è€ƒ)
 );
 
-# •ó•”‰®(20ŠK`30ŠKˆÈãBãˆÊŠK‚Ù‚ÇŠm—¦ƒAƒbƒv)
+# å®éƒ¨å±‹(20éšŽï½ž30éšŽä»¥ä¸Šã€‚ä¸Šä½éšŽã»ã©ç¢ºçŽ‡ã‚¢ãƒƒãƒ—)
 $tresure_round = int(rand(11)+20);
 
 
-# •ó‚Ì’†g
+# å®ã®ä¸­èº«
 @treasures = (
-[], # •ŠíNo
-[], # –h‹ïNo
-[6,15,57,72..74,87,101..103], # “¹‹ïNo
+[], # æ­¦å™¨No
+[], # é˜²å…·No
+[6,15,57,72..74,87,101..103], # é“å…·No
 );
 
 
-# oŒ»—¦(@monsters‚Ì”z—ñ”Ô†‚ª‘½‚¯‚ê‚Î‘½‚¢‚Ù‚ÇoŒ»B‹Ï“™‚ÈoŒ»—¦‚Ìê‡‚ÍA‚©‚çw()x)
+# å‡ºç¾çŽ‡(@monstersã®é…åˆ—ç•ªå·ãŒå¤šã‘ã‚Œã°å¤šã„ã»ã©å‡ºç¾ã€‚å‡ç­‰ãªå‡ºç¾çŽ‡ã®å ´åˆã¯ã€ã‹ã‚‰ã€Ž()ã€)
 @appears = ();
 
 
-# ƒ‚ƒ“ƒXƒ^[
-if ($stage > 20) { # 20ŠKˆÈ~‚Í ‚¶‚Î‚­ ‚É•ÏX
+# ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
+if ($stage > 20) { # 20éšŽä»¥é™ã¯ ã˜ã°ã ã«å¤‰æ›´
 	@monsters = (
 		{
-			name		=> '”š’eŠâ',
+			name		=> 'çˆ†å¼¾å²©',
 			hp			=> 400,
 			at			=> 250,
 			df			=> 150,
@@ -33,9 +33,9 @@ if ($stage > 20) { # 20ŠKˆÈ~‚Í ‚¶‚Î‚­ ‚É•ÏX
 			get_money	=> 100,
 			icon		=> 'mon/080.gif',
 	
-			job			=> 94, # Ž©”šƒƒKƒ“ƒeA‚Ë‚é
+			job			=> 94, # è‡ªçˆ†ãƒ¡ã‚¬ãƒ³ãƒ†ã€ã­ã‚‹
 			sp			=> 20,
-			old_job		=> 31, # Â–‚“¹Žm‚¶‚Î‚­
+			old_job		=> 31, # é’é­”é“å£«ã˜ã°ã
 			old_sp		=> 11,
 			mmp			=> 9999,
 			mp			=> 42,
@@ -45,7 +45,7 @@ if ($stage > 20) { # 20ŠKˆÈ~‚Í ‚¶‚Î‚­ ‚É•ÏX
 else {
 	@monsters = (
 		{
-			name		=> '”š’eŠâ',
+			name		=> 'çˆ†å¼¾å²©',
 			hp			=> 400,
 			at			=> 250,
 			df			=> 150,
@@ -54,9 +54,9 @@ else {
 			get_money	=> 100,
 			icon		=> 'mon/080.gif',
 	
-			job			=> 94, # Ž©”šƒƒKƒ“ƒeA‚Ë‚é
+			job			=> 94, # è‡ªçˆ†ãƒ¡ã‚¬ãƒ³ãƒ†ã€ã­ã‚‹
 			sp			=> 20,
-			old_job		=> 94, # Ž©”šƒƒKƒ“ƒeA‚Ë‚é
+			old_job		=> 94, # è‡ªçˆ†ãƒ¡ã‚¬ãƒ³ãƒ†ã€ã­ã‚‹
 			old_sp		=> 20,
 			mmp			=> 9999,
 			mp			=> 42,
@@ -66,4 +66,4 @@ else {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

@@ -1,4 +1,4 @@
-// ©“®XV‚ÌƒJƒEƒ“ƒgƒ_ƒEƒ“•\¦
+// è‡ªå‹•æ›´æ–°ã®ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³è¡¨ç¤º
 function count_down(now_count) {
 	if (now_count > 0) {
 		now_count = ("00" + now_count).substr(("00" + now_count).length-2, 2);
@@ -11,7 +11,7 @@ function count_down(now_count) {
 	}
 }
 
-// ƒAƒNƒeƒBƒuƒQ[ƒW•\¦
+// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚²ãƒ¼ã‚¸è¡¨ç¤º
 function active_gage(now_time, act_time) {
 	if (now_time > 0) {
 		next_time = now_time - 1;
@@ -24,26 +24,26 @@ function active_gage(now_time, act_time) {
 	}
 }
 
-// —‚Ë‚éFŸ‚És“®‚Å‚«‚é‚Ü‚Å‚Ì•\¦
+// ï¼ ã­ã‚‹ï¼šæ¬¡ã«è¡Œå‹•ã§ãã‚‹ã¾ã§ã®è¡¨ç¤º
 function wake_time(w_now_time) {
 	if (w_now_time >= 0) {
 		w_min  = Math.floor(w_now_time / 60);
 		w_sec  = Math.floor(w_now_time % 60);
 		w_sec  = ("00" + w_sec).substr(("00" + w_sec).length-2, 2);
-		w_nokori = w_min + '•ª' + w_sec + '•b';
+		w_nokori = w_min + 'åˆ†' + w_sec + 'ç§’';
 		document.getElementById("wake_time").innerHTML = w_nokori;
 		w_next_time = w_now_time - 1;
 		setTimeout("wake_time(w_next_time)",1000);
 	}
 }
 
-// ƒRƒƒ“ƒgƒtƒH[ƒ€‚É•¶š—ñƒZƒbƒg
+// ã‚³ãƒ¡ãƒ³ãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«æ–‡å­—åˆ—ã‚»ãƒƒãƒˆ
 function text_set(text){
 	document.form.comment.value = document.form.comment.value + text;
 	text_focus();
 }
 
-// ƒRƒƒ“ƒgƒtƒH[ƒ€‚É©“®ƒtƒH[ƒJƒX
+// ã‚³ãƒ¡ãƒ³ãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«è‡ªå‹•ãƒ•ã‚©ãƒ¼ã‚«ã‚¹
 function text_focus() {
 	if (document.form) {
 		document.form.comment.focus();

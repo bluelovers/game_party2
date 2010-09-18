@@ -2,17 +2,17 @@
 require 'config.cgi';
 require './lib/_data.cgi';
 #================================================
-# oŒ»ƒ‚ƒ“ƒXƒ^[‚ğŠm”F‚·‚é‚½‚ß‚Ì‚à‚Ì(ŠÇ——p)
-# http://©•ª‚ÌURL/party/_view_monster.cgi?pass=ŠÇ—ÒƒpƒXƒ[ƒh
-# ¦u©•ª‚ÌURLv‚Æ‚Í‚±‚ÌCGI‚ğİ’u‚µ‚½êŠ‚Ü‚Å‚ÌƒAƒhƒŒƒX
+# å‡ºç¾ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’ç¢ºèªã™ã‚‹ãŸã‚ã®ã‚‚ã®(ç®¡ç†ç”¨)
+# http://è‡ªåˆ†ã®URL/party/_view_monster.cgi?pass=ç®¡ç†è€…ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
+# â€»ã€Œè‡ªåˆ†ã®URLã€ã¨ã¯ã“ã®CGIã‚’è¨­ç½®ã—ãŸå ´æ‰€ã¾ã§ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
 #================================================
 
 #=================================================
-# ƒƒCƒ“ˆ—
+# ãƒ¡ã‚¤ãƒ³å‡¦ç†
 #=================================================
 &header;
 &decode;
-&error("ƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·") unless $in{pass} eq $admin_pass;
+&error("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™") unless $in{pass} eq $admin_pass;
 &run;
 &footer;
 exit;
@@ -25,7 +25,7 @@ sub run {
 		next if $file_name =~ /sample/;
 		require "./stage/$file_name";
 		
-		print "w$file_namex<br>";
+		print "ã€$file_nameã€<br>";
 		for my $no (0 .. $#bosses) {
 			print qq|$bosses[$no]{name} <img src="./icon/$bosses[$no]{icon}">|;
 			print qq| $jobs[$bosses[$no]{job}][1] SP $bosses[$no]{sp}| if $bosses[$no]{sp};

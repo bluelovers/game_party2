@@ -1,163 +1,163 @@
 #=================================================
-# �]�E�� Created by Merino
+# 転職所 Created by Merino
 #=================================================
-# �ꏊ��
-$this_title = '�_�[�}�̐_�a';
+# 場所名
+$this_title = 'ダーマの神殿';
 
-# NPC��
-$npc_name   = '@�_��';
+# NPC名
+$npc_name   = '@神官';
 
-# ���O�Ɏg���t�@�C��(.cgi����)
+# ログに使うファイル(.cgi抜き)
 $this_file  = "$logdir/job_change";
 
-# �w�i�摜
+# 背景画像
 $bgimg   = "$bgimgdir/job_change.gif";
 
-# ���������邱�Ƃœ]�E�\�ȐE��(�����ɋL������Ă��Ȃ��ꍇ�͓��������Ȃ�)
+# 道具を消費することで転職可能な職業(ここに記入されていない場合は道具を消費しない)
 %lost_item_jobs = (
-	'����'			=> 1,
-	'�E��'			=> 1,
-	'����'			=> 1,
-	'���̂܂ˎm'	=> 1,
-	'���E�m'		=> 1,
-	'����߲�'		=> 1,
-	'�ײ�'			=> 1,
-	'ʸ�����'		=> 1,
-	'��׺��'		=> 1,
-	'����'			=> 1,
-	'�����'			=> 1,
-	'Ӱ���'			=> 1,
-	'�ެ���װ'		=> 1,
-	'�ټެ�'		=> 1,
-	'�V�g'		=> 1,
-	'���e�m'		=> 1,
-	'�d��'			=> 1,
-	'���ް��'		=> 1,
-	'���'			=> 1,
-	'�ް����'		=> 1,
-	'�ײ�ײ�ް'		=> 1,
-	'��׺��ײ�ް'	=> 1,
-	'ȸ��ݻ�'		=> 1,
-	'�ޯ�Ͻ��'		=> 1,
-	'�ɺϽ��'		=> 1,
-	'��޹Ͻ��'		=> 1,
-	'���Ͻ��'		=> 1,
-	'�޸�Ͻ��'		=> 1,
-	'�����Ͻ��'		=> 1,
-	'��˰۰'		=> 1,
-	'���˰۰'		=> 1,
-	'�����ײ�ް'	=> 1,
-	'�Z�p�m'		=> 1,
+	'賢者'			=> 1,
+	'勇者'			=> 1,
+	'魔王'			=> 1,
+	'ものまね士'	=> 1,
+	'結界士'		=> 1,
+	'バンパイア'		=> 1,
+	'スライム'			=> 1,
+	'ハグレメタル'		=> 1,
+	'ドラゴン'		=> 1,
+	'アサシン'			=> 1,
+	'チョコボ'			=> 1,
+	'モーグリ'			=> 1,
+	'ギャンブラー'		=> 1,
+	'ソルジャー'		=> 1,
+	'堕天使'		=> 1,
+	'魔銃士'		=> 1,
+	'妖精'			=> 1,
+	'ミニデーモン'		=> 1,
+	'エルフ'			=> 1,
+	'ダークエルフ'		=> 1,
+	'スライムライダー'		=> 1,
+	'ドラゴンライダー'	=> 1,
+	'ネクロマンサー'		=> 1,
+	'バットマスター'		=> 1,
+	'キノコマスター'		=> 1,
+	'オバケマスター'		=> 1,
+	'ケモノマスター'		=> 1,
+	'ドクロマスター'		=> 1,
+	'バブルマスター'		=> 1,
+	'コロヒーロー'		=> 1,
+	'プチヒーロー'		=> 1,
+	'チョコボライダー'	=> 1,
+	'算術士'		=> 1,
 );
 
 #=================================================
-# ���͂Ȃ��̉�b
+# ＠はなすの会話
 #=================================================
 @words = (
-	"�悭�����I���̃_�[�}�_�a�ł͂���̐E�Ƃ�ς��邱�Ƃ��ł��邼",
-	"�ӂނӂށB�ǂ̐E�Ƃɂ��悤���܂���Ă���̂����",
-	"�]�E������ƍ��̃X�e�[�^�X�������ɂȂ��Ă��܂���",
-	"�E�Ƃ͏d�v���Ⴉ���[���l����̂����",
-	"�]�E�A�C�e���������Ă���΁A���ʂȐE�Ƃɓ]�E���邱�Ƃ��ł��邼",
-	"$m�͒j�O�����猕�m�Ȃ񂩂ǂ������H",
-	"$m�͂������~�����Ǝv���Ă���ȁH����Ȃ珤�l�ɂȂ�Ȃ���",
-	"$m�̓����X�^�[�ƒ��ǂ��Ȃ肽���Ǝv���Ă���ȁH����Ȃ疂���g���ɂȂ�Ȃ���",
-	"$m�͖����n�ɂȂ肽���Ǝv���Ă���ȁH����Ȃ�m���ɂȂ�Ȃ���",
-	"$m�͑���₨�󂪋C�ɂȂ��Ă���ȁH����Ȃ瓐���ɂȂ�Ȃ���",
-	"$m�͒N���ɃC�^�Y���������Ǝv���Ă���ȁH����Ȃ�V�ѐl�ɂȂ�Ȃ���",
-	"$m�̓��R���R�������̂��D������ȁH����Ȃ�r�����ɂȂ�Ȃ���",
-	"$m�͍ŏI�I��$jobs[int(rand(@jobs))+1][1]��ڎw���Ɨǂ�����낧",
-	"$m�Ɉ�Ԃ������肭��̂�$jobs[int(rand(@jobs))+1][1]�����",
-	"�]�E����������������Ƃ����ċ����Ƃ͌����",
-	"�ǂ�ȂɃX�L�����o���Ă��g�����Ȃ��Ȃ���Ӗ����Ȃ���",
-	"�X�L���𑁂��o�������ꍇ�͑����]�E���I�X�X�����Ă���",
-	"�X�e�[�^�X���グ�����ꍇ�́A�������̍����E�Ƃ�I�сA�Ȃ�ׂ��x���]�E����̂��R�c����",
-	"���̐E�Ƃ̃X�L����S�ă}�X�^�[���Ă���]�E���Ă��A�������͂Ȃ��͂�����",
-	"$m�̍��̓]�E�񐔂́c$m{job_lv}��B�ӂށA�Ȃ��Ȃ�����̂�",
-	"�]�E�񐔂͖`���҂̏n���x�ł�����B�R��]�E������Ə��S�ґ��ƃ��x�����̂�",
-	"�]�E�񐔂͖`���҂̏n���x�ł�����B10��ȏ�̓]�E�҂́A���̐��E���n�m���Ă���x�e��������̂�",
+	"よくきた！このダーマ神殿ではお主の職業を変えることができるぞ",
+	"ふむふむ。どの職業にしようかまよっているのじゃな",
+	"転職をすると今のステータスが半分になってしまうぞ",
+	"職業は重要じゃからよーく考えるのじゃよ",
+	"転職アイテムを持っていれば、特別な職業に転職することができるぞ",
+	"$mは男前だから剣士なんかどうじゃろ？",
+	"$mはお金が欲しいと思っているな？それなら商人になりなさい",
+	"$mはモンスターと仲良くなりたいと思っているな？それなら魔物使いになりなさい",
+	"$mは癒し系になりたいと思っているな？それなら僧侶になりなさい",
+	"$mは相手やお宝が気になっているな？それなら盗賊になりなさい",
+	"$mは誰かにイタズラしたいと思っているな？それなら遊び人になりなさい",
+	"$mはモコモコしたものが好きじゃな？それなら羊飼いになりなさい",
+	"$mは最終的に$jobs[int(rand(@jobs))+1][1]を目指すと良いじゃろぉ",
+	"$mに一番しっくりくるのは$jobs[int(rand(@jobs))+1][1]じゃな",
+	"転職条件が厳しいからといって強いとは限らんぞ",
+	"どんなにスキルを覚えても使いこなせなきゃ意味がないぞ",
+	"スキルを早く覚えたい場合は早期転職をオススメしておる",
+	"ステータスを上げたい場合は、成長率の高い職業を選び、なるべく遅く転職するのがコツじゃ",
+	"今の職業のスキルを全てマスターしてから転職しても、おそくはないはずじゃ",
+	"$mの今の転職回数は…$m{job_lv}回。ふむ、なかなかじゃのぉ",
+	"転職回数は冒険者の熟練度でもある。３回転職をすると初心者卒業レベルかのぉ",
+	"転職回数は冒険者の熟練度でもある。10回以上の転職者は、この世界を熟知しているベテランじゃのぉ",
 );
 
 sub shiraberu_npc {
-	$mes = "�����X�^�[���ސ� $m{kill_m}��<br />�v���C���[���ސ� $m{kill_p}��<br />����������� $m{mao_c}��<br />���󂵂��� $m{hero_c}��<br />�J�W�m������ $m{cas_c}��";
+	$mes = "モンスター撃退数 $m{kill_m}回<br />プレイヤー撃退数 $m{kill_p}回<br />封印解いた回数 $m{mao_c}回<br />封印した回数 $m{hero_c}回<br />カジノ勝利数 $m{cas_c}回";
 }
 
 
 #=================================================
-# ��ʈ�ԏ�ɕ\��
+# 画面一番上に表示
 #=================================================
 sub header_html {
-	print qq|<div class="mes">�y$this_title�z $jobs[$m{job}][1] $e2j{sp} <b>$m{sp}</b>|;
+	print qq|<div class="mes">【$this_title】 $jobs[$m{job}][1] $e2j{sp} <b>$m{sp}</b>|;
 	print qq| / $jobs[$m{old_job}][1] $e2j{sp} <b>$m{old_sp}</b>| if $m{old_job};
 	for my $k (qw/lv mhp mmp at df ag/) {
 		print qq| / $e2j{$k} <b>$m{$k}</b>|;
 	}
-	print qq| / E�F$ites[$m{ite}][1]| if $m{ite};
+	print qq| / E：$ites[$m{ite}][1]| if $m{ite};
 	print qq|</div>|;
 }
 
 #=================================================
-# �ǉ��A�N�V����
+# 追加アクション
 #=================================================
-push @actions, '�Ă񂵂傭';
-$actions{'�Ă񂵂傭'} = sub{ &tensyoku }; 
+push @actions, 'てんしょく';
+$actions{'てんしょく'} = sub{ &tensyoku }; 
 
 #=================================================
-# ���Ă񂵂傭
+# ＠てんしょく
 #=================================================
 sub tensyoku {
 	my $target = shift;
 	
 	if ($m{lv} < 20) {
-		$mes = "�]�E����ɂ̓��x�����Q�O�ȏ�K�v����";
+		$mes = "転職するにはレベルが２０以上必要じゃ";
 		return;
 	}
 	
 	my $p = '';
 	for my $i (0 .. $#jobs) {
-		next unless &{ $jobs[$i][7] }; # �]�E����������ꍇ�A�������Ă��邩
+		next unless &{ $jobs[$i][7] }; # 転職条件がある場合、満たしているか
 		if ($target eq $jobs[$i][1]) {
-			# �������]�E(���҂������ʏ���)
+			# 道具消費転職(賢者だけ特別処理)
 			if (defined $lost_item_jobs{$target}) {
-				# �A�C�e������Ȃ�����
-				unless (&_is_need_job($i) || (($target eq '����' || $target eq '�ެ���װ') && ($jobs[$m{job}][1] eq '�V�ѐl' || $jobs[$m{old_job}][1] eq '�V�ѐl' )) ) {
-					$npc_com .= "$ites[$m{ite}][1]���g���܂����I ";
+				# アイテム消費しない条件
+				unless (&_is_need_job($i) || (($target eq '賢者' || $target eq 'ギャンブラー') && ($jobs[$m{job}][1] eq '遊び人' || $jobs[$m{old_job}][1] eq '遊び人' )) ) {
+					$npc_com .= "$ites[$m{ite}][1]を使いました！ ";
 					$m{ite} = 0;
 				}
 			}
 			
-			&write_memory("$jobs[$m{job}][1]����$jobs[$i][1]�ɓ]�E");
+			&write_memory("$jobs[$m{job}][1]から$jobs[$i][1]に転職");
 			&job_change($i);
 
-			$npc_com .= "$m��I$target�ƂȂ�V���ȓ�����ނ��ǂ�";
+			$npc_com .= "$mよ！$targetとなり新たな道を歩むが良い";
 			&regist_guild_data('point', 50) if $m{guild};
 			return;
 		}
 
-		$p .= qq|<span onclick="text_set('���Ă񂵂傭>$jobs[$i][1] ')">$jobs[$i][1]</span> / |;
+		$p .= qq|<span onclick="text_set('＠てんしょく>$jobs[$i][1] ')">$jobs[$i][1]</span> / |;
 	}
-	$mes = qq|�ǂ̐E�Ƃɓ]�E����̂���H<br />$p|;
+	$mes = qq|どの職業に転職するのじゃ？<br />$p|;
 	$act_time = 0;
 }
 # ------------------
-# �]�E����
+# 転職処理
 sub job_change {
 	my $job = shift;
 	
 	&add_all_job_master;
 	my $mastered_point = &add_job_master($job);
 	
-	# �Ⴄ�E�Ƃɓ]�E�����ꍇ�̏���(�����E�Ƃɓ]�E�����ꍇ�́A���x���ƃX�e�[�^�X�������邾��)
+	# 違う職業に転職した場合の処理(同じ職業に転職した場合は、レベルとステータスを下げるだけ)
 	unless ($m{job} eq $job) {
 		my $buf_sp  = $m{old_sp};
 		$m{old_sp}  = $m{sp};
-		$m{sp}      = $job eq $m{old_job} ? $buf_sp : $mastered_point; # �O�E�Ƃɓ]�E����ꍇ�͑O�E�Ƃ�SP
+		$m{sp}      = $job eq $m{old_job} ? $buf_sp : $mastered_point; # 前職業に転職する場合は前職業のSP
 		$m{old_job} = $m{job};
 		$m{job}     = $job;
 		$m{icon}    = "job/$m{job}_$m{sex}.gif";
 	}
 	
-	# �X�e�[�^�X�_�E��
+	# ステータスダウン
 	for my $k (qw/mhp mmp at df ag/) {
 		$m{$k} = int($m{$k} * 0.5); 
 		$m{$k} = 10 if $m{$k} < 10;
@@ -171,7 +171,7 @@ sub job_change {
 	
 }
 
-# �K���W���u
+# 習得ジョブ
 sub add_job_master {
 	my $job = shift;
 
@@ -182,7 +182,7 @@ sub add_job_master {
 	my $mastered_count = 0;
 	my $is_find = 0;
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/job_master.cgi" or &error("$userdir/$id/job_master.cgi�t�@�C�����J���܂���");
+	open my $fh, "+< $userdir/$id/job_master.cgi" or &error("$userdir/$id/job_master.cgiファイルが開けません");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($job_no, $job_sex, $job_point, $is_master) = split /<>/, $line;
@@ -191,8 +191,8 @@ sub add_job_master {
 			$is_find = 1;
 			if (!$is_master && $m{sp} >= $skills[-1][0]) {
 				$is_master = 1;
-				$com .= qq|<span class="comp">$m�� <b>$jobs[$m{job}][1]</b> ���}�X�^�[���܂����I</span>|;
-				&write_memory("<b>�� $jobs[$m{job}][1] Job Master! ��</b>");
+				$com .= qq|<span class="comp">$mは <b>$jobs[$m{job}][1]</b> をマスターしました！</span>|;
+				&write_memory("<b>★ $jobs[$m{job}][1] Job Master! ★</b>");
 			}
 			push @lines, "$m{job}<>$m{sex}<>$m{sp}<>$is_master<>\n";
 		}
@@ -210,8 +210,8 @@ sub add_job_master {
 		
 		if ($m{sp} >= $skills[-1][0]) {
 			$is_master = 1;
-			$com .= qq|<span class="comp">$m�� <b>$jobs[$m{job}][1]</b> ���}�X�^�[���܂����I</span>|;
-			&write_memory("<b>�� $jobs[$m{job}][1] Job Master! ��</b>");
+			$com .= qq|<span class="comp">$mは <b>$jobs[$m{job}][1]</b> をマスターしました！</span>|;
+			&write_memory("<b>★ $jobs[$m{job}][1] Job Master! ★</b>");
 		}
 		push @lines, "$m{job}<>$m{sex}<>$m{sp}<>$is_master<>\n";
 	}
@@ -222,28 +222,28 @@ sub add_job_master {
 	print $fh @lines;
 	close $fh;
 	
-	# �S�W���u�R���v���[�g
+	# 全ジョブコンプリート
 	if ($mastered_count eq $#jobs-1 && !-f "$userdir/$id/comp_job_flag.cgi") { 
-		open my $fh2, "> $userdir/$id/comp_job_flag.cgi" or &error("$userdir/$id/comp_job_flag.cgi�t�@�C�����J���܂���");
+		open my $fh2, "> $userdir/$id/comp_job_flag.cgi" or &error("$userdir/$id/comp_job_flag.cgiファイルが開けません");
 		close $fh2;
 		
 		&write_legend('comp_job');
 		&write_memory(qq|<span class="comp">All Job Complete!!</span>|);
-		&write_news(qq|<span class="comp">$m���S�Ă̐E�Ƃ��}�X�^�[���܂����I</span>|);
-		$com .= qq|<div class="comp">$m�� <b>�S�W���u</b> ���R���v���[�g���܂����I</div>|;
+		&write_news(qq|<span class="comp">$mが全ての職業をマスターしました！</span>|);
+		$com .= qq|<div class="comp">$mは <b>全ジョブ</b> をコンプリートしました！</div>|;
 	}
 	
 	return $mastered_job_sp;
 }
 
-# �S�̂̓]�E�̌X��
+# 全体の転職の傾向
 sub add_all_job_master {
 	my $is_find = 0;
 	
 	my $add_point = int($m{lv} * 0.5);
 	
 	my @lines = ();
-	open my $fh, "+< $logdir/job_ranking.cgi" or &error("$logdir/job_ranking.cgi�t�@�C�����J���܂���");
+	open my $fh, "+< $logdir/job_ranking.cgi" or &error("$logdir/job_ranking.cgiファイルが開けません");
 	eval { flock $fh, 2; };
 	my $totale_point = <$fh>;
 	$totale_point =~ tr/\x0D\x0A//d;
@@ -278,4 +278,4 @@ sub add_all_job_master {
 }
 
 
-1; # �폜�s��
+1; # 削除不可

@@ -1,10 +1,10 @@
-# �_���W������
-$d_name = "$dungeons[$stage]�P�K";
+# ダンジョン名
+$d_name = "$dungeons[$stage]１階";
 
-# �ő�^�[��
+# 最大ターン
 $max_round = 30;
 
-# �}�b�v
+# マップ
 @maps = (
 	[0,F,0],
 	[0,0,0],
@@ -16,21 +16,21 @@ $max_round = 30;
 );
 
 
-# �C�x���g
-$map_imgs{F} = '��';
-$map_imgs{A} = '��' if $event !~ /A/;
-sub event_F { for my $y (@partys) { $ms{$y}{state} = '�U��' }; $map="_1"; $npc_com.="$p_name�͎��̊K�ւƐi�񂾁c"; }
-sub event_0 { for my $y (@partys) { $ms{$y}{state} = '�U��' }; return if rand(2) > 1; &_add_monster; } # ��
-sub event_A { for my $y (@partys) { $ms{$y}{state} = '�U��' }; return if $event =~ /A/; $event .= 'A'; &add_boss; } # �{�X
+# イベント
+$map_imgs{F} = '凸';
+$map_imgs{A} = '◎' if $event !~ /A/;
+sub event_F { for my $y (@partys) { $ms{$y}{state} = '攻封' }; $map="_1"; $npc_com.="$p_nameは次の階へと進んだ…"; }
+sub event_0 { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if rand(2) > 1; &_add_monster; } # 道
+sub event_A { for my $y (@partys) { $ms{$y}{state} = '攻封' }; return if $event =~ /A/; $event .= 'A'; &add_boss; } # ボス
 
 
-# �G�ƕ�̐ݒ�
+# 敵と宝の設定
 require "$mapdir/10/_data.cgi";
 
-# �{�X
+# ボス
 @bosses= (
 	{
-		name		=> '�ł̖��p�m',
+		name		=> '闇の魔術士',
 		hp			=> 8000,
 		at			=> 300,
 		df			=> 100,
@@ -38,16 +38,16 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 750,
 		get_money	=> 250,
 		icon		=> 'mon/510.gif',
-		job			=> 40, # ʸ����ك����~
+		job			=> 40, # ハグレメタルメラミ
 		sp			=> 50,
-		old_job		=> 58, # �ް����
+		old_job		=> 58, # ダークエルフ
 		old_sp		=> 999,
 		mmp			=> 9999,
 		mp			=> 999,
-		tmp			=> '���z��',
+		tmp			=> '魔吸収',
 	},
 	{
-		name		=> '���@�g��',
+		name		=> '魔法使い',
 		hp			=> 1200,
 		at			=> 250,
 		df			=> 80,
@@ -55,14 +55,14 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 150,
 		get_money	=> 30,
 		icon		=> 'mon/061.gif',
-		job			=> 6, # ���@�g��
+		job			=> 6, # 魔法使い
 		sp			=> 999,
-		old_job		=> 48, # �V�g
+		old_job		=> 48, # 堕天使
 		old_sp		=> 160,
 		mp			=> 542,
 	},
 	{
-		name		=> '�ײт܂ǂ�',
+		name		=> 'スライムまどう',
 		hp			=> 1300,
 		at			=> 220,
 		df			=> 50,
@@ -70,13 +70,13 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 160,
 		get_money	=> 25,
 		icon		=> 'mon/013.gif',
-		job			=> 19, # �Ŗ����m
+		job			=> 19, # 闇魔道士
 		sp			=> 999,
-		old_job		=> 40, # ʸ�����
+		old_job		=> 40, # ハグレメタル
 		old_sp		=> 999,
 		mp			=> 384,
 	},
 );
 
 
-1; # �폜�s��
+1; # 削除不可

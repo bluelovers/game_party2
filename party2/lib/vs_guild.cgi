@@ -1,71 +1,71 @@
 require "./lib/_battle.cgi";
 $is_npc_action = 0;
 #=================================================
-# ƒMƒ‹ƒhí Created by Merino
+# ã‚®ãƒ«ãƒ‰æˆ¦ Created by Merino
 #=================================================
-# ƒOƒŒ[ƒhƒAƒbƒv‚É•K—v‚È–‡”
+# ã‚°ãƒ¬ãƒ¼ãƒ‰ã‚¢ãƒƒãƒ—ã«å¿…è¦ãªæšæ•°
 my $need_medal = 5;
 
-# Ÿ—˜ƒƒ_ƒ‹
+# å‹åˆ©ãƒ¡ãƒ€ãƒ«
 my @win_medals = (
-	# –¼‘O		./icon/‚©‚ç‚Ì‰æ‘œ‚Ö‚ÌƒpƒX
-	['“ºÒÀŞÙ',	'etc/win_medal1.gif'], # 0
-	['‹âÒÀŞÙ',	'etc/win_medal2.gif'], # 5
-	['‹àÒÀŞÙ',	'etc/win_medal3.gif'], # 25
-	['ŒMÍ',	'etc/win_medal4.gif'], # 125
-	['ÄÛÌ¨°',	'etc/win_medal5.gif'], # 625
-	['—DŸ”t',	'etc/win_medal6.gif'], # 3125
-	['‰¤Ò”t',	'etc/win_medal7.gif'], # 15625
+	# åå‰		./icon/ã‹ã‚‰ã®ç”»åƒã¸ã®ãƒ‘ã‚¹
+	['éŠ…ãƒ¡ãƒ€ãƒ«',	'etc/win_medal1.gif'], # 0
+	['éŠ€ãƒ¡ãƒ€ãƒ«',	'etc/win_medal2.gif'], # 5
+	['é‡‘ãƒ¡ãƒ€ãƒ«',	'etc/win_medal3.gif'], # 25
+	['å‹²ç« ',	'etc/win_medal4.gif'], # 125
+	['ãƒˆãƒ­ãƒ•ã‚£ãƒ¼',	'etc/win_medal5.gif'], # 625
+	['å„ªå‹æ¯',	'etc/win_medal6.gif'], # 3125
+	['ç‹è€…æ¯',	'etc/win_medal7.gif'], # 15625
 );
 
 #=================================================
-# ƒ^ƒCƒgƒ‹A”wŒi‰æ‘œ
+# ã‚¿ã‚¤ãƒˆãƒ«ã€èƒŒæ™¯ç”»åƒ
 #=================================================
 sub get_header_data {
 	$bgimg = "$bgimgdir/stage$stage.gif";
-	$this_title = "$p_name(<b>$win</b>æŸ) <b>$round</b>‰ñí–Ú";
+	$this_title = "$p_name(<b>$win</b>å…ˆå‹) <b>$round</b>å›æˆ¦ç›®";
 }
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub add_battle_action {
 	if ($round <= 0) {
-		push @actions, '‚µ‚ç‚×‚é';
-		$actions{'‚µ‚ç‚×‚é'}   = [0,	sub{ &shiraberu }];
+		push @actions, 'ã—ã‚‰ã¹ã‚‹';
+		$actions{'ã—ã‚‰ã¹ã‚‹'}   = [0,	sub{ &shiraberu }];
 	}
 
-	push @actions, '‚©‚¢‚µ';
-	$actions{'‚©‚¢‚µ'}     = [0,	sub{ &kaishi }];
+	push @actions, 'ã‹ã„ã—';
+	$actions{'ã‹ã„ã—'}     = [0,	sub{ &kaishi }];
 }
 
 #=================================================
-# —‚©‚¢‚µ
+# ï¼ ã‹ã„ã—
 #=================================================
 sub kaishi {
-	# í“¬ŠJn‘O
+	# æˆ¦é—˜é–‹å§‹å‰
 	if ($round < 1) {
 		my %teams = ();
 		for my $name (@members) {
 			++$teams{ $ms{$name}{color} } unless $teams{ $ms{$name}{color} };
 		}
 		if (keys %teams <= 1) {
-			$mes = "‘Îí‚·‚éƒMƒ‹ƒh‚ª‚¢‚Ü‚¹‚ñ";
+			$mes = "å¯¾æˆ¦ã™ã‚‹ã‚®ãƒ«ãƒ‰ãŒã„ã¾ã›ã‚“";
 			return;
 		}
 		elsif ($leader ne $m) {
-			$mes = "ˆê”Ôn‚ß‚Ì —‚©‚¢‚µ ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+			$mes = "ä¸€ç•ªå§‹ã‚ã® ï¼ ã‹ã„ã— ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 			return;
 		}
 	}
 	else {
-		# ‚f‚o‰ÁZŒã
+		# ï¼§ï¼°åŠ ç®—å¾Œ
 		unless (-s "$questdir/$m{quest}/bet.cgi") {
-			$mes .= "¦ƒNƒGƒXƒg‚ÍI—¹‚µ‚Ü‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+			$mes .= "â€»ã‚¯ã‚¨ã‚¹ãƒˆã¯çµ‚äº†ã—ã¾ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 			return;
 		}
-		# ‚È‚©‚È‚©Œˆ’…‚ª‚Â‚©‚È‚¢ê‡B‹­§I—¹
+		# ãªã‹ãªã‹æ±ºç€ãŒã¤ã‹ãªã„å ´åˆã€‚å¼·åˆ¶çµ‚äº†
 		if ($round > 10) {
-			$mes = "$round ƒ‰ƒEƒ“ƒh‚Ü‚ÅŒˆ’…‚ª‚Â‚«‚Ü‚¹‚ñ‚Å‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+			$mes = "$round ãƒ©ã‚¦ãƒ³ãƒ‰ã¾ã§æ±ºç€ãŒã¤ãã¾ã›ã‚“ã§ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 			return;
 		}
 
@@ -80,16 +80,16 @@ sub kaishi {
 			}
 		}
 		
-		# ˆø•ª‚¯
+		# å¼•åˆ†ã‘
 		if ($alive_team_c eq '0') {
-			$npc_com = "‘æ $round ƒ‰ƒEƒ“ƒh‚ÌŸ•‰‚ÌŒ‹‰Ê‚Í uˆø‚«•ª‚¯Iv<br />";
+			$npc_com = "ç¬¬ $round ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‹è² ã®çµæœã¯ ã€Œå¼•ãåˆ†ã‘ï¼ã€<br />";
 		}
-		# ‚Pƒp[ƒeƒB[‚Ì‚İc‚Á‚Ä‚¢‚éó‘Ô
+		# ï¼‘ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®ã¿æ®‹ã£ã¦ã„ã‚‹çŠ¶æ…‹
 		elsif ($alive_team_c eq '1') {
 			my $winner = '';
 			my %win_c = ();
 
-			open my $fh, "+< $questdir/$m{quest}/win.cgi" or &error("$questdir/$m{quest}/win.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh, "+< $questdir/$m{quest}/win.cgi" or &error("$questdir/$m{quest}/win.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			eval { flock $fh, 2; };
 			my $line = <$fh>;
 			$line =~ tr/\x0D\x0A//d;
@@ -105,14 +105,14 @@ sub kaishi {
 			print $fh $line;
 			close $fh;
 			
-			# —DŸƒp[ƒeƒB[Œˆ’è
+			# å„ªå‹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼æ±ºå®š
 			if ($winner) {
 				&give_bet($winner);
 				return;
 			}
-			# ‚È‚©‚È‚©Œˆ’…‚ª‚Â‚©‚È‚¢ê‡B‹­§I—¹
+			# ãªã‹ãªã‹æ±ºç€ãŒã¤ã‹ãªã„å ´åˆã€‚å¼·åˆ¶çµ‚äº†
 			elsif ($round > 10) {
-				$mes = "$round ƒ‰ƒEƒ“ƒh‚Ü‚ÅŒˆ’…‚ª‚Â‚«‚Ü‚¹‚ñ‚Å‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+				$mes = "$round ãƒ©ã‚¦ãƒ³ãƒ‰ã¾ã§æ±ºç€ãŒã¤ãã¾ã›ã‚“ã§ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 				return;
 			}
 			
@@ -120,42 +120,42 @@ sub kaishi {
 			
 			&regist_guild_data('point', 3, $guilds{$win_color});
 			
-			# Œ»İ‚Ì“r’†Œo‰ß
+			# ç¾åœ¨ã®é€”ä¸­çµŒé
 			for my $c (sort { $b <=> $a } keys %win_c) {
-				$npc_com .= qq|<font color="$c">$guilds{$c} $win_c{$c}Ÿ</font> / |;
+				$npc_com .= qq|<font color="$c">$guilds{$c} $win_c{$c}å‹</font> / |;
 			}
 		}
-		# c‚è‚Pƒp[ƒeƒB[‚É‚È‚é‚Ü‚Å
+		# æ®‹ã‚Šï¼‘ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã«ãªã‚‹ã¾ã§
 		else {
-			$mes .= "Œˆ’…‚ª‚Â‚¢‚Ä‚¢‚Ü‚¹‚ñ";
+			$mes .= "æ±ºç€ãŒã¤ã„ã¦ã„ã¾ã›ã‚“";
 			return;
 		}
 	}
 	
 	&reset_status_all;
 
-	# •À‚Ñ‚ğF‚²‚Æ‚ÉƒVƒƒƒbƒtƒ‹
+	# ä¸¦ã³ã‚’è‰²ã”ã¨ã«ã‚·ãƒ£ãƒƒãƒ•ãƒ«
 	&shuffle;
 
 	for my $name (@members) {
-		# ƒ‰ƒEƒ“ƒh–ˆ‚É‘SƒvƒŒƒCƒ„[‚ÌHP‰ñ•œ
+		# ãƒ©ã‚¦ãƒ³ãƒ‰æ¯ã«å…¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPå›å¾©
 		$ms{$name}{hp} = $ms{$name}{mhp};
 		
-		# ŠJn‘O‚Ì‘Ò‹@ŠÔ‚ğ‚»‚ê‚¼‚ê—^‚¦‚é
+		# é–‹å§‹å‰ã®å¾…æ©Ÿæ™‚é–“ã‚’ãã‚Œãã‚Œä¸ãˆã‚‹
 		next if $m eq $name;
 		&regist_you_data($name, 'wt', int($time + $speed * 2 + rand(4)) );
 	}
-	$act_time = $speed * 2; # —ŠJn‚µ‚½l—p
+	$act_time = $speed * 2; # ï¼ é–‹å§‹ã—ãŸäººç”¨
 
 	++$round;
-	$npc_com .= "‘æ $round ƒ‰ƒEƒ“ƒh‡ŠJnI";
+	$npc_com .= "ç¬¬ $round ãƒ©ã‚¦ãƒ³ãƒ‰è©¦åˆé–‹å§‹ï¼";
 	&auto_reload;
 }
 
-# ƒMƒ‹ƒh–¼‚ÆƒMƒ‹ƒhF‚ğƒnƒbƒVƒ…‚ÉƒZƒbƒg
+# ã‚®ãƒ«ãƒ‰åã¨ã‚®ãƒ«ãƒ‰è‰²ã‚’ãƒãƒƒã‚·ãƒ¥ã«ã‚»ãƒƒãƒˆ
 sub get_guilds {
 	my %guilds = ();
-	open my $fh, "< $questdir/$m{quest}/guild.cgi" or &error("$questdir/$m{quest}/guild.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $questdir/$m{quest}/guild.cgi" or &error("$questdir/$m{quest}/guild.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($gcolor, $gname) = split /<>/, $line;
 		$guilds{$gcolor} = $gname;
@@ -165,13 +165,13 @@ sub get_guilds {
 	return %guilds;
 }
 
-# —DŸƒMƒ‹ƒh‚ÉƒMƒ‹ƒhƒ|ƒCƒ“ƒg‚ğ‚ ‚½‚¦‚é
+# å„ªå‹ã‚®ãƒ«ãƒ‰ã«ã‚®ãƒ«ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’ã‚ãŸãˆã‚‹
 sub give_bet {
 	my $winner = shift;
 	
 	my %guilds = &get_guilds;
 
-	open my $fh, "+< $questdir/$m{quest}/bet.cgi" or &error("$questdir/$m{quest}/bet.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $questdir/$m{quest}/bet.cgi" or &error("$questdir/$m{quest}/bet.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $prize_money = <$fh>;
 	seek  $fh, 0, 0;
@@ -187,21 +187,21 @@ sub give_bet {
 		$names .= "$name," if $ms{$name}{color} eq $winner;
 	}
 	chop $names;
-	$npc_com .= qq|—DŸ‚Í$names‚ªŠ‘®‚·‚é <b style="color: $winner;">*+.$guilds{$winner}ƒMƒ‹ƒh.+*</b> ‚Å‚·I|;
+	$npc_com .= qq|å„ªå‹ã¯$namesãŒæ‰€å±ã™ã‚‹ <b style="color: $winner;">*+.$guilds{$winner}ã‚®ãƒ«ãƒ‰.+*</b> ã§ã™ï¼|;
 
 	&give_medal($guilds{$winner});
 }
 
-# Ÿ—˜ƒMƒ‹ƒh‚ÉŸ—˜ƒƒ_ƒ‹‚ğ‚ ‚½‚¦‚é
+# å‹åˆ©ã‚®ãƒ«ãƒ‰ã«å‹åˆ©ãƒ¡ãƒ€ãƒ«ã‚’ã‚ãŸãˆã‚‹
 sub give_medal {
 	my $gname = shift;
 	
 	my $gid = unpack 'H*', $gname;
-	return unless -f "$guilddir/$gid/log_member.cgi"; # ƒMƒ‹ƒh‰ğU‚µ‚Ä‚¢‚½ê‡
+	return unless -f "$guilddir/$gid/log_member.cgi"; # ã‚®ãƒ«ãƒ‰è§£æ•£ã—ã¦ã„ãŸå ´åˆ
 
 	my %counts = ();
 	my @lines = ();
-	open my $fh, "+< $guilddir/$gid/log_member.cgi" or &error("$guilddir/$gid/log_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $guilddir/$gid/log_member.cgi" or &error("$guilddir/$gid/log_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
@@ -211,12 +211,12 @@ sub give_medal {
 	$counts{$win_medals[0][1]}++;
 	push @lines, "$time<>1<>$win_medals[0][0]$counts{$win_medals[0][1]}<>0<>$win_medals[0][1]<>$npc_color<>\n";
 	
-	# Ÿ‚¿ƒƒ_ƒ‹‚ÌƒOƒŒ[ƒhƒAƒbƒvˆ—
+	# å‹ã¡ãƒ¡ãƒ€ãƒ«ã®ã‚°ãƒ¬ãƒ¼ãƒ‰ã‚¢ãƒƒãƒ—å‡¦ç†
 	for my $i (0 .. $#win_medals-1) {
-		next unless defined($counts{$win_medals[$i][1]});  # %win_medals‚É‚È‚¢‚à‚Ì
-		last if $counts{$win_medals[$i][1]} < $need_medal; # •K—v–‡”‚É“’B‚µ‚Ä‚¢‚È‚¢
+		next unless defined($counts{$win_medals[$i][1]});  # %win_medalsã«ãªã„ã‚‚ã®
+		last if $counts{$win_medals[$i][1]} < $need_medal; # å¿…è¦æšæ•°ã«åˆ°é”ã—ã¦ã„ãªã„
 
-		# •K—vƒƒ_ƒ‹”‚É‚È‚Á‚½‚à‚Ì‚ğœ‚¢‚ÄƒOƒŒ[ƒhƒAƒbƒv‚³‚¹‚é
+		# å¿…è¦ãƒ¡ãƒ€ãƒ«æ•°ã«ãªã£ãŸã‚‚ã®ã‚’é™¤ã„ã¦ã‚°ãƒ¬ãƒ¼ãƒ‰ã‚¢ãƒƒãƒ—ã•ã›ã‚‹
 		my @new_lines = ();
 		for my $line (@lines) {
 			my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
@@ -234,6 +234,6 @@ sub give_medal {
 	close $fh;
 }
 
-sub npc_turn { return } # ”O‚Ì‚½‚ßƒnƒ}ƒŠ–h~
+sub npc_turn { return } # å¿µã®ãŸã‚ãƒãƒãƒªé˜²æ­¢
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

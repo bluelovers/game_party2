@@ -2,7 +2,7 @@
 require 'config.cgi';
 require '_side_menu.cgi';
 #================================================
-# ƒjƒ…[ƒX•\¦ Created by Merino
+# ãƒ‹ãƒ¥ãƒ¼ã‚¹è¡¨ç¤º Created by Merino
 #================================================
 &decode;
 &header;
@@ -11,8 +11,8 @@ require '_side_menu.cgi';
 exit;
 #================================================
 sub run {
-	my $contents = qq|<h2>Å‹ß‚Ìo—ˆ–</h2>\n|;
-	open my $fh, "< $logdir/news.cgi" or &error("$logdir/news.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	my $contents = qq|<h2>æœ€è¿‘ã®å‡ºæ¥äº‹</h2>\n|;
+	open my $fh, "< $logdir/news.cgi" or &error("$logdir/news.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	$contents .= "$_<hr />" while <$fh>;
 	close $fh;
 	&side_menu($contents);

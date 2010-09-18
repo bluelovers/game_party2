@@ -1,10 +1,10 @@
-# ƒ_ƒ“ƒWƒ‡ƒ“–¼
-$d_name = "$dungeons[$stage]‚RŠK";
+# ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³å
+$d_name = "$dungeons[$stage]ï¼“éš";
 
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 50;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[1,F,1],
 	[0,B,0],
@@ -13,21 +13,21 @@ $max_round = 50;
 	[0,0,0],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{Q} = '@';
-$map_imgs{T} = '@';
-$map_imgs{B} = '' if $event !~ /B/;;
-$map_imgs{F} = '“Ê';
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{Q} = 'ã€€';
+$map_imgs{T} = 'ã€€';
+$map_imgs{B} = 'â—' if $event !~ /B/;;
+$map_imgs{F} = 'å‡¸';
 sub event_Q {}
-sub event_F { my $v = int(rand(3)+1); $map="___$v"; $npc_com.="$p_name‚ÍŸ‚ÌŠK‚Ö‚Æi‚ñ‚¾c"; }
-sub event_T { $map = '_'.int(rand(4)+1); $npc_com.= "<b>IIIIH</b>—‚Æ‚µŒŠ‚¾I$leader‚½‚¿‚ÍŒŠ‚É—‚¿‚Ä‚µ‚Ü‚Á‚½I"; &_trap_d(70); }
+sub event_F { my $v = int(rand(3)+1); $map="___$v"; $npc_com.="$p_nameã¯æ¬¡ã®éšã¸ã¨é€²ã‚“ã â€¦"; }
+sub event_T { $map = '_'.int(rand(4)+1); $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>è½ã¨ã—ç©´ã ï¼$leaderãŸã¡ã¯ç©´ã«è½ã¡ã¦ã—ã¾ã£ãŸï¼"; &_trap_d(70); }
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 my $_s = int(rand(3)+4);
 require "$stagedir/$_s.cgi";
 
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

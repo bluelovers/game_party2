@@ -3,24 +3,24 @@ require 'config.cgi';
 require './lib/_data.cgi';
 my $this_script = 'admin.cgi';
 #=================================================
-# ƒvƒŒƒCƒ„[ŠÇ— Created by Merino
+# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç®¡ç† Created by Merino
 #=================================================
-# •À‚Ñ‡–¼
+# ä¸¦ã³é †å
 my %e2j_sorts = (
-	name	=> '–¼‘O‡',
-	ldate	=> 'XV“ú‡',
-	addr	=> 'Host/IP‡',
+	name	=> 'åå‰é †',
+	ldate	=> 'æ›´æ–°æ—¥æ™‚é †',
+	addr	=> 'Host/IPé †',
 );
 
-# ƒfƒtƒHƒ‹ƒg‚Ì•À‚Ñ‡
+# ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ä¸¦ã³é †
 $in{sort} ||= 'addr';
 
 #=================================================
-# ƒƒCƒ“ˆ—
+# ãƒ¡ã‚¤ãƒ³å‡¦ç†
 #=================================================
 &header;
 &decode;
-&error("ƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·") unless $in{pass} eq $admin_pass;
+&error("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™") unless $in{pass} eq $admin_pass;
 if ($in{mode} eq 'admin_delete_user') { &admin_delete_user; }
 &top;
 &footer;
@@ -31,7 +31,7 @@ exit;
 #=================================================
 sub top {
 	print qq|<table><tr>|;
-	print qq|<td><form action="$script_index"><input type="submit" value="‚s‚n‚o" class="button_s" /></form></td>|;
+	print qq|<td><form action="$script_index"><input type="submit" value="ï¼´ï¼¯ï¼°" class="button_s" /></form></td>|;
 	while (my($k,$v) = each %e2j_sorts) {
 		next if $in{sort} eq $k;
 		print qq|<td><form method="$method" action="$this_script"><input type="hidden" name="pass" value="$in{pass}" />\n|;
@@ -44,15 +44,15 @@ sub top {
 	print qq|<form method="$method" action="$this_script">|;
 	print qq|<input type="hidden" name="mode" value="admin_delete_user" /><input type="hidden" name="pass" value="$in{pass}" />|;
 	print qq|<input type="hidden" name="sort" value="$in{sort}" />|;
-	print qq|‹~o‚ÍA‰æ–Ê‚É‰½‚à•\\¦‚³‚ê‚È‚­‚È‚Á‚½‚èAƒ‹[ƒv‚É‚Í‚Ü‚Á‚½ó‘Ô‚È‚Ç‚ğC³‚µ‚Ü‚·B<br />|;
+	print qq|æ•‘å‡ºã¯ã€ç”»é¢ã«ä½•ã‚‚è¡¨\ç¤ºã•ã‚Œãªããªã£ãŸã‚Šã€ãƒ«ãƒ¼ãƒ—ã«ã¯ã¾ã£ãŸçŠ¶æ…‹ãªã©ã‚’ä¿®æ­£ã—ã¾ã™ã€‚<br />|;
 	print qq|<table class="table2"><tr>|;
 
-	for my $k (qw/íœ ƒƒOƒCƒ“ –¼‘O ƒtƒHƒ‹ƒ_ ƒŠƒZƒbƒg IPƒAƒhƒŒƒX ƒzƒXƒg–¼ XVŠÔ/) {
+	for my $k (qw/å‰Šé™¤ ãƒ­ã‚°ã‚¤ãƒ³ åå‰ ãƒ•ã‚©ãƒ«ãƒ€ ãƒªã‚»ãƒƒãƒˆ IPã‚¢ãƒ‰ãƒ¬ã‚¹ ãƒ›ã‚¹ãƒˆå æ›´æ–°æ™‚é–“/) {
 		print qq|<th>$k</th>|;
 	}
 	print qq|</tr>|;
 	
-	# ƒvƒŒƒCƒ„[î•ñ‚ğæ“¾
+	# ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æƒ…å ±ã‚’å–å¾—
 	my @lines = &get_all_users;
 
 	my $b_host = '';
@@ -61,7 +61,7 @@ sub top {
 	for my $line (@lines) {
 		my($id, $name, $pass, $addr, $host, $ldate) = split /<>/, $line;
 		
-		# ‚à‚µHostIP‚ª“¯‚¶‚È‚çÔ•\¦
+		# ã‚‚ã—HostIPãŒåŒã˜ãªã‚‰èµ¤è¡¨ç¤º
 		if ($host eq $b_host && $b_addr eq $addr) {
 			print qq|<tr class="stripe2">|;
 		}
@@ -72,32 +72,32 @@ sub top {
 		$b_addr = $addr;
 		
 		print qq|<td><input type="checkbox" name="delete" value="$id" /></td>|;
-		print qq|<td><input type="button" class="button_s" value="ƒƒOƒCƒ“" onclick="location.href='$script?id=$id&pass=$pass';" /></td>|;
+		print qq|<td><input type="button" class="button_s" value="ãƒ­ã‚°ã‚¤ãƒ³" onclick="location.href='$script?id=$id&pass=$pass';" /></td>|;
 		print qq|<td>$name</td>|;
 		print qq|<td>$id</td>|;
-		print qq|<td><input type="button" class="button_s" value="‹~o" onclick="location.href='?mode=admin_refresh&pass=$in{pass}&id=$id&sort=$in{sort}';" /></td>|;
+		print qq|<td><input type="button" class="button_s" value="æ•‘å‡º" onclick="location.href='?mode=admin_refresh&pass=$in{pass}&id=$id&sort=$in{sort}';" /></td>|;
 		print qq|<td>$addr</td>|;
 		print qq|<td>$host</td>|;
 		print qq|<td>$ldate</td></tr>|;
 	}
-	print qq|</table><br /><input type="checkbox" name="is_add_bl" value="1" checked="checked" />ƒuƒ‰ƒbƒNƒŠƒXƒg‚É’Ç‰Á|;
-	print qq|<p style="color: #F00">ƒvƒŒƒCƒ„[‚ğíœ‚·‚é<br /><input type="submit" value="íœ" class="button_s" /></p></form>|;
+	print qq|</table><br /><input type="checkbox" name="is_add_bl" value="1" checked="checked" />ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã«è¿½åŠ |;
+	print qq|<p style="color: #F00">ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹<br /><input type="submit" value="å‰Šé™¤" class="button_s" /></p></form>|;
 }
 
 #=================================================
-# íœˆ—
+# å‰Šé™¤å‡¦ç†
 #=================================================
 sub admin_delete_user {
 	return unless @delfiles;
 
 	for my $delfile (@delfiles) {
 		my %datas = &get_you_datas($delfile, 1);
-		# ˆá”½ÒƒŠƒXƒg‚É’Ç‰Á
+		# é•åè€…ãƒªã‚¹ãƒˆã«è¿½åŠ 
 		&add_black_list($datas{host}) if $in{is_add_bl};
 
 		&delete_guild_member($datas{guild}, $datas{name}) if $datas{guild};
 		&delete_directory("$userdir/$delfile");
-		$mes .= "$datas{name}‚ğíœ‚µ‚Ü‚µ‚½<br />";
+		$mes .= "$datas{name}ã‚’å‰Šé™¤ã—ã¾ã—ãŸ<br />";
 	}
 	
 	my $count = @delfiles;
@@ -105,7 +105,7 @@ sub admin_delete_user {
 }
 
 #=================================================
-# ƒŠƒZƒbƒgˆ—F‰æ–Ê^‚Á•@ƒnƒ}‚Á‚½ê‡‚Ég—p(‰½‚©‚µ‚ç‚ÌˆÙíƒGƒ‰[)
+# ãƒªã‚»ãƒƒãƒˆå‡¦ç†ï¼šç”»é¢çœŸã£é»’ã€€ãƒãƒã£ãŸå ´åˆã«ä½¿ç”¨(ä½•ã‹ã—ã‚‰ã®ç•°å¸¸ã‚¨ãƒ©ãƒ¼)
 #=================================================
 sub admin_refresh {
 	return unless $in{id};
@@ -116,15 +116,15 @@ sub admin_refresh {
 	$id = $in{id};
 	&write_user;
 	
-	$mes .= "$m{name}‚ğ‹~oˆ—‚ğ‚µ‚Ü‚µ‚½<br />";
+	$mes .= "$m{name}ã‚’æ•‘å‡ºå‡¦ç†ã‚’ã—ã¾ã—ãŸ<br />";
 }
 
 #=================================================
-# ‘Sƒ†[ƒU[‚Ìƒf[ƒ^‚ğæ“¾
+# å…¨ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
 #=================================================
 sub get_all_users {
 	my @lines = ();
-	opendir my $dh, "$userdir" or &error("$userdirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, "$userdir" or &error("$userdirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $id = readdir $dh) {
 		next if $id =~ /\./;
 		

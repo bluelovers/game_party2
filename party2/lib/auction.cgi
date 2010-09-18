@@ -1,111 +1,111 @@
 #=================================================
-# —a‚©‚èŠ Created by Merino
+# é ã‹ã‚Šæ‰€ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'ƒI[ƒNƒVƒ‡ƒ“‰ïê';
+# å ´æ‰€å
+$this_title = 'ã‚ªãƒ¼ã‚¯ã‚·ãƒ§ãƒ³ä¼šå ´';
 
-# NPC–¼
-$npc_name   = '@Ü²ÙÄŞ';
+# NPCå
+$npc_name   = '@ãƒ¯ã‚¤ãƒ«ãƒ‰';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/auction";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/auction.gif";
 
-# ‘—‚é‚Ì‹Ö~ƒAƒCƒeƒ€(—á„'wea' => [1,2,3,4,5],)
+# é€ã‚‹ã®ç¦æ­¢ã‚¢ã‚¤ãƒ†ãƒ (ä¾‹ï¼'wea' => [1,2,3,4,5],)
 %taboo_items = (
-	'wea' => [], # •ŠíNo
-	'arm' => [], # –h‹ïNo
-	'ite' => [], # “¹‹ïNo
+	'wea' => [], # æ­¦å™¨No
+	'arm' => [], # é˜²å…·No
+	'ite' => [], # é“å…·No
 );
 
 #=================================================
-# —‚Í‚È‚·‚Ì‰ï˜b
+# ï¼ ã¯ãªã™ã®ä¼šè©±
 #=================================================
 @words = (
-	"‚±‚±‚Í$this_title‚Å‚·B‘¼‚ÌƒvƒŒƒCƒ„[‚ÆƒAƒCƒeƒ€ŒğŠ·‚âƒAƒCƒeƒ€”„”ƒ‚ğ‚·‚éêŠ‚Å‚·B",
-	"“üD‚âo•i‚Ì‚æ‚¤‚ÈƒVƒXƒeƒ€‚Í‚È‚¢‚Å‚·B©—R‚É‹£‚è‚ğ‚µ‚Ä‚­‚¾‚³‚¢B",
-	"‘Šè‚ªÀÛ‚É‚»‚ÌƒAƒCƒeƒ€‚â—D‹à‚ğ‚Á‚Ä‚¢‚é‚Ì‚©u—‚µ‚ç‚×‚év‚ÅŒ©‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B",
+	"ã“ã“ã¯$this_titleã§ã™ã€‚ä»–ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ã‚¢ã‚¤ãƒ†ãƒ äº¤æ›ã‚„ã‚¢ã‚¤ãƒ†ãƒ å£²è²·ã‚’ã™ã‚‹å ´æ‰€ã§ã™ã€‚",
+	"å…¥æœ­ã‚„å‡ºå“ã®ã‚ˆã†ãªã‚·ã‚¹ãƒ†ãƒ ã¯ãªã„ã§ã™ã€‚è‡ªç”±ã«ç«¶ã‚Šã‚’ã—ã¦ãã ã•ã„ã€‚",
+	"ç›¸æ‰‹ãŒå®Ÿéš›ã«ãã®ã‚¢ã‚¤ãƒ†ãƒ ã‚„è½æœ­é‡‘ã‚’æŒã£ã¦ã„ã‚‹ã®ã‹ã€Œï¼ ã—ã‚‰ã¹ã‚‹ã€ã§è¦‹ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚",
 );
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚¨‚­‚é';
-$actions{'‚¨‚­‚é'} = sub{ &okuru }; 
+push @actions, 'ãŠãã‚‹';
+$actions{'ãŠãã‚‹'} = sub{ &okuru }; 
 
 #=================================================
-# —‚¨‚­‚é
+# ï¼ ãŠãã‚‹
 #=================================================
 sub okuru {
 	my $target = shift;
-	my($send, $name) = split /—‚ ‚¢‚Ä&gt;/, $target;
+	my($send, $name) = split /ï¼ ã‚ã„ã¦&gt;/, $target;
 	
 #	if ($m{job_lv} < 1) {
-#		$mes = "–¢“]E‚Ì•û‚ÍA‘—‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+#		$mes = "æœªè»¢è·ã®æ–¹ã¯ã€é€ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 #		return;
 #	}
 
 	if ($name) {
 		my $yid = unpack 'H*', $name;
 		unless (-d "$userdir/$yid") {
-			$mes = "$name‚Æ‚¢‚¤ƒvƒŒƒCƒ„[‚Í‘¶İ‚µ‚Ü‚¹‚ñ";
+			$mes = "$nameã¨ã„ã†ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“";
 			return;
 		}
 		my %p = &get_you_datas($yid, 1);
 		if ($p{is_full}) {
-			$mes = "$name‚Ì—a‚©‚èŠ‚ª‚¢‚Á‚Ï‚¢‚Å‚·";
+			$mes = "$nameã®é ã‹ã‚Šæ‰€ãŒã„ã£ã±ã„ã§ã™";
 			return
 		}
 		
 		if ($send =~ /^([0-9]+)\x20?G?$/) {
 			my $send_money = int($1);
 			if ($send_money > $m{money}) {
-				$mes = "‚»‚ñ‚È‚É‚¨‹à‚ğ‚à‚Á‚Ä‚¢‚Ü‚¹‚ñ";
+				$mes = "ãã‚“ãªã«ãŠé‡‘ã‚’ã‚‚ã£ã¦ã„ã¾ã›ã‚“";
 				return;
 			}
 			elsif ($send_money <= 0) {
-				$mes = "‘—‹à‚ÍÅ’á‚Å‚à 1 GˆÈã‚Å‚·";
+				$mes = "é€é‡‘ã¯æœ€ä½ã§ã‚‚ 1 Gä»¥ä¸Šã§ã™";
 				return;
 			}
 			
 			$m{money} -= $send_money;
-			&send_money($name, $send_money, "$m‚©‚ç‚Ì‘—‹à");
-			$npc_com = "$send_money G‚ğ $name ‚É‘—‚è‚Ü‚µ‚½";
+			&send_money($name, $send_money, "$mã‹ã‚‰ã®é€é‡‘");
+			$npc_com = "$send_money Gã‚’ $name ã«é€ã‚Šã¾ã—ãŸ";
 			return;
 		}
 		elsif ($m{wea} && $weas[$m{wea}][1] eq $send) {
 			for my $taboo_item (@{ $taboo_items{wea} }) {
 				if ($weas[$taboo_item][1] eq $weas[$m{wea}][1]) {
-					$mes = "$weas[$m{wea}][1]‚Í‘—‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+					$mes = "$weas[$m{wea}][1]ã¯é€ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 					return;
 				}
 			}
-			$npc_com = "$weas[$m{wea}][1]‚ğ$name‚É‘—‚è‚Ü‚µ‚½";
+			$npc_com = "$weas[$m{wea}][1]ã‚’$nameã«é€ã‚Šã¾ã—ãŸ";
 			&send_item($name, 1, $m{wea}, $m);
 			$m{wea} = 0;
 		}
 		elsif ($m{arm} && $arms[$m{arm}][1] eq $send) {
 			for my $taboo_item (@{ $taboo_items{arm} }) {
 				if ($arms[$taboo_item][1] eq $arms[$m{arm}][1]) {
-					$mes = "$arms[$m{arm}][1]‚Í‘—‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+					$mes = "$arms[$m{arm}][1]ã¯é€ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 					return;
 				}
 			}
-			$npc_com = "$arms[$m{arm}][1]‚ğ$name‚É‘—‚è‚Ü‚µ‚½";
+			$npc_com = "$arms[$m{arm}][1]ã‚’$nameã«é€ã‚Šã¾ã—ãŸ";
 			&send_item($name, 2, $m{arm}, $m);
 			$m{arm} = 0;
 		}
 		elsif ($m{ite} && $ites[$m{ite}][1] eq $send) {
 			for my $taboo_item (@{ $taboo_items{ite} }) {
 				if ($ites[$taboo_item][1] eq $ites[$m{ite}][1]) {
-					$mes = "$ites[$m{ite}][1]‚Í‘—‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ";
+					$mes = "$ites[$m{ite}][1]ã¯é€ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“";
 					return;
 				}
 			}
-			$npc_com = "$ites[$m{ite}][1]‚ğ$name‚É‘—‚è‚Ü‚µ‚½";
+			$npc_com = "$ites[$m{ite}][1]ã‚’$nameã«é€ã‚Šã¾ã—ãŸ";
 			&send_item($name, 3, $m{ite}, $m);
 			$m{ite} = 0;
 		}
@@ -114,14 +114,14 @@ sub okuru {
 		return;
 	}
 	
-	$mes  = qq|‚Ç‚ê‚ğ’N‚É‘—‚è‚Ü‚·‚©H<br />$p|;
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$weas[$m{wea}][1]—‚ ‚¢‚Ä')">$weas[$m{wea}][1]</span> / | if $m{wea};
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$arms[$m{arm}][1]—‚ ‚¢‚Ä')">$arms[$m{arm}][1]</span> / | if $m{arm};
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$ites[$m{ite}][1]—‚ ‚¢‚Ä')">$ites[$m{ite}][1]</span> / | if $m{ite};
-	$mes .= qq|<span onclick="text_set('—‚¨‚­‚é>$m{money}G—‚ ‚¢‚Ä')">$m{money}G</span> / |;
+	$mes  = qq|ã©ã‚Œã‚’èª°ã«é€ã‚Šã¾ã™ã‹ï¼Ÿ<br />$p|;
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$weas[$m{wea}][1]ï¼ ã‚ã„ã¦')">$weas[$m{wea}][1]</span> / | if $m{wea};
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$arms[$m{arm}][1]ï¼ ã‚ã„ã¦')">$arms[$m{arm}][1]</span> / | if $m{arm};
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$ites[$m{ite}][1]ï¼ ã‚ã„ã¦')">$ites[$m{ite}][1]</span> / | if $m{ite};
+	$mes .= qq|<span onclick="text_set('ï¼ ãŠãã‚‹>$m{money}Gï¼ ã‚ã„ã¦')">$m{money}G</span> / |;
 	$act_time = 0;
 }
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

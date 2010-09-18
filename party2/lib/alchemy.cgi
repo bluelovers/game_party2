@@ -1,62 +1,62 @@
 #=================================================
-# ˜B‹àp Created by Merino
+# éŒ¬é‡‘è¡“ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = '˜B‹àê';
+# å ´æ‰€å
+$this_title = 'éŒ¬é‡‘å ´';
 
-# NPC–¼
-$npc_name = '@ÄÛÃŞ';
+# NPCå
+$npc_name = '@ãƒˆãƒ­ãƒ‡';
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/alchemy";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg = "$bgimgdir/alchemy.gif";
 
 
 
-# Š®¬ƒtƒ‰ƒO‚ª‚ ‚Á‚½‚çŠ®¬ˆ—‚Ö
+# å®Œæˆãƒ•ãƒ©ã‚°ãŒã‚ã£ãŸã‚‰å®Œæˆå‡¦ç†ã¸
 &finish() if $m{recipe} =~ /^1/;
 
 
 #=================================================
-# ‚Í‚È‚·Œ¾—t
+# ã¯ãªã™è¨€è‘‰
 #=================================================
 @words = (
-	"‚Q‚Â‚ÌƒAƒCƒeƒ€‚ğ˜B‹à‚·‚é‚±‚Æ‚ÅV‚½‚ÈƒAƒCƒeƒ€‚ğì‚é‚±‚Æ‚ª‚Å‚«‚é‚¼‚¢",
-	"˜B‹àÚ¼Ëß‚ğg‚¤‚±‚Æ‚Å˜B‹à‚·‚é‚±‚Æ‚ª‰Â”\\‚É‚È‚é‚¼‚¢",
-	"˜B‹à‚µ‚½ƒAƒCƒeƒ€‚ÌŠ®¬‚ÍA‚¨å‚ªQ‚Ä‹N‚«‚½Ÿ‚Ì“ú‚É‚ÍŠ®¬‚µ‚Ä‚¢‚é‚¶‚á‚ë‚¤",
-	"˜B‹à‚Åì‚é‚±‚Æ‚Å‚µ‚©è‚É“ü‚ç‚È‚¢•Ší‚â–h‹ï‚ª‚ ‚é‚»‚¤‚¶‚áEEE",
-	"˜B‹àÚ¼Ëß‚ÍK“¾Ï‚İˆÈŠO‚Ì‚à‚Ì‚ğK“¾‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚¼‚¢",
+	"ï¼’ã¤ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’éŒ¬é‡‘ã™ã‚‹ã“ã¨ã§æ–°ãŸãªã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½œã‚‹ã“ã¨ãŒã§ãã‚‹ãã„",
+	"éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã‚’ä½¿ã†ã“ã¨ã§éŒ¬é‡‘ã™ã‚‹ã“ã¨ãŒå¯èƒ½\ã«ãªã‚‹ãã„",
+	"éŒ¬é‡‘ã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã®å®Œæˆã¯ã€ãŠä¸»ãŒå¯ã¦èµ·ããŸæ¬¡ã®æ—¥ã«ã¯å®Œæˆã—ã¦ã„ã‚‹ã˜ã‚ƒã‚ã†",
+	"éŒ¬é‡‘ã§ä½œã‚‹ã“ã¨ã§ã—ã‹æ‰‹ã«å…¥ã‚‰ãªã„æ­¦å™¨ã‚„é˜²å…·ãŒã‚ã‚‹ãã†ã˜ã‚ƒãƒ»ãƒ»ãƒ»",
+	"éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã¯ç¿’å¾—æ¸ˆã¿ä»¥å¤–ã®ã‚‚ã®ã‚’ç¿’å¾—ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ãã„",
 );
 
 #=================================================
-# —‚µ‚ç‚×‚é>NPC
+# ï¼ ã—ã‚‰ã¹ã‚‹>NPC
 #=================================================
 sub shiraberu_npc {
-	$mes = qq|$npc_nameu‚¢‚â‚ñB‚Ç‚±‚ğ‚³‚í‚Á‚Æ‚é‚ñ‚¶‚á‚ÁIv|;
+	$mes = qq|$npc_nameã€Œã„ã‚„ã‚“ã€‚ã©ã“ã‚’ã•ã‚ã£ã¨ã‚‹ã‚“ã˜ã‚ƒã£ï¼ã€|;
 }
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚ê‚µ‚Ò';
-push @actions, '‚ê‚ñ‚«‚ñ';
-$actions{'‚ê‚µ‚Ò'}   = sub{ &reshipi }; 
-$actions{'‚ê‚ñ‚«‚ñ'} = sub{ &renkin }; 
+push @actions, 'ã‚Œã—ã´';
+push @actions, 'ã‚Œã‚“ãã‚“';
+$actions{'ã‚Œã—ã´'}   = sub{ &reshipi }; 
+$actions{'ã‚Œã‚“ãã‚“'} = sub{ &renkin }; 
 
 #=================================================
-# —‚ê‚µ‚Ò
+# ï¼ ã‚Œã—ã´
 #=================================================
 sub reshipi {
-	# ƒŒƒVƒsˆê——“Ç‚İ‚İ
+	# ãƒ¬ã‚·ãƒ”ä¸€è¦§èª­ã¿è¾¼ã¿
 	require './lib/_alchemy_recipe.cgi';
 	my $all_c = map { keys %{ $recipes{$_} } } keys %recipes;
 
 	my $c = 0;
 	my $comp_c = 0;
 	my $p = qq|<table><tr><td><table class="table1">|;
-	open my $fh, "< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($is_make, $base, $sozai, $mix) = split /<>/, $line;
 		
@@ -64,9 +64,9 @@ sub reshipi {
 			++$comp_c;
 		}
 		else {
-			$mix = 'HHH';
+			$mix = 'ï¼Ÿï¼Ÿï¼Ÿ';
 		}
-		$p .= qq|<tr onclick="text_set('—‚ê‚ñ‚«‚ñ>$base—‚»‚´‚¢>$sozai ')"><td>$base</td><td>~$sozai</td><td>$mix</td></tr>|;
+		$p .= qq|<tr onclick="text_set('ï¼ ã‚Œã‚“ãã‚“>$baseï¼ ãã–ã„>$sozai ')"><td>$base</td><td>Ã—$sozai</td><td>ï¼$mix</td></tr>|;
 		$p .= qq|</td></tr></table></td><td><table class="table1"><tr><td>| if ++$c % 40 == 0;
 	}
 	close $fh;
@@ -74,38 +74,38 @@ sub reshipi {
 	my $comp_par = int($comp_c / $all_c * 100);
 	if ($comp_par >= 100) {
 		unless (-f "$userdir/$id/comp_alc_flag.cgi") {
-			open my $fh2, "> $userdir/$id/comp_alc_flag.cgi" or &error("$userdir/$id/comp_alc_flag.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh2, "> $userdir/$id/comp_alc_flag.cgi" or &error("$userdir/$id/comp_alc_flag.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			close $fh2;
 			
 			&write_legend('comp_alc');
 			&write_memory(qq|<span class="comp">Alchemy Complete!!</span>|);
-			&write_news(qq|<span class="comp">$m‚ª˜B‹àƒŒƒVƒs‚ğƒRƒ“ƒvƒŠ[ƒg‚·‚éI</span>|);
-			$npc_com .= qq|<span class="comp">$m‚Í <b>˜B‹àƒŒƒVƒs</b> ‚ğƒRƒ“ƒvƒŠ[ƒg‚µ‚Ü‚µ‚½I</span>‚Ì‚¶‚á|;
+			&write_news(qq|<span class="comp">$mãŒéŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã‚’ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã™ã‚‹ï¼</span>|);
+			$npc_com .= qq|<span class="comp">$mã¯ <b>éŒ¬é‡‘ãƒ¬ã‚·ãƒ”</b> ã‚’ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã—ã¾ã—ãŸï¼</span>ã®ã˜ã‚ƒ|;
 		}
 		
 		$comp_par = 100;
 	}
 
-	$mes = qq|$m‚Ì˜B‹àƒŒƒVƒs@ƒRƒ“ƒvƒŠ[ƒg—¦s<b>$comp_par</b>“t<br />$p</td></tr></table></td></tr></table>|;
+	$mes = qq|$mã®éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã€€ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ã€Š<b>$comp_par</b>ï¼…ã€‹<br />$p</td></tr></table></td></tr></table>|;
 	$act_time = 0;
 }
 
 
 #=================================================
-# —‚ê‚ñ‚«‚ñ
+# ï¼ ã‚Œã‚“ãã‚“
 #=================================================
 sub renkin {
 	my $target = shift;
-	my($base_t, $sozai_t) = split /—‚»‚´‚¢&gt;/, $target;
+	my($base_t, $sozai_t) = split /ï¼ ãã–ã„&gt;/, $target;
 
 	if ($m{recipe}) {
-		$mes = "Š®¬‚·‚é‚Ü‚Å‚µ‚Î‚µ‘Ò‚½‚ê‚æ";
+		$mes = "å®Œæˆã™ã‚‹ã¾ã§ã—ã°ã—å¾…ãŸã‚Œã‚ˆ";
 		return;
 	}
 
 	my $c = 0;
 	my $p = qq|<table><tr><td><table class="table1">|;
-	open my $fh, "< $userdir/$id/recipe.cgi" or &error("$userdir/$id/recipe.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$id/recipe.cgi" or &error("$userdir/$id/recipe.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($is_make, $base, $sozai, $mix) = split /<>/, $line;
 		
@@ -115,36 +115,36 @@ sub renkin {
 			if ($is_clear) {
 				$m{recipe} = "0,${is_make},${base},${sozai},${mix}";
 				$npc_com = $is_make
-					? "$base ‚Æ $sozai ‚¶‚á‚ÈI‚Ó‚ŞA‚±‚Ì‘g‚İ‡‚í‚¹‚È‚ç $mix ‚ª‚Å‚«‚é‚¼IŠ®¬‚·‚é ‚É‚Ü‚½—ˆ‚é‚ª‚æ‚¢"
-					: "$base ‚Æ $sozai ‚¶‚á‚ÈI‚¨‚¨A˜B‹à‰Â”\\‚È‚æ‚¤‚¶‚áI‰½‚ªo—ˆ‚é‚©Šy‚µ‚İ‚¶‚á‚ÈIˆê”Ó‚½‚Ä‚ÎŠ®¬‚·‚é‚¶‚á‚ë‚¤BŠ®¬‚·‚é ‚É‚Ü‚½—ˆ‚é‚ª‚æ‚¢";
+					? "$base ã¨ $sozai ã˜ã‚ƒãªï¼ãµã‚€ã€ã“ã®çµ„ã¿åˆã‚ã›ãªã‚‰ $mix ãŒã§ãã‚‹ãï¼å®Œæˆã™ã‚‹é ƒã«ã¾ãŸæ¥ã‚‹ãŒã‚ˆã„"
+					: "$base ã¨ $sozai ã˜ã‚ƒãªï¼ãŠãŠã€éŒ¬é‡‘å¯èƒ½\ãªã‚ˆã†ã˜ã‚ƒï¼ä½•ãŒå‡ºæ¥ã‚‹ã‹æ¥½ã—ã¿ã˜ã‚ƒãªï¼ä¸€æ™©ãŸã¦ã°å®Œæˆã™ã‚‹ã˜ã‚ƒã‚ã†ã€‚å®Œæˆã™ã‚‹é ƒã«ã¾ãŸæ¥ã‚‹ãŒã‚ˆã„";
 			}
 			else {
-				$npc_com = "c”O‚È‚ª‚ç $base ‚Æ $sozai ‚ÌŞ—¿‚ª—a‚èŠ‚É‚È‚¢‚æ‚¤‚¶‚á";
+				$npc_com = "æ®‹å¿µãªãŒã‚‰ $base ã¨ $sozai ã®ææ–™ãŒé ã‚Šæ‰€ã«ãªã„ã‚ˆã†ã˜ã‚ƒ";
 			}
 			last;
 		}
 		else {
-			$mix = 'HHH' unless $is_make;
-			$p .= qq|<tr onclick="text_set('—‚ê‚ñ‚«‚ñ>$base—‚»‚´‚¢>$sozai ')"><td>$base</td><td>~$sozai</td><td>$mix</td></tr>|;
+			$mix = 'ï¼Ÿï¼Ÿï¼Ÿ' unless $is_make;
+			$p .= qq|<tr onclick="text_set('ï¼ ã‚Œã‚“ãã‚“>$baseï¼ ãã–ã„>$sozai ')"><td>$base</td><td>Ã—$sozai</td><td>ï¼$mix</td></tr>|;
 		}
 		$p .= qq|</td></tr></table></td><td><table class="table1"><tr><td>| if ++$c % 40 == 0;
 	}
 	close $fh;
 	
-	$npc_com = "˜B‹àÚ¼Ëß‚ÅK“¾‚µ‚½‚à‚Ì‚µ‚©˜B‹à‚·‚é‚±‚Æ‚Í‚Å‚«‚ñ‚¼" if !$npc_com && $base_t && $sozai_t;
+	$npc_com = "éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã§ç¿’å¾—ã—ãŸã‚‚ã®ã—ã‹éŒ¬é‡‘ã™ã‚‹ã“ã¨ã¯ã§ãã‚“ã" if !$npc_com && $base_t && $sozai_t;
 	return if $npc_com;
-	$mes = qq|$m‚Ì˜B‹àƒŒƒVƒs<br />$p</td></tr></table></td></tr></table>|;
+	$mes = qq|$mã®éŒ¬é‡‘ãƒ¬ã‚·ãƒ”<br />$p</td></tr></table></td></tr></table>|;
 	$act_time = 0;
 }
 #-------------------
-# ‘qŒÉƒ`ƒFƒbƒNBğŒƒNƒŠƒA‚È‚çŠY“–‚ÌƒAƒCƒeƒ€‚ğŒ¸‚ç‚·
+# å€‰åº«ãƒã‚§ãƒƒã‚¯ã€‚æ¡ä»¶ã‚¯ãƒªã‚¢ãªã‚‰è©²å½“ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¸›ã‚‰ã™
 sub check_depot {
 	my($base, $sozai) = @_;
 
 	my $has_base = 0;
 	my $has_sozai = 0;
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($kind, $no) = split /<>/, $line;
@@ -155,7 +155,7 @@ sub check_depot {
 		elsif (!$has_sozai && $name eq $sozai) { $has_sozai = 1 }
 		else                                   { push @lines, $line }
 	}
-	if ($has_base && $has_sozai) { # ğŒ”‚ğƒNƒŠƒA‚µ‚Ä‚½‚çã‘‚«
+	if ($has_base && $has_sozai) { # æ¡ä»¶æ•°ã‚’ã‚¯ãƒªã‚¢ã—ã¦ãŸã‚‰ä¸Šæ›¸ã
 		seek  $fh, 0, 0;
 		truncate $fh, 0;
 		print $fh @lines;
@@ -169,28 +169,28 @@ sub check_depot {
 }
 
 #=================================================
-# Š®¬
+# å®Œæˆ
 #=================================================
 sub finish {
 	my($is_finish, $is_make, $base, $sozai, $mix) = split /,/, $m{recipe};
-	$com = "—‚ê‚ñ‚«‚ñ‚Å‚©‚ñ‚¹‚¢‚µ‚½‚à‚Ì‚ğ‚¤‚¯‚Æ‚é";
-	$npc_com = "‚Ü‚Á‚Ä‚¨‚Á‚½‚¼I$base‚Æ$sozai‚ğ˜B‹à‚µ‚½ <b>$mix</b> ‚ªŠ®¬‚µ‚½‚¼‚¢Io—ˆã‚ª‚Á‚½ƒAƒCƒeƒ€‚Í—a‚©‚èŠ‚Ì•û‚É‘—‚Á‚Ä‚¨‚¢‚½‚¼‚¢I";
+	$com = "ï¼ ã‚Œã‚“ãã‚“ã§ã‹ã‚“ã›ã„ã—ãŸã‚‚ã®ã‚’ã†ã‘ã¨ã‚‹";
+	$npc_com = "ã¾ã£ã¦ãŠã£ãŸãï¼$baseã¨$sozaiã‚’éŒ¬é‡‘ã—ãŸ <b>$mix</b> ãŒå®Œæˆã—ãŸãã„ï¼å‡ºæ¥ä¸ŠãŒã£ãŸã‚¢ã‚¤ãƒ†ãƒ ã¯é ã‹ã‚Šæ‰€ã®æ–¹ã«é€ã£ã¦ãŠã„ãŸãã„ï¼";
 	$m{recipe} = '';
 	++$m{alc_c};
 
 	my($kind, $no) = &get_item_no($mix);
-	if ($kind eq '0') { # –¢İ’è‚Ì‘¶İ‚µ‚È‚¢ƒAƒCƒeƒ€–¼‚¾‚Á‚½ê‡(config.cgi‚É’Ç‰Á‚µ–Y‚ê)
-		$npc_com .= qq|<b style="color: #F00">$mix ‚Æ‚¢‚¤ƒAƒCƒeƒ€‚ªİ’è‚³‚ê‚Ä‚¨‚ç‚ñ‚æ‚¤‚¶‚ácB‚±‚±‚ÌŠÇ—Ò‚É“`‚¦‚é‚ñ‚¶‚áI</b>|;
+	if ($kind eq '0') { # æœªè¨­å®šã®å­˜åœ¨ã—ãªã„ã‚¢ã‚¤ãƒ†ãƒ åã ã£ãŸå ´åˆ(config.cgiã«è¿½åŠ ã—å¿˜ã‚Œ)
+		$npc_com .= qq|<b style="color: #F00">$mix ã¨ã„ã†ã‚¢ã‚¤ãƒ†ãƒ ãŒè¨­å®šã•ã‚Œã¦ãŠã‚‰ã‚“ã‚ˆã†ã˜ã‚ƒâ€¦ã€‚ã“ã“ã®ç®¡ç†è€…ã«ä¼ãˆã‚‹ã‚“ã˜ã‚ƒï¼</b>|;
 	}
 	else {
 		&send_item($m, $kind, $no);
 	}
 	
-	# –¢ì¬‚È‚çƒŒƒVƒs‚Éì¬‚µ‚½ƒtƒ‰ƒO‚ğ‚½‚Ä‚é
+	# æœªä½œæˆãªã‚‰ãƒ¬ã‚·ãƒ”ã«ä½œæˆã—ãŸãƒ•ãƒ©ã‚°ã‚’ãŸã¦ã‚‹
 	&finished_recipe($base, $sozai, $mix) unless $is_make;
 }
 #-------------------
-# ƒAƒCƒeƒ€–¼‚©‚çƒAƒCƒeƒ€í—Ş‚ÆNo‚ğæ“¾
+# ã‚¢ã‚¤ãƒ†ãƒ åã‹ã‚‰ã‚¢ã‚¤ãƒ†ãƒ ç¨®é¡ã¨Noã‚’å–å¾—
 sub get_item_no {
 	my $name = shift;
 	for my $i (1..$#weas) { return 1, $i if $weas[$i][1] eq $name; }
@@ -199,12 +199,12 @@ sub get_item_no {
 	return 0;
 }
 #-------------------
-# ƒŒƒVƒs‚Éì¬‚µ‚½ƒtƒ‰ƒO‚ğ‚½‚Ä‚é
+# ãƒ¬ã‚·ãƒ”ã«ä½œæˆã—ãŸãƒ•ãƒ©ã‚°ã‚’ãŸã¦ã‚‹
 sub finished_recipe {
 	my($new_base, $new_sozai, $new_mix) = @_;
 
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($is_make, $base, $sozai, $mix) = split /<>/, $line;
@@ -223,4 +223,4 @@ sub finished_recipe {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

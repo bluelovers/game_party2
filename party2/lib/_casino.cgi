@@ -1,56 +1,56 @@
 #=================================================
-# ƒJƒWƒm‹¤’Êˆ— Created by Merino
+# ã‚«ã‚¸ãƒå…±é€šå‡¦ç† Created by Merino
 #=================================================
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file = "$casinodir/$m{quest}/log";
 
 #=================================================
-# í“¬—pƒAƒNƒVƒ‡ƒ“ƒZƒbƒg(ƒvƒŒƒCƒ„[—p)
+# æˆ¦é—˜ç”¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚»ãƒƒãƒˆ(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”¨)
 #=================================================
 sub set_action {
 	unless (defined $ms{$m}{name}) {
-		push @actions, ('‚É‚°‚é','‚·‚­‚µ‚å');
-		$actions{'‚É‚°‚é'}   = sub{ &nigeru  };
-		$actions{'‚·‚­‚µ‚å'} = sub{ &sukusho };
+		push @actions, ('ã«ã’ã‚‹','ã™ãã—ã‚‡');
+		$actions{'ã«ã’ã‚‹'}   = sub{ &nigeru  };
+		$actions{'ã™ãã—ã‚‡'} = sub{ &sukusho };
 		return;
 	}
 
 	&add_casino_action;
-	push @actions, ('‚É‚°‚é','‚·‚­‚µ‚å');
-	$actions{'‚É‚°‚é'}   = sub{ &nigeru   };
-	$actions{'‚·‚­‚µ‚å'} = sub{ &sukusho  };
+	push @actions, ('ã«ã’ã‚‹','ã™ãã—ã‚‡');
+	$actions{'ã«ã’ã‚‹'}   = sub{ &nigeru   };
+	$actions{'ã™ãã—ã‚‡'} = sub{ &sukusho  };
 	return unless defined $ms{$m}{name};
 
-	if ($round == 0) { # ŠJn‘O
-		push @actions, ('‚©‚¢‚µ','‚³‚»‚¤');
-		$actions{'‚©‚¢‚µ'} = sub{ &kaishi };
-		$actions{'‚³‚»‚¤'}  = sub{ &sasou  };
-		if ($m eq $leader) { # Ø°ÀŞ°‚Ì‚İ
-			push @actions, ('‚«‚Á‚­');
-			$actions{'‚«‚Á‚­'} = sub{ &kick };
+	if ($round == 0) { # é–‹å§‹å‰
+		push @actions, ('ã‹ã„ã—','ã•ãã†');
+		$actions{'ã‹ã„ã—'} = sub{ &kaishi };
+		$actions{'ã•ãã†'}  = sub{ &sasou  };
+		if ($m eq $leader) { # ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿
+			push @actions, ('ãã£ã');
+			$actions{'ãã£ã'} = sub{ &kick };
 		}
 	}
 }
 
 #=================================================
-# ‰æ–Êƒwƒbƒ_[
+# ç”»é¢ãƒ˜ãƒƒãƒ€ãƒ¼
 #=================================================
 sub header_html {
-	print qq|<div class="mes">y$this_titlez ƒRƒCƒ“<b>$m{coin}</b>–‡</div>|;
+	print qq|<div class="mes">ã€$this_titleã€‘ ã‚³ã‚¤ãƒ³<b>$m{coin}</b>æš</div>|;
 }
 
 
-# $FH ”r‘¼§Œä‚ğ‚·‚é‚½‚ß‚ÌƒOƒ[ƒoƒ‹•Ï”(‚±‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ)B•¡”‚ÌƒvƒŒƒCƒ„[‚ª“¯‚¶ƒtƒ@ƒCƒ‹‚ğ‹¤—L‚·‚é‚½‚ßB
+# $FH æ’ä»–åˆ¶å¾¡ã‚’ã™ã‚‹ãŸã‚ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°(ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿)ã€‚è¤‡æ•°ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒåŒã˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å…±æœ‰ã™ã‚‹ãŸã‚ã€‚
 my $FH;
 #=================================================
-# ƒƒ“ƒo[“Ç‚İ‚İ
+# ãƒ¡ãƒ³ãƒãƒ¼èª­ã¿è¾¼ã¿
 #=================================================
 sub read_member {
 	@members = ();
 	%ms = (); # Members
 
 	my $count = 0;
-	open $FH, "+< $casinodir/$m{quest}/member.cgi" or do{ $m{lib} = ''; $m{quest} = ''; &write_user; &error("‚·‚Å‚Éƒp[ƒeƒB[‚ª‰ğU‚µ‚Ä‚µ‚Ü‚Á‚½‚æ‚¤‚Å‚·"); };
+	open $FH, "+< $casinodir/$m{quest}/member.cgi" or do{ $m{lib} = ''; $m{quest} = ''; &write_user; &error("ã™ã§ã«ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãŒè§£æ•£ã—ã¦ã—ã¾ã£ãŸã‚ˆã†ã§ã™"); };
 	eval { flock $FH, 2; };
 	my $head_line = <$FH>;
 	($speed,$stage,$round,$leader,$p_name,$p_pass,$p_join,$win,$bet,$is_visit,$now_bet,$max_bet) = split /<>/, $head_line;
@@ -66,14 +66,14 @@ sub read_member {
 		push @members, $name;
 	}
 	
-	$this_title = $stage eq 'ƒhƒbƒyƒ‹' ? "$p_name “q‚¯º²İ<b>$bet</b>–‡"
-				: "$p_name šƒŒ[ƒg<b>$bet</b>–‡ šŒ»İ‚ÌƒŒ[ƒg<b>$now_bet</b>–‡ šÅ‘åƒŒ[ƒg<b>$max_bet</b>–‡";
-	$bgimg = "$bgimgdir/casino.gif"; # ”wŒi‰æ‘œ
+	$this_title = $stage eq 'ãƒ‰ãƒƒãƒšãƒ«' ? "$p_name è³­ã‘ã‚³ã‚¤ãƒ³<b>$bet</b>æš"
+				: "$p_name â˜…ãƒ¬ãƒ¼ãƒˆ<b>$bet</b>æš â˜…ç¾åœ¨ã®ãƒ¬ãƒ¼ãƒˆ<b>$now_bet</b>æš â˜…æœ€å¤§ãƒ¬ãƒ¼ãƒˆ<b>$max_bet</b>æš";
+	$bgimg = "$bgimgdir/casino.gif"; # èƒŒæ™¯ç”»åƒ
 }
 
 
 #=================================================
-# ƒƒ“ƒo[‘‚«‚İ
+# ãƒ¡ãƒ³ãƒãƒ¼æ›¸ãè¾¼ã¿
 #=================================================
 sub write_member {
 	return unless -d "$casinodir/$m{quest}";
@@ -95,16 +95,16 @@ sub write_member {
 }
 
 #=================================================
-# í“¬ƒAƒNƒVƒ‡ƒ“
+# æˆ¦é—˜ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub action {
 	$com .= "\x20";
-	$com =~ /—(.+?)(?:(?:\x20|@)?&gt;(.+?)(?:\x20|@)|\x20|@)/;
+	$com =~ /ï¼ (.+?)(?:(?:\x20|ã€€)?&gt;(.+?)(?:\x20|ã€€)|\x20|ã€€)/;
 	my $action = $1;
 	my $target = $2 ? $2 : '';
 	return unless defined $actions{$action};
  	if ($nokori > 0) {
-		$mes = "‚Ü‚¾s“®‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "ã¾ã è¡Œå‹•ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	
@@ -119,7 +119,7 @@ sub action {
 
 
 #=================================================
-# —‚³‚»‚¤
+# ï¼ ã•ãã†
 #=================================================
 sub sasou {
 	my $y = shift;
@@ -131,32 +131,32 @@ sub sasou {
 		$to_name = $y;
 		return;
 	}
-	$mes .= "’N‚ğ‚³‚»‚¢‚Ü‚·‚©H<br />";
-	open my $fh, "< ${this_file}_member.cgi" or &error("${this_file}_member.cgiƒtƒ@ƒCƒ‹‚ª‚ªŠJ‚¯‚Ü‚¹‚ñ"); 
+	$mes .= "èª°ã‚’ã•ãã„ã¾ã™ã‹ï¼Ÿ<br />";
+	open my $fh, "< ${this_file}_member.cgi" or &error("${this_file}_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒãŒé–‹ã‘ã¾ã›ã‚“"); 
 	while (my $line = <$fh>) {
 		my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
 		next if $time - $limit_member_time > $ltime;
-		next if $sames{$name}++; # “¯‚¶l‚È‚çŸ
-		$mes .= qq|<span onclick="text_set('—‚³‚»‚¤>$name ')" style="color: $color;"><img src="$icondir/$icon" alt="$name" />$name</span>|;
+		next if $sames{$name}++; # åŒã˜äººãªã‚‰æ¬¡
+		$mes .= qq|<span onclick="text_set('ï¼ ã•ãã†>$name ')" style="color: $color;"><img src="$icondir/$icon" alt="$name" />$name</span>|;
 	}
 	close $fh;
 }
 
 #=================================================
-# —‚«‚Á‚­
+# ï¼ ãã£ã
 #=================================================
 sub kick {
 	my $y = shift;
 	
-	$mes = "©•ª‚ğ‚«‚Á‚­‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"		if $y eq $m;
-	$mes = "ƒŠ[ƒ_[‚¶‚á‚È‚¢‚Ì‚Å‚«‚Á‚­‚Å‚«‚Ü‚¹‚ñ"	if $leader ne $m;
-	$mes = "ƒNƒGƒXƒg’†‚Í‚«‚Á‚­‚Å‚«‚Ü‚¹‚ñ"			if $round > 0;
+	$mes = "è‡ªåˆ†ã‚’ãã£ãã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“"		if $y eq $m;
+	$mes = "ãƒªãƒ¼ãƒ€ãƒ¼ã˜ã‚ƒãªã„ã®ã§ãã£ãã§ãã¾ã›ã‚“"	if $leader ne $m;
+	$mes = "ã‚¯ã‚¨ã‚¹ãƒˆä¸­ã¯ãã£ãã§ãã¾ã›ã‚“"			if $round > 0;
 	return if $mes;
 
 	unless ($y) {
-		$mes = "’N‚ğ‚«‚Á‚­‚µ‚Ü‚·‚©H<br />";
+		$mes = "èª°ã‚’ãã£ãã—ã¾ã™ã‹ï¼Ÿ<br />";
 		for my $name (@partys) {
-			$mes .= qq|<span onclick="text_set('—‚«‚Á‚­>$name')">$name</span>|;
+			$mes .= qq|<span onclick="text_set('ï¼ ãã£ã>$name')">$name</span>|;
 		}
 		return;
 	}
@@ -165,17 +165,17 @@ sub kick {
 		if ($members[$i] eq $y) {
 			&regist_you_data($y, 'lib', 'quest');
 			&regist_you_data($y, 'wt', $time + 60);
-			$com.="$y‚ğ‚«‚Á‚­‚µ‚Ü‚µ‚½";
+			$com.="$yã‚’ãã£ãã—ã¾ã—ãŸ";
 			splice(@members, $i, 1);
 			
 			my @lines = ();
-			open my $fh, "+< $logdir/casino.cgi" or &error("$logdir/casino.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh, "+< $logdir/casino.cgi" or &error("$logdir/casino.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			eval { flock $fh, 2 };
 			while (my $line = <$fh>) {
 				push @lines, $line;
 			}
 			push @lines, $line;
-			unshift @lines, "$time<>$date<>$npc_name<>NPC<>$npc_color<>$p_name‚ÌƒŠ[ƒ_[$m‚©‚ç‚«‚Á‚­‚³‚ê‚Ü‚µ‚½<>$y<>\n";
+			unshift @lines, "$time<>$date<>$npc_name<>NPC<>$npc_color<>$p_nameã®ãƒªãƒ¼ãƒ€ãƒ¼$mã‹ã‚‰ãã£ãã•ã‚Œã¾ã—ãŸ<>$y<>\n";
 			seek  $fh, 0, 0;
 			truncate $fh, 0;
 			print $fh @lines;
@@ -188,12 +188,12 @@ sub kick {
 
 
 #=================================================
-# —‚É‚°‚é
+# ï¼ ã«ã’ã‚‹
 #=================================================
 sub nigeru {
 	$m{lib} = 'casino';
 
-	# ƒNƒGƒXƒg‚Ìƒƒ“ƒo[ƒŠƒXƒg‚©‚çœ‚­
+	# ã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ¡ãƒ³ãƒãƒ¼ãƒªã‚¹ãƒˆã‹ã‚‰é™¤ã
 	my $is_join = 0;
 	my @new_members = ();
 	for my $name (@members) {
@@ -206,33 +206,33 @@ sub nigeru {
 	@members = @new_members;
 
 
-	# Œ©ŠwÒ‚Í‚»‚Ì‚Ü‚Ü‹A‚·
+	# è¦‹å­¦è€…ã¯ãã®ã¾ã¾å¸°ã™
 	unless ($is_join) {
-		$mes ="$p_name‚ÌŒ©Šw‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½";
-		&reload("$p_name‚ÌŒ©Šw‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½");
+		$mes ="$p_nameã®è¦‹å­¦ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ";
+		&reload("$p_nameã®è¦‹å­¦ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ");
 		return;
 	}
 	
-	# ”æ˜J“xƒvƒ‰ƒX
+	# ç–²åŠ´åº¦ãƒ—ãƒ©ã‚¹
 	$m{tired} += 1;
 	$m{is_eat} = 0;
 	
-	&reload("•”‰®‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½");
+	&reload("éƒ¨å±‹ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ");
 
-	# ’N‚à‚¢‚È‚­‚È‚Á‚½‚çƒNƒGƒXƒg‚ğíœ
+	# èª°ã‚‚ã„ãªããªã£ãŸã‚‰ã‚¯ã‚¨ã‚¹ãƒˆã‚’å‰Šé™¤
 	if (@members < 1) {
 		&write_member;
 		$this_file = "$logdir/casino";
 		&delete_directory("$casinodir/$m{quest}");
-		$mes = "•”‰®‚©‚ç“¦‚°o‚µ‚Ü‚µ‚½";
+		$mes = "éƒ¨å±‹ã‹ã‚‰é€ƒã’å‡ºã—ã¾ã—ãŸ";
 	}
 	else {
 		&next_round;
 
-		# Ø°ÀŞ°‚¾‚Á‚½ê‡Ø°ÀŞ°Œğ‘ã
+		# ãƒªãƒ¼ãƒ€ãƒ¼ã ã£ãŸå ´åˆãƒªãƒ¼ãƒ€ãƒ¼äº¤ä»£
 		if ($leader eq $m) {
 			$leader = $members[0];
-			$npc_com = "$p_name‚ÌƒŠ[ƒ_[‚ª$leader‚É‚È‚è‚Ü‚µ‚½";
+			$npc_com = "$p_nameã®ãƒªãƒ¼ãƒ€ãƒ¼ãŒ$leaderã«ãªã‚Šã¾ã—ãŸ";
 		}
 		&write_member;
 	}
@@ -240,12 +240,12 @@ sub nigeru {
 
 
 #================================================
-# “¬‹ZêAƒMƒ‹ƒhí‚ÌƒS[ƒ‹ƒhAƒMƒ‹ƒhƒ|ƒCƒ“ƒg‚Ì‘Œ¸
+# é—˜æŠ€å ´ã€ã‚®ãƒ«ãƒ‰æˆ¦ã®ã‚´ãƒ¼ãƒ«ãƒ‰ã€ã‚®ãƒ«ãƒ‰ãƒã‚¤ãƒ³ãƒˆã®å¢—æ¸›
 #================================================
 sub add_bet {
 	my($quest_id, $add_bet) = @_;
 
-	open my $fh, "+< $casinodir/$quest_id/bet.cgi" or &error("$casinodir/$quest_id/bet.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $casinodir/$quest_id/bet.cgi" or &error("$casinodir/$quest_id/bet.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $bet = <$fh>;
 	$bet =~ tr/\x0D\x0A//d;
@@ -258,42 +258,42 @@ sub add_bet {
 
 
 
-# º²İx•¥‚¢
+# ã‚³ã‚¤ãƒ³æ”¯æ‰•ã„
 sub give_coin {
 	my $give_coin = shift || $now_bet;
 	$m{coin} -= $give_coin;
 	&add_bet($m{quest}, $give_coin);
-	$com.=qq|<span class="st_down">¶¼ŞÉº²İ‚ğ <b>$give_coin</b>–‡ x•¥‚¢‚Ü‚µ‚½</span>|;
+	$com.=qq|<span class="st_down">ã‚«ã‚¸ãƒã‚³ã‚¤ãƒ³ã‚’ <b>$give_coin</b>æš æ”¯æ‰•ã„ã¾ã—ãŸ</span>|;
 }
 
 
-# º²İ‚ª‚È‚¢l‹­§‘Şê
+# ã‚³ã‚¤ãƒ³ãŒãªã„äººå¼·åˆ¶é€€å ´
 sub reload_member {
 	my $winner = shift;
 	my @new_members = ();
 	for my $name (@members) {
 		my %p = &get_you_datas($name);
 		if ($p{coin} <= 0) {
-			$npc_com .= qq|<span class="die">$name‚Íº²İ‚ª‚È‚­‚È‚Á‚½I</span><br />|;
+			$npc_com .= qq|<span class="die">$nameã¯ã‚³ã‚¤ãƒ³ãŒãªããªã£ãŸï¼</span><br />|;
 			&regist_you_data($name, 'lib', 'casino');
 
-			# Ø°ÀŞ°‚¾‚Á‚½ê‡Ø°ÀŞ°Œğ‘ã
+			# ãƒªãƒ¼ãƒ€ãƒ¼ã ã£ãŸå ´åˆãƒªãƒ¼ãƒ€ãƒ¼äº¤ä»£
 			if ($leader eq $name && $winner) {
 				$leader = $winner;
-				$npc_com .= "$p_name‚ÌƒŠ[ƒ_[‚ª$leader‚É‚È‚è‚Ü‚µ‚½";
+				$npc_com .= "$p_nameã®ãƒªãƒ¼ãƒ€ãƒ¼ãŒ$leaderã«ãªã‚Šã¾ã—ãŸ";
 			}
 		}
 		else {
-			$ms{$name}{action} = '‘Ò‹@’†' unless $stage eq 'ƒnƒCƒƒE';
+			$ms{$name}{action} = 'å¾…æ©Ÿä¸­' unless $stage eq 'ãƒã‚¤ãƒ­ã‚¦';
 			push @new_members, $name;
 		}
 	}
 	@members = @new_members;
 }
 
-# Ü‹à
+# è³é‡‘
 sub get_coin {
-	open my $fh, "+< $casinodir/$m{quest}/bet.cgi" or &error("$casinodir/$m{quest}/bet.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $casinodir/$m{quest}/bet.cgi" or &error("$casinodir/$m{quest}/bet.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $get_coin = <$fh>;
 	seek  $fh, 0, 0;
@@ -304,4 +304,4 @@ sub get_coin {
 	return $get_coin;
 }
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

@@ -1,52 +1,52 @@
 my $yid = unpack 'H*', $m{home};
-if (!$m{home} || !-d "$userdir/$yid") { my $yhome = $m{home}; $m{home} = $m; &write_user; &error("$yhome‚Æ‚¢‚¤‰Æ‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ"); }
+if (!$m{home} || !-d "$userdir/$yid") { my $yhome = $m{home}; $m{home} = $m; &write_user; &error("$yhomeã¨ã„ã†å®¶ã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“"); }
 #=================================================
-# ƒz[ƒ€ Created by Merino
+# ãƒ›ãƒ¼ãƒ  Created by Merino
 #=================================================
-# è†Aè†‘—‚éAƒAƒCƒeƒ€g—p ü‚é
+# æ‰‹ç´™ã€æ‰‹ç´™é€ã‚‹ã€ã‚¢ã‚¤ãƒ†ãƒ ä½¿ç”¨ é£¾ã‚‹
 
-# êŠ–¼
-$this_title = "$m{home}‚Ì‰Æ";
+# å ´æ‰€å
+$this_title = "$m{home}ã®å®¶";
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$userdir/$yid/home";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$userdir/$yid/bgimg.gif";
 
 $max_monster_word = 120;
 
 #=================================================
-# ‘¼l‚Ì‰Æ‚È‚ç‚±‚±‚Ü‚Å
+# ä»–äººã®å®¶ãªã‚‰ã“ã“ã¾ã§
 unless ($m eq $m{home}) {
-	push @actions, '‚Ë‚é';
-	push @actions, '‚ ‚¢‚Ä‚Ş‚¸‚©‚ñ';
-	push @actions, '‚à‚ñ‚·‚½[‚Ô‚Á‚­';
-	push @actions, '‚¶‚å‚Ô‚Ü‚·‚½[';
-	push @actions, '‚Õ‚ë‚Ó‚¡[‚é';
-	$actions{'‚Ë‚é'}             = sub{ &neru };
-	$actions{'‚ ‚¢‚Ä‚Ş‚¸‚©‚ñ'}   = sub{ &aitemuzukan  };
-	$actions{'‚à‚ñ‚·‚½[‚Ô‚Á‚­'} = sub{ &monster_book };
-	$actions{'‚¶‚å‚Ô‚Ü‚·‚½['}   = sub{ &job_master   };
-	$actions{'‚Õ‚ë‚Ó‚¡[‚é'}     = sub{ &profile      };
+	push @actions, 'ã­ã‚‹';
+	push @actions, 'ã‚ã„ã¦ã‚€ãšã‹ã‚“';
+	push @actions, 'ã‚‚ã‚“ã™ãŸãƒ¼ã¶ã£ã';
+	push @actions, 'ã˜ã‚‡ã¶ã¾ã™ãŸãƒ¼';
+	push @actions, 'ã·ã‚ãµãƒãƒ¼ã‚‹';
+	$actions{'ã­ã‚‹'}             = sub{ &neru };
+	$actions{'ã‚ã„ã¦ã‚€ãšã‹ã‚“'}   = sub{ &aitemuzukan  };
+	$actions{'ã‚‚ã‚“ã™ãŸãƒ¼ã¶ã£ã'} = sub{ &monster_book };
+	$actions{'ã˜ã‚‡ã¶ã¾ã™ãŸãƒ¼'}   = sub{ &job_master   };
+	$actions{'ã·ã‚ãµãƒãƒ¼ã‚‹'}     = sub{ &profile      };
 	return 1;
 }
 
 #=================================================
 
 #=================================================
-# ˆÈ‰ºA©•ª‚Ì‰Æ‚È‚ç
+# ä»¥ä¸‹ã€è‡ªåˆ†ã®å®¶ãªã‚‰
 #=================================================
 if (-f "$userdir/$yid/letter_flag.cgi") {
-	print qq|<div class="get">è†‚ª“Í‚¢‚Ä‚¢‚Ü‚·</div>|;
-	unlink "$userdir/$yid/letter_flag.cgi" or &error("$userdir/$yid/letter_flag.cgiƒtƒ@ƒCƒ‹‚ªíœ‚Å‚«‚Ü‚¹‚ñ");
+	print qq|<div class="get">æ‰‹ç´™ãŒå±Šã„ã¦ã„ã¾ã™</div>|;
+	unlink "$userdir/$yid/letter_flag.cgi" or &error("$userdir/$yid/letter_flag.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒå‰Šé™¤ã§ãã¾ã›ã‚“");
 }
 if (-f "$userdir/$yid/money_flag.cgi") {
-	print qq|<div class="get">‚¨‹à‚ª—a‚©‚èŠ‚É“Í‚¢‚Ä‚¢‚Ü‚·</div>|;
-	unlink "$userdir/$yid/money_flag.cgi" or &error("$userdir/$yid/money_flag.cgiƒtƒ@ƒCƒ‹‚ªíœ‚Å‚«‚Ü‚¹‚ñ");
+	print qq|<div class="get">ãŠé‡‘ãŒé ã‹ã‚Šæ‰€ã«å±Šã„ã¦ã„ã¾ã™</div>|;
+	unlink "$userdir/$yid/money_flag.cgi" or &error("$userdir/$yid/money_flag.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒå‰Šé™¤ã§ãã¾ã›ã‚“");
 }
 if (-s "$userdir/$yid/send_item_mes.cgi") {
-	open my $fh, "+< $userdir/$yid/send_item_mes.cgi" or &error("$userdir/$yid/send_item_mes.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$yid/send_item_mes.cgi" or &error("$userdir/$yid/send_item_mes.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $send_message = <$fh>) {
 		print qq|<div class="get">$send_message</div>|;
 	}
@@ -57,80 +57,80 @@ if (-s "$userdir/$yid/send_item_mes.cgi") {
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚Ë‚é';
-push @actions, '‚ ‚¢‚Ä‚Ş‚¸‚©‚ñ';
-push @actions, '‚à‚ñ‚·‚½[‚Ô‚Á‚­';
-push @actions, '‚¶‚å‚Ô‚Ü‚·‚½[';
-push @actions, '‚Õ‚ë‚Ó‚¡[‚é';
+push @actions, 'ã­ã‚‹';
+push @actions, 'ã‚ã„ã¦ã‚€ãšã‹ã‚“';
+push @actions, 'ã‚‚ã‚“ã™ãŸãƒ¼ã¶ã£ã';
+push @actions, 'ã˜ã‚‡ã¶ã¾ã™ãŸãƒ¼';
+push @actions, 'ã·ã‚ãµãƒãƒ¼ã‚‹';
 push @actions, 'br';
-push @actions, '‚Â‚©‚¤';
-push @actions, '‚Ä‚ª‚İ‚ğ‚©‚­';
-push @actions, '‚Ä‚ª‚İ‚ğ‚æ‚Ş';
-push @actions, '‚©‚ç[';
-push @actions, '‚±‚Æ‚Î‚ğ‚¨‚µ‚¦‚é';
-$actions{'‚Ë‚é'}         = sub{ &neru };
-$actions{'‚ ‚¢‚Ä‚Ş‚¸‚©‚ñ'}   = sub{ &aitemuzukan };
-$actions{'‚à‚ñ‚·‚½[‚Ô‚Á‚­'} = sub{ &monster_book };
-$actions{'‚¶‚å‚Ô‚Ü‚·‚½['}   = sub{ &job_master   };
-$actions{'‚Õ‚ë‚Ó‚¡[‚é'}     = sub{ &profile      };
-$actions{'‚Â‚©‚¤'}       = sub{ &thukau };
-$actions{'‚Ä‚ª‚İ‚ğ‚©‚­'} = sub{ &tegamiwokaku };
-$actions{'‚Ä‚ª‚İ‚ğ‚æ‚Ş'} = sub{ &tegamiwoyomu };
-$actions{'‚©‚ç['}       = sub{ &color };
-$actions{'‚±‚Æ‚Î‚ğ‚¨‚µ‚¦‚é'} = sub{ &kotobawooshieru };
+push @actions, 'ã¤ã‹ã†';
+push @actions, 'ã¦ãŒã¿ã‚’ã‹ã';
+push @actions, 'ã¦ãŒã¿ã‚’ã‚ˆã‚€';
+push @actions, 'ã‹ã‚‰ãƒ¼';
+push @actions, 'ã“ã¨ã°ã‚’ãŠã—ãˆã‚‹';
+$actions{'ã­ã‚‹'}         = sub{ &neru };
+$actions{'ã‚ã„ã¦ã‚€ãšã‹ã‚“'}   = sub{ &aitemuzukan };
+$actions{'ã‚‚ã‚“ã™ãŸãƒ¼ã¶ã£ã'} = sub{ &monster_book };
+$actions{'ã˜ã‚‡ã¶ã¾ã™ãŸãƒ¼'}   = sub{ &job_master   };
+$actions{'ã·ã‚ãµãƒãƒ¼ã‚‹'}     = sub{ &profile      };
+$actions{'ã¤ã‹ã†'}       = sub{ &thukau };
+$actions{'ã¦ãŒã¿ã‚’ã‹ã'} = sub{ &tegamiwokaku };
+$actions{'ã¦ãŒã¿ã‚’ã‚ˆã‚€'} = sub{ &tegamiwoyomu };
+$actions{'ã‹ã‚‰ãƒ¼'}       = sub{ &color };
+$actions{'ã“ã¨ã°ã‚’ãŠã—ãˆã‚‹'} = sub{ &kotobawooshieru };
 #=================================================
-# ‰æ–Êˆê”Ôã‚É•\¦(êŠ‚Ì–¼‘OAƒXƒe[ƒ^ƒX‚È‚Ç)
+# ç”»é¢ä¸€ç•ªä¸Šã«è¡¨ç¤º(å ´æ‰€ã®åå‰ã€ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãªã©)
 #=================================================
 sub header_html { 
 	if ($m{home} eq $m) {
 		my $next_lv = $m{lv} * $m{lv} * 10;
-		print qq|<div class="mes">y$this_titlez $e2j{lv}<b>$m{lv}</b> / $e2j{exp}<b>$m{exp}</b>Exp / Ÿ‚Ì$e2j{lv}<b>$next_lv</b>Exp / “]E‰ñ”<b>$m{job_lv}</b>‰ñ / $e2j{money}<b>$m{money}</b>G / ”æ˜J“x<b>$m{tired}</b>“|;
-		print qq|<span onclick="text_set('—‚Â‚©‚¤>$weas[$m{wea}][1] ')"> / EF$weas[$m{wea}][1]</span>| if $m{wea};
-		print qq|<span onclick="text_set('—‚Â‚©‚¤>$arms[$m{arm}][1] ')"> / EF$arms[$m{arm}][1]</span>| if $m{arm};
-		print qq|<span onclick="text_set('—‚Â‚©‚¤>$ites[$m{ite}][1] ')"> / EF$ites[$m{ite}][1]</span>| if $m{ite};
+		print qq|<div class="mes">ã€$this_titleã€‘ $e2j{lv}<b>$m{lv}</b> / $e2j{exp}<b>$m{exp}</b>Exp / æ¬¡ã®$e2j{lv}<b>$next_lv</b>Exp / è»¢è·å›æ•°<b>$m{job_lv}</b>å› / $e2j{money}<b>$m{money}</b>G / ç–²åŠ´åº¦<b>$m{tired}</b>ï¼…|;
+		print qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$weas[$m{wea}][1] ')"> / Eï¼š$weas[$m{wea}][1]</span>| if $m{wea};
+		print qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$arms[$m{arm}][1] ')"> / Eï¼š$arms[$m{arm}][1]</span>| if $m{arm};
+		print qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$ites[$m{ite}][1] ')"> / Eï¼š$ites[$m{ite}][1]</span>| if $m{ite};
 		print qq|</div>|
 	}
 	else {
-		print qq|<div class="mes">y$this_titlez</div>|;
+		print qq|<div class="mes">ã€$this_titleã€‘</div>|;
 	}
 }
 
 #=================================================
-# —‚à‚ñ‚·‚½[‚Ô‚Á‚­
+# ï¼ ã‚‚ã‚“ã™ãŸãƒ¼ã¶ã£ã
 #=================================================
 sub monster_book {
-	$mes = qq|<form action="$userdir/$yid/monster_book.html" target="_blank"><input type="submit" value="$m{home}‚Ìƒ‚ƒ“ƒXƒ^[ƒuƒbƒN" /></form>|;
+	$mes = qq|<form action="$userdir/$yid/monster_book.html" target="_blank"><input type="submit" value="$m{home}ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯" /></form>|;
 }
 
 #=================================================
-# —‚ ‚¢‚Ä‚Ş‚¸‚©‚ñ
+# ï¼ ã‚ã„ã¦ã‚€ãšã‹ã‚“
 #=================================================
 sub aitemuzukan {
-	$mes = "$m{home}‚ÌƒAƒCƒeƒ€}ŠÓ";
+	$mes = "$m{home}ã®ã‚¢ã‚¤ãƒ†ãƒ å›³é‘‘";
 	$m{lib} = 'collection';
 	&auto_reload;
 }
 #=================================================
-# —‚¶‚å‚Ô‚Ü‚·‚½[
+# ï¼ ã˜ã‚‡ã¶ã¾ã™ãŸãƒ¼
 #=================================================
 sub job_master {
-	$mes = "$m{home}‚ÌƒWƒ‡ƒuƒ}ƒXƒ^[";
+	$mes = "$m{home}ã®ã‚¸ãƒ§ãƒ–ãƒã‚¹ã‚¿ãƒ¼";
 	$m{lib} = 'job_master';
 	&auto_reload;
 }
 #=================================================
-# —‚Õ‚ë‚Ó‚¡[‚é
+# ï¼ ã·ã‚ãµãƒãƒ¼ã‚‹
 #=================================================
 sub profile {
-	$mes = "$m{home}‚ÌƒvƒƒtƒB[ƒ‹";
+	$mes = "$m{home}ã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«";
 	$m{lib} = 'profile';
 	&auto_reload;
 }
 
 #=================================================
-# —‚Ë‚é
+# ï¼ ã­ã‚‹
 #=================================================
 sub neru {
 	my($login_list, $login_count) = &get_login_member;
@@ -138,42 +138,42 @@ sub neru {
 	$m{sleep} = $login_count >= 30 ? $sleep_time * 60 * 3
 			  : $login_count >= 20 ? $sleep_time * 60 * 2
 			  : 				     $sleep_time * 60;
-	$com .= qq|$m‚Íƒxƒbƒh‚É‚à‚®‚è‚±‚ñ‚¾I|;
+	$com .= qq|$mã¯ãƒ™ãƒƒãƒ‰ã«ã‚‚ãã‚Šã“ã‚“ã ï¼|;
 	
 	$m{recipe} =~ s/^0/1/o;
 }
 
 
 #=================================================
-# —‚©‚ç[
+# ï¼ ã‹ã‚‰ãƒ¼
 #=================================================
 sub color {
 	$target = shift;
 	
 	if ($target =~ /(#[0-9a-fA-F]{6})/) {
-		$com .= qq|ƒJƒ‰[‚ğ<font color="$1">$1</font>‚É•ÏX‚µ‚Ü‚µ‚½|;
+		$com .= qq|ã‚«ãƒ©ãƒ¼ã‚’<font color="$1">$1</font>ã«å¤‰æ›´ã—ã¾ã—ãŸ|;
 		$m{color} = $1;
 		return;
 	}
 	else {
 		my %sample_colors = (
-			'ƒŒƒbƒh'		=> '#FF3333',
-			'ƒsƒ“ƒN'		=> '#FF33CC',
-			'ƒIƒŒƒ“ƒW'		=> '#FF9933',
-			'ƒCƒGƒ['		=> '#FFFF33',
-			'ƒOƒŠ[ƒ“'		=> '#33FF33',
-			'ƒAƒNƒA'		=> '#33CCFF',
-			'ƒuƒ‹['		=> '#6666FF',
-			'ƒp[ƒvƒ‹'		=> '#CC66FF',
-			'ƒOƒŒƒC'		=> '#CCCCFF',
-			'ƒzƒƒCƒg'		=> '#FFFFFF',
-			'ƒGƒƒ‰ƒ‹ƒh'	=> '#33FF99',
+			'ãƒ¬ãƒƒãƒ‰'		=> '#FF3333',
+			'ãƒ”ãƒ³ã‚¯'		=> '#FF33CC',
+			'ã‚ªãƒ¬ãƒ³ã‚¸'		=> '#FF9933',
+			'ã‚¤ã‚¨ãƒ­ãƒ¼'		=> '#FFFF33',
+			'ã‚°ãƒªãƒ¼ãƒ³'		=> '#33FF33',
+			'ã‚¢ã‚¯ã‚¢'		=> '#33CCFF',
+			'ãƒ–ãƒ«ãƒ¼'		=> '#6666FF',
+			'ãƒ‘ãƒ¼ãƒ—ãƒ«'		=> '#CC66FF',
+			'ã‚°ãƒ¬ã‚¤'		=> '#CCCCFF',
+			'ãƒ›ãƒ¯ã‚¤ãƒˆ'		=> '#FFFFFF',
+			'ã‚¨ãƒ¡ãƒ©ãƒ«ãƒ‰'	=> '#33FF99',
 		);
 		
-		$mes  = qq|#‚©‚çn‚Ü‚é(16i”‚Ì)ƒJƒ‰[ƒR[ƒh‚ğ‹L“ü‚µ‚Ä‚­‚¾‚³‚¢<br />ƒTƒ“ƒvƒ‹„|;
+		$mes  = qq|#ã‹ã‚‰å§‹ã¾ã‚‹(16é€²æ•°ã®)ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’è¨˜å…¥ã—ã¦ãã ã•ã„<br />ã‚µãƒ³ãƒ—ãƒ«ï¼|;
 		
 		while (my($name, $c_code) = each %sample_colors) {
-			$mes .= qq|<span onclick="text_set('—‚©‚ç[>$c_code ')" style="color: $c_code;">$name</span> |;
+			$mes .= qq|<span onclick="text_set('ï¼ ã‹ã‚‰ãƒ¼>$c_code ')" style="color: $c_code;">$name</span> |;
 		}
 		return;
 	}
@@ -181,28 +181,28 @@ sub color {
 
 
 #=================================================
-# —‚Â‚©‚¤
+# ï¼ ã¤ã‹ã†
 #=================================================
 sub thukau {
 	my $target = shift;
 
 	unless ($target) {
-		$mes .= qq|<span onclick="text_set('—‚Â‚©‚¤>$weas[$m{wea}][1] ')">$weas[$m{wea}][1]</span> / | if $m{wea};
-		$mes .= qq|<span onclick="text_set('—‚Â‚©‚¤>$arms[$m{arm}][1] ')">$arms[$m{arm}][1]</span> / | if $m{arm};
-		$mes .= qq|<span onclick="text_set('—‚Â‚©‚¤>$ites[$m{ite}][1] ')">$ites[$m{ite}][1]</span> / | if $m{ite};
+		$mes .= qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$weas[$m{wea}][1] ')">$weas[$m{wea}][1]</span> / | if $m{wea};
+		$mes .= qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$arms[$m{arm}][1] ')">$arms[$m{arm}][1]</span> / | if $m{arm};
+		$mes .= qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$ites[$m{ite}][1] ')">$ites[$m{ite}][1]</span> / | if $m{ite};
 		
 		$mes .= qq|<br />|;
-		open my $fh, "< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		open my $fh, "< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		while (my $line = <$fh>) {
 			my($kind, $no) = split /<>/, $line;
 			if    ($kind eq '1') {
-				$mes .= qq|<span onclick="text_set('—‚Â‚©‚¤>$weas[$no][1] ')">$weas[$no][1]</span> / |;
+				$mes .= qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$weas[$no][1] ')">$weas[$no][1]</span> / |;
 			}
 			elsif ($kind eq '2') {
-				$mes .= qq|<span onclick="text_set('—‚Â‚©‚¤>$arms[$no][1] ')">$arms[$no][1]</span> / |;
+				$mes .= qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$arms[$no][1] ')">$arms[$no][1]</span> / |;
 			}
 			elsif ($kind eq '3') {
-				$mes .= qq|<span onclick="text_set('—‚Â‚©‚¤>$ites[$no][1] ')">$ites[$no][1]</span> / |;
+				$mes .= qq|<span onclick="text_set('ï¼ ã¤ã‹ã†>$ites[$no][1] ')">$ites[$no][1]</span> / |;
 			}
 		}
 		close $fh;
@@ -211,29 +211,29 @@ sub thukau {
 	}
 	
 	if    ($target eq $weas[$m{wea}][1]) {
-		$mes = qq|•Ší–¼F$weas[$m{wea}][1] / ‹­‚³F<b>$weas[$m{wea}][3]</b> / d‚³F<b>$weas[$m{wea}][4]</b> / ‰¿ŠiF<b>$weas[$m{wea}][2]</b>G|;
+		$mes = qq|æ­¦å™¨åï¼š$weas[$m{wea}][1] / å¼·ã•ï¼š<b>$weas[$m{wea}][3]</b> / é‡ã•ï¼š<b>$weas[$m{wea}][4]</b> / ä¾¡æ ¼ï¼š<b>$weas[$m{wea}][2]</b>G|;
 	}
 	elsif ($target eq $arms[$m{arm}][1]) {
-		$mes = qq|–h‹ï–¼F$arms[$m{arm}][1] / ‹­‚³F<b>$arms[$m{arm}][3]</b> / d‚³F<b>$arms[$m{arm}][4]</b> / ‰¿ŠiF<b>$arms[$m{arm}][2]</b>G|;
+		$mes = qq|é˜²å…·åï¼š$arms[$m{arm}][1] / å¼·ã•ï¼š<b>$arms[$m{arm}][3]</b> / é‡ã•ï¼š<b>$arms[$m{arm}][4]</b> / ä¾¡æ ¼ï¼š<b>$arms[$m{arm}][2]</b>G|;
 	}
 	elsif ($target eq $ites[$m{ite}][1]) {
 		if ($ites[$m{ite}][3] eq '1') {
-			$mes = "$ites[$m{ite}][1]‚Íí“¬’†‚Å‚µ‚©g‚¦‚Ü‚¹‚ñ";
+			$mes = "$ites[$m{ite}][1]ã¯æˆ¦é—˜ä¸­ã§ã—ã‹ä½¿ãˆã¾ã›ã‚“";
 		}
 		elsif ($ites[$m{ite}][3] eq '2') {
-			$com .= "$ites[$m{ite}][1]‚ğ‚Â‚©‚Á‚½I";
+			$com .= "$ites[$m{ite}][1]ã‚’ã¤ã‹ã£ãŸï¼";
 			&{ $ites[$m{ite}][4] };
 			return if $mes;
 			$m{ite} = 0;
 		}
 		else {
-			$mes = "$ites[$m{ite}][1]‚Í‚±‚±‚Å‚Íg‚¦‚Ü‚¹‚ñ";
+			$mes = "$ites[$m{ite}][1]ã¯ã“ã“ã§ã¯ä½¿ãˆã¾ã›ã‚“";
 		}
 	}
 	else {
 		my $is_lost = 0;
 		my @lines = ();
-		open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		open my $fh, "+< $userdir/$id/depot.cgi" or &error("$userdir/$id/depot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		eval { flock $fh, 2; };
 		while (my $line = <$fh>) {
 			my($kind, $no) = split /<>/, $line;
@@ -243,23 +243,23 @@ sub thukau {
 				next;
 			}
 			elsif ($kind eq '1' && $weas[$no][1] eq $target) {
-				$mes = qq|•Ší–¼F$weas[$no][1] / ‹­‚³F<b>$weas[$no][3]</b> / d‚³F<b>$weas[$no][4]</b> / ‰¿ŠiF<b>$weas[$no][2]</b>G|;
+				$mes = qq|æ­¦å™¨åï¼š$weas[$no][1] / å¼·ã•ï¼š<b>$weas[$no][3]</b> / é‡ã•ï¼š<b>$weas[$no][4]</b> / ä¾¡æ ¼ï¼š<b>$weas[$no][2]</b>G|;
 				last;
 			}
 			elsif ($kind eq '2' && $arms[$no][1] eq $target) {
-				$mes = qq|–h‹ï–¼F$arms[$no][1] / ‹­‚³F<b>$arms[$no][3]</b> / d‚³F<b>$arms[$no][4]</b> / ‰¿ŠiF<b>$arms[$no][2]</b>G|;
+				$mes = qq|é˜²å…·åï¼š$arms[$no][1] / å¼·ã•ï¼š<b>$arms[$no][3]</b> / é‡ã•ï¼š<b>$arms[$no][4]</b> / ä¾¡æ ¼ï¼š<b>$arms[$no][2]</b>G|;
 				last;
 			}
 			elsif ($kind eq '3' && $ites[$no][1] eq $target) {
 				if ($ites[$no][3] eq '2') {
-					$com .= "$ites[$no][1]‚ğ‚Â‚©‚Á‚½I";
+					$com .= "$ites[$no][1]ã‚’ã¤ã‹ã£ãŸï¼";
 					&{ $ites[$no][4] };
 					return if $mes;
 					$is_lost = 1;
 					next;
 				}
 				else {
-					$mes = "$ites[$no][1]‚Í‚±‚±‚Å‚Íg‚¦‚Ü‚¹‚ñ";
+					$mes = "$ites[$no][1]ã¯ã“ã“ã§ã¯ä½¿ãˆã¾ã›ã‚“";
 					last;
 				}
 			}
@@ -269,14 +269,14 @@ sub thukau {
 			seek  $fh, 0, 0;
 			truncate $fh, 0;
 			print $fh @lines;
-			&get_depot_c; # –”t‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+			&get_depot_c; # æº€æ¯ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯
 		}
 		close $fh;
 	}
 }
 
 #=================================================
-# —‚Ä‚ª‚İ‚ğ‚©‚­
+# ï¼ ã¦ãŒã¿ã‚’ã‹ã
 #=================================================
 sub tegamiwokaku {
 	my $y = shift;
@@ -285,12 +285,12 @@ sub tegamiwokaku {
 	if ($y) {
 		&send_letter($y, $com);
 		return if $mes;
-		$mes = "$y‚Éè†‚ğ‘—‚è‚Ü‚µ‚½";
+		$mes = "$yã«æ‰‹ç´™ã‚’é€ã‚Šã¾ã—ãŸ";
 		
 		my $new_line = "$time<>$date<>$m<>$addr<>$m{color}<>$com<><>\n";
-		# ©•ª—p‚Ì‘—MƒƒO
+		# è‡ªåˆ†ç”¨ã®é€ä¿¡ãƒ­ã‚°
 		my @lines = ();
-		open my $fh, "+< $userdir/$id/letter_log.cgi" or &error("$userdir/$id/letter_log.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		open my $fh, "+< $userdir/$id/letter_log.cgi" or &error("$userdir/$id/letter_log.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		eval { flock $fh, 2; };
 		while (my $line = <$fh>) {
 			push @lines, $line;
@@ -303,33 +303,33 @@ sub tegamiwokaku {
 		close $fh;
 	}
 	else {
-		$mes = qq|<span onclick="text_set('—‚Ä‚ª‚İ‚ğ‚©‚­')">w¢¢¢—‚Ä‚ª‚İ‚ğ‚©‚­>›››x¢¢¢‚É‘—‚è‚½‚¢•¶‚ğ›››‚É‘—‚èæ‚Ì–¼‘O‚ğ‘‚¢‚Ä‚­‚¾‚³‚¢B</span><br />«‘—MÏ‚İ‚Ìè†|;
+		$mes = qq|<span onclick="text_set('ï¼ ã¦ãŒã¿ã‚’ã‹ã')">ã€â–³â–³â–³ï¼ ã¦ãŒã¿ã‚’ã‹ã>â—‹â—‹â—‹ã€â–³â–³â–³ã«é€ã‚ŠãŸã„æ–‡ã‚’â—‹â—‹â—‹ã«é€ã‚Šå…ˆã®åå‰ã‚’æ›¸ã„ã¦ãã ã•ã„ã€‚</span><br />â†“é€ä¿¡æ¸ˆã¿ã®æ‰‹ç´™|;
 	}
 }
 
 #=================================================
-# —‚Ä‚ª‚İ‚ğ‚æ‚Ş
+# ï¼ ã¦ãŒã¿ã‚’ã‚ˆã‚€
 #=================================================
 sub tegamiwoyomu {
 	$this_file = "$userdir/$id/letter";
-	$mes = "$m‚Ìó‚¯æ‚Á‚½è†";
+	$mes = "$mã®å—ã‘å–ã£ãŸæ‰‹ç´™";
 }
 
 
 #================================================
-# —‚Í‚È‚·
+# ï¼ ã¯ãªã™
 #================================================
 sub hanasu {
 	if (@members <= 1) {
-		$mes = "‚µ‚©‚µA’N‚à‚¢‚È‚©‚Á‚½c" ;
+		$mes = "ã—ã‹ã—ã€èª°ã‚‚ã„ãªã‹ã£ãŸâ€¦" ;
 		return;
 	}
 	
 	my $line;
-	open my $fh, "< $userdir/$yid/hanasu.cgi" or &error("$userdir/$yid/hanasu.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$yid/hanasu.cgi" or &error("$userdir/$yid/hanasu.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	rand($.) < 1 and $line = $_ while <$fh>;
 	close $fh;
-	$line =~ tr/\x0D\x0A//d; # ‰üsíœ
+	$line =~ tr/\x0D\x0A//d; # æ”¹è¡Œå‰Šé™¤
 
 	$npc_name = $members[int(rand(@members))];
 	$npc_name = $members[0] unless $ms{$npc_name}{color} eq $npc_color;
@@ -337,21 +337,21 @@ sub hanasu {
 }
 
 #================================================
-# —‚±‚Æ‚Î‚ğ‚¨‚µ‚¦‚é
+# ï¼ ã“ã¨ã°ã‚’ãŠã—ãˆã‚‹
 #================================================
 sub kotobawooshieru {
 	my $target = shift;
 	
 	unless ($target) {
-		$mes = qq|<span onclick="text_set('—‚±‚Æ‚Î‚ğ‚¨‚µ‚¦‚é> ')">—‚±‚Æ‚Î‚ğ‚¨‚µ‚¦‚é>››› ‚Å‰Æ‚É‚¢‚éƒ‚ƒ“ƒXƒ^[‚ª—‚Í‚È‚·‚Å˜b‚·‚æ‚¤‚É‚È‚è‚Ü‚·|;
+		$mes = qq|<span onclick="text_set('ï¼ ã“ã¨ã°ã‚’ãŠã—ãˆã‚‹> ')">ï¼ ã“ã¨ã°ã‚’ãŠã—ãˆã‚‹>â—‹â—‹â—‹ ã§å®¶ã«ã„ã‚‹ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãŒï¼ ã¯ãªã™ã§è©±ã™ã‚ˆã†ã«ãªã‚Šã¾ã™|;
 		return;
 	}
 	
 	if (@members <= 1) {
-		$mes = "‹³‚¦‚é‘Šè‚ª‚¢‚Ü‚¹‚ñ";
+		$mes = "æ•™ãˆã‚‹ç›¸æ‰‹ãŒã„ã¾ã›ã‚“";
 	}
 	elsif (length $target > $max_monster_word) {
-		$mes = "Œ¾—t‚ª’·‚·‚¬‚Ü‚·(”¼Šp$max_monster_word•¶š‚Ü‚Å)";
+		$mes = "è¨€è‘‰ãŒé•·ã™ãã¾ã™(åŠè§’$max_monster_wordæ–‡å­—ã¾ã§)";
 	}
 	else {
 		$npc_name = $members[int(rand(@members))];
@@ -359,7 +359,7 @@ sub kotobawooshieru {
 		$npc_com  = $target;
 
 		my @lines = ();
-		open my $fh, "+< $userdir/$id/hanasu.cgi" or &error("$userdir/$id/hanasu.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+		open my $fh, "+< $userdir/$id/hanasu.cgi" or &error("$userdir/$id/hanasu.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 		eval { flock $fh, 2; };
 		while (my $line = <$fh>) {
 			push @lines, $line;
@@ -374,17 +374,17 @@ sub kotobawooshieru {
 }
 
 #================================================
-# ƒŒƒVƒsg—p
+# ãƒ¬ã‚·ãƒ”ä½¿ç”¨
 #================================================
 sub learn_recipe {
 	my @learns = @_;
 
-	# ƒŒƒVƒsˆê——“Ç‚İ‚İ
+	# ãƒ¬ã‚·ãƒ”ä¸€è¦§èª­ã¿è¾¼ã¿
 	require './lib/_alchemy_recipe.cgi';
 
-	# Š®¬‚³‚¹‚Ä‚¢‚éƒŒƒVƒs‚ğœ‚­
+	# å®Œæˆã•ã›ã¦ã„ã‚‹ãƒ¬ã‚·ãƒ”ã‚’é™¤ã
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/recipe.cgi" or &errror("$userdir/$id/recipe.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		push @lines, $line;
@@ -393,12 +393,12 @@ sub learn_recipe {
 	}
 
 	my %new_recipes = ();
-	if (@learns) { # K“¾‚Å‚«‚éƒŒƒVƒs§ŒÀ
+	if (@learns) { # ç¿’å¾—ã§ãã‚‹ãƒ¬ã‚·ãƒ”åˆ¶é™
 		for my $learn (@learns) {
 			$new_recipes{$learn} = $recipes{$learn} if defined($recipes{$learn}) && values %{ $recipes{$learn} };
 		}
 	}
-	else { # ‘S•”K“¾‰Â”\(_‚ÌƒŒƒVƒs)
+	else { # å…¨éƒ¨ç¿’å¾—å¯èƒ½(ç¥ã®ãƒ¬ã‚·ãƒ”)
 		for my $k (keys %recipes) {
 			$new_recipes{$k} = $recipes{$k} if values %{ $recipes{$k} };
 		}
@@ -406,7 +406,7 @@ sub learn_recipe {
 	
 	my @bases = keys %new_recipes;
 	if (@bases) {
-		# –¢K“¾‚ÌƒŒƒVƒs‚ğƒ‰ƒ“ƒ_ƒ€‚Åæ“¾
+		# æœªç¿’å¾—ã®ãƒ¬ã‚·ãƒ”ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§å–å¾—
 		my $base = $bases[int rand @bases];
 		my @sozais = keys %{ $recipes{$base} };
 		my $sozai = $sozais[int rand @sozais];
@@ -417,15 +417,15 @@ sub learn_recipe {
 		truncate $fh, 0;
 		print $fh @lines;
 		
-		$com = "$m ‚Í˜B‹àƒŒƒVƒs‚ğ“Ç‚ñ‚¾Iy$base ~ $sozai  HHHz‚Ì˜B‹à•û–@‚ğK“¾‚µ‚½I";
+		$com = "$m ã¯éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã‚’èª­ã‚“ã ï¼ã€$base Ã— $sozai ï¼ ï¼Ÿï¼Ÿï¼Ÿã€‘ã®éŒ¬é‡‘æ–¹æ³•ã‚’ç¿’å¾—ã—ãŸï¼";
 
 	}
 	else {
-		$com = "‚±‚Ì˜B‹àƒŒƒVƒs‚©‚ç‚±‚êˆÈãK“¾‚Å‚«‚é˜B‹à•û–@‚Í‚È‚¢‚æ‚¤‚¾c";
+		$com = "ã“ã®éŒ¬é‡‘ãƒ¬ã‚·ãƒ”ã‹ã‚‰ã“ã‚Œä»¥ä¸Šç¿’å¾—ã§ãã‚‹éŒ¬é‡‘æ–¹æ³•ã¯ãªã„ã‚ˆã†ã â€¦";
 	}
 
 	close $fh;
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

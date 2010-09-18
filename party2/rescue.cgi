@@ -3,7 +3,7 @@ require 'config.cgi';
 require '_side_menu.cgi';
 $sleep_time *= 2;
 #================================================
-# �~�o���� Created by Merino
+# 救出処理 Created by Merino
 #================================================
 &decode;
 &header;
@@ -17,25 +17,25 @@ sub run {
 		return;
 	}
 	my $contents = <<"EOM";
-<h2>�~�o����</h2>
+<h2>救出処理</h2>
 
 <div class="mes" style="width: 600px">
 	<ul>
-		<li>��ʂɉ����\\������Ȃ��Ȃ��Ă��܂���</li>
-		<li>�ςȖ������[�v�ɂ͂܂��Ă��܂����Ȃǂً̋}�~�o�����p</li>
-		<li>���̏����͖{���ɂǂ����悤���Ȃ��Ȃ������ȊO�͎g�p���Ȃ��悤�ɁI</li>
-		<li>�܂��́A�񎟔�Q�O����Q�ɂȂ�Ȃ��悤�Ɍf���Ȃǂɕ񍐂��邱��</li>
-		<li>�������Ă��āA�ǂ̃^�C�~���O�ł����Ȃ��Ă��܂����̂��o�O�������e���ڂ�����</li>
-		<li><font color="#FF0000">�g�p�y�i���e�B�F$sleep_time������</font></li>
-		<li>�Q�Ă����ԂȂǂ̑҂����Ԃ�����������̂ł͂���܂���</li>
+		<li>画面に何も表\示されなくなってしまった</li>
+		<li>変な無限ループにはまってしまったなどの緊急救出処理用</li>
+		<li>この処理は本当にどうしようもなくなった時以外は使用しないように！</li>
+		<li>まずは、二次被害三次被害にならないように掲示板などに報告すること</li>
+		<li>何をしていて、どのタイミングでそうなってしまったのかバグった内容を詳しく報告</li>
+		<li><font color="#FF0000">使用ペナルティ：$sleep_time分睡眠</font></li>
+		<li>寝ている状態などの待ち時間を解除するものではありません</li>
 	</ul>
 </div>
 <br />
 <form method="$method" action="rescue.cgi">
 <table class="table1">
-	<tr><th>���v���C���[��</th></tr><tr><td><input type="text" name="login_name" class="text_box1" /></td></tr>
-	<tr><th>���p�X���[�h��</th></tr><tr><td><input type="password" name="pass" class="text_box1" /></td></tr>
-	<tr><th><input type="submit" value="���~�o����" /></th></tr>
+	<tr><th>§プレイヤー§</th></tr><tr><td><input type="text" name="login_name" class="text_box1" /></td></tr>
+	<tr><th>§パスワード§</th></tr><tr><td><input type="password" name="pass" class="text_box1" /></td></tr>
+	<tr><th><input type="submit" value="＠救出処理" /></th></tr>
 </table>
 </form>
 EOM
@@ -44,8 +44,8 @@ EOM
 }
 
 #=========================================================
-# ��ʂ��\������Ȃ��A�n�}�����ꍇ�Ɏg�p(��������ُ̈�G���[�̎�)
-# �Ǘ���ʂ̃��Z�b�g�����Ƀy�i���e�B����������
+# 画面が表示されない、ハマった場合に使用(何かしらの異常エラーの時)
+# 管理画面のリセット処理にペナルティがついただけ
 #=========================================================
 sub refresh_player {
 	&read_user;
@@ -54,10 +54,10 @@ sub refresh_player {
 		$m{lib} = '';
 		$m{sleep} = $m{sleep} > 0 ? $m{sleep} + $sleep_time * 60 : $sleep_time * 60;
 		&write_user;
-		$contents = qq|<div class="mes"><p>$m{name}���~�o�������܂���</p></div>|;
+		$contents = qq|<div class="mes"><p>$m{name}を救出処理しました</p></div>|;
 	}
 	else {
-		$contents = qq|<div class="mes"><p>���łɋ~�o����������Ă��܂�</p></div>|;
+		$contents = qq|<div class="mes"><p>すでに救出処理がされています</p></div>|;
 	}
 
 	&side_menu($contents);

@@ -1,18 +1,18 @@
-# •ó‚Ì’†g
+# å®ã®ä¸­èº«
 @treasures = (
-[20..28,32..37,39], # •ŠíNo
-[20..39], # –h‹ïNo
-[4..6,13,28,29,37,38,40,40,57,60..65,87,104..107,109,109,109], # “¹‹ïNo
+[20..28,32..37,39], # æ­¦å™¨No
+[20..39], # é˜²å…·No
+[4..6,13,28,29,37,38,40,40,57,60..65,87,104..107,109,109,109], # é“å…·No
 );
 
 
-# oŒ»—¦(@monsters‚Ì”z—ñ”Ô†‚ª‘½‚¯‚ê‚Î‘½‚¢‚Ù‚ÇoŒ»B‹Ï“™‚ÈoŒ»—¦‚Ìê‡‚ÍA‚©‚çw()x)
+# å‡ºç¾çŽ‡(@monstersã®é…åˆ—ç•ªå·ãŒå¤šã‘ã‚Œã°å¤šã„ã»ã©å‡ºç¾ã€‚å‡ç­‰ãªå‡ºç¾çŽ‡ã®å ´åˆã¯ã€ã‹ã‚‰ã€Ž()ã€)
 @appears = (0..11,0..11,12,13);
 
-# ƒ‚ƒ“ƒXƒ^[
+# ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
 @monsters = (
 	{ # 0
-		name		=> '‚ê‚ñ‚²‚­‚¿‚å‚¤',
+		name		=> 'ã‚Œã‚“ã”ãã¡ã‚‡ã†',
 		hp			=> 470,
 		at			=> 320,
 		df			=> 150,
@@ -21,15 +21,15 @@
 		get_money	=> 72,
 		icon		=> 'mon/532.gif',
 
-		job			=> 41, # ÄÞ×ºÞÝ
+		job			=> 41, # ãƒ‰ãƒ©ã‚´ãƒ³
 		sp			=> 999,
-		old_job		=> 51, # Œõ–‚“¹Žm
+		old_job		=> 51, # å…‰é­”é“å£«
 		old_sp		=> 999,
 		mp			=> 144,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 1
-		name		=> 'ÌÞØ»Þ°',
+		name		=> 'ãƒ–ãƒªã‚¶ãƒ¼',
 		hp			=> 400,
 		at			=> 300,
 		df			=> 210,
@@ -38,15 +38,15 @@
 		get_money	=> 92,
 		icon		=> 'mon/531.gif',
 
-		job			=> 41, # ÄÞ×ºÞÝ
+		job			=> 41, # ãƒ‰ãƒ©ã‚´ãƒ³
 		sp			=> 999,
-		old_job		=> 27, # •—…Žm
+		old_job		=> 27, # é¢¨æ°´å£«
 		old_sp		=> 999,
 		mp			=> 174,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 2
-		name		=> 'Ž€‚Ì‚Â‚©‚¢',
+		name		=> 'æ­»ã®ã¤ã‹ã„',
 		hp			=> 380,
 		at			=> 280,
 		df			=> 180,
@@ -55,15 +55,15 @@
 		get_money	=> 62,
 		icon		=> 'mon/541.gif',
 
-		job			=> 42, # ±»¼Ý
+		job			=> 42, # ã‚¢ã‚µã‚·ãƒ³
 		sp			=> 999,
-		old_job		=> 93, # ‘¦Ž€
+		old_job		=> 93, # å³æ­»
 		old_sp		=> 999,
 		mp			=> 144,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 3
-		name		=> '¸Û',
+		name		=> 'ã‚¯ãƒ­',
 		hp			=> 396,
 		at			=> 296,
 		df			=> 196,
@@ -71,15 +71,15 @@
 		get_exp		=> 196,
 		get_money	=> 96,
 		icon		=> 'mon/544.gif',
-		job			=> 15, # •–‚“¹Žm
+		job			=> 15, # é»’é­”é“å£«
 		sp			=> 999,
-		old_job		=> 15, # ˆÅ–‚“±Žm
+		old_job		=> 15, # é—‡é­”å°Žå£«
 		old_sp		=> 999,
 		mp			=> 196,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 4
-		name		=> '‰Š–‚',
+		name		=> 'ç‚Žé­”',
 		hp			=> 400,
 		at			=> 270,
 		df			=> 150,
@@ -88,15 +88,15 @@
 		get_money	=> 62,
 		icon		=> 'mon/598.gif',
 
-		job			=> 6, # –‚–@Žg‚¢
+		job			=> 6, # é­”æ³•ä½¿ã„
 		sp			=> 999,
-		old_job		=> 15, # ˆÅ–‚“±Žm
+		old_job		=> 15, # é—‡é­”å°Žå£«
 		old_sp		=> 999,
 		mp			=> 144,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 5
-		name		=> 'ÊÞÝÊß²±',
+		name		=> 'ãƒãƒ³ãƒ‘ã‚¤ã‚¢',
 		hp			=> 499,
 		at			=> 380,
 		df			=> 160,
@@ -106,13 +106,13 @@
 		icon		=> 'mon/568.gif',
 
 		old_sp		=> 20,
-		job			=> 38, # ÊÞÝÊß²±
+		job			=> 38, # ãƒãƒ³ãƒ‘ã‚¤ã‚¢
 		sp			=> 999,
 		mp			=> 121,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 6
-		name		=> 'ÉÛ²',
+		name		=> 'ãƒŽãƒ­ã‚¤',
 		hp			=> 410,
 		at			=> 271,
 		df			=> 160,
@@ -121,13 +121,13 @@
 		get_money	=> 65,
 		icon		=> 'mon/542.gif',
 		old_sp		=> 20,
-		job			=> 46, # ·Þ¬ÝÌÞ×°ƒwƒuƒ“ƒXƒƒbƒgA‚¢‚¿‚°‚«‚Ìƒ_[ƒcA‚ ‚­‚Ü‚Ìƒ_ƒCƒXA‚µ‚Ìƒ‹[ƒŒƒbƒg
+		job			=> 46, # ã‚®ãƒ£ãƒ³ãƒ–ãƒ©ãƒ¼ãƒ˜ãƒ–ãƒ³ã‚¹ãƒ­ãƒƒãƒˆã€ã„ã¡ã’ãã®ãƒ€ãƒ¼ãƒ„ã€ã‚ãã¾ã®ãƒ€ã‚¤ã‚¹ã€ã—ã®ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆ
 		sp			=> 80,
 		mp			=> 59,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 7
-		name		=> 'ÃÞ½»²½Þ',
+		name		=> 'ãƒ‡ã‚¹ã‚µã‚¤ã‚º',
 		hp			=> 420,
 		at			=> 440,
 		df			=> 100,
@@ -136,13 +136,13 @@
 		get_money	=> 242,
 		icon		=> 'mon/543.gif',
 		
-		job			=> 93, # ‘¦Ž€
+		job			=> 93, # å³æ­»
 		sp			=> 999,
 		mp			=> 142,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 8
-		name		=> '»²¸Ù',
+		name		=> 'ã‚µã‚¤ã‚¯ãƒ«',
 		hp			=> 400,
 		at			=> 424,
 		df			=> 150,
@@ -151,15 +151,15 @@
 		get_money	=> 155,
 		icon		=> 'mon/235.gif',
 
-		job			=> 48, # ‘Â“VŽg
+		job			=> 48, # å •å¤©ä½¿
 		sp			=> 999,
-		old_job		=> 46, # ·Þ¬ÝÌÞ×°
+		old_job		=> 46, # ã‚®ãƒ£ãƒ³ãƒ–ãƒ©ãƒ¼
 		old_sp		=> 999,
 		mp			=> 149,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 9
-		name		=> '×ÎÞ½',
+		name		=> 'ãƒ©ãƒœã‚¹',
 		hp			=> 430,
 		at			=> 280,
 		df			=> 520,
@@ -168,15 +168,15 @@
 		get_money	=> 500,
 		icon		=> 'mon/540.gif',
 
-		job			=> 29, # Žž–‚“¹Žm
+		job			=> 29, # æ™‚é­”é“å£«
 		sp			=> 999,
-		old_job		=> 93, # ‘¦Ž€
+		old_job		=> 93, # å³æ­»
 		old_sp		=> 999,
 		mp			=> 299,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 10
-		name		=> 'ÀÞ°½ÄÞ×ºÞÝ',
+		name		=> 'ãƒ€ãƒ¼ã‚¹ãƒ‰ãƒ©ã‚´ãƒ³',
 		hp			=> 500,
 		at			=> 360,
 		df			=> 240,
@@ -186,13 +186,13 @@
 		icon		=> 'mon/534.gif',
 
 		old_sp		=> 20,
-		job			=> 41, # ÄÞ×ºÞÝ
+		job			=> 41, # ãƒ‰ãƒ©ã‚´ãƒ³
 		sp			=> 999,
 		mp			=> 149,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 11
-		name		=> 'ÃÞ½±²',
+		name		=> 'ãƒ‡ã‚¹ã‚¢ã‚¤',
 		hp			=> 444,
 		at			=> 300,
 		df			=> 200,
@@ -201,13 +201,13 @@
 		get_money	=> 90,
 		icon		=> 'mon/538.gif',
 
-		job			=> 93, # ‘¦Ž€
+		job			=> 93, # å³æ­»
 		sp			=> 999,
 		mp			=> 149,
-		state		=> 'U••',
+		state		=> 'æ”»å°',
 	},
 	{ # 12
-		name		=> 'Ê¸ÞÚ·Ý¸Þ',
+		name		=> 'ãƒã‚°ãƒ¬ã‚­ãƒ³ã‚°',
 		hp			=> 22,
 		at			=> 180,
 		df			=> 5000,
@@ -216,16 +216,16 @@
 		get_money	=> 100,
 		icon		=> 'mon/238.gif',
 
-		job			=> 40, # Ê¸ÞÚÒÀÙ
+		job			=> 40, # ãƒã‚°ãƒ¬ãƒ¡ã‚¿ãƒ«
 		sp			=> 999,
-		old_job		=> 99, # “¦‚°‚é
+		old_job		=> 99, # é€ƒã’ã‚‹
 		old_sp		=> 0,
 		mp			=> 499,
-		tmp			=> '–‚–³Œø',
-		state		=> 'U••',
+		tmp			=> 'é­”ç„¡åŠ¹',
+		state		=> 'æ”»å°',
 	},
 	{ # 13
-		name		=> 'ÒÀÙ·Ý¸Þ',
+		name		=> 'ãƒ¡ã‚¿ãƒ«ã‚­ãƒ³ã‚°',
 		hp			=> 25,
 		at			=> 200,
 		df			=> 6000,
@@ -234,17 +234,17 @@
 		get_money	=> 100,
 		icon		=> 'mon/517.gif',
 
-		job			=> 40, # Ê¸ÞÚÒÀÙ
+		job			=> 40, # ãƒã‚°ãƒ¬ãƒ¡ã‚¿ãƒ«
 		sp			=> 999,
-		old_job		=> 99, # “¦‚°‚é
+		old_job		=> 99, # é€ƒã’ã‚‹
 		old_sp		=> 0,
 		mp			=> 499,
-		tmp			=> '–‚–³Œø',
-		state		=> 'U••',
+		tmp			=> 'é­”ç„¡åŠ¹',
+		state		=> 'æ”»å°',
 	},
 );
 
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

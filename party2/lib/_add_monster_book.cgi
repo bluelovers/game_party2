@@ -1,30 +1,30 @@
 #=================================================
-# ƒ‚ƒ“ƒXƒ^[ƒuƒbƒN Created by Merino
-# _battle.cgi‚Ìsub defeat‚Åg—p
+# ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯ Created by Merino
+# _battle.cgiã®sub defeatã§ä½¿ç”¨
 #=================================================
-# ƒRƒ“ƒvƒŠ[ƒg‚É•K—v‚È”
+# ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã«å¿…è¦ãªæ•°
 my $complete = 180;
 
 
 #=================================================
-# ’Ç‰Á
+# è¿½åŠ 
 #=================================================
 sub add_monster_book {
 	my $y = shift or return;
 	
 	my $base_name = $y;
-	$base_name =~ s/^\@//; # í“¬‚Ì@‚ğœ‚­
-	$base_name =~ s/[A-Z]$//; # ––”ö‚ÌA`Z‚ğœ‚­
+	$base_name =~ s/^\@//; # æˆ¦é—˜ã®@ã‚’é™¤ã
+	$base_name =~ s/[A-Z]$//; # æœ«å°¾ã®Aï½Zã‚’é™¤ã
 
 	my $new_no = $ms{$y}{icon};
 	$new_no =~ s/[^0-9]//g;
 
 	my @lines = ();
-	open my $fh, "+< $userdir/$id/monster_book.cgi" or &error("$userdir/$id/monster_book.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $userdir/$id/monster_book.cgi" or &error("$userdir/$id/monster_book.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	while (my $line = <$fh>) {
 		my($icon) = (split /<>/, $line)[2];
-		return if $icon eq $ms{$y}{icon}; # ‚·‚Å‚É“o˜^Ï‚İ‚Ìƒ‚ƒ“ƒXƒ^[‚È‚çXV‚µ‚È‚¢
+		return if $icon eq $ms{$y}{icon}; # ã™ã§ã«ç™»éŒ²æ¸ˆã¿ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãªã‚‰æ›´æ–°ã—ãªã„
 		push @lines, $line;
 	}
 	
@@ -38,11 +38,11 @@ sub add_monster_book {
 	&write_monster_book(@lines);
 	
 	$npc_com .= "<br />" if $npc_com;
-	$npc_com .= "<b>$base_name‚Ìƒf[ƒ^‚ªƒ‚ƒ“ƒXƒ^[ƒuƒbƒN‚É’Ç‰Á‚³‚ê‚Ü‚µ‚½</b>";
+	$npc_com .= "<b>$base_nameã®ãƒ‡ãƒ¼ã‚¿ãŒãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯ã«è¿½åŠ ã•ã‚Œã¾ã—ãŸ</b>";
 }
 
 #=================================================
-# monster_book.htmlo—Í
+# monster_book.htmlå‡ºåŠ›
 #=================================================
 sub write_monster_book {
 	my @lines = @_;
@@ -50,13 +50,13 @@ sub write_monster_book {
 	my $complete_par = int(@lines / $complete * 100);
 	if ($complete_par >= 100) {
 		unless (-f "$userdir/$id/comp_mon_flag.cgi") {
-			open my $fh2, "> $userdir/$id/comp_mon_flag.cgi" or &error("$userdir/$id/comp_mon_flag.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh2, "> $userdir/$id/comp_mon_flag.cgi" or &error("$userdir/$id/comp_mon_flag.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			close $fh2;
 			
 			&write_legend('comp_mon');
 			&write_memory(qq|<span class="comp">MonsterBook Complete!!</span>|);
-			&write_news(qq|<span class="comp">$m‚ªƒ‚ƒ“ƒXƒ^[ƒuƒbƒN‚ğƒRƒ“ƒvƒŠ[ƒg‚µ‚Ü‚µ‚½I</span>|);
-			$npc_com .= qq|<span class="comp">$m‚Í <b>ƒ‚ƒ“ƒXƒ^[ƒuƒbƒN</b> ‚ğƒRƒ“ƒvƒŠ[ƒg‚µ‚Ü‚µ‚½I</span>|;
+			&write_news(qq|<span class="comp">$mãŒãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯ã‚’ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã—ã¾ã—ãŸï¼</span>|);
+			$npc_com .= qq|<span class="comp">$mã¯ <b>ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯</b> ã‚’ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆã—ã¾ã—ãŸï¼</span>|;
 		}
 		
 		$complete_par = 100;
@@ -64,16 +64,16 @@ sub write_monster_book {
 
 	my $contents = '';
 	for my $line (@lines) {
-		$line =~ tr/\x0D\x0A//d; # ‰üsíœ
+		$line =~ tr/\x0D\x0A//d; # æ”¹è¡Œå‰Šé™¤
 		my($no, $name, $icon, $place, $strong, $hp, $mp, $at, $df, $ag, $exp, $money, $ldate, $dmap) = split /<>/, $line;
-		my $stage_name = $place =~ /^king/ ? '••ˆóí' : defined($dmap) && $dmap ne '' ? $dungeons[$place] : $stages[$place];
+		my $stage_name = $place =~ /^king/ ? 'å°å°æˆ¦' : defined($dmap) && $dmap ne '' ? $dungeons[$place] : $stages[$place];
 		$contents .= qq|<tr><td>$no,</td><td><img src="../../$icondir/$icon" />$name</td><td>$stage_name</td><td align="right">$strong</td><td align="right">$hp</td><td align="right">$mp</td><td align="right">$at</td><td align="right">$df</td><td align="right">$ag</td><td align="right">$exp</td><td align="right">$money</td><td>$ldate</td></tr>\n|;
 	}
 	
 	my $html = <<"EOM";
 <html>
 <head>
-<title>$m‚Ìƒ‚ƒ“ƒXƒ^[ƒuƒbƒN</title>
+<title>$mã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯</title>
 <link rel="stylesheet" type="text/css" href="../../$htmldir/party.css">
 <link rel="stylesheet" type="text/css" href="../../$htmldir/jQuery/themes/green/style.css">
 <script type="text/javascript" src="../../$htmldir/jQuery/jquery-latest.js"></script>
@@ -97,10 +97,10 @@ sub write_monster_book {
 </script>
 </head>
 <body>
-<table><tr><td><form action="../../$script_index"><input type="submit" value="‚s‚n‚o‚Ö–ß‚é" /></form></td><td><form><input type="button" onclick="window.close(); return false;" value="•Â‚¶‚é"></form></td></tr></table>
-<form action="../../player.cgi"><input type="hidden" name="id" value="$id"><input type="submit" value="$m‚Ì‹OÕ" /></form>
+<table><tr><td><form action="../../$script_index"><input type="submit" value="ï¼´ï¼¯ï¼°ã¸æˆ»ã‚‹" /></form></td><td><form><input type="button" onclick="window.close(); return false;" value="é–‰ã˜ã‚‹"></form></td></tr></table>
+<form action="../../player.cgi"><input type="hidden" name="id" value="$id"><input type="submit" value="$mã®è»Œè·¡" /></form>
 
-<h2>$m‚Ìƒ‚ƒ“ƒXƒ^[ƒuƒbƒN@ƒRƒ“ƒvƒŠ[ƒg—¦s<b>$complete_par</b>“t</h2>
+<h2>$mã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯ã€€ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ã€Š<b>$complete_par</b>ï¼…ã€‹</h2>
 <div id="pager" class="pager">
 	<form>
 		<img src="../../$htmldir/jQuery/addons/pager/icons/first.png" class="first" />
@@ -119,17 +119,17 @@ sub write_monster_book {
 <thead>
 	<tr>
 		<th>No</th>
-		<th>–¼‘O</th>
-		<th>¶‘§’n</th>
-		<th>‹­‚³</th>
-		<th>‚g‚o</th>
-		<th>‚l‚o</th>
-		<th>UŒ‚</th>
-		<th>ç”õ</th>
-		<th>‘f‘</th>
-		<th>ŒoŒ±’l</th>
-		<th>ƒS[ƒ‹ƒh</th>
-		<th>“o˜^“ú</th>
+		<th>åå‰</th>
+		<th>ç”Ÿæ¯åœ°</th>
+		<th>å¼·ã•</th>
+		<th>ï¼¨ï¼°</th>
+		<th>ï¼­ï¼°</th>
+		<th>æ”»æ’ƒ</th>
+		<th>å®ˆå‚™</th>
+		<th>ç´ æ—©</th>
+		<th>çµŒé¨“å€¤</th>
+		<th>ã‚´ãƒ¼ãƒ«ãƒ‰</th>
+		<th>ç™»éŒ²æ—¥</th>
 	</tr>
 </thead>
 <tbody>
@@ -137,17 +137,17 @@ sub write_monster_book {
 </tbody>
 </table>
 <br /><div align="right" style="font-size:11px">
-—ƒp[ƒeƒB[II Ver$VERSION<br /><a href="http://cgi-sweets.com/" target="_blank">CGI-Sweets</a><br /><a href="http://amaraku.net/" target="_blank">AmaŠy.net</a><br />
+ï¼ ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼II Ver$VERSION<br /><a href="http://cgi-sweets.com/" target="_blank">CGI-Sweets</a><br /><a href="http://amaraku.net/" target="_blank">Amaæ¥½.net</a><br />
 $copyright
 </div>
 </body>
 </html>
 EOM
 	
-	open my $fh, "> $userdir/$id/monster_book.html" or &error("$userdir/$id/monster_book.htmlƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "> $userdir/$id/monster_book.html" or &error("$userdir/$id/monster_book.htmlãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	print $fh $html;
 	close $fh;
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

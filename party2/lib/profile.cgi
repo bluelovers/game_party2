@@ -1,30 +1,30 @@
 #=================================================
-# ƒvƒƒtƒB[ƒ‹ Created by Merino
+# ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ« Created by Merino
 #=================================================
-# ’Ç‰Á/íœ/•ÏX/•À‚Ñ‘Ö‚¦‰Â
-# ƒvƒƒtƒB[ƒ‹•\¦‚·‚é‚à‚ÌB¶‚Ì‰pš‚Í“¯‚¶‚¶‚á‚È‚¯‚ê‚Î‰½‚Å‚à—Ç‚¢
+# â—è¿½åŠ /å‰Šé™¤/å¤‰æ›´/ä¸¦ã³æ›¿ãˆå¯
+# ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«è¡¨ç¤ºã™ã‚‹ã‚‚ã®ã€‚å·¦ã®è‹±å­—ã¯åŒã˜ã˜ã‚ƒãªã‘ã‚Œã°ä½•ã§ã‚‚è‰¯ã„
 @profiles = (
-	['name',		'–¼‘O'],
-	['sex',			'«•Ê'],
-	['blood',		'ŒŒ‰tŒ^'],
-	['birthday',	'’a¶“ú'],
-	['age',			'”N—î'],
-	['job',			'E‹Æ'],
-	['address',		'Z‚ñ‚Å‚¢‚éŠ'],
-	['hobby',		'ï–¡'],
-	['boom',		'ƒ}ƒCƒu[ƒ€'],
-	['site',		'ƒIƒXƒXƒƒTƒCƒg'],
-	['dream',		'–²/–Ú•W'],
-	['character',	'«ŠiE“Á’¥'],
-	['like',		'D‚«‚È‚à‚Ì'],
-	['dislike',		'Œ™‚¢‚È‚à‚Ì'],
-	['like_food',	'D‚«‚ÈH‚×•¨'],
-	['dislike_food','Œ™‚¢‚ÈH‚×•¨'],
-	['goal',		'‚±‚ÌƒQ[ƒ€‚Ì–Ú•W'],
-	['login',		'ƒƒOƒCƒ“ŠÔ'],
-	['boast',		'©–'],
-	['reference',	'‚±‚ÌƒTƒCƒg‚ğ’m‚Á‚½‚«‚Á‚©‚¯'],
-	['message',		'‰½‚©ˆêŒ¾'],
+	['name',		'åå‰'],
+	['sex',			'æ€§åˆ¥'],
+	['blood',		'è¡€æ¶²å‹'],
+	['birthday',	'èª•ç”Ÿæ—¥'],
+	['age',			'å¹´é½¢'],
+	['job',			'è·æ¥­'],
+	['address',		'ä½ã‚“ã§ã„ã‚‹æ‰€'],
+	['hobby',		'è¶£å‘³'],
+	['boom',		'ãƒã‚¤ãƒ–ãƒ¼ãƒ '],
+	['site',		'ã‚ªã‚¹ã‚¹ãƒ¡ã‚µã‚¤ãƒˆ'],
+	['dream',		'å¤¢/ç›®æ¨™'],
+	['character',	'æ€§æ ¼ãƒ»ç‰¹å¾´'],
+	['like',		'å¥½ããªã‚‚ã®'],
+	['dislike',		'å«Œã„ãªã‚‚ã®'],
+	['like_food',	'å¥½ããªé£Ÿã¹ç‰©'],
+	['dislike_food','å«Œã„ãªé£Ÿã¹ç‰©'],
+	['goal',		'ã“ã®ã‚²ãƒ¼ãƒ ã®ç›®æ¨™'],
+	['login',		'ãƒ­ã‚°ã‚¤ãƒ³æ™‚é–“'],
+	['boast',		'è‡ªæ…¢'],
+	['reference',	'ã“ã®ã‚µã‚¤ãƒˆã‚’çŸ¥ã£ãŸãã£ã‹ã‘'],
+	['message',		'ä½•ã‹ä¸€è¨€'],
 );
 
 #=================================================
@@ -48,13 +48,13 @@ sub html {
 
 sub view_profile {
 	unless ($is_top_profile) {
-		$m{lib} = 'home'; # –ß‚éƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚ç‹­§“I‚É‰Æ‚É–ß‚é
+		$m{lib} = 'home'; # æˆ»ã‚‹ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰å¼·åˆ¶çš„ã«å®¶ã«æˆ»ã‚‹
 		print qq|<form method="$method" action="$script">|;
 		print qq|<input type="hidden" name="id" value="$id" /><input type="hidden" name="pass" value="$pass" />|;
-		print qq|<input type="submit" value="–ß‚é" /></form>|;
+		print qq|<input type="submit" value="æˆ»ã‚‹" /></form>|;
 	}
 
-	open my $fh, "< $this_file" or &error("$this_fileƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $this_file" or &error("$this_fileãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $line = <$fh>;
 	close $fh;
 	
@@ -64,11 +64,11 @@ sub view_profile {
 		$datas{$k} = $v;
 	}
 	
-	print qq|<h2>$m{home}‚ÌƒvƒƒtƒB[ƒ‹</h2><table class="table2" cellpadding="3" width="440">|;
+	print qq|<h2>$m{home}ã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«</h2><table class="table2" cellpadding="3" width="440">|;
 	for my $profile (@profiles) {
 		next if $datas{$profile->[0]} eq '';
 		
-		# http://‚È‚çƒI[ƒgƒŠƒ“ƒN
+		# http://ãªã‚‰ã‚ªãƒ¼ãƒˆãƒªãƒ³ã‚¯
 		$datas{$profile->[0]} =~ s/([^=^\"]|^)(https?\:[\w\.\~\-\/\?\&\=\@\;\#\:\%]+)/$1<a href=\"link.cgi?$2\" target=\"_blank\">$2<\/a>/g;
 		
 		print qq|<tr><th align="left">$profile->[1]</th></tr><tr><td>$datas{$profile->[0]}</td></tr>|;
@@ -80,7 +80,7 @@ sub view_profile {
 #================================================
 sub write_form {
 	my %datas = ();
-	open my $fh, "< $this_file" or &error("$this_fileƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $this_file" or &error("$this_fileãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $line = <$fh>;
 	close $fh;
 	for my $hash (split /<>/, $line) {
@@ -88,19 +88,19 @@ sub write_form {
 		$datas{$k} = $v;
 	}
 
-	print qq|$m‚ÌƒvƒƒtƒB[ƒ‹F‘SŠp80•¶š(”¼Šp160)‚Ü‚Å<br />|;
+	print qq|$mã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ï¼šå…¨è§’80æ–‡å­—(åŠè§’160)ã¾ã§<br />|;
 	print qq|<form method="$method" action="$script"><input type="hidden" name="mode" value="write_exe">|;
 	print qq|<table class="table2" cellpadding="3" width="440">|;
 	for my $profile (@profiles) {
 		print qq|<tr><th align="left">$profile->[1]</th></tr><tr><td><input type="text" name="$profile->[0]" value="$datas{$profile->[0]}" class="text_box_b"></td></tr>|; 
 	}
 	print qq|</table><input type="hidden" name="id" value="$id"><input type="hidden" name="pass" value="$pass">|;
-	print qq|<p><input type="submit" value="•ÏX‚·‚é" class="button1"></p></form>|;
+	print qq|<p><input type="submit" value="å¤‰æ›´ã™ã‚‹" class="button1"></p></form>|;
 }
 
 sub write_exe {
 	my %datas = ();
-	open my $fh, "+< $this_file" or &error("$this_fileƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $this_file" or &error("$this_fileãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $line = <$fh>;
 	for my $hash (split /<>/, $line) {
@@ -111,8 +111,8 @@ sub write_exe {
 	my $is_rewrite = 0;
 	for my $profile (@profiles) {
 		unless ($in{$profile->[0]} eq $datas{$profile->[0]}) {
-			&error("$profile->[1] ‚É•s³‚È•¶š( \;<> )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·")	if $in{$profile->[0]} =~ /[;<>]/;
-			&error("$profile->[1] ‚Í‘SŠp80(”¼Šp160)•¶šˆÈ“à‚Å‚·")			if length($in{$profile->[0]}) > 160;
+			&error("$profile->[1] ã«ä¸æ­£ãªæ–‡å­—( \;<> )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™")	if $in{$profile->[0]} =~ /[;<>]/;
+			&error("$profile->[1] ã¯å…¨è§’80(åŠè§’160)æ–‡å­—ä»¥å†…ã§ã™")			if length($in{$profile->[0]}) > 160;
 			$datas{$profile->[0]} = $in{$profile->[0]};
 			$is_rewrite = 1;
 		}
@@ -128,7 +128,7 @@ sub write_exe {
 		print $fh $new_line;
 		close $fh;
 		
-		print 'ƒvƒƒtƒB[ƒ‹‚ğ•ÏX‚µ‚Ü‚µ‚½';
+		print 'ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã‚’å¤‰æ›´ã—ã¾ã—ãŸ';
 	}
 	else {
 		close $fh;
@@ -138,4 +138,4 @@ sub write_exe {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

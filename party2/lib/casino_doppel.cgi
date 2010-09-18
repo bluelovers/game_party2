@@ -1,12 +1,12 @@
 require "./lib/_casino.cgi";
 #=================================================
-# ƒhƒbƒyƒ‹ Created by Merino
+# ãƒ‰ãƒƒãƒšãƒ« Created by Merino
 #=================================================
 
-@cards = ('š','œ','Ÿ','ô','¡','£','õ','¥');
+@cards = ('â˜…','â—','â—†','â™ª','â– ','â–²','â€ ','â–¼');
 
 #=================================================
-# í“¬—pƒAƒNƒVƒ‡ƒ“ƒZƒbƒg(ƒvƒŒƒCƒ„[—p)
+# æˆ¦é—˜ç”¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚»ãƒƒãƒˆ(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”¨)
 #=================================================
 sub add_casino_action {
 	return if $ms{$m}{action};
@@ -18,7 +18,7 @@ sub add_casino_action {
 }
 
 #=================================================
-# ƒƒ“ƒo[o—Í
+# ãƒ¡ãƒ³ãƒãƒ¼å‡ºåŠ›
 #=================================================
 sub member_html {
 	my $member_html = '';
@@ -26,7 +26,7 @@ sub member_html {
 	for my $name (@members) {
 		$member_html .= qq|<td onclick="text_set('>$name ')" align="center" valign="bottom"><span style="color: $ms{$name}{color}; font-size: 11px; background-color: #333;">|;
 		$member_html .= qq|$ms{$name}{action}<br />| if $ms{$name}{action};
-		$member_html .= $round <= 0 || $m eq $name ? qq|$ms{$name}{card}| : qq|H| if $ms{$name}{card};
+		$member_html .= $round <= 0 || $m eq $name ? qq|$ms{$name}{card}| : qq|ï¼Ÿ| if $ms{$name}{card};
 		$member_html .= qq|<br />|;
 		$member_html .= qq|<img src="$icondir/etc/mark_leader.gif" />| if $leader eq $name;
 		$member_html .= qq|$name</span><br /><img src="$icondir/$ms{$name}{icon}" alt="$name" /></td>|;
@@ -36,18 +36,18 @@ sub member_html {
 }
 
 #=================================================
-# —š`¥
+# ï¼ â˜…ï½â–¼
 #=================================================
 sub mark {
 	return if $ms{$m}{action};
 	my $mark = shift or return;
 	
-	$com =~ s/—.+?(\x20|@)//g; # ƒ}[ƒN‚ğíœ
+	$com =~ s/ï¼ .+?(\x20|ã€€)//g; # ãƒãƒ¼ã‚¯ã‚’å‰Šé™¤
 	if ($ms{$m}{card}) {
-		$com.=qq|<span class="st_up">$m‚ªƒJ[ƒh‚ğ•Ï‚¦‚Ü‚µ‚½I</span>|;
+		$com.=qq|<span class="st_up">$mãŒã‚«ãƒ¼ãƒ‰ã‚’å¤‰ãˆã¾ã—ãŸï¼</span>|;
 	}
 	else {
-		$com.=qq|<span class="st_up">$m‚ªƒJ[ƒh‚ğŒˆ‚ß‚Ü‚µ‚½I</span>|;
+		$com.=qq|<span class="st_up">$mãŒã‚«ãƒ¼ãƒ‰ã‚’æ±ºã‚ã¾ã—ãŸï¼</span>|;
 		&give_coin($bet);
 	}
 	$ms{$m}{card} = $mark;
@@ -55,41 +55,41 @@ sub mark {
 }
 
 #=================================================
-# —‚©‚¢‚µ
+# ï¼ ã‹ã„ã—
 #=================================================
 sub kaishi {
 	if (@members <= 1) {
-		$mes = "‘Îí‚·‚é‘Šè‚ª‚¢‚Ü‚¹‚ñ";
+		$mes = "å¯¾æˆ¦ã™ã‚‹ç›¸æ‰‹ãŒã„ã¾ã›ã‚“";
 		return;
 	}
 	elsif ($leader ne $m) {
-		$mes = "—‚©‚¢‚µ ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+		$mes = "ï¼ ã‹ã„ã— ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 		return;
 	}
 	
-	# ‰Šú‰»
+	# åˆæœŸåŒ–
 	for my $name (@members) {
 		$ms{$name}{action} = '';
 		$ms{$name}{card}   = '';
 	}
 	
-	$now_bet = @members; # l”‚É‚æ‚Á‚Ä‘I‚×‚éƒJ[ƒh”‚ª•Ï‚í‚é
+	$now_bet = @members; # äººæ•°ã«ã‚ˆã£ã¦é¸ã¹ã‚‹ã‚«ãƒ¼ãƒ‰æ•°ãŒå¤‰ã‚ã‚‹
 	++$round;
-	$npc_com .= "<b>ƒQ[ƒ€ŠJnII</b>";
+	$npc_com .= "<b>ã‚²ãƒ¼ãƒ é–‹å§‹ï¼ï¼</b>";
 	&auto_reload;
 }
 
 #=================================================
-# ‘Sˆõ‚ÌƒAƒNƒVƒ‡ƒ“‚ğƒ`ƒFƒbƒN
+# å…¨å“¡ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒã‚§ãƒƒã‚¯
 #=================================================
 sub next_round {
 	return if $round <= 0;
 
-	# ‘SˆõƒJ[ƒh‚ªŒˆ‚Ü‚Á‚½‚ç
+	# å…¨å“¡ã‚«ãƒ¼ãƒ‰ãŒæ±ºã¾ã£ãŸã‚‰
 	&battle if &is_all_select;
 }
 # ------------------
-# ‘Sˆõs“®Ï‚İH
+# å…¨å“¡è¡Œå‹•æ¸ˆã¿ï¼Ÿ
 sub is_all_select {
 	for my $name (@members) {
 		next if $ms{$name}{action};
@@ -99,21 +99,21 @@ sub is_all_select {
 }
 
 #=================================================
-# Ÿ•‰
+# å‹è² 
 #=================================================
 sub battle {
-	# Ü‹à
+	# è³é‡‘
 	my $get_coin = &get_coin;
 	return if $get_coin <= 0;
 
 	my @winners = ();
 	for my $name (@members) {
-		next if $ms{$name}{action}; # ‘Ò‹@’†‚Ìl‚ÍƒXƒ‹[
-		next if $leader eq $name; # e‚ÍƒXƒ‹[
-		next if $ms{$leader}{card} ne $ms{$name}{card}; # ˆá‚¤ƒJ[ƒh‚Ìl‚ÍƒXƒ‹[
+		next if $ms{$name}{action}; # å¾…æ©Ÿä¸­ã®äººã¯ã‚¹ãƒ«ãƒ¼
+		next if $leader eq $name; # è¦ªã¯ã‚¹ãƒ«ãƒ¼
+		next if $ms{$leader}{card} ne $ms{$name}{card}; # é•ã†ã‚«ãƒ¼ãƒ‰ã®äººã¯ã‚¹ãƒ«ãƒ¼
 		push @winners, $name;
 	}
-	if (@winners >= 1) { # q‚ÌŸ‚¿
+	if (@winners >= 1) { # å­ã®å‹ã¡
 		my $s_coin = int($get_coin / @winners);
 		for my $winner (@winners) {
 			my %p = &get_you_datas($winner);
@@ -122,23 +122,23 @@ sub battle {
 		}
 		
 		if (@winners > 1) {
-			my $winners = join "A", @winners;
-			$npc_com .= qq|ƒhƒbƒyƒ‹IIc$leader‚ÌƒJ[ƒh‚Íy$ms{$leader}{card}z“¯‚¶ƒJ[ƒh‚Ìl‚Í $winnersI‚æ‚Á‚ÄA<span class="get">ŸÒ‚Ì $winners ‚½‚¿‚»‚ê‚¼‚ê‚É¶¼ŞÉº²İ <span class="damage">$s_coin</span> –‡‚ª‚¨‚­‚ç‚ê‚Ü‚·</span><br />|;
+			my $winners = join "ã€", @winners;
+			$npc_com .= qq|ãƒ‰ãƒƒãƒšãƒ«ï¼ï¼â€¦$leaderã®ã‚«ãƒ¼ãƒ‰ã¯ã€$ms{$leader}{card}ã€‘åŒã˜ã‚«ãƒ¼ãƒ‰ã®äººã¯ $winnersï¼ã‚ˆã£ã¦ã€<span class="get">å‹è€…ã® $winners ãŸã¡ãã‚Œãã‚Œã«ã‚«ã‚¸ãƒã‚³ã‚¤ãƒ³ <span class="damage">$s_coin</span> æšãŒãŠãã‚‰ã‚Œã¾ã™</span><br />|;
 		}
 		else {
-			$npc_com .= qq|ƒhƒbƒyƒ‹IIc$leader‚ÌƒJ[ƒh‚Íy$ms{$leader}{card}z“¯‚¶ƒJ[ƒh‚Ìl‚Í <b>$winners[0]</b>I‚æ‚Á‚ÄA<span class="get">ŸÒ‚Ì <b>$winners[0]</b> ‚É¶¼ŞÉº²İ <span class="damage">$s_coin</span> –‡‚ª‚¨‚­‚ç‚ê‚Ü‚·</span><br />|;
+			$npc_com .= qq|ãƒ‰ãƒƒãƒšãƒ«ï¼ï¼â€¦$leaderã®ã‚«ãƒ¼ãƒ‰ã¯ã€$ms{$leader}{card}ã€‘åŒã˜ã‚«ãƒ¼ãƒ‰ã®äººã¯ <b>$winners[0]</b>ï¼ã‚ˆã£ã¦ã€<span class="get">å‹è€…ã® <b>$winners[0]</b> ã«ã‚«ã‚¸ãƒã‚³ã‚¤ãƒ³ <span class="damage">$s_coin</span> æšãŒãŠãã‚‰ã‚Œã¾ã™</span><br />|;
 		}
 		
 		&reload_member();
 		$leader = $winners[int rand @winners];
-		$npc_com .= "$p_name‚ÌƒŠ[ƒ_[‚ª$leader‚É‚È‚è‚Ü‚µ‚½";
+		$npc_com .= "$p_nameã®ãƒªãƒ¼ãƒ€ãƒ¼ãŒ$leaderã«ãªã‚Šã¾ã—ãŸ";
 	}
-	else { # e‚ÌŸ‚¿
+	else { # è¦ªã®å‹ã¡
 		my %p = &get_you_datas($leader);
 		&regist_you_data($winner, 'cas_c', $p{cas_c}++);
 		&regist_you_data($leader, 'coin', $p{coin}+$get_coin);
 
-		$npc_com .= qq|ƒhƒbƒyƒ‹IIc$leader‚ÌƒJ[ƒh‚Íy$ms{$leader}{card}z“¯‚¶ƒJ[ƒh‚Ìl‚Í‚¢‚Ü‚¹‚ñI‚æ‚Á‚ÄA<span class="get">ŸÒ‚Ì <b>$leader</b> ‚É¶¼ŞÉº²İ <span class="damage">$get_coin</span> –‡‚ª‚¨‚­‚ç‚ê‚Ü‚·</span>|;
+		$npc_com .= qq|ãƒ‰ãƒƒãƒšãƒ«ï¼ï¼â€¦$leaderã®ã‚«ãƒ¼ãƒ‰ã¯ã€$ms{$leader}{card}ã€‘åŒã˜ã‚«ãƒ¼ãƒ‰ã®äººã¯ã„ã¾ã›ã‚“ï¼ã‚ˆã£ã¦ã€<span class="get">å‹è€…ã® <b>$leader</b> ã«ã‚«ã‚¸ãƒã‚³ã‚¤ãƒ³ <span class="damage">$get_coin</span> æšãŒãŠãã‚‰ã‚Œã¾ã™</span>|;
 		&reload_member($leader);
 	}
 	
@@ -146,4 +146,4 @@ sub battle {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

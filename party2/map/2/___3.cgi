@@ -1,10 +1,10 @@
-# ƒ_ƒ“ƒWƒ‡ƒ“–¼
-$d_name = "$dungeons[$stage]‚SŠK[•ó•¨ŒÉ]";
+# ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³å
+$d_name = "$dungeons[$stage]ï¼”éš[å®ç‰©åº«]";
 
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 50;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[1,0,1],
 	[0,0,0],
@@ -13,21 +13,21 @@ $max_round = 50;
 	[3,0,4],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{2} = '•ó' if $event !~ /2/;
-$map_imgs{3} = '•ó' if $event !~ /3/;;
-$map_imgs{4} = '•ó' if $event !~ /4/;;
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{2} = 'å®' if $event !~ /2/;
+$map_imgs{3} = 'å®' if $event !~ /3/;;
+$map_imgs{4} = 'å®' if $event !~ /4/;;
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_4 { return if $event =~ /4/; $event .= '4'; &_add_treasure; }
-sub event_T { $map = '__1'; $npc_com.= "<b>IIIIH</b>—‚Æ‚µŒŠ‚¾I$leader‚½‚¿‚ÍŒŠ‚É—‚¿‚Ä‚µ‚Ü‚Á‚½I"; &_trap_d(40); }
+sub event_T { $map = '__1'; $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>è½ã¨ã—ç©´ã ï¼$leaderãŸã¡ã¯ç©´ã«è½ã¡ã¦ã—ã¾ã£ãŸï¼"; &_trap_d(40); }
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 my $_s = int(rand(4)+3);
 require "$stagedir/$_s.cgi";
 
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

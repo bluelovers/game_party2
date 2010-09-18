@@ -1,19 +1,19 @@
-$is_add_effect = 0; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦‚É‚·‚éƒtƒ‰ƒO
+$is_add_effect = 0; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤ºã«ã™ã‚‹ãƒ•ãƒ©ã‚°
 #=================================================
-# ‹Z¥–‚–@ Created by Merino
+# æŠ€ãƒ»é­”æ³• Created by Merino
 #=================================================
 
 #=================================================
-# í“¬—pƒAƒNƒVƒ‡ƒ“ƒZƒbƒg(ƒvƒŒƒCƒ„[—p)
+# æˆ¦é—˜ç”¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚»ãƒƒãƒˆ(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”¨)
 #=================================================
 sub set_action {
 	&get_header_data;
 	
 	unless (defined $ms{$m}{name}) {
-		push @actions, ('‚³‚³‚â‚«','‚É‚°‚é','‚·‚­‚µ‚å');
-		$actions{'‚³‚³‚â‚«'} = [0, sub{ &sasayaki }];
-		$actions{'‚É‚°‚é'}   = [0, sub{ &nigeru   }];
-		$actions{'‚·‚­‚µ‚å'} = [0, sub{ &sukusho  }];
+		push @actions, ('ã•ã•ã‚„ã','ã«ã’ã‚‹','ã™ãã—ã‚‡');
+		$actions{'ã•ã•ã‚„ã'} = [0, sub{ &sasayaki }];
+		$actions{'ã«ã’ã‚‹'}   = [0, sub{ &nigeru   }];
+		$actions{'ã™ãã—ã‚‡'} = [0, sub{ &sukusho  }];
 		return;
 	}
 	
@@ -37,17 +37,17 @@ sub set_action {
 		}
 
 		push @skills, (
-			[0,	0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-			[0,	0,	'‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp} = '–hŒä'; $com.=qq|<span class="tmp">$m‚Íg‚ğŒÅ‚ß‚Ä‚¢‚é</span>|;	}],
-			[0,	0,	'‚Ä‚ñ‚µ‚å‚ñ',	sub{ &tenshon($m)	}],
+			[0,	0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+			[0,	0,	'ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp} = 'é˜²å¾¡'; $com.=qq|<span class="tmp">$mã¯èº«ã‚’å›ºã‚ã¦ã„ã‚‹</span>|;	}],
+			[0,	0,	'ã¦ã‚“ã—ã‚‡ã‚“',	sub{ &tenshon($m)	}],
 		);
 	}
 	
-	push @skills, ([0, 0, '‚Ç‚¤‚®',   sub{ &dougu }])  if $ites[$m{ite}][3] eq '1'; # í“¬g—p‰ÂƒAƒCƒeƒ€‚Á‚Ä‚¢‚éê‡
-	push @skills, ([0, 0, '‚Ü‚¦',     sub{ &mae }],      [0, 0, '‚¤‚µ‚ë', sub{ &ushiro }]) if @partys > 1; # 2lˆÈã
-	push @skills, ([0, 0, '‚³‚³‚â‚«', sub{ &sasayaki }], [0, 0, '‚É‚°‚é', sub{ &nigeru }], [0, 0, '‚·‚­‚µ‚å', sub{ &sukusho }]); # í“¬—p’Ç‰ÁƒAƒNƒVƒ‡ƒ“
-	push @skills, ([0, 0, '‚³‚»‚¤',   sub{ &sasou  }]) if $round == 0; # ŠJn‘O && Ø°ÀŞ°‚Ì‚İ
-	push @skills, ([0, 0, '‚«‚Á‚­',   sub{ &kick }])   if $round == 0 && $m eq $leader; # ŠJn‘O && Ø°ÀŞ°‚Ì‚İ
+	push @skills, ([0, 0, 'ã©ã†ã',   sub{ &dougu }])  if $ites[$m{ite}][3] eq '1'; # æˆ¦é—˜ä½¿ç”¨å¯ã‚¢ã‚¤ãƒ†ãƒ æŒã£ã¦ã„ã‚‹å ´åˆ
+	push @skills, ([0, 0, 'ã¾ãˆ',     sub{ &mae }],      [0, 0, 'ã†ã—ã‚', sub{ &ushiro }]) if @partys > 1; # 2äººä»¥ä¸Š
+	push @skills, ([0, 0, 'ã•ã•ã‚„ã', sub{ &sasayaki }], [0, 0, 'ã«ã’ã‚‹', sub{ &nigeru }], [0, 0, 'ã™ãã—ã‚‡', sub{ &sukusho }]); # æˆ¦é—˜ç”¨è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
+	push @skills, ([0, 0, 'ã•ãã†',   sub{ &sasou  }]) if $round == 0; # é–‹å§‹å‰ && ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿
+	push @skills, ([0, 0, 'ãã£ã',   sub{ &kick }])   if $round == 0 && $m eq $leader; # é–‹å§‹å‰ && ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿
 
 	for my $i (0.. $#skills) {
 		next if $skills[$i][0] > $ms{$m}{old_sp};
@@ -60,18 +60,18 @@ sub set_action {
 }
 
 #=================================================
-# —‚Ç‚¤‚®
+# ï¼ ã©ã†ã
 #=================================================
 sub dougu {
 	my $y = shift || $m;
-	$com .= "$ites[$m{ite}][1] ‚ğ‚Â‚©‚Á‚½I";
+	$com .= "$ites[$m{ite}][1] ã‚’ã¤ã‹ã£ãŸï¼";
 	&{ $ites[$m{ite}][4] }($y);
 	return if $mes;
 	$m{ite} = 0;
 }
 
 #=================================================
-# —‚³‚»‚¤
+# ï¼ ã•ãã†
 #=================================================
 sub sasou {
 	my $y = shift;
@@ -83,32 +83,32 @@ sub sasou {
 		$to_name = $y;
 		return;
 	}
-	$mes .= "’N‚ğ‚³‚»‚¢‚Ü‚·‚©H<br />";
-	open my $fh, "< ${this_file}_member.cgi" or &error("${this_file}_member.cgiƒtƒ@ƒCƒ‹‚ª‚ªŠJ‚¯‚Ü‚¹‚ñ"); 
+	$mes .= "èª°ã‚’ã•ãã„ã¾ã™ã‹ï¼Ÿ<br />";
+	open my $fh, "< ${this_file}_member.cgi" or &error("${this_file}_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒãŒé–‹ã‘ã¾ã›ã‚“"); 
 	while (my $line = <$fh>) {
 		my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
 		next if $time - $limit_member_time > $ltime;
-		next if $sames{$name}++; # “¯‚¶l‚È‚çŸ
-		$mes .= qq|<span onclick="text_set('—‚³‚»‚¤>$name ')" style="color: $color;"><img src="$icondir/$icon" alt="$name" />$name</span>|;
+		next if $sames{$name}++; # åŒã˜äººãªã‚‰æ¬¡
+		$mes .= qq|<span onclick="text_set('ï¼ ã•ãã†>$name ')" style="color: $color;"><img src="$icondir/$icon" alt="$name" />$name</span>|;
 	}
 	close $fh;
 }
 
 #=================================================
-# —‚«‚Á‚­
+# ï¼ ãã£ã
 #=================================================
 sub kick {
 	my $y = shift;
 	
-	$mes = "©•ª‚ğ‚«‚Á‚­‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ"		if $y eq $m;
-	$mes = "ƒŠ[ƒ_[‚¶‚á‚È‚¢‚Ì‚Å‚«‚Á‚­‚Å‚«‚Ü‚¹‚ñ"	if $leader ne $m;
-	$mes = "ƒNƒGƒXƒg’†‚Í‚«‚Á‚­‚Å‚«‚Ü‚¹‚ñ"			if $round > 0;
+	$mes = "è‡ªåˆ†ã‚’ãã£ãã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“"		if $y eq $m;
+	$mes = "ãƒªãƒ¼ãƒ€ãƒ¼ã˜ã‚ƒãªã„ã®ã§ãã£ãã§ãã¾ã›ã‚“"	if $leader ne $m;
+	$mes = "ã‚¯ã‚¨ã‚¹ãƒˆä¸­ã¯ãã£ãã§ãã¾ã›ã‚“"			if $round > 0;
 	return if $mes;
 
 	unless ($y) {
-		$mes = "’N‚ğ‚«‚Á‚­‚µ‚Ü‚·‚©H<br />";
+		$mes = "èª°ã‚’ãã£ãã—ã¾ã™ã‹ï¼Ÿ<br />";
 		for my $name (@partys) {
-			$mes .= qq|<span onclick="text_set('—‚«‚Á‚­>$name')">$name</span>|;
+			$mes .= qq|<span onclick="text_set('ï¼ ãã£ã>$name')">$name</span>|;
 		}
 		return;
 	}
@@ -117,17 +117,17 @@ sub kick {
 		if ($members[$i] eq $y) {
 			&regist_you_data($y, 'lib', 'quest');
 			&regist_you_data($y, 'wt', $time + 60);
-			$com.="$y‚ğ‚«‚Á‚­‚µ‚Ü‚µ‚½";
+			$com.="$yã‚’ãã£ãã—ã¾ã—ãŸ";
 			splice(@members, $i, 1);
 			
 			my @lines = ();
-			open my $fh, "+< $logdir/quest.cgi" or &error("$logdir/quest.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh, "+< $logdir/quest.cgi" or &error("$logdir/quest.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			eval { flock $fh, 2 };
 			while (my $line = <$fh>) {
 				push @lines, $line;
 			}
 			push @lines, $line;
-			unshift @lines, "$time<>$date<>$npc_name<>NPC<>$npc_color<>$p_name‚ÌƒŠ[ƒ_[$m‚©‚ç‚«‚Á‚­‚³‚ê‚Ü‚µ‚½<>$y<>\n";
+			unshift @lines, "$time<>$date<>$npc_name<>NPC<>$npc_color<>$p_nameã®ãƒªãƒ¼ãƒ€ãƒ¼$mã‹ã‚‰ãã£ãã•ã‚Œã¾ã—ãŸ<>$y<>\n";
 			seek  $fh, 0, 0;
 			truncate $fh, 0;
 			print $fh @lines;
@@ -139,8 +139,8 @@ sub kick {
 }
 
 #=================================================
-# ©•ª‚Ì‘f‘‚³‚Æ‘Šè‚Ì‘f‘‚³(*‚R”{)‚ğ”äŠr(‰ñ”ğE‰ïS‚ÌˆêŒ‚‚ÌŠm—¦)
-#w * 3x‚Ì”š‚ğ¬‚³‚­‚·‚ê‚Î‰ñ”ğ‚â‰ïSŒ‚‚ÌŠm—¦‚ªã‚ª‚èA”š‚ğ‘å‚«‚­‚·‚ê‚Î‰ñ”ğ‚â‰ïSŒ‚‚ÌŠm—¦‚ª‰º‚ª‚é
+# è‡ªåˆ†ã®ç´ æ—©ã•ã¨ç›¸æ‰‹ã®ç´ æ—©ã•(*ï¼“å€)ã‚’æ¯”è¼ƒ(å›é¿ãƒ»ä¼šå¿ƒã®ä¸€æ’ƒã®ç¢ºç‡)
+#ã€ * 3ã€ã®æ•°å­—ã‚’å°ã•ãã™ã‚Œã°å›é¿ã‚„ä¼šå¿ƒæ’ƒã®ç¢ºç‡ãŒä¸ŠãŒã‚Šã€æ•°å­—ã‚’å¤§ããã™ã‚Œã°å›é¿ã‚„ä¼šå¿ƒæ’ƒã®ç¢ºç‡ãŒä¸‹ãŒã‚‹
 #=================================================
 sub _is_exceed_ag {
 	my($_m, $_y) = @_;
@@ -149,22 +149,22 @@ sub _is_exceed_ag {
 }
 
 #=================================================
-# —‚±‚¤‚°‚«
+# ï¼ ã“ã†ã’ã
 #=================================================
 sub kougeki {
 	my $y = shift;
 	$y = $enemys[int(rand(@enemys))] if !defined($ms{$y}{name}) || $ms{$y}{color} eq $ms{$m}{color};
 
 	if ( &_is_exceed_ag($m, $y) ) {
-		$com .= qq|<span class="kaishin">‰ïS‚ÌˆêŒ‚II</span>|;
-		&_damage($y, $ms{$m}{at} * 0.75, 'U', 1);
+		$com .= qq|<span class="kaishin">ä¼šå¿ƒã®ä¸€æ’ƒï¼ï¼</span>|;
+		&_damage($y, $ms{$m}{at} * 0.75, 'æ”»', 1);
 	}
 	else {
-		&_damage($y, $ms{$m}{at}, 'U');
+		&_damage($y, $ms{$m}{at}, 'æ”»');
 	}
 }
 #=================================================
-# —‚Ü‚¦
+# ï¼ ã¾ãˆ
 #=================================================
 sub mae {
 	@enemys = ();
@@ -184,7 +184,7 @@ sub mae {
 }
 
 #=================================================
-# —‚¤‚µ‚ë
+# ï¼ ã†ã—ã‚
 #=================================================
 sub ushiro {
 	@enemys = ();
@@ -205,951 +205,951 @@ sub ushiro {
 }
 
 #=================================================
-# —‚Ä‚ñ‚µ‚å‚ñ
+# ï¼ ã¦ã‚“ã—ã‚‡ã‚“
 #=================================================
 %ten_names = (
-	1.7		=> qq|<font color="#FFFF99">Ãİ¼®İ</font>|,
-	3		=> qq|<font color="#FFCC00">Ãİ¼®İ</font>|,
-	5		=> qq|<font color="#FFFF00">Ê²Ãİ¼®İ</font>|,
-	8		=> qq|<font color="#FF0000">SÊ²Ãİ¼®İ</font>|,
+	1.7		=> qq|<font color="#FFFF99">ãƒ†ãƒ³ã‚·ãƒ§ãƒ³</font>|,
+	3		=> qq|<font color="#FFCC00">ãƒ†ãƒ³ã‚·ãƒ§ãƒ³</font>|,
+	5		=> qq|<font color="#FFFF00">ãƒã‚¤ãƒ†ãƒ³ã‚·ãƒ§ãƒ³</font>|,
+	8		=> qq|<font color="#FF0000">Sãƒã‚¤ãƒ†ãƒ³ã‚·ãƒ§ãƒ³</font>|,
 );
 sub tenshon {
 	my $y = shift || $m;
 	if ($ms{$y}{ten} <= 1) {
 		$ms{$y}{ten} = 1.7;
-		$com .= qq|$y‚Ìƒeƒ“ƒVƒ‡ƒ“‚ª <span class="tenshon">5“</span> ‚É‚È‚Á‚½I|;
+		$com .= qq|$yã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ãŒ <span class="tenshon">5ï¼…</span> ã«ãªã£ãŸï¼|;
 	}
 	elsif ($ms{$y}{ten} <= 2) {
 		$ms{$y}{ten} = 3;
-		$com .= qq|$y‚Ìƒeƒ“ƒVƒ‡ƒ“‚ª <span class="tenshon">20“</span> ‚É‚È‚Á‚½I|;
+		$com .= qq|$yã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ãŒ <span class="tenshon">20ï¼…</span> ã«ãªã£ãŸï¼|;
 	}
 	elsif ($ms{$y}{ten} <= 3) {
 		$ms{$y}{ten} = 5;
-		$com .= qq|$y‚Ìƒeƒ“ƒVƒ‡ƒ“‚ª <span class="tenshon">50“</span> ‚É‚È‚Á‚½I$y‚Í<span class="tenshon">ƒnƒCƒeƒ“ƒVƒ‡ƒ“</span>‚É‚È‚Á‚½I|;
+		$com .= qq|$yã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ãŒ <span class="tenshon">50ï¼…</span> ã«ãªã£ãŸï¼$yã¯<span class="tenshon">ãƒã‚¤ãƒ†ãƒ³ã‚·ãƒ§ãƒ³</span>ã«ãªã£ãŸï¼|;
 	}
 	else {
 		if ( $m{lv} < 25 || $ms{$y}{ten} >= 8 || $m{lv} < int(rand(50)+20) ) {
-			$com .= qq|$y‚Ìƒeƒ“ƒVƒ‡ƒ“‚Í‚±‚êˆÈã‚ ‚ª‚ç‚È‚¢‚æ‚¤‚¾|;
+			$com .= qq|$yã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ã¯ã“ã‚Œä»¥ä¸Šã‚ãŒã‚‰ãªã„ã‚ˆã†ã |;
 		}
 		else {
 			$ms{$y}{ten} = 8;
-			$com .= qq|$y‚Ìƒeƒ“ƒVƒ‡ƒ“‚ª <span class="tenshon">100“</span> ‚É‚È‚Á‚½I$y‚Í<span class="tenshon">ƒX[ƒp[ƒnƒCƒeƒ“ƒVƒ‡ƒ“</span>‚É‚È‚Á‚½I|;
+			$com .= qq|$yã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ãŒ <span class="tenshon">100ï¼…</span> ã«ãªã£ãŸï¼$yã¯<span class="tenshon">ã‚¹ãƒ¼ãƒ‘ãƒ¼ãƒã‚¤ãƒ†ãƒ³ã‚·ãƒ§ãƒ³</span>ã«ãªã£ãŸï¼|;
 		}
 	}
 }
 
 #=================================================
-# ƒXƒLƒ‹ˆê——
+# ã‚¹ã‚­ãƒ«ä¸€è¦§
 #=================================================
-# ‘®«c•¨—UŒ‚¨UA–‚–@UŒ‚¨–‚AƒuƒŒƒX¨‘§A—x‚é¨—x
-# ó‘ÔˆÙíc–ƒáƒA–°‚èA–Ò“ÅA¬—A–‚••A—x••A“®••
-# u$is_add_effect = 1;v‚ÍAUŒ‚{ó‘ÔˆÙí‚È‚Ç‚Åg—pBu`‚ğ‚©‚í‚µ‚½v‚ÌƒƒbƒZ[ƒW‚ª•\¦‚³‚ê‚È‚­‚È‚éB
+# å±æ€§â€¦ç‰©ç†æ”»æ’ƒâ†’æ”»ã€é­”æ³•æ”»æ’ƒâ†’é­”ã€ãƒ–ãƒ¬ã‚¹â†’æ¯ã€è¸Šã‚‹â†’è¸Š
+# çŠ¶æ…‹ç•°å¸¸â€¦éº»ç—ºã€çœ ã‚Šã€çŒ›æ¯’ã€æ··ä¹±ã€é­”å°ã€è¸Šå°ã€å‹•å°
+# ã€Œ$is_add_effect = 1;ã€ã¯ã€æ”»æ’ƒï¼‹çŠ¶æ…‹ç•°å¸¸ãªã©ã§ä½¿ç”¨ã€‚ã€Œï½ã‚’ã‹ã‚ã—ãŸã€ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¡¨ç¤ºã•ã‚Œãªããªã‚‹ã€‚
 #=================================================
-sub skill_0 { # “G—p‚Ä‚ñ‚µ‚å‚ñA‚Ú‚¤‚¬‚åBUŒ‚‚·‚éŠm—§‚ª‰º‚ª‚Á‚Ä‚µ‚Ü‚¤‚Ì‚ÅA‚±‚¤‚°‚«‚Ì”z—ñ‚ğ’Ç‰Á
+sub skill_0 { # æ•µç”¨ã¦ã‚“ã—ã‚‡ã‚“ã€ã¼ã†ãã‚‡ã€‚æ”»æ’ƒã™ã‚‹ç¢ºç«‹ãŒä¸‹ãŒã£ã¦ã—ã¾ã†ã®ã§ã€ã“ã†ã’ãã®é…åˆ—ã‚’è¿½åŠ 
 	return (
-	# [•K—vSP, g—pMP, 'ƒXƒLƒ‹–¼(—––––)', sub{ ƒvƒƒOƒ‰ƒ€ˆ— }],
-		[8,		0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-		[9,		0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-		[10,	0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-		[20,	0,	'‚Ä‚ñ‚µ‚å‚ñ',	sub{ &tenshon($m)	}],
-		[30,	0,	'‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp} = '–hŒä'; $com.=qq|<span class="tmp">$m‚Íg‚ğŒÅ‚ß‚Ä‚¢‚é</span>|;	}],
+	# [å¿…è¦SP, ä½¿ç”¨MP, 'ã‚¹ã‚­ãƒ«å(ï¼ ï¼Šï¼Šï¼Šï¼Š)', sub{ ãƒ—ãƒ­ã‚°ãƒ©ãƒ å‡¦ç† }],
+		[8,		0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+		[9,		0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+		[10,	0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+		[20,	0,	'ã¦ã‚“ã—ã‚‡ã‚“',	sub{ &tenshon($m)	}],
+		[30,	0,	'ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp} = 'é˜²å¾¡'; $com.=qq|<span class="tmp">$mã¯èº«ã‚’å›ºã‚ã¦ã„ã‚‹</span>|;	}],
 	);
 }
-sub skill_1 { # ím
+sub skill_1 { # æˆ¦å£«
 	return (
-		[5,		5,		'‚©‚Ô‚Æ‚í‚è',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*0.9, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.15, 'U', 'df');	}],
-		[8,		0,		'‚©‚Î‚¤',			sub{ my($y) = &_check_party(shift, '‚©‚Î‚¤', 'U'); return if !$y || $y eq $m; $ms{$m}{tmp} = '‚©‚Î‚¢’†'; $ms{$y}{tmp} = '‚©‚Î‚¤'; $com.=qq|<span class="tmp">$m‚Í$y‚ğ‚©‚Î‚Á‚Ä‚¢‚é</span>|;	}],
-		[25,	8,		'‚¿‚©‚ç‚ğ‚½‚ß‚é',	sub{ &_st_up($m, 1.0, 'U', 'at');	}],
-		[50,	5,		'‚ª‚ñ‚¹‚«‚È‚°',		sub{ &_damages(90, 'U', 1);	}],
-		[80,	10,		'‚Ü‚¶‚ñ‚¬‚è',		sub{ rand(2) < 1 ? &_damage(shift, $ms{$m}{at} * 3, 'U') : &_damage(shift, 20, 'U');	}],
+		[5,		5,		'ã‹ã¶ã¨ã‚ã‚Š',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*0.9, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.15, 'æ”»', 'df');	}],
+		[8,		0,		'ã‹ã°ã†',			sub{ my($y) = &_check_party(shift, 'ã‹ã°ã†', 'æ”»'); return if !$y || $y eq $m; $ms{$m}{tmp} = 'ã‹ã°ã„ä¸­'; $ms{$y}{tmp} = 'ã‹ã°ã†'; $com.=qq|<span class="tmp">$mã¯$yã‚’ã‹ã°ã£ã¦ã„ã‚‹</span>|;	}],
+		[25,	8,		'ã¡ã‹ã‚‰ã‚’ãŸã‚ã‚‹',	sub{ &_st_up($m, 1.0, 'æ”»', 'at');	}],
+		[50,	5,		'ãŒã‚“ã›ããªã’',		sub{ &_damages(90, 'æ”»', 1);	}],
+		[80,	10,		'ã¾ã˜ã‚“ãã‚Š',		sub{ rand(2) < 1 ? &_damage(shift, $ms{$m}{at} * 3, 'æ”»') : &_damage(shift, 20, 'æ”»');	}],
 	);
 }
-sub skill_2 { # Œ•m
+sub skill_2 { # å‰£å£«
 	return (
-		[5,		3,		'‚µ‚ñ‚­‚¤‚¬‚è',		sub{ &_damage(shift, $ms{$m}{ag}*1.5, 'U');	}],
-		[10,	4,		'‚İ‚Ë‚¤‚¿',			sub{ &_st_d(shift, '“®••', 'U', 80);	}],
-		[20,	5,		'‚¤‚¯‚È‚ª‚µ',		sub{ $ms{$m}{tmp} = 'ó—¬‚µ'; $com.=qq|<span class="tmp">$m‚ÍUŒ‚‚ğó—¬‚·‚©‚Ü‚¦‚ğ‚Æ‚Á‚½</span>|;	}],
-		[30,	0,		'‚©‚Î‚¤',			sub{ my($y) = &_check_party(shift, '‚©‚Î‚¤', 'U'); return if !$y || $y eq $m; $ms{$m}{tmp} = '‚©‚Î‚¢’†'; $ms{$y}{tmp} = '‚©‚Î‚¤'; $com.=qq|<span class="tmp">$m‚Í$y‚ğ‚©‚Î‚Á‚Ä‚¢‚é</span>|;	}],
-		[50,	6,		'ƒƒ^ƒ‹‚¬‚è',		sub{ &_damage(shift, $ms{$m}{at}*0.4, '–³', 1);		}],
-		[80,	12,		'‚Í‚â‚Ô‚³‚¬‚è',		sub{ my $y = shift; for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage($y, $ms{$m}{ag}*2.2, 'U'); };	}],
-		[100,	21,		'‚³‚İ‚¾‚ê‚¬‚è',		sub{ &_damages($ms{$m}{at}, 'U');	}],
+		[5,		3,		'ã—ã‚“ãã†ãã‚Š',		sub{ &_damage(shift, $ms{$m}{ag}*1.5, 'æ”»');	}],
+		[10,	4,		'ã¿ã­ã†ã¡',			sub{ &_st_d(shift, 'å‹•å°', 'æ”»', 80);	}],
+		[20,	5,		'ã†ã‘ãªãŒã—',		sub{ $ms{$m}{tmp} = 'å—æµã—'; $com.=qq|<span class="tmp">$mã¯æ”»æ’ƒã‚’å—æµã™ã‹ã¾ãˆã‚’ã¨ã£ãŸ</span>|;	}],
+		[30,	0,		'ã‹ã°ã†',			sub{ my($y) = &_check_party(shift, 'ã‹ã°ã†', 'æ”»'); return if !$y || $y eq $m; $ms{$m}{tmp} = 'ã‹ã°ã„ä¸­'; $ms{$y}{tmp} = 'ã‹ã°ã†'; $com.=qq|<span class="tmp">$mã¯$yã‚’ã‹ã°ã£ã¦ã„ã‚‹</span>|;	}],
+		[50,	6,		'ãƒ¡ã‚¿ãƒ«ãã‚Š',		sub{ &_damage(shift, $ms{$m}{at}*0.4, 'ç„¡', 1);		}],
+		[80,	12,		'ã¯ã‚„ã¶ã•ãã‚Š',		sub{ my $y = shift; for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage($y, $ms{$m}{ag}*2.2, 'æ”»'); };	}],
+		[100,	21,		'ã•ã¿ã ã‚Œãã‚Š',		sub{ &_damages($ms{$m}{at}, 'æ”»');	}],
 	);
 }
-sub skill_3 { # ‹Rm
+sub skill_3 { # é¨å£«
 	return (
-		[1,		0,		'‚©‚Î‚¤',			sub{ my($y) = &_check_party(shift, '‚©‚Î‚¤', 'U'); return if !$y || $y eq $m; $ms{$m}{tmp} = '‚©‚Î‚¢’†'; $ms{$y}{tmp} = '‚©‚Î‚¤'; $com.=qq|<span class="tmp">$m‚Í$y‚ğ‚©‚Î‚Á‚Ä‚¢‚é</span>|;	}],
-		[5,		2,		'‚Ü‚à‚è‚ğ‚©‚½‚ß‚é',	sub{ &_st_up($m, 0.4, 'U', 'df');		}],
-		[15,	5,		'‚·‚Ä‚İ',			sub{ $com.=qq|<span class="tmp">$m‚Íç‚è‚ğ‹C‚É‚¹‚¸‚·‚Ä‚İ‚ÅUŒ‚I</span>|; &_damage(shift, $ms{$m}{at}*2, 'U'); $ms{$m}{tmp}='‚Q”{';	}],
-		[25,	3,		'‚¾‚¢‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp}='‘å–hŒä'; $com.=qq|<span class="tmp">$m‚Íç‚è‚Ì‚©‚Ü‚¦‚ğ‚Æ‚Á‚½I</span>|;	}],
-		[40,	7,		'ƒXƒNƒ‹ƒg',			sub{ &_st_ups(0.25, '–‚', 'df');	}],
-		[60,	1,		'ƒƒKƒUƒ‹',			sub{ $com.=qq|<span class="die">$m‚Í©•ª‚Ì–½‚ğ‚³‚³‚°‚Ü‚µ‚½I</span>|; for my $y (@partys) { next if $m eq $y; $com .= $ms{$y}{hp} > 0 ? qq|$y‚Ì$e2j{hp}‚ª<span class="heal">‘S‰ñ•œ</span>‚µ‚½I| : qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½I</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; }; &defeat($m); $ms{$m}{mp} = 1;	}],
-		[80,	18,		'ƒOƒ‰ƒ“ƒhƒNƒƒX',	sub{ &_damages($ms{$m}{df} * 1.5, 'U');	}],
+		[1,		0,		'ã‹ã°ã†',			sub{ my($y) = &_check_party(shift, 'ã‹ã°ã†', 'æ”»'); return if !$y || $y eq $m; $ms{$m}{tmp} = 'ã‹ã°ã„ä¸­'; $ms{$y}{tmp} = 'ã‹ã°ã†'; $com.=qq|<span class="tmp">$mã¯$yã‚’ã‹ã°ã£ã¦ã„ã‚‹</span>|;	}],
+		[5,		2,		'ã¾ã‚‚ã‚Šã‚’ã‹ãŸã‚ã‚‹',	sub{ &_st_up($m, 0.4, 'æ”»', 'df');		}],
+		[15,	5,		'ã™ã¦ã¿',			sub{ $com.=qq|<span class="tmp">$mã¯å®ˆã‚Šã‚’æ°—ã«ã›ãšã™ã¦ã¿ã§æ”»æ’ƒï¼</span>|; &_damage(shift, $ms{$m}{at}*2, 'æ”»'); $ms{$m}{tmp}='ï¼’å€';	}],
+		[25,	3,		'ã ã„ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp}='å¤§é˜²å¾¡'; $com.=qq|<span class="tmp">$mã¯å®ˆã‚Šã®ã‹ã¾ãˆã‚’ã¨ã£ãŸï¼</span>|;	}],
+		[40,	7,		'ã‚¹ã‚¯ãƒ«ãƒˆ',			sub{ &_st_ups(0.25, 'é­”', 'df');	}],
+		[60,	1,		'ãƒ¡ã‚¬ã‚¶ãƒ«',			sub{ $com.=qq|<span class="die">$mã¯è‡ªåˆ†ã®å‘½ã‚’ã•ã•ã’ã¾ã—ãŸï¼</span>|; for my $y (@partys) { next if $m eq $y; $com .= $ms{$y}{hp} > 0 ? qq|$yã®$e2j{hp}ãŒ<span class="heal">å…¨å›å¾©</span>ã—ãŸï¼| : qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸï¼</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; }; &defeat($m); $ms{$m}{mp} = 1;	}],
+		[80,	18,		'ã‚°ãƒ©ãƒ³ãƒ‰ã‚¯ãƒ­ã‚¹',	sub{ &_damages($ms{$m}{df} * 1.5, 'æ”»');	}],
 	);
 }
-sub skill_4 { # •“¬‰Æ
+sub skill_4 { # æ­¦é—˜å®¶
 	return (
-		[1,		0,		'‚¹‚¢‚µ‚ñ‚Æ‚¤‚¢‚Â',	sub{ $ms{$m}{hit}=95; $com.=qq|<span class="st_up">$m‚ÍS‚ğ—‚¿‚Â‚©‚¹–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;	}],
-		[5,		3,		'‚İ‚©‚í‚µ‚«‚á‚­',	sub{ &_st_up($m, 0.4, 'U', 'ag');				}],
-		[14,	4,		'‚Ğ‚´‚°‚è',			sub{ &_damage(shift, $ms{$m}{at}*1.2, 'U');				}],
-		[25,	3,		'‚ ‚µ‚Î‚ç‚¢',		sub{ &_st_d(shift, '“®••', 'U', 75);		}],
-		[45,	11,		'‚«‚ã‚¤‚µ‚å‚Ã‚«',	sub{ &_death(shift, '‘¦€', 'U', 19);	}],
-		[70,	15,		'‚¹‚¢‚¯‚ñ‚Ã‚«',		sub{ &_damage(shift, $ms{$m}{at}*1.5, 'U');		}],
-		[100,	20,		'‚Î‚­‚ê‚Â‚¯‚ñ',		sub{ my $v = int(rand(3)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at} * 0.8, 'U'); };	}],
+		[1,		0,		'ã›ã„ã—ã‚“ã¨ã†ã„ã¤',	sub{ $ms{$m}{hit}=95; $com.=qq|<span class="st_up">$mã¯å¿ƒã‚’è½ã¡ã¤ã‹ã›å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;	}],
+		[5,		3,		'ã¿ã‹ã‚ã—ãã‚ƒã',	sub{ &_st_up($m, 0.4, 'æ”»', 'ag');				}],
+		[14,	4,		'ã²ã–ã’ã‚Š',			sub{ &_damage(shift, $ms{$m}{at}*1.2, 'æ”»');				}],
+		[25,	3,		'ã‚ã—ã°ã‚‰ã„',		sub{ &_st_d(shift, 'å‹•å°', 'æ”»', 75);		}],
+		[45,	11,		'ãã‚…ã†ã—ã‚‡ã¥ã',	sub{ &_death(shift, 'å³æ­»', 'æ”»', 19);	}],
+		[70,	15,		'ã›ã„ã‘ã‚“ã¥ã',		sub{ &_damage(shift, $ms{$m}{at}*1.5, 'æ”»');		}],
+		[100,	20,		'ã°ãã‚Œã¤ã‘ã‚“',		sub{ my $v = int(rand(3)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at} * 0.8, 'æ”»'); };	}],
 	);
 }
-sub skill_5 { # ‘m—µ
+sub skill_5 { # åƒ§ä¾¶
 	return (
-		[1,		3,		'ƒXƒJƒ‰',	sub{ &_st_up(shift, 0.4, '–‚', 'df');	}],
-		[3,		2,		'ƒLƒAƒŠ[',	sub{ &_st_h(shift, '–Ò“Å', '–‚');	}],
-		[6,		3,		'ƒzƒCƒ~',	sub{ &_heal(shift, 30, '–‚');	}],
-		[12,	4,		'ƒoƒM',		sub{ &_damages(rand(25)+10, '–‚', 1);	}],
-		[24,	10,		'ƒxƒzƒCƒ~',	sub{ &_heal(shift, 90, '–‚');	}],
-		[45,	10,		'ƒoƒMƒ}',	sub{ &_damages(rand(40)+25, '–‚', 1);	}],
-		[60,	20,		'ƒUƒIƒ‰ƒ‹',	sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|‚µ‚©‚µA$y‚Í¶‚«•Ô‚ç‚È‚©‚Á‚½c|; };	}],
-		[100,	30,		'ƒxƒzƒ}',	sub{ &_heal(shift, 999, '–‚');	}],
+		[1,		3,		'ã‚¹ã‚«ãƒ©',	sub{ &_st_up(shift, 0.4, 'é­”', 'df');	}],
+		[3,		2,		'ã‚­ã‚¢ãƒªãƒ¼',	sub{ &_st_h(shift, 'çŒ›æ¯’', 'é­”');	}],
+		[6,		3,		'ãƒ›ã‚¤ãƒŸ',	sub{ &_heal(shift, 30, 'é­”');	}],
+		[12,	4,		'ãƒã‚®',		sub{ &_damages(rand(25)+10, 'é­”', 1);	}],
+		[24,	10,		'ãƒ™ãƒ›ã‚¤ãƒŸ',	sub{ &_heal(shift, 90, 'é­”');	}],
+		[45,	10,		'ãƒã‚®ãƒ',	sub{ &_damages(rand(40)+25, 'é­”', 1);	}],
+		[60,	20,		'ã‚¶ã‚ªãƒ©ãƒ«',	sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|ã—ã‹ã—ã€$yã¯ç”Ÿãè¿”ã‚‰ãªã‹ã£ãŸâ€¦|; };	}],
+		[100,	30,		'ãƒ™ãƒ›ãƒ',	sub{ &_heal(shift, 999, 'é­”');	}],
 	);
 }
-sub skill_6 { # –‚–@g‚¢
+sub skill_6 { # é­”æ³•ä½¿ã„
 	return (
-		[1,		2,		'ƒƒ‰',			sub{ &_damage(shift, 20, '–‚', 1);			}],
-		[4,		4,		'ƒ‹ƒJƒj',		sub{ &_st_down(shift, 0.4, '–‚', 'df');	}],
-		[8,		5,		'ƒMƒ‰',			sub{ &_damages(25, '–‚', 1);				}],
-		[14,	7,		'ƒ}ƒk[ƒT',		sub{ &_st_downs(0.2, '–‚', 'hit');			}],
-		[20,	8,		'ƒƒ‰ƒ~',		sub{ &_damage(shift, 70, '–‚', 1);		}],
-		[30,	8,		'ƒ‰ƒŠƒz[',		sub{ &_st_d(shift, '–°‚è', '–‚', 65);		}],
-		[55,	11,		'ƒxƒMƒ‰ƒ}',		sub{ &_damages(60, '–‚', 1)				}],
-		[90,	30,		'ƒƒ‰ƒ][ƒ}',	sub{ &_damage(shift, 220, '–‚', 1);		}],
+		[1,		2,		'ãƒ¡ãƒ©',			sub{ &_damage(shift, 20, 'é­”', 1);			}],
+		[4,		4,		'ãƒ«ã‚«ãƒ‹',		sub{ &_st_down(shift, 0.4, 'é­”', 'df');	}],
+		[8,		5,		'ã‚®ãƒ©',			sub{ &_damages(25, 'é­”', 1);				}],
+		[14,	7,		'ãƒãƒŒãƒ¼ã‚µ',		sub{ &_st_downs(0.2, 'é­”', 'hit');			}],
+		[20,	8,		'ãƒ¡ãƒ©ãƒŸ',		sub{ &_damage(shift, 70, 'é­”', 1);		}],
+		[30,	8,		'ãƒ©ãƒªãƒ›ãƒ¼',		sub{ &_st_d(shift, 'çœ ã‚Š', 'é­”', 65);		}],
+		[55,	11,		'ãƒ™ã‚®ãƒ©ãƒ',		sub{ &_damages(60, 'é­”', 1)				}],
+		[90,	30,		'ãƒ¡ãƒ©ã‚¾ãƒ¼ãƒ',	sub{ &_damage(shift, 220, 'é­”', 1);		}],
 	);
 }
-sub skill_7 { # ¤l
+sub skill_7 { # å•†äºº
 	return (
-		[2,		2,		'‚Ü‚à‚è‚ğ‚©‚½‚ß‚é',	sub{ &_st_up($m, 0.4, 'U', 'df');		}],
-		[7,		1,		'ƒS[ƒ‹ƒhƒnƒ“ƒ}[',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*0.8, 'U'); return if !$y; $v = int($v * 0.1)+5; $m{money}+=$v; $com.="$v G‚ğè‚É“ü‚ê‚Ü‚µ‚½I";	}],
-		[12,	6,		'‚·‚È‚¯‚Ş‚è',		sub{ &_st_downs(0.2, '‘§', 'hit');	}],
-		[20,	0,		'‚Æ‚¤‚¼‚­‚Ì‚Í‚È',	sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); if ($y =~ /^@.+•ó” .$/) { my $item_name = $ms{$y}{get_money} eq '0' ? '‚©‚ç‚Á‚Û' : $ms{$y}{get_exp} eq '1' ? $weas[$ms{$y}{get_money}][1] : $ms{$y}{get_exp} eq '2' ? $arms[$ms{$y}{get_money}][1] : $ites[$ms{$y}{get_money}][1]; $com.="•ó” ‚Ì’†g‚Í $item_name ‚Ì‚æ‚¤‚¾c"; } else { my @smells=(qw/‚¢‚¢ ‚¨‚¢‚µ‚»‚¤‚È ƒoƒ‰‚Ì ‚ ‚Ü‚¢ •Ï‚È ‚â‚Î‚¢ ‚³‚í‚â‚©‚È ƒƒCƒ‹ƒh‚È/); my $v=int(rand(@smells)); $com.="$y‚Í $smells[$v] ‚É‚¨‚¢‚ª‚·‚é"; };	}],
-		[35,	4,		'‚½‚¢‚ ‚½‚è',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 1.6, 'U'); return if $v <= 0; &_risk($v * 0.07);		}],
-		[45,	1,		'ƒ}ƒzƒAƒQƒ‹',		sub{ my($y) = &_check_party(shift, '–‚—^', '–‚'); return if !$y; my$v = int($ms{$m}{mp} * 0.5); $v = 100 if $v >= 100; $ms{$m}{mp} -= $v; $com.= qq|$m‚Í$e2j{mmp}‚ğ$y‚É <span class="heal">$v</span> ‚ ‚½‚¦‚½I|; &_mp_h($y, $v, '–‚');	}],
-		[65,	7,		'ƒƒ_ƒpƒjƒ_ƒ“ƒX',	sub{ &_st_ds('¬—', '—x', 60);	}],
-		[80,	1,		'ƒƒKƒ“ƒe',			sub{ $com.=qq|<span class="die">$m‚Í©”š‚µ‚½I</span>|; &_deaths('‘¦€', '–³', 60); &defeat($m); $ms{$m}{mp} = 1; 	}],
+		[2,		2,		'ã¾ã‚‚ã‚Šã‚’ã‹ãŸã‚ã‚‹',	sub{ &_st_up($m, 0.4, 'æ”»', 'df');		}],
+		[7,		1,		'ã‚´ãƒ¼ãƒ«ãƒ‰ãƒãƒ³ãƒãƒ¼',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*0.8, 'æ”»'); return if !$y; $v = int($v * 0.1)+5; $m{money}+=$v; $com.="$v Gã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸï¼";	}],
+		[12,	6,		'ã™ãªã‘ã‚€ã‚Š',		sub{ &_st_downs(0.2, 'æ¯', 'hit');	}],
+		[20,	0,		'ã¨ã†ããã®ã¯ãª',	sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); if ($y =~ /^@.+å®ç®±.$/) { my $item_name = $ms{$y}{get_money} eq '0' ? 'ã‹ã‚‰ã£ã½' : $ms{$y}{get_exp} eq '1' ? $weas[$ms{$y}{get_money}][1] : $ms{$y}{get_exp} eq '2' ? $arms[$ms{$y}{get_money}][1] : $ites[$ms{$y}{get_money}][1]; $com.="å®ç®±ã®ä¸­èº«ã¯ $item_name ã®ã‚ˆã†ã â€¦"; } else { my @smells=(qw/ã„ã„ ãŠã„ã—ãã†ãª ãƒãƒ©ã® ã‚ã¾ã„ å¤‰ãª ã‚„ã°ã„ ã•ã‚ã‚„ã‹ãª ãƒ¯ã‚¤ãƒ«ãƒ‰ãª/); my $v=int(rand(@smells)); $com.="$yã¯ $smells[$v] ã«ãŠã„ãŒã™ã‚‹"; };	}],
+		[35,	4,		'ãŸã„ã‚ãŸã‚Š',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 1.6, 'æ”»'); return if $v <= 0; &_risk($v * 0.07);		}],
+		[45,	1,		'ãƒãƒ›ã‚¢ã‚²ãƒ«',		sub{ my($y) = &_check_party(shift, 'é­”ä¸', 'é­”'); return if !$y; my$v = int($ms{$m}{mp} * 0.5); $v = 100 if $v >= 100; $ms{$m}{mp} -= $v; $com.= qq|$mã¯$e2j{mmp}ã‚’$yã« <span class="heal">$v</span> ã‚ãŸãˆãŸï¼|; &_mp_h($y, $v, 'é­”');	}],
+		[65,	7,		'ãƒ¡ãƒ€ãƒ‘ãƒ‹ãƒ€ãƒ³ã‚¹',	sub{ &_st_ds('æ··ä¹±', 'è¸Š', 60);	}],
+		[80,	1,		'ãƒ¡ã‚¬ãƒ³ãƒ†',			sub{ $com.=qq|<span class="die">$mã¯è‡ªçˆ†ã—ãŸï¼</span>|; &_deaths('å³æ­»', 'ç„¡', 60); &defeat($m); $ms{$m}{mp} = 1; 	}],
 	);
 }
-sub skill_8 { # —V‚Ñl
+sub skill_8 { # éŠã³äºº
 	return (
-		[1,		0,		'‚Ë‚é',				sub{ $ms{$m}{state}='–°‚è'; $com.="$m‚Í–°‚è‚¾‚µ‚½"; &_heal($m, $ms{$m}{mhp}*0.5);	}],
-		[4,		0,		'‚È‚°‚«‚Á‚·',		sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='–ƒáƒ'; $ms{$y}{ten}=1; $com.=qq|$m‚Í$y‚É“Š‚°ƒLƒbƒX‚ğ‚µ<span class="state">$y‚Íáƒ‚ê‚Ü‚µ‚½I</span>|;		}],
-		[8,		0,		'ƒpƒtƒpƒt',			sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='“®••'; $ms{$y}{ten}=1; $com.=qq|$m‚Í$y‚Éƒpƒtƒpƒt‚ğ‚µ‚½I<span class="state">$y‚Í“®‚«‚ª~‚Ü‚Á‚½I</span>|;	}],
-		[12,	0,		'‚«‚¯‚ñ‚È‚ ‚»‚Ñ',	sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='–Ò“Å'; $ms{$y}{ten}=1; $com.=qq|$m‚ÌŠëŒ¯‚È—V‚Ñ‚É‚æ‚è<span class="state">$y‚Í–Ò“Å‚É‚È‚è‚Ü‚µ‚½I</span>|;	}],
-		[18,	0,		'‚¿‚å‚¤‚Í‚Â',		sub{ for my $y (@members) { next if $ms{$y}{hp} <= 0 || $m eq $y || rand(2) < 1; &tenshon($y); };	}],
-		[24,	0,		'‚©‚ç‚©‚¤',			sub{ my $y = shift; ($y) = defined($ms{$y}{name}) ? $y : &_check_enemy($y, 'ƒeƒ“', '–³'); &tenshon($y);		}],
-		[36,	0,		'‚¢‚Á‚Ï‚Â‚¬‚á‚®',	sub{ my @gags = ('‹³‰ï‚És‚­‚Ì‚Í¡“ú‚©‚¢H','ƒ‹ƒJƒiƒ“‚Å‚à¥‚¦‚é‚©‚È‚ñô','‚»‚ñ‚ÈƒXƒeƒeƒRƒpƒ“ƒc‚à‚¤ƒXƒeƒeƒR‚¢I','ƒXƒJƒ‰‚ğg‚Á‚Ä‚·‚©‚ç‚ê‚½','ƒAƒ“ƒ^‚»‚¤‚è‚å‚©‚¢H‚»‚¤‚è‚å','‚â‚­‚»‚¤‚ğ‚±‚ñ‚ª‚è‚â‚­‚¼‚¤ô','Œ«Ò‚ğ”­Œ©‚¶‚áI'); my $gag = $gags[int(rand(@gags))]; $com.="w$gagxc"; for my $y (@members) { next if $y eq $m; next if rand(3) < 1; $com.="$y‚ÍÎ‚¢“]‚°‚½I"; $ms{$y}{state}='“®••'; $ms{$y}{ten}=1;	 };	}],
-		[50,	0,		'ƒN[ƒ‹ƒWƒ‡[ƒN',	sub{ for my $y (@enemys) { $ms{$y}{ten} = 1; }; $com.="‘Sˆõ‚Ìƒeƒ“ƒVƒ‡ƒ“‚ª‰º‚ª‚Á‚½c";	}],
+		[1,		0,		'ã­ã‚‹',				sub{ $ms{$m}{state}='çœ ã‚Š'; $com.="$mã¯çœ ã‚Šã ã—ãŸ"; &_heal($m, $ms{$m}{mhp}*0.5);	}],
+		[4,		0,		'ãªã’ãã£ã™',		sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='éº»ç—º'; $ms{$y}{ten}=1; $com.=qq|$mã¯$yã«æŠ•ã’ã‚­ãƒƒã‚¹ã‚’ã—<span class="state">$yã¯ç—ºã‚Œã¾ã—ãŸï¼</span>|;		}],
+		[8,		0,		'ãƒ‘ãƒ•ãƒ‘ãƒ•',			sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='å‹•å°'; $ms{$y}{ten}=1; $com.=qq|$mã¯$yã«ãƒ‘ãƒ•ãƒ‘ãƒ•ã‚’ã—ãŸï¼<span class="state">$yã¯å‹•ããŒæ­¢ã¾ã£ãŸï¼</span>|;	}],
+		[12,	0,		'ãã‘ã‚“ãªã‚ãã³',	sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='çŒ›æ¯’'; $ms{$y}{ten}=1; $com.=qq|$mã®å±é™ºãªéŠã³ã«ã‚ˆã‚Š<span class="state">$yã¯çŒ›æ¯’ã«ãªã‚Šã¾ã—ãŸï¼</span>|;	}],
+		[18,	0,		'ã¡ã‚‡ã†ã¯ã¤',		sub{ for my $y (@members) { next if $ms{$y}{hp} <= 0 || $m eq $y || rand(2) < 1; &tenshon($y); };	}],
+		[24,	0,		'ã‹ã‚‰ã‹ã†',			sub{ my $y = shift; ($y) = defined($ms{$y}{name}) ? $y : &_check_enemy($y, 'ãƒ†ãƒ³', 'ç„¡'); &tenshon($y);		}],
+		[36,	0,		'ã„ã£ã±ã¤ãã‚ƒã',	sub{ my @gags = ('æ•™ä¼šã«è¡Œãã®ã¯ä»Šæ—¥ã‹ã„ï¼Ÿ','ãƒ«ã‚«ãƒŠãƒ³ã§ã‚‚å”±ãˆã‚‹ã‹ãªã‚“â™ª','ãã‚“ãªã‚¹ãƒ†ãƒ†ã‚³ãƒ‘ãƒ³ãƒ„ã‚‚ã†ã‚¹ãƒ†ãƒ†ã‚³ã„ï¼','ã‚¹ã‚«ãƒ©ã‚’ä½¿ã£ã¦ã™ã‹ã‚‰ã‚ŒãŸ','ã‚¢ãƒ³ã‚¿ãã†ã‚Šã‚‡ã‹ã„ï¼Ÿãã†ã‚Šã‚‡','ã‚„ããã†ã‚’ã“ã‚“ãŒã‚Šã‚„ããã†â™ª','è³¢è€…ã‚’ç™ºè¦‹ã˜ã‚ƒï¼'); my $gag = $gags[int(rand(@gags))]; $com.="ã€$gagã€â€¦"; for my $y (@members) { next if $y eq $m; next if rand(3) < 1; $com.="$yã¯ç¬‘ã„è»¢ã’ãŸï¼"; $ms{$y}{state}='å‹•å°'; $ms{$y}{ten}=1;	 };	}],
+		[50,	0,		'ã‚¯ãƒ¼ãƒ«ã‚¸ãƒ§ãƒ¼ã‚¯',	sub{ for my $y (@enemys) { $ms{$y}{ten} = 1; }; $com.="å…¨å“¡ã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ãŒä¸‹ãŒã£ãŸâ€¦";	}],
 	);
 }
-sub skill_9 { # “‘¯
+sub skill_9 { # ç›—è³Š
 	return (
-		[3,		3,		'ƒ{ƒ~ƒG',			sub{ &_st_down(shift,  0.4, '–‚', 'ag');	}],
-		[6,		3,		'ƒsƒIƒ‰',			sub{ &_st_up(shift, 0.4, '–‚', 'ag');	}],
-		[12,	7,		'‚¢‚µ‚Â‚Ô‚Ä',		sub{ &_st_ds('¬—', '‘§', 45);	}],
-		[20,	0,		'‚Æ‚¤‚¼‚­‚Ì‚Í‚È',	sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); if ($y =~ /^@.+•ó” .$/) { my $item_name = $ms{$y}{get_money} eq '0' ? '‚©‚ç‚Á‚Û' : $ms{$y}{get_exp} eq '1' ? $weas[$ms{$y}{get_money}][1] : $ms{$y}{get_exp} eq '2' ? $arms[$ms{$y}{get_money}][1] : $ites[$ms{$y}{get_money}][1]; $com.="•ó” ‚Ì’†g‚Í $item_name ‚Ì‚æ‚¤‚¾c"; } else { my @smells=(qw/‚¢‚¢ ‚¨‚¢‚µ‚»‚¤‚È ƒoƒ‰‚Ì ‚ ‚Ü‚¢ •Ï‚È ‚â‚Î‚¢ ‚³‚í‚â‚©‚È ƒƒCƒ‹ƒh‚È/); my $v=int(rand(@smells)); $com.="$y‚Í $smells[$v] ‚É‚¨‚¢‚ª‚·‚é"; };	}],
-		[35,	9,		'‚ ‚Ü‚¢‚¢‚«',		sub{ &_st_ds('–°‚è', '‘§', 35);	}],
-		[50,	1,		'ƒCƒ“ƒpƒX',			sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); $com.="<br />$y $e2j{mhp}:$ms{$y}{hp}/$ms{$y}{mhp}, $e2j{mmp}:$ms{$y}{mp}/$ms{$y}{mmp}, $e2j{at}:$ms{$y}{mat}, $e2j{df}:$ms{$y}{mdf}, $e2j{ag}:$ms{$y}{mag}";	}],
-		[70,	8,		'‚Ü‚Ğ‚±‚¤‚°‚«',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–ƒáƒ', 'U', 30);	}],
-		[90,	15,		'ƒA[ƒ}[ƒuƒŒƒCƒN',	sub{ my($y) = &_check_enemy(shift, '”j‰ó', 'U'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $com.="$y‚Ì–h‹ï‚Ì‹­‚³‚ğ••‚¶‚½I"; &_st_down($y, 0.1, 'U', 'df');	}],
+		[3,		3,		'ãƒœãƒŸã‚¨',			sub{ &_st_down(shift,  0.4, 'é­”', 'ag');	}],
+		[6,		3,		'ãƒ”ã‚ªãƒ©',			sub{ &_st_up(shift, 0.4, 'é­”', 'ag');	}],
+		[12,	7,		'ã„ã—ã¤ã¶ã¦',		sub{ &_st_ds('æ··ä¹±', 'æ¯', 45);	}],
+		[20,	0,		'ã¨ã†ããã®ã¯ãª',	sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); if ($y =~ /^@.+å®ç®±.$/) { my $item_name = $ms{$y}{get_money} eq '0' ? 'ã‹ã‚‰ã£ã½' : $ms{$y}{get_exp} eq '1' ? $weas[$ms{$y}{get_money}][1] : $ms{$y}{get_exp} eq '2' ? $arms[$ms{$y}{get_money}][1] : $ites[$ms{$y}{get_money}][1]; $com.="å®ç®±ã®ä¸­èº«ã¯ $item_name ã®ã‚ˆã†ã â€¦"; } else { my @smells=(qw/ã„ã„ ãŠã„ã—ãã†ãª ãƒãƒ©ã® ã‚ã¾ã„ å¤‰ãª ã‚„ã°ã„ ã•ã‚ã‚„ã‹ãª ãƒ¯ã‚¤ãƒ«ãƒ‰ãª/); my $v=int(rand(@smells)); $com.="$yã¯ $smells[$v] ã«ãŠã„ãŒã™ã‚‹"; };	}],
+		[35,	9,		'ã‚ã¾ã„ã„ã',		sub{ &_st_ds('çœ ã‚Š', 'æ¯', 35);	}],
+		[50,	1,		'ã‚¤ãƒ³ãƒ‘ã‚¹',			sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); $com.="<br />$y $e2j{mhp}:$ms{$y}{hp}/$ms{$y}{mhp}, $e2j{mmp}:$ms{$y}{mp}/$ms{$y}{mmp}, $e2j{at}:$ms{$y}{mat}, $e2j{df}:$ms{$y}{mdf}, $e2j{ag}:$ms{$y}{mag}";	}],
+		[70,	8,		'ã¾ã²ã“ã†ã’ã',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'éº»ç—º', 'æ”»', 30);	}],
+		[90,	15,		'ã‚¢ãƒ¼ãƒãƒ¼ãƒ–ãƒ¬ã‚¤ã‚¯',	sub{ my($y) = &_check_enemy(shift, 'ç ´å£Š', 'æ”»'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $com.="$yã®é˜²å…·ã®å¼·ã•ã‚’å°ã˜ãŸï¼"; &_st_down($y, 0.1, 'æ”»', 'df');	}],
 	);
 }
-sub skill_10 { # —rg‚¢
+sub skill_10 { # ç¾Šä½¿ã„
 	return (
-		[1,		0,		'‚Ë‚é',				sub{ $ms{$m}{state}='–°‚è'; $com.=qq|<span class="state">$m‚Í–°‚è‚¾‚µ‚½</span>|; &_heal($m, $ms{$m}{mhp}*0.5);	}],
-		[3,		3,		'ƒXƒJƒ‰',			sub{ &_st_up(shift, 0.4, '–‚', 'df');	}],
-		[10,	4,		'‚½‚¢‚ ‚½‚è',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 1.6, 'U'); return if $v <= 0; &_risk($v * 0.07);		}],
-		[20,	10,		'ƒxƒzƒCƒ~',			sub{ &_heal(shift, 90, '–‚');	}],
-		[40,	9,		'‚Ë‚Ş‚è‚Ì‚¤‚½',		sub{ &_st_ds('–°‚è', '‰Ì', 45);		}],
-		[60,	1,		'ƒ}ƒzƒLƒe',			sub{ return if &is_bad_state('–‚'); $ms{$m}{tmp} = '–‚‹zû'; $com.=qq|<span class="tmp">$m‚Í•sv‹c‚ÈŒõ‚É•ï‚Ü‚ê‚½I</span>|;	}],
-		[80,	7,		'ƒE[ƒ‹ƒK[ƒh',		sub{ &_st_up($m, 0.5, '–³', 'df'); $ms{$m}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$m‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|;	}],
-		[100,	20,		'‚Ç‚Æ‚¤‚Ì‚Ğ‚Â‚¶',	sub{ my $v = int(rand(3)+2); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{ag} * 1.6, 'U'); };	}],
+		[1,		0,		'ã­ã‚‹',				sub{ $ms{$m}{state}='çœ ã‚Š'; $com.=qq|<span class="state">$mã¯çœ ã‚Šã ã—ãŸ</span>|; &_heal($m, $ms{$m}{mhp}*0.5);	}],
+		[3,		3,		'ã‚¹ã‚«ãƒ©',			sub{ &_st_up(shift, 0.4, 'é­”', 'df');	}],
+		[10,	4,		'ãŸã„ã‚ãŸã‚Š',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 1.6, 'æ”»'); return if $v <= 0; &_risk($v * 0.07);		}],
+		[20,	10,		'ãƒ™ãƒ›ã‚¤ãƒŸ',			sub{ &_heal(shift, 90, 'é­”');	}],
+		[40,	9,		'ã­ã‚€ã‚Šã®ã†ãŸ',		sub{ &_st_ds('çœ ã‚Š', 'æ­Œ', 45);		}],
+		[60,	1,		'ãƒãƒ›ã‚­ãƒ†',			sub{ return if &is_bad_state('é­”'); $ms{$m}{tmp} = 'é­”å¸å'; $com.=qq|<span class="tmp">$mã¯ä¸æ€è­°ãªå…‰ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;	}],
+		[80,	7,		'ã‚¦ãƒ¼ãƒ«ã‚¬ãƒ¼ãƒ‰',		sub{ &_st_up($m, 0.5, 'ç„¡', 'df'); $ms{$m}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$mã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[100,	20,		'ã©ã¨ã†ã®ã²ã¤ã˜',	sub{ my $v = int(rand(3)+2); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{ag} * 1.6, 'æ”»'); };	}],
 	);
 }
-sub skill_11 { # ‹|g‚¢
+sub skill_11 { # å¼“ä½¿ã„
 	return (
-		[5,		3,		'‚©‚°‚Ê‚¢',				sub{ &_st_d(shift, '“®••', 'U', 80);	}],
-		[10,	0,		'‚¹‚¢‚µ‚ñ‚Æ‚¤‚¢‚Â',		sub{ $ms{$m}{hit}=95; $com.=qq|<span class="st_up">$m‚ÍS‚ğ—‚¿‚Â‚©‚¹–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;	}],
-		[20,	8,		'‚Å‚½‚ç‚ß‚â',			sub{ &_damages($ms{$m}{ag}*1.4, 'U');	}],
-		[40,	4,		'‚æ‚¤‚¹‚¢‚Ì‚â',			sub{ my($y, $v) = &_st_down(shift, 0.15, 'U', 'mp'); return if !$y; &_mp_h($m, $v, 'U');	}],
-		[60,	6,		'ƒtƒ‰ƒbƒVƒ…ƒAƒ[',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.2, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.07, 'U', 'hit');	}],
-		[90,	20,		'ƒ‰ƒŠƒz[ƒAƒ[',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.1, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–°‚è', 'U', 55);	}],
-		[110,	24,		'‚İ‚¾‚ê‚¤‚¿',			sub{ my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at} * 0.85, 'U'); };		}],
+		[5,		3,		'ã‹ã’ã¬ã„',				sub{ &_st_d(shift, 'å‹•å°', 'æ”»', 80);	}],
+		[10,	0,		'ã›ã„ã—ã‚“ã¨ã†ã„ã¤',		sub{ $ms{$m}{hit}=95; $com.=qq|<span class="st_up">$mã¯å¿ƒã‚’è½ã¡ã¤ã‹ã›å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;	}],
+		[20,	8,		'ã§ãŸã‚‰ã‚ã‚„',			sub{ &_damages($ms{$m}{ag}*1.4, 'æ”»');	}],
+		[40,	4,		'ã‚ˆã†ã›ã„ã®ã‚„',			sub{ my($y, $v) = &_st_down(shift, 0.15, 'æ”»', 'mp'); return if !$y; &_mp_h($m, $v, 'æ”»');	}],
+		[60,	6,		'ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã‚¢ãƒ­ãƒ¼',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.2, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.07, 'æ”»', 'hit');	}],
+		[90,	20,		'ãƒ©ãƒªãƒ›ãƒ¼ã‚¢ãƒ­ãƒ¼',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.1, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'çœ ã‚Š', 'æ”»', 55);	}],
+		[110,	24,		'ã¿ã ã‚Œã†ã¡',			sub{ my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at} * 0.85, 'æ”»'); };		}],
 	);
 }
-sub skill_12 { # –‚•¨g‚¢
+sub skill_12 { # é­”ç‰©ä½¿ã„
 	return (
-		[3,		2,		'‚Ğ‚Ì‚¢‚«',			sub{ &_damages(18, '‘§', 1);	}],
-		[10,	7,		'‚à‚¤‚Ç‚­‚Ì‚«‚è',	sub{ &_st_ds('–Ò“Å', '‘§', 60);	}],
-		[18,	5,		'‚©‚¦‚ñ‚Ì‚¢‚«',		sub{ &_damages(50, '‘§', 1);	}],
-		[32,	11,		'‚µ‚Ñ‚ê‚¤‚¿',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.1, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–ƒáƒ', 'U', 40);	}],
-		[50,	5,		'‚È‚ß‚Ü‚í‚·',		sub{ &_st_d(shift, '“®••', 'U', 85);	}],
-		[80,	14,		'‚Í‚°‚µ‚¢‚Ù‚Ì‚¨',	sub{ &_damages(90, '‘§', 1);	}],
-		[110,	12,		'‚»‚¤‚è‚ã‚¤‚¤‚¿',	sub{ my $y = shift; for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage($y, $ms{$m}{at}*1.6, 'U'); };	}],
+		[3,		2,		'ã²ã®ã„ã',			sub{ &_damages(18, 'æ¯', 1);	}],
+		[10,	7,		'ã‚‚ã†ã©ãã®ãã‚Š',	sub{ &_st_ds('çŒ›æ¯’', 'æ¯', 60);	}],
+		[18,	5,		'ã‹ãˆã‚“ã®ã„ã',		sub{ &_damages(50, 'æ¯', 1);	}],
+		[32,	11,		'ã—ã³ã‚Œã†ã¡',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.1, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'éº»ç—º', 'æ”»', 40);	}],
+		[50,	5,		'ãªã‚ã¾ã‚ã™',		sub{ &_st_d(shift, 'å‹•å°', 'æ”»', 85);	}],
+		[80,	14,		'ã¯ã’ã—ã„ã»ã®ãŠ',	sub{ &_damages(90, 'æ¯', 1);	}],
+		[110,	12,		'ãã†ã‚Šã‚…ã†ã†ã¡',	sub{ my $y = shift; for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage($y, $ms{$m}{at}*1.6, 'æ”»'); };	}],
 	);
 }
-sub skill_13 { # ‹á—Vl
+sub skill_13 { # åŸéŠè©©äºº
 	return (
-		[5,		3,		'‚Ó‚µ‚¬‚È‚¤‚½',			sub{ &_st_downs(0.25, '‰Ì', 'mp');	}],
-		[15,	7,		'‚¢‚â‚µ‚Ì‚¤‚½',			sub{ &_heals(30, '‰Ì');				}],
-		[30,	5,		'‚ß‚´‚ß‚Ì‚¤‚½',			sub{ &_st_hs('–°‚è', '‰Ì');			}],
-		[40,	6,		'‚Ü‚à‚è‚Ì‚¤‚½',			sub{ &_st_ups(0.4, '‰Ì', 'df');		}],
-		[60,	9,		'‚Ë‚Ş‚è‚Ì‚¤‚½',			sub{ &_st_ds('–°‚è', '‰Ì', 50);		}],
-		[90,	10,		'‚½‚½‚©‚¢‚Ì‚¤‚½',		sub{ &_st_ups(0.6, '‰Ì', 'at');		}],
+		[5,		3,		'ãµã—ããªã†ãŸ',			sub{ &_st_downs(0.25, 'æ­Œ', 'mp');	}],
+		[15,	7,		'ã„ã‚„ã—ã®ã†ãŸ',			sub{ &_heals(30, 'æ­Œ');				}],
+		[30,	5,		'ã‚ã–ã‚ã®ã†ãŸ',			sub{ &_st_hs('çœ ã‚Š', 'æ­Œ');			}],
+		[40,	6,		'ã¾ã‚‚ã‚Šã®ã†ãŸ',			sub{ &_st_ups(0.4, 'æ­Œ', 'df');		}],
+		[60,	9,		'ã­ã‚€ã‚Šã®ã†ãŸ',			sub{ &_st_ds('çœ ã‚Š', 'æ­Œ', 50);		}],
+		[90,	10,		'ãŸãŸã‹ã„ã®ã†ãŸ',		sub{ &_st_ups(0.6, 'æ­Œ', 'at');		}],
 	);
 }
-sub skill_14 { # —x‚èq
+sub skill_14 { # è¸Šã‚Šå­
 	return (
-		[4,		3,		'‚İ‚©‚í‚µ‚«‚á‚­',	sub{ &_st_up($m, 0.4, '—x', 'ag');	}],
-		[9,		3,		'‚Ó‚µ‚¬‚È‚¨‚Ç‚è',	sub{ &_st_down(shift, 0.4, '—x', 'mp');	}],
-		[16,	5,		'‚¤‚¯‚È‚ª‚µ',		sub{ $ms{$m}{tmp} = 'ó—¬‚µ'; $com.=qq|<span class="tmp">$m‚ÍUŒ‚‚ğó—¬‚·‚©‚Ü‚¦‚ğ‚Æ‚Á‚½</span>|;	}],
-		[30,	9,		'ƒ€[ƒ“ƒTƒ‹ƒg',		sub{ &_damages($ms{$m}{at}*0.8, 'U');	}],
-		[45,	1,		'ƒƒKƒUƒ‹ƒ_ƒ“ƒX',	sub{ $com.="$m‚Ì–½‚ğ‚©‚¯‚½—x‚èI"; for my $y (@partys) { next if $m eq $y; $com .= $ms{$y}{hp} > 0 ? qq|$y‚Ì$e2j{hp}‚ª<span class="heal">‘S‰ñ•œ</span>‚µ‚½I| : qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½I</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; }; &defeat($m); $ms{$m}{mp} = 1; $com.=qq|<span class="die">$m‚Í—Ís‚«‚½c</span>|;	}],
-		[70,	16,		'‚Â‚é‚¬‚Ì‚Ü‚¢',		sub{ my $v = int(rand(3)+2); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.8, '—x'); };	}],
-		[100,	12,		'ƒnƒbƒXƒ‹ƒ_ƒ“ƒX',	sub{ &_heals(140, '—x');	}],
+		[4,		3,		'ã¿ã‹ã‚ã—ãã‚ƒã',	sub{ &_st_up($m, 0.4, 'è¸Š', 'ag');	}],
+		[9,		3,		'ãµã—ããªãŠã©ã‚Š',	sub{ &_st_down(shift, 0.4, 'è¸Š', 'mp');	}],
+		[16,	5,		'ã†ã‘ãªãŒã—',		sub{ $ms{$m}{tmp} = 'å—æµã—'; $com.=qq|<span class="tmp">$mã¯æ”»æ’ƒã‚’å—æµã™ã‹ã¾ãˆã‚’ã¨ã£ãŸ</span>|;	}],
+		[30,	9,		'ãƒ ãƒ¼ãƒ³ã‚µãƒ«ãƒˆ',		sub{ &_damages($ms{$m}{at}*0.8, 'æ”»');	}],
+		[45,	1,		'ãƒ¡ã‚¬ã‚¶ãƒ«ãƒ€ãƒ³ã‚¹',	sub{ $com.="$mã®å‘½ã‚’ã‹ã‘ãŸè¸Šã‚Šï¼"; for my $y (@partys) { next if $m eq $y; $com .= $ms{$y}{hp} > 0 ? qq|$yã®$e2j{hp}ãŒ<span class="heal">å…¨å›å¾©</span>ã—ãŸï¼| : qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸï¼</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; }; &defeat($m); $ms{$m}{mp} = 1; $com.=qq|<span class="die">$mã¯åŠ›å°½ããŸâ€¦</span>|;	}],
+		[70,	16,		'ã¤ã‚‹ãã®ã¾ã„',		sub{ my $v = int(rand(3)+2); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.8, 'è¸Š'); };	}],
+		[100,	12,		'ãƒãƒƒã‚¹ãƒ«ãƒ€ãƒ³ã‚¹',	sub{ &_heals(140, 'è¸Š');	}],
 	);
 }
-sub skill_15 { # •–‚“¹m
+sub skill_15 { # é»’é­”é“å£«
 	return (
-		[5,		6,		'ƒ|ƒCƒYƒ“',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, 30, '–‚', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–Ò“Å', '–‚', 80);	}],
-		[10,	5,		'ƒtƒ@ƒCƒA',		sub{ &_damage(shift, 35, '–‚', 1);	}],
-		[20,	8,		'ƒXƒŠƒvƒ‹',		sub{ &_st_d(shift, '–°‚è', '–‚', 55);	}],
-		[40,	7,		'ƒŠƒtƒŒƒN',		sub{ my($y) = &_check_party(shift, '–‚”½Œ‚', '–‚'); return if !$y; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Åç‚ç‚ê‚½I</span>|;	}],
-		[60,	3,		'ƒAƒXƒsƒ‹',		sub{ my($y, $v) = &_st_down(shift, 0.2, '–‚', 'mp'); return if !$y; &_mp_h($m, $v, '–‚');	}],
-		[80,	16,		'ƒhƒŒƒCƒ“',		sub{ my($y, $v) = &_damage(shift, rand(100)+50, '–‚', 1); return if !$y; &_heal($m, $v, '–‚');	}],
-		[130,	40,		'ƒtƒŒƒA',		sub{ &_damage(shift, 260, '–‚', 1);	}],
+		[5,		6,		'ãƒã‚¤ã‚ºãƒ³',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, 30, 'é­”', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'çŒ›æ¯’', 'é­”', 80);	}],
+		[10,	5,		'ãƒ•ã‚¡ã‚¤ã‚¢',		sub{ &_damage(shift, 35, 'é­”', 1);	}],
+		[20,	8,		'ã‚¹ãƒªãƒ—ãƒ«',		sub{ &_st_d(shift, 'çœ ã‚Š', 'é­”', 55);	}],
+		[40,	7,		'ãƒªãƒ•ãƒ¬ã‚¯',		sub{ my($y) = &_check_party(shift, 'é­”åæ’ƒ', 'é­”'); return if !$y; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[60,	3,		'ã‚¢ã‚¹ãƒ”ãƒ«',		sub{ my($y, $v) = &_st_down(shift, 0.2, 'é­”', 'mp'); return if !$y; &_mp_h($m, $v, 'é­”');	}],
+		[80,	16,		'ãƒ‰ãƒ¬ã‚¤ãƒ³',		sub{ my($y, $v) = &_damage(shift, rand(100)+50, 'é­”', 1); return if !$y; &_heal($m, $v, 'é­”');	}],
+		[130,	40,		'ãƒ•ãƒ¬ã‚¢',		sub{ &_damage(shift, 260, 'é­”', 1);	}],
 	);
 }
-sub skill_16 { # ”’–‚“¹m
+sub skill_16 { # ç™½é­”é“å£«
 	return (
-		[5,		5,		'ƒPƒAƒ‹',		sub{ &_heal(shift, 60, '–‚');	}],
-		[10,	2,		'ƒ‰ƒCƒuƒ‰',		sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); $com.="<br />$y $e2j{mhp}:$ms{$y}{hp}/$ms{$y}{mhp}, $e2j{mmp}:$ms{$y}{mp}/$ms{$y}{mmp}, $e2j{at}:$ms{$y}{mat}, $e2j{df}:$ms{$y}{mdf}, $e2j{ag}:$ms{$y}{mag}";	}],
-		[15,	6,		'ƒTƒCƒŒƒX',		sub{ &_st_d(shift, '–‚••', '–‚', 90);	}],
-		[30,	18,		'ƒPƒAƒ‹ƒ‰',		sub{ &_heal(shift, 180, '–‚');			}],
-		[60,	20,		'ƒŠƒŒƒCƒY',		sub{ my($y) = &_check_party(shift, '•œŠˆ', '–‚'); return if !$y; $ms{$y}{tmp}='•œŠˆ'; $com.=qq|<span class="tmp">$y‚Í“Vg‚Ì‰ÁŒì‚ª‚Â‚¢‚½I</span>|;	}],
-		[80,	5,		'ƒVƒFƒ‹',		sub{ my($y) = &_check_party(shift, '–‚ŒyŒ¸', '–‚'); return if !$y; $ms{$y}{tmp}='–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|;	}],
-		[100,	40,		'ƒŒƒCƒY',		sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=int($ms{$y}{mhp}*0.25);	}],
-		[140,	35,		'ƒz[ƒŠ[',		sub{ &_damage(shift, 180, '–‚', 1);	}],
+		[5,		5,		'ã‚±ã‚¢ãƒ«',		sub{ &_heal(shift, 60, 'é­”');	}],
+		[10,	2,		'ãƒ©ã‚¤ãƒ–ãƒ©',		sub{ my $y = shift; $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); $com.="<br />$y $e2j{mhp}:$ms{$y}{hp}/$ms{$y}{mhp}, $e2j{mmp}:$ms{$y}{mp}/$ms{$y}{mmp}, $e2j{at}:$ms{$y}{mat}, $e2j{df}:$ms{$y}{mdf}, $e2j{ag}:$ms{$y}{mag}";	}],
+		[15,	6,		'ã‚µã‚¤ãƒ¬ã‚¹',		sub{ &_st_d(shift, 'é­”å°', 'é­”', 90);	}],
+		[30,	18,		'ã‚±ã‚¢ãƒ«ãƒ©',		sub{ &_heal(shift, 180, 'é­”');			}],
+		[60,	20,		'ãƒªãƒ¬ã‚¤ã‚º',		sub{ my($y) = &_check_party(shift, 'å¾©æ´»', 'é­”'); return if !$y; $ms{$y}{tmp}='å¾©æ´»'; $com.=qq|<span class="tmp">$yã¯å¤©ä½¿ã®åŠ è­·ãŒã¤ã„ãŸï¼</span>|;	}],
+		[80,	5,		'ã‚·ã‚§ãƒ«',		sub{ my($y) = &_check_party(shift, 'é­”è»½æ¸›', 'é­”'); return if !$y; $ms{$y}{tmp}='é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[100,	40,		'ãƒ¬ã‚¤ã‚º',		sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=int($ms{$y}{mhp}*0.25);	}],
+		[140,	35,		'ãƒ›ãƒ¼ãƒªãƒ¼',		sub{ &_damage(shift, 180, 'é­”', 1);	}],
 	);
 }
-sub skill_17 { # ¹‹Rm
+sub skill_17 { # è–é¨å£«
 	return (
-		[10,	0,		'‚©‚Î‚¤',			sub{ my($y) = &_check_party(shift, '‚©‚Î‚¤', 'U'); return if !$y || $y eq $m; $ms{$m}{tmp} = '‚©‚Î‚¢’†'; $ms{$y}{tmp} = '‚©‚Î‚¤'; $com.=qq|<span class="tmp">$m‚Í$y‚ğ‚©‚Î‚Á‚Ä‚¢‚é</span>|;	}],
-		[20,	3,		'ƒzƒCƒ~',			sub{ &_heal(shift, 30, '–‚');	}],
-		[40,	6,		'ƒ}ƒWƒbƒNƒoƒŠƒA',	sub{ return if &is_bad_state('–‚'); for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|; };	}],
-		[60,	5,		'ƒLƒAƒŠƒN',			sub{ &_st_hs('–ƒáƒ', '–‚');	}],
-		[100,	1,		'ƒƒKƒUƒ‹',			sub{ $com.=qq|<span class="die">$m‚Í©•ª‚Ì–½‚ğ‚³‚³‚°‚Ü‚µ‚½I</span>|; for my $y (@partys) { next if $m eq $y; $com .= $ms{$y}{hp} > 0 ? qq|$y‚Ì$e2j{hp}‚ª<span class="heal">‘S‰ñ•œ</span>‚µ‚½I| : qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½I</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; }; &defeat($m); $ms{$m}{mp} = 1; 	}],
-		[130,	20,		'ƒOƒ‰ƒ“ƒhƒNƒƒX',	sub{ &_damages($ms{$m}{df} * 1.5, 'U');	}],
-		[160,	80,		'ƒUƒIƒŠƒN',			sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
+		[10,	0,		'ã‹ã°ã†',			sub{ my($y) = &_check_party(shift, 'ã‹ã°ã†', 'æ”»'); return if !$y || $y eq $m; $ms{$m}{tmp} = 'ã‹ã°ã„ä¸­'; $ms{$y}{tmp} = 'ã‹ã°ã†'; $com.=qq|<span class="tmp">$mã¯$yã‚’ã‹ã°ã£ã¦ã„ã‚‹</span>|;	}],
+		[20,	3,		'ãƒ›ã‚¤ãƒŸ',			sub{ &_heal(shift, 30, 'é­”');	}],
+		[40,	6,		'ãƒã‚¸ãƒƒã‚¯ãƒãƒªã‚¢',	sub{ return if &is_bad_state('é­”'); for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|; };	}],
+		[60,	5,		'ã‚­ã‚¢ãƒªã‚¯',			sub{ &_st_hs('éº»ç—º', 'é­”');	}],
+		[100,	1,		'ãƒ¡ã‚¬ã‚¶ãƒ«',			sub{ $com.=qq|<span class="die">$mã¯è‡ªåˆ†ã®å‘½ã‚’ã•ã•ã’ã¾ã—ãŸï¼</span>|; for my $y (@partys) { next if $m eq $y; $com .= $ms{$y}{hp} > 0 ? qq|$yã®$e2j{hp}ãŒ<span class="heal">å…¨å›å¾©</span>ã—ãŸï¼| : qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸï¼</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; }; &defeat($m); $ms{$m}{mp} = 1; 	}],
+		[130,	20,		'ã‚°ãƒ©ãƒ³ãƒ‰ã‚¯ãƒ­ã‚¹',	sub{ &_damages($ms{$m}{df} * 1.5, 'æ”»');	}],
+		[160,	80,		'ã‚¶ã‚ªãƒªã‚¯',			sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
 	);
 }
-sub skill_18 { # “Vg
+sub skill_18 { # å¤©ä½¿
 	return (
-		[5,		2,		'ƒLƒAƒŠ[',			sub{ &_st_h(shift, '–Ò“Å', '–‚');	}],
-		[15,	6,		'‚¨‚Ç‚è‚Ó‚¤‚¶',		sub{ &_st_ds('—x••', '—x', 70);	}],
-		[30,	5,		'‚ß‚´‚ß‚Ì‚¤‚½',		sub{ &_st_hs('–°‚è', '‰Ì');	}],
-		[50,	5,		'ƒ}ƒzƒJƒ“ƒ^',		sub{ my($y) = &_check_party(shift, '–‚”½Œ‚', '–‚'); return if !$y; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Åç‚ç‚ê‚½I</span>|;	}],
-		[70,	27,		'‚Ä‚ñ‚µ‚Ì‚¤‚½‚²‚¦',	sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|‚È‚ñ‚ÆA<b>$y</b>‚ª <span class="heal">¶‚«•Ô‚è</span> ‚Ü‚µ‚½I|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|‚µ‚©‚µA<b>$y</b>‚Í¶‚«•Ô‚ç‚È‚©‚Á‚½c|; }; }; 	}],
-		[90,	25,		'ƒxƒzƒ}ƒ‰[',		sub{ &_heals(120, '–‚');	}],
-		[120,	80,		'ƒUƒIƒŠƒN',			sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
+		[5,		2,		'ã‚­ã‚¢ãƒªãƒ¼',			sub{ &_st_h(shift, 'çŒ›æ¯’', 'é­”');	}],
+		[15,	6,		'ãŠã©ã‚Šãµã†ã˜',		sub{ &_st_ds('è¸Šå°', 'è¸Š', 70);	}],
+		[30,	5,		'ã‚ã–ã‚ã®ã†ãŸ',		sub{ &_st_hs('çœ ã‚Š', 'æ­Œ');	}],
+		[50,	5,		'ãƒãƒ›ã‚«ãƒ³ã‚¿',		sub{ my($y) = &_check_party(shift, 'é­”åæ’ƒ', 'é­”'); return if !$y; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[70,	27,		'ã¦ã‚“ã—ã®ã†ãŸã”ãˆ',	sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|ãªã‚“ã¨ã€<b>$y</b>ãŒ <span class="heal">ç”Ÿãè¿”ã‚Š</span> ã¾ã—ãŸï¼|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|ã—ã‹ã—ã€<b>$y</b>ã¯ç”Ÿãè¿”ã‚‰ãªã‹ã£ãŸâ€¦|; }; }; 	}],
+		[90,	25,		'ãƒ™ãƒ›ãƒãƒ©ãƒ¼',		sub{ &_heals(120, 'é­”');	}],
+		[120,	80,		'ã‚¶ã‚ªãƒªã‚¯',			sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
 	);
 }
-sub skill_19 { # ˆÅ–‚“¹m
+sub skill_19 { # é—‡é­”é“å£«
 	return (
-		[4,		7,		'ƒ‹ƒJƒiƒ“',		sub{ &_st_downs(0.25, '–‚', 'df');	}],
-		[8,		5,		'ƒ}ƒzƒJƒ“ƒ^',	sub{ my($y) = &_check_party(shift, '–‚”½Œ‚', '–‚'); return if !$y; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Åç‚ç‚ê‚½I</span>|;	}],
-		[16,	10,		'ƒƒ_ƒpƒj',		sub{ &_st_ds('¬—', '–‚', 50);	}],
-		[25,	14,		'ƒUƒL',			sub{ &_death(shift, '‘¦€', '–‚', 20);	}],
-		[40,	10,		'ƒ}ƒzƒg[ƒ“',	sub{ &_st_ds('–‚••', '–‚', 70);	}],
-		[60,	18,		'ƒxƒMƒ‰ƒSƒ“',	sub{ &_damages(125, '–‚', 1);	}],
-		[70,	2,		'ƒ}ƒzƒgƒ‰',		sub{ my($y, $v) = &_st_down(shift, 0.25, '–‚', 'mp'); return if !$y; &_mp_h($m, $v, '–‚');	}],
-		[110,	32,		'ƒUƒ‰ƒL',		sub{ &_deaths('‘¦€', '–‚', 20);	}],
+		[4,		7,		'ãƒ«ã‚«ãƒŠãƒ³',		sub{ &_st_downs(0.25, 'é­”', 'df');	}],
+		[8,		5,		'ãƒãƒ›ã‚«ãƒ³ã‚¿',	sub{ my($y) = &_check_party(shift, 'é­”åæ’ƒ', 'é­”'); return if !$y; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[16,	10,		'ãƒ¡ãƒ€ãƒ‘ãƒ‹',		sub{ &_st_ds('æ··ä¹±', 'é­”', 50);	}],
+		[25,	14,		'ã‚¶ã‚­',			sub{ &_death(shift, 'å³æ­»', 'é­”', 20);	}],
+		[40,	10,		'ãƒãƒ›ãƒˆãƒ¼ãƒ³',	sub{ &_st_ds('é­”å°', 'é­”', 70);	}],
+		[60,	18,		'ãƒ™ã‚®ãƒ©ã‚´ãƒ³',	sub{ &_damages(125, 'é­”', 1);	}],
+		[70,	2,		'ãƒãƒ›ãƒˆãƒ©',		sub{ my($y, $v) = &_st_down(shift, 0.25, 'é­”', 'mp'); return if !$y; &_mp_h($m, $v, 'é­”');	}],
+		[110,	32,		'ã‚¶ãƒ©ã‚­',		sub{ &_deaths('å³æ­»', 'é­”', 20);	}],
 	);
 }
-sub skill_20 { # ˆ«–‚
+sub skill_20 { # æ‚ªé­”
 	return (
-		[4,		4,		'‚³‚»‚¤‚¨‚Ç‚è',			sub{ &_st_d(shift, '“®••', '—x', 85);	}],
-		[9,		6,		'ƒŒƒfƒBƒEƒBƒbƒv',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*0.9, 'U'); return if !$y; $v = int($v * 0.1); &_mp_h($m, $v, 'U');		}],
-		[16,	6,		'ƒ}ƒWƒbƒNƒoƒŠƒA',		sub{ for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|; };	}],
-		[20,	9,		'‚ ‚Ü‚¢‚¢‚«',			sub{ &_st_ds('–°‚è', '‘§', 35);	}],
-		[36,	7,		'ƒƒ_ƒpƒjƒ_ƒ“ƒX',		sub{ &_st_ds('¬—', '—x', 60);	}],
-		[60,	24,		'‚µ‚Ì‚¨‚Ç‚è',			sub{ &_deaths('‘¦€', '—x', 17);	}],
-		[100,	18,		'ƒNƒB[ƒ“ƒEƒBƒbƒv',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.7, 'U'); return if !$y; $v = int($v * 0.5); &_heal($m, $v, 'U');		}],
+		[4,		4,		'ã•ãã†ãŠã©ã‚Š',			sub{ &_st_d(shift, 'å‹•å°', 'è¸Š', 85);	}],
+		[9,		6,		'ãƒ¬ãƒ‡ã‚£ã‚¦ã‚£ãƒƒãƒ—',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*0.9, 'æ”»'); return if !$y; $v = int($v * 0.1); &_mp_h($m, $v, 'æ”»');		}],
+		[16,	6,		'ãƒã‚¸ãƒƒã‚¯ãƒãƒªã‚¢',		sub{ for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|; };	}],
+		[20,	9,		'ã‚ã¾ã„ã„ã',			sub{ &_st_ds('çœ ã‚Š', 'æ¯', 35);	}],
+		[36,	7,		'ãƒ¡ãƒ€ãƒ‘ãƒ‹ãƒ€ãƒ³ã‚¹',		sub{ &_st_ds('æ··ä¹±', 'è¸Š', 60);	}],
+		[60,	24,		'ã—ã®ãŠã©ã‚Š',			sub{ &_deaths('å³æ­»', 'è¸Š', 17);	}],
+		[100,	18,		'ã‚¯ã‚£ãƒ¼ãƒ³ã‚¦ã‚£ãƒƒãƒ—',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.7, 'æ”»'); return if !$y; $v = int($v * 0.5); &_heal($m, $v, 'æ”»');		}],
 	);
 }
-sub skill_21 { # ÊŞ°»°¶°
+sub skill_21 { # ãƒãƒ¼ã‚µãƒ¼ã‚«ãƒ¼
 	return (
-		[10,	4,		'‚½‚¢‚ ‚½‚è',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{df}*1.6, 'U'); return if $v <= 0; &_risk($v * 0.07);			}],
-		[20,	5,		'‚¤‚¯‚È‚ª‚µ',	sub{ $ms{$m}{tmp} = 'ó—¬‚µ'; $com.=qq|<span class="tmp">$m ‚ÍUŒ‚‚ğó—¬‚·‚©‚Ü‚¦‚ğ‚Æ‚Á‚½</span>|;	}],
-		[40,	12,		'‚¨‚½‚¯‚Ñ',		sub{ &_st_ds('“®••', 'U', 60);		}],
-		[60,	5,		'‚·‚Ä‚İ',		sub{ $com.=qq|<span class="tmp">$m‚Íç‚è‚ğ‹C‚É‚¹‚¸‚·‚Ä‚İ‚ÅUŒ‚I</span>|; &_damage(shift, $ms{$m}{at}*2, 'U'); $ms{$m}{tmp}='‚Q”{';	}],
-		[80,	6,		'‚à‚ë‚Í‚¬‚è',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.6, 'U'); return if $v <= 0; &_risk($v * 0.05);		}],
-		[110,	9,		'‚İ‚È‚²‚ë‚µ',	sub{ my $y= rand(4)<1 ? $partys[int rand @partys] : $enemys[int rand @enemys]; $y=$m if $ms{$y}{hp} <= 0; my $v = int( ($ms{$m}{at} * 3.0 - $ms{$y}{df} * 0.4) * ((rand(0.3)+0.9) * $ms{$m}{ten}) ); $v = int(rand(2)+1) if $v < 1; $ms{$m}{ten}=1; $ms{$y}{hp}-=$v; $ms{$y}{hp}=0 if $ms{$y}{hp}<0; $com.=qq|<b>$y</b>‚É <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒWI|; if ($ms{$y}{hp} <= 0) { $ms{$y}{hp} = 0; $com .= qq!<span class="die">$y‚ğ“|‚µ‚½I</span>!; &defeat($y); }	}],
+		[10,	4,		'ãŸã„ã‚ãŸã‚Š',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{df}*1.6, 'æ”»'); return if $v <= 0; &_risk($v * 0.07);			}],
+		[20,	5,		'ã†ã‘ãªãŒã—',	sub{ $ms{$m}{tmp} = 'å—æµã—'; $com.=qq|<span class="tmp">$m ã¯æ”»æ’ƒã‚’å—æµã™ã‹ã¾ãˆã‚’ã¨ã£ãŸ</span>|;	}],
+		[40,	12,		'ãŠãŸã‘ã³',		sub{ &_st_ds('å‹•å°', 'æ”»', 60);		}],
+		[60,	5,		'ã™ã¦ã¿',		sub{ $com.=qq|<span class="tmp">$mã¯å®ˆã‚Šã‚’æ°—ã«ã›ãšã™ã¦ã¿ã§æ”»æ’ƒï¼</span>|; &_damage(shift, $ms{$m}{at}*2, 'æ”»'); $ms{$m}{tmp}='ï¼’å€';	}],
+		[80,	6,		'ã‚‚ã‚ã¯ãã‚Š',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.6, 'æ”»'); return if $v <= 0; &_risk($v * 0.05);		}],
+		[110,	9,		'ã¿ãªã”ã‚ã—',	sub{ my $y= rand(4)<1 ? $partys[int rand @partys] : $enemys[int rand @enemys]; $y=$m if $ms{$y}{hp} <= 0; my $v = int( ($ms{$m}{at} * 3.0 - $ms{$y}{df} * 0.4) * ((rand(0.3)+0.9) * $ms{$m}{ten}) ); $v = int(rand(2)+1) if $v < 1; $ms{$m}{ten}=1; $ms{$y}{hp}-=$v; $ms{$y}{hp}=0 if $ms{$y}{hp}<0; $com.=qq|<b>$y</b>ã« <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ï¼|; if ($ms{$y}{hp} <= 0) { $ms{$y}{hp} = 0; $com .= qq!<span class="die">$yã‚’å€’ã—ãŸï¼</span>!; &defeat($y); }	}],
 	);
 }
-sub skill_22 { # ˆÃ•‹Rm
+sub skill_22 { # æš—é»’é¨å£«
 	return (
-		[10,	5,		'‚ ‚ñ‚±‚­',			sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.5, 'U'); return if $v <= 0; $ms{$m}{hp} > 999 ? &_risk($v * 0.1) : &_risk($ms{$m}{hp} * 0.1);		}],
-		[20,	9,		'‚ß‚¢‚â‚­',			sub{ my $v = int($ms{$m}{df} * 0.5); $ms{$m}{df} -= $v; $com.=qq|$m‚Ì<span class="st_down">$e2j{df}‚ª $v ‚³‚ª‚è‚Ü‚µ‚½I</span>|; &_st_up($m, 1.0, '–³', 'at');	}],
-		[40,	16,		'ƒiƒCƒgƒƒA',		sub{ &_st_ds('¬—', '–‚', 50);	}],
-		[70,	10,		'ƒ_[ƒNƒuƒŒƒCƒN',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.2, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.1, 'U', 'hit');	}],
-		[140,	40,		'‚ ‚ñ‚±‚­‚¯‚ñ',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*2.5, 'U'); return if $v <= 0; $ms{$m}{hp} > 999 ? &_risk($v * 0.2) : &_risk($ms{$m}{hp} * 0.2);		}],
+		[10,	5,		'ã‚ã‚“ã“ã',			sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.5, 'æ”»'); return if $v <= 0; $ms{$m}{hp} > 999 ? &_risk($v * 0.1) : &_risk($ms{$m}{hp} * 0.1);		}],
+		[20,	9,		'ã‚ã„ã‚„ã',			sub{ my $v = int($ms{$m}{df} * 0.5); $ms{$m}{df} -= $v; $com.=qq|$mã®<span class="st_down">$e2j{df}ãŒ $v ã•ãŒã‚Šã¾ã—ãŸï¼</span>|; &_st_up($m, 1.0, 'ç„¡', 'at');	}],
+		[40,	16,		'ãƒŠã‚¤ãƒˆãƒ¡ã‚¢',		sub{ &_st_ds('æ··ä¹±', 'é­”', 50);	}],
+		[70,	10,		'ãƒ€ãƒ¼ã‚¯ãƒ–ãƒ¬ã‚¤ã‚¯',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.2, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.1, 'æ”»', 'hit');	}],
+		[140,	40,		'ã‚ã‚“ã“ãã‘ã‚“',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*2.5, 'æ”»'); return if $v <= 0; $ms{$m}{hp} > 999 ? &_risk($v * 0.2) : &_risk($ms{$m}{hp} * 0.2);		}],
 	);
 }
-sub skill_23 { # —³‹Rm
+sub skill_23 { # ç«œé¨å£«
 	return (
-		[10,	5,		'ƒWƒƒƒ“ƒv',			sub{ &_damage(shift, $ms{$m}{ag}*1.8, 'U');	}],
-		[30,	25,		'ƒhƒ‰ƒSƒ“ƒpƒ[',	sub{ &_st_up($m, 0.4, 'U', 'at'); &_st_up($m, 0.4, 'U', 'df');	}],
-		[50,	18,		'‚è‚ã‚¤‚¯‚ñ',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*0.9, 'U'); return if !$y; &_heal($m, $v, 'U');	}],
-		[70,	14,		'ƒnƒCƒWƒƒƒ“ƒv',		sub{ for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage(shift, $ms{$m}{ag} * 2.2, 'U'); };	}],
-		[130,	35,		'ƒOƒ“ƒOƒjƒ‹',		sub{ &_damage(shift, $ms{$m}{at}*1.4, 'U', 1);	}],
+		[10,	5,		'ã‚¸ãƒ£ãƒ³ãƒ—',			sub{ &_damage(shift, $ms{$m}{ag}*1.8, 'æ”»');	}],
+		[30,	25,		'ãƒ‰ãƒ©ã‚´ãƒ³ãƒ‘ãƒ¯ãƒ¼',	sub{ &_st_up($m, 0.4, 'æ”»', 'at'); &_st_up($m, 0.4, 'æ”»', 'df');	}],
+		[50,	18,		'ã‚Šã‚…ã†ã‘ã‚“',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*0.9, 'æ”»'); return if !$y; &_heal($m, $v, 'æ”»');	}],
+		[70,	14,		'ãƒã‚¤ã‚¸ãƒ£ãƒ³ãƒ—',		sub{ for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage(shift, $ms{$m}{ag} * 2.2, 'æ”»'); };	}],
+		[130,	35,		'ã‚°ãƒ³ã‚°ãƒ‹ãƒ«',		sub{ &_damage(shift, $ms{$m}{at}*1.4, 'æ”»', 1);	}],
 	);
 }
-sub skill_24 { # –‚Œ•m
+sub skill_24 { # é­”å‰£å£«
 	return (
-		[10,	6,		'‚©‚¦‚ñ‚¬‚è',		sub{ &_damage(shift, $ms{$m}{at}*1.2, 'U');	}],
-		[30,	6,		'ƒƒ^ƒ‹‚¬‚è',		sub{ &_damage(shift, $ms{$m}{at}*0.4, '–³', 1);	}],
-		[50,	16,		'ƒoƒCƒLƒ‹ƒg',		sub{ &_st_up(shift, 1.0, '–‚', 'at');	}],
-		[70,	14,		'‚¢‚È‚¸‚Ü‚¬‚è',		sub{ &_damage(shift, $ms{$m}{at}*1.5, 'U');	}],
-		[130,	25,		'ƒMƒKƒXƒ‰ƒbƒVƒ…',	sub{ &_damage(shift, 230, 'U', 1);	}],
+		[10,	6,		'ã‹ãˆã‚“ãã‚Š',		sub{ &_damage(shift, $ms{$m}{at}*1.2, 'æ”»');	}],
+		[30,	6,		'ãƒ¡ã‚¿ãƒ«ãã‚Š',		sub{ &_damage(shift, $ms{$m}{at}*0.4, 'ç„¡', 1);	}],
+		[50,	16,		'ãƒã‚¤ã‚­ãƒ«ãƒˆ',		sub{ &_st_up(shift, 1.0, 'é­”', 'at');	}],
+		[70,	14,		'ã„ãªãšã¾ãã‚Š',		sub{ &_damage(shift, $ms{$m}{at}*1.5, 'æ”»');	}],
+		[130,	25,		'ã‚®ã‚¬ã‚¹ãƒ©ãƒƒã‚·ãƒ¥',	sub{ &_damage(shift, 230, 'æ”»', 1);	}],
 	);
 }
-sub skill_25 { # Óİ¸
+sub skill_25 { # ãƒ¢ãƒ³ã‚¯
 	return (
-		[5,		8,		'‚Ü‚í‚µ‚°‚è',		sub{ &_damages($ms{$m}{at}*0.8, 'U');			}],
-		[15,	3,		'ƒ`ƒƒƒNƒ‰',			sub{ &_heal($m, 100, 'U'); $ms{$m}{hit} = 95;	}],
-		[30,	15,		'‚·‚Ä‚İ',			sub{ $com.=qq|<span class="st_down">$m‚Íç‚è‚ğ‹C‚É‚¹‚¸‚·‚Ä‚İ‚ÅUŒ‚I</span>|; &_damage(shift, $ms{$m}{at}*2, 'U'); $ms{$m}{tmp}='‚Q”{';		}],
-		[50,	5,		'ƒJƒEƒ“ƒ^[',		sub{ $ms{$m}{tmp}='U”½Œ‚'; $com.=qq|<span class="tmp">$m‚Í”½Œ‚‚Ì‚©‚Ü‚¦‚ğ‚Æ‚Á‚½I</span>|;	}],
-		[70,	3,		'‚¾‚¢‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp}='‘å–hŒä'; $com.=qq|<span class="tmp">$m‚Íç‚è‚Ì‚©‚Ü‚¦‚ğ‚Æ‚Á‚½I</span>|;	}],
-		[90,	12,		'‚µ‚ñ‚­‚¤‚Í',		sub{ &_damages(120, 'U', 1);	}],
-		[110,	0,		'‚É‚¨‚¤‚¾‚¿',		sub{ $ms{$m}{tmp} = '‚©‚Î‚¢’†'; for my $y (@partys) { next if $m eq $y; $ms{$y}{tmp} = '‚©‚Î‚¤'; }; $com.=qq|<span class="tmp">$m‚Í’‡ŠÔ‚Ì‘O‚É—§‚¿‚Í‚¾‚©‚Á‚½I</span>|;	}],
-		[130,	7,		'‚«‚µ‚©‚¢‚¹‚¢',		sub{ $ms{$m}{tmp} = '•œŠˆ'; $com.=qq|<span class="tmp">$m‚Í€‚Ê‹C‚ÌƒI[ƒ‰‚É‚Â‚Â‚Ü‚ê‚½I</span>|;	}],
+		[5,		8,		'ã¾ã‚ã—ã’ã‚Š',		sub{ &_damages($ms{$m}{at}*0.8, 'æ”»');			}],
+		[15,	3,		'ãƒãƒ£ã‚¯ãƒ©',			sub{ &_heal($m, 100, 'æ”»'); $ms{$m}{hit} = 95;	}],
+		[30,	15,		'ã™ã¦ã¿',			sub{ $com.=qq|<span class="st_down">$mã¯å®ˆã‚Šã‚’æ°—ã«ã›ãšã™ã¦ã¿ã§æ”»æ’ƒï¼</span>|; &_damage(shift, $ms{$m}{at}*2, 'æ”»'); $ms{$m}{tmp}='ï¼’å€';		}],
+		[50,	5,		'ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼',		sub{ $ms{$m}{tmp}='æ”»åæ’ƒ'; $com.=qq|<span class="tmp">$mã¯åæ’ƒã®ã‹ã¾ãˆã‚’ã¨ã£ãŸï¼</span>|;	}],
+		[70,	3,		'ã ã„ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp}='å¤§é˜²å¾¡'; $com.=qq|<span class="tmp">$mã¯å®ˆã‚Šã®ã‹ã¾ãˆã‚’ã¨ã£ãŸï¼</span>|;	}],
+		[90,	12,		'ã—ã‚“ãã†ã¯',		sub{ &_damages(120, 'æ”»', 1);	}],
+		[110,	0,		'ã«ãŠã†ã ã¡',		sub{ $ms{$m}{tmp} = 'ã‹ã°ã„ä¸­'; for my $y (@partys) { next if $m eq $y; $ms{$y}{tmp} = 'ã‹ã°ã†'; }; $com.=qq|<span class="tmp">$mã¯ä»²é–“ã®å‰ã«ç«‹ã¡ã¯ã ã‹ã£ãŸï¼</span>|;	}],
+		[130,	7,		'ãã—ã‹ã„ã›ã„',		sub{ $ms{$m}{tmp} = 'å¾©æ´»'; $com.=qq|<span class="tmp">$mã¯æ­»ã¬æ°—ã®ã‚ªãƒ¼ãƒ©ã«ã¤ã¤ã¾ã‚ŒãŸï¼</span>|;	}],
 	);
 }
-sub skill_26 { # ”EÒ
+sub skill_26 { # å¿è€…
 	return (
-		[5,		5,		'‚©‚¦‚ñ‚Ì‚¢‚«',		sub{ &_damages(50, '‘§', 1);	}],
-		[15,	10,		'‚â‚¯‚Â‚­‚¢‚«',		sub{ &_st_ds('–ƒáƒ', '‘§', 35);		}],
-		[30,	7,		'ƒ}ƒk[ƒT',			sub{ &_st_downs(0.2, '–‚', 'hit');			}],
-		[40,	7,		'‚à‚¤‚Ç‚­‚Ì‚«‚è',	sub{ &_st_ds('–Ò“Å', '‘§', 60);		}],
-		[50,	6,		'ƒsƒIƒŠƒ€',			sub{ &_st_ups(0.25, '–‚', 'ag');	}],
-		[65,	11,		'‚«‚ã‚¤‚µ‚å‚Ã‚«',	sub{ &_death(shift, '‘¦€', 'U', 19);	}],
-		[80,	10,		'‚µ‚Ì‚Ñ‚ ‚µ',		sub{ &_st_up($m, 1.0, '–³', 'ag');	}],
-		[110,	15,		'ƒA[ƒ}[ƒuƒŒƒCƒN',	sub{ my($y) = &_check_enemy(shift, '”j‰ó', 'U'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $com.="$y‚Ì–h‹ï‚Ì‹­‚³‚ğ••‚¶‚½I"; &_st_down($y, 0.1, 'U', 'df');	}],
+		[5,		5,		'ã‹ãˆã‚“ã®ã„ã',		sub{ &_damages(50, 'æ¯', 1);	}],
+		[15,	10,		'ã‚„ã‘ã¤ãã„ã',		sub{ &_st_ds('éº»ç—º', 'æ¯', 35);		}],
+		[30,	7,		'ãƒãƒŒãƒ¼ã‚µ',			sub{ &_st_downs(0.2, 'é­”', 'hit');			}],
+		[40,	7,		'ã‚‚ã†ã©ãã®ãã‚Š',	sub{ &_st_ds('çŒ›æ¯’', 'æ¯', 60);		}],
+		[50,	6,		'ãƒ”ã‚ªãƒªãƒ ',			sub{ &_st_ups(0.25, 'é­”', 'ag');	}],
+		[65,	11,		'ãã‚…ã†ã—ã‚‡ã¥ã',	sub{ &_death(shift, 'å³æ­»', 'æ”»', 19);	}],
+		[80,	10,		'ã—ã®ã³ã‚ã—',		sub{ &_st_up($m, 1.0, 'ç„¡', 'ag');	}],
+		[110,	15,		'ã‚¢ãƒ¼ãƒãƒ¼ãƒ–ãƒ¬ã‚¤ã‚¯',	sub{ my($y) = &_check_enemy(shift, 'ç ´å£Š', 'æ”»'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $com.="$yã®é˜²å…·ã®å¼·ã•ã‚’å°ã˜ãŸï¼"; &_st_down($y, 0.1, 'æ”»', 'df');	}],
 	);
 }
-sub skill_27 { # •—…m
+sub skill_27 { # é¢¨æ°´å£«
 	return (
-		[5,		6,		'‚·‚È‚¯‚Ş‚è',		sub{ &_st_downs(0.2, '‘§', 'hit');	}],
-		[15,	5,		'‚©‚Ü‚¢‚½‚¿',		sub{ &_damage(shift, 80, '–³', 1);	}],
-		[25,	6,		'ƒ{ƒ~ƒIƒX',			sub{ &_st_downs(0.3, '–‚', 'ag');	}],
-		[40,	11,		'ƒqƒƒƒ_ƒ‹ƒR',		sub{ &_damages(80, '–‚', 1);	}],
-		[55,	4,		'ƒUƒƒn',			sub{ &_st_hs('–°‚è', '–‚');	}],
-		[70,	5,		'‚¨‚¢‚©‚º',			sub{ for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '‘§”½Œ‚'; $com.=qq|<span class="tmp">$y‚Ìü‚è‚É’Ç‚¢•—‚ª‚¢‚Ä‚¢‚éI</span>|;};	}],
-		[90,	27,		'ƒ}ƒqƒƒƒh',			sub{ &_damages(160, '–‚', 1);	}],
-		[110,	15,		'ƒEƒFƒ|ƒ“ƒuƒŒƒCƒN',	sub{ my($y) = &_check_enemy(shift, '”j‰ó', 'U'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{at}=$ms{$y}{mat}; $com.="$y‚Ì•Ší‚Ì‹­‚³‚ğ••‚¶‚½I"; &_st_down($y, 0.2, 'U', 'at');	}],
+		[5,		6,		'ã™ãªã‘ã‚€ã‚Š',		sub{ &_st_downs(0.2, 'æ¯', 'hit');	}],
+		[15,	5,		'ã‹ã¾ã„ãŸã¡',		sub{ &_damage(shift, 80, 'ç„¡', 1);	}],
+		[25,	6,		'ãƒœãƒŸã‚ªã‚¹',			sub{ &_st_downs(0.3, 'é­”', 'ag');	}],
+		[40,	11,		'ãƒ’ãƒ£ãƒ€ãƒ«ã‚³',		sub{ &_damages(80, 'é­”', 1);	}],
+		[55,	4,		'ã‚¶ãƒ¡ãƒ',			sub{ &_st_hs('çœ ã‚Š', 'é­”');	}],
+		[70,	5,		'ãŠã„ã‹ãœ',			sub{ for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'æ¯åæ’ƒ'; $com.=qq|<span class="tmp">$yã®å‘¨ã‚Šã«è¿½ã„é¢¨ãŒå¹ã„ã¦ã„ã‚‹ï¼</span>|;};	}],
+		[90,	27,		'ãƒãƒ’ãƒ£ãƒ‰',			sub{ &_damages(160, 'é­”', 1);	}],
+		[110,	15,		'ã‚¦ã‚§ãƒãƒ³ãƒ–ãƒ¬ã‚¤ã‚¯',	sub{ my($y) = &_check_enemy(shift, 'ç ´å£Š', 'æ”»'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{at}=$ms{$y}{mat}; $com.="$yã®æ­¦å™¨ã®å¼·ã•ã‚’å°ã˜ãŸï¼"; &_st_down($y, 0.2, 'æ”»', 'at');	}],
 	);
 }
-sub skill_28 { # ˜
+sub skill_28 { # ä¾
 	return (
-		[5,		0,		'‚¹‚¢‚µ‚ñ‚Æ‚¤‚¢‚Â',	sub{ $ms{$m}{hit}=95; $com.=qq|$m‚ÍS‚ğ—‚¿‚Â‚©‚¹<span class="st_up">–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;	}],
-		[15,	3,		'‚İ‚Ë‚¤‚¿',			sub{ &_st_d(shift, '“®••', 'U', 80);	}],
-		[30,	5,		'‚¤‚¯‚È‚ª‚µ',		sub{ $ms{$m}{tmp} = 'ó—¬‚µ'; $com.=qq|<span class="tmp">$m‚ÍUŒ‚‚ğó—¬‚·‚©‚Ü‚¦‚ğ‚Æ‚Á‚½</span>|;	}],
-		[50,	0,		'‚º‚É‚È‚°',			sub{ if ($m{money} < 100) { $m{money} = 0; &_damages(50, 'U', 1); } else { $m{money} -= 100; &_damages(180, 'U', 1); }; 	}],
-		[70,	4,		'‚µ‚ç‚Í‚Ç‚è',		sub{ $ms{$m}{tmp}='U–³Œø'; $com.=qq|<span class="tmp">$m‚Íç‚è‚Ì‚©‚Ü‚¦‚ğ‚Æ‚Á‚½I</span>|;	}],
-		[100,	20,		'‚¢‚ ‚¢‚¬‚è',		sub{ &_st_ds('“®••', 'U', 65);	}],
-		[140,	10,		'‚´‚ñ‚Ä‚Â‚¯‚ñ',		sub{ &_death(shift, '‘¦€', 'U', 25);	}],
+		[5,		0,		'ã›ã„ã—ã‚“ã¨ã†ã„ã¤',	sub{ $ms{$m}{hit}=95; $com.=qq|$mã¯å¿ƒã‚’è½ã¡ã¤ã‹ã›<span class="st_up">å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;	}],
+		[15,	3,		'ã¿ã­ã†ã¡',			sub{ &_st_d(shift, 'å‹•å°', 'æ”»', 80);	}],
+		[30,	5,		'ã†ã‘ãªãŒã—',		sub{ $ms{$m}{tmp} = 'å—æµã—'; $com.=qq|<span class="tmp">$mã¯æ”»æ’ƒã‚’å—æµã™ã‹ã¾ãˆã‚’ã¨ã£ãŸ</span>|;	}],
+		[50,	0,		'ãœã«ãªã’',			sub{ if ($m{money} < 100) { $m{money} = 0; &_damages(50, 'æ”»', 1); } else { $m{money} -= 100; &_damages(180, 'æ”»', 1); }; 	}],
+		[70,	4,		'ã—ã‚‰ã¯ã©ã‚Š',		sub{ $ms{$m}{tmp}='æ”»ç„¡åŠ¹'; $com.=qq|<span class="tmp">$mã¯å®ˆã‚Šã®ã‹ã¾ãˆã‚’ã¨ã£ãŸï¼</span>|;	}],
+		[100,	20,		'ã„ã‚ã„ãã‚Š',		sub{ &_st_ds('å‹•å°', 'æ”»', 65);	}],
+		[140,	10,		'ã–ã‚“ã¦ã¤ã‘ã‚“',		sub{ &_death(shift, 'å³æ­»', 'æ”»', 25);	}],
 	);
 }
-sub skill_29 { # –‚“¹m
+sub skill_29 { # æ™‚é­”é“å£«
 	return (
-		[10,	4,		'ƒXƒƒE',		sub{ &_st_down(shift,  0.45, '–‚', 'ag');	}],
-		[20,	4,		'ƒwƒCƒXƒg',		sub{ &_st_up(shift, 0.45, '–‚', 'ag');	}],
-		[30,	14,		'ƒRƒƒbƒg',		sub{ my $v = int(rand(2)+2); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, 50, '–‚', 1); };	}],
-		[50,	9,		'ƒXƒƒEƒK',		sub{ &_st_downs(0.35, '–‚', 'ag');	}],
-		[70,	9,		'ƒwƒCƒXƒK',		sub{ &_st_ups(0.35, '–‚', 'ag');	}],
-		[110,	30,		'ƒOƒ‰ƒrƒf',		sub{ &_st_down(shift, 0.5, '–‚', 'hp');	}],
-		[150,	50,		'ƒƒeƒI',		sub{ my $v = int(rand(3)+4); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, 99, '–‚', 1); };	}],
+		[10,	4,		'ã‚¹ãƒ­ã‚¦',		sub{ &_st_down(shift,  0.45, 'é­”', 'ag');	}],
+		[20,	4,		'ãƒ˜ã‚¤ã‚¹ãƒˆ',		sub{ &_st_up(shift, 0.45, 'é­”', 'ag');	}],
+		[30,	14,		'ã‚³ãƒ¡ãƒƒãƒˆ',		sub{ my $v = int(rand(2)+2); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, 50, 'é­”', 1); };	}],
+		[50,	9,		'ã‚¹ãƒ­ã‚¦ã‚¬',		sub{ &_st_downs(0.35, 'é­”', 'ag');	}],
+		[70,	9,		'ãƒ˜ã‚¤ã‚¹ã‚¬',		sub{ &_st_ups(0.35, 'é­”', 'ag');	}],
+		[110,	30,		'ã‚°ãƒ©ãƒ“ãƒ‡',		sub{ &_st_down(shift, 0.5, 'é­”', 'hp');	}],
+		[150,	50,		'ãƒ¡ãƒ†ã‚ª',		sub{ my $v = int(rand(3)+4); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, 99, 'é­”', 1); };	}],
 	);
 }
-sub skill_30 { # Ô–‚“¹m
+sub skill_30 { # èµ¤é­”é“å£«
 	return (
-		[10,	5,		'ƒPƒAƒ‹',			sub{ &_heal(shift, 60, '–‚');	}],
-		[20,	5,		'ƒtƒ@ƒCƒA',			sub{ &_damage(shift, 35, '–‚', 1);	}],
-		[40,	5,		'ƒVƒFƒ‹',			sub{ my($y) = &_check_party(shift, '–‚ŒyŒ¸', '–‚'); return if !$y || $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|;	}],
-		[60,	11,		'ƒtƒ@ƒCƒ‰',			sub{ &_damage(shift, 80, '–‚', 1);	}],
-		[80,	7,		'ƒŠƒtƒŒƒN',			sub{ my($y) = &_check_party(shift, '–‚”½Œ‚', '–‚'); return if !$y; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Åç‚ç‚ê‚½I</span>|;	}],
-		[100,	18,		'ƒPƒAƒ‹ƒ‰',			sub{ &_heal(shift, 180, '–‚');			}],
-		[120,	20,		'ƒŠƒŒƒCƒY',			sub{ my($y) = &_check_party(shift, '•œŠˆ', '–‚'); return if !$y; $ms{$y}{tmp}='•œŠˆ'; $com.=qq|<span class="tmp">$y‚Í“Vg‚Ì‰ÁŒì‚ª‚Â‚¢‚½I</span>|;	}],
-		[150,	40,		'‚ê‚ñ‚¼‚­‚Ü‚Ù‚¤',	sub{ for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage(undef, 180, '–‚', 1); };	}],
+		[10,	5,		'ã‚±ã‚¢ãƒ«',			sub{ &_heal(shift, 60, 'é­”');	}],
+		[20,	5,		'ãƒ•ã‚¡ã‚¤ã‚¢',			sub{ &_damage(shift, 35, 'é­”', 1);	}],
+		[40,	5,		'ã‚·ã‚§ãƒ«',			sub{ my($y) = &_check_party(shift, 'é­”è»½æ¸›', 'é­”'); return if !$y || $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[60,	11,		'ãƒ•ã‚¡ã‚¤ãƒ©',			sub{ &_damage(shift, 80, 'é­”', 1);	}],
+		[80,	7,		'ãƒªãƒ•ãƒ¬ã‚¯',			sub{ my($y) = &_check_party(shift, 'é­”åæ’ƒ', 'é­”'); return if !$y; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[100,	18,		'ã‚±ã‚¢ãƒ«ãƒ©',			sub{ &_heal(shift, 180, 'é­”');			}],
+		[120,	20,		'ãƒªãƒ¬ã‚¤ã‚º',			sub{ my($y) = &_check_party(shift, 'å¾©æ´»', 'é­”'); return if !$y; $ms{$y}{tmp}='å¾©æ´»'; $com.=qq|<span class="tmp">$yã¯å¤©ä½¿ã®åŠ è­·ãŒã¤ã„ãŸï¼</span>|;	}],
+		[150,	40,		'ã‚Œã‚“ããã¾ã»ã†',	sub{ for my $i (1..2) { last if $ms{$m}{hp} <= 0; &_damage(undef, 180, 'é­”', 1); };	}],
 	);
 }
-sub skill_31 { # Â–‚“¹m
+sub skill_31 { # é’é­”é“å£«
 	return (
-		[11,	11,		'‚¶‚Î‚­',				sub{ $com.=qq|<span class="die">$m‚Í©”š‚µ‚½I</span>|; &_damage(shift, $ms{$m}{hp}, '–‚', 1); &defeat($m);	}],
-		[44,	4,		'‚µ‚Ìƒ‹[ƒŒƒbƒg',		sub{ return if &is_bad_state('–‚'); my $y=$members[int(rand(@members))]; $y = $m if $ms{$y}{hp} <= 0; $com.="€‚Ìƒ‹[ƒŒƒbƒg‚ª‰ô‚è‚¾‚µ‚½IcËß¯cËß¯cËß¯Ëß¯Ëß-[>[$y]"; if ($ms{$y}{hp} > 999 || $ms{$y}{df} > 999) { $com .= "$y‚É‚Í‚«‚©‚È‚©‚Á‚½c"; } else { $com .= qq|<span class="die">$y‚Í€‚ñ‚Å‚µ‚Ü‚Á‚½I</span>|; &defeat($y); };		}],
-		[66,	18,		'HHHH',				sub{ &_damage(shift, $ms{$m}{mhp}-$ms{$m}{hp}+5, '–‚', 1);		}],
-		[77,	34,		'ƒ}ƒCƒeƒBƒK[ƒh',		sub{ &_st_ups(0.5, '–‚', 'df'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|;};	}],
-		[94,	24,		'‚l‚o‚SƒOƒ‰ƒrƒK',		sub{ return if &is_bad_state('–‚'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 4 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = int($ms{$y}{hp}*0.25); $ms{$y}{hp} = 1 if $ms{$y}{hp} <= 0; $com.=qq|$y‚Í<span class="st_down">$e2j{mhp}‚ª1/4‚É‚È‚Á‚½I</span>|; };	}],
-		[121,	36,		'ƒzƒƒCƒgƒEƒBƒ“ƒh',		sub{ &_heals($ms{$m}{hp}, '–‚');	}],
-		[155,	25,		'‚l‚o‚TƒfƒX',			sub{ return if &is_bad_state('–‚'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 5 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = 0; $com.=qq|<span class="die">$y‚Í€‚ñ‚Å‚µ‚Ü‚Á‚½I</span>|; &defeat; };	}],
+		[11,	11,		'ã˜ã°ã',				sub{ $com.=qq|<span class="die">$mã¯è‡ªçˆ†ã—ãŸï¼</span>|; &_damage(shift, $ms{$m}{hp}, 'é­”', 1); &defeat($m);	}],
+		[44,	4,		'ã—ã®ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆ',		sub{ return if &is_bad_state('é­”'); my $y=$members[int(rand(@members))]; $y = $m if $ms{$y}{hp} <= 0; $com.="æ­»ã®ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆãŒå»»ã‚Šã ã—ãŸï¼â€¦ãƒ”ãƒƒâ€¦ãƒ”ãƒƒâ€¦ãƒ”ãƒƒãƒ”ãƒƒãƒ”-[>[$y]"; if ($ms{$y}{hp} > 999 || $ms{$y}{df} > 999) { $com .= "$yã«ã¯ãã‹ãªã‹ã£ãŸâ€¦"; } else { $com .= qq|<span class="die">$yã¯æ­»ã‚“ã§ã—ã¾ã£ãŸï¼</span>|; &defeat($y); };		}],
+		[66,	18,		'ï¼Ÿï¼Ÿï¼Ÿï¼Ÿ',				sub{ &_damage(shift, $ms{$m}{mhp}-$ms{$m}{hp}+5, 'é­”', 1);		}],
+		[77,	34,		'ãƒã‚¤ãƒ†ã‚£ã‚¬ãƒ¼ãƒ‰',		sub{ &_st_ups(0.5, 'é­”', 'df'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;};	}],
+		[94,	24,		'ï¼­ï¼°ï¼”ã‚°ãƒ©ãƒ“ã‚¬',		sub{ return if &is_bad_state('é­”'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 4 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = int($ms{$y}{hp}*0.25); $ms{$y}{hp} = 1 if $ms{$y}{hp} <= 0; $com.=qq|$yã¯<span class="st_down">$e2j{mhp}ãŒ1/4ã«ãªã£ãŸï¼</span>|; };	}],
+		[121,	36,		'ãƒ›ãƒ¯ã‚¤ãƒˆã‚¦ã‚£ãƒ³ãƒ‰',		sub{ &_heals($ms{$m}{hp}, 'é­”');	}],
+		[155,	25,		'ï¼­ï¼°ï¼•ãƒ‡ã‚¹',			sub{ return if &is_bad_state('é­”'); for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % 5 != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp} = 0; $com.=qq|<span class="die">$yã¯æ­»ã‚“ã§ã—ã¾ã£ãŸï¼</span>|; &defeat; };	}],
 	);
 }
-sub skill_32 { # ¢Š«m
+sub skill_32 { # å¬å–šå£«
 	return (
-		[5,		5,		'ƒ`ƒ‡ƒRƒ{',			sub{ if (rand(4)<1) { $com.="—ƒfƒuƒ`ƒ‡ƒRƒ{—"; &_damage(shift, 100, '–‚', 1); } else { $com.="—ƒ`ƒ‡ƒRƒ{ƒLƒbƒN—"; &_damage(shift, 30, '–‚', 1); };	}],
-		[25,	10,		'ƒVƒ‹ƒt',			sub{ $com.="—–ü‚µ‚Ì•——"; &_heals(50, '–‚');		}],
-		[50,	20,		'ƒS[ƒŒƒ€',			sub{ return if &is_bad_state('–‚'); $com.="—ç‚è‚Ì•Ç—";   for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'UŒyŒ¸'; $com.=qq|<span class="tmp">$y‚ÍƒS[ƒŒƒ€‚Éç‚ç‚ê‚Ä‚¢‚éI</span>|;};	}],
-		[70,	30,		'ƒJ[ƒoƒ“ƒNƒ‹',		sub{ return if &is_bad_state('–‚'); $com.="—ƒ‹ƒr[‚ÌŒõ—"; for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Éç‚ç‚ê‚½I</span>|;};	}],
-		[100,	40,		'ƒtƒFƒjƒbƒNƒX',		sub{ return if &is_bad_state('–‚'); $com.="—“]¶‚Ì‰Š—";   for my $y (@partys) { next if $ms{$y}{hp}  > 0; $ms{$y}{hp}=int($ms{$y}{mhp}*0.15); $com.=qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½I</span>|; };	}],
-		[150,	50,		'ƒoƒnƒ€[ƒg',		sub{ $com.="—ƒƒKƒtƒŒƒA—"; &_damages(220, '–‚', 1);	}],
+		[5,		5,		'ãƒãƒ§ã‚³ãƒœ',			sub{ if (rand(4)<1) { $com.="ï¼ ãƒ‡ãƒ–ãƒãƒ§ã‚³ãƒœï¼ "; &_damage(shift, 100, 'é­”', 1); } else { $com.="ï¼ ãƒãƒ§ã‚³ãƒœã‚­ãƒƒã‚¯ï¼ "; &_damage(shift, 30, 'é­”', 1); };	}],
+		[25,	10,		'ã‚·ãƒ«ãƒ•',			sub{ $com.="ï¼ ç™’ã—ã®é¢¨ï¼ "; &_heals(50, 'é­”');		}],
+		[50,	20,		'ã‚´ãƒ¼ãƒ¬ãƒ ',			sub{ return if &is_bad_state('é­”'); $com.="ï¼ å®ˆã‚Šã®å£ï¼ ";   for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'æ”»è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯ã‚´ãƒ¼ãƒ¬ãƒ ã«å®ˆã‚‰ã‚Œã¦ã„ã‚‹ï¼</span>|;};	}],
+		[70,	30,		'ã‚«ãƒ¼ãƒãƒ³ã‚¯ãƒ«',		sub{ return if &is_bad_state('é­”'); $com.="ï¼ ãƒ«ãƒ“ãƒ¼ã®å…‰ï¼ "; for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã«å®ˆã‚‰ã‚ŒãŸï¼</span>|;};	}],
+		[100,	40,		'ãƒ•ã‚§ãƒ‹ãƒƒã‚¯ã‚¹',		sub{ return if &is_bad_state('é­”'); $com.="ï¼ è»¢ç”Ÿã®ç‚ï¼ ";   for my $y (@partys) { next if $ms{$y}{hp}  > 0; $ms{$y}{hp}=int($ms{$y}{mhp}*0.15); $com.=qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸï¼</span>|; };	}],
+		[150,	50,		'ãƒãƒãƒ ãƒ¼ãƒˆ',		sub{ $com.="ï¼ ãƒ¡ã‚¬ãƒ•ãƒ¬ã‚¢ï¼ "; &_damages(220, 'é­”', 1);	}],
 	);
 }
-sub skill_33 { # Œ«Ò
+sub skill_33 { # è³¢è€…
 	return (
-		[5,		6,		'ƒ}ƒWƒbƒNƒoƒŠƒA',	sub{ return if &is_bad_state('–‚'); for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|; };	}],
-		[15,	12,		'ƒCƒIƒ‰',			sub{ &_damages(70, '–‚', 1);	}],
-		[30,	7,		'ƒtƒo[ƒn',			sub{ return if &is_bad_state('–‚'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '‘§ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í•sv‹c‚È•—‚É•ï‚Ü‚ê‚½I</span>|;};	}],
-		[70,	25,		'ƒxƒzƒ}ƒ‰[',		sub{ &_heals(120, '–‚');	}],
-		[100,	16,		'ƒoƒCƒLƒ‹ƒg',		sub{ &_st_up(shift, 1.0, '–‚', 'at')	}],
-		[130,	34,		'ƒCƒIƒiƒYƒ“',		sub{ &_damages(160, '–‚', 1);	}],
-		[160,	80,		'ƒUƒIƒŠƒN',			sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
+		[5,		6,		'ãƒã‚¸ãƒƒã‚¯ãƒãƒªã‚¢',	sub{ return if &is_bad_state('é­”'); for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|; };	}],
+		[15,	12,		'ã‚¤ã‚ªãƒ©',			sub{ &_damages(70, 'é­”', 1);	}],
+		[30,	7,		'ãƒ•ãƒãƒ¼ãƒ',			sub{ return if &is_bad_state('é­”'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'æ¯è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯ä¸æ€è­°ãªé¢¨ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;};	}],
+		[70,	25,		'ãƒ™ãƒ›ãƒãƒ©ãƒ¼',		sub{ &_heals(120, 'é­”');	}],
+		[100,	16,		'ãƒã‚¤ã‚­ãƒ«ãƒˆ',		sub{ &_st_up(shift, 1.0, 'é­”', 'at')	}],
+		[130,	34,		'ã‚¤ã‚ªãƒŠã‚ºãƒ³',		sub{ &_damages(160, 'é­”', 1);	}],
+		[160,	80,		'ã‚¶ã‚ªãƒªã‚¯',			sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
 	);
 }
-sub skill_34 { # —EÒ
+sub skill_34 { # å‹‡è€…
 	return (
-		[10,	0,		'‚©‚Î‚¤',			sub{ my($y) = &_check_party(shift, '‚©‚Î‚¤', 'U'); return if !$y || $y eq $m; $ms{$m}{tmp} = '‚©‚Î‚¢’†'; $ms{$y}{tmp} = '‚©‚Î‚¤'; $com.=qq|<span class="tmp">$m‚Í$y‚ğ‚©‚Î‚Á‚Ä‚¢‚é</span>|;	}],
-		[30,	15,		'ƒ‰ƒCƒfƒCƒ“',		sub{ &_damage(shift, 110, '–‚', 1);			}],
-		[60,	25,		'‚ß‚¢‚»‚¤',			sub{ &_heal($m, 300, '–³');		}],
-		[90,	40,		'ƒMƒKƒfƒCƒ“',		sub{ &_damages(180, '–‚', 1);			}],
-		[120,	6,		'ƒAƒXƒgƒƒ“',		sub{ return if &is_bad_state('–‚'); $ms{$m}{tmp}='–‚–³Œø'; $com.=qq|<span class="tmp">$m‚Í–‚–@‚ğ‚¤‚¯‚Â‚¯‚È‚¢‘Ì‚É‚È‚Á‚½I</span>|;	}],
-		[150,	80,		'ƒxƒzƒ}ƒYƒ“',		sub{ &_heals(999, '–‚');	}],
-		[180,	30,		'ƒ~ƒiƒfƒCƒ“',		sub{ my($y) = &_check_enemy(shift, 'ŠF', '–‚'); return if !$y; my $d = 100; for my $name (@partys) { next if $m eq $name || $ms{$name}{mp} < 15; $ms{$name}{mp}-=15; $d += 85; }; $com.=qq|$m‚Í’‡ŠÔ‚Ì‚İ‚ñ‚È‚©‚ç—Í‚ğó‚¯‚Æ‚Á‚½I| if $d > 100; &_damage($y, $d, '–‚', 1);	}],
+		[10,	0,		'ã‹ã°ã†',			sub{ my($y) = &_check_party(shift, 'ã‹ã°ã†', 'æ”»'); return if !$y || $y eq $m; $ms{$m}{tmp} = 'ã‹ã°ã„ä¸­'; $ms{$y}{tmp} = 'ã‹ã°ã†'; $com.=qq|<span class="tmp">$mã¯$yã‚’ã‹ã°ã£ã¦ã„ã‚‹</span>|;	}],
+		[30,	15,		'ãƒ©ã‚¤ãƒ‡ã‚¤ãƒ³',		sub{ &_damage(shift, 110, 'é­”', 1);			}],
+		[60,	25,		'ã‚ã„ãã†',			sub{ &_heal($m, 300, 'ç„¡');		}],
+		[90,	40,		'ã‚®ã‚¬ãƒ‡ã‚¤ãƒ³',		sub{ &_damages(180, 'é­”', 1);			}],
+		[120,	6,		'ã‚¢ã‚¹ãƒˆãƒ­ãƒ³',		sub{ return if &is_bad_state('é­”'); $ms{$m}{tmp}='é­”ç„¡åŠ¹'; $com.=qq|<span class="tmp">$mã¯é­”æ³•ã‚’ã†ã‘ã¤ã‘ãªã„ä½“ã«ãªã£ãŸï¼</span>|;	}],
+		[150,	80,		'ãƒ™ãƒ›ãƒã‚ºãƒ³',		sub{ &_heals(999, 'é­”');	}],
+		[180,	30,		'ãƒŸãƒŠãƒ‡ã‚¤ãƒ³',		sub{ my($y) = &_check_enemy(shift, 'çš†', 'é­”'); return if !$y; my $d = 100; for my $name (@partys) { next if $m eq $name || $ms{$name}{mp} < 15; $ms{$name}{mp}-=15; $d += 85; }; $com.=qq|$mã¯ä»²é–“ã®ã¿ã‚“ãªã‹ã‚‰åŠ›ã‚’å—ã‘ã¨ã£ãŸï¼| if $d > 100; &_damage($y, $d, 'é­”', 1);	}],
 	);
 }
-sub skill_35 { # –‚‰¤
+sub skill_35 { # é­”ç‹
 	return (
-		[10,	4,		'‚¤‚¯‚È‚ª‚µ',		sub{ $ms{$m}{tmp} = 'ó—¬‚µ'; $com.=qq|<span class="tmp">$m ‚ÍUŒ‚‚ğó—¬‚·‚©‚Ü‚¦‚ğ‚Æ‚Á‚½</span>|;	}],
-		[30,	30,		'‚¢‚Ä‚Â‚­‚Í‚Ç‚¤',	sub{ for my $y (@members) { my $tten=$ms{$y}{ten}; &reset_status($y); $ms{$y}{ten}=$tten; }; $com.=qq|<span class="st_down">‘S‚Ä‚ÌŒø‰Ê‚ª‚©‚«Á‚³‚ê‚½I</span>|;	}],
-		[60,	14,		'ƒUƒL',				sub{ &_death(shift, '‘¦€', '–‚', 20);	}],
-		[90,	40,		'‚µ‚á‚­‚Ë‚Â',		sub{ &_damages(180, '‘§', 1);	}],
-		[120,	25,		'‚ß‚¢‚»‚¤',			sub{ &_heal($m, 300, '–³');	}],
-		[150,	6,		'ƒAƒXƒgƒƒ“',		sub{ return if &is_bad_state('–‚'); $ms{$m}{tmp}='–‚–³Œø'; $com.=qq|<span class="tmp">$m‚Í–‚–@‚ğ‚¤‚¯‚Â‚¯‚È‚¢‘Ì‚É‚È‚Á‚½I</span>|;	}],
-		[180,	70,		'ƒWƒSƒXƒp[ƒN',		sub{ $is_add_effect = 1; &_damages(150, '–‚', 1); &_st_ds('–ƒáƒ', '–‚', 20);		}],
+		[10,	4,		'ã†ã‘ãªãŒã—',		sub{ $ms{$m}{tmp} = 'å—æµã—'; $com.=qq|<span class="tmp">$m ã¯æ”»æ’ƒã‚’å—æµã™ã‹ã¾ãˆã‚’ã¨ã£ãŸ</span>|;	}],
+		[30,	30,		'ã„ã¦ã¤ãã¯ã©ã†',	sub{ for my $y (@members) { my $tten=$ms{$y}{ten}; &reset_status($y); $ms{$y}{ten}=$tten; }; $com.=qq|<span class="st_down">å…¨ã¦ã®åŠ¹æœãŒã‹ãæ¶ˆã•ã‚ŒãŸï¼</span>|;	}],
+		[60,	14,		'ã‚¶ã‚­',				sub{ &_death(shift, 'å³æ­»', 'é­”', 20);	}],
+		[90,	40,		'ã—ã‚ƒãã­ã¤',		sub{ &_damages(180, 'æ¯', 1);	}],
+		[120,	25,		'ã‚ã„ãã†',			sub{ &_heal($m, 300, 'ç„¡');	}],
+		[150,	6,		'ã‚¢ã‚¹ãƒˆãƒ­ãƒ³',		sub{ return if &is_bad_state('é­”'); $ms{$m}{tmp}='é­”ç„¡åŠ¹'; $com.=qq|<span class="tmp">$mã¯é­”æ³•ã‚’ã†ã‘ã¤ã‘ãªã„ä½“ã«ãªã£ãŸï¼</span>|;	}],
+		[180,	70,		'ã‚¸ã‚´ã‚¹ãƒ‘ãƒ¼ã‚¯',		sub{ $is_add_effect = 1; &_damages(150, 'é­”', 1); &_st_ds('éº»ç—º', 'é­”', 20);		}],
 	);
 }
-sub skill_36 { # ‚à‚Ì‚Ü‚Ëm
+sub skill_36 { # ã‚‚ã®ã¾ã­å£«
 	return (
-		[10,	5,		'‚¨‚Ç‚é‚à‚Ì‚Ü‚Ë',	sub{ $ms{$m}{tmp} = '—x”½Œ‚'; $com.=qq|<span class="tmp">$m‚Í—x‚é‚Ü‚Ë‚ğ‚Í‚¶‚ß‚½I</span>|;			}],
-		[20,	5,		'‚Ô‚ê‚·‚à‚Ì‚Ü‚Ë',	sub{ $ms{$m}{tmp} = '‘§”½Œ‚'; $com.=qq|<span class="tmp">$m‚Í‘§‚ğ“f‚­‚Ü‚Ë‚ğ‚Í‚¶‚ß‚½I</span>|;		}],
-		[40,	5,		'‚Ü‚Ù‚¤‚à‚Ì‚Ü‚Ë',	sub{ $ms{$m}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$m‚Í–‚–@‚ğ¥‚¦‚é‚Ü‚Ë‚ğ‚Í‚¶‚ß‚½I</span>|;	}],
-		[60,	5,		'‚±‚¤‚°‚«‚à‚Ì‚Ü‚Ë',	sub{ $ms{$m}{tmp} = 'U”½Œ‚'; $com.=qq|<span class="tmp">$m‚ÍUŒ‚‚·‚é‚Ü‚Ë‚ğ‚Í‚¶‚ß‚½I</span>|;		}],
-		[100,	50,		'ƒ‚ƒVƒƒƒX',			sub{ my $y = shift; return if &is_bad_state('–‚'); $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); return if $ms{$y}{hp} <= 0 || $ms{$y}{mhp} > 999 || $ms{$y}{mdf} > 999; for my $k (qw/hp mp at df ag/) { $ms{$m}{$k}=$ms{$y}{$k}; $ms{$m}{'m'.$k}=$ms{$y}{'m'.$k}; }; for my $k (qw/job sp old_job old_sp icon/) { $ms{$m}{$k}=$ms{$y}{$k}; }; $ms{$m}{mp} = 50 if $ms{$m}{mp} < 50; $com.=qq|<span class="st_up">$m‚Í$y‚Ép‚ğ•Ï‚¦‚Ü‚µ‚½I</span>|;	}],
+		[10,	5,		'ãŠã©ã‚‹ã‚‚ã®ã¾ã­',	sub{ $ms{$m}{tmp} = 'è¸Šåæ’ƒ'; $com.=qq|<span class="tmp">$mã¯è¸Šã‚‹ã¾ã­ã‚’ã¯ã˜ã‚ãŸï¼</span>|;			}],
+		[20,	5,		'ã¶ã‚Œã™ã‚‚ã®ã¾ã­',	sub{ $ms{$m}{tmp} = 'æ¯åæ’ƒ'; $com.=qq|<span class="tmp">$mã¯æ¯ã‚’åãã¾ã­ã‚’ã¯ã˜ã‚ãŸï¼</span>|;		}],
+		[40,	5,		'ã¾ã»ã†ã‚‚ã®ã¾ã­',	sub{ $ms{$m}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$mã¯é­”æ³•ã‚’å”±ãˆã‚‹ã¾ã­ã‚’ã¯ã˜ã‚ãŸï¼</span>|;	}],
+		[60,	5,		'ã“ã†ã’ãã‚‚ã®ã¾ã­',	sub{ $ms{$m}{tmp} = 'æ”»åæ’ƒ'; $com.=qq|<span class="tmp">$mã¯æ”»æ’ƒã™ã‚‹ã¾ã­ã‚’ã¯ã˜ã‚ãŸï¼</span>|;		}],
+		[100,	50,		'ãƒ¢ã‚·ãƒ£ã‚¹',			sub{ my $y = shift; return if &is_bad_state('é­”'); $y = $members[int(rand(@members))] if !defined($ms{$y}{name}); return if $ms{$y}{hp} <= 0 || $ms{$y}{mhp} > 999 || $ms{$y}{mdf} > 999; for my $k (qw/hp mp at df ag/) { $ms{$m}{$k}=$ms{$y}{$k}; $ms{$m}{'m'.$k}=$ms{$y}{'m'.$k}; }; for my $k (qw/job sp old_job old_sp icon/) { $ms{$m}{$k}=$ms{$y}{$k}; }; $ms{$m}{mp} = 50 if $ms{$m}{mp} < 50; $com.=qq|<span class="st_up">$mã¯$yã«å§¿ã‚’å¤‰ãˆã¾ã—ãŸï¼</span>|;	}],
 	);
 }
-sub skill_37 { # Œ‹ŠEm
+sub skill_37 { # çµç•Œå£«
 	return (
-		[5,		10,		'ƒ}ƒzƒg[ƒ“',		sub{ &_st_ds('–‚••', '–‚', 70);	}],
-		[10,	1,		'ƒ}ƒzƒLƒe',			sub{ return if &is_bad_state('–‚'); $ms{$m}{tmp} = '–‚‹zû'; $com.=qq|<span class="tmp">$m‚Í•sv‹c‚ÈŒõ‚É•ï‚Ü‚ê‚½I</span>|;	}],
-		[15,	6,		'‚¨‚Ç‚è‚Ó‚¤‚¶',		sub{ &_st_ds('—x••', '—x', 70);	}],
-		[25,	6,		'ƒ}ƒWƒbƒNƒoƒŠƒA',	sub{ for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|; };	}],
-		[40,	5,		'ƒ}ƒzƒJƒ“ƒ^',		sub{ my($y) = &_check_party(shift, '–‚”½Œ‚', '–‚'); return if !$y; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Åç‚ç‚ê‚½I</span>|;	}],
-		[60,	7,		'‚¶‚ã‚Î‚­',			sub{ &_st_d(shift, 'U••', '–³', 80);	}],
-		[80,	25,		'‚ß‚¢‚»‚¤',			sub{ &_heal($m, 300, '–³');	}],
-		[100,	15,		'‚Ó‚¤‚¢‚ñ',			sub{ my($y) = &_check_enemy(shift, '”j‰ó', 'U'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $ms{$y}{at}=$ms{$y}{mat}; $com.="$y‚Ì•Ší‚Æ–h‹ï‚Ì‹­‚³‚ğ••ˆó‚µ‚½I";		}],
+		[5,		10,		'ãƒãƒ›ãƒˆãƒ¼ãƒ³',		sub{ &_st_ds('é­”å°', 'é­”', 70);	}],
+		[10,	1,		'ãƒãƒ›ã‚­ãƒ†',			sub{ return if &is_bad_state('é­”'); $ms{$m}{tmp} = 'é­”å¸å'; $com.=qq|<span class="tmp">$mã¯ä¸æ€è­°ãªå…‰ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;	}],
+		[15,	6,		'ãŠã©ã‚Šãµã†ã˜',		sub{ &_st_ds('è¸Šå°', 'è¸Š', 70);	}],
+		[25,	6,		'ãƒã‚¸ãƒƒã‚¯ãƒãƒªã‚¢',	sub{ for my $y (@partys) { return if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|; };	}],
+		[40,	5,		'ãƒãƒ›ã‚«ãƒ³ã‚¿',		sub{ my($y) = &_check_party(shift, 'é­”åæ’ƒ', 'é­”'); return if !$y; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[60,	7,		'ã˜ã‚…ã°ã',			sub{ &_st_d(shift, 'æ”»å°', 'ç„¡', 80);	}],
+		[80,	25,		'ã‚ã„ãã†',			sub{ &_heal($m, 300, 'ç„¡');	}],
+		[100,	15,		'ãµã†ã„ã‚“',			sub{ my($y) = &_check_enemy(shift, 'ç ´å£Š', 'æ”»'); return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $ms{$y}{at}=$ms{$y}{mat}; $com.="$yã®æ­¦å™¨ã¨é˜²å…·ã®å¼·ã•ã‚’å°å°ã—ãŸï¼";		}],
 	);
 }
-sub skill_38 { # ÊŞİÊß²±
+sub skill_38 { # ãƒãƒ³ãƒ‘ã‚¤ã‚¢
 	return (
-		[10,	12,		'‚«‚ã‚¤‚¯‚Â',		sub{ my($y, $v) = &_damage(shift, ($ms{$m}{mhp}-$ms{$m}{hp})*0.5+5, '–‚', 1); return if !$y; &_heal($m, $v, '–‚');	}],
-		[20,	3,		'ƒAƒXƒsƒ‹',			sub{ my($y, $v) = &_st_down(shift, 0.2, '–‚', 'mp'); return if !$y; &_mp_h($m, $v, '–‚');	}],
-		[30,	6,		'ƒAƒXƒgƒƒ“',		sub{ return if &is_bad_state('–‚'); $ms{$m}{tmp}='–‚–³Œø'; $com.=qq|<span class="tmp">$m‚Í–‚–@‚ğ‚¤‚¯‚Â‚¯‚È‚¢‘Ì‚É‚È‚Á‚½I</span>|;	}],
-		[60,	9,		'‚ß‚¢‚â‚­',			sub{ my $v = int($ms{$m}{df} * 0.5); $ms{$m}{df} -= $v; $com.=qq|<span class="st_down">$m‚Ì$e2j{df}‚ª $v ‚³‚ª‚è‚Ü‚µ‚½I</span>|; &_st_up($m, 1.0, '–³', 'at');	}],
-		[90,	9,		'‚ ‚Ü‚¢‚¢‚«',		sub{ &_st_ds('–°‚è', '‘§', 35);		}],
-		[130,	37,		'ƒMƒKƒhƒŒƒCƒ“',		sub{ my($y) = &_check_enemy(shift, '‹zû', '–‚'); return if !$y; my $v = int($ms{$y}{hp}*0.5); $v = 300 if $v > 300; ($y) = &_damage($y, $v, '–‚', 1); return if !$y; &_heal($m, $v, '–‚');	}],
+		[10,	12,		'ãã‚…ã†ã‘ã¤',		sub{ my($y, $v) = &_damage(shift, ($ms{$m}{mhp}-$ms{$m}{hp})*0.5+5, 'é­”', 1); return if !$y; &_heal($m, $v, 'é­”');	}],
+		[20,	3,		'ã‚¢ã‚¹ãƒ”ãƒ«',			sub{ my($y, $v) = &_st_down(shift, 0.2, 'é­”', 'mp'); return if !$y; &_mp_h($m, $v, 'é­”');	}],
+		[30,	6,		'ã‚¢ã‚¹ãƒˆãƒ­ãƒ³',		sub{ return if &is_bad_state('é­”'); $ms{$m}{tmp}='é­”ç„¡åŠ¹'; $com.=qq|<span class="tmp">$mã¯é­”æ³•ã‚’ã†ã‘ã¤ã‘ãªã„ä½“ã«ãªã£ãŸï¼</span>|;	}],
+		[60,	9,		'ã‚ã„ã‚„ã',			sub{ my $v = int($ms{$m}{df} * 0.5); $ms{$m}{df} -= $v; $com.=qq|<span class="st_down">$mã®$e2j{df}ãŒ $v ã•ãŒã‚Šã¾ã—ãŸï¼</span>|; &_st_up($m, 1.0, 'ç„¡', 'at');	}],
+		[90,	9,		'ã‚ã¾ã„ã„ã',		sub{ &_st_ds('çœ ã‚Š', 'æ¯', 35);		}],
+		[130,	37,		'ã‚®ã‚¬ãƒ‰ãƒ¬ã‚¤ãƒ³',		sub{ my($y) = &_check_enemy(shift, 'å¸å', 'é­”'); return if !$y; my $v = int($ms{$y}{hp}*0.5); $v = 300 if $v > 300; ($y) = &_damage($y, $v, 'é­”', 1); return if !$y; &_heal($m, $v, 'é­”');	}],
 	);
 }
-sub skill_39 { # ½×²Ñ
+sub skill_39 { # ã‚¹ãƒ©ã‚¤ãƒ 
 	return (
-		[3,		5,		'ƒMƒ‰',			sub{ &_damages(25, '–‚', 1);	}],
-		[7,		7,		'ƒXƒNƒ‹ƒg',		sub{ &_st_ups(0.25, '–‚', 'df');	}],
-		[11,	3,		'ƒzƒCƒ~',		sub{ &_heal(shift, 30, '–‚');	}],
-		[16,	7,		'ƒ‹ƒJƒiƒ“',		sub{ &_st_downs(0.25, '–‚', 'df')	}],
-		[28,	10,		'ƒƒ_ƒpƒj',		sub{ &_st_ds('¬—', '–‚', 50);	}],
-		[50,	20,		'ƒUƒIƒ‰ƒ‹',		sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|‚µ‚©‚µA$y‚Í¶‚«•Ô‚ç‚È‚©‚Á‚½c|; };	}],
-		[99,	40,		'‚µ‚á‚­‚Ë‚Â',	sub{ &_damages(180, '‘§', 1);	}],
+		[3,		5,		'ã‚®ãƒ©',			sub{ &_damages(25, 'é­”', 1);	}],
+		[7,		7,		'ã‚¹ã‚¯ãƒ«ãƒˆ',		sub{ &_st_ups(0.25, 'é­”', 'df');	}],
+		[11,	3,		'ãƒ›ã‚¤ãƒŸ',		sub{ &_heal(shift, 30, 'é­”');	}],
+		[16,	7,		'ãƒ«ã‚«ãƒŠãƒ³',		sub{ &_st_downs(0.25, 'é­”', 'df')	}],
+		[28,	10,		'ãƒ¡ãƒ€ãƒ‘ãƒ‹',		sub{ &_st_ds('æ··ä¹±', 'é­”', 50);	}],
+		[50,	20,		'ã‚¶ã‚ªãƒ©ãƒ«',		sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|ã—ã‹ã—ã€$yã¯ç”Ÿãè¿”ã‚‰ãªã‹ã£ãŸâ€¦|; };	}],
+		[99,	40,		'ã—ã‚ƒãã­ã¤',	sub{ &_damages(180, 'æ¯', 1);	}],
 	);
 }
-sub skill_40 { # Ê¸ŞÚÒÀÙ
+sub skill_40 { # ãƒã‚°ãƒ¬ãƒ¡ã‚¿ãƒ«
 	return (
-		[25,	8,		'ƒƒ‰ƒ~',		sub{ &_damage(shift, 70, '–‚', 1);		}],
-		[50,	11,		'ƒxƒMƒ‰ƒ}',		sub{ &_damages(60, '–‚', 1);			}],
-		[99,	1,		'ƒ}ƒ_ƒ“ƒe',		sub{ &_damages($ms{$m}{mp} * 2, '–‚', 1); $ms{$m}{mp} = 1; 	}],
+		[25,	8,		'ãƒ¡ãƒ©ãƒŸ',		sub{ &_damage(shift, 70, 'é­”', 1);		}],
+		[50,	11,		'ãƒ™ã‚®ãƒ©ãƒ',		sub{ &_damages(60, 'é­”', 1);			}],
+		[99,	1,		'ãƒãƒ€ãƒ³ãƒ†',		sub{ &_damages($ms{$m}{mp} * 2, 'é­”', 1); $ms{$m}{mp} = 1; 	}],
 	);
 }
-sub skill_41 { # ÄŞ×ºŞİ
+sub skill_41 { # ãƒ‰ãƒ©ã‚´ãƒ³
 	return (
-		[10,	1,		'‚Â‚ß‚½‚¢‚¢‚«',		sub{ &_damages(15, '‘§', 1);	}],
-		[30,	6,		'‚±‚¨‚è‚Ì‚¢‚«',		sub{ &_damages(55, '‘§', 1);	}],
-		[60,	14,		'‚±‚²‚¦‚é‚Ó‚Ô‚«',	sub{ &_damages(115, '‘§', 1);	}],
-		[90,	9,		'‚â‚¯‚Â‚­‚¢‚«',		sub{ &_st_ds('–ƒáƒ', '‘§', 35);	}],
-		[120,	34,		'‚©‚ª‚â‚­‚¢‚«',		sub{ &_damages(195, '‘§', 1);	}],
+		[10,	1,		'ã¤ã‚ãŸã„ã„ã',		sub{ &_damages(15, 'æ¯', 1);	}],
+		[30,	6,		'ã“ãŠã‚Šã®ã„ã',		sub{ &_damages(55, 'æ¯', 1);	}],
+		[60,	14,		'ã“ã”ãˆã‚‹ãµã¶ã',	sub{ &_damages(115, 'æ¯', 1);	}],
+		[90,	9,		'ã‚„ã‘ã¤ãã„ã',		sub{ &_st_ds('éº»ç—º', 'æ¯', 35);	}],
+		[120,	34,		'ã‹ãŒã‚„ãã„ã',		sub{ &_damages(195, 'æ¯', 1);	}],
 	);
 }
-sub skill_42 { # ±»¼İ
+sub skill_42 { # ã‚¢ã‚µã‚·ãƒ³
 	return (
-		[15,	7,		'ƒRƒ“ƒtƒ…',			sub{ &_st_d(shift, '¬—', '–‚', 80);	}],
-		[30,	6,		'ƒTƒCƒŒƒX',			sub{ &_st_d(shift, '–‚••', '–‚', 90);	}],
-		[55,	10,		'‚µ‚Ì‚Ñ‚ ‚µ',		sub{ &_st_up($m, 1.0, '–³', 'ag');	}],
-		[80,	4,		'‚Ç‚­‚±‚¤‚°‚«',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.1, 'U'); return if !$y || $ms{$y}{hp} <= 0;  &_st_d($y, '–Ò“Å', 'U', 70);	}],
-		[100,	8,		'‚Ü‚Ğ‚±‚¤‚°‚«',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, 'U'); return if !$y || $ms{$y}{hp} <= 0;  &_st_d($y, '–ƒáƒ', 'U', 35);	}],
-		[120,	42,		'‚µ‚Ì‚¹‚ñ‚±‚­',		sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$y‚É‚Í‚«‚©‚È‚©‚Á‚½I"; } elsif (rand(1.5)<1) { &_st_down($y, 0.75, '–‚', 'hp'); $ms{$y}{state}='–Ò“Å'; } else { $com.="$y‚Í‚©‚í‚µ‚½I"; };	}],
-		[150,	24,		'‚ ‚ñ‚³‚Â‚¯‚ñ',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.7, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_death($y, '‘¦€', 'U', 30);	}],
+		[15,	7,		'ã‚³ãƒ³ãƒ•ãƒ¥',			sub{ &_st_d(shift, 'æ··ä¹±', 'é­”', 80);	}],
+		[30,	6,		'ã‚µã‚¤ãƒ¬ã‚¹',			sub{ &_st_d(shift, 'é­”å°', 'é­”', 90);	}],
+		[55,	10,		'ã—ã®ã³ã‚ã—',		sub{ &_st_up($m, 1.0, 'ç„¡', 'ag');	}],
+		[80,	4,		'ã©ãã“ã†ã’ã',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.1, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0;  &_st_d($y, 'çŒ›æ¯’', 'æ”»', 70);	}],
+		[100,	8,		'ã¾ã²ã“ã†ã’ã',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0;  &_st_d($y, 'éº»ç—º', 'æ”»', 35);	}],
+		[120,	42,		'ã—ã®ã›ã‚“ã“ã',		sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yã«ã¯ãã‹ãªã‹ã£ãŸï¼"; } elsif (rand(1.5)<1) { &_st_down($y, 0.75, 'é­”', 'hp'); $ms{$y}{state}='çŒ›æ¯’'; } else { $com.="$yã¯ã‹ã‚ã—ãŸï¼"; };	}],
+		[150,	24,		'ã‚ã‚“ã•ã¤ã‘ã‚“',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.7, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_death($y, 'å³æ­»', 'æ”»', 30);	}],
 	);
 }
-sub skill_43 { # ˆãpm
+sub skill_43 { # åŒ»è¡“å£«
 	return (
-		[5,		2,		'‚Ç‚­‚¿‚è‚å‚¤',		sub{ &_st_hs('–Ò“Å', '–³');	}],
-		[10,	3,		'‚Ü‚Ğ‚¿‚è‚å‚¤',		sub{ &_st_hs('–ƒáƒ', '–³');	}],
-		[20,	5,		'‚ß‚´‚ß‚Ì‚¤‚½',		sub{ &_st_hs('–°‚è', '‰Ì');	}],
-		[40,	7,		'ƒŠƒWƒFƒl',			sub{ my($y) = &_check_party(shift, '‰ñ•œ', '–‚'); return if !$y; $ms{$y}{tmp} = '‰ñ•œ'; $com.=qq|<span class="tmp">$y‚Í—D‚µ‚¢Œõ‚É•ï‚Ü‚ê‚½I</span>|;	}],
-		[70,	10,		'ƒGƒXƒi',			sub{ my($y) = &_check_party(shift, '¡—Ã', '–³'); return if !$y; &_st_h($y, $ms{$y}{state}, '–‚');	}],
-		[110,	35,		'ƒPƒAƒ‹ƒK',			sub{ &_heal(shift, 400, '–‚');			}],
-		[150,	70,		'ƒAƒŒƒCƒY',			sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
+		[5,		2,		'ã©ãã¡ã‚Šã‚‡ã†',		sub{ &_st_hs('çŒ›æ¯’', 'ç„¡');	}],
+		[10,	3,		'ã¾ã²ã¡ã‚Šã‚‡ã†',		sub{ &_st_hs('éº»ç—º', 'ç„¡');	}],
+		[20,	5,		'ã‚ã–ã‚ã®ã†ãŸ',		sub{ &_st_hs('çœ ã‚Š', 'æ­Œ');	}],
+		[40,	7,		'ãƒªã‚¸ã‚§ãƒ',			sub{ my($y) = &_check_party(shift, 'å›å¾©', 'é­”'); return if !$y; $ms{$y}{tmp} = 'å›å¾©'; $com.=qq|<span class="tmp">$yã¯å„ªã—ã„å…‰ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;	}],
+		[70,	10,		'ã‚¨ã‚¹ãƒŠ',			sub{ my($y) = &_check_party(shift, 'æ²»ç™‚', 'ç„¡'); return if !$y; &_st_h($y, $ms{$y}{state}, 'é­”');	}],
+		[110,	35,		'ã‚±ã‚¢ãƒ«ã‚¬',			sub{ &_heal(shift, 400, 'é­”');			}],
+		[150,	70,		'ã‚¢ãƒ¬ã‚¤ã‚º',			sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=$ms{$y}{mhp};	}],
 	);
 }
-sub skill_44 { # Á®ºÎŞ
+sub skill_44 { # ãƒãƒ§ã‚³ãƒœ
 	return (
-		[20,	4,		'ƒ`ƒ‡ƒRƒ{ƒLƒbƒN',	sub{ &_damage(shift, $ms{$m}{at} * 1.4, 'U');	}],
-		[40,	5,		'ƒ`ƒ‡ƒRƒK[ƒh',		sub{ &_st_up($m, 0.5, '–³', 'df');	}],
-		[60,	8,		'ƒ`ƒ‡ƒRƒAƒ^ƒbƒN',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 2.0, 'U'); return if $v <= 0; &_risk($v * 0.07);	}],
-		[80,	14,		'ƒ`ƒ‡ƒRƒ{[ƒ‹',		sub{ &_damage(shift, 170, '–‚', 1);	}],
-		[100,	7,		'ƒ`ƒ‡ƒRƒPƒAƒ‹',		sub{ &_heal(shift, 150, '–‚');	}],
-		[120,	15,		'ƒ`ƒ‡ƒRƒ{ƒbƒNƒ‹',	sub{ &_damage(shift, $ms{$m}{ag} * 1.5, '–‚', 1);		}],
+		[20,	4,		'ãƒãƒ§ã‚³ãƒœã‚­ãƒƒã‚¯',	sub{ &_damage(shift, $ms{$m}{at} * 1.4, 'æ”»');	}],
+		[40,	5,		'ãƒãƒ§ã‚³ã‚¬ãƒ¼ãƒ‰',		sub{ &_st_up($m, 0.5, 'ç„¡', 'df');	}],
+		[60,	8,		'ãƒãƒ§ã‚³ã‚¢ã‚¿ãƒƒã‚¯',	sub{ my($y, $v) = &_damage(shift, $ms{$m}{df} * 2.0, 'æ”»'); return if $v <= 0; &_risk($v * 0.07);	}],
+		[80,	14,		'ãƒãƒ§ã‚³ãƒœãƒ¼ãƒ«',		sub{ &_damage(shift, 170, 'é­”', 1);	}],
+		[100,	7,		'ãƒãƒ§ã‚³ã‚±ã‚¢ãƒ«',		sub{ &_heal(shift, 150, 'é­”');	}],
+		[120,	15,		'ãƒãƒ§ã‚³ãƒœãƒƒã‚¯ãƒ«',	sub{ &_damage(shift, $ms{$m}{ag} * 1.5, 'é­”', 1);		}],
 	);
 }
-sub skill_45 { # Ó°¸ŞØ
+sub skill_45 { # ãƒ¢ãƒ¼ã‚°ãƒª
 	return (
-		[10,	5,		'‚¨‚Ü‚¶‚È‚¢',		sub{ my($y) = &_check_party(shift, '–½’†', '–³'); return if !$y; $ms{$y}{hit}=95; $com.=qq|<span class="st_up">$y‚Ì–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;		}],
-		[30,	8,		'ƒXƒgƒbƒv',			sub{ &_st_d(shift, '“®••', '–‚', 85);	}],
-		[50,	7,		'ƒE[ƒ‹ƒK[ƒh',		sub{ &_st_up($m, 0.5, '–³', 'df'); $ms{$m}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$m‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|;	}],
-		[70,	3,		'ƒ}ƒzƒgƒ‰‚¨‚Ç‚è',	sub{ my($y, $v) = &_st_down(shift, 0.18, '—x', 'mp'); return if !$y; &_mp_h($m, $v, '—x');	}],
-		[90,	30,		'ƒJƒGƒ‹‚Ì‚¤‚½',		sub{ my($y, $v) = &_st_down(shift, 0.4, '‰Ì', 'at'); return if !$y; &_st_down($y, 0.4, '‰Ì', 'df'); $ms{$y}{icon} = "chr/022.gif"; $com .= "$y‚ÍƒJƒGƒ‹‚Ìp‚É‚È‚Á‚½I";	}],
-		[120,	7,		'ƒŠƒWƒFƒl',			sub{ my($y) = &_check_party(shift, '‰ñ•œ', '–‚'); return if !$y; $ms{$y}{tmp} = '‰ñ•œ'; $com.=qq|<span class="tmp">$y‚Í—D‚µ‚¢Œõ‚É•ï‚Ü‚ê‚½I</span>|;	}],
-		[150,	40,		'ƒAƒ‹ƒeƒ}ƒ`ƒƒ[ƒW',	sub{ &_damage(shift, 300, 'U', 1);		}],
+		[10,	5,		'ãŠã¾ã˜ãªã„',		sub{ my($y) = &_check_party(shift, 'å‘½ä¸­', 'ç„¡'); return if !$y; $ms{$y}{hit}=95; $com.=qq|<span class="st_up">$yã®å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;		}],
+		[30,	8,		'ã‚¹ãƒˆãƒƒãƒ—',			sub{ &_st_d(shift, 'å‹•å°', 'é­”', 85);	}],
+		[50,	7,		'ã‚¦ãƒ¼ãƒ«ã‚¬ãƒ¼ãƒ‰',		sub{ &_st_up($m, 0.5, 'ç„¡', 'df'); $ms{$m}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$mã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[70,	3,		'ãƒãƒ›ãƒˆãƒ©ãŠã©ã‚Š',	sub{ my($y, $v) = &_st_down(shift, 0.18, 'è¸Š', 'mp'); return if !$y; &_mp_h($m, $v, 'è¸Š');	}],
+		[90,	30,		'ã‚«ã‚¨ãƒ«ã®ã†ãŸ',		sub{ my($y, $v) = &_st_down(shift, 0.4, 'æ­Œ', 'at'); return if !$y; &_st_down($y, 0.4, 'æ­Œ', 'df'); $ms{$y}{icon} = "chr/022.gif"; $com .= "$yã¯ã‚«ã‚¨ãƒ«ã®å§¿ã«ãªã£ãŸï¼";	}],
+		[120,	7,		'ãƒªã‚¸ã‚§ãƒ',			sub{ my($y) = &_check_party(shift, 'å›å¾©', 'é­”'); return if !$y; $ms{$y}{tmp} = 'å›å¾©'; $com.=qq|<span class="tmp">$yã¯å„ªã—ã„å…‰ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;	}],
+		[150,	40,		'ã‚¢ãƒ«ãƒ†ãƒãƒãƒ£ãƒ¼ã‚¸',	sub{ &_damage(shift, 300, 'æ”»', 1);		}],
 	);
 }
-sub skill_46 { # ·Ş¬İÌŞ×°
+sub skill_46 { # ã‚®ãƒ£ãƒ³ãƒ–ãƒ©ãƒ¼
 	return (
-		[10,	7,		'ƒwƒuƒ“ƒXƒƒbƒg',		sub{ my @m = ('‡','ô','õ','š','‚V'); my @s = (); $s[$_] = int(rand(@m)) for (0 .. 2); $com .= "y$m[$s[0]]zy$m[$s[1]]zy$m[$s[2]]z"; if ($s[0] == $s[1] && $s[1] == $s[2]) { my $v = int( ($s[0]+2) * 100 ); $s[0] == $#m ? &_deaths('‘¦€', '–³', 90) : $s[0] == 0 || $s[0] == 2 ? &_heals($v, '–³') : &_damages($v, '–³'); } else { my $v = int( ($s[0] + $s[1] + $s[2]) * 7 ); &_damages($v, '–³', 1); };		}],
-		[30,	14,		'‚¢‚¿‚°‚«‚Ìƒ_[ƒc',		sub{ &_death(shift, '‘¦€', 'U', 20);	}],
-		[60,	6,		'‚ ‚­‚Ü‚Ìƒ_ƒCƒX',		sub{ my $d1 = int(rand(6)+1); my $d2 = int(rand(6)+1); my $d3 = int(rand(6)+1); my $v = int(($d1*100+$d2*10+$d1)*0.5); $com.="[$d1][$d2][$d3]"; &_damage(shift, $v, '–‚', 1); return if $v <= 0; &_risk((6-$d1)*10+(6-$d2)+(6-$d1)*0.1);		}],
-		[80,	4,		'‚µ‚Ìƒ‹[ƒŒƒbƒg',		sub{ return if &is_bad_state('–‚'); my $y=$members[int(rand(@members))]; $y = $m if $ms{$y}{hp} <= 0; $com.="€‚Ìƒ‹[ƒŒƒbƒg‚ª‰ô‚è‚¾‚µ‚½IcËß¯cËß¯cËß¯Ëß¯Ëß-[>[$y] "; if ($ms{$y}{hp} > 999 || $ms{$y}{df} > 999) { $com .= "$y‚É‚Í‚«‚©‚È‚©‚Á‚½c"; } else { $com .= qq|<span class="die">$y‚Í€‚ñ‚Å‚µ‚Ü‚Á‚½I</span>|; &defeat($y); };	}],
-		[140,	36,		'ƒCƒJƒTƒ}‚Ìƒ_ƒCƒX',		sub{ my $d1 = int(rand(3)+1); my $d2 = int(rand(6)+1); my $d3 = int(rand(6)+1); my $v = $d1*100+$d2*10+$d1; $com.="[$d1][$d2][$d3]"; &_damage(shift, $v, '–‚', 1);	}],
+		[10,	7,		'ãƒ˜ãƒ–ãƒ³ã‚¹ãƒ­ãƒƒãƒˆ',		sub{ my @m = ('âˆ','â™ª','â€ ','â˜…','ï¼—'); my @s = (); $s[$_] = int(rand(@m)) for (0 .. 2); $com .= "ã€$m[$s[0]]ã€‘ã€$m[$s[1]]ã€‘ã€$m[$s[2]]ã€‘"; if ($s[0] == $s[1] && $s[1] == $s[2]) { my $v = int( ($s[0]+2) * 100 ); $s[0] == $#m ? &_deaths('å³æ­»', 'ç„¡', 90) : $s[0] == 0 || $s[0] == 2 ? &_heals($v, 'ç„¡') : &_damages($v, 'ç„¡'); } else { my $v = int( ($s[0] + $s[1] + $s[2]) * 7 ); &_damages($v, 'ç„¡', 1); };		}],
+		[30,	14,		'ã„ã¡ã’ãã®ãƒ€ãƒ¼ãƒ„',		sub{ &_death(shift, 'å³æ­»', 'æ”»', 20);	}],
+		[60,	6,		'ã‚ãã¾ã®ãƒ€ã‚¤ã‚¹',		sub{ my $d1 = int(rand(6)+1); my $d2 = int(rand(6)+1); my $d3 = int(rand(6)+1); my $v = int(($d1*100+$d2*10+$d1)*0.5); $com.="[$d1][$d2][$d3]"; &_damage(shift, $v, 'é­”', 1); return if $v <= 0; &_risk((6-$d1)*10+(6-$d2)+(6-$d1)*0.1);		}],
+		[80,	4,		'ã—ã®ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆ',		sub{ return if &is_bad_state('é­”'); my $y=$members[int(rand(@members))]; $y = $m if $ms{$y}{hp} <= 0; $com.="æ­»ã®ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆãŒå»»ã‚Šã ã—ãŸï¼â€¦ãƒ”ãƒƒâ€¦ãƒ”ãƒƒâ€¦ãƒ”ãƒƒãƒ”ãƒƒãƒ”-[>[$y] "; if ($ms{$y}{hp} > 999 || $ms{$y}{df} > 999) { $com .= "$yã«ã¯ãã‹ãªã‹ã£ãŸâ€¦"; } else { $com .= qq|<span class="die">$yã¯æ­»ã‚“ã§ã—ã¾ã£ãŸï¼</span>|; &defeat($y); };	}],
+		[140,	36,		'ã‚¤ã‚«ã‚µãƒã®ãƒ€ã‚¤ã‚¹',		sub{ my $d1 = int(rand(3)+1); my $d2 = int(rand(6)+1); my $d3 = int(rand(6)+1); my $v = $d1*100+$d2*10+$d1; $com.="[$d1][$d2][$d3]"; &_damage(shift, $v, 'é­”', 1);	}],
 	);
 }
-sub skill_47 { # ¿Ù¼Ş¬°
+sub skill_47 { # ã‚½ãƒ«ã‚¸ãƒ£ãƒ¼
 	return (
-		[20,	5,		'ƒuƒŒƒCƒo[',				sub{ &_damage(shift, $ms{$m}{at}*1.2, 'U');	}],
-		[50,	9,		'‚«‚å‚¤‚¬‚è',				sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.6, 'U'); return if $v <= 0; &_risk($v * 0.06);	}],
-		[80,	20,		'ƒƒeƒIƒŒƒCƒ“',				sub{ my($y) = &_damage(shift, $ms{$m}{at}*1.8, 'U'); return if !$y; my $v = int($ms{$m}{at} * 0.1); $ms{$m}{at} -= $v; $com .= qq|$m‚Ì<span class="st_down">$e2j{at}‚ª $v ‚³‚ª‚Á‚½I</span>|;		}],
-		[120,	36,		'ƒNƒ‰ƒCƒ€ƒnƒU[ƒh',			sub{ my($y) = &_check_enemy(shift, '”¼•ª', 'U'); return if !$y; my $v = $ms{$y}{mhp}-$ms{$y}{hp} + 10; $v = 400 if $v > 400; &_damage($y, $v, 'U', 1);	}],
-		[160,	40,		'‚¿‚å‚¤‚«‚ã‚¤‚Ô‚µ‚ñ‚Í‚´‚ñ',	sub{ for my $i (1..4) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}, 'U'); };		}],
+		[20,	5,		'ãƒ–ãƒ¬ã‚¤ãƒãƒ¼',				sub{ &_damage(shift, $ms{$m}{at}*1.2, 'æ”»');	}],
+		[50,	9,		'ãã‚‡ã†ãã‚Š',				sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*1.6, 'æ”»'); return if $v <= 0; &_risk($v * 0.06);	}],
+		[80,	20,		'ãƒ¡ãƒ†ã‚ªãƒ¬ã‚¤ãƒ³',				sub{ my($y) = &_damage(shift, $ms{$m}{at}*1.8, 'æ”»'); return if !$y; my $v = int($ms{$m}{at} * 0.1); $ms{$m}{at} -= $v; $com .= qq|$mã®<span class="st_down">$e2j{at}ãŒ $v ã•ãŒã£ãŸï¼</span>|;		}],
+		[120,	36,		'ã‚¯ãƒ©ã‚¤ãƒ ãƒã‚¶ãƒ¼ãƒ‰',			sub{ my($y) = &_check_enemy(shift, 'åŠåˆ†', 'æ”»'); return if !$y; my $v = $ms{$y}{mhp}-$ms{$y}{hp} + 10; $v = 400 if $v > 400; &_damage($y, $v, 'æ”»', 1);	}],
+		[160,	40,		'ã¡ã‚‡ã†ãã‚…ã†ã¶ã—ã‚“ã¯ã–ã‚“',	sub{ for my $i (1..4) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}, 'æ”»'); };		}],
 	);
 }
-sub skill_48 { # ‘Â“Vg
+sub skill_48 { # å •å¤©ä½¿
 	return (
-		[40,	56,		'ƒoƒCƒIƒK',				sub{ $is_add_effect = 1; &_damages(120, '–‚', 1); &_st_ds('–Ò“Å', '–‚', 40);		}],
-		[80,	66,		'‚â‚İ‚Ì‚Ä‚ñ‚µ',			sub{ $is_add_effect = 1; &_damages(70, '–‚', 1);  &_st_ds('–°‚è', '–‚', 30);		}],
-		[120,	66,		'ƒVƒƒƒhƒEƒtƒŒƒA',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, 300, '–‚', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.08, '–‚', 'hit');	}],
-		[160,	44,		'‚±‚±‚ë‚È‚¢‚Ä‚ñ‚µ',		sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$y‚É‚Í‚«‚©‚È‚©‚Á‚½I"; } elsif (rand(3)<1) { $ms{$y}{hp}=1; $com.=qq|$y‚Í<span class="st_down">¶–½—Í‚ğ¸‚Á‚½</span>I|; } else { $com.="$y‚Í‚©‚í‚µ‚½I"; };	}],
-		[200,	46,		'‚Í‚Á‚Æ‚¤‚¢‚Á‚¹‚ñ',		sub{ &_damages($ms{$m}{at} * 1.2, 'U');		}],
-	);
-}
-
-# —ƒp[ƒeƒB[II’Ç‰Á•ª 
-sub skill_49 { # ‚½‚Ü‚Ë‚¬Œ•m
-	return (
-		[100,	10,		'ƒŠƒ{ƒ“',			sub{ my($y) = &_check_party(shift, '¡—Ã', '–³'); return if !$y; &_st_h($y, $ms{$y}{state}, '–³');	}],
-		[200,	20,		'ƒIƒjƒIƒ“ƒV[ƒ‹ƒh',	sub{ &_st_up($m, 0.6, 'U', 'df'); $ms{$m}{tmp} = 'UŒyŒ¸'; $com.=qq|<span class="tmp">$m‚Íç‚è‚ğŒÅ‚ß‚½I</span>|;	 	}],
-		[300,	30,		'ƒIƒjƒIƒ“ƒ\[ƒh',	sub{ &_damage(shift, $ms{$m}{at}*1.6, 'U');	}],
-	);
-}
-sub skill_50 { # ±²ÃÑm
-	return (
-		[10,	5,		'ƒ|[ƒVƒ‡ƒ“',			sub{ &_heal(shift, 80, '–‚');	}],
-		[25,	3,		'ƒLƒ…ƒAƒuƒ‰ƒCƒ“ƒh',		sub{ my($y) = &_check_party(shift, '–½’†', '–‚'); return if !$y; $ms{$y}{hit}=95; $com.=qq|<span class="st_up">$y‚Ì–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;	}],
-		[40,	14,		'ƒfƒXƒ|[ƒVƒ‡ƒ“',		sub{ &_death(shift, '‘¦€', '–‚', 17);	}],
-		[55,	10,		'ƒhƒ‰ƒSƒ“ƒA[ƒ}[',		sub{ my($y) = &_st_up(shift, 0.4, '–‚', 'df'); $ms{$y}{tmp} = '‘§ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í•sv‹c‚È•—‚É•ï‚Ü‚ê‚½I</span>|;	}],
-		[75,	24,		'ƒnƒCƒ|[ƒVƒ‡ƒ“',		sub{ &_heal(shift, 200, '–‚');	}],
-		[110,	50,		'ƒG[ƒeƒ‹',				sub{ &_mp_h(shift, 50, '–‚');	}],
-		[145,	1,		'ƒ‰ƒXƒgƒGƒŠƒNƒT[',		sub{ my($y) = &_check_party(shift, 'ÅŒã', '–‚'); return if !$y || $m eq $y; $com.=qq|<span class="die">$m‚Í©•ª‚Ì–½‚ğ‚³‚³‚°‚Ü‚µ‚½I</span>|; $com .= $ms{$y}{hp} > 0 ? qq|$y‚Ì$e2j{hp}‚Æ$e2j{mp}‚ª<span class="heal">‘S‰ñ•œ</span>‚µ‚½I| : qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½I</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; $ms{$y}{mp} = $ms{$y}{mmp}; &defeat($m); $ms{$m}{mp} = 1;	}],
-	);
-}
-sub skill_51 { # Œõ–‚“¹m
-	return (
-		[10,	6,		'‚Ü‚Ô‚µ‚¢‚Ğ‚©‚è',		sub{ &_st_downs(0.2, '–‚', 'hit');		}],
-		[30,	11,		'‚Ğ‚©‚è‚Ì‚İ‚¿‚Ñ‚«',		sub{ for my $y (@partys) { $ms{$y}{hit}=95; }; $com.=qq|<span class="st_up">$m‚½‚¿‚Ì–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;	}],
-		[50,	14,		'‚¢‚â‚µ‚Ì‚Ğ‚©‚è',		sub{ &_heals(int(rand(50)+50), '–‚');	}],
-		[80,	16,		'‚ ‚â‚µ‚¢‚Ğ‚©‚è',		sub{ my @randoms = ('¬—', '–°‚è'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], '–‚', 50); };		}],
-		[110,	34,		'‚Ğ‚©‚è‚Ì‚³‚Î‚«',		sub{ &_damages(170, '–‚', 1);	}],
-		[130,	30,		'‚«‚Ú‚¤‚Ì‚Ğ‚©‚è',		sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(5) < 1) { $com.=qq|‚È‚ñ‚ÆA<b>$y</b>‚ª <span class="heal">¶‚«•Ô‚è</span> ‚Ü‚µ‚½I|; $ms{$y}{hp}=$ms{$y}{mhp}; } else { $com.=qq|‚µ‚©‚µA<b>$y</b>‚Í¶‚«•Ô‚ç‚È‚©‚Á‚½c|; }; }; 	}],
-		[160,	46,		'‚º‚Â‚Ú‚¤‚Ì‚Ğ‚©‚è',		sub{ $is_add_effect = 1; &_deaths('‘¦€', '–‚', 10); &_damages(70, '–‚', 1); 		}],
-	);
-}
-sub skill_52 { # –‚l
-	return (
-		[20,	4,		'‚Ğ‚´‚°‚è',				sub{ &_damage(shift, $ms{$m}{at}*1.2, 'U');	}],
-		[50,	8,		'‚¿‚©‚ç‚ğ‚½‚ß‚é',		sub{ &_st_up($m, 1.0, 'U', 'at');		}],
-		[80,	15,		'ƒA[ƒ}[ƒuƒŒƒCƒN',		sub{ my($y) = &_check_enemy(shift, '”j‰ó', 'U');  return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $com.="$y‚Ì–h‹ï‚Ì‹­‚³‚ğ••‚¶‚½I"; &_st_down($y, 0.1, 'U', 'df');	}],
-		[130,	20,		'‚«‚ ‚¢‚½‚ß',			sub{ $ms{$m}{tmp}='‚Q”{'; &tenshon($m); &tenshon($m);	}],
-		[150,	30,		'‚¾‚¢‚Ú‚¤‚»‚¤',			sub{ &_damages(200, 'U', 1); $ms{$m}{tmp}='‚Q”{';	}],
-	);
-}
-sub skill_53 { # å³t
-	return (
-		[5,		3,		'‚­‚à‚Ì‚¢‚Æ',		sub{ &_st_d(shift, '“®••', '‘§', 80);	}],
-		[15,	4,		'‚Ç‚­‚Ì‚¢‚Æ',		sub{ &_st_d(shift, '–Ò“Å', '‘§', 80);	}],
-		[30,	16,		'‚Ş‚µ‚Ì‚¢‚«',		sub{ my @randoms = ('–Ò“Å', '–ƒáƒ', '–°‚è'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], '‘§', 60); };		}],
-		[55,	15,		'‚ ‚­‚Ü‚Ì‚í‚È',		sub{ my($y) = &_check_party(shift, 'U”½Œ‚', '‘§'); return if !$y; $ms{$y}{tmp} = 'U”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í“Áê‚È…‚Åç‚ç‚ê‚½I</span>|;	}],
-		[80,	8,		'‚­‚à‚Ì‚·',			sub{ &_st_d(shift, 'U••', '‘§', 80);	}],
-		[120,	7,		'‚ ‚â‚Â‚è‚¢‚Æ',		sub{ my($y) = &_check_enemy(shift, '‘€‚è', '‘§'); return if !$y; $com.="$m‚Í$y‚ğ‚ ‚â‚Â‚Á‚½I$y: —‚±‚¤‚°‚« "; $buf_m = $m; $m = $y; &kougeki(); $m = $buf_m;	}],
-	);
-}
-sub skill_54 { # –‚em
-	return (
-		[5,		4,		'‚¢‚©‚­‚µ‚á‚°‚«',	sub{ &_st_d(shift, '“®••', 'U', 80);	}],
-		[15,	7,		'‚»‚°‚«',			sub{ &_damage(shift, $ms{$m}{at}*0.6, 'U', 1);		}],
-		[30,	0,		'‚½‚©‚Ì‚ß',			sub{ $ms{$m}{hit}=95; $com.=qq|$m‚ÍS‚ğ—‚¿‚Â‚©‚¹<span class="st_up">–½’†—¦‚ª‰ñ•œ‚µ‚½</span>|;	}],
-		[60,	12,		'‚©‚ñ‚¹‚Â‚Ë‚ç‚¢',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*0.5, 'U', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '“®••', 'U', 30);	}],
-		[90,	34,		'ƒNƒŒƒCƒ‚ƒA',		sub{ &_damages(180, 'U', 1);	}],
-		[130,	44,		'‚İ‚¾‚ê‚¤‚¿',		sub{ my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.7, 'U', 1); };		}],
-	);
-}
-sub skill_55 { # —d¸
-	return (
-		[5,		0,		'‚ß‚©‚­‚µ',			sub{ my $y=$members[int(rand(@members))]; $ms{$y}{hit} = int($ms{$y}{hit}*0.5); $com.=qq|$m‚Í$y‚É–Ú‰B‚µ‚ğ‚µ<span class="st_down">$y‚Ì–½’†—¦‚ª‚³‚ª‚Á‚½I</span>|;	}],
-		[10,	4,		'‚æ‚¤‚¹‚¢‚Ì‚â',		sub{ my($y, $v) = &_st_down(shift, 0.15, 'U', 'mp'); return if !$y; &_mp_h($m, $v, 'U');	}],
-		[20,	0,		'‚­‚¿‚ğ‚Ó‚³‚®',		sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='–‚••'; $ms{$y}{ten}=1; $com.=qq|$m‚Í$y‚ÌŒû‚ğ‚Ó‚³‚¬<span class="state">$y‚Í–‚••‚É‚È‚è‚Ü‚µ‚½I</span>|;		}],
-		[35,	0,		'‚¿‚å‚¤‚Í‚Â',		sub{ for my $y (@members) { next if $ms{$y}{hp} <= 0 || $m eq $y || rand(2) < 1; &tenshon($y); };	}],
-		[50,	8,		'‚Å‚½‚ç‚ß‚â',		sub{ &_damages($ms{$m}{ag}*1.4, 'U');	}],
-		[65,	0,		'‚©‚ç‚©‚¤',			sub{ my $y = shift; ($y) = defined($ms{$y}{name}) ? $y : &_check_enemy($y, 'ƒeƒ“', '–³'); &tenshon($y);		}],
-		[80,	0,		'‚ä‚Ñ‚ğ‚Ó‚é',		sub{ &_yubiwofuru;	}],
-	);
-}
-sub skill_56 { # ĞÆÃŞ°Óİ
-	return (
-		[6,		5,		'ƒCƒI',				sub{ &_damages(25, '–‚', 1);	}],
-		[16,	1,		'ƒ}ƒzƒLƒe',			sub{ return if &is_bad_state('–‚'); $ms{$m}{tmp} = '–‚‹zû'; $com.=qq|<span class="tmp">$m‚Í•sv‹c‚ÈŒõ‚É•ï‚Ü‚ê‚½I</span>|;	}],
-		[36,	12,		'ƒCƒIƒ‰',			sub{ &_damages(70, '–‚', 1);	}],
-		[46,	10,		'ƒpƒ‹ƒvƒ“ƒe',		sub{ &_parupunte;	}],
-		[66,	34,		'ƒCƒIƒiƒYƒ“',		sub{ &_damages(160, '–‚', 1);	}],
-		[96,	0,		'ƒfƒrƒ‹ƒeƒCƒ‹',		sub{ &_yubiwofuru;	}],
-	);
-}
-sub skill_57 { # ´ÙÌ
-	return (
-		[10,	3,		'ƒzƒCƒ~',			sub{ &_heal(shift, 30, '–‚');	}],
-		[20,	6,		'ƒtƒ‰ƒbƒVƒ…ƒAƒ[',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.2, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.07, 'U', 'hit');	}],
-		[40,	10,		'ƒxƒzƒCƒ~',			sub{ &_heal(shift, 90, '–‚');	}],
-		[60,	20,		'ƒ‰ƒŠƒz[ƒAƒ[',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.1, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–°‚è', 'U', 55);	}],
-		[80,	20,		'ƒUƒIƒ‰ƒ‹',			sub{ my($y) = &_check_party(shift, '‘h¶', '–‚'); return if !$y || $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|‚µ‚©‚µA$y‚Í¶‚«•Ô‚ç‚È‚©‚Á‚½c|; };	}],
-		[100,	4,		'‚æ‚¤‚¹‚¢‚Ì‚â',		sub{ my($y, $v) = &_st_down(shift, 0.15, 'U', 'mp'); return if !$y; &_mp_h($m, $v, 'U');	}],
-		[120,	33,		'ƒoƒCƒVƒIƒ“',		sub{ &_st_ups(0.7, '–‚', 'at');		}],
-	);
-}
-sub skill_58 { # ÀŞ°¸´ÙÌ
-	return (
-		[20,	26,		'ƒ‰ƒCƒtƒVƒFƒCƒo[',		sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if (rand(5)>1) { &_st_down($y, 0.7, '–‚', 'hp'); } else { $com.="$y‚Í‚©‚í‚µ‚½I"; };	}],
-		[50,	9,		'ƒgƒ‰ƒ“ƒX',				sub{ $ms{$m}{state}=''; &_st_up($m, 1.0, 'U', 'at'); &_st_up($m, 1.0, 'U', 'ag'); $ms{$m}{tmp} = '–‚‹zû'; $ms{$m}{state}='¬—'; $com.="$m‚Íƒgƒ‰ƒ“ƒXó‘Ô‚É‚È‚Á‚½I";		}],
-		[80,	16,		'‚Ì‚ë‚¢',				sub{ my @randoms = ('–‚••', 'U••', '“®••'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], '–‚', 70); };		}],
-		[110,	6,		'‚l‚oƒoƒXƒ^[',			sub{ &_st_down(shift, 0.4, '–‚', 'mp');	}],
-		[140,	33,		'‚©‚­‚¹‚¢',				sub{ $ms{$m}{tmp}='‚Q”{'; &tenshon($m); &tenshon($m); 		}],
-		[160,	66,		'ƒnƒŒ[ƒVƒ‡ƒ“',			sub{ for my $y (@enemys) { if (rand(3)>1) { &_st_down($y, 0.75, '–‚', 'hp'); } else { $com.="$y‚Í‚©‚í‚µ‚½I"; }; };	}],
-	);
-}
-sub skill_59 { # ½×²Ñ×²ÀŞ°
-	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@½×²Ñ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/001.gif', 70, 120, 50, 30, 120) : $m{lv} < 70 ? &_add_party($n, 'mon/006.gif', 180, 80, 80, 50, 200) : &_add_party($n, 'mon/004.gif', 5, 10, 10, 950, 950); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@½×²Ñ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@½×²Ñ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@½×²Ñ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—ƒXƒ‰ƒAƒ^ƒbƒN '; &_damage(shift, $ms{$n}{at} * 1.5, 'U'); }elsif(rand(2)<1){ $com.='—ƒXƒ‰ƒXƒgƒ‰ƒCƒN '; &_damage(shift, $ms{$n}{at} * 1.2, 'U', 1); }else{ $com.='—‚µ‚á‚­‚Ë‚Â '; &_damages(220, '‘§', 1); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@½×²Ñ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	100,	'‚ª‚Á‚½‚¢',				sub{ my $n = '@½×²Ñ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$m‚Æ$n‚Í‡‘Ì‚µ‚½I</span>|; $ms{$m}{icon}="job/59_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+		[40,	56,		'ãƒã‚¤ã‚ªã‚¬',				sub{ $is_add_effect = 1; &_damages(120, 'é­”', 1); &_st_ds('çŒ›æ¯’', 'é­”', 40);		}],
+		[80,	66,		'ã‚„ã¿ã®ã¦ã‚“ã—',			sub{ $is_add_effect = 1; &_damages(70, 'é­”', 1);  &_st_ds('çœ ã‚Š', 'é­”', 30);		}],
+		[120,	66,		'ã‚·ãƒ£ãƒ‰ã‚¦ãƒ•ãƒ¬ã‚¢',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, 300, 'é­”', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.08, 'é­”', 'hit');	}],
+		[160,	44,		'ã“ã“ã‚ãªã„ã¦ã‚“ã—',		sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yã«ã¯ãã‹ãªã‹ã£ãŸï¼"; } elsif (rand(3)<1) { $ms{$y}{hp}=1; $com.=qq|$yã¯<span class="st_down">ç”Ÿå‘½åŠ›ã‚’å¤±ã£ãŸ</span>ï¼|; } else { $com.="$yã¯ã‹ã‚ã—ãŸï¼"; };	}],
+		[200,	46,		'ã¯ã£ã¨ã†ã„ã£ã›ã‚“',		sub{ &_damages($ms{$m}{at} * 1.2, 'æ”»');		}],
 	);
 }
 
-sub skill_60 { # ÄŞ×ºŞİ×²ÀŞ°
+# ï¼ ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼IIè¿½åŠ åˆ† 
+sub skill_49 { # ãŸã¾ã­ãå‰£å£«
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@ÄŞ×ºŞİ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/083.gif', 160, 70, 180, 100, 70) : $m{lv} < 70 ? &_add_party($n, 'mon/084.gif', 250, 50, 300, 200, 100) : &_add_party($n, 'mon/224.gif', 400, 30, 400, 300, 100); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@ÄŞ×ºŞİ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÄŞ×ºŞİ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÄŞ×ºŞİ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—‚«‚è‚³‚­ '; &_damage(shift, $ms{$n}{at} * 1.7, 'U'); }elsif(rand(2)<1){ $com.='—‚½‚½‚«‚Â‚Ô‚· '; &_damage(shift, $ms{$n}{at} * 1.5, 'U', 1); }else{ $com.='—‚©‚ª‚â‚­‚¢‚« '; &_damages(230, '‘§', 1); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÄŞ×ºŞİ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	100,	'‚ª‚Á‚½‚¢',				sub{ my $n = '@ÄŞ×ºŞİ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$m‚Æ$n‚Í‡‘Ì‚µ‚½I</span>|; $ms{$m}{icon}="job/60_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+		[100,	10,		'ãƒªãƒœãƒ³',			sub{ my($y) = &_check_party(shift, 'æ²»ç™‚', 'ç„¡'); return if !$y; &_st_h($y, $ms{$y}{state}, 'ç„¡');	}],
+		[200,	20,		'ã‚ªãƒ‹ã‚ªãƒ³ã‚·ãƒ¼ãƒ«ãƒ‰',	sub{ &_st_up($m, 0.6, 'æ”»', 'df'); $ms{$m}{tmp} = 'æ”»è»½æ¸›'; $com.=qq|<span class="tmp">$mã¯å®ˆã‚Šã‚’å›ºã‚ãŸï¼</span>|;	 	}],
+		[300,	30,		'ã‚ªãƒ‹ã‚ªãƒ³ã‚½ãƒ¼ãƒ‰',	sub{ &_damage(shift, $ms{$m}{at}*1.6, 'æ”»');	}],
 	);
 }
-sub skill_61 { # È¸ÛÏİ»°
+sub skill_50 { # ã‚¢ã‚¤ãƒ†ãƒ å£«
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@¿ŞİËŞ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/040.gif', 120, 120, 120, 60, 120) : $m{lv} < 70 ? &_add_party($n, 'mon/041.gif', 300, 200, 280, 90, 240) : &_add_party($n, 'mon/064.gif', 444, 444, 666, 222, 444); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@¿ŞİËŞ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@¿ŞİËŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@¿ŞİËŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—ƒUƒ‰ƒL '; &_deaths('‘¦€', '–‚', 22); }elsif(rand(2)<1){ $com.='—ƒoƒCƒIƒK '; $is_add_effect = 1; &_damages(120, '–‚', 1); &_st_ds('–Ò“Å', '–‚', 40); }else{ $com.='—‚à‚¤‚Ç‚­‚Ì‚«‚è '; &_st_ds('–Ò“Å', '‘§', 70); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@¿ŞİËŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	42,		'ƒŒƒNƒCƒGƒ€',			sub{ my $n = '@¿ŞİËŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; for my $y (@partys) { next if $ms{$y}{hp} > 0; $ms{$y}{hp}=int($ms{$y}{mhp}*0.42); $ms{$y}{at}+=300;$ms{$y}{ag}+=300; $com.=qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½I</span>|; $ms{$y}{icon}="mon/040.gif"; }; 	}],
+		[10,	5,		'ãƒãƒ¼ã‚·ãƒ§ãƒ³',			sub{ &_heal(shift, 80, 'é­”');	}],
+		[25,	3,		'ã‚­ãƒ¥ã‚¢ãƒ–ãƒ©ã‚¤ãƒ³ãƒ‰',		sub{ my($y) = &_check_party(shift, 'å‘½ä¸­', 'é­”'); return if !$y; $ms{$y}{hit}=95; $com.=qq|<span class="st_up">$yã®å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;	}],
+		[40,	14,		'ãƒ‡ã‚¹ãƒãƒ¼ã‚·ãƒ§ãƒ³',		sub{ &_death(shift, 'å³æ­»', 'é­”', 17);	}],
+		[55,	10,		'ãƒ‰ãƒ©ã‚´ãƒ³ã‚¢ãƒ¼ãƒãƒ¼',		sub{ my($y) = &_st_up(shift, 0.4, 'é­”', 'df'); $ms{$y}{tmp} = 'æ¯è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯ä¸æ€è­°ãªé¢¨ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;	}],
+		[75,	24,		'ãƒã‚¤ãƒãƒ¼ã‚·ãƒ§ãƒ³',		sub{ &_heal(shift, 200, 'é­”');	}],
+		[110,	50,		'ã‚¨ãƒ¼ãƒ†ãƒ«',				sub{ &_mp_h(shift, 50, 'é­”');	}],
+		[145,	1,		'ãƒ©ã‚¹ãƒˆã‚¨ãƒªã‚¯ã‚µãƒ¼',		sub{ my($y) = &_check_party(shift, 'æœ€å¾Œ', 'é­”'); return if !$y || $m eq $y; $com.=qq|<span class="die">$mã¯è‡ªåˆ†ã®å‘½ã‚’ã•ã•ã’ã¾ã—ãŸï¼</span>|; $com .= $ms{$y}{hp} > 0 ? qq|$yã®$e2j{hp}ã¨$e2j{mp}ãŒ<span class="heal">å…¨å›å¾©</span>ã—ãŸï¼| : qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸï¼</span>|; $ms{$y}{hp} = $ms{$y}{mhp}; $ms{$y}{mp} = $ms{$y}{mmp}; &defeat($m); $ms{$m}{mp} = 1;	}],
 	);
 }
-sub skill_62 { # ÊŞ¯ÄÏ½À°
+sub skill_51 { # å…‰é­”é“å£«
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@ÊŞ¯Ä@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/025.gif', 90, 80, 120, 10, 180) : $m{lv} < 70 ? &_add_party($n, 'mon/026.gif', 210, 270, 170, 30, 400) : &_add_party($n, 'mon/027.gif', 410, 350, 400, 50, 600); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@ÊŞ¯Ä@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÊŞ¯Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÊŞ¯Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—‚«‚ã‚¤‚¯‚Â '; my($y, $v)= &_damage(shift, 100, '–‚', 1); return if !$y; &_heal($n, $v, '–‚');}elsif(rand(2)<1){ $com.='—ƒAƒXƒsƒ‹ '; my($y, $v) = &_st_down(shift, 0.3, '–‚', 'mp'); return if !$y; &_mp_h($m, $v, '–‚'); }else{ $com.='—‚¿‚å‚¤‚¨‚ñ‚Ï '; &_st_ds('¬—', '‰Ì', 70); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÊŞ¯Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	37,		'ƒuƒ‰ƒbƒhƒŒƒCƒ“',		sub{ my $n = '@ÊŞ¯Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; &_damages(170, '–‚', 1); &_heals(150, '–‚'); 	}],
+		[10,	6,		'ã¾ã¶ã—ã„ã²ã‹ã‚Š',		sub{ &_st_downs(0.2, 'é­”', 'hit');		}],
+		[30,	11,		'ã²ã‹ã‚Šã®ã¿ã¡ã³ã',		sub{ for my $y (@partys) { $ms{$y}{hit}=95; }; $com.=qq|<span class="st_up">$mãŸã¡ã®å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;	}],
+		[50,	14,		'ã„ã‚„ã—ã®ã²ã‹ã‚Š',		sub{ &_heals(int(rand(50)+50), 'é­”');	}],
+		[80,	16,		'ã‚ã‚„ã—ã„ã²ã‹ã‚Š',		sub{ my @randoms = ('æ··ä¹±', 'çœ ã‚Š'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], 'é­”', 50); };		}],
+		[110,	34,		'ã²ã‹ã‚Šã®ã•ã°ã',		sub{ &_damages(170, 'é­”', 1);	}],
+		[130,	30,		'ãã¼ã†ã®ã²ã‹ã‚Š',		sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(5) < 1) { $com.=qq|ãªã‚“ã¨ã€<b>$y</b>ãŒ <span class="heal">ç”Ÿãè¿”ã‚Š</span> ã¾ã—ãŸï¼|; $ms{$y}{hp}=$ms{$y}{mhp}; } else { $com.=qq|ã—ã‹ã—ã€<b>$y</b>ã¯ç”Ÿãè¿”ã‚‰ãªã‹ã£ãŸâ€¦|; }; }; 	}],
+		[160,	46,		'ãœã¤ã¼ã†ã®ã²ã‹ã‚Š',		sub{ $is_add_effect = 1; &_deaths('å³æ­»', 'é­”', 10); &_damages(70, 'é­”', 1); 		}],
 	);
 }
-sub skill_63 { # ·ÉºÏ½À°
+sub skill_52 { # é­”äºº
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@·Éº@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/030.gif', 100, 100, 80, 50, 80) : $m{lv} < 70 ? &_add_party($n, 'mon/031.gif', 300, 80, 150, 100, 100) : &_add_party($n, 'mon/032.gif', 400, 60, 200, 100, 100); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@·Éº@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@·Éº@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@·Éº@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—‚Ç‚­‚Ì‚±‚È '; &_st_ds('–Ò“Å', '‘§', 90);}elsif(rand(2)<1){ $com.='—‚µ‚Ñ‚ê‚²‚È '; &_st_ds('–ƒáƒ', '‘§', 50);}else{ $com.='—‚Ë‚Ş‚è‚²‚È '; &_st_ds('–°‚è', '‘§', 50); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@·Éº@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	100,	'‚ª‚Á‚½‚¢',				sub{ my $n = '@·Éº@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$m‚Æ$n‚Í‡‘Ì‚µ‚½I</span>|; $ms{$m}{icon}="job/63_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+		[20,	4,		'ã²ã–ã’ã‚Š',				sub{ &_damage(shift, $ms{$m}{at}*1.2, 'æ”»');	}],
+		[50,	8,		'ã¡ã‹ã‚‰ã‚’ãŸã‚ã‚‹',		sub{ &_st_up($m, 1.0, 'æ”»', 'at');		}],
+		[80,	15,		'ã‚¢ãƒ¼ãƒãƒ¼ãƒ–ãƒ¬ã‚¤ã‚¯',		sub{ my($y) = &_check_enemy(shift, 'ç ´å£Š', 'æ”»');  return if !$y; $ms{$y}{tmp}=''; $ms{$y}{ten}=1; $ms{$y}{df}=$ms{$y}{mdf}; $com.="$yã®é˜²å…·ã®å¼·ã•ã‚’å°ã˜ãŸï¼"; &_st_down($y, 0.1, 'æ”»', 'df');	}],
+		[130,	20,		'ãã‚ã„ãŸã‚',			sub{ $ms{$m}{tmp}='ï¼’å€'; &tenshon($m); &tenshon($m);	}],
+		[150,	30,		'ã ã„ã¼ã†ãã†',			sub{ &_damages(200, 'æ”»', 1); $ms{$m}{tmp}='ï¼’å€';	}],
 	);
 }
-sub skill_64 { # µÊŞ¹Ï½À°
+sub skill_53 { # èŸ²å¸«
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@ºŞ°½Ä@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/035.gif', 100, 100, 50, 100, 100) : $m{lv} < 70 ? &_add_party($n, 'mon/036.gif', 200, 80, 100, 150, 150) : &_add_party($n, 'mon/070.gif', 300, 60, 150, 200, 200); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@ºŞ°½Ä@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@ºŞ°½Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@ºŞ°½Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—‚Ğ‚å‚¤‚¢ '; my($y) = &_check_enemy(shift, '‘€‚è', '‘§'); return if !$y; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $y; &kougeki(); $m = $buf_m; }elsif(rand(2)<1){ $com.='—‚¶‚ã‚Î‚­ '; &_st_d(shift, 'U••', '–³', 80); }else{ $com.='—‚¨‚Ç‚ë‚©‚·'; &_st_ds('“®••', 'U', 60); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@ºŞ°½Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	100,	'‚ª‚Á‚½‚¢',				sub{ my $n = '@ºŞ°½Ä@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$m‚Æ$n‚Í‡‘Ì‚µ‚½I</span>|; $ms{$m}{icon}="job/64_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+		[5,		3,		'ãã‚‚ã®ã„ã¨',		sub{ &_st_d(shift, 'å‹•å°', 'æ¯', 80);	}],
+		[15,	4,		'ã©ãã®ã„ã¨',		sub{ &_st_d(shift, 'çŒ›æ¯’', 'æ¯', 80);	}],
+		[30,	16,		'ã‚€ã—ã®ã„ã',		sub{ my @randoms = ('çŒ›æ¯’', 'éº»ç—º', 'çœ ã‚Š'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], 'æ¯', 60); };		}],
+		[55,	15,		'ã‚ãã¾ã®ã‚ãª',		sub{ my($y) = &_check_party(shift, 'æ”»åæ’ƒ', 'æ¯'); return if !$y; $ms{$y}{tmp} = 'æ”»åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯ç‰¹æ®Šãªç³¸ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;	}],
+		[80,	8,		'ãã‚‚ã®ã™',			sub{ &_st_d(shift, 'æ”»å°', 'æ¯', 80);	}],
+		[120,	7,		'ã‚ã‚„ã¤ã‚Šã„ã¨',		sub{ my($y) = &_check_enemy(shift, 'æ“ã‚Š', 'æ¯'); return if !$y; $com.="$mã¯$yã‚’ã‚ã‚„ã¤ã£ãŸï¼$y: ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $y; &kougeki(); $m = $buf_m;	}],
 	);
 }
-sub skill_65 { # ¹ÓÉÏ½À°
+sub skill_54 { # é­”éŠƒå£«
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@¹ÓÉ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/200.gif', 100, 60, 100, 60, 180) : $m{lv} < 70 ? &_add_party($n, 'mon/206.gif', 210, 90, 300, 80, 280) : &_add_party($n, 'mon/203.gif', 400, 230, 500, 160, 400); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@¹ÓÉ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@¹ÓÉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@¹ÓÉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—‚Ğ‚Á‚©‚­ '; &_damage(shift, $ms{$n}{at} * 1.5, 'U'); }elsif(rand(2)<1){ $com.='—‚©‚İ‚Â‚­ '; &_damage(shift, $ms{$n}{at} * 1.2, 'U', 1); }else{ $com.='—‚Æ‚Â‚°‚« '; &_damage(shift, $ms{$n}{at} * 2.0, 'U'); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@¹ÓÉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	40,		'‚Ç‚Æ‚¤‚Ì‚¯‚à‚Ì',		sub{ my $n = '@¹ÓÉ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$n}{ag} * 2.0, 'U'); };	}],
+		[5,		4,		'ã„ã‹ãã—ã‚ƒã’ã',	sub{ &_st_d(shift, 'å‹•å°', 'æ”»', 80);	}],
+		[15,	7,		'ãã’ã',			sub{ &_damage(shift, $ms{$m}{at}*0.6, 'æ”»', 1);		}],
+		[30,	0,		'ãŸã‹ã®ã‚',			sub{ $ms{$m}{hit}=95; $com.=qq|$mã¯å¿ƒã‚’è½ã¡ã¤ã‹ã›<span class="st_up">å‘½ä¸­ç‡ãŒå›å¾©ã—ãŸ</span>|;	}],
+		[60,	12,		'ã‹ã‚“ã›ã¤ã­ã‚‰ã„',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*0.5, 'æ”»', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'å‹•å°', 'æ”»', 30);	}],
+		[90,	34,		'ã‚¯ãƒ¬ã‚¤ãƒ¢ã‚¢',		sub{ &_damages(180, 'æ”»', 1);	}],
+		[130,	44,		'ã¿ã ã‚Œã†ã¡',		sub{ my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.7, 'æ”»', 1); };		}],
 	);
 }
-sub skill_66 { # ÄŞ¸ÛÏ½À°
+sub skill_55 { # å¦–ç²¾
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@¶Ş²ºÂ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/043.gif', 120, 110, 160, 90, 150) : $m{lv} < 70 ? &_add_party($n, 'mon/044.gif', 240, 210, 240, 120, 180) : &_add_party($n, 'mon/056.gif', 450, 280, 400, 240, 300); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@¶Ş²ºÂ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@¶Ş²ºÂ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@¶Ş²ºÂ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(2)<1) { $com.='—‚µ‚Ì‚¨‚Ç‚è '; &_deaths('‘¦€', '—x', 20); }elsif(rand(2)<1){ $com.='—ƒfƒX '; &_death(shift, '‘¦€', 'U', 40);}else{ $com.='—‚Ì‚ë‚¢ '; my @randoms = ('U••', '“®••'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], '–‚', 75); }; }; 	 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@¶Ş²ºÂ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	50,		'‚İ‚ñ‚È‚Ì‚¤‚ç‚İ',		sub{ my $n = '@¶Ş²ºÂ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; my $d = 100; for my $y (@partys) { $d += 420 if $ms{$y}{hp} <= 0; } &_damages($d, '–³', 1); 	}],
+		[5,		0,		'ã‚ã‹ãã—',			sub{ my $y=$members[int(rand(@members))]; $ms{$y}{hit} = int($ms{$y}{hit}*0.5); $com.=qq|$mã¯$yã«ç›®éš ã—ã‚’ã—<span class="st_down">$yã®å‘½ä¸­ç‡ãŒã•ãŒã£ãŸï¼</span>|;	}],
+		[10,	4,		'ã‚ˆã†ã›ã„ã®ã‚„',		sub{ my($y, $v) = &_st_down(shift, 0.15, 'æ”»', 'mp'); return if !$y; &_mp_h($m, $v, 'æ”»');	}],
+		[20,	0,		'ãã¡ã‚’ãµã•ã',		sub{ my $y=$members[int(rand(@members))]; $ms{$y}{state}='é­”å°'; $ms{$y}{ten}=1; $com.=qq|$mã¯$yã®å£ã‚’ãµã•ã<span class="state">$yã¯é­”å°ã«ãªã‚Šã¾ã—ãŸï¼</span>|;		}],
+		[35,	0,		'ã¡ã‚‡ã†ã¯ã¤',		sub{ for my $y (@members) { next if $ms{$y}{hp} <= 0 || $m eq $y || rand(2) < 1; &tenshon($y); };	}],
+		[50,	8,		'ã§ãŸã‚‰ã‚ã‚„',		sub{ &_damages($ms{$m}{ag}*1.4, 'æ”»');	}],
+		[65,	0,		'ã‹ã‚‰ã‹ã†',			sub{ my $y = shift; ($y) = defined($ms{$y}{name}) ? $y : &_check_enemy($y, 'ãƒ†ãƒ³', 'ç„¡'); &tenshon($y);		}],
+		[80,	0,		'ã‚†ã³ã‚’ãµã‚‹',		sub{ &_yubiwofuru;	}],
 	);
 }
-sub skill_67 { # ÊŞÌŞÙÏ½À°
+sub skill_56 { # ãƒŸãƒ‹ãƒ‡ãƒ¼ãƒ¢ãƒ³
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@ÊŞÌŞÙ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/020.gif', 90, 120, 90, 50, 90) : $m{lv} < 70 ? &_add_party($n, 'mon/021.gif', 180, 280, 160, 120, 180) : &_add_party($n, 'mon/022.gif', 8, 500, 80, 950, 950); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@ÊŞÌŞÙ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÊŞÌŞÙ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÊŞÌŞÙ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if ($ms{$n}{icon} =~ /020/) { $com.='—ƒhƒNƒhƒN '; &_st_ds('–Ò“Å', '‘§', 80); }elsif($ms{$n}{icon} =~ /021/){ $com.='—ƒ}ƒOƒ} '; &_damages(220, '‘§', 1); }else{ $com.='—ƒWƒSƒXƒp[ƒN '; $is_add_effect = 1; &_damages(150, '–‚', 1); &_st_ds('–ƒáƒ', '–‚', 20);}	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÊŞÌŞÙ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	40,		'ƒoƒuƒ‹ƒ{ƒ€',			sub{ my $n = '@ÊŞÌŞÙ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $is_add_effect = 1; for my $y (@enemys) { my($_y) = &_damage($y, 150, '‘§', 1); next if rand(2)<1; $com.="$_y‚Í‚ ‚â‚µ‚¢‰t‘Ì‚ª‚©‚©‚Á‚½I"; $ms{$_y}{tmp} = '‚Q”{'; }; 	}],
+		[6,		5,		'ã‚¤ã‚ª',				sub{ &_damages(25, 'é­”', 1);	}],
+		[16,	1,		'ãƒãƒ›ã‚­ãƒ†',			sub{ return if &is_bad_state('é­”'); $ms{$m}{tmp} = 'é­”å¸å'; $com.=qq|<span class="tmp">$mã¯ä¸æ€è­°ãªå…‰ã«åŒ…ã¾ã‚ŒãŸï¼</span>|;	}],
+		[36,	12,		'ã‚¤ã‚ªãƒ©',			sub{ &_damages(70, 'é­”', 1);	}],
+		[46,	10,		'ãƒ‘ãƒ«ãƒ—ãƒ³ãƒ†',		sub{ &_parupunte;	}],
+		[66,	34,		'ã‚¤ã‚ªãƒŠã‚ºãƒ³',		sub{ &_damages(160, 'é­”', 1);	}],
+		[96,	0,		'ãƒ‡ãƒ“ãƒ«ãƒ†ã‚¤ãƒ«',		sub{ &_yubiwofuru;	}],
 	);
 }
-sub skill_68 { # ºÛË°Û°
+sub skill_57 { # ã‚¨ãƒ«ãƒ•
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@ºÛ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; rand(3) < 1 ? &_add_party($n, 'mon/101.gif', $ms{$m}{mhp}*0.8, $ms{$m}{mmp}*0.2, $ms{$m}{mat}*3.0, $ms{$m}{mdf}*2.0, $ms{$m}{mag}) : rand(3) < 1 ? &_add_party($n, 'mon/102.gif', $ms{$m}{mhp}*0.6, $ms{$m}{mmp}, $ms{$m}{mat}, $ms{$m}{mdf}, $ms{$m}{mag}*2.0) : &_add_party($n, 'mon/103.gif',  $ms{$m}{mhp}*0.7, $ms{$m}{mmp}, $ms{$m}{mat}*1.5, $ms{$m}{mdf}*1.5, $ms{$m}{mag}*1.5); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@ºÛ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@ºÛ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@ºÛ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if ($ms{$n}{icon} =~ /101/) { $com.='—‚Ü‚¶‚ñ‚¬‚è '; rand(2) < 1 ? &_damage(shift, $ms{$m}{at} * 3, 'U') : &_damage(shift, 20, 'U'); }elsif($ms{$n}{icon} =~ /102/){ $com.='—ƒƒ‰ƒ][ƒ} '; &_damage(shift, 220, '–‚', 1); }else{ $com.='—ƒxƒzƒ} '; &_heal(shift, 999, '–‚'); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@ºÛ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	50,		'ƒxƒzƒ}ƒYƒ“',			sub{ my $n = '@ºÛ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; &_heals(999, '–‚');	}],
+		[10,	3,		'ãƒ›ã‚¤ãƒŸ',			sub{ &_heal(shift, 30, 'é­”');	}],
+		[20,	6,		'ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã‚¢ãƒ­ãƒ¼',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.2, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_down($y, 0.07, 'æ”»', 'hit');	}],
+		[40,	10,		'ãƒ™ãƒ›ã‚¤ãƒŸ',			sub{ &_heal(shift, 90, 'é­”');	}],
+		[60,	20,		'ãƒ©ãƒªãƒ›ãƒ¼ã‚¢ãƒ­ãƒ¼',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at}*1.1, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'çœ ã‚Š', 'æ”»', 55);	}],
+		[80,	20,		'ã‚¶ã‚ªãƒ©ãƒ«',			sub{ my($y) = &_check_party(shift, 'è˜‡ç”Ÿ', 'é­”'); return if !$y || $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|ã—ã‹ã—ã€$yã¯ç”Ÿãè¿”ã‚‰ãªã‹ã£ãŸâ€¦|; };	}],
+		[100,	4,		'ã‚ˆã†ã›ã„ã®ã‚„',		sub{ my($y, $v) = &_st_down(shift, 0.15, 'æ”»', 'mp'); return if !$y; &_mp_h($m, $v, 'æ”»');	}],
+		[120,	33,		'ãƒã‚¤ã‚·ã‚ªãƒ³',		sub{ &_st_ups(0.7, 'é­”', 'at');		}],
 	);
 }
-sub skill_69 { # ÌßÁË°Û°
+sub skill_58 { # ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@ÌßÁ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; rand(3) < 1 ? &_add_party($n, 'mon/106.gif', $ms{$m}{mhp}*0.8, $ms{$m}{mmp}*0.2, $ms{$m}{mat}*3.0, $ms{$m}{mdf}*2.0, $ms{$m}{mag}) : rand(3) < 1 ? &_add_party($n, 'mon/107.gif', $ms{$m}{mhp}*0.6, $ms{$m}{mmp}, $ms{$m}{mat}, $ms{$m}{mdf}, $ms{$m}{mag}*2.0) : &_add_party($n, 'mon/108.gif',  $ms{$m}{mhp}*0.7, $ms{$m}{mmp}, $ms{$m}{mat}*1.5, $ms{$m}{mdf}*1.5, $ms{$m}{mag}*1.5); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@ÌßÁ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÌßÁ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÌßÁ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if ($ms{$n}{icon} =~ /106/) { $com.='—‚Ü‚¶‚ñ‚¬‚è '; rand(2) < 1 ? &_damage(shift, $ms{$m}{at} * 3, 'U') : &_damage(shift, 20, 'U'); }elsif($ms{$n}{icon} =~ /107/){ $com.='—ƒƒ‰ƒ][ƒ} '; &_damage(shift, 220, '–‚', 1); }else{ $com.='—ƒxƒzƒ} '; &_heal(shift, 999, '–‚'); }; 	}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@ÌßÁ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	20,		'ƒ~ƒiƒfƒCƒ“',			sub{ my $n = '@ÌßÁ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; my($y) = &_check_enemy(shift, 'ŠF', '–‚'); return if !$y; my $d = 100; for my $name (@partys) { next if $m eq $name || $ms{$name}{mp} < 5; $ms{$name}{mp}-=5; $d += 85; }; $com.=qq|$m‚Í’‡ŠÔ‚Ì‚İ‚ñ‚È‚©‚ç—Í‚ğó‚¯‚Æ‚Á‚½I| if $d > 100; &_damage($y, $d, '–‚', 1);	}],
+		[20,	26,		'ãƒ©ã‚¤ãƒ•ã‚·ã‚§ã‚¤ãƒãƒ¼',		sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if (rand(5)>1) { &_st_down($y, 0.7, 'é­”', 'hp'); } else { $com.="$yã¯ã‹ã‚ã—ãŸï¼"; };	}],
+		[50,	9,		'ãƒˆãƒ©ãƒ³ã‚¹',				sub{ $ms{$m}{state}=''; &_st_up($m, 1.0, 'æ”»', 'at'); &_st_up($m, 1.0, 'æ”»', 'ag'); $ms{$m}{tmp} = 'é­”å¸å'; $ms{$m}{state}='æ··ä¹±'; $com.="$mã¯ãƒˆãƒ©ãƒ³ã‚¹çŠ¶æ…‹ã«ãªã£ãŸï¼";		}],
+		[80,	16,		'ã®ã‚ã„',				sub{ my @randoms = ('é­”å°', 'æ”»å°', 'å‹•å°'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], 'é­”', 70); };		}],
+		[110,	6,		'ï¼­ï¼°ãƒã‚¹ã‚¿ãƒ¼',			sub{ &_st_down(shift, 0.4, 'é­”', 'mp');	}],
+		[140,	33,		'ã‹ãã›ã„',				sub{ $ms{$m}{tmp}='ï¼’å€'; &tenshon($m); &tenshon($m); 		}],
+		[160,	66,		'ãƒãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³',			sub{ for my $y (@enemys) { if (rand(3)>1) { &_st_down($y, 0.75, 'é­”', 'hp'); } else { $com.="$yã¯ã‹ã‚ã—ãŸï¼"; }; };	}],
 	);
 }
-sub skill_70 { # “V—³l
+sub skill_59 { # ã‚¹ãƒ©ã‚¤ãƒ ãƒ©ã‚¤ãƒ€ãƒ¼
 	return (
-		[50,	25,		'‚ß‚¢‚»‚¤',			sub{ &_heal($m, 300, '–³');		}],
-		[100,	25,		'ƒhƒ‰ƒSƒ“ƒpƒ[',	sub{ &_st_up($m, 0.4, 'U', 'at'); &_st_up($m, 0.4, 'U', 'df');	}],
-		[150,	40,		'ƒMƒKƒfƒCƒ“',		sub{ &_damages(180, '–‚', 1);			}],
-		[200,	27,		'‚Ä‚ñ‚µ‚Ì‚¤‚½‚²‚¦',	sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|‚È‚ñ‚ÆA<b>$y</b>‚ª <span class="heal">¶‚«•Ô‚è</span> ‚Ü‚µ‚½I|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|‚µ‚©‚µA<b>$y</b>‚Í¶‚«•Ô‚ç‚È‚©‚Á‚½c|; }; }; 	}],
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚¹ãƒ©ã‚¤ãƒ @'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/001.gif', 70, 120, 50, 30, 120) : $m{lv} < 70 ? &_add_party($n, 'mon/006.gif', 180, 80, 80, 50, 200) : &_add_party($n, 'mon/004.gif', 5, 10, 10, 950, 950); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚¹ãƒ©ã‚¤ãƒ @'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¹ãƒ©ã‚¤ãƒ @'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¹ãƒ©ã‚¤ãƒ @'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ã‚¹ãƒ©ã‚¢ã‚¿ãƒƒã‚¯ '; &_damage(shift, $ms{$n}{at} * 1.5, 'æ”»'); }elsif(rand(2)<1){ $com.='ï¼ ã‚¹ãƒ©ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ '; &_damage(shift, $ms{$n}{at} * 1.2, 'æ”»', 1); }else{ $com.='ï¼ ã—ã‚ƒãã­ã¤ '; &_damages(220, 'æ¯', 1); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¹ãƒ©ã‚¤ãƒ @'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	100,	'ãŒã£ãŸã„',				sub{ my $n = '@ã‚¹ãƒ©ã‚¤ãƒ @'; $n = defined($ms{$n}{name}) ? $n : &_search_job(39); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$mã¨$nã¯åˆä½“ã—ãŸï¼</span>|; $ms{$m}{icon}="job/59_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
 	);
 }
-# Ver1.20`’Ç‰Á•ª
-sub skill_71 { # Á®ºÎŞ×²ÀŞ°
+
+sub skill_60 { # ãƒ‰ãƒ©ã‚´ãƒ³ãƒ©ã‚¤ãƒ€ãƒ¼
 	return (
-		[10,	30,		'‚æ‚Ñ‚¾‚·',				sub{ my $n = '@Á®ºÎŞ@'; if (defined $ms{$n}{name}) { $com.="$n‚ğŒÄ‚Ño‚·‚Ì‚É¸”s‚µ‚½c"; return; }; $m{lv} < 40 ? &_add_party($n, 'job/44_m.gif', 150, 70, 100, 50, 180) : $m{lv} < 70 ? &_add_party($n, 'chr/032.gif', 270, 50, 270, 70, 270) : &_add_party($n, 'chr/033.gif', 500, 30, 300, 300, 10); $com.="$n‚ªí“¬‚ÉQ‰Á‚µ‚½I"; 	}],
-		[11,	0,		'‚É‚°‚ë',				sub{ my $n = '@Á®ºÎŞ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$n‚ªí“¬‚©‚ç“¦‚°o‚µ‚½I"; 	}],
-		[12,	0,		'‚±‚¤‚°‚«‚ß‚¢‚ê‚¢',		sub{ my $n = '@Á®ºÎŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF —‚±‚¤‚°‚« "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
-		[30,	30,		'‚Ğ‚Á‚³‚Â‚ß‚¢‚ê‚¢',		sub{ my $n = '@Á®ºÎŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$nF "; if (rand(3)<1) { $com.='—ƒ`ƒ‡ƒRƒ{ƒLƒbƒN '; &_damage(shift, $ms{$n}{at} * 1.4, 'U'); }elsif(rand(2)<1){ $com.='—ƒ`ƒ‡ƒRƒPƒAƒ‹ '; &_heal(shift, 150, '–‚'); }else{ $com.='—ƒ`ƒ‡ƒRƒ_ƒ“ƒX '; &_st_ds('“®••', '—x', 80); }		}],
-		[100,	10,		'‚Ú‚¤‚¬‚å‚ß‚¢‚ê‚¢',		sub{ my $n = '@Á®ºÎŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = '–hŒä'; $com.=qq|$nF —‚Ú‚¤‚¬‚å <span class="tmp">$n‚Íg‚ğŒÅ‚ß‚½I</span>|;	}],
-		[150,	100,	'‚ª‚Á‚½‚¢',				sub{ my $n = '@Á®ºÎŞ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$m‚Æ$n‚Í‡‘Ì‚µ‚½I</span>|; $ms{$m}{icon}="job/71_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ãƒ‰ãƒ©ã‚´ãƒ³@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/083.gif', 160, 70, 180, 100, 70) : $m{lv} < 70 ? &_add_party($n, 'mon/084.gif', 250, 50, 300, 200, 100) : &_add_party($n, 'mon/224.gif', 400, 30, 400, 300, 100); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ãƒ‰ãƒ©ã‚´ãƒ³@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒ‰ãƒ©ã‚´ãƒ³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒ‰ãƒ©ã‚´ãƒ³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ãã‚Šã•ã '; &_damage(shift, $ms{$n}{at} * 1.7, 'æ”»'); }elsif(rand(2)<1){ $com.='ï¼ ãŸãŸãã¤ã¶ã™ '; &_damage(shift, $ms{$n}{at} * 1.5, 'æ”»', 1); }else{ $com.='ï¼ ã‹ãŒã‚„ãã„ã '; &_damages(230, 'æ¯', 1); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒ‰ãƒ©ã‚´ãƒ³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	100,	'ãŒã£ãŸã„',				sub{ my $n = '@ãƒ‰ãƒ©ã‚´ãƒ³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(41); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$mã¨$nã¯åˆä½“ã—ãŸï¼</span>|; $ms{$m}{icon}="job/60_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
 	);
 }
-sub skill_72 { # Zpm
+sub skill_61 { # ãƒã‚¯ãƒ­ãƒãƒ³ã‚µãƒ¼
 	return (
-		[0,		15,		'‚l‚o‚T',		sub{ return if &is_bad_state('–‚'); $com =~ /—(.+?)(?:(?:\x20|@)?—(~.+?)(?:\x20|@)|\x20|@)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 5; &{ $actions{$action2}[1] }; } else { $com.=qq|‰r¥¸”sI|; };	}],
-		[100,	14,		'‚l‚o‚S',		sub{ return if &is_bad_state('–‚'); $com =~ /—(.+?)(?:(?:\x20|@)?—(~.+?)(?:\x20|@)|\x20|@)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 4; &{ $actions{$action2}[1] }; } else { $com.=qq|‰r¥¸”sI|; };	}],
-		[150,	13,		'‚l‚o‚R',		sub{ return if &is_bad_state('–‚'); $com =~ /—(.+?)(?:(?:\x20|@)?—(~.+?)(?:\x20|@)|\x20|@)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 3; &{ $actions{$action2}[1] }; } else { $com.=qq|‰r¥¸”sI|; };	}],
-		[20,	0,		'~ƒtƒŒƒA',		sub{ return if &is_bad_state('–‚'); if (!$_mp_num) { $com.=qq|‰r¥¸”sI|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; my $v=int(260 * (rand(0.3)+0.9)); $v=int(rand(2)+1) if $ms{$y}{mdf} > 999; $ms{$y}{hp}-=$v; $com.=qq|<b>$y</b>‚É <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒWI|; if ($ms{$y}{hp} <= 0) { $ms{$y}{hp}=0; $com .= qq|<span class="die">$y‚ğ‚½‚¨‚µ‚½I</span>|; &defeat($y); }; };		}],
-		[40,	0,		'~ƒŠƒtƒŒƒN',	sub{ return if &is_bad_state('–‚'); if (!$_mp_num) { $com.=qq|‰r¥¸”sI|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; $ms{$y}{tmp}='–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Åç‚ç‚ê‚½I</span>|; };		}],
-		[70,	0,		'~ƒPƒAƒ‹ƒK',	sub{ return if &is_bad_state('–‚'); if (!$_mp_num) { $com.=qq|‰r¥¸”sI|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; my $v=int(500 * (rand(0.3)+0.9)); $ms{$y}{hp}+=$v; $ms{$y}{hp}=$ms{$y}{mhp} if $ms{$y}{hp} > $ms{$y}{mhp}; $com.=qq|<b>$y</b>‚Ì$e2j{mhp}‚ª <span class="heal">$v</span> ‰ñ•œ‚µ‚½I|; };		}],
-		[120,	0,		'~ƒAƒŒƒCƒY',	sub{ return if &is_bad_state('–‚'); if (!$_mp_num) { $com.=qq|‰r¥¸”sI|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} >  0; next if $ms{$y}{mp} % $_mp_num != 0; $ms{$y}{hp}=$ms{$y}{mhp}; $com.=qq|‚È‚ñ‚ÆA<span class="revive">$y‚ª¶‚«•Ô‚è‚Ü‚µ‚½I</span>|; };		}],
-		[180,	0,		'~ƒfƒX',		sub{ return if &is_bad_state('–‚'); if (!$_mp_num) { $com.=qq|‰r¥¸”sI|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp}=0; $com.=qq|<span class="die">$y‚Í€‚ñ‚Å‚µ‚Ü‚Á‚½I</span>|; &defeat($y); };		}],
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚¾ãƒ³ãƒ“@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/040.gif', 120, 120, 120, 60, 120) : $m{lv} < 70 ? &_add_party($n, 'mon/041.gif', 300, 200, 280, 90, 240) : &_add_party($n, 'mon/064.gif', 444, 444, 666, 222, 444); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚¾ãƒ³ãƒ“@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¾ãƒ³ãƒ“@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¾ãƒ³ãƒ“@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ã‚¶ãƒ©ã‚­ '; &_deaths('å³æ­»', 'é­”', 22); }elsif(rand(2)<1){ $com.='ï¼ ãƒã‚¤ã‚ªã‚¬ '; $is_add_effect = 1; &_damages(120, 'é­”', 1); &_st_ds('çŒ›æ¯’', 'é­”', 40); }else{ $com.='ï¼ ã‚‚ã†ã©ãã®ãã‚Š '; &_st_ds('çŒ›æ¯’', 'æ¯', 70); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¾ãƒ³ãƒ“@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	42,		'ãƒ¬ã‚¯ã‚¤ã‚¨ãƒ ',			sub{ my $n = '@ã‚¾ãƒ³ãƒ“@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(61); return if !$n || $ms{$n}{hp} <= 0; for my $y (@partys) { next if $ms{$y}{hp} > 0; $ms{$y}{hp}=int($ms{$y}{mhp}*0.42); $ms{$y}{at}+=300;$ms{$y}{ag}+=300; $com.=qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸï¼</span>|; $ms{$y}{icon}="mon/040.gif"; }; 	}],
+	);
+}
+sub skill_62 { # ãƒãƒƒãƒˆãƒã‚¹ã‚¿ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ãƒãƒƒãƒˆ@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/025.gif', 90, 80, 120, 10, 180) : $m{lv} < 70 ? &_add_party($n, 'mon/026.gif', 210, 270, 170, 30, 400) : &_add_party($n, 'mon/027.gif', 410, 350, 400, 50, 600); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ãƒãƒƒãƒˆ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒƒãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒƒãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ãã‚…ã†ã‘ã¤ '; my($y, $v)= &_damage(shift, 100, 'é­”', 1); return if !$y; &_heal($n, $v, 'é­”');}elsif(rand(2)<1){ $com.='ï¼ ã‚¢ã‚¹ãƒ”ãƒ« '; my($y, $v) = &_st_down(shift, 0.3, 'é­”', 'mp'); return if !$y; &_mp_h($m, $v, 'é­”'); }else{ $com.='ï¼ ã¡ã‚‡ã†ãŠã‚“ã± '; &_st_ds('æ··ä¹±', 'æ­Œ', 70); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒƒãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	37,		'ãƒ–ãƒ©ãƒƒãƒ‰ãƒ¬ã‚¤ãƒ³',		sub{ my $n = '@ãƒãƒƒãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(56); return if !$n || $ms{$n}{hp} <= 0; &_damages(170, 'é­”', 1); &_heals(150, 'é­”'); 	}],
+	);
+}
+sub skill_63 { # ã‚­ãƒã‚³ãƒã‚¹ã‚¿ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚­ãƒã‚³@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/030.gif', 100, 100, 80, 50, 80) : $m{lv} < 70 ? &_add_party($n, 'mon/031.gif', 300, 80, 150, 100, 100) : &_add_party($n, 'mon/032.gif', 400, 60, 200, 100, 100); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚­ãƒã‚³@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚­ãƒã‚³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚­ãƒã‚³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ã©ãã®ã“ãª '; &_st_ds('çŒ›æ¯’', 'æ¯', 90);}elsif(rand(2)<1){ $com.='ï¼ ã—ã³ã‚Œã”ãª '; &_st_ds('éº»ç—º', 'æ¯', 50);}else{ $com.='ï¼ ã­ã‚€ã‚Šã”ãª '; &_st_ds('çœ ã‚Š', 'æ¯', 50); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚­ãƒã‚³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	100,	'ãŒã£ãŸã„',				sub{ my $n = '@ã‚­ãƒã‚³@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(63); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$mã¨$nã¯åˆä½“ã—ãŸï¼</span>|; $ms{$m}{icon}="job/63_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+	);
+}
+sub skill_64 { # ã‚ªãƒã‚±ãƒã‚¹ã‚¿ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚´ãƒ¼ã‚¹ãƒˆ@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/035.gif', 100, 100, 50, 100, 100) : $m{lv} < 70 ? &_add_party($n, 'mon/036.gif', 200, 80, 100, 150, 150) : &_add_party($n, 'mon/070.gif', 300, 60, 150, 200, 200); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚´ãƒ¼ã‚¹ãƒˆ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚´ãƒ¼ã‚¹ãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚´ãƒ¼ã‚¹ãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ã²ã‚‡ã†ã„ '; my($y) = &_check_enemy(shift, 'æ“ã‚Š', 'æ¯'); return if !$y; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $y; &kougeki(); $m = $buf_m; }elsif(rand(2)<1){ $com.='ï¼ ã˜ã‚…ã°ã '; &_st_d(shift, 'æ”»å°', 'ç„¡', 80); }else{ $com.='ï¼ ãŠã©ã‚ã‹ã™'; &_st_ds('å‹•å°', 'æ”»', 60); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚´ãƒ¼ã‚¹ãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	100,	'ãŒã£ãŸã„',				sub{ my $n = '@ã‚´ãƒ¼ã‚¹ãƒˆ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(64); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$mã¨$nã¯åˆä½“ã—ãŸï¼</span>|; $ms{$m}{icon}="job/64_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+	);
+}
+sub skill_65 { # ã‚±ãƒ¢ãƒãƒã‚¹ã‚¿ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚±ãƒ¢ãƒ@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/200.gif', 100, 60, 100, 60, 180) : $m{lv} < 70 ? &_add_party($n, 'mon/206.gif', 210, 90, 300, 80, 280) : &_add_party($n, 'mon/203.gif', 400, 230, 500, 160, 400); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚±ãƒ¢ãƒ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚±ãƒ¢ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚±ãƒ¢ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ã²ã£ã‹ã '; &_damage(shift, $ms{$n}{at} * 1.5, 'æ”»'); }elsif(rand(2)<1){ $com.='ï¼ ã‹ã¿ã¤ã '; &_damage(shift, $ms{$n}{at} * 1.2, 'æ”»', 1); }else{ $com.='ï¼ ã¨ã¤ã’ã '; &_damage(shift, $ms{$n}{at} * 2.0, 'æ”»'); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚±ãƒ¢ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	40,		'ã©ã¨ã†ã®ã‘ã‚‚ã®',		sub{ my $n = '@ã‚±ãƒ¢ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(45); return if !$n || $ms{$n}{hp} <= 0; my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$n}{ag} * 2.0, 'æ”»'); };	}],
+	);
+}
+sub skill_66 { # ãƒ‰ã‚¯ãƒ­ãƒã‚¹ã‚¿ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚¬ã‚¤ã‚³ãƒ„@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/043.gif', 120, 110, 160, 90, 150) : $m{lv} < 70 ? &_add_party($n, 'mon/044.gif', 240, 210, 240, 120, 180) : &_add_party($n, 'mon/056.gif', 450, 280, 400, 240, 300); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚¬ã‚¤ã‚³ãƒ„@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¬ã‚¤ã‚³ãƒ„@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¬ã‚¤ã‚³ãƒ„@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(2)<1) { $com.='ï¼ ã—ã®ãŠã©ã‚Š '; &_deaths('å³æ­»', 'è¸Š', 20); }elsif(rand(2)<1){ $com.='ï¼ ãƒ‡ã‚¹ '; &_death(shift, 'å³æ­»', 'æ”»', 40);}else{ $com.='ï¼ ã®ã‚ã„ '; my @randoms = ('æ”»å°', 'å‹•å°'); for my $name (@enemys) { &_st_d($name, $randoms[int(rand(@randoms))], 'é­”', 75); }; }; 	 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚¬ã‚¤ã‚³ãƒ„@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	50,		'ã¿ã‚“ãªã®ã†ã‚‰ã¿',		sub{ my $n = '@ã‚¬ã‚¤ã‚³ãƒ„@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(66); return if !$n || $ms{$n}{hp} <= 0; my $d = 100; for my $y (@partys) { $d += 420 if $ms{$y}{hp} <= 0; } &_damages($d, 'ç„¡', 1); 	}],
+	);
+}
+sub skill_67 { # ãƒãƒ–ãƒ«ãƒã‚¹ã‚¿ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ãƒãƒ–ãƒ«@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'mon/020.gif', 90, 120, 90, 50, 90) : $m{lv} < 70 ? &_add_party($n, 'mon/021.gif', 180, 280, 160, 120, 180) : &_add_party($n, 'mon/022.gif', 8, 500, 80, 950, 950); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ãƒãƒ–ãƒ«@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒ–ãƒ«@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒ–ãƒ«@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if ($ms{$n}{icon} =~ /020/) { $com.='ï¼ ãƒ‰ã‚¯ãƒ‰ã‚¯ '; &_st_ds('çŒ›æ¯’', 'æ¯', 80); }elsif($ms{$n}{icon} =~ /021/){ $com.='ï¼ ãƒã‚°ãƒ '; &_damages(220, 'æ¯', 1); }else{ $com.='ï¼ ã‚¸ã‚´ã‚¹ãƒ‘ãƒ¼ã‚¯ '; $is_add_effect = 1; &_damages(150, 'é­”', 1); &_st_ds('éº»ç—º', 'é­”', 20);}	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒ–ãƒ«@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	40,		'ãƒãƒ–ãƒ«ãƒœãƒ ',			sub{ my $n = '@ãƒãƒ–ãƒ«@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(40); return if !$n || $ms{$n}{hp} <= 0; $is_add_effect = 1; for my $y (@enemys) { my($_y) = &_damage($y, 150, 'æ¯', 1); next if rand(2)<1; $com.="$_yã¯ã‚ã‚„ã—ã„æ¶²ä½“ãŒã‹ã‹ã£ãŸï¼"; $ms{$_y}{tmp} = 'ï¼’å€'; }; 	}],
+	);
+}
+sub skill_68 { # ã‚³ãƒ­ãƒ’ãƒ¼ãƒ­ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ã‚³ãƒ­@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; rand(3) < 1 ? &_add_party($n, 'mon/101.gif', $ms{$m}{mhp}*0.8, $ms{$m}{mmp}*0.2, $ms{$m}{mat}*3.0, $ms{$m}{mdf}*2.0, $ms{$m}{mag}) : rand(3) < 1 ? &_add_party($n, 'mon/102.gif', $ms{$m}{mhp}*0.6, $ms{$m}{mmp}, $ms{$m}{mat}, $ms{$m}{mdf}, $ms{$m}{mag}*2.0) : &_add_party($n, 'mon/103.gif',  $ms{$m}{mhp}*0.7, $ms{$m}{mmp}, $ms{$m}{mat}*1.5, $ms{$m}{mdf}*1.5, $ms{$m}{mag}*1.5); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ã‚³ãƒ­@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚³ãƒ­@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚³ãƒ­@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if ($ms{$n}{icon} =~ /101/) { $com.='ï¼ ã¾ã˜ã‚“ãã‚Š '; rand(2) < 1 ? &_damage(shift, $ms{$m}{at} * 3, 'æ”»') : &_damage(shift, 20, 'æ”»'); }elsif($ms{$n}{icon} =~ /102/){ $com.='ï¼ ãƒ¡ãƒ©ã‚¾ãƒ¼ãƒ '; &_damage(shift, 220, 'é­”', 1); }else{ $com.='ï¼ ãƒ™ãƒ›ãƒ '; &_heal(shift, 999, 'é­”'); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ã‚³ãƒ­@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	50,		'ãƒ™ãƒ›ãƒã‚ºãƒ³',			sub{ my $n = '@ã‚³ãƒ­@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(68); return if !$n || $ms{$n}{hp} <= 0; &_heals(999, 'é­”');	}],
+	);
+}
+sub skill_69 { # ãƒ—ãƒãƒ’ãƒ¼ãƒ­ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ãƒ—ãƒ@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; rand(3) < 1 ? &_add_party($n, 'mon/106.gif', $ms{$m}{mhp}*0.8, $ms{$m}{mmp}*0.2, $ms{$m}{mat}*3.0, $ms{$m}{mdf}*2.0, $ms{$m}{mag}) : rand(3) < 1 ? &_add_party($n, 'mon/107.gif', $ms{$m}{mhp}*0.6, $ms{$m}{mmp}, $ms{$m}{mat}, $ms{$m}{mdf}, $ms{$m}{mag}*2.0) : &_add_party($n, 'mon/108.gif',  $ms{$m}{mhp}*0.7, $ms{$m}{mmp}, $ms{$m}{mat}*1.5, $ms{$m}{mdf}*1.5, $ms{$m}{mag}*1.5); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ãƒ—ãƒ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒ—ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒ—ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if ($ms{$n}{icon} =~ /106/) { $com.='ï¼ ã¾ã˜ã‚“ãã‚Š '; rand(2) < 1 ? &_damage(shift, $ms{$m}{at} * 3, 'æ”»') : &_damage(shift, 20, 'æ”»'); }elsif($ms{$n}{icon} =~ /107/){ $com.='ï¼ ãƒ¡ãƒ©ã‚¾ãƒ¼ãƒ '; &_damage(shift, 220, 'é­”', 1); }else{ $com.='ï¼ ãƒ™ãƒ›ãƒ '; &_heal(shift, 999, 'é­”'); }; 	}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒ—ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	20,		'ãƒŸãƒŠãƒ‡ã‚¤ãƒ³',			sub{ my $n = '@ãƒ—ãƒ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(69); return if !$n || $ms{$n}{hp} <= 0; my($y) = &_check_enemy(shift, 'çš†', 'é­”'); return if !$y; my $d = 100; for my $name (@partys) { next if $m eq $name || $ms{$name}{mp} < 5; $ms{$name}{mp}-=5; $d += 85; }; $com.=qq|$mã¯ä»²é–“ã®ã¿ã‚“ãªã‹ã‚‰åŠ›ã‚’å—ã‘ã¨ã£ãŸï¼| if $d > 100; &_damage($y, $d, 'é­”', 1);	}],
+	);
+}
+sub skill_70 { # å¤©ç«œäºº
+	return (
+		[50,	25,		'ã‚ã„ãã†',			sub{ &_heal($m, 300, 'ç„¡');		}],
+		[100,	25,		'ãƒ‰ãƒ©ã‚´ãƒ³ãƒ‘ãƒ¯ãƒ¼',	sub{ &_st_up($m, 0.4, 'æ”»', 'at'); &_st_up($m, 0.4, 'æ”»', 'df');	}],
+		[150,	40,		'ã‚®ã‚¬ãƒ‡ã‚¤ãƒ³',		sub{ &_damages(180, 'é­”', 1);			}],
+		[200,	27,		'ã¦ã‚“ã—ã®ã†ãŸã”ãˆ',	sub{ for my $y (@partys) { next if $ms{$y}{hp} > 0; if (rand(2) < 1) { $com.=qq|ãªã‚“ã¨ã€<b>$y</b>ãŒ <span class="heal">ç”Ÿãè¿”ã‚Š</span> ã¾ã—ãŸï¼|; $ms{$y}{hp}=int($ms{$y}{mhp} * 0.5); } else { $com.=qq|ã—ã‹ã—ã€<b>$y</b>ã¯ç”Ÿãè¿”ã‚‰ãªã‹ã£ãŸâ€¦|; }; }; 	}],
+	);
+}
+# Ver1.20ï½è¿½åŠ åˆ†
+sub skill_71 { # ãƒãƒ§ã‚³ãƒœãƒ©ã‚¤ãƒ€ãƒ¼
+	return (
+		[10,	30,		'ã‚ˆã³ã ã™',				sub{ my $n = '@ãƒãƒ§ã‚³ãƒœ@'; if (defined $ms{$n}{name}) { $com.="$nã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ãŸâ€¦"; return; }; $m{lv} < 40 ? &_add_party($n, 'job/44_m.gif', 150, 70, 100, 50, 180) : $m{lv} < 70 ? &_add_party($n, 'chr/032.gif', 270, 50, 270, 70, 270) : &_add_party($n, 'chr/033.gif', 500, 30, 300, 300, 10); $com.="$nãŒæˆ¦é—˜ã«å‚åŠ ã—ãŸï¼"; 	}],
+		[11,	0,		'ã«ã’ã‚',				sub{ my $n = '@ãƒãƒ§ã‚³ãƒœ@'; return if !defined($ms{$n}{name}) || $ms{$n}{hp} <= 0; $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; $com.="$nãŒæˆ¦é—˜ã‹ã‚‰é€ƒã’å‡ºã—ãŸï¼"; 	}],
+		[12,	0,		'ã“ã†ã’ãã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒ§ã‚³ãƒœ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š ï¼ ã“ã†ã’ã "; $buf_m = $m; $m = $n; &kougeki(shift); $m = $buf_m;	}],
+		[30,	30,		'ã²ã£ã•ã¤ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒ§ã‚³ãƒœ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $com.="$nï¼š "; if (rand(3)<1) { $com.='ï¼ ãƒãƒ§ã‚³ãƒœã‚­ãƒƒã‚¯ '; &_damage(shift, $ms{$n}{at} * 1.4, 'æ”»'); }elsif(rand(2)<1){ $com.='ï¼ ãƒãƒ§ã‚³ã‚±ã‚¢ãƒ« '; &_heal(shift, 150, 'é­”'); }else{ $com.='ï¼ ãƒãƒ§ã‚³ãƒ€ãƒ³ã‚¹ '; &_st_ds('å‹•å°', 'è¸Š', 80); }		}],
+		[100,	10,		'ã¼ã†ãã‚‡ã‚ã„ã‚Œã„',		sub{ my $n = '@ãƒãƒ§ã‚³ãƒœ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; $ms{$n}{tmp} = 'é˜²å¾¡'; $com.=qq|$nï¼š ï¼ ã¼ã†ãã‚‡ <span class="tmp">$nã¯èº«ã‚’å›ºã‚ãŸï¼</span>|;	}],
+		[150,	100,	'ãŒã£ãŸã„',				sub{ my $n = '@ãƒãƒ§ã‚³ãƒœ@'; $n = defined($ms{$n}{name}) ? $n : &_search_job(44); return if !$n || $ms{$n}{hp} <= 0; for my $k (qw/hp mp at df ag/){ my $v=$ms{$m}{$k}; $ms{$m}{$k}+=$ms{$n}{$k}; $ms{$n}{$k}+=$v; $ms{$m}{$k}=999 if $ms{$m}{$k}>999; $ms{$n}{$k}=999 if $ms{$n}{$k}>999; }; $com.=qq|<span class="tmp">$mã¨$nã¯åˆä½“ã—ãŸï¼</span>|; $ms{$m}{icon}="job/71_$m{sex}_mix.gif"; if ($n =~ /^@/) { $ms{$n}{color}=$npc_color; $ms{$n}{hp}=0; } else { $ms{$n}{icon}="job/0.gif"; } 	}],
+	);
+}
+sub skill_72 { # ç®—è¡“å£«
+	return (
+		[0,		15,		'ï¼­ï¼°ï¼•',		sub{ return if &is_bad_state('é­”'); $com =~ /ï¼ (.+?)(?:(?:\x20|ã€€)?ï¼ (Ã—.+?)(?:\x20|ã€€)|\x20|ã€€)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 5; &{ $actions{$action2}[1] }; } else { $com.=qq|è© å”±å¤±æ•—ï¼|; };	}],
+		[100,	14,		'ï¼­ï¼°ï¼”',		sub{ return if &is_bad_state('é­”'); $com =~ /ï¼ (.+?)(?:(?:\x20|ã€€)?ï¼ (Ã—.+?)(?:\x20|ã€€)|\x20|ã€€)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 4; &{ $actions{$action2}[1] }; } else { $com.=qq|è© å”±å¤±æ•—ï¼|; };	}],
+		[150,	13,		'ï¼­ï¼°ï¼“',		sub{ return if &is_bad_state('é­”'); $com =~ /ï¼ (.+?)(?:(?:\x20|ã€€)?ï¼ (Ã—.+?)(?:\x20|ã€€)|\x20|ã€€)/; my $action2 = $2; if (defined $actions{$action2}) { $_mp_num = 3; &{ $actions{$action2}[1] }; } else { $com.=qq|è© å”±å¤±æ•—ï¼|; };	}],
+		[20,	0,		'Ã—ãƒ•ãƒ¬ã‚¢',		sub{ return if &is_bad_state('é­”'); if (!$_mp_num) { $com.=qq|è© å”±å¤±æ•—ï¼|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; my $v=int(260 * (rand(0.3)+0.9)); $v=int(rand(2)+1) if $ms{$y}{mdf} > 999; $ms{$y}{hp}-=$v; $com.=qq|<b>$y</b>ã« <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ï¼|; if ($ms{$y}{hp} <= 0) { $ms{$y}{hp}=0; $com .= qq|<span class="die">$yã‚’ãŸãŠã—ãŸï¼</span>|; &defeat($y); }; };		}],
+		[40,	0,		'Ã—ãƒªãƒ•ãƒ¬ã‚¯',	sub{ return if &is_bad_state('é­”'); if (!$_mp_num) { $com.=qq|è© å”±å¤±æ•—ï¼|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; $ms{$y}{tmp}='é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|; };		}],
+		[70,	0,		'Ã—ã‚±ã‚¢ãƒ«ã‚¬',	sub{ return if &is_bad_state('é­”'); if (!$_mp_num) { $com.=qq|è© å”±å¤±æ•—ï¼|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; my $v=int(500 * (rand(0.3)+0.9)); $ms{$y}{hp}+=$v; $ms{$y}{hp}=$ms{$y}{mhp} if $ms{$y}{hp} > $ms{$y}{mhp}; $com.=qq|<b>$y</b>ã®$e2j{mhp}ãŒ <span class="heal">$v</span> å›å¾©ã—ãŸï¼|; };		}],
+		[120,	0,		'Ã—ã‚¢ãƒ¬ã‚¤ã‚º',	sub{ return if &is_bad_state('é­”'); if (!$_mp_num) { $com.=qq|è© å”±å¤±æ•—ï¼|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} >  0; next if $ms{$y}{mp} % $_mp_num != 0; $ms{$y}{hp}=$ms{$y}{mhp}; $com.=qq|ãªã‚“ã¨ã€<span class="revive">$yãŒç”Ÿãè¿”ã‚Šã¾ã—ãŸï¼</span>|; };		}],
+		[180,	0,		'Ã—ãƒ‡ã‚¹',		sub{ return if &is_bad_state('é­”'); if (!$_mp_num) { $com.=qq|è© å”±å¤±æ•—ï¼|; return; }; for my $y (@members) { next unless $ms{$y}{mp}; next if $ms{$y}{hp} <= 0; next if $ms{$y}{mp} % $_mp_num != 0; next if $ms{$y}{hp} > 999; $ms{$y}{hp}=0; $com.=qq|<span class="die">$yã¯æ­»ã‚“ã§ã—ã¾ã£ãŸï¼</span>|; &defeat($y); };		}],
 
 	);
 }
-sub skill_73 { # ‚·‚Á‚Ò‚ñ
+sub skill_73 { # ã™ã£ã´ã‚“
 	my $v = ($ms{$m}{at} + $ms{$m}{df} + $ms{$m}{ag}) % 73;
-	# ¦’ˆÓw$v eq '73'x‚Í–³ŒÀƒ‹[ƒv–h~(skill_73 ‚ª &{ skill_73 } ‚ğŒÄ‚Ñ‘±‚¯‚Ä‚µ‚Ü‚¤‚Ì‚ÅAwsub skill_73 {x‚Æwcif $v eq '73'cx‚Ì”š‚Í“¯‚¶‚É‚·‚é‚±‚ÆI)
+	# â€»æ³¨æ„ã€$v eq '73'ã€ã¯ç„¡é™ãƒ«ãƒ¼ãƒ—é˜²æ­¢(skill_73 ãŒ &{ skill_73 } ã‚’å‘¼ã³ç¶šã‘ã¦ã—ã¾ã†ã®ã§ã€ã€sub skill_73 {ã€ã¨ã€â€¦if $v eq '73'â€¦ã€ã®æ•°å­—ã¯åŒã˜ã«ã™ã‚‹ã“ã¨ï¼)
 	$v = 8 if $v eq '73' || $v <= 0;
 	return &{ 'skill_'.$v };
 }
 
-# “G—p
-sub skill_90 { # –Ò“ÅŒn
+# æ•µç”¨
+sub skill_90 { # çŒ›æ¯’ç³»
 	return (
-		[10,	4,		'‚Ç‚­‚±‚¤‚°‚«',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.1, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–Ò“Å', 'U', 70);	}],
-		[20,	6,		'ƒ|ƒCƒYƒ“',			sub{ $is_add_effect = 1; my($y) = &_damage(shift, 25, '–‚', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–Ò“Å', '–‚', 80);	}],
-		[30,	8,		'‚à‚¤‚Ç‚­‚Ì‚«‚è',	sub{ &_st_ds('–Ò“Å', '‘§', 60);		}],
+		[10,	4,		'ã©ãã“ã†ã’ã',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.1, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'çŒ›æ¯’', 'æ”»', 70);	}],
+		[20,	6,		'ãƒã‚¤ã‚ºãƒ³',			sub{ $is_add_effect = 1; my($y) = &_damage(shift, 25, 'é­”', 1); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'çŒ›æ¯’', 'é­”', 80);	}],
+		[30,	8,		'ã‚‚ã†ã©ãã®ãã‚Š',	sub{ &_st_ds('çŒ›æ¯’', 'æ¯', 60);		}],
 	);
 }
-sub skill_91 { # –ƒáƒŒn
+sub skill_91 { # éº»ç—ºç³»
 	return (
-		[10,	8,		'‚Ü‚Ğ‚±‚¤‚°‚«',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–ƒáƒ', 'U', 30);	}],
-		[20,	11,		'‚µ‚Ñ‚ê‚¤‚¿',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 0.8, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–ƒáƒ', 'U', 40);	}],
-		[30,	9,		'‚â‚¯‚Â‚­‚¢‚«',		sub{ &_st_ds('–ƒáƒ', '‘§', 35);		}],
+		[10,	8,		'ã¾ã²ã“ã†ã’ã',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 1.2, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'éº»ç—º', 'æ”»', 30);	}],
+		[20,	11,		'ã—ã³ã‚Œã†ã¡',		sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 0.8, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'éº»ç—º', 'æ”»', 40);	}],
+		[30,	9,		'ã‚„ã‘ã¤ãã„ã',		sub{ &_st_ds('éº»ç—º', 'æ¯', 35);		}],
 	);
 }
-sub skill_92 { # –°‚èŒn
+sub skill_92 { # çœ ã‚Šç³»
 	return (
-		[10,	8,		'ƒ‰ƒŠƒz[',			sub{ &_st_d(shift, '–°‚è', '–‚', 65);		}],
-		[20,	15,		'‚Ë‚Ş‚è‚±‚¤‚°‚«',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 0.8, 'U'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, '–°‚è', 'U', 55);	}],
-		[30,	9,		'‚ ‚Ü‚¢‚¢‚«',		sub{ &_st_ds('–°‚è', '‘§', 35);	}],
+		[10,	8,		'ãƒ©ãƒªãƒ›ãƒ¼',			sub{ &_st_d(shift, 'çœ ã‚Š', 'é­”', 65);		}],
+		[20,	15,		'ã­ã‚€ã‚Šã“ã†ã’ã',	sub{ $is_add_effect = 1; my($y) = &_damage(shift, $ms{$m}{at} * 0.8, 'æ”»'); return if !$y || $ms{$y}{hp} <= 0; &_st_d($y, 'çœ ã‚Š', 'æ”»', 55);	}],
+		[30,	9,		'ã‚ã¾ã„ã„ã',		sub{ &_st_ds('çœ ã‚Š', 'æ¯', 35);	}],
 	);
 }
-sub skill_93 { # ‘¦€
+sub skill_93 { # å³æ­»
 	return (
-		[10,	14,		'ƒUƒL',			sub{ &_death(shift, '‘¦€', '–‚', 20);	}],
-		[20,	32,		'ƒUƒ‰ƒL',		sub{ &_deaths('‘¦€', '–‚', 20);	}],
-		[30,	24,		'‚µ‚Ì‚¨‚Ç‚è',	sub{ &_deaths('‘¦€', '—x', 17);	}],
-		[40,	42,		'‚µ‚Ì‚¹‚ñ‚±‚­',	sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$y‚É‚Í‚«‚©‚È‚©‚Á‚½I"; } elsif (rand(2)<1) { &_st_down($y, 0.75, '–‚', 'hp'); $ms{$y}{state}='–Ò“Å'; } else { $com.="$y‚Í‚©‚í‚µ‚½I"; };	}],
+		[10,	14,		'ã‚¶ã‚­',			sub{ &_death(shift, 'å³æ­»', 'é­”', 20);	}],
+		[20,	32,		'ã‚¶ãƒ©ã‚­',		sub{ &_deaths('å³æ­»', 'é­”', 20);	}],
+		[30,	24,		'ã—ã®ãŠã©ã‚Š',	sub{ &_deaths('å³æ­»', 'è¸Š', 17);	}],
+		[40,	42,		'ã—ã®ã›ã‚“ã“ã',	sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yã«ã¯ãã‹ãªã‹ã£ãŸï¼"; } elsif (rand(2)<1) { &_st_down($y, 0.75, 'é­”', 'hp'); $ms{$y}{state}='çŒ›æ¯’'; } else { $com.="$yã¯ã‹ã‚ã—ãŸï¼"; };	}],
 	);
 }
-sub skill_94 { # ©”š
+sub skill_94 { # è‡ªçˆ†
 	return (
-		[10,	1,		'ƒƒKƒ“ƒe',		sub{ $com.=qq|<span class="die">$m‚Í©”š‚µ‚½I</span>|; &_deaths('‘¦€', '–³', 60); &defeat($m); $ms{$m}{mp} = 1;	}],
-		[20,	0,		'‚Ë‚é',			sub{ $ms{$m}{state}='–°‚è'; $com.=qq|<span class="state">$m‚Í–°‚è‚¾‚µ‚½</span>|; &_heal($m, $ms{$m}{mhp}*0.5);	}],
+		[10,	1,		'ãƒ¡ã‚¬ãƒ³ãƒ†',		sub{ $com.=qq|<span class="die">$mã¯è‡ªçˆ†ã—ãŸï¼</span>|; &_deaths('å³æ­»', 'ç„¡', 60); &defeat($m); $ms{$m}{mp} = 1;	}],
+		[20,	0,		'ã­ã‚‹',			sub{ $ms{$m}{state}='çœ ã‚Š'; $com.=qq|<span class="state">$mã¯çœ ã‚Šã ã—ãŸ</span>|; &_heal($m, $ms{$m}{mhp}*0.5);	}],
 	);
 }
-sub skill_95 { # ¢Š«
+sub skill_95 { # å¬å–š
 	return (
-		[0,		50,		'‚µ‚å‚¤‚©‚ñ',	sub{ &_add_enemy	}],
-		[0,		50,		'‚µ‚å‚¤‚©‚ñ',	sub{ &_add_enemy	}],
+		[0,		50,		'ã—ã‚‡ã†ã‹ã‚“',	sub{ &_add_enemy	}],
+		[0,		50,		'ã—ã‚‡ã†ã‹ã‚“',	sub{ &_add_enemy	}],
 	);
 }
-sub skill_96 { # ÄŞ°ÙÏ½À°
+sub skill_96 { # ãƒ‰ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ¼
 	return (
-		[0,	0,		'‚ ‚â‚Â‚é',			sub{ my($y) = &_check_enemy(shift, '‘€‚é', '–³'); my @alfas = ('A'..'Z'); $ms{$y}{name} = '@lŒ`'.$alfas[int(rand(@alfas))]; $ms{$y}{color}=$ms{$m}{color}; $ms{$y}{addr} = 0; $com.=qq|<span class="die">$y‚Í$m‚Ì‚ ‚â‚Â‚èlŒ`‚Æ‚È‚Á‚½I</span>|;	}],
-		[0,	0,		'ƒN[ƒ‹ƒWƒ‡[ƒN',	sub{ for my $y (@enemys) { $ms{$y}{ten} = 1; }; $com.="‘Sˆõ‚Ìƒeƒ“ƒVƒ‡ƒ“‚ª‰º‚ª‚Á‚½c";	}],
+		[0,	0,		'ã‚ã‚„ã¤ã‚‹',			sub{ my($y) = &_check_enemy(shift, 'æ“ã‚‹', 'ç„¡'); my @alfas = ('A'..'Z'); $ms{$y}{name} = '@äººå½¢'.$alfas[int(rand(@alfas))]; $ms{$y}{color}=$ms{$m}{color}; $ms{$y}{addr} = 0; $com.=qq|<span class="die">$yã¯$mã®ã‚ã‚„ã¤ã‚Šäººå½¢ã¨ãªã£ãŸï¼</span>|;	}],
+		[0,	0,		'ã‚¯ãƒ¼ãƒ«ã‚¸ãƒ§ãƒ¼ã‚¯',	sub{ for my $y (@enemys) { $ms{$y}{ten} = 1; }; $com.="å…¨å“¡ã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ãŒä¸‹ãŒã£ãŸâ€¦";	}],
 	);
 }
-sub skill_97 { # ’´UŒ‚Œ^(”j‰ó_[king1]A¶À½ÄÛÌ¨°[21]AÙ¼Ì§°[20])
+sub skill_97 { # è¶…æ”»æ’ƒå‹(ç ´å£Šç¥[king1]ã€ã‚«ã‚¿ã‚¹ãƒˆãƒ­ãƒ•ã‚£ãƒ¼[21]ã€ãƒ«ã‚·ãƒ•ã‚¡ãƒ¼[20])
 	return (
-		[0,		24,		'‚İ‚¾‚ê‚¤‚¿',		sub{ my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.85, 'U'); };		}],
-		[0,		20,		'‚Î‚­‚ê‚Â‚¯‚ñ',		sub{ my $v = int(rand(3)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.9, 'U'); };	}],
-		[0,		30,		'‚¢‚Ä‚Â‚­‚Í‚Ç‚¤',	sub{ for my $y (@members) { my $tten=$ms{$y}{ten}; &reset_status($y); $ms{$y}{ten}=$tten; }; $com.=qq|<span class="st_down">‘S‚Ä‚ÌŒø‰Ê‚ª‚©‚«Á‚³‚ê‚½I</span>|;	}],
-		[0,		9,		'‚ß‚¢‚â‚­',			sub{ my $v = int($ms{$m}{df} * 0.5); $ms{$m}{df} -= $v; $com.=qq|$m‚Ì<span class="st_down">$e2j{df}‚ª $v ‚³‚ª‚è‚Ü‚µ‚½I</span>|; &_st_up($m, 1.0, '–³', 'at');	}],
-		[0,		30,		'‚¾‚¢‚Ú‚¤‚»‚¤',		sub{ &_damages(300, 'U', 1); $ms{$m}{tmp}='‚Q”{';	}],
-		[0,		40,		'‚ ‚ñ‚±‚­‚¯‚ñ',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*2.5, 'U'); return if $v <= 0; &_risk($v * 0.2);		}],
-		[0,		33,		'‚«‚ ‚¢‚½‚ß',		sub{ $ms{$m}{tmp}='‚Q”{'; &tenshon($m); &tenshon($m);	}],
-		[0,		80,		'‚µ‚Á‚±‚­‚Ì‚Ù‚Ì‚¨',	sub{ &_damages(400, '‘§', 1);	}],
-		[0,		70,		'ƒWƒSƒXƒp[ƒN',		sub{ $is_add_effect = 1; &_damages(250, '–‚', 1); &_st_ds('–ƒáƒ', '–‚', 20);	}],
-		[0,		42,		'‚µ‚Ì‚¹‚ñ‚±‚­',		sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$y‚É‚Í‚«‚©‚È‚©‚Á‚½I"; } else { &_st_down($y, 0.75, '–‚', 'hp'); $ms{$y}{state}='–Ò“Å'; };	}],
-		[0,		66,		'‚â‚İ‚Ì‚Ä‚ñ‚µ',		sub{ $is_add_effect = 1; &_damages(260, '–‚', 1); &_st_ds('–°‚è', '–‚', 30);		}],
+		[0,		24,		'ã¿ã ã‚Œã†ã¡',		sub{ my $v = int(rand(2)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.85, 'æ”»'); };		}],
+		[0,		20,		'ã°ãã‚Œã¤ã‘ã‚“',		sub{ my $v = int(rand(3)+3); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, $ms{$m}{at}*0.9, 'æ”»'); };	}],
+		[0,		30,		'ã„ã¦ã¤ãã¯ã©ã†',	sub{ for my $y (@members) { my $tten=$ms{$y}{ten}; &reset_status($y); $ms{$y}{ten}=$tten; }; $com.=qq|<span class="st_down">å…¨ã¦ã®åŠ¹æœãŒã‹ãæ¶ˆã•ã‚ŒãŸï¼</span>|;	}],
+		[0,		9,		'ã‚ã„ã‚„ã',			sub{ my $v = int($ms{$m}{df} * 0.5); $ms{$m}{df} -= $v; $com.=qq|$mã®<span class="st_down">$e2j{df}ãŒ $v ã•ãŒã‚Šã¾ã—ãŸï¼</span>|; &_st_up($m, 1.0, 'ç„¡', 'at');	}],
+		[0,		30,		'ã ã„ã¼ã†ãã†',		sub{ &_damages(300, 'æ”»', 1); $ms{$m}{tmp}='ï¼’å€';	}],
+		[0,		40,		'ã‚ã‚“ã“ãã‘ã‚“',		sub{ my($y, $v) = &_damage(shift, $ms{$m}{at}*2.5, 'æ”»'); return if $v <= 0; &_risk($v * 0.2);		}],
+		[0,		33,		'ãã‚ã„ãŸã‚',		sub{ $ms{$m}{tmp}='ï¼’å€'; &tenshon($m); &tenshon($m);	}],
+		[0,		80,		'ã—ã£ã“ãã®ã»ã®ãŠ',	sub{ &_damages(400, 'æ¯', 1);	}],
+		[0,		70,		'ã‚¸ã‚´ã‚¹ãƒ‘ãƒ¼ã‚¯',		sub{ $is_add_effect = 1; &_damages(250, 'é­”', 1); &_st_ds('éº»ç—º', 'é­”', 20);	}],
+		[0,		42,		'ã—ã®ã›ã‚“ã“ã',		sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yã«ã¯ãã‹ãªã‹ã£ãŸï¼"; } else { &_st_down($y, 0.75, 'é­”', 'hp'); $ms{$y}{state}='çŒ›æ¯’'; };	}],
+		[0,		66,		'ã‚„ã¿ã®ã¦ã‚“ã—',		sub{ $is_add_effect = 1; &_damages(260, 'é­”', 1); &_st_ds('çœ ã‚Š', 'é­”', 30);		}],
 	);
 }
-sub skill_98 { # ’´–‚–@Œ^(±ÙÃÏ[map/10])
+sub skill_98 { # è¶…é­”æ³•å‹(ã‚¢ãƒ«ãƒ†ãƒ[map/10])
 	return (
-		[0,		44,		'‚±‚±‚ë‚È‚¢‚Ä‚ñ‚µ',	sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$y‚É‚Í‚«‚©‚È‚©‚Á‚½I"; } else { $ms{$y}{hp}=1; $com.=qq|$y‚Í<span class="st_down">¶–½—Í‚ğ¸‚Á‚½</span>I|;; };	}],
-		[0,		30,		'‚¢‚Ä‚Â‚­‚Í‚Ç‚¤',	sub{ for my $y (@members) { my $tten=$ms{$y}{ten}; &reset_status($y); $ms{$y}{ten}=$tten; }; $com.=qq|<span class="st_down">‘S‚Ä‚ÌŒø‰Ê‚ª‚©‚«Á‚³‚ê‚½I</span>|;	}],
-		[0,		30,		'ƒJ[ƒoƒ“ƒNƒ‹',		sub{ return if &is_bad_state('–‚'); $com.="—ƒ‹ƒr[‚ÌŒõ—"; for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚”½Œ‚'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚Ì•Ç‚Éç‚ç‚ê‚½I</span>|;};	}],
-		[0,		23,		'ƒ}ƒCƒeƒBƒK[ƒh',	sub{ &_st_ups(0.5, '–‚', 'df'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = '–‚ŒyŒ¸'; $com.=qq|<span class="tmp">$y‚Í–‚–@‚ÌŒõ‚Åç‚ç‚ê‚½I</span>|;};	}],
-		[0,		44,		'‚©‚­‚¹‚¢',			sub{ $ms{$m}{tmp}='‚Q”{'; &tenshon($m); &tenshon($m); 		}],
-		[0,		44,		'‚±‚±‚ë‚È‚¢‚Ä‚ñ‚µ',	sub{ my($y) = &_check_enemy(shift, '•m€', '–‚'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$y‚É‚Í‚«‚©‚È‚©‚Á‚½I"; } else { $ms{$y}{hp}=1; $com.=qq|$y‚Í<span class="st_down">¶–½—Í‚ğ¸‚Á‚½</span>I|;; };	}],
-		[0,		40,		'ƒuƒ‰ƒbƒhƒŒƒCƒ“',	sub{ &_damages(200, '–‚', 1); &_heals(200, '–‚'); 	}],
-		[0,		40,		'ƒoƒuƒ‹ƒ{ƒ€',		sub{ for my $y (@enemys) { &_damage($y, 100, '‘§', 1); $com.="$y‚Í‚ ‚â‚µ‚¢‰t‘Ì‚ª‚©‚©‚Á‚½I"; $ms{$y}{tmp}='‚Q”{'; }; 	}],
-		[0,		80,		'‚µ‚Á‚±‚­‚Ì‚Ù‚Ì‚¨',	sub{ &_damages(350, '‘§', 1);	}],
-		[0,		99,		'ƒ_[ƒNƒƒeƒI',		sub{ my $v = int(rand(3)+4); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, 250, '–‚', 1); };	}],
-		[0,		99,		'ƒAƒ‹ƒeƒ}',			sub{ &_damages(400, '–‚', 1);	}],
+		[0,		44,		'ã“ã“ã‚ãªã„ã¦ã‚“ã—',	sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yã«ã¯ãã‹ãªã‹ã£ãŸï¼"; } else { $ms{$y}{hp}=1; $com.=qq|$yã¯<span class="st_down">ç”Ÿå‘½åŠ›ã‚’å¤±ã£ãŸ</span>ï¼|;; };	}],
+		[0,		30,		'ã„ã¦ã¤ãã¯ã©ã†',	sub{ for my $y (@members) { my $tten=$ms{$y}{ten}; &reset_status($y); $ms{$y}{ten}=$tten; }; $com.=qq|<span class="st_down">å…¨ã¦ã®åŠ¹æœãŒã‹ãæ¶ˆã•ã‚ŒãŸï¼</span>|;	}],
+		[0,		30,		'ã‚«ãƒ¼ãƒãƒ³ã‚¯ãƒ«',		sub{ return if &is_bad_state('é­”'); $com.="ï¼ ãƒ«ãƒ“ãƒ¼ã®å…‰ï¼ "; for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”åæ’ƒ'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å£ã«å®ˆã‚‰ã‚ŒãŸï¼</span>|;};	}],
+		[0,		23,		'ãƒã‚¤ãƒ†ã‚£ã‚¬ãƒ¼ãƒ‰',	sub{ &_st_ups(0.5, 'é­”', 'df'); for my $y (@partys) { next if $ms{$y}{hp} <= 0; $ms{$y}{tmp} = 'é­”è»½æ¸›'; $com.=qq|<span class="tmp">$yã¯é­”æ³•ã®å…‰ã§å®ˆã‚‰ã‚ŒãŸï¼</span>|;};	}],
+		[0,		44,		'ã‹ãã›ã„',			sub{ $ms{$m}{tmp}='ï¼’å€'; &tenshon($m); &tenshon($m); 		}],
+		[0,		44,		'ã“ã“ã‚ãªã„ã¦ã‚“ã—',	sub{ my($y) = &_check_enemy(shift, 'ç€•æ­»', 'é­”'); return if !$y; if ($ms{$y}{mhp}>999 || $ms{$y}{mdf}>999) { $com.="$yã«ã¯ãã‹ãªã‹ã£ãŸï¼"; } else { $ms{$y}{hp}=1; $com.=qq|$yã¯<span class="st_down">ç”Ÿå‘½åŠ›ã‚’å¤±ã£ãŸ</span>ï¼|;; };	}],
+		[0,		40,		'ãƒ–ãƒ©ãƒƒãƒ‰ãƒ¬ã‚¤ãƒ³',	sub{ &_damages(200, 'é­”', 1); &_heals(200, 'é­”'); 	}],
+		[0,		40,		'ãƒãƒ–ãƒ«ãƒœãƒ ',		sub{ for my $y (@enemys) { &_damage($y, 100, 'æ¯', 1); $com.="$yã¯ã‚ã‚„ã—ã„æ¶²ä½“ãŒã‹ã‹ã£ãŸï¼"; $ms{$y}{tmp}='ï¼’å€'; }; 	}],
+		[0,		80,		'ã—ã£ã“ãã®ã»ã®ãŠ',	sub{ &_damages(350, 'æ¯', 1);	}],
+		[0,		99,		'ãƒ€ãƒ¼ã‚¯ãƒ¡ãƒ†ã‚ª',		sub{ my $v = int(rand(3)+4); for my $i (1..$v) { last if $ms{$m}{hp} <= 0; &_damage(undef, 250, 'é­”', 1); };	}],
+		[0,		99,		'ã‚¢ãƒ«ãƒ†ãƒ',			sub{ &_damages(400, 'é­”', 1);	}],
 	);
 }
-sub skill_99 { # ‚É‚°‚¾‚·
+sub skill_99 { # ã«ã’ã ã™
 	return (
-		[0,		0,	'‚É‚°‚¾‚·',		sub{ $com.="$m‚Í“¦‚°o‚µ‚½I"; $ms{$m}{hp} = 0;	}],
+		[0,		0,	'ã«ã’ã ã™',		sub{ $com.="$mã¯é€ƒã’å‡ºã—ãŸï¼"; $ms{$m}{hp} = 0;	}],
 	);
 }
-sub skill_100 { # ÄİÍŞØ
+sub skill_100 { # ãƒˆãƒ³ãƒ™ãƒª
 	return (
-		[0,		99,		'‚İ‚ñ‚È‚Ì‚¤‚ç‚İ',	sub{ &_damage(shift, $m{kill_m}*0.1, 'U', 1);	}],
-		[0,		99,		'‚Ù‚¤‚¿‚å‚¤',		sub{ &_damage(shift, 666, 'U', 1);	}],
+		[0,		99,		'ã¿ã‚“ãªã®ã†ã‚‰ã¿',	sub{ &_damage(shift, $m{kill_m}*0.1, 'æ”»', 1);	}],
+		[0,		99,		'ã»ã†ã¡ã‚‡ã†',		sub{ &_damage(shift, 666, 'æ”»', 1);	}],
 	);
 }
-sub skill_101 { # ˆÃ•—³(ÀÏºŞ)
+sub skill_101 { # æš—é»’ç«œ(ã‚¿ãƒã‚´)
 	return (
-		[0,		50,		'‚µ‚å‚¤‚©‚ñ',	sub{ if ($ms{$m}{icon} =~ /710/ && $ms{$m}{hp} < $ms{$m}{mhp} * 0.2) { $com.="‚È‚ñ‚ÆAƒ^ƒ}ƒS‚Éƒqƒr‚ªcI$m‚Ì••ˆó‚ªŠ®‘S‚É‰ğ‚¯‚Ä‚µ‚Ü‚Á‚½I"; $ms{$m}{icon}='mon/712.gif'; $ms{$m}{job}=97; $ms{$m}{hp}=$ms{$m}{mhp}; $ms{$m}{mp}=int($ms{$m}{mmp}*0.1); for my $k (qw/at df ag/){ $ms{$m}{$k} = $ms{$m}{'m'.$k} = 600; }; } else { &_add_enemy }; 	}],
-		[0,		50,		'‚µ‚å‚¤‚©‚ñ',	sub{ if ($ms{$m}{icon} =~ /710/ && $ms{$m}{hp} < $ms{$m}{mhp} * 0.1) { $com.="‚È‚ñ‚ÆAƒ^ƒ}ƒS‚Éƒqƒr‚ªcI$m‚Ì••ˆó‚ªŠ®‘S‚É‰ğ‚¯‚Ä‚µ‚Ü‚Á‚½I"; $ms{$m}{icon}='mon/712.gif'; $ms{$m}{job}=97; $ms{$m}{hp}=$ms{$m}{mhp}; $ms{$m}{mp}=int($ms{$m}{mmp}*0.1); for my $k (qw/at df ag/){ $ms{$m}{$k} = $ms{$m}{'m'.$k} = 600; }; } else { &_add_enemy }; 	}],
+		[0,		50,		'ã—ã‚‡ã†ã‹ã‚“',	sub{ if ($ms{$m}{icon} =~ /710/ && $ms{$m}{hp} < $ms{$m}{mhp} * 0.2) { $com.="ãªã‚“ã¨ã€ã‚¿ãƒã‚´ã«ãƒ’ãƒ“ãŒâ€¦ï¼$mã®å°å°ãŒå®Œå…¨ã«è§£ã‘ã¦ã—ã¾ã£ãŸï¼"; $ms{$m}{icon}='mon/712.gif'; $ms{$m}{job}=97; $ms{$m}{hp}=$ms{$m}{mhp}; $ms{$m}{mp}=int($ms{$m}{mmp}*0.1); for my $k (qw/at df ag/){ $ms{$m}{$k} = $ms{$m}{'m'.$k} = 600; }; } else { &_add_enemy }; 	}],
+		[0,		50,		'ã—ã‚‡ã†ã‹ã‚“',	sub{ if ($ms{$m}{icon} =~ /710/ && $ms{$m}{hp} < $ms{$m}{mhp} * 0.1) { $com.="ãªã‚“ã¨ã€ã‚¿ãƒã‚´ã«ãƒ’ãƒ“ãŒâ€¦ï¼$mã®å°å°ãŒå®Œå…¨ã«è§£ã‘ã¦ã—ã¾ã£ãŸï¼"; $ms{$m}{icon}='mon/712.gif'; $ms{$m}{job}=97; $ms{$m}{hp}=$ms{$m}{mhp}; $ms{$m}{mp}=int($ms{$m}{mmp}*0.1); for my $k (qw/at df ag/){ $ms{$m}{$k} = $ms{$m}{'m'.$k} = 600; }; } else { &_add_enemy }; 	}],
 	);
 }
 
-#„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª
-# ‚±‚±‚Ü‚ÅBˆÈ‰ºƒTƒuƒ‹[ƒ`ƒ“
-#„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª
+#â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+# ã“ã“ã¾ã§ã€‚ä»¥ä¸‹ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³
+#â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
 #=================================================
-# ƒ_ƒ[ƒW(to “G)
+# ãƒ€ãƒ¡ãƒ¼ã‚¸(to æ•µ)
 #=================================================
-sub _damages { # “G‘S‘Ì
+sub _damages { # æ•µå…¨ä½“
 	my($v, $z, $is_direct) = @_;
 	return if &is_bad_state($z);
 	
-	if (@enemys < 1) { # “G‘S–Å
-		$mes = 'í‚¤‘Šè‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ';
+	if (@enemys < 1) { # æ•µå…¨æ»…
+		$mes = 'æˆ¦ã†ç›¸æ‰‹ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“';
 		return;
 	}
 	for my $y (@enemys) {
 		last if $ms{$m}{hp} <= 0;
 		&_damage($y, $v, $z, $is_direct);
-		$v *= 0.85; # •À‚Ñ‡‚Åƒ_ƒ[ƒWŒ¸
+		$v *= 0.85; # ä¸¦ã³é †ã§ãƒ€ãƒ¡ãƒ¼ã‚¸æ¸›
 	}
 }
-sub _damage { # “G’P‘Ì
+sub _damage { # æ•µå˜ä½“
 	my($y, $v, $z, $is_direct) = &_check_enemy(@_);
 	return if $mes;
 	return unless $v;
 
 	if ($ms{$y}{hp} <= 0) {
 		$y = $m;
-		$com .= "$m‚Í‚í‚¯‚à‚í‚©‚ç‚¸©•ª‚ğUŒ‚‚µ‚½I";
+		$com .= "$mã¯ã‚ã‘ã‚‚ã‚ã‹ã‚‰ãšè‡ªåˆ†ã‚’æ”»æ’ƒã—ãŸï¼";
 	}
 	
-	if ($z eq 'U' && ( $ms{$m}{hit} < rand(100) || &_is_exceed_ag($y, $m) ) ) {
-		$com .= "ƒ~ƒXI$y‚Í‚©‚í‚µ‚½I";
+	if ($z eq 'æ”»' && ( $ms{$m}{hit} < rand(100) || &_is_exceed_ag($y, $m) ) ) {
+		$com .= "ãƒŸã‚¹ï¼$yã¯ã‹ã‚ã—ãŸï¼";
 		$y = '';
 
 		$ms{$m}{ten} = 1;
@@ -1163,19 +1163,19 @@ sub _damage { # “G’P‘Ì
 		$v  = int(rand(2)+1) if $v < 1;
 
 		$ms{$y}{hp} -= $v;
-		$com .= qq|<b>$y</b>‚É <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒWI|;
+		$com .= qq|<b>$y</b>ã« <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ï¼|;
 		$ms{$m}{ten} = 1;
 
 		if ($ms{$y}{hp} <= 0) {
 			$ms{$y}{hp} = 0;
-			$com .= qq|<span class="die">$y‚ğ‚½‚¨‚µ‚½I</span>|;
-			&defeat($y); # “|‚µ‚½‚Æ‚«‚Ìˆ—
+			$com .= qq|<span class="die">$yã‚’ãŸãŠã—ãŸï¼</span>|;
+			&defeat($y); # å€’ã—ãŸã¨ãã®å‡¦ç†
 		}
 	
 		return $y, $v;
 	}
 }
-sub _risk { # ”½“®ƒ_ƒ[ƒW
+sub _risk { # åå‹•ãƒ€ãƒ¡ãƒ¼ã‚¸
 	my $v = shift;
 	
 	return if $ms{$m}{hp} <= 0;
@@ -1183,20 +1183,20 @@ sub _risk { # ”½“®ƒ_ƒ[ƒW
 	$v = int($v + 1);
 	$ms{$m}{hp} -= $v;
 	$ms{$m}{hp}  = 1 if $ms{$m}{hp} <= 0;
-	$com.=qq|$m‚Í”½“®‚Å <span class="damage">$v</span> ‚Ìƒ_ƒ[ƒW‚ğ‚¤‚¯‚½I|;
+	$com.=qq|$mã¯åå‹•ã§ <span class="damage">$v</span> ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ã†ã‘ãŸï¼|;
 }
 
 #=================================================
-# ‰ñ•œ(to –¡•û)
+# å›å¾©(to å‘³æ–¹)
 #=================================================
-sub _heals { # –¡•û‘S‘Ì
+sub _heals { # å‘³æ–¹å…¨ä½“
 	my($v, $z) = @_;
 	return if &is_bad_state($z);
 	for my $y (@partys) {
 		&_heal($y, $v, $z);
 	}
 }
-sub _heal { # –¡•û’P‘Ì
+sub _heal { # å‘³æ–¹å˜ä½“
 	my($y, $v) = &_check_party(@_);
 	return if $ms{$y}{hp} <= 0;
 	return unless $v;
@@ -1205,21 +1205,21 @@ sub _heal { # –¡•û’P‘Ì
 	$ms{$m}{ten} = 1;
 	$ms{$y}{hp} += $v;
 	$ms{$y}{hp}  = $ms{$y}{mhp} if $ms{$y}{hp} > $ms{$y}{mhp};
-	$com .= qq|<b>$y</b>‚Ì$e2j{mhp}‚ª <span class="heal">$v</span> ‰ñ•œ‚µ‚½I|;
+	$com .= qq|<b>$y</b>ã®$e2j{mhp}ãŒ <span class="heal">$v</span> å›å¾©ã—ãŸï¼|;
 	return 1;
 }
 
 #=================================================
-# –‚—Í‰ñ•œ(to –¡•û)
+# é­”åŠ›å›å¾©(to å‘³æ–¹)
 #=================================================
-sub _mp_hs { # –¡•û‘S‘Ì
+sub _mp_hs { # å‘³æ–¹å…¨ä½“
 	my($v, $z) = @_;
 	return if &is_bad_state($z);
 	for my $y (@partys) {
 		&_mp_h($y, $v, $z);
 	}
 }
-sub _mp_h { # –¡•û’P‘Ì
+sub _mp_h { # å‘³æ–¹å˜ä½“
 	my($y, $v) = &_check_party(@_);
 	return if $ms{$y}{hp} <= 0;
 	return unless $v;
@@ -1228,72 +1228,72 @@ sub _mp_h { # –¡•û’P‘Ì
 	$ms{$m}{ten} = 1;
 	$ms{$y}{mp} += $v;
 	$ms{$y}{mp}  = $ms{$y}{mmp} if $ms{$y}{mp} > $ms{$y}{mmp};
-	$com .= qq|<b>$y</b>‚Ì$e2j{mmp}‚ª <span class="heal">$v</span> ‰ñ•œ‚µ‚½I|;
+	$com .= qq|<b>$y</b>ã®$e2j{mmp}ãŒ <span class="heal">$v</span> å›å¾©ã—ãŸï¼|;
 	return 1;
 }
 
 #=================================================
-# ‘¦€(to “G)
+# å³æ­»(to æ•µ)
 #=================================================
-sub _deaths { # “G‘S‘Ì
+sub _deaths { # æ•µå…¨ä½“
 	my($v, $z, $par) = @_;
 	return if &is_bad_state($z);
-	if (@enemys < 1) { # “G‘S–Å
-		$mes = 'í‚¤‘Šè‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ';
+	if (@enemys < 1) { # æ•µå…¨æ»…
+		$mes = 'æˆ¦ã†ç›¸æ‰‹ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“';
 		return;
 	}
 	for my $y (@enemys) {
 		&_death($y, $v, $z, $par);
 	}
 }
-sub _death { # “G’P‘Ì
+sub _death { # æ•µå˜ä½“
 	my($y, $v, $z, $par) = &_check_enemy(@_);
 	return if $ms{$y}{hp} <= 0;
 	return if $mes;
 	return unless $v;
 	
 	if ($ms{$y}{hp} > 999 || $ms{$y}{mdf} > 999) {
-		return if $is_add_effect; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚É‚Í‚«‚©‚È‚©‚Á‚½c";
+		return if $is_add_effect; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã«ã¯ãã‹ãªã‹ã£ãŸâ€¦";
 	}
 	elsif ($par >= rand(100)) {
-		$com .= qq|<span class="die">$y‚Í€‚ñ‚Å‚µ‚Ü‚Á‚½I</span>|;
-		&defeat($y); # “|‚µ‚½‚Æ‚«‚Ìˆ—
+		$com .= qq|<span class="die">$yã¯æ­»ã‚“ã§ã—ã¾ã£ãŸï¼</span>|;
+		&defeat($y); # å€’ã—ãŸã¨ãã®å‡¦ç†
 	}
 	else {
-		return if $is_add_effect; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚Í‚©‚í‚µ‚½I";
+		return if $is_add_effect; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã¯ã‹ã‚ã—ãŸï¼";
 	}
 }
 
 #=================================================
-# ƒXƒe[ƒ^ƒXƒ_ƒEƒ“(to “G)
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ€ã‚¦ãƒ³(to æ•µ)
 #=================================================
-sub _st_downs { # “G‘S‘Ì
+sub _st_downs { # æ•µå…¨ä½“
 	my($v, $z, $k) = @_;
 	return if &is_bad_state($z);
-	if (@enemys < 1) { # “G‘S–Å
-		$mes = 'í‚¤‘Šè‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ';
+	if (@enemys < 1) { # æ•µå…¨æ»…
+		$mes = 'æˆ¦ã†ç›¸æ‰‹ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“';
 		return;
 	}
 	for my $y (@enemys) {
 		&_st_down($y, $v, $z, $k);
 	}
 }
-sub _st_down { # “G’P‘Ì
+sub _st_down { # æ•µå˜ä½“
 	my($y, $v, $z, $k) = &_check_enemy(@_);
 	return if $ms{$y}{hp} <= 0;
 	return if $mes;
 	return unless $v;
 
 	if ($ms{$y}{mdf} > 999 || ( ($k eq 'hp' || $k eq 'at') && $ms{$y}{hp} > 999) ) {
-		return if $is_add_effect; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚É‚Í‚«‚©‚È‚©‚Á‚½c";
+		return if $is_add_effect; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã«ã¯ãã‹ãªã‹ã£ãŸâ€¦";
 		return;
 	}
 	elsif ($ms{$y}{$k} <= $ms{$y}{'m'.$k} * 0.2 || ($k eq 'hit' && $ms{$y}{$k} <= 50) ) {
-		return if $is_add_effect; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚É‚Í‚±‚êˆÈãŒø‰Ê‚ª‚È‚¢‚æ‚¤‚¾c";
+		return if $is_add_effect; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã«ã¯ã“ã‚Œä»¥ä¸ŠåŠ¹æœãŒãªã„ã‚ˆã†ã â€¦";
 		return;
 	}
 	
@@ -1303,29 +1303,29 @@ sub _st_down { # “G’P‘Ì
 	$ms{$y}{$k} -= $v;
 	$ms{$y}{$k} = int($ms{$y}{'m'.$k} * 0.2) if $ms{$y}{$k} < $ms{$y}{'m'.$k} * 0.2;
 	$ms{$y}{$k} = 50 if $k eq 'hit' && $ms{$y}{$k} < 50;
-	$com .= qq|$y‚Ì<span class="st_down">$e2j{$k}‚ª $v ‚³‚ª‚Á‚½I</span>|;
+	$com .= qq|$yã®<span class="st_down">$e2j{$k}ãŒ $v ã•ãŒã£ãŸï¼</span>|;
 	return $y, $v;
 }
 
 #=================================================
-# ƒXƒe[ƒ^ƒXƒAƒbƒv(to –¡•û)
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¢ãƒƒãƒ—(to å‘³æ–¹)
 #=================================================
-sub _st_ups { # –¡•û‘S‘Ì
+sub _st_ups { # å‘³æ–¹å…¨ä½“
 	my($v, $z, $k) = @_;
 	return if &is_bad_state($z);
 	for my $y (@partys) {
 		&_st_up($y, $v, $z, $k);
 	}
 }
-sub _st_up { # –¡•û’P‘Ì
+sub _st_up { # å‘³æ–¹å˜ä½“
 	my($y, $v, $z, $k) = &_check_party(@_);
 	return if $ms{$y}{hp} <= 0;
 	return if $v <= 0;
 	return unless $v;
 
 	if ($ms{$y}{$k} >= $ms{$y}{'m'.$k} * 2.5) {
-		return if $is_add_effect; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚É‚Í‚±‚êˆÈãŒø‰Ê‚Í‚È‚¢‚æ‚¤‚¾c";
+		return if $is_add_effect; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã«ã¯ã“ã‚Œä»¥ä¸ŠåŠ¹æœã¯ãªã„ã‚ˆã†ã â€¦";
 		return $y, $v;
 	}
 	
@@ -1333,48 +1333,48 @@ sub _st_up { # –¡•û’P‘Ì
 	$ms{$m}{ten} = 1;
 	$ms{$y}{$k} += $v;
 	$ms{$y}{$k} = int($ms{$y}{'m'.$k} * 2.5) if $ms{$y}{$k} > $ms{$y}{'m'.$k} * 2.5;
-	$com .= qq|$y‚Ì<span class="st_up">$e2j{$k}‚ª $v ‚ ‚ª‚Á‚½I</span>|;
+	$com .= qq|$yã®<span class="st_up">$e2j{$k}ãŒ $v ã‚ãŒã£ãŸï¼</span>|;
 	return $y, $v;
 }
 #=================================================
-# ƒXƒe[ƒ^ƒXˆÙí(to “G)
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ç•°å¸¸(to æ•µ)
 #=================================================
-sub _st_ds { # “G‘S‘Ì
+sub _st_ds { # æ•µå…¨ä½“
 	my($v, $z, $par) = @_;
 	return if &is_bad_state($z);
-	if (@enemys < 1) { # “G‘S–Å
-		$mes = 'í‚¤‘Šè‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ';
+	if (@enemys < 1) { # æ•µå…¨æ»…
+		$mes = 'æˆ¦ã†ç›¸æ‰‹ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“';
 		return;
 	}
 	for my $y (@enemys) {
 		&_st_d($y, $v, $z, $par);
 	}
 }
-sub _st_d { # “G’P‘Ì
+sub _st_d { # æ•µå˜ä½“
 	my($y, $v, $z, $par) = &_check_enemy(@_);
 	return if $ms{$y}{hp} <= 0;
 	return if $mes;
 	return unless $v;
 	
 	if ($ms{$y}{mhp} > 999 || $ms{$y}{mdf} > 999) {
-		return if $is_add_effect; # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚É‚Í‚«‚©‚È‚©‚Á‚½c";
+		return if $is_add_effect; # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã«ã¯ãã‹ãªã‹ã£ãŸâ€¦";
 	}
 	elsif ($par > rand(100)) {
 		$ms{$y}{state} = $v;
-		$ms{$y}{ten} = 1; # ‘Šè‚Ìƒeƒ“ƒVƒ‡ƒ“‚ğ–ß‚·
-		$com .= qq|<span class="state">$y‚Ì$e2j{state}‚ª$v‚É‚È‚è‚Ü‚µ‚½I</span>|;
+		$ms{$y}{ten} = 1; # ç›¸æ‰‹ã®ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ã‚’æˆ»ã™
+		$com .= qq|<span class="state">$yã®$e2j{state}ãŒ$vã«ãªã‚Šã¾ã—ãŸï¼</span>|;
 	}
-	elsif (!$is_add_effect) { # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚Í‚©‚í‚µ‚½I";
+	elsif (!$is_add_effect) { # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã¯ã‹ã‚ã—ãŸï¼";
 	}
 	return $y, $v;
 }
 
 #=================================================
-# ƒXƒe[ƒ^ƒXˆÙí‰ñ•œ(to –¡•û)
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ç•°å¸¸å›å¾©(to å‘³æ–¹)
 #=================================================
-sub _st_hs { # –¡•û‘S‘Ì
+sub _st_hs { # å‘³æ–¹å…¨ä½“
 	my($v, $z) = @_;
 	return if &is_bad_state($z);
 	$is_add_effect = 1;
@@ -1382,81 +1382,81 @@ sub _st_hs { # –¡•û‘S‘Ì
 		&_st_h($y, $v, $z);
 	}
 }
-sub _st_h { # –¡•û’P‘Ì
+sub _st_h { # å‘³æ–¹å˜ä½“
 	my($y, $v) = &_check_party(@_);
 	return if $ms{$y}{hp} <= 0;
 	return if $v eq '';
 	return unless $v;
 	
-	# ó‘ÔˆÙí‚Æ‰ñ•œ•û–@‚ª“¯‚¶‘®«‚©‚Ç‚¤‚©
+	# çŠ¶æ…‹ç•°å¸¸ã¨å›å¾©æ–¹æ³•ãŒåŒã˜å±æ€§ã‹ã©ã†ã‹
 	if ($ms{$y}{state} eq $v) {
-		$com .= qq|<span class="heal">$y‚Ì$ms{$y}{state}‚ª¡‚è‚Ü‚µ‚½I</span>|;
+		$com .= qq|<span class="heal">$yã®$ms{$y}{state}ãŒæ²»ã‚Šã¾ã—ãŸï¼</span>|;
 		$ms{$y}{state} = '';
 	}
-	elsif (!$is_add_effect) { # ’Ç‰ÁŒø‰Ê‚Ìê‡‚Í”ñ•\¦
-		$com .= "$y‚É‚ÍŒø‰Ê‚ª‚È‚¢‚æ‚¤‚¾c";
+	elsif (!$is_add_effect) { # è¿½åŠ åŠ¹æœã®å ´åˆã¯éè¡¨ç¤º
+		$com .= "$yã«ã¯åŠ¹æœãŒãªã„ã‚ˆã†ã â€¦";
 	}
 	return $y, $v;
 }
 
 #=================================================
-# “ÁêŒø‰Ê@Œø‰Ê‚Í‚Pƒ^[ƒ“
+# ç‰¹æ®ŠåŠ¹æœã€€åŠ¹æœã¯ï¼‘ã‚¿ãƒ¼ãƒ³
 #=================================================
-# $_[0]:‘Šè–¼, $_[1]:ƒ_ƒ[ƒWC$_[2]:‘®«
-# return (‘ŠèCƒ_ƒ[ƒW)
+# $_[0]:ç›¸æ‰‹å, $_[1]:ãƒ€ãƒ¡ãƒ¼ã‚¸ï¼Œ$_[2]:å±æ€§
+# return (ç›¸æ‰‹ï¼Œãƒ€ãƒ¡ãƒ¼ã‚¸)
 my %tmps = (
-	'‚©‚Î‚¤'	=> sub{ for my $name (@members) { next if $ms{$name}{tmp} ne '‚©‚Î‚¢’†'; next if $ms{$name}{color} ne $ms{$_[0]}{color}; $com.="$name‚ª$_[0]‚ğ‚©‚Î‚Á‚½I"; return $name; }; return; },
+	'ã‹ã°ã†'	=> sub{ for my $name (@members) { next if $ms{$name}{tmp} ne 'ã‹ã°ã„ä¸­'; next if $ms{$name}{color} ne $ms{$_[0]}{color}; $com.="$nameãŒ$_[0]ã‚’ã‹ã°ã£ãŸï¼"; return $name; }; return; },
 
-	'‘å–hŒä'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/; return $_[0], $_[1]*0.1; },
-	'–hŒä'		=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/; return $_[0], $_[1]*0.5; },
-	'UŒyŒ¸'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/ || $_[2] ne 'U'; return $_[0], $_[1]*0.25; },
-	'–‚ŒyŒ¸'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/ || $_[2] ne '–‚'; return $_[0], $_[1]*0.25; },
-	'‘§ŒyŒ¸'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/ || $_[2] ne '‘§'; return $_[0], $_[1]*0.25; },
+	'å¤§é˜²å¾¡'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/; return $_[0], $_[1]*0.1; },
+	'é˜²å¾¡'		=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/; return $_[0], $_[1]*0.5; },
+	'æ”»è»½æ¸›'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/ || $_[2] ne 'æ”»'; return $_[0], $_[1]*0.25; },
+	'é­”è»½æ¸›'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/ || $_[2] ne 'é­”'; return $_[0], $_[1]*0.25; },
+	'æ¯è»½æ¸›'	=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/ || $_[2] ne 'æ¯'; return $_[0], $_[1]*0.25; },
 
-	'‚Q”{'		=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/; return $_[0], $_[1]*2.0; },
+	'ï¼’å€'		=> sub{ return if $_[1] !~ /^[0-9\-\.]+$/; return $_[0], $_[1]*2.0; },
 
-	'U”½Œ‚'	=> sub{ return if $_[2] ne 'U'; $com.=qq|$_[0]‚Í<span class="tmp">UŒ‚‚ğ‚Í‚Ë•Ô‚µ‚½I</span>|;   return $m; },
-	'–‚”½Œ‚'	=> sub{ return if $_[2] ne '–‚'; $com.=qq|$_[0]‚Í<span class="tmp">–‚–@‚ğ‚Í‚Ë•Ô‚µ‚½I</span>|;   return $m; },
-	'‘§”½Œ‚'	=> sub{ return if $_[2] ne '‘§'; $com.=qq|$_[0]‚Í<span class="tmp">ƒuƒŒƒX‚ğ‚Í‚Ë•Ô‚µ‚½I</span>|; return $m; },
-	'—x”½Œ‚'	=> sub{ return if $_[2] ne '—x'; $com.=qq|$_[0]‚Í<span class="tmp">—x‚è•Ô‚µ‚½I</span>|;         return $m; },
+	'æ”»åæ’ƒ'	=> sub{ return if $_[2] ne 'æ”»'; $com.=qq|$_[0]ã¯<span class="tmp">æ”»æ’ƒã‚’ã¯ã­è¿”ã—ãŸï¼</span>|;   return $m; },
+	'é­”åæ’ƒ'	=> sub{ return if $_[2] ne 'é­”'; $com.=qq|$_[0]ã¯<span class="tmp">é­”æ³•ã‚’ã¯ã­è¿”ã—ãŸï¼</span>|;   return $m; },
+	'æ¯åæ’ƒ'	=> sub{ return if $_[2] ne 'æ¯'; $com.=qq|$_[0]ã¯<span class="tmp">ãƒ–ãƒ¬ã‚¹ã‚’ã¯ã­è¿”ã—ãŸï¼</span>|; return $m; },
+	'è¸Šåæ’ƒ'	=> sub{ return if $_[2] ne 'è¸Š'; $com.=qq|$_[0]ã¯<span class="tmp">è¸Šã‚Šè¿”ã—ãŸï¼</span>|;         return $m; },
 
-	'ó—¬‚µ'	=> sub{ return if $_[2] ne 'U'; $com.=qq|$_[0]‚Í<span class="tmp">ó—¬‚µ‚½I</span>|; my $y = rand(2)<1 ? $partys[int(rand(@partys))] : $enemys[int(rand(@enemys))]; $com.="‚µ‚©‚µA$_[0]‚Íó—¬‚·‚Ì‚É¸”s‚µ‚½I" if $_[0] eq $y; return $y; },
+	'å—æµã—'	=> sub{ return if $_[2] ne 'æ”»'; $com.=qq|$_[0]ã¯<span class="tmp">å—æµã—ãŸï¼</span>|; my $y = rand(2)<1 ? $partys[int(rand(@partys))] : $enemys[int(rand(@enemys))]; $com.="ã—ã‹ã—ã€$_[0]ã¯å—æµã™ã®ã«å¤±æ•—ã—ãŸï¼" if $_[0] eq $y; return $y; },
 
-	'–‚‹zû'	=> sub{ return if $_[2] ne '–‚'; my $v = $_[1] < 50 ? int(rand(20)+30) : int( $_[1] * (rand(0.3)+0.2) ); $com.=qq|$_[0]‚Í$e2j{mp}‚ğ <span class="heal">$v</span> ‹zû‚µ‚½I|; $ms{$_[0]}{mp} += $v; $ms{$_[0]}{mp} = $ms{$_[0]}{mmp} if $ms{$_[0]}{mp} > $ms{$_[0]}{mmp};return; },
+	'é­”å¸å'	=> sub{ return if $_[2] ne 'é­”'; my $v = $_[1] < 50 ? int(rand(20)+30) : int( $_[1] * (rand(0.3)+0.2) ); $com.=qq|$_[0]ã¯$e2j{mp}ã‚’ <span class="heal">$v</span> å¸åã—ãŸï¼|; $ms{$_[0]}{mp} += $v; $ms{$_[0]}{mp} = $ms{$_[0]}{mmp} if $ms{$_[0]}{mp} > $ms{$_[0]}{mmp};return; },
 
-	'U–³Œø'	=> sub{ return if $_[2] ne 'U'; $com.=qq|$_[0]‚Í<span class="tmp">UŒ‚‚ğ‚¤‚¯‚Â‚¯‚È‚¢I</span>|; return $_[0], 0; },
-	'–‚–³Œø'	=> sub{ return if $_[2] ne '–‚'; $com.=qq|$_[0]‚Í<span class="tmp">–‚–@‚ğ‚¤‚¯‚Â‚¯‚È‚¢I</span>|; return $_[0], 0; },
+	'æ”»ç„¡åŠ¹'	=> sub{ return if $_[2] ne 'æ”»'; $com.=qq|$_[0]ã¯<span class="tmp">æ”»æ’ƒã‚’ã†ã‘ã¤ã‘ãªã„ï¼</span>|; return $_[0], 0; },
+	'é­”ç„¡åŠ¹'	=> sub{ return if $_[2] ne 'é­”'; $com.=qq|$_[0]ã¯<span class="tmp">é­”æ³•ã‚’ã†ã‘ã¤ã‘ãªã„ï¼</span>|; return $_[0], 0; },
 );
 
 sub is_bad_state {
 	my $z = shift;
-	if ($z eq '–‚' && $ms{$m}{state} eq '–‚••') {
+	if ($z eq 'é­”' && $ms{$m}{state} eq 'é­”å°') {
 		if (rand(4)<1) {
-			$com .= qq|<span class="heal">$m‚Í–‚–@‚ªg‚¦‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½I</span>|;
+			$com .= qq|<span class="heal">$mã¯é­”æ³•ãŒä½¿ãˆã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸï¼</span>|;
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "‚µ‚©‚µA$m‚Í–‚–@‚ª••‚¶‚ç‚ê‚Ä‚¢‚½";
+			$com .= "ã—ã‹ã—ã€$mã¯é­”æ³•ãŒå°ã˜ã‚‰ã‚Œã¦ã„ãŸ";
 			return 1;
 		}
 	}
-	elsif ($z eq '—x' && $ms{$m}{state} eq '—x••') {
+	elsif ($z eq 'è¸Š' && $ms{$m}{state} eq 'è¸Šå°') {
 		if (rand(4)<1) {
-			$com .= qq|<span class="heal">$m‚Í—x‚ê‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½I</span>|;
+			$com .= qq|<span class="heal">$mã¯è¸Šã‚Œã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸï¼</span>|;
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "‚µ‚©‚µA$m‚Í—x‚è‚ª••‚¶‚ç‚ê‚Ä‚¢‚½";
+			$com .= "ã—ã‹ã—ã€$mã¯è¸Šã‚ŠãŒå°ã˜ã‚‰ã‚Œã¦ã„ãŸ";
 			return 1;
 		}
 	}
-	elsif ($z eq 'U' && $ms{$m}{state} eq 'U••') {
+	elsif ($z eq 'æ”»' && $ms{$m}{state} eq 'æ”»å°') {
 		if (rand(4)<1) {
-			$com .= qq|<span class="heal">$m‚Í•¨—UŒ‚‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½I</span>|;
+			$com .= qq|<span class="heal">$mã¯ç‰©ç†æ”»æ’ƒãŒã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸï¼</span>|;
 			$ms{$m}{state} = '';
 		}
 		else {
-			$com .= "‚µ‚©‚µA$m‚Í•¨—UŒ‚‚ª••‚¶‚ç‚ê‚Ä‚¢‚½";
+			$com .= "ã—ã‹ã—ã€$mã¯ç‰©ç†æ”»æ’ƒãŒå°ã˜ã‚‰ã‚Œã¦ã„ãŸ";
 			return 1;
 		}
 	}
@@ -1464,23 +1464,23 @@ sub is_bad_state {
 }
 
 #=================================================
-# –¡•ûƒ`ƒFƒbƒN
+# å‘³æ–¹ãƒã‚§ãƒƒã‚¯
 #=================================================
 sub _check_party {
 	my($y, $v, $z, @etcs) = @_;
 	
 	return if &is_bad_state($z);
 	
-	if ($ms{$m}{state} eq '¬—') {
+	if ($ms{$m}{state} eq 'æ··ä¹±') {
 		$y = $members[int(rand(@members))];
 	}
 	else {
-		# w’è‚È‚µ or “G‚Ìê‡‚Íƒ‰ƒ“ƒ_ƒ€‚Å–¡•û‚ğ‘I‘ğ
+		# æŒ‡å®šãªã— or æ•µã®å ´åˆã¯ãƒ©ãƒ³ãƒ€ãƒ ã§å‘³æ–¹ã‚’é¸æŠ
 		$y = $partys[int(rand(@partys))] if !defined($ms{$y}{name}) || $ms{$y}{color} ne $ms{$m}{color};
-		$y = $m if $ms{$y}{hp} <= 0 && $v ne '‘h¶';
+		$y = $m if $ms{$y}{hp} <= 0 && $v ne 'è˜‡ç”Ÿ';
 	}
 	
-	# “ÁêŒø‰Ê‚ª‚ ‚éê‡
+	# ç‰¹æ®ŠåŠ¹æœãŒã‚ã‚‹å ´åˆ
 	if ( $ms{$y}{tmp} && defined $tmps{ $ms{$y}{tmp} } ) {
 		my($y2, $v2) = &{ $tmps{ $ms{$y}{tmp} } }($y, $v, $z);
 		$y = $y2 if defined $y2;
@@ -1491,28 +1491,28 @@ sub _check_party {
 }
 
 #=================================================
-# “Gƒ`ƒFƒbƒN
+# æ•µãƒã‚§ãƒƒã‚¯
 #=================================================
 sub _check_enemy {
 	my($y, $v, $z, @etcs) = @_;
 	
-	# “G‘S–Å
+	# æ•µå…¨æ»…
 	if (@enemys < 1) {
-		$mes = 'í‚¤‘Šè‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ';
+		$mes = 'æˆ¦ã†ç›¸æ‰‹ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“';
 		return;
 	}
 	return if &is_bad_state($z);
 	
-	if ($ms{$m}{state} eq '¬—') {
+	if ($ms{$m}{state} eq 'æ··ä¹±') {
 		$y = $members[int(rand(@members))] unless $m eq $y;
 	}
 	else {
-		# w’è‚È‚µ or –¡•û‚Ìê‡‚Íƒ‰ƒ“ƒ_ƒ€‚Å“G‚ğ‘I‘ğ
+		# æŒ‡å®šãªã— or å‘³æ–¹ã®å ´åˆã¯ãƒ©ãƒ³ãƒ€ãƒ ã§æ•µã‚’é¸æŠ
 		$y = $enemys[int(rand(@enemys))] if !defined($ms{$y}{name}) || $ms{$y}{color} eq $ms{$m}{color};
 		return if $ms{$y}{hp} <= 0;
 	}
 	
-	# “ÁêŒø‰Ê‚ª‚ ‚éê‡
+	# ç‰¹æ®ŠåŠ¹æœãŒã‚ã‚‹å ´åˆ
 	if ( $ms{$y}{tmp} && defined $tmps{ $ms{$y}{tmp} } ) {
 		my($y2, $v2) = &{ $tmps{ $ms{$y}{tmp} } }($y, $v, $z);
 		$y = $y2 if defined $y2;
@@ -1523,72 +1523,72 @@ sub _check_enemy {
 
 
 #=================================================
-# ƒpƒ‹ƒvƒ“ƒe(to ‘Sˆõ)
+# ãƒ‘ãƒ«ãƒ—ãƒ³ãƒ†(to å…¨å“¡)
 #=================================================
 sub _parupunte {
-	if (rand(2)<1) { # ˆêó‘Ô
-		my @tmps = ('‚Q”{','U”½Œ‚','–‚”½Œ‚','ó—¬‚µ');
+	if (rand(2)<1) { # ä¸€æ™‚çŠ¶æ…‹
+		my @tmps = ('ï¼’å€','æ”»åæ’ƒ','é­”åæ’ƒ','å—æµã—');
 		my $v = $tmps[int(rand(@tmps))];
 		for my $y (@members) {
 			next if $ms{$y}{hp} <= 0;
 			$ms{$y}{tmp} = $v;
 		}
-		$com .= qq|‚È‚ñ‚ÆA<span class="tmp">‘Sˆõ‚Ìó‘Ô‚ª $v ‚É‚È‚è‚Ü‚µ‚½I</span>|;
+		$com .= qq|ãªã‚“ã¨ã€<span class="tmp">å…¨å“¡ã®çŠ¶æ…‹ãŒ $v ã«ãªã‚Šã¾ã—ãŸï¼</span>|;
 	}
-	elsif (rand(2)<1) { # ó‘ÔˆÙí
-		my @states = ('¬—','–°‚è','–ƒáƒ','–Ò“Å');
+	elsif (rand(2)<1) { # çŠ¶æ…‹ç•°å¸¸
+		my @states = ('æ··ä¹±','çœ ã‚Š','éº»ç—º','çŒ›æ¯’');
 		my $v = $states[int(rand(@states))];
 		for my $y (@members) {
 			next if $ms{$y}{hp} <= 0;
 			$ms{$y}{state} = $v;
 			$ms{$y}{ten} = 1;
 		}
-		$com .= qq|‚È‚ñ‚ÆA<span class="state">‘Sˆõ‚ª $v ó‘Ô‚É‚È‚è‚Ü‚µ‚½I</span>|;
+		$com .= qq|ãªã‚“ã¨ã€<span class="state">å…¨å“¡ãŒ $v çŠ¶æ…‹ã«ãªã‚Šã¾ã—ãŸï¼</span>|;
 	}
-	elsif (rand(2)<1) { # ‚g‚o‰ñ•œ
+	elsif (rand(2)<1) { # ï¼¨ï¼°å›å¾©
 		for my $y (@members) {
 			next if $ms{$y}{mhp} > 999;
-			$com.= qq|<span class="revive">$y‚ª¶‚«•Ô‚Á‚½</span>| if $ms{$y}{hp} <= 0;
+			$com.= qq|<span class="revive">$yãŒç”Ÿãè¿”ã£ãŸ</span>| if $ms{$y}{hp} <= 0;
 			$ms{$y}{hp} = $ms{$y}{mhp};
 		}
-		$com .= qq|<span class="heal">‘Sˆõ‚Ì$e2j{hp}‚ª‰ñ•œ‚µ‚½I</span>|;
+		$com .= qq|<span class="heal">å…¨å“¡ã®$e2j{hp}ãŒå›å¾©ã—ãŸï¼</span>|;
 	}
-	elsif (rand(3)<1) { # ‘f‘‚³0
+	elsif (rand(3)<1) { # ç´ æ—©ã•0
 		for my $y (@members) {
 			$ms{$y}{ag} = 0;
 		}
-		$com .= qq|‚È‚ñ‚ÆA<span class="st_down">‘Sˆõ‚Ì‘Ì‚ª‚È‚Ü‚è‚Ì‚æ‚¤‚Éd‚­‚È‚Á‚½I</span>|;
+		$com .= qq|ãªã‚“ã¨ã€<span class="st_down">å…¨å“¡ã®ä½“ãŒãªã¾ã‚Šã®ã‚ˆã†ã«é‡ããªã£ãŸï¼</span>|;
 	}
-	elsif (rand(2)<1) { # •m€
+	elsif (rand(2)<1) { # ç€•æ­»
 		for my $y (@members) {
 			next if $ms{$y}{hp} <= 0;
 			next if $ms{$y}{hp} > 999;
 			$ms{$y}{hp} = 1;
 		}
-		$com .= qq|‚È‚ñ‚ÆA‹ó‚©‚ç—¬¯‚ª~‚è‚»‚»‚¢‚¾I‘Sˆõ‚Ì<span class="damage">$e2j{mhp}‚ª 1 </span>‚É‚È‚Á‚½I|;
+		$com .= qq|ãªã‚“ã¨ã€ç©ºã‹ã‚‰æµæ˜ŸãŒé™ã‚Šããã„ã ï¼å…¨å“¡ã®<span class="damage">$e2j{mhp}ãŒ 1 </span>ã«ãªã£ãŸï¼|;
 	}
-	else { # ‰½‚à‚È‚µ
-		$com.= qq|cccB‚µ‚©‚µA‰½‚à‹N‚±‚ç‚È‚©‚Á‚½c|;
+	else { # ä½•ã‚‚ãªã—
+		$com.= qq|â€¦â€¦â€¦ã€‚ã—ã‹ã—ã€ä½•ã‚‚èµ·ã“ã‚‰ãªã‹ã£ãŸâ€¦|;
 	}
 }
 
 #=================================================
-# —‚ä‚Ñ‚ğ‚Ó‚é
+# ï¼ ã‚†ã³ã‚’ãµã‚‹
 #=================================================
 sub _yubiwofuru {
 	my @r_skills = &{ 'skill_'.int(rand($#jobs)+1) };
 	if (@r_skills <= 0) {
-		$com .= "‚µ‚©‚µA‰½‚à‹N‚±‚ç‚È‚©‚Á‚½c";
+		$com .= "ã—ã‹ã—ã€ä½•ã‚‚èµ·ã“ã‚‰ãªã‹ã£ãŸâ€¦";
 		return;
 	}
 	my $i = int(rand(@r_skills));
 	my $buf_mp = $ms{$m}{mp};
 	&{ $r_skills[$i][3] };
-	$ms{$m}{mp} = $buf_mp if $buf_mp > $ms{$m}{mp}; # ƒƒKƒ“ƒeAƒƒKƒUƒ‹‚È‚Ç‘SMPÁ”ï‚ÌƒXƒLƒ‹‚Ìê‡‚ÍA‹­§“I‚ÉMP‚ª1‚É‚È‚é‚Ì‚ÅB
+	$ms{$m}{mp} = $buf_mp if $buf_mp > $ms{$m}{mp}; # ãƒ¡ã‚¬ãƒ³ãƒ†ã€ãƒ¡ã‚¬ã‚¶ãƒ«ãªã©å…¨MPæ¶ˆè²»ã®ã‚¹ã‚­ãƒ«ã®å ´åˆã¯ã€å¼·åˆ¶çš„ã«MPãŒ1ã«ãªã‚‹ã®ã§ã€‚
 }
 
 #=================================================
-# –¡•û’Ç‰Á(g‘ã‚í‚èA—‚æ‚Ñ‚¾‚·) ‘æˆêˆø”(–¼‘O)‚Í•K‚¸æ“ª‚É@‚ğ‚Â‚¯‚é
+# å‘³æ–¹è¿½åŠ (èº«ä»£ã‚ã‚Šã€ï¼ ã‚ˆã³ã ã™) ç¬¬ä¸€å¼•æ•°(åå‰)ã¯å¿…ãšå…ˆé ­ã«@ã‚’ã¤ã‘ã‚‹
 #=================================================
 sub _add_party {
 	my %y_st;
@@ -1615,26 +1615,26 @@ sub _add_party {
 }
 
 #=================================================
-# “G’Ç‰Á(‹â‚Ì‚½‚Ä‚²‚ÆA—‚µ‚å‚¤‚©‚ñ)
+# æ•µè¿½åŠ (éŠ€ã®ãŸã¦ã”ã¨ã€ï¼ ã—ã‚‡ã†ã‹ã‚“)
 #=================================================
 sub _add_enemy {
-	if ($win || @members >= 10) { # “¬‹ZêAƒMƒ‹ƒhíA10lˆÈã
-		$com .= "‚µ‚©‚µA‰½‚à‹N‚±‚ç‚È‚©‚Á‚½c";
+	if ($win || @members >= 10) { # é—˜æŠ€å ´ã€ã‚®ãƒ«ãƒ‰æˆ¦ã€10äººä»¥ä¸Š
+		$com .= "ã—ã‹ã—ã€ä½•ã‚‚èµ·ã“ã‚‰ãªã‹ã£ãŸâ€¦";
 		return;
 	}
 	
 	require "$stagedir/$stage.cgi";
 
-	my @alfas = ('I'..'Z'); # “¯‚¶–¼‘O‚Ìƒ‚ƒ“ƒXƒ^[‚ğ¯•Ê‚·‚é‚½‚ß‚É–¼‘O‚ÌŒã‚É‚Â‚¯‚é‚à‚Ì
+	my @alfas = ('I'..'Z'); # åŒã˜åå‰ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’è­˜åˆ¥ã™ã‚‹ãŸã‚ã«åå‰ã®å¾Œã«ã¤ã‘ã‚‹ã‚‚ã®
 	my $i = int(rand(@alfas));
 	
-	my $no = @appears ? $appears[int(rand(@appears))] : int(rand(@monsters)); # oŒ»ƒ‚ƒ“ƒXƒ^[
-	$no = 0 unless defined $monsters[$no]; # ‘¶İ‚µ‚È‚¢No‚¾‚Á‚½‚ç
+	my $no = @appears ? $appears[int(rand(@appears))] : int(rand(@monsters)); # å‡ºç¾ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼
+	$no = 0 unless defined $monsters[$no]; # å­˜åœ¨ã—ãªã„Noã ã£ãŸã‚‰
 	my $name = '@'.$monsters[$no]{name}.$alfas[$i];
-	$name    = '@'.$monsters[$no]{name}.$alfas[$i-1] if defined $ms{$name}{name}; # ‚·‚Å‚É“¯‚¶ƒ‚ƒ“ƒXƒ^[–¼‚ª‚¢‚½‚ç
+	$name    = '@'.$monsters[$no]{name}.$alfas[$i-1] if defined $ms{$name}{name}; # ã™ã§ã«åŒã˜ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åãŒã„ãŸã‚‰
 	
-	if (defined $ms{$name}{name}) { # ‚»‚ê‚Å‚à“¯‚¶ƒ‚ƒ“ƒXƒ^[–¼‚¾‚Á‚½‚ç
-		$com .= "‚µ‚©‚µA‰½‚à‹N‚±‚ç‚È‚©‚Á‚½c";
+	if (defined $ms{$name}{name}) { # ãã‚Œã§ã‚‚åŒã˜ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åã ã£ãŸã‚‰
+		$com .= "ã—ã‹ã—ã€ä½•ã‚‚èµ·ã“ã‚‰ãªã‹ã£ãŸâ€¦";
 		return;
 	}
 	
@@ -1642,9 +1642,9 @@ sub _add_enemy {
 		$ms{$name}{$k} = defined $monsters[$no]{$k} ? $monsters[$no]{$k} : 0;
 	}
 	
-	# ‰Šúƒf[ƒ^ƒZƒbƒg(“Ç‚İ‚ñ‚¾ƒf[ƒ^‚É‚·‚Å‚É’l‚ª‚ ‚éê‡‚Í‚»‚Á‚¿‚ğ—Dæ)
+	# åˆæœŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ(èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã«ã™ã§ã«å€¤ãŒã‚ã‚‹å ´åˆã¯ãã£ã¡ã‚’å„ªå…ˆ)
 	for my $k (qw/hp mp at df ag/) {
-		$ms{$name}{$k} = int($ms{$name}{$k} * (1 + (@partys - 2) * 0.05) ); # ƒp[ƒeƒB[l”‚É‚æ‚é‹­‚³•â³
+		$ms{$name}{$k} = int($ms{$name}{$k} * (1 + (@partys - 2) * 0.05) ); # ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼äººæ•°ã«ã‚ˆã‚‹å¼·ã•è£œæ­£
 		$ms{$name}{'m'.$k} ||= $ms{$name}{$k};
 	}
 	$ms{$name}{name}  = $name;
@@ -1654,7 +1654,7 @@ sub _add_enemy {
 	$ms{$name}{tmp}   ||= '';
 	$ms{$name}{state} ||= '';
 	
-	$com .= qq|<span class="revive">$name‚ª‚ ‚ç‚í‚ê‚½I</span>|;
+	$com .= qq|<span class="revive">$nameãŒã‚ã‚‰ã‚ã‚ŒãŸï¼</span>|;
 	push @members, $name;
 	if ($ms{$m}{color} eq $npc_color) {
 		push @partys, $name;
@@ -1664,7 +1664,7 @@ sub _add_enemy {
 	}
 }
 
-# ’‡ŠÔ‚ÌŒ»E‹Æ‰æ‘œ‚ª¢Š«Œn‚Æƒ}ƒbƒ`‚µ‚Ä‚¢‚é‚©
+# ä»²é–“ã®ç¾è·æ¥­ç”»åƒãŒå¬å–šç³»ã¨ãƒãƒƒãƒã—ã¦ã„ã‚‹ã‹
 sub _search_job {
 	my $icon_no = shift;
 	for my $y (@partys) {
@@ -1676,4 +1676,4 @@ sub _search_job {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

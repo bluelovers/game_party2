@@ -19,36 +19,36 @@ sub run {
 	my $contents = <<"EOM";
 		<table><tr><td valign="top">
 			<div class="login_list">$login_list</div>
-			<div>ƒƒOƒCƒ“’† $login_count l</div>
-			ÌßÚ²Ô°•Û‘¶ŠúŠÔ $auto_delete_day“úi“]E0‰ñ $e2j{lv}2ˆÈ‰º‚Ìê‡‚Í7“új<br />
-			’èˆõ $entry_count / $max_entryl
+			<div>ãƒ­ã‚°ã‚¤ãƒ³ä¸­ $login_count äºº</div>
+			ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¿å­˜æœŸé–“ $auto_delete_dayæ—¥ï¼ˆè»¢è·0å› $e2j{lv}2ä»¥ä¸‹ã®å ´åˆã¯7æ—¥ï¼‰<br />
+			å®šå“¡ $entry_count / $max_entryäºº
 		</td><td valign="top">
 EOM
 	if ($login_count >= $max_login) {
-		$contents .= qq|<table class="table1"><tr><th><p>‚½‚¾‚¢‚ÜAƒƒOƒCƒ“‹K§’†‚Å‚·</p><p>ƒƒOƒCƒ“l”‚ª$max_loginl–¢–‚É‚È‚é‚Ü‚Å<br />‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢</p></th></tr></table>|;
+		$contents .= qq|<table class="table1"><tr><th><p>ãŸã ã„ã¾ã€ãƒ­ã‚°ã‚¤ãƒ³è¦åˆ¶ä¸­ã§ã™</p><p>ãƒ­ã‚°ã‚¤ãƒ³äººæ•°ãŒ$max_loginäººæœªæº€ã«ãªã‚‹ã¾ã§<br />ã—ã°ã‚‰ããŠå¾…ã¡ãã ã•ã„</p></th></tr></table>|;
 	}
 	else {
 		$contents .= <<"EOM";
 		<form method="$method" action="login.cgi">
 			<table class="table1" style="margin: 0 0.5em; padding: 1em">
-				<tr><th>˜ƒvƒŒƒCƒ„[˜</th></tr><tr><td align="center"><input type="text" name="login_name" class="text_box1" value="$cookie_name" /></td></tr>
-				<tr><th>˜ƒpƒXƒ[ƒh˜</th></tr><tr><td align="center"><input type="password" name="pass"   class="text_box1" value="$cookie_pass" /></td></tr>
-				<tr><th>˜ƒƒbƒZ[ƒW˜</th></tr><tr><td align="center"><input type="text" name="login_message" class="text_box1" value="$cookie_mes" /></td></tr>
-				<tr><th><input type="checkbox" name="is_cookie" $checked /> Ÿ‰ñ‚©‚ç“ü—ÍÈ—ª</th></tr>
-				<tr><th><input type="submit" value="—ƒƒOƒCƒ“" /></th></tr>
+				<tr><th>Â§ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼Â§</th></tr><tr><td align="center"><input type="text" name="login_name" class="text_box1" value="$cookie_name" /></td></tr>
+				<tr><th>Â§ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰Â§</th></tr><tr><td align="center"><input type="password" name="pass"   class="text_box1" value="$cookie_pass" /></td></tr>
+				<tr><th>Â§ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸Â§</th></tr><tr><td align="center"><input type="text" name="login_message" class="text_box1" value="$cookie_mes" /></td></tr>
+				<tr><th><input type="checkbox" name="is_cookie" $checked /> æ¬¡å›ã‹ã‚‰å…¥åŠ›çœç•¥</th></tr>
+				<tr><th><input type="submit" value="ï¼ ãƒ­ã‚°ã‚¤ãƒ³" /></th></tr>
 			</table>
 		</form>
 EOM
 	}
 	$contents .= qq|</td></tr></table>|;
 	
-	open my $fh, "< $logdir/screen_shot.cgi" or &error("$logdir/screen_shot.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/screen_shot.cgi" or &error("$logdir/screen_shot.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $line = <$fh>;
 	close $fh;
 
 	$contents .= <<"EOM";
 <br>
-<a href="screen_shot.cgi">Å‹ß‚ÌƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒg</a><br /><div>$line</div>
+<a href="screen_shot.cgi">æœ€è¿‘ã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆ</a><br /><div>$line</div>
 EOM
 	
 	&side_menu($contents);
@@ -56,7 +56,7 @@ EOM
 
 
 #=========================================================
-# ƒNƒbƒL[æ“¾
+# ã‚¯ãƒƒã‚­ãƒ¼å–å¾—
 #=========================================================
 sub get_cookie {
 	my %cooks;

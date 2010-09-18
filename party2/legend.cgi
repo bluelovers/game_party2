@@ -2,17 +2,17 @@
 require 'config.cgi';
 require '_side_menu.cgi';
 #================================================
-# “`à Created by Merino
+# ä¼èª¬ Created by Merino
 #================================================
-# •\¦‚·‚é‚à‚Ì@š’Ç‰Áíœ•À‚×‘Ö‚¦‰Â”\
+# è¡¨ç¤ºã™ã‚‹ã‚‚ã®ã€€â˜…è¿½åŠ å‰Šé™¤ä¸¦ã¹æ›¿ãˆå¯èƒ½
 my @files = (
-#	['ƒ^ƒCƒgƒ‹',			'ƒƒOƒtƒ@ƒCƒ‹–¼'],
-	['ƒWƒ‡ƒuƒ}ƒXƒ^[',		'comp_job'	],
-	['ƒ‚ƒ“ƒXƒ^[ƒ}ƒXƒ^[',	'comp_mon'	],
-	['ƒEƒFƒ|ƒ“ƒLƒ‰[',		'comp_wea'	],
-	['ƒA[ƒ}[ƒLƒ“ƒO',		'comp_arm'	],
-	['ƒAƒCƒeƒ€ƒjƒXƒg',		'comp_ite'	],
-	['ƒAƒ‹ƒPƒ~ƒXƒg',		'comp_alc'	],
+#	['ã‚¿ã‚¤ãƒˆãƒ«',			'ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«å'],
+	['ã‚¸ãƒ§ãƒ–ãƒã‚¹ã‚¿ãƒ¼',		'comp_job'	],
+	['ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒã‚¹ã‚¿ãƒ¼',	'comp_mon'	],
+	['ã‚¦ã‚§ãƒãƒ³ã‚­ãƒ©ãƒ¼',		'comp_wea'	],
+	['ã‚¢ãƒ¼ãƒãƒ¼ã‚­ãƒ³ã‚°',		'comp_arm'	],
+	['ã‚¢ã‚¤ãƒ†ãƒ ãƒ‹ã‚¹ãƒˆ',		'comp_ite'	],
+	['ã‚¢ãƒ«ã‚±ãƒŸã‚¹ãƒˆ',		'comp_alc'	],
 );
 
 #================================================
@@ -33,11 +33,11 @@ sub run {
 	$in{no} ||= $nos[0] || 0;
 	$in{no} = 0 if $in{no} >= @files;
 
-	$contents .= qq|</p><h2>$files[$in{no}][0]</h2><table class="table1"><tr><th>‹L”O“ú</th><th>–¼‘O—ƒMƒ‹ƒh</th><th>ƒRƒƒ“ƒg</th></tr>|;
-	open my $fh, "< $logdir/$files[$in{no}][1].cgi" or &error("$logdir/$files[$in{no}][1]ƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	$contents .= qq|</p><h2>$files[$in{no}][0]</h2><table class="table1"><tr><th>è¨˜å¿µæ—¥</th><th>åå‰ï¼ ã‚®ãƒ«ãƒ‰</th><th>ã‚³ãƒ¡ãƒ³ãƒˆ</th></tr>|;
+	open my $fh, "< $logdir/$files[$in{no}][1].cgi" or &error("$logdir/$files[$in{no}][1]ãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($name, $guild, $color, $icon, $message, $ldate) = split /<>/, $line;
-		$name .= "—$guild" if $guild;
+		$name .= "ï¼ $guild" if $guild;
 		$contents .= qq|<tr><td>$ldate</td><td style="color: $color;"><img src="$icondir/$icon">$name</td><td>$message</td></tr>\n|;
 	}
 	close $fh;

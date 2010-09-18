@@ -3,9 +3,9 @@ require 'config.cgi';
 require '_side_menu.cgi';
 require './lib/_data.cgi';
 #================================================
-# V‹K“o˜^ Created by Merino
+# æ–°è¦ç™»éŒ² Created by Merino
 #================================================
-# ‰Šú‚Å‘I‚×‚éE‹Æ(No)
+# åˆæœŸã§é¸ã¹ã‚‹è·æ¥­(No)
 my @default_jobs = (1..12);
 
 
@@ -13,13 +13,13 @@ my @default_jobs = (1..12);
 &decode;
 &access_check;
 &header;
-&error("Œ»İƒƒ“ƒeƒiƒ“ƒX’†‚Å‚·B‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢(–ñ $mente_min •ªŠÔ)") if $mente_min;
+&error("ç¾åœ¨ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ä¸­ã§ã™ã€‚ã—ã°ã‚‰ããŠå¾…ã¡ãã ã•ã„(ç´„ $mente_min åˆ†é–“)") if $mente_min;
 $in{mode} eq 'new_entry' ? &new_entry : &new_form;
 &footer;
 exit;
 
 #================================================
-# V‹K“o˜^ƒtƒH[ƒ€
+# æ–°è¦ç™»éŒ²ãƒ•ã‚©ãƒ¼ãƒ 
 #================================================
 sub new_form {
 	my $job_html = qq|<select class="select1" name="job">|;
@@ -30,27 +30,27 @@ sub new_form {
 	
 	my $yid = $ENV{'QUERY_STRING'};
 	my $contents = <<"EOM";
-<h2>V‹K“o˜^</h2>
+<h2>æ–°è¦ç™»éŒ²</h2>
 
 <form method="$method" action="new_entry.cgi">
 	<input type="hidden" name="mode" value="new_entry" />
 	<input type="hidden" name="yid" value="$yid" />
 	<ul>
-		<li>‹L†(,;"'&<>\\/@)‚â‹ó”’‚Íg‚¦‚Ü‚¹‚ñB</li>
-		<li>ƒlƒbƒgƒ}ƒi[‚ğç‚Á‚ÄŠy‚µ‚­—V‚Ñ‚Ü‚µ‚å‚¤B</li>
-		<li><b>‘¼l‚ª•s–ù‰õ‚É‚È‚é‚æ‚¤‚È‘‚«‚İ‚â‘½d“o˜^‚Í‹Ö~‚Å‚·BŒ©‚Â‚¯Ÿ‘æíœ‚µ‚Ü‚·B</b></li>
+		<li>è¨˜å·(,;"'&<>\\/@)ã‚„ç©ºç™½ã¯ä½¿ãˆã¾ã›ã‚“ã€‚</li>
+		<li>ãƒãƒƒãƒˆãƒãƒŠãƒ¼ã‚’å®ˆã£ã¦æ¥½ã—ãéŠã³ã¾ã—ã‚‡ã†ã€‚</li>
+		<li><b>ä»–äººãŒä¸æ„‰å¿«ã«ãªã‚‹ã‚ˆã†ãªæ›¸ãè¾¼ã¿ã‚„å¤šé‡ç™»éŒ²ã¯ç¦æ­¢ã§ã™ã€‚è¦‹ã¤ã‘æ¬¡ç¬¬å‰Šé™¤ã—ã¾ã™ã€‚</b></li>
 	</ul>
 	<table class="table1">
-		<tr><td>ƒvƒŒƒCƒ„[–¼F</td><td><input type="text" name="name" class="text_box1" /></td></th></tr>
-		<tr><td>@</td><td>‘SŠp‚S(”¼Šp‚W)•¶š‚Ü‚Å</td></tr>
-		<tr><td>ƒpƒXƒ[ƒhF</td><td><input type="text" name="pass" class="text_box1" /></td></th></tr>
-		<tr><td>@</td><td>”¼Šp‰p”š‚S`12•¶š‚Ü‚Å</td></tr>
-		<tr><td>E‹ÆF</td><td>$job_html</td></th></tr>
-		<tr><td>@</td><td>E‹Æ‚Íd—v‚Å‚·Bà–¾‘‚Ì“Á’¥‚ğ‚æ‚­“Ç‚İA©•ª‚É‡‚Á‚½E‹Æ‚ğ‘I‚Ñ‚Ü‚µ‚å‚¤</td></tr>
-		<tr><td>$e2j{sex}F</td><td><input type="radio" name="sex" value="m" checked="checked" />’j@<input type="radio" name="sex" value="f" />—</td></tr>
-		<tr><td>@</td><td>«•Ê‚É‚æ‚Á‚Ä“]E‚Å‚«‚éE‹Æ‚âƒAƒCƒRƒ“‚ªˆá‚¢‚Ü‚·</td></tr>
+		<tr><td>ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åï¼š</td><td><input type="text" name="name" class="text_box1" /></td></th></tr>
+		<tr><td>ã€€</td><td>å…¨è§’ï¼”(åŠè§’ï¼˜)æ–‡å­—ã¾ã§</td></tr>
+		<tr><td>ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ï¼š</td><td><input type="text" name="pass" class="text_box1" /></td></th></tr>
+		<tr><td>ã€€</td><td>åŠè§’è‹±æ•°å­—ï¼”ï½12æ–‡å­—ã¾ã§</td></tr>
+		<tr><td>è·æ¥­ï¼š</td><td>$job_html</td></th></tr>
+		<tr><td>ã€€</td><td>è·æ¥­ã¯é‡è¦ã§ã™ã€‚èª¬æ˜æ›¸ã®ç‰¹å¾´ã‚’ã‚ˆãèª­ã¿ã€è‡ªåˆ†ã«åˆã£ãŸè·æ¥­ã‚’é¸ã³ã¾ã—ã‚‡ã†</td></tr>
+		<tr><td>$e2j{sex}ï¼š</td><td><input type="radio" name="sex" value="m" checked="checked" />ç”·ã€€<input type="radio" name="sex" value="f" />å¥³</td></tr>
+		<tr><td>ã€€</td><td>æ€§åˆ¥ã«ã‚ˆã£ã¦è»¢è·ã§ãã‚‹è·æ¥­ã‚„ã‚¢ã‚¤ã‚³ãƒ³ãŒé•ã„ã¾ã™</td></tr>
 	</table>
-	<p><input type="submit" value="—“o˜^" /></p>
+	<p><input type="submit" value="ï¼ ç™»éŒ²" /></p>
 </form>
 <br />
 EOM
@@ -58,7 +58,7 @@ EOM
 	&side_menu($contents);
 }
 #================================================
-# V‹K“o˜^ƒ`ƒFƒbƒN•Š®—¹ˆ—
+# æ–°è¦ç™»éŒ²ãƒã‚§ãƒƒã‚¯ï¼†å®Œäº†å‡¦ç†
 #================================================
 sub new_entry {
 	&check_black_list;
@@ -67,14 +67,14 @@ sub new_entry {
 	&create_user;
 
 	$contents = <<"EOM";
-<p>ˆÈ‰º‚Ì“à—e‚Å“o˜^‚µ‚Ü‚µ‚½</p>
+<p>ä»¥ä¸‹ã®å†…å®¹ã§ç™»éŒ²ã—ã¾ã—ãŸ</p>
 
-<p class="strong">¦ƒvƒŒƒCƒ„[–¼‚ÆƒpƒXƒ[ƒh‚ÍƒƒOƒCƒ“‚·‚é‚Æ‚«‚É•K—v‚È‚Ì‚ÅA–Y‚ê‚È‚¢‚æ‚¤‚É!<p>
+<p class="strong">â€»ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ã¨ãã«å¿…è¦ãªã®ã§ã€å¿˜ã‚Œãªã„ã‚ˆã†ã«!<p>
 <table class="table1">
-	<tr><th>ƒvƒŒƒCƒ„[</th><td>$m{name}</td>
-	<tr><th>ƒpƒXƒ[ƒh</th><td>$m{pass}</td>
+	<tr><th>ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼</th><td>$m{name}</td>
+	<tr><th>ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰</th><td>$m{pass}</td>
 	<tr><th>$e2j{sex}</th><td>$e2j{$m{sex}}</td>
-	<tr><th>E‹Æ</th><td>$jobs[$m{job}][1]</td>
+	<tr><th>è·æ¥­</th><td>$jobs[$m{job}][1]</td>
 	<tr><th>$e2j{hp}</th><td align="right">$m{hp}</td>
 	<tr><th>$e2j{mp}</th><td align="right">$m{mp}</td>
 	<tr><th>$e2j{at}</th><td align="right">$m{at}</td>
@@ -82,36 +82,36 @@ sub new_entry {
 	<tr><th>$e2j{ag}</th><td align="right">$m{ag}</td>
 </table>
 <div>
-à–¾‘‚Í“Ç‚İ‚Ü‚µ‚½‚©H<br />
-‚í‚©‚ç‚È‚¢‚±‚Æ‚ª‚ ‚éê‡‚ÍA‚Ü‚¸à–¾‘‚ğ“Ç‚İ‚Ü‚µ‚å‚¤B
+èª¬æ˜æ›¸ã¯èª­ã¿ã¾ã—ãŸã‹ï¼Ÿ<br />
+ã‚ã‹ã‚‰ãªã„ã“ã¨ãŒã‚ã‚‹å ´åˆã¯ã€ã¾ãšèª¬æ˜æ›¸ã‚’èª­ã¿ã¾ã—ã‚‡ã†ã€‚
 </div>
 <form method="$method" action="login.cgi">
 	<input type="hidden" name="is_cookie" value="1" />
 	<input type="hidden" name="login_name" value="$in{name}" />
 	<input type="hidden" name="pass" value="$in{pass}" />
-	<input type="submit" value="—ƒvƒŒƒC" />
+	<input type="submit" value="ï¼ ãƒ—ãƒ¬ã‚¤" />
 </form>
 EOM
 &side_menu($contents);
 }
 
 #================================================
-# “o˜^ƒ`ƒFƒbƒN
+# ç™»éŒ²ãƒã‚§ãƒƒã‚¯
 #================================================
 sub check_entry {
-	&error("•s³‚È“o˜^ˆ—‚Å‚·")				if $ENV{QUERY_STRING};
-	&error("ƒvƒŒƒCƒ„[–¼‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ")	unless $in{name};
-	&error("ƒpƒXƒ[ƒh‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ")	if $in{pass} eq '';
-	&error("$e2j{sex}‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ")		if $in{sex} eq '';
+	&error("ä¸æ­£ãªç™»éŒ²å‡¦ç†ã§ã™")				if $ENV{QUERY_STRING};
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“")	unless $in{name};
+	&error("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“")	if $in{pass} eq '';
+	&error("$e2j{sex}ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“")		if $in{sex} eq '';
 
-	&error("ƒvƒŒƒCƒ„[–¼‚É•s³‚È•¶š( ,;\"\'&<>\@ )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·")	if $in{name} =~ /[,;\"\'&<>\@]/;
-	&error("ƒvƒŒƒCƒ„[–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·")			if $in{name} =~ /—/;
-	&error("ƒvƒŒƒCƒ„[–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·")					if $in{name} =~ /@|\s/;
-	&error("ƒvƒŒƒCƒ„[–¼‚Í‘SŠp‚S(”¼Šp‚W)•¶šˆÈ“à‚Å‚·")					if length($in{name}) > 8;
-	&error("ƒpƒXƒ[ƒh‚Í”¼Šp‰p”š‚Å“ü—Í‚µ‚Ä‰º‚³‚¢")					if $in{pass} =~ m/[^0-9a-zA-Z]/;
-	&error("ƒpƒXƒ[ƒh‚Í”¼Šp‰p”š‚S`12•¶š‚Å‚·")						if length $in{pass} < 4 || length $in{pass} > 12;
-	&error("ƒvƒŒƒCƒ„[–¼‚ÆƒpƒXƒ[ƒh‚ª“¯ˆê•¶š—ñ‚Å‚·")					if $in{name} eq $in{pass};
-	&error("$e2j{sex}‚ªˆÙí‚Å‚·")										unless $in{sex} eq 'm' || $in{sex} eq 'f';
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<>\@ )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™")	if $in{name} =~ /[,;\"\'&<>\@]/;
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™")			if $in{name} =~ /ï¼ /;
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™")					if $in{name} =~ /ã€€|\s/;
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã¯å…¨è§’ï¼”(åŠè§’ï¼˜)æ–‡å­—ä»¥å†…ã§ã™")					if length($in{name}) > 8;
+	&error("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯åŠè§’è‹±æ•°å­—ã§å…¥åŠ›ã—ã¦ä¸‹ã•ã„")					if $in{pass} =~ m/[^0-9a-zA-Z]/;
+	&error("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯åŠè§’è‹±æ•°å­—ï¼”ï½12æ–‡å­—ã§ã™")						if length $in{pass} < 4 || length $in{pass} > 12;
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒåŒä¸€æ–‡å­—åˆ—ã§ã™")					if $in{name} eq $in{pass};
+	&error("$e2j{sex}ãŒç•°å¸¸ã§ã™")										unless $in{sex} eq 'm' || $in{sex} eq 'f';
 
 	my $is_ng_job = 1;
 	for my $i (@default_jobs) {
@@ -120,33 +120,33 @@ sub check_entry {
 			last;
 		}
 	}
-	&error("E‹Æ‚ªˆÙí‚Å‚·") if $is_ng_job;
+	&error("è·æ¥­ãŒç•°å¸¸ã§ã™") if $is_ng_job;
 	
 	$id = unpack 'H*', $in{name};
-	&error("‚»‚Ì–¼‘O‚Í‚·‚Å‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·") if -d "$userdir/$id";
+	&error("ãã®åå‰ã¯ã™ã§ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™") if -d "$userdir/$id";
 	
-	open my $fh, "< $logdir/entry.cgi" or &error("$logdir/entry.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/entry.cgi" or &error("$logdir/entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $line = <$fh>;
 	close $fh;
 	my($entry_count, $last_addr) = split /<>/, $line;
-	&error("Œ»İ’èˆõ‚Ì‚½‚ßAV‹K“o˜^‚Íó‚¯•t‚¯‚Ä‚¨‚è‚Ü‚¹‚ñ") if $entry_count >= $max_entry;
-	&error("‘½d“o˜^‚Í‹Ö~‚µ‚Ä‚¢‚Ü‚·") if $addr eq $last_addr;
+	&error("ç¾åœ¨å®šå“¡ã®ãŸã‚ã€æ–°è¦ç™»éŒ²ã¯å—ã‘ä»˜ã‘ã¦ãŠã‚Šã¾ã›ã‚“") if $entry_count >= $max_entry;
+	&error("å¤šé‡ç™»éŒ²ã¯ç¦æ­¢ã—ã¦ã„ã¾ã™") if $addr eq $last_addr;
 }
 #================================================
-# “o˜^ˆ—
+# ç™»éŒ²å‡¦ç†
 #================================================
 sub create_user {
 	$id = unpack 'H*', $in{name};
 	
-	# ƒtƒHƒ‹ƒ_Eƒtƒ@ƒCƒ‹ì¬
-	mkdir "$userdir/$id", $mkdir or &error("‚»‚Ì–¼‘O‚Í‚·‚Å‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·");
+	# ãƒ•ã‚©ãƒ«ãƒ€ãƒ»ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆ
+	mkdir "$userdir/$id", $mkdir or &error("ãã®åå‰ã¯ã™ã§ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™");
 	for my $file_name (qw/collection depot hanasu home home_member item_send_mes job_master letter letter_log memory money monster monster_book profile recipe reload screen_shot send_item_mes stock user/) {
 		my $output_file = "$userdir/$id/$file_name.cgi";
-		open my $fh, "> $output_file" or &error("$output_file ƒtƒ@ƒCƒ‹‚ªì‚ê‚Ü‚¹‚ñ‚Å‚µ‚½");
+		open my $fh, "> $output_file" or &error("$output_file ãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œã‚Œã¾ã›ã‚“ã§ã—ãŸ");
 		close $fh;
 		chmod $chmod, $output_file;
 	}
-	open my $fh2, ">> $userdir/$id/collection.cgi" or &error("$userdir/$id/collection.cgiƒtƒ@ƒCƒ‹‚ªì‚ê‚Ü‚¹‚ñ‚Å‚µ‚½");
+	open my $fh2, ">> $userdir/$id/collection.cgi" or &error("$userdir/$id/collection.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œã‚Œã¾ã›ã‚“ã§ã—ãŸ");
 	print $fh2 ",\n,\n,\n";
 	close $fh2;
 	
@@ -173,8 +173,8 @@ sub create_user {
 	}
 	
 	&write_user;
-	&write_memory("–`Œ¯Ò <b>$m</b> ’a¶I");
-	&write_news("<b>$m</b> ‚Æ‚¢‚¤–`Œ¯Ò‚ªQ‰Á‚µ‚Ü‚µ‚½");
+	&write_memory("å†’é™ºè€… <b>$m</b> èª•ç”Ÿï¼");
+	&write_news("<b>$m</b> ã¨ã„ã†å†’é™ºè€…ãŒå‚åŠ ã—ã¾ã—ãŸ");
 
 	require './lib/_add_monster_book.cgi';
 	&write_monster_book;
@@ -182,19 +182,19 @@ sub create_user {
 	&plus_entry_count;
 	&copy("$htmldir/space.gif", "$userdir/$id/bgimg.gif");
 	
-	# Ğ‰îID•t‚È‚çĞ‰îÒ‚É¬‚³‚Èƒƒ_ƒ‹‘—M
+	# ç´¹ä»‹IDä»˜ãªã‚‰ç´¹ä»‹è€…ã«å°ã•ãªãƒ¡ãƒ€ãƒ«é€ä¿¡
 	if ($in{yid}) {
 		my $send_name = pack 'H*', $in{yid};
-		&send_item($send_name, 3, 23, "$m{name}(Ğ‰î‰Á“ü)");
+		&send_item($send_name, 3, 23, "$m{name}(ç´¹ä»‹åŠ å…¥)");
 	}
 }
 
 
 #================================================
-# “o˜^Ò”ƒvƒ‰ƒX
+# ç™»éŒ²è€…æ•°ãƒ—ãƒ©ã‚¹
 #================================================
 sub plus_entry_count {
-	open my $fh, "+< $logdir/entry.cgi" or &error("$logdir/entry.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $logdir/entry.cgi" or &error("$logdir/entry.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $line = <$fh>;
 	my($entry_count, $last_addr) = split /<>/, $line;
@@ -206,27 +206,27 @@ sub plus_entry_count {
 }
 
 #================================================
-# ƒuƒ‰ƒbƒNƒŠƒXƒg‚Ì‚h‚o‚Æ“¯‚¶‚©ƒ`ƒFƒbƒN
+# ãƒ–ãƒ©ãƒƒã‚¯ãƒªã‚¹ãƒˆã®ï¼©ï¼°ã¨åŒã˜ã‹ãƒã‚§ãƒƒã‚¯
 #================================================
 sub check_black_list {
-	open my $fh, "< $logdir/black_list.cgi" or &error("$logdir/black_list.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/black_list.cgi" or &error("$logdir/black_list.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $line = <$fh>;
 	close $fh;
-	&error("‚ ‚È‚½‚ÌƒzƒXƒg‚©‚ç‚Í“o˜^‚·‚é‚±‚Æ‚ª‹Ö~‚³‚ê‚Ä‚¢‚Ü‚·") if $line =~ /,$host,/;
+	&error("ã‚ãªãŸã®ãƒ›ã‚¹ãƒˆã‹ã‚‰ã¯ç™»éŒ²ã™ã‚‹ã“ã¨ãŒç¦æ­¢ã•ã‚Œã¦ã„ã¾ã™") if $line =~ /,$host,/;
 }
 
 #================================================
-# ‘½d“o˜^‹Ö~F‘Sƒ†[ƒU[‚Ì‚h‚oƒAƒhƒŒƒX‚ğ’²‚×‚é
+# å¤šé‡ç™»éŒ²ç¦æ­¢ï¼šå…¨ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ï¼©ï¼°ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’èª¿ã¹ã‚‹
 #================================================
 sub check_registered {
-	opendir my $dh, "$userdir" or &error("ƒ†[ƒU[ƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, "$userdir" or &error("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $dir_name = readdir $dh) {
 		next if $dir_name =~ /\./;
 		
 		my %datas = &get_you_datas($dir_name, 1);
 		if ($addr eq $datas{addr}) {
 #			&add_black_list($addr);
-			&error("‘½d“o˜^‚Í‹Ö~‚µ‚Ä‚¢‚Ü‚·");
+			&error("å¤šé‡ç™»éŒ²ã¯ç¦æ­¢ã—ã¦ã„ã¾ã™");
 		}
 	}
 	closedir $dh;

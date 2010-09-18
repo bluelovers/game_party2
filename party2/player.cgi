@@ -12,41 +12,41 @@ exit;
 #================================================
 sub run {
 	my $name = pack 'H*', $in{id};
-	&error("ƒvƒŒƒCƒ„[$name‚ª‘¶İ‚µ‚Ü‚¹‚ñ") unless -f "$userdir/$in{id}/memory.cgi";
+	&error("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼$nameãŒå­˜åœ¨ã—ã¾ã›ã‚“") unless -f "$userdir/$in{id}/memory.cgi";
 	
 	my %pars = &collection_pars;
-	print qq|<form action="$htmldir/player_list.html"><input type="submit" value="ƒvƒŒƒCƒ„[ˆê——‚É–ß‚é" /></form>|;
-	print qq|<h2>$name‚Ì‹OÕ</h2>|;
-	print qq|<form action="profile.cgi" target="_blank"><input type="hidden" name="name" value="$name" /><input type="submit" value="$name‚ÌƒvƒƒtƒB[ƒ‹" /></form>| if -s "$userdir/$in{id}/profile.cgi";;
-	print qq|<form action="$userdir/$in{id}/monster_book.html" target="_blank"><input type="submit" value="$name‚Ìƒ‚ƒ“ƒXƒ^[ƒuƒbƒN" /></form>|;
+	print qq|<form action="$htmldir/player_list.html"><input type="submit" value="ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§ã«æˆ»ã‚‹" /></form>|;
+	print qq|<h2>$nameã®è»Œè·¡</h2>|;
+	print qq|<form action="profile.cgi" target="_blank"><input type="hidden" name="name" value="$name" /><input type="submit" value="$nameã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«" /></form>| if -s "$userdir/$in{id}/profile.cgi";;
+	print qq|<form action="$userdir/$in{id}/monster_book.html" target="_blank"><input type="submit" value="$nameã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ–ãƒƒã‚¯" /></form>|;
 	print qq|<table class="table1">|;
-	print qq|<tr><td>•ŠíƒRƒ“ƒvƒŠ[ƒg—¦s<b>$pars{1}</b>“t</td></tr>|;
-	print qq|<tr><td>–h‹ïƒRƒ“ƒvƒŠ[ƒg—¦s<b>$pars{2}</b>“t</td></tr>|;
-	print qq|<tr><td>“¹‹ïƒRƒ“ƒvƒŠ[ƒg—¦s<b>$pars{3}</b>“t</td></tr>|;
-	print qq|<tr><td>˜B‹àƒRƒ“ƒvƒŠ[ƒg—¦s<b>$pars{4}</b>“t</td></tr>|;
+	print qq|<tr><td>æ­¦å™¨ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ã€Š<b>$pars{1}</b>ï¼…ã€‹</td></tr>|;
+	print qq|<tr><td>é˜²å…·ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ã€Š<b>$pars{2}</b>ï¼…ã€‹</td></tr>|;
+	print qq|<tr><td>é“å…·ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ã€Š<b>$pars{3}</b>ï¼…ã€‹</td></tr>|;
+	print qq|<tr><td>éŒ¬é‡‘ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆç‡ã€Š<b>$pars{4}</b>ï¼…ã€‹</td></tr>|;
 	print qq|</table>|;
 	
-	open my $fh, "< $userdir/$in{id}/memory.cgi" or &error("$userdir/$in{id}/memory.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$in{id}/memory.cgi" or &error("$userdir/$in{id}/memory.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	print qq|<li>$_</li><hr size="1" />\n| while <$fh>;
 	close $fh;
 	
-	print qq|<h3>—ƒuƒƒOƒp[ƒc</h3>|;
+	print qq|<h3>ï¼ ãƒ–ãƒ­ã‚°ãƒ‘ãƒ¼ãƒ„</h3>|;
 	print qq|<script type="text/javascript" src="$game_path/my.cgi?$in{id}"></script><textarea class="textarea1"><script type="text/javascript" src="$game_path/my.cgi?$in{id}"></script></textarea>|;
-	print qq|<h3>—ƒuƒƒOƒp[ƒc‚Q</h3>|;
+	print qq|<h3>ï¼ ãƒ–ãƒ­ã‚°ãƒ‘ãƒ¼ãƒ„ï¼’</h3>|;
 	print qq|<script type="text/javascript" src="$game_path/my2.cgi?$in{id}"></script><textarea class="textarea1"><script type="text/javascript" src="$game_path/my2.cgi?$in{id}"></script></textarea>|;
 
-	print qq|<h3>—Ğ‰î—pƒŠƒ“ƒN</h3>|;
+	print qq|<h3>ï¼ ç´¹ä»‹ç”¨ãƒªãƒ³ã‚¯</h3>|;
 	print qq|<textarea class="textarea1">$game_path/index.cgi?$in{id}</textarea>|;
 }
 
 sub collection_pars {
 	my %pars = ();
 	my $kind = 1;
-	open my $fh, "< $userdir/$in{id}/collection.cgi" or &error("$userdir/$in{id}/collection.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$in{id}/collection.cgi" or &error("$userdir/$in{id}/collection.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		$line =~ tr/\x0D\x0A//d;
 		my @nos = split /,/, $line;
-		pop @nos; # æ“ª‚Ì‹ó‚ğœ‚­
+		pop @nos; # å…ˆé ­ã®ç©ºã‚’é™¤ã
 		
 		if (@nos <= 0) {
 			$pars{$kind} = 0;
@@ -75,7 +75,7 @@ sub get_recipe_pars {
 	my $all_c = map { keys %{ $recipes{$_} } } keys %recipes;
 
 	my $comp_c = 0;
-	open my $fh, "< $userdir/$in{id}/recipe.cgi" or &errror("$userdir/$in{id}/recipe.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $userdir/$in{id}/recipe.cgi" or &errror("$userdir/$in{id}/recipe.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($is_make) = (split /<>/, $line)[0];
 		++$comp_c if $is_make;

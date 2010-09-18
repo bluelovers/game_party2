@@ -1,10 +1,10 @@
-# ƒ_ƒ“ƒWƒ‡ƒ“–¼
-$d_name = "$dungeons[$stage]‚QŠK";
+# ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³å
+$d_name = "$dungeons[$stage]ï¼’éšŽ";
 
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 30;
 
-# ƒ}ƒbƒv
+# ãƒžãƒƒãƒ—
 @maps = (
 	[1,0,1],
 	[1,0,1],
@@ -16,21 +16,21 @@ $max_round = 30;
 );
 
 
-# ƒCƒxƒ“ƒg
-$map_imgs{F} = '“Ê';
-$map_imgs{B} = '' if $event !~ /B/;
-sub event_F { for my $y (@partys) { $ms{$y}{state} = 'U••' }; $map="__1"; $npc_com.="$p_name‚ÍŽŸ‚ÌŠK‚Ö‚Æi‚ñ‚¾c"; }
-sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if rand(2) > 1; &_add_monster; } # “¹
-sub event_B { for my $y (@partys) { $ms{$y}{state} = 'U••' }; return if $event =~ /B/; $event .= 'B'; &add_boss; } # ƒ{ƒX
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{F} = 'å‡¸';
+$map_imgs{B} = 'â—Ž' if $event !~ /B/;
+sub event_F { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; $map="__1"; $npc_com.="$p_nameã¯æ¬¡ã®éšŽã¸ã¨é€²ã‚“ã â€¦"; }
+sub event_0 { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if rand(2) > 1; &_add_monster; } # é“
+sub event_B { for my $y (@partys) { $ms{$y}{state} = 'æ”»å°' }; return if $event =~ /B/; $event .= 'B'; &add_boss; } # ãƒœã‚¹
 
 
-# “G‚Æ•ó‚ÌÝ’è
+# æ•µã¨å®ã®è¨­å®š
 require "$mapdir/10/_data.cgi";
 
-# ƒ{ƒX
+# ãƒœã‚¹
 @bosses= (
 	{
-		name		=> 'ËÞ¯¸ÞÎÞÑA',
+		name		=> 'ãƒ“ãƒƒã‚°ãƒœãƒ A',
 		hp			=> 1200,
 		at			=> 450,
 		df			=> 120,
@@ -38,12 +38,12 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 255,
 		get_money	=> 50,
 		icon		=> 'mon/577.gif',
-		job			=> 31, # Â–‚“¹Žm‚¶‚Î‚­
+		job			=> 31, # é’é­”é“å£«ã˜ã°ã
 		sp			=> 20,
 		mp			=> 142,
 	},
 	{
-		name		=> '‚Ð‚­‚¢‚Ç‚è',
+		name		=> 'ã²ãã„ã©ã‚Š',
 		hp			=> 9800,
 		at			=> 660,
 		df			=> 210,
@@ -51,17 +51,17 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 1200,
 		get_money	=> 300,
 		icon		=> 'mon/530.gif',
-		hit			=> 300, # ’·Šúí—p–½’†—¦
-		job			=> 26, # ”EŽÒ
+		hit			=> 300, # é•·æœŸæˆ¦ç”¨å‘½ä¸­çŽ‡
+		job			=> 26, # å¿è€…
 		sp			=> 999,
-		old_job		=> 27, # •—…Žt
+		old_job		=> 27, # é¢¨æ°´å¸«
 		old_sp		=> 999,
 		mmp			=> 9999,
 		mp			=> 797,
-		tmp			=> '–‚–³Œø',
+		tmp			=> 'é­”ç„¡åŠ¹',
 	},
 	{
-		name		=> 'ËÞ¯¸ÞÎÞÑB',
+		name		=> 'ãƒ“ãƒƒã‚°ãƒœãƒ B',
 		hp			=> 1200,
 		at			=> 450,
 		df			=> 120,
@@ -69,11 +69,11 @@ require "$mapdir/10/_data.cgi";
 		get_exp		=> 255,
 		get_money	=> 50,
 		icon		=> 'mon/577.gif',
-		job			=> 31, # Â–‚“¹Žm‚¶‚Î‚­
+		job			=> 31, # é’é­”é“å£«ã˜ã°ã
 		sp			=> 20,
 		mp			=> 142,
 	},
 );
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

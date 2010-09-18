@@ -3,7 +3,7 @@ require 'config.cgi';
 require '_side_menu.cgi';
 require './lib/_data.cgi';
 #================================================
-# ‰¤ÒE‰p—Y Created by Merino
+# ç‹è€…ãƒ»è‹±é›„ Created by Merino
 #================================================
 &decode;
 &header;
@@ -12,10 +12,10 @@ require './lib/_data.cgi';
 exit;
 #================================================
 sub run {
-	my $contents = qq|<h2>l‹CE‹Æƒ‰ƒ“ƒLƒ“ƒO</h2><table><tr><td valign="top"><table class="table1"><tr><th>‡ˆÊ</th><th>E‹Æ–¼</th><th>‰æ‘œ</th><th>’j—”ä</th></tr>\n|;
+	my $contents = qq|<h2>äººæ°—è·æ¥­ãƒ©ãƒ³ã‚­ãƒ³ã‚°</h2><table><tr><td valign="top"><table class="table1"><tr><th>é †ä½</th><th>è·æ¥­å</th><th>ç”»åƒ</th><th>ç”·å¥³æ¯”</th></tr>\n|;
 
 	my $count = 0;
-	open my $fh, "< $logdir/job_ranking.cgi" or &error("$logdir/job_ranking.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $logdir/job_ranking.cgi" or &error("$logdir/job_ranking.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	my $total_point = <$fh>;
 	$total_point =~ tr/\x0D\x0A//d;
 	while (my $line = <$fh>) {
@@ -28,8 +28,8 @@ sub run {
 		$icon_img .= qq|<img src="$icondir/job/${job_no}_f.gif" alt="$jobs[$job_no][1]" />| if -f "$icondir/job/${job_no}_f.gif";
 		++$count;
 
-		$contents .= qq|<tr><td><b>$count</b>ˆÊ</td><td>$jobs[$job_no][1]</td><td>$icon_img</td><td><img src="$htmldir/space.gif" style="background-color: #66F; height: 5px; width: $male_par;" alt="$male_par%" /><img src="$htmldir/space.gif" style="background-color: #F99; height: 5px; width: $female_par;" alt="$female_par%" /></td></tr>\n|;
-		$contents .= qq|</table></td><td valign="top"><table class="table1"><tr><th>‡ˆÊ</th><th>E‹Æ–¼</th><th>‰æ‘œ</th><th>’j—”ä</th></tr>\n| if $count % 37 == 0 && $#jobs != $count;
+		$contents .= qq|<tr><td><b>$count</b>ä½</td><td>$jobs[$job_no][1]</td><td>$icon_img</td><td><img src="$htmldir/space.gif" style="background-color: #66F; height: 5px; width: $male_par;" alt="$male_par%" /><img src="$htmldir/space.gif" style="background-color: #F99; height: 5px; width: $female_par;" alt="$female_par%" /></td></tr>\n|;
+		$contents .= qq|</table></td><td valign="top"><table class="table1"><tr><th>é †ä½</th><th>è·æ¥­å</th><th>ç”»åƒ</th><th>ç”·å¥³æ¯”</th></tr>\n| if $count % 37 == 0 && $#jobs != $count;
 	}
 	close $fh;
 	$contents .= qq|</table></table>|;

@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 60;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[A,0,0,0,0,0,0,0,F],#0
 	[0,1,0,1,0,1,0,1,0],#1
@@ -15,7 +15,7 @@ $max_round = 60;
 	#0,1,2,3,4,5,6,7,8
 );
 
-# ƒCƒxƒ“ƒg
+# ã‚¤ãƒ™ãƒ³ãƒˆ
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 sub event_A { $py=6; $px=6; }
@@ -24,14 +24,14 @@ sub event_D { $py=4; $px=3; }
 sub event_E { $py=3; $px=4; }
 sub event_F { $py=6; $px=2; }
 sub event_G { $py=0; $px=0; }
-sub event_T { $npc_com.= "<b>IIIIH</b>Œ¶Šo‚Ì–¶‚ª$m‚½‚¿‚ğ‚Â‚Â‚İ‚±‚ñ‚¾I"; for my $y (@partys) { $ms{$y}{state} = '¬—'; }; &_add_monster; }
-sub event_b { return if $event =~ /b/; $event .= 'b'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
+sub event_T { $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>å¹»è¦šã®éœ§ãŒ$mãŸã¡ã‚’ã¤ã¤ã¿ã“ã‚“ã ï¼"; for my $y (@partys) { $ms{$y}{state} = 'æ··ä¹±'; }; &_add_monster; }
+sub event_b { return if $event =~ /b/; $event .= 'b'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 my $_s = int(rand(4)+5);
 require "$stagedir/$_s.cgi";
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

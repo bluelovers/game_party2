@@ -1,45 +1,45 @@
 #=================================================
-# ’¬‹¤’Êˆ— Created by Merino
+# ç”ºå…±é€šå‡¦ç† Created by Merino
 #=================================================
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚½‚Ä‚é';
-push @actions, '‚¿‚¥‚Á‚­';
-$actions{'‚½‚Ä‚é'}   = sub{ &tateru }; 
-$actions{'‚¿‚¥‚Á‚­'} = sub{ &chekku }; 
+push @actions, 'ãŸã¦ã‚‹';
+push @actions, 'ã¡ã‡ã£ã';
+$actions{'ãŸã¦ã‚‹'}   = sub{ &tateru }; 
+$actions{'ã¡ã‡ã£ã'} = sub{ &chekku }; 
 
 #=================================================
-# —‚¿‚¥‚Á‚­
+# ï¼ ã¡ã‡ã£ã
 #=================================================
 sub chekku {
 	my $target = shift;
 	
 	unless ($target) {
-		$mes = qq|<span onclick="text_set('—‚¿‚¥‚Á‚­')">—‚¿‚¥‚Á‚­>››› ‚Ì‰Æ‚ÅA‚»‚Ì‰Æ‚ÌŠ—LŠúŠÔ‚ğ’²‚×‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·</span>|;
+		$mes = qq|<span onclick="text_set('ï¼ ã¡ã‡ã£ã')">ï¼ ã¡ã‡ã£ã>â—‹â—‹â—‹ ã®å®¶ã§ã€ãã®å®¶ã®æ‰€æœ‰æœŸé–“ã‚’èª¿ã¹ã‚‹ã“ã¨ãŒã§ãã¾ã™</span>|;
 		return;
 	}
 	
-	$target .= ' ‚Ì‰Æ';
-	open my $fh, "< ${this_file}_member.cgi" or &error("${this_file}_member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	$target .= ' ã®å®¶';
+	open my $fh, "< ${this_file}_member.cgi" or &error("${this_file}_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
 		if ($target eq $name) {
 			my($hour,$mday,$mon) = (localtime($ltime))[2..4];
-			my $c_date = sprintf("%dŒ%d“ú%d", $mon+1,$mday,$hour);
-			$npc_com = "<b>$name</b>‚ÌŠ—LŠúŠÔ‚Í $c_date ‚Ü‚Å‚Å‚·";
+			my $c_date = sprintf("%dæœˆ%dæ—¥%dæ™‚", $mon+1,$mday,$hour);
+			$npc_com = "<b>$name</b>ã®æ‰€æœ‰æœŸé–“ã¯ $c_date ã¾ã§ã§ã™";
 			return;
 		}
 	}
 	close $fh;
 
-	$mes = qq|<span onclick="text_set('—‚¿‚¥‚Á‚­')">—‚¿‚¥‚Á‚­>››› ‚Ì‰Æ‚ÅA‚»‚Ì‰Æ‚ÌŠ—LŠúŠÔ‚ğ’²‚×‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·</span>|;
+	$mes = qq|<span onclick="text_set('ï¼ ã¡ã‡ã£ã')">ï¼ ã¡ã‡ã£ã>â—‹â—‹â—‹ ã®å®¶ã§ã€ãã®å®¶ã®æ‰€æœ‰æœŸé–“ã‚’èª¿ã¹ã‚‹ã“ã¨ãŒã§ãã¾ã™</span>|;
 }
 
 #=================================================
-# —‚½‚Ä‚é
+# ï¼ ãŸã¦ã‚‹
 #=================================================
 sub tateru {
 	my $target = shift;
@@ -47,45 +47,45 @@ sub tateru {
 	my $p = '';
 	for my $house (@houses) {
 		my $no = $house;
-		$no =~ s/(.+)\..+/$1/; # Œ©‰h‚¦‚ªˆ«‚¢‚Ì‚ÅŠg’£q‚ğœ‚­
+		$no =~ s/(.+)\..+/$1/; # è¦‹æ „ãˆãŒæ‚ªã„ã®ã§æ‹¡å¼µå­ã‚’é™¤ã
 		if ($no eq $target) {
 			if ($m{money} < $price) {
-				$mes = "‰Æ‚ğŒš‚Ä‚é‚¨‹à‚ª‘«‚è‚Ü‚¹‚ñ";
+				$mes = "å®¶ã‚’å»ºã¦ã‚‹ãŠé‡‘ãŒè¶³ã‚Šã¾ã›ã‚“";
 			}
 			elsif (&is_max_house) {
-				$mes = "$this_title ‚É‚Í Å‘å $max_house Œ¬‚Ü‚Å‚µ‚©Œš‚Ä‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ<br />‰Æ‚ª‚È‚­‚È‚é‚Ü‚Å‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢";
+				$mes = "$this_title ã«ã¯ æœ€å¤§ $max_house è»’ã¾ã§ã—ã‹å»ºã¦ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“<br />å®¶ãŒãªããªã‚‹ã¾ã§ã—ã°ã‚‰ããŠå¾…ã¡ãã ã•ã„";
 			}
 			elsif (&is_build_house) {
-				$mes = "$m ‚Í‚·‚Å‚É‰Æ‚ğ‚Á‚Ä‚¢‚Ü‚·";
+				$mes = "$m ã¯ã™ã§ã«å®¶ã‚’æŒã£ã¦ã„ã¾ã™";
 			}
 			else {
 				my $c_time = $time + $cycle_house_day * 24 * 60 * 60;
-				open my $fh, ">> ${this_file}_member.cgi" or &error("${this_file}_member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
-				print $fh "$c_time<>0<>$m ‚Ì‰Æ<>0<>house/$house<>$npc_color<>\n";
+				open my $fh, ">> ${this_file}_member.cgi" or &error("${this_file}_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
+				print $fh "$c_time<>0<>$m ã®å®¶<>0<>house/$house<>$npc_color<>\n";
 				close $fh;
 				
 				my($hour,$mday,$mon) = (localtime($c_time))[2..4];
-				my $c_date = sprintf("%dŒ%d“ú%d", $mon+1,$mday,$hour);
-				$npc_com = "$m ‚Ì‰Æ‚ğŒš‚Ä‚Ü‚µ‚½I‰Æ‚ÌŠ—LŠúŠÔ‚Í $c_date ‚Ü‚Å‚Å‚·";
+				my $c_date = sprintf("%dæœˆ%dæ—¥%dæ™‚", $mon+1,$mday,$hour);
+				$npc_com = "$m ã®å®¶ã‚’å»ºã¦ã¾ã—ãŸï¼å®¶ã®æ‰€æœ‰æœŸé–“ã¯ $c_date ã¾ã§ã§ã™";
 				$m{money} -= $price;
 				&regist_guild_data('point', $cycle_house_day * 10, $m{guild}) if $m{guild};
 			}
 			return;
 		}
-		$p .= qq|<span onclick="text_set('—‚½‚Ä‚é>$no ')"><img src="$icondir/house/$house" /></span> |;
+		$p .= qq|<span onclick="text_set('ï¼ ãŸã¦ã‚‹>$no ')"><img src="$icondir/house/$house" /></span> |;
 	}
-	$mes = qq|y$this_titlez ‰Æ‚Ì’l’i $price G / Å‘åŒšİ” $max_house Œ¬ / Š—L“ú” $cycle_house_day “ú<br />‚Ç‚Ì‰Æ‚ğŒš‚Ä‚Ü‚·‚©H<br />$p|;
+	$mes = qq|ã€$this_titleã€‘ å®¶ã®å€¤æ®µ $price G / æœ€å¤§å»ºè¨­æ•° $max_house è»’ / æ‰€æœ‰æ—¥æ•° $cycle_house_day æ—¥<br />ã©ã®å®¶ã‚’å»ºã¦ã¾ã™ã‹ï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
-# ‚·‚Å‚É‰Æ‚ğŒš‚Ä‚Ä‚¢‚é‚©‚Ç‚¤‚©
+# ã™ã§ã«å®¶ã‚’å»ºã¦ã¦ã„ã‚‹ã‹ã©ã†ã‹
 sub is_build_house {
 	for my $i (0..$#towns) {
-		open my $fh, "< $logdir/${towns[$i][1]}_member.cgi" or &error("$logdir/${towns[$i][1]}_member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+		open my $fh, "< $logdir/${towns[$i][1]}_member.cgi" or &error("$logdir/${towns[$i][1]}_member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 		while (my $line = <$fh>) {
 			my($ltime, $is_npc, $name, $laddr, $icon, $color) = split /<>/, $line;
-			return 1 if $name eq "$m ‚Ì‰Æ";
+			return 1 if $name eq "$m ã®å®¶";
 		}
 		close $fh;
 	}
@@ -93,7 +93,7 @@ sub is_build_house {
 }
 
 
-# Å‘å”‚ğ’´‚¦‚Ä‚¢‚é‚©‚Ç‚¤‚©
+# æœ€å¤§æ•°ã‚’è¶…ãˆã¦ã„ã‚‹ã‹ã©ã†ã‹
 sub is_max_house {
 	my $count = 0;
 	for my $name (@members) {
@@ -106,4 +106,4 @@ sub is_max_house {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

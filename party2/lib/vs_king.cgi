@@ -1,59 +1,59 @@
 require "./lib/_battle.cgi";
 require "./lib/_npc_action.cgi";
 #=================================================
-# ••ˆóí Created by Merino
+# å°å°æˆ¦ Created by Merino
 #=================================================
 
 @npc_skills = (
-	[0,	0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-	[0,	0,	'ƒfƒWƒ‡ƒ“',		sub{ &dejon		}],
+	[0,	0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+	[0,	0,	'ãƒ‡ã‚¸ãƒ§ãƒ³',		sub{ &dejon		}],
 );
 
 #=================================================
-# ƒ^ƒCƒgƒ‹A”wŒi‰æ‘œ
+# ã‚¿ã‚¤ãƒˆãƒ«ã€èƒŒæ™¯ç”»åƒ
 #=================================================
 sub get_header_data {
 	$bgimg = "$bgimgdir/stage19.gif";
 	$this_title = "$p_name";
 }
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub add_battle_action {
 	if ($round eq '2') {
 		$is_npc_action = 0;
-		push @actions, '‚µ‚ç‚×‚é';
-		$actions{'‚µ‚ç‚×‚é'} = [0,	sub{ &shiraberu }];
+		push @actions, 'ã—ã‚‰ã¹ã‚‹';
+		$actions{'ã—ã‚‰ã¹ã‚‹'} = [0,	sub{ &shiraberu }];
 	}
 	elsif (@enemys <= 0) {
-		push @actions, '‚Ó‚¤‚¢‚ñ';
-		$actions{'‚Ó‚¤‚¢‚ñ'} = [0,	sub{ &fuuin }];
+		push @actions, 'ãµã†ã„ã‚“';
+		$actions{'ãµã†ã„ã‚“'} = [0,	sub{ &fuuin }];
 	}
 }
 
 #=================================================
-# —‚Ó‚¤‚¢‚ñ
+# ï¼ ãµã†ã„ã‚“
 #=================================================
 sub fuuin {
 	return if @enemys;
 	$is_npc_action = 0;
 	if (@enemys > 0) {
-		$mes .= "¦‘S‚Ä‚Ì“G‚ğ“|‚³‚È‚¢‚Æ••ˆó‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes .= "â€»å…¨ã¦ã®æ•µã‚’å€’ã•ãªã„ã¨å°å°ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	elsif ($round >= 2) {
-		$mes .= "‚·‚Å‚É••ˆóÏ‚İ‚Å‚·B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢<br />";
+		$mes .= "ã™ã§ã«å°å°æ¸ˆã¿ã§ã™ã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„<br />";
 		return;
 	}
 	
 	++$round;
 
-	&error("$stagedir/$stage.cgiƒ‚ƒ“ƒXƒ^[ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ") unless -f "$stagedir/$stage.cgi";
+	&error("$stagedir/$stage.cgiãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“") unless -f "$stagedir/$stage.cgi";
 	require "$stagedir/$stage.cgi";
 	
-	$npc_com .= "$p_name‚ğÄ‚Ñ••ˆó‚·‚é‚±‚Æ‚É¬Œ÷‚µ‚Ü‚µ‚½IƒCƒxƒ“ƒgLê‚Åj‰ê‰ï‚ªŠJÃ‚³‚ê‚Ü‚·I<br />";
-	my $hero_name = join "A", @partys;
-	&write_news(qq|<span class="tenshon">—EÒ$hero_name‚ª$p_name‚ğ••ˆó‚·‚é</span>|);
+	$npc_com .= "$p_nameã‚’å†ã³å°å°ã™ã‚‹ã“ã¨ã«æˆåŠŸã—ã¾ã—ãŸï¼ã‚¤ãƒ™ãƒ³ãƒˆåºƒå ´ã§ç¥è³€ä¼šãŒé–‹å‚¬ã•ã‚Œã¾ã™ï¼<br />";
+	my $hero_name = join "ã€", @partys;
+	&write_news(qq|<span class="tenshon">å‹‡è€…$hero_nameãŒ$p_nameã‚’å°å°ã™ã‚‹</span>|);
 
 	for my $name (@partys) {
 		next if $name =~ /^@/;
@@ -63,12 +63,12 @@ sub fuuin {
 
 	&add_treasure();
 
-	# ƒCƒxƒ“ƒgLê‚Åj‰ê‰ï‚Ìl‚½‚¿‚ğ’Ç‰Á
+	# ã‚¤ãƒ™ãƒ³ãƒˆåºƒå ´ã§ç¥è³€ä¼šã®äººãŸã¡ã‚’è¿½åŠ 
 	require "./lib/_win_vs_king.cgi";
 }
 
 #=============================
-# —ƒfƒWƒ‡ƒ“ ‚â‚ç‚ê‚½l‚ğ‹­§‘Şê
+# ï¼ ãƒ‡ã‚¸ãƒ§ãƒ³ ã‚„ã‚‰ã‚ŒãŸäººã‚’å¼·åˆ¶é€€å ´
 #=============================
 sub dejon {
 	my @new_members;
@@ -81,7 +81,7 @@ sub dejon {
 				&regist_you_data($name, 'tired', $p{tired}+30);
 			}
 			$ms{$name}{color} = $npc_color;
-			$com.="$name‚ªˆÙ‹óŠÔ‚Ö‚Æ‹z‚¢‚Ü‚ê‚½I";
+			$com.="$nameãŒç•°ç©ºé–“ã¸ã¨å¸ã„è¾¼ã¾ã‚ŒãŸï¼";
 		}
 		else {
 			push @new_members, $name;
@@ -91,4 +91,4 @@ sub dejon {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

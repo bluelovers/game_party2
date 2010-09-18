@@ -1,80 +1,80 @@
 require "./lib/_battle.cgi";
 require "./lib/_npc_action.cgi";
 #=================================================
-# –`Œ¯(VS ƒ‚ƒ“ƒXƒ^[) Created by Merino
+# å†’é™º(VS ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼) Created by Merino
 #=================================================
 
-# ƒ{ƒXí‚ÌŠK”(+1 ‚ª•ó•”‰®‚Æ‚È‚é)
+# ãƒœã‚¹æˆ¦ã®éšæ•°(+1 ãŒå®éƒ¨å±‹ã¨ãªã‚‹)
 $boss_round = 10;
 
 
 @npc_skills = (
-	[0,	0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-#	[0,	0,	'‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp} = '–hŒä'; $com.="$m‚Íg‚ğŒÅ‚ß‚Ä‚¢‚é";	}],
+	[0,	0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+#	[0,	0,	'ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp} = 'é˜²å¾¡'; $com.="$mã¯èº«ã‚’å›ºã‚ã¦ã„ã‚‹";	}],
 );
 
 #=================================================
-# ƒ^ƒCƒgƒ‹A”wŒi‰æ‘œ
+# ã‚¿ã‚¤ãƒˆãƒ«ã€èƒŒæ™¯ç”»åƒ
 #=================================================
 sub get_header_data {
 	$bgimg = "$bgimgdir/stage$stage.gif";
-	$this_title = "$stages[$stage] <b>$round</b>ŠK";
+	$this_title = "$stages[$stage] <b>$round</b>éš";
 }
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub add_battle_action {
 	if ($round eq $boss_round+1) {
 		$is_npc_action = 0;
-		push @actions, '‚µ‚ç‚×‚é';
-		$actions{'‚µ‚ç‚×‚é'} = [0,	sub{ &shiraberu }];
+		push @actions, 'ã—ã‚‰ã¹ã‚‹';
+		$actions{'ã—ã‚‰ã¹ã‚‹'} = [0,	sub{ &shiraberu }];
 	}
 
 	return if @enemys;
-	push @actions, '‚·‚·‚Ş';
-	$actions{'‚·‚·‚Ş'} = [0,	sub{ &susumu }];
+	push @actions, 'ã™ã™ã‚€';
+	$actions{'ã™ã™ã‚€'} = [0,	sub{ &susumu }];
 }
 
 #=================================================
-# —‚·‚·‚Ş
+# ï¼ ã™ã™ã‚€
 #=================================================
 sub susumu {
 	$is_npc_action = 0;
 	if (@enemys > 0) {
-		$mes .= "¦“G‚ğ‘S‚Ä“|‚·‚Ü‚ÅAŸ‚ÌŠK‚Éi‚Ş‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes .= "â€»æ•µã‚’å…¨ã¦å€’ã™ã¾ã§ã€æ¬¡ã®éšã«é€²ã‚€ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	elsif ($round < 1 && $leader ne $m) {
-		$mes = "ˆê”Ôn‚ß‚Ì —‚·‚·‚Ş ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+		$mes = "ä¸€ç•ªå§‹ã‚ã® ï¼ ã™ã™ã‚€ ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 		return;
 	}
 	elsif ($round >= $boss_round+1) {
-		$mes .= "¦ƒNƒGƒXƒg‚ÍI—¹‚µ‚Ü‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+		$mes .= "â€»ã‚¯ã‚¨ã‚¹ãƒˆã¯çµ‚äº†ã—ã¾ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 		return;
 	}
 	
 	&reset_status_all;
 
 	++$round;
-	$npc_com .= "$p_name‚Í $stages[$stage] ‚Ì‰œ‚Ö‚Æi‚İ‚Ü‚µ‚½c<br />";
+	$npc_com .= "$p_nameã¯ $stages[$stage] ã®å¥¥ã¸ã¨é€²ã¿ã¾ã—ãŸâ€¦<br />";
 	&set_monster();
 	&auto_reload;
 }
 # ------------------
-# í“¬ƒƒ“ƒo[‚ÉNPCƒ‚ƒ“ƒXƒ^[‚ğ’Ç‰Á‚·‚é
+# æˆ¦é—˜ãƒ¡ãƒ³ãƒãƒ¼ã«NPCãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’è¿½åŠ ã™ã‚‹
 sub set_monster {
-	&error("$stagedir/$stage.cgiƒ‚ƒ“ƒXƒ^[ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ") unless -f "$stagedir/$stage.cgi";
+	&error("$stagedir/$stage.cgiãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“") unless -f "$stagedir/$stage.cgi";
 	require "$stagedir/$stage.cgi";
 
 	@members = @partys;
 	
-	if ($round eq $boss_round+1) { # ‚¨•ó(ƒfƒtƒHƒ‹ƒg11ŠK)
+	if ($round eq $boss_round+1) { # ãŠå®(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ11éš)
 		my $count = $stage eq '17' || $stage eq '20' || $stage eq '21' ? ($#partys+1) * 3 : $#partys;
-		++$count if $m{job} eq '7'; # ¤l‚Ìê‡+1
+		++$count if $m{job} eq '7'; # å•†äººã®å ´åˆ+1
 		&add_treasure($count);
 		&make_vs_king if $stage eq '19';
 	}
-	elsif ($round eq $boss_round) { # ƒ{ƒXí(ƒfƒtƒHƒ‹ƒg10ŠK)
+	elsif ($round eq $boss_round) { # ãƒœã‚¹æˆ¦(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ10éš)
 		&add_boss();
 	}
 	else {
@@ -82,9 +82,9 @@ sub set_monster {
 	}
 }
 # ------------------
-# ••ˆóíì¬
+# å°å°æˆ¦ä½œæˆ
 sub make_vs_king {
-	opendir my $dh, $stagedir or &error("$stagedirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, $stagedir or &error("$stagedirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $file_name = readdir $dh) {
 		next if $file_name =~ /^\./;
 		next if $file_name !~ /^king/;
@@ -92,21 +92,21 @@ sub make_vs_king {
 		
 		require "$stagedir/$file_name";
 		my $quest_id = unpack 'H*', $k{p_name};
-		next if -d "$questdir/$quest_id"; # “¯‚¶ƒNƒGƒXƒg–¼‚ª‚ ‚Á‚½ê‡‚Íì‚ç‚È‚¢(ì‚ê‚È‚¢)
+		next if -d "$questdir/$quest_id"; # åŒã˜ã‚¯ã‚¨ã‚¹ãƒˆåãŒã‚ã£ãŸå ´åˆã¯ä½œã‚‰ãªã„(ä½œã‚Œãªã„)
 
-		$k{p_join}++; # ƒ{ƒX‚ª1l•ªè—L‚µ‚Ä‚¢‚é‚½‚ß
+		$k{p_join}++; # ãƒœã‚¹ãŒ1äººåˆ†å æœ‰ã—ã¦ã„ã‚‹ãŸã‚
 		my $boss_name = '@'.$k{p_leader};
 
-		# V‹Kƒp[ƒeƒB[ì¬
-		mkdir "$questdir/$quest_id" or &error("$questdir/$quest_idƒfƒBƒŒƒNƒgƒŠ‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
-		open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
+		# æ–°è¦ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä½œæˆ
+		mkdir "$questdir/$quest_id" or &error("$questdir/$quest_idãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒä½œæˆã§ãã¾ã›ã‚“");
+		open my $fh, "> $questdir/$quest_id/member.cgi" or &error("$questdir/$quest_id/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ãã¾ã›ã‚“");
 		print $fh "$k{speed}<>$k_stage<>1<>$boss_name<>$k{p_name}<><>$k{p_join}<>0<>0<>1<>$k{need_join}<>6<><>0<>0<><>\n";
 		
 		my @lines = ();
 		for my $no (0 .. $#bosses) {
 			my %p = ();
 			
-			# ‰Šúƒf[ƒ^ƒZƒbƒg(“Ç‚İ‚ñ‚¾ƒf[ƒ^‚É‚·‚Å‚É’l‚ª‚ ‚éê‡‚Í‚»‚Á‚¿‚ğ—Dæ)
+			# åˆæœŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ(èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã«ã™ã§ã«å€¤ãŒã‚ã‚‹å ´åˆã¯ãã£ã¡ã‚’å„ªå…ˆ)
 			$bosses[$no]{tmp}   ||= '';
 			$bosses[$no]{state} ||= '';
 			$bosses[$no]{hit}   ||= 95;
@@ -129,7 +129,7 @@ sub make_vs_king {
 		close $fh;
 		chmod $chmod, "$questdir/$quest_id/member.cgi";
 		
-		open my $fh2, "> $questdir/$quest_id/log.cgi" or &error("$questdir/$quest_id/log.cgiƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚Ü‚¹‚ñ");
+		open my $fh2, "> $questdir/$quest_id/log.cgi" or &error("$questdir/$quest_id/log.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ãã¾ã›ã‚“");
 		close $fh2;
 		chmod $chmod, "$questdir/$quest_id/log.cgi";
 	}
@@ -141,11 +141,11 @@ sub make_vs_king {
 		&regist_you_data($name, 'mao_c', $p{mao_c}+1);
 	}
 	
-	my $hero_name = join "A", @partys;
-	&write_news(qq|<span class="die">$p_name($hero_name) ‚É‚æ‚Á‚Ä••ˆó‚³‚ê‚µÒ’B‚Ì••ˆó‚ª‰ğ‚©‚ê‚Ü‚µ‚½I</span>|);
-	$npc_com .= "<br />$leader‚½‚¿‚ÍA‚½‚¾‚È‚ç‚Ê•µˆÍ‹C‚ğŠ´‚¶‚½cB‚È‚ñ‚ÆI¢ŠE‚©‚çŒõ‚ªÁ‚¦‹‚èA¢ŠE‚Í^‚Á•‚ÈˆÅ‚É‚¨‚¨‚í‚ê‚Ä‚µ‚Ü‚Á‚½I";
+	my $hero_name = join "ã€", @partys;
+	&write_news(qq|<span class="die">$p_name($hero_name) ã«ã‚ˆã£ã¦å°å°ã•ã‚Œã—è€…é”ã®å°å°ãŒè§£ã‹ã‚Œã¾ã—ãŸï¼</span>|);
+	$npc_com .= "<br />$leaderãŸã¡ã¯ã€ãŸã ãªã‚‰ã¬é›°å›²æ°—ã‚’æ„Ÿã˜ãŸâ€¦ã€‚ãªã‚“ã¨ï¼ä¸–ç•Œã‹ã‚‰å…‰ãŒæ¶ˆãˆå»ã‚Šã€ä¸–ç•Œã¯çœŸã£é»’ãªé—‡ã«ãŠãŠã‚ã‚Œã¦ã—ã¾ã£ãŸï¼";
 }
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

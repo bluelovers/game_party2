@@ -1,66 +1,66 @@
 require "./lib/_battle.cgi";
 require "./lib/_npc_action.cgi";
 #=================================================
-# ƒ`ƒƒƒŒƒ“ƒWƒ‚[ƒh Created by Merino
+# ãƒãƒ£ãƒ¬ãƒ³ã‚¸ãƒ¢ãƒ¼ãƒ‰ Created by Merino
 #=================================================
 @npc_skills = (
-	[0,	0,	'‚±‚¤‚°‚«',		sub{ &kougeki	}],
-#	[0,	0,	'‚Ú‚¤‚¬‚å',		sub{ $ms{$m}{tmp} = '–hŒä'; $com.="$m‚Íg‚ğŒÅ‚ß‚Ä‚¢‚é";	}],
+	[0,	0,	'ã“ã†ã’ã',		sub{ &kougeki	}],
+#	[0,	0,	'ã¼ã†ãã‚‡',		sub{ $ms{$m}{tmp} = 'é˜²å¾¡'; $com.="$mã¯èº«ã‚’å›ºã‚ã¦ã„ã‚‹";	}],
 );
 
 #=================================================
-# ƒ^ƒCƒgƒ‹A”wŒi‰æ‘œ
+# ã‚¿ã‚¤ãƒˆãƒ«ã€èƒŒæ™¯ç”»åƒ
 #=================================================
 sub get_header_data {
 	$bgimg = "$bgimgdir/challenge$stage.gif";
 	$this_title = "$challenges[$stage] Lv.<b>$round</b>";
 }
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub add_battle_action {
-	if (defined $enemys[0] && $enemys[0] =~ /•ó” .$/) {
+	if (defined $enemys[0] && $enemys[0] =~ /å®ç®±.$/) {
 		$is_npc_action = 0;
-		push @actions, '‚µ‚ç‚×‚é';
-		$actions{'‚µ‚ç‚×‚é'} = [0,	sub{ &shiraberu }];
+		push @actions, 'ã—ã‚‰ã¹ã‚‹';
+		$actions{'ã—ã‚‰ã¹ã‚‹'} = [0,	sub{ &shiraberu }];
 	}
 
 	return if @enemys;
-	push @actions, '‚·‚·‚Ş';
-	$actions{'‚·‚·‚Ş'} = [0,	sub{ &susumu }];
+	push @actions, 'ã™ã™ã‚€';
+	$actions{'ã™ã™ã‚€'} = [0,	sub{ &susumu }];
 }
 
 #=================================================
-# —‚·‚·‚Ş
+# ï¼ ã™ã™ã‚€
 #=================================================
 sub susumu {
 	$is_npc_action = 0;
 	if (@enemys > 0) {
-		$mes .= "¦“G‚ğ‘S‚Ä“|‚·‚Ü‚ÅAŸ‚ÌLv.‚Éi‚Ş‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes .= "â€»æ•µã‚’å…¨ã¦å€’ã™ã¾ã§ã€æ¬¡ã®Lv.ã«é€²ã‚€ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	elsif ($round < 1 && $leader ne $m) {
-		$mes = "ˆê”Ôn‚ß‚Ì —‚·‚·‚Ş ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+		$mes = "ä¸€ç•ªå§‹ã‚ã® ï¼ ã™ã™ã‚€ ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 		return;
 	}
 
-	&update_record() if $round > $win; # Å‚‹L˜^‚ğ’´‚¦‚Ä‚¢‚½‚ç‹L˜^XVˆ—
+	&update_record() if $round > $win; # æœ€é«˜è¨˜éŒ²ã‚’è¶…ãˆã¦ã„ãŸã‚‰è¨˜éŒ²æ›´æ–°å‡¦ç†
 	&reset_status_all;
 
 	++$round;
-	$npc_com .= "$p_name‚Í $challenges[$stage] Lv.$round ‚É’§íI<br />";
+	$npc_com .= "$p_nameã¯ $challenges[$stage] Lv.$round ã«æŒ‘æˆ¦ï¼<br />";
 	&set_monster();
 	&auto_reload;
 }
 # ------------------
-# í“¬ƒƒ“ƒo[‚ÉNPCƒ‚ƒ“ƒXƒ^[‚ğ’Ç‰Á‚·‚é
+# æˆ¦é—˜ãƒ¡ãƒ³ãƒãƒ¼ã«NPCãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’è¿½åŠ ã™ã‚‹
 sub set_monster {
-	&error("$challengedir/$stage.cgiƒ‚ƒ“ƒXƒ^[ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ") unless -f "$challengedir/$stage.cgi";
+	&error("$challengedir/$stage.cgiãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“") unless -f "$challengedir/$stage.cgi";
 	require "$challengedir/$stage.cgi";
 
 	@members = @partys;
 	
-	if (!$m{is_get} && $round >= $tresure_round && rand(10) < 1) { # ‚¨•ó(–¢æ“¾‚ÅA$tresure_roundˆÈã‚ÌŠK‚ÅA1/10‚ÌŠm—§)
+	if (!$m{is_get} && $round >= $tresure_round && rand(10) < 1) { # ãŠå®(æœªå–å¾—ã§ã€$tresure_roundä»¥ä¸Šã®éšã§ã€1/10ã®ç¢ºç«‹)
 		&add_treasure();
 	}
 	else {
@@ -68,22 +68,22 @@ sub set_monster {
 	}
 }
 
-# ‹L˜^XV
+# è¨˜éŒ²æ›´æ–°
 sub update_record {
-	open my $fh, "+< $logdir/challenge$stage.cgi" or &error("$logdir/challenge$stage.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");;
+	open my $fh, "+< $logdir/challenge$stage.cgi" or &error("$logdir/challenge$stage.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");;
 	eval { flock $fh, 2; };
 	my $line = <$fh>;
 	my($max_round) = (split /<>/, $line)[0];
 
-	if ($round > $max_round) { # “¯‚ÅXV‚³‚ê‚Ä‚¢‚éê‡‚ª‚ ‚é‚Ì‚ÅÄŠm”F
+	if ($round > $max_round) { # åŒæ™‚ã§æ›´æ–°ã•ã‚Œã¦ã„ã‚‹å ´åˆãŒã‚ã‚‹ã®ã§å†ç¢ºèª
 		my @lines = ("$round<>$date<>$p_name<>$ms{$m}{color}<>\n");
-		for my $y (@partys) { # ‹L˜^•\¦‚Ég‚¢‚½‚¢ƒf[ƒ^‚ğ‚Â‚Á‚±‚Ş
+		for my $y (@partys) { # è¨˜éŒ²è¡¨ç¤ºã«ä½¿ã„ãŸã„ãƒ‡ãƒ¼ã‚¿ã‚’ã¤ã£ã“ã‚€
 			my $icon = $ms{$y}{hp} <= 0 ? 'chr/099.gif' : $ms{$y}{icon};
 			push @lines, "$y<>$icon<>$ms{$y}{job}<>$ms{$y}{old_job}<>$ms{$y}{hp}<>$ms{$y}{mp}<>$ms{$y}{at}<>$ms{$y}{df}<>$ms{$y}{ag}<>\n";
 		}
 		
 		$win = $round;
-		$npc_com .= qq|<span class="lv_up">$challenges[$stage]‚Ì‹L˜^‚ğXV‚µ‚Ü‚µ‚½IyLv.<b>$round</b>ƒNƒŠƒAz</span><br />|;
+		$npc_com .= qq|<span class="lv_up">$challenges[$stage]ã®è¨˜éŒ²ã‚’æ›´æ–°ã—ã¾ã—ãŸï¼ã€Lv.<b>$round</b>ã‚¯ãƒªã‚¢ã€‘</span><br />|;
 		seek $fh, 0, 0;
 		truncate $fh, 0;
 		print $fh @lines;
@@ -92,4 +92,4 @@ sub update_record {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

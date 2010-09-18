@@ -1,24 +1,24 @@
-�y�d�g�݁z
-�E?.cgi���烉���_���Ń}�b�v�����܂�
-�E�Œ�ɂ������ꍇ�́A�P�t�@�C�������ɂ���΂n�j
-�E�u_�v�t���͏����}�b�v�ɂȂ�Ȃ��̂ŁA�Q�K�Ȃǂ�����ꍇ�́u_�v�t����(./map/2/�Q��)
-�E�o�������X�^�[��󔠂̐ݒ�́A./stage�Ɠ��������ɋL�q����B�܂��́Arequire��stage�t�@�C�����Ă�
+【仕組み】
+・?.cgiからランダムでマップが決まる
+・固定にしたい場合は、１ファイルだけにすればＯＫ
+・「_」付きは初期マップにならないので、２階などをつくる場合は「_」付きで(./map/2/参照)
+・出現モンスターや宝箱の設定は、./stageと同じ感じに記述する。または、requireでstageファイルを呼ぶ
 
 
-�y�ȒP�Ȑ����z
-@maps�̒l�́A0�`9�Aa�`z�AA�`Z�Ȃ�Ȃ�ł�OK
-S�c�X�^�[�g�ʒu(��ΕK�{)
-0�c��
-1�c��
-B�c�{�X
-����ȊO�̉p�����͎���ŁB
+【簡単な説明】
+@mapsの値は、0～9、a～z、A～ZならなんでもOK
+S…スタート位置(絶対必須)
+0…道
+1…壁
+B…ボス
+それ以外の英数字は自作で。
 
-�n�}�̕\���́u�������v�����A�ǉ��������ꍇ�́A$map_imgs{@maps�̉p����} = '�}�[�N';
-<img>�^�O���g�����Ƃ��\
+地図の表示は「■□●」だけ、追加したい場合は、$map_imgs{@mapsの英数字} = 'マーク';
+<img>タグを使うことも可能
 
-�G�̐ݒ���C�x���g�ʂɂ������ꍇ�́A�T�u���[�`�����ɂāurequire �`�v��
-�T�u���[�`���ŌĂяo������u&get_monster_data�v (./map/6/�Q��)
+敵の設定をイベント別にしたい場合は、サブルーチン内にて「require ～」や
+サブルーチンで呼び出したり「&get_monster_data」 (./map/6/参照)
 
 
-��@maps�̉p������sub event_���́A�K���啶�������������킹�邱��(�Е��������A�Е��啶���Ƃ��̓o�O��܂�)
-��@maps�ɂ����āAsub event_�����Ȃ��ƃo�O(�����)�ɂȂ�܂��B
+※@mapsの英数字とsub event_○は、必ず大文字小文字を合わせること(片方小文字、片方大文字とかはバグります)
+※@mapsにあって、sub event_○がないとバグ(黒画面)になります。

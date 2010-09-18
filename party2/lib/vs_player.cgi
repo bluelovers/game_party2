@@ -1,77 +1,77 @@
 require "./lib/_battle.cgi";
 $is_npc_action = 0;
 #=================================================
-# ƒp[ƒeƒB[í Created by Merino
+# ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼æˆ¦ Created by Merino
 #=================================================
-# Ÿ‚¿ƒJƒEƒ“ƒg‚ğŒvZ
-# Ü‹àŒvZ
+# å‹ã¡ã‚«ã‚¦ãƒ³ãƒˆã‚’è¨ˆç®—
+# è³é‡‘è¨ˆç®—
 
-# ƒp[ƒeƒB[ƒJƒ‰[(NPCƒJƒ‰[‚ÆƒfƒtƒHƒ‹ƒgƒJƒ‰[‚Íg‚Á‚½‚ç~)
+# ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚«ãƒ©ãƒ¼(NPCã‚«ãƒ©ãƒ¼ã¨ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚«ãƒ©ãƒ¼ã¯ä½¿ã£ãŸã‚‰Ã—)
 %colors = (
-	'#FF3333'	=> 'ƒŒƒbƒh',
-	'#FF33CC'	=> 'ƒsƒ“ƒN',
-	'#FF9933'	=> 'ƒIƒŒƒ“ƒW',
-	'#FFFF33'	=> 'ƒCƒGƒ[',
-	'#33FF33'	=> 'ƒOƒŠ[ƒ“',
-	'#33CCFF'	=> 'ƒAƒNƒA',
-	'#6666FF'	=> 'ƒuƒ‹[',
-	'#CC66FF'	=> 'ƒp[ƒvƒ‹',
-	'#CCCCCC'	=> 'ƒOƒŒƒC',
+	'#FF3333'	=> 'ãƒ¬ãƒƒãƒ‰',
+	'#FF33CC'	=> 'ãƒ”ãƒ³ã‚¯',
+	'#FF9933'	=> 'ã‚ªãƒ¬ãƒ³ã‚¸',
+	'#FFFF33'	=> 'ã‚¤ã‚¨ãƒ­ãƒ¼',
+	'#33FF33'	=> 'ã‚°ãƒªãƒ¼ãƒ³',
+	'#33CCFF'	=> 'ã‚¢ã‚¯ã‚¢',
+	'#6666FF'	=> 'ãƒ–ãƒ«ãƒ¼',
+	'#CC66FF'	=> 'ãƒ‘ãƒ¼ãƒ—ãƒ«',
+	'#CCCCCC'	=> 'ã‚°ãƒ¬ã‚¤',
 );
 
 #=================================================
-# ƒ^ƒCƒgƒ‹A”wŒi‰æ‘œ
+# ã‚¿ã‚¤ãƒˆãƒ«ã€èƒŒæ™¯ç”»åƒ
 #=================================================
 sub get_header_data {
 	$bgimg = "$bgimgdir/stage$stage.gif";
-	$this_title = "$p_name(<b>$win</b>æŸ) <b>$round</b>‰ñí–Ú";
+	$this_title = "$p_name(<b>$win</b>å…ˆå‹) <b>$round</b>å›æˆ¦ç›®";
 }
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
 sub add_battle_action {
 	if ($round <= 0) {
-		push @actions, '‚µ‚ç‚×‚é';
-		push @actions, '‚Ï[‚Ä‚¡[';
-		$actions{'‚µ‚ç‚×‚é'}   = [0,	sub{ &shiraberu }];
-		$actions{'‚Ï[‚Ä‚¡['} = [0,	sub{ &party }];
+		push @actions, 'ã—ã‚‰ã¹ã‚‹';
+		push @actions, 'ã±ãƒ¼ã¦ãƒãƒ¼';
+		$actions{'ã—ã‚‰ã¹ã‚‹'}   = [0,	sub{ &shiraberu }];
+		$actions{'ã±ãƒ¼ã¦ãƒãƒ¼'} = [0,	sub{ &party }];
 	}
 
-	push @actions, '‚©‚¢‚µ';
-	$actions{'‚©‚¢‚µ'}     = [0,	sub{ &kaishi }];
+	push @actions, 'ã‹ã„ã—';
+	$actions{'ã‹ã„ã—'}     = [0,	sub{ &kaishi }];
 }
 
 
 #=================================================
-# —‚Ï[‚Ä‚¡[
+# ï¼ ã±ãƒ¼ã¦ãƒãƒ¼
 #=================================================
 sub party {
 	$target = shift;
 	
 	if ($round > 0) {
-		$mes = "í“¬‚Ì“r’†‚Å•ÏX‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñ";
+		$mes = "æˆ¦é—˜ã®é€”ä¸­ã§å¤‰æ›´ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“";
 		return;
 	}
 	
 	my %r_colors = reverse %colors;
 	if (defined $r_colors{$target}) {
 		$ms{$m}{color} = $r_colors{$target};
-		$com.=qq|<font color="$r_colors{$target}">$target</font>ƒp[ƒeƒB[‚É“ü‚è‚Ü‚µ‚½I|;
+		$com.=qq|<font color="$r_colors{$target}">$target</font>ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã«å…¥ã‚Šã¾ã—ãŸï¼|;
 		return;
 	}
 	
 	my $p = '';
 	for my $k (keys %colors) {
-		$p .= qq|<span onclick="text_set('—‚Ï[‚Ä‚¡[>$colors{$k} ')" style="color: $k;">$colors{$k}</span> / |;
+		$p .= qq|<span onclick="text_set('ï¼ ã±ãƒ¼ã¦ãƒãƒ¼>$colors{$k} ')" style="color: $k;">$colors{$k}</span> / |;
 	}
-	$mes = "‚Ç‚Ìƒp[ƒeƒB[‚É“ü‚è‚Ü‚·‚©H<br />$p";
+	$mes = "ã©ã®ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã«å…¥ã‚Šã¾ã™ã‹ï¼Ÿ<br />$p";
 }
 
 #=================================================
-# —‚©‚¢‚µ
+# ï¼ ã‹ã„ã—
 #=================================================
 sub kaishi {
-	# í“¬ŠJn‘O
+	# æˆ¦é—˜é–‹å§‹å‰
 	if ($round < 1) {
 		my %teams = ();
 		for my $name (@members) {
@@ -79,27 +79,27 @@ sub kaishi {
 			++$teams{ $ms{$name}{color} } unless $teams{ $ms{$name}{color} };
 		}
 		if (keys %teams <= 1) {
-			$mes = "‘Îí‚·‚éƒp[ƒeƒB[‚ª‚¢‚Ü‚¹‚ñ";
+			$mes = "å¯¾æˆ¦ã™ã‚‹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãŒã„ã¾ã›ã‚“";
 			return;
 		}
 		elsif ($mes) {
-			$mes .= "‚ÌƒvƒŒƒCƒ„[‚ªA‚Ü‚¾ƒp[ƒeƒB[‚ğŒˆ‚ß‚Ä‚¢‚Ü‚¹‚ñ";
+			$mes .= "ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã€ã¾ã ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚’æ±ºã‚ã¦ã„ã¾ã›ã‚“";
 			return;
 		}
 		elsif ($leader ne $m) {
-			$mes = "ˆê”Ôn‚ß‚Ì —‚©‚¢‚µ ‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚ÍƒŠ[ƒ_[‚Ì‚İ‚Å‚·";
+			$mes = "ä¸€ç•ªå§‹ã‚ã® ï¼ ã‹ã„ã— ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã¯ãƒªãƒ¼ãƒ€ãƒ¼ã®ã¿ã§ã™";
 			return;
 		}
 	}
 	else {
-		# Ü‹à”z‚èI‚í‚èB
+		# è³é‡‘é…ã‚Šçµ‚ã‚ã‚Šã€‚
 		unless (-s "$questdir/$m{quest}/bet.cgi") {
-			$mes .= "¦ƒNƒGƒXƒg‚ÍI—¹‚µ‚Ü‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+			$mes .= "â€»ã‚¯ã‚¨ã‚¹ãƒˆã¯çµ‚äº†ã—ã¾ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 			return;
 		}
-		# ‚È‚©‚È‚©Œˆ’…‚ª‚Â‚©‚È‚¢ê‡B‹­§I—¹
+		# ãªã‹ãªã‹æ±ºç€ãŒã¤ã‹ãªã„å ´åˆã€‚å¼·åˆ¶çµ‚äº†
 		if ($round > 10) {
-			$mes = "$round ƒ‰ƒEƒ“ƒh‚Ü‚ÅŒˆ’…‚ª‚Â‚«‚Ü‚¹‚ñ‚Å‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+			$mes = "$round ãƒ©ã‚¦ãƒ³ãƒ‰ã¾ã§æ±ºç€ãŒã¤ãã¾ã›ã‚“ã§ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 			return;
 		}
 
@@ -114,16 +114,16 @@ sub kaishi {
 			}
 		}
 		
-		# ˆø•ª‚¯
+		# å¼•åˆ†ã‘
 		if ($alive_team_c eq '0') {
-			$npc_com = "‘æ $round ƒ‰ƒEƒ“ƒh‚ÌŸ•‰‚ÌŒ‹‰Ê‚Í uˆø‚«•ª‚¯Iv<br />";
+			$npc_com = "ç¬¬ $round ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‹è² ã®çµæœã¯ ã€Œå¼•ãåˆ†ã‘ï¼ã€<br />";
 		}
-		# ‚Pƒp[ƒeƒB[‚Ì‚İc‚Á‚Ä‚¢‚éó‘Ô
+		# ï¼‘ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®ã¿æ®‹ã£ã¦ã„ã‚‹çŠ¶æ…‹
 		elsif ($alive_team_c eq '1') {
 			my $winner = '';
 			my %win_c = ();
 
-			open my $fh, "+< $questdir/$m{quest}/win.cgi" or &error("$questdir/$m{quest}/win.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+			open my $fh, "+< $questdir/$m{quest}/win.cgi" or &error("$questdir/$m{quest}/win.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 			eval { flock $fh, 2; };
 			my $line = <$fh>;
 			$line =~ tr/\x0D\x0A//d;
@@ -139,46 +139,46 @@ sub kaishi {
 			print $fh $line;
 			close $fh;
 			
-			# —DŸƒp[ƒeƒB[Œˆ’è
+			# å„ªå‹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼æ±ºå®š
 			if ($winner) {
 				&give_bet($winner);
 				return;
 			}
-			# ‚È‚©‚È‚©Œˆ’…‚ª‚Â‚©‚È‚¢ê‡B‹­§I—¹
+			# ãªã‹ãªã‹æ±ºç€ãŒã¤ã‹ãªã„å ´åˆã€‚å¼·åˆ¶çµ‚äº†
 			elsif ($round > 10) {
-				$mes = "$round ƒ‰ƒEƒ“ƒh‚Ü‚ÅŒˆ’…‚ª‚Â‚«‚Ü‚¹‚ñ‚Å‚µ‚½B—‚É‚°‚é‚Å‰ğU‚µ‚Ä‚­‚¾‚³‚¢";
+				$mes = "$round ãƒ©ã‚¦ãƒ³ãƒ‰ã¾ã§æ±ºç€ãŒã¤ãã¾ã›ã‚“ã§ã—ãŸã€‚ï¼ ã«ã’ã‚‹ã§è§£æ•£ã—ã¦ãã ã•ã„";
 				return;
 			}
 			
-			# Œ»İ‚Ì“r’†Œo‰ß
+			# ç¾åœ¨ã®é€”ä¸­çµŒé
 			for my $c (sort { $b <=> $a } keys %win_c) {
-				$npc_com .= qq|<font color="$c">$colors{$c} $win_c{$c}Ÿ</font> / |;
+				$npc_com .= qq|<font color="$c">$colors{$c} $win_c{$c}å‹</font> / |;
 			}
 		}
-		# c‚è‚Pƒp[ƒeƒB[‚É‚È‚é‚Ü‚Å
+		# æ®‹ã‚Šï¼‘ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã«ãªã‚‹ã¾ã§
 		else {
-			$mes .= "Œˆ’…‚ª‚Â‚¢‚Ä‚¢‚Ü‚¹‚ñ";
+			$mes .= "æ±ºç€ãŒã¤ã„ã¦ã„ã¾ã›ã‚“";
 			return;
 		}
 	}
 	
 	&reset_status_all;
 
-	# •À‚Ñ‚ğF‚²‚Æ‚ÉƒVƒƒƒbƒtƒ‹
+	# ä¸¦ã³ã‚’è‰²ã”ã¨ã«ã‚·ãƒ£ãƒƒãƒ•ãƒ«
 	&shuffle;
 
 	for my $name (@members) {
-		# ƒ‰ƒEƒ“ƒh–ˆ‚É‘SƒvƒŒƒCƒ„[‚ÌHP‰ñ•œ
+		# ãƒ©ã‚¦ãƒ³ãƒ‰æ¯ã«å…¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPå›å¾©
 		$ms{$name}{hp} = $ms{$name}{mhp};
 		
-		# ŠJn‘O‚Ì‘Ò‹@ŠÔ‚ğ‚»‚ê‚¼‚ê—^‚¦‚é
+		# é–‹å§‹å‰ã®å¾…æ©Ÿæ™‚é–“ã‚’ãã‚Œãã‚Œä¸ãˆã‚‹
 		next if $m eq $name;
 		&regist_you_data($name, 'wt', int($time + $speed * 2 + rand(4)) );
 	}
-	$act_time = $speed * 2; # —ŠJn‚µ‚½l—p
+	$act_time = $speed * 2; # ï¼ é–‹å§‹ã—ãŸäººç”¨
 
 	++$round;
-	$npc_com .= "‘æ $round ƒ‰ƒEƒ“ƒh‡ŠJnI";
+	$npc_com .= "ç¬¬ $round ãƒ©ã‚¦ãƒ³ãƒ‰è©¦åˆé–‹å§‹ï¼";
 	&auto_reload;
 }
 
@@ -191,7 +191,7 @@ sub give_bet {
 		push @win_members, $name;
 	}
 	
-	open my $fh, "+< $questdir/$m{quest}/bet.cgi" or &error("$questdir/$m{quest}/bet.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $questdir/$m{quest}/bet.cgi" or &error("$questdir/$m{quest}/bet.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $prize_money = <$fh>;
 	seek  $fh, 0, 0;
@@ -200,22 +200,22 @@ sub give_bet {
 	$prize_money =~ tr/\x0D\x0A//d;
 	
 	if (@win_members <= 0) {
-		$npc_com .= "—DŸƒp[ƒeƒB[‚ª‚¢‚È‚¢‚æ‚¤‚Å‚·c";
+		$npc_com .= "å„ªå‹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãŒã„ãªã„ã‚ˆã†ã§ã™â€¦";
 		return;
 	}
 	
 	my $p_money = int($prize_money / @win_members);
 	
 	for my $name (@win_members) {
-		&send_money($name, $p_money, "$p_name‚Ì“¬‹Zê‚ÌÜ‹à");
+		&send_money($name, $p_money, "$p_nameã®é—˜æŠ€å ´ã®è³é‡‘");
 		$names .= "$name,";
 	}
 	chop $names;
-	$npc_com .= "—DŸƒp[ƒeƒB[‚Ì$names‚É <b>$p_money</b> G‚ª‘—‚ç‚ê‚Ü‚µ‚½I";
+	$npc_com .= "å„ªå‹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®$namesã« <b>$p_money</b> GãŒé€ã‚‰ã‚Œã¾ã—ãŸï¼";
 }
 
 
-sub npc_turn { return } # ”O‚Ì‚½‚ßƒnƒ}ƒŠ–h~
+sub npc_turn { return } # å¿µã®ãŸã‚ãƒãƒãƒªé˜²æ­¢
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

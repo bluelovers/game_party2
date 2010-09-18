@@ -1,7 +1,7 @@
-# Å‘åƒ^[ƒ“
+# æœ€å¤§ã‚¿ãƒ¼ãƒ³
 $max_round = 30;
 
-# ƒ}ƒbƒv
+# ãƒãƒƒãƒ—
 @maps = (
 	[2,0,3],
 	[1,X,1],
@@ -23,34 +23,34 @@ $max_round = 30;
 	[1,S,1],
 );
 
-# ƒCƒxƒ“ƒg
-$map_imgs{X} = '' if $event !~ /X/;
-$map_imgs{2} = '•ó' if $event !~ /2/;
-$map_imgs{3} = '•ó' if $event !~ /3/;
-sub event_X { return if $event =~ /X/; $event .= 'X'; $npc_com.="‚½‚¾‚È‚ç‚Ê‹C”z‚ğŠ´‚¶‚écB‚Ç‚¤‚â‚çA‚±‚Ìƒ_ƒ“ƒWƒ‡ƒ“‚Ìƒ{ƒX‚Ì‚æ‚¤‚¾I<br />"; &add_boss } # ƒ{ƒX
+# ã‚¤ãƒ™ãƒ³ãƒˆ
+$map_imgs{X} = 'â—' if $event !~ /X/;
+$map_imgs{2} = 'å®' if $event !~ /2/;
+$map_imgs{3} = 'å®' if $event !~ /3/;
+sub event_X { return if $event =~ /X/; $event .= 'X'; $npc_com.="ãŸã ãªã‚‰ã¬æ°—é…ã‚’æ„Ÿã˜ã‚‹â€¦ã€‚ã©ã†ã‚„ã‚‰ã€ã“ã®ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã®ãƒœã‚¹ã®ã‚ˆã†ã ï¼<br />"; &add_boss } # ãƒœã‚¹
 sub event_2 { return if $event =~ /2/; $event .= '2'; &_add_treasure; }
 sub event_3 { return if $event =~ /3/; $event .= '3'; &_add_treasure; }
 
-sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">©Yesy•ó” ‚ª‘åD‚«‚¾zNo¨</span>|; }
+sub event_5 { return if $event =~ /5/; $event .= '5'; $npc_com.=qq|<br /><span class="strong">â†Yesã€å®ç®±ãŒå¤§å¥½ãã ã€‘Noâ†’</span>|; }
 sub event_A { return if $event =~ /A|B/; $event .= 'A'; if (rand(5)<1) { &_add_treasure; } else { &get_boss_data1; &add_boss; };  }
 sub event_B { return if $event =~ /A|B/; $event .= 'B'; if (rand(3)<1) { &add_boss; } else { &_add_monster; }; }
 
-sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">©Yesy‹­‚¢“G‚Æí‚¢‚½‚¢zNo¨</span>|; }
+sub event_6 { return if $event =~ /6/; $event .= '6'; $npc_com.=qq|<br /><span class="strong">â†Yesã€å¼·ã„æ•µã¨æˆ¦ã„ãŸã„ã€‘Noâ†’</span>|; }
 sub event_C { return if $event =~ /C|D/; $event .= 'C'; &add_boss; }
-sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(3)<1) { &_add_monster; } else { $npc_com.= "<b>IIIIH</b>¶Ş×¶Ş×¶Ş×¯I“ªã‚©‚ç‘å‚«‚ÈŠâ‚ª—‚¿‚Ä‚«‚½I"; &_trap_d(120); }; }
+sub event_D { return if $event =~ /C|D/; $event .= 'D'; if (rand(3)<1) { &_add_monster; } else { $npc_com.= "<b>ï¼ï¼ï¼ï¼ï¼Ÿ</b>ã‚¬ãƒ©ã‚¬ãƒ©ã‚¬ãƒ©ãƒƒï¼é ­ä¸Šã‹ã‚‰å¤§ããªå²©ãŒè½ã¡ã¦ããŸï¼"; &_trap_d(120); }; }
 
-sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">©Yesy”L‚æ‚èŒ¢”h‚¾zNo¨</span>|; }
+sub event_7 { return if $event =~ /7/; $event .= '7'; $npc_com.=qq|<br /><span class="strong">â†Yesã€çŒ«ã‚ˆã‚ŠçŠ¬æ´¾ã ã€‘Noâ†’</span>|; }
 sub event_E { return if $event =~ /E|F/; $event .= 'E'; &get_boss_data2; &add_boss; }
 sub event_F { return if $event =~ /E|F/; $event .= 'F'; &get_boss_data3; &add_boss; }
 
 
-# “G‚Æ•ó‚Ìİ’è
+# æ•µã¨å®ã®è¨­å®š
 require "$mapdir/6/_data.cgi";
 
 sub get_boss_data1 {
 	@bosses = (
 		{
-			name		=> 'lH‚¢” ',
+			name		=> 'äººé£Ÿã„ç®±',
 			hp			=> 500,
 			at			=> 250,
 			df			=> 35,
@@ -58,13 +58,13 @@ sub get_boss_data1 {
 			get_exp		=> 50,
 			get_money	=> 100,
 			icon		=> 'mon/090.gif',
-			job			=> 92, # –°‚èŒn
+			job			=> 92, # çœ ã‚Šç³»
 			sp			=> 30,
 			mp			=> 42,
-			tmp			=> '‚Q”{', 
+			tmp			=> 'ï¼’å€', 
 		},
 		{
-			name		=> 'ĞĞ¯¸',
+			name		=> 'ãƒŸãƒŸãƒƒã‚¯',
 			hp			=> 700,
 			at			=> 280,
 			df			=> 65,
@@ -72,13 +72,13 @@ sub get_boss_data1 {
 			get_exp		=> 60,
 			get_money	=> 150,
 			icon		=> 'mon/091.gif',
-			job			=> 93, # ‘¦€
+			job			=> 93, # å³æ­»
 			sp			=> 10,
 			mp			=> 68,
-			tmp			=> '‚Q”{', 
+			tmp			=> 'ï¼’å€', 
 		},
 		{
-			name		=> 'ÊßİÄŞ×ÎŞ¯¸½',
+			name		=> 'ãƒ‘ãƒ³ãƒ‰ãƒ©ãƒœãƒƒã‚¯ã‚¹',
 			hp			=> 900,
 			at			=> 300,
 			df			=> 95,
@@ -86,10 +86,10 @@ sub get_boss_data1 {
 			get_exp		=> 100,
 			get_money	=> 500,
 			icon		=> 'mon/092.gif',
-			job			=> 93, # ‘¦€
+			job			=> 93, # å³æ­»
 			sp			=> 20,
 			mp			=> 69,
-			tmp			=> '‚Q”{', 
+			tmp			=> 'ï¼’å€', 
 		},
 	);
 }
@@ -97,7 +97,7 @@ sub get_boss_data1 {
 sub get_boss_data2 {
 	@bosses = (
 		{
-			name		=> 'ÁËŞÍŞÛ½A',
+			name		=> 'ãƒãƒ“ãƒ™ãƒ­ã‚¹A',
 			hp			=> 160,
 			at			=> 160,
 			df			=> 90,
@@ -108,7 +108,7 @@ sub get_boss_data2 {
 			old_sp		=> 20,
 		},
 		{
-			name		=> '¹ÙÍŞÛ½',
+			name		=> 'ã‚±ãƒ«ãƒ™ãƒ­ã‚¹',
 			hp			=> 300,
 			at			=> 300,
 			df			=> 100,
@@ -118,12 +118,12 @@ sub get_boss_data2 {
 			icon		=> 'mon/204.gif',
 	
 			old_sp		=> 20,
-			job			=> 29, # –‚“¹mƒXƒƒEAƒwƒCƒXƒg
+			job			=> 29, # æ™‚é­”é“å£«ã‚¹ãƒ­ã‚¦ã€ãƒ˜ã‚¤ã‚¹ãƒˆ
 			sp			=> 20,
 			mp			=> 53,
 		},
 		{
-			name		=> 'ÁËŞÍŞÛ½B',
+			name		=> 'ãƒãƒ“ãƒ™ãƒ­ã‚¹B',
 			hp			=> 160,
 			at			=> 160,
 			df			=> 90,
@@ -138,7 +138,7 @@ sub get_boss_data2 {
 sub get_boss_data3 {
 	@bosses = (
 		{
-			name		=> 'ÍŞËŞ°Êßİ»°A',
+			name		=> 'ãƒ™ãƒ“ãƒ¼ãƒ‘ãƒ³ã‚µãƒ¼A',
 			hp			=> 150,
 			at			=> 180,
 			df			=> 50,
@@ -149,7 +149,7 @@ sub get_boss_data3 {
 			old_sp		=> 20,
 		},
 		{
-			name		=> '·×°Êßİ»°',
+			name		=> 'ã‚­ãƒ©ãƒ¼ãƒ‘ãƒ³ã‚µãƒ¼',
 			hp			=> 340,
 			at			=> 300,
 			df			=> 30,
@@ -159,12 +159,12 @@ sub get_boss_data3 {
 			icon		=> 'mon/207.gif',
 	
 			old_sp		=> 20,
-			job			=> 21, # ‹¶ím‚½‚¢‚ ‚½‚èA‚¤‚¯‚È‚ª‚µA‚¨‚½‚¯‚Ñ
+			job			=> 21, # ç‹‚æˆ¦å£«ãŸã„ã‚ãŸã‚Šã€ã†ã‘ãªãŒã—ã€ãŠãŸã‘ã³
 			sp			=> 20,
 			mp			=> 79,
 		},
 		{
-			name		=> 'ÍŞËŞ°Êßİ»°B',
+			name		=> 'ãƒ™ãƒ“ãƒ¼ãƒ‘ãƒ³ã‚µãƒ¼B',
 			hp			=> 150,
 			at			=> 180,
 			df			=> 50,
@@ -179,4 +179,4 @@ sub get_boss_data3 {
 
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

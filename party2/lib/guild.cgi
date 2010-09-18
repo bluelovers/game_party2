@@ -1,50 +1,50 @@
 my($gid,$gname,$gmaster,$gcolor,$gbgimg,$gmes,$gpoint) = &read_guild_data;
 #=================================================
-# ƒMƒ‹ƒh Created by Merino
+# ã‚®ãƒ«ãƒ‰ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = qq|<img src="$guilddir/$gid/mark.gif" alt="ƒMƒ‹ƒhƒ}[ƒN" /><span style="color: $gcolor">$m{guild}</span>|;
+# å ´æ‰€å
+$this_title = qq|<img src="$guilddir/$gid/mark.gif" alt="ã‚®ãƒ«ãƒ‰ãƒãƒ¼ã‚¯" /><span style="color: $gcolor">$m{guild}</span>|;
 
-# ƒƒO‚Ég‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$guilddir/$gid/log";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/$gbgimg";
 
-# Å‘åƒMƒ‹ƒhƒƒbƒZ[ƒW•¶š”(”¼Šp)
+# æœ€å¤§ã‚®ãƒ«ãƒ‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ–‡å­—æ•°(åŠè§’)
 $max_guild_mes = 200;
 
 #=================================================
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚ß‚ñ‚Î[';
-push @actions, '‚æ‚Ñ‚©‚¯‚é';
-$actions{'‚ß‚ñ‚Î['} = sub{ &menba }; 
-$actions{'‚æ‚Ñ‚©‚¯‚é'} = sub{ &yobikakeru }; 
+push @actions, 'ã‚ã‚“ã°ãƒ¼';
+push @actions, 'ã‚ˆã³ã‹ã‘ã‚‹';
+$actions{'ã‚ã‚“ã°ãƒ¼'} = sub{ &menba }; 
+$actions{'ã‚ˆã³ã‹ã‘ã‚‹'} = sub{ &yobikakeru }; 
 if ($gmaster eq $m) {
-	push @actions, '‚©‚ç[';
-	push @actions, '‚ß‚Á‚¹[‚¶';
-	push @actions, '‚ ‚½‚¦‚é';
-	$actions{'‚©‚ç['}     = sub{ &color }; 
-	$actions{'‚ß‚Á‚¹[‚¶'} = sub{ &message }; 
-	$actions{'‚ ‚½‚¦‚é'}   = sub{ &ataeru }; 
+	push @actions, 'ã‹ã‚‰ãƒ¼';
+	push @actions, 'ã‚ã£ã›ãƒ¼ã˜';
+	push @actions, 'ã‚ãŸãˆã‚‹';
+	$actions{'ã‹ã‚‰ãƒ¼'}     = sub{ &color }; 
+	$actions{'ã‚ã£ã›ãƒ¼ã˜'} = sub{ &message }; 
+	$actions{'ã‚ãŸãˆã‚‹'}   = sub{ &ataeru }; 
 }
 
 #=================================================
-# —‚æ‚Ñ‚©‚¯‚é
+# ï¼ ã‚ˆã³ã‹ã‘ã‚‹
 #=================================================
 sub yobikakeru {
 	my $target = shift;
 
 	unless ($target) {
-		$mes = qq|<span onclick="text_set('—‚æ‚Ñ‚©‚¯‚é')">w—‚æ‚Ñ‚©‚¯‚é>›››xƒMƒ‹ƒh‚Ìƒƒ“ƒo[‚É‘—‚è‚½‚¢•¶‚ğ›››‚É‘‚¢‚Ä‚­‚¾‚³‚¢B</span>|;
+		$mes = qq|<span onclick="text_set('ï¼ ã‚ˆã³ã‹ã‘ã‚‹')">ã€ï¼ ã‚ˆã³ã‹ã‘ã‚‹>â—‹â—‹â—‹ã€ã‚®ãƒ«ãƒ‰ã®ãƒ¡ãƒ³ãƒãƒ¼ã«é€ã‚ŠãŸã„æ–‡ã‚’â—‹â—‹â—‹ã«æ›¸ã„ã¦ãã ã•ã„ã€‚</span>|;
 		return;
 	}
 	
 	$this_file = "$userdir/$id/letter_log";
-	open my $fh, "< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($name, $position) = split /<>/, $line;
 		&send_letter($name, $com);
@@ -54,12 +54,12 @@ sub yobikakeru {
 	
 	$this_file = "$guilddir/$gid/log";
 	$npc_name  = '@'.$gname;
-	$npc_com   = "$gname‚Ìƒƒ“ƒo[‘Sˆõ‚Éè†‚ğ‘—‚è‚Ü‚µ‚½";
+	$npc_com   = "$gnameã®ãƒ¡ãƒ³ãƒãƒ¼å…¨å“¡ã«æ‰‹ç´™ã‚’é€ã‚Šã¾ã—ãŸ";
 	&regist_guild_data('point', 1, $m{guild}) if $m{guild};
 }
 
 #=================================================
-# —‚©‚ç[
+# ï¼ ã‹ã‚‰ãƒ¼
 #=================================================
 sub color {
 	$target = shift;
@@ -67,58 +67,58 @@ sub color {
 	if ($target =~ /(#[0-9a-fA-F]{6})/) {
 		my $color = uc $1;
 		if ($color ne $default_color && ($color eq $npc_color || &is_used_guild_color($color)) ){
-			$mes = "‚·‚Å‚É‘¼‚ÌƒMƒ‹ƒh‚Å‚»‚ÌƒJƒ‰[‚Íg‚í‚ê‚Ä‚¢‚Ü‚·";
+			$mes = "ã™ã§ã«ä»–ã®ã‚®ãƒ«ãƒ‰ã§ãã®ã‚«ãƒ©ãƒ¼ã¯ä½¿ã‚ã‚Œã¦ã„ã¾ã™";
 		}
 		else {
 			&regist_guild_data('color', $color, $m{guild});
-			$com .= qq|ƒMƒ‹ƒhƒJƒ‰[‚ğ<font color="$color">$color</font>‚É•ÏX‚µ‚Ü‚µ‚½|;
+			$com .= qq|ã‚®ãƒ«ãƒ‰ã‚«ãƒ©ãƒ¼ã‚’<font color="$color">$color</font>ã«å¤‰æ›´ã—ã¾ã—ãŸ|;
 		}
 		return;
 	}
 	else {
 		my %sample_colors = (
-			'ƒŒƒbƒh'		=> '#FF3333',
-			'ƒsƒ“ƒN'		=> '#FF33CC',
-			'ƒIƒŒƒ“ƒW'		=> '#FF9933',
-			'ƒCƒGƒ['		=> '#FFFF33',
-			'ƒOƒŠ[ƒ“'		=> '#33FF33',
-			'ƒAƒNƒA'		=> '#33CCFF',
-			'ƒuƒ‹['		=> '#3333FF',
-			'ƒp[ƒvƒ‹'		=> '#CC66FF',
-			'ƒOƒŒƒC'		=> '#CCCCCC',
-			'ƒzƒƒCƒg'		=> '#FFFFFF',
+			'ãƒ¬ãƒƒãƒ‰'		=> '#FF3333',
+			'ãƒ”ãƒ³ã‚¯'		=> '#FF33CC',
+			'ã‚ªãƒ¬ãƒ³ã‚¸'		=> '#FF9933',
+			'ã‚¤ã‚¨ãƒ­ãƒ¼'		=> '#FFFF33',
+			'ã‚°ãƒªãƒ¼ãƒ³'		=> '#33FF33',
+			'ã‚¢ã‚¯ã‚¢'		=> '#33CCFF',
+			'ãƒ–ãƒ«ãƒ¼'		=> '#3333FF',
+			'ãƒ‘ãƒ¼ãƒ—ãƒ«'		=> '#CC66FF',
+			'ã‚°ãƒ¬ã‚¤'		=> '#CCCCCC',
+			'ãƒ›ãƒ¯ã‚¤ãƒˆ'		=> '#FFFFFF',
 		);
 		
-		$mes  = qq|#‚©‚çn‚Ü‚é(16i”‚Ì)ƒJƒ‰[ƒR[ƒh‚ğ‹L“ü‚µ‚Ä‚­‚¾‚³‚¢B¦ƒzƒƒCƒg‚Ìê‡‚ÍƒMƒ‹ƒhí‚Í‚Å‚«‚Ü‚¹‚ñ<br />ƒTƒ“ƒvƒ‹„|;
+		$mes  = qq|#ã‹ã‚‰å§‹ã¾ã‚‹(16é€²æ•°ã®)ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’è¨˜å…¥ã—ã¦ãã ã•ã„ã€‚â€»ãƒ›ãƒ¯ã‚¤ãƒˆã®å ´åˆã¯ã‚®ãƒ«ãƒ‰æˆ¦ã¯ã§ãã¾ã›ã‚“<br />ã‚µãƒ³ãƒ—ãƒ«ï¼|;
 		
 		while (my($name, $c_code) = each %sample_colors) {
-			$mes .= qq|<span onclick="text_set('—‚©‚ç[>$c_code ')" style="color: $c_code;">$name</span> |;
+			$mes .= qq|<span onclick="text_set('ï¼ ã‹ã‚‰ãƒ¼>$c_code ')" style="color: $c_code;">$name</span> |;
 		}
 		return;
 	}
 }
 #=================================================
-# —‚ß‚Á‚¹[‚¶
+# ï¼ ã‚ã£ã›ãƒ¼ã˜
 #=================================================
 sub message {
 	$target = shift;
 	
 	unless ($target) {
-		$mes = qq|<span onclick="text_set('—‚ß‚Á‚¹[‚¶>')">ƒƒbƒZ[ƒW‚ğ‹L“ü‚µ‚Ä‚­‚¾‚³‚¢</span>|;
+		$mes = qq|<span onclick="text_set('ï¼ ã‚ã£ã›ãƒ¼ã˜>')">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨˜å…¥ã—ã¦ãã ã•ã„</span>|;
 		return;
 	}
 	
-#	$mes = qq|<span onclick="text_set('—‚ß‚Á‚¹[‚¶>')">ƒƒbƒZ[ƒW‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·</span>|						if $target =~ /@|\s/;
-	$mes = qq|<span onclick="text_set('—‚ß‚Á‚¹[‚¶>')">ƒƒbƒZ[ƒW‚É•s³‚È•¶š( ,;\"\'&<> )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·</span>| 	    if $target =~ /[,;\"\'&<>]/;
-#	$mes = qq|<span onclick="text_set('—‚ß‚Á‚¹[‚¶>')">ƒƒbƒZ[ƒW‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·</span>| 				if $target =~ /—/;
-	$mes = qq|<span onclick="text_set('—‚ß‚Á‚¹[‚¶>')">ƒƒbƒZ[ƒW‚Í”¼Šp$max_guild_mes•¶š‚Ü‚Å‚Å‚·</span>|					if length($target) > $max_guild_mes;
+#	$mes = qq|<span onclick="text_set('ï¼ ã‚ã£ã›ãƒ¼ã˜>')">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™</span>|						if $target =~ /ã€€|\s/;
+	$mes = qq|<span onclick="text_set('ï¼ ã‚ã£ã›ãƒ¼ã˜>')">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<> )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™</span>| 	    if $target =~ /[,;\"\'&<>]/;
+#	$mes = qq|<span onclick="text_set('ï¼ ã‚ã£ã›ãƒ¼ã˜>')">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™</span>| 				if $target =~ /ï¼ /;
+	$mes = qq|<span onclick="text_set('ï¼ ã‚ã£ã›ãƒ¼ã˜>')">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯åŠè§’$max_guild_mesæ–‡å­—ã¾ã§ã§ã™</span>|					if length($target) > $max_guild_mes;
 	return if $mes;
 	
 	&regist_guild_data('mes', $target, $m{guild});
-	$com .= qq|ƒMƒ‹ƒhƒƒbƒZ[ƒW‚ğ•ÏX‚µ‚Ü‚µ‚½|;
+	$com .= qq|ã‚®ãƒ«ãƒ‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å¤‰æ›´ã—ã¾ã—ãŸ|;
 }
 #================================================
-# —‚Í‚È‚·
+# ï¼ ã¯ãªã™
 #================================================
 sub hanasu { 
 	if ($gmes) {
@@ -130,90 +130,90 @@ sub hanasu {
 }
 
 #=================================================
-# —‚ß‚ñ‚Î[
+# ï¼ ã‚ã‚“ã°ãƒ¼
 #=================================================
 sub menba {
 	$mes .= "$gmes<br />";
-	open my $fh, "< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚ß‚Ü‚¹‚ñ");
+	open my $fh, "< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ã¾ã›ã‚“");
 	while (my $line = <$fh>) {
 		my($name, $position) = split /<>/, $line;
-		$mes .= qq|<span onclick="text_set('—‚Ù[‚Ş>$name ')">$name—$position</span>,|;
+		$mes .= qq|<span onclick="text_set('ï¼ ã»ãƒ¼ã‚€>$name ')">$nameï¼ $position</span>,|;
 	}
 	close $fh;
 }
 
 
 #=================================================
-# —‚ ‚½‚¦‚é
+# ï¼ ã‚ãŸãˆã‚‹
 #=================================================
 sub ataeru {
 	$npc_name = '@'.$gname;
 	my $target = shift;
-	my($yname, $new_position) = split /—‚â‚­‚µ‚å‚­&gt;/, $target;
+	my($yname, $new_position) = split /ï¼ ã‚„ãã—ã‚‡ã&gt;/, $target;
 
 	if ($yname) {
-		$mes = "–ğE–¼‚É•s³‚È‹ó”’‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·"						if $new_position =~ /@|\s/;
-		$mes = "–ğE–¼‚É•s³‚È•¶š( ,;\"\'&<>\@ )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·" 		if $new_position =~ /[,;\"\'&<>\@]/;
-		$mes = "–ğE–¼‚É•s³‚È•¶š( — )‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·" 				if $new_position =~ /—/;
-		$mes = "$new_position‚Æ‚¢‚¤–ğE–¼‚Í‚Â‚¯‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ"		if $new_position eq 'Q‰Á\¿’†' || $new_position eq 'Q‰Á\\¿’†' || $new_position eq 'ƒMƒ‹ƒ}ƒX';
-		$mes = "–ğE–¼‚Í‘SŠp‚U•¶š[”¼Šp12•¶š]‚Ü‚Å‚Å‚·"					if length($new_position) > 12;
-		$mes = "–ğE–¼‚ğ‹L“ü‚µ‚Ä‚­‚¾‚³‚¢"								if $new_position eq '';
+		$mes = "å½¹è·åã«ä¸æ­£ãªç©ºç™½ãŒå«ã¾ã‚Œã¦ã„ã¾ã™"						if $new_position =~ /ã€€|\s/;
+		$mes = "å½¹è·åã«ä¸æ­£ãªæ–‡å­—( ,;\"\'&<>\@ )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™" 		if $new_position =~ /[,;\"\'&<>\@]/;
+		$mes = "å½¹è·åã«ä¸æ­£ãªæ–‡å­—( ï¼  )ãŒå«ã¾ã‚Œã¦ã„ã¾ã™" 				if $new_position =~ /ï¼ /;
+		$mes = "$new_positionã¨ã„ã†å½¹è·åã¯ã¤ã‘ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“"		if $new_position eq 'å‚åŠ ç”³è«‹ä¸­' || $new_position eq 'å‚åŠ ç”³\è«‹ä¸­' || $new_position eq 'ã‚®ãƒ«ãƒã‚¹';
+		$mes = "å½¹è·åã¯å…¨è§’ï¼–æ–‡å­—[åŠè§’12æ–‡å­—]ã¾ã§ã§ã™"					if length($new_position) > 12;
+		$mes = "å½¹è·åã‚’è¨˜å…¥ã—ã¦ãã ã•ã„"								if $new_position eq '';
 		return if $mes;
 	}
 	
 	my $p = '';
-	$p .= qq|<span onclick="text_set('—‚ ‚½‚¦‚é>›››—‚â‚­‚µ‚å‚­>¢¢¢')">w—‚ ‚½‚¦‚é>›››—‚â‚­‚µ‚å‚­>¢¢¢x</span>›››‚É‚Í–¼‘OA¢¢¢‚É‚Í–ğE–¼(‘SŠp‚U•¶š[”¼Šp12•¶š]‚Ü‚Å)‚ğ‹L“üB<br />|;
-	$p .= qq|<span onclick="text_set('—‚â‚­‚µ‚å‚­>')">—‚â‚­‚µ‚å‚­</span>‚É<span onclick="text_set('’Ç•ú')">w’Ç•úx</span>‚Æ‹L“ü‚·‚é‚Æ’Ç‚¢o‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B<br />|;
-	$p .= qq|wQ‰Á\\¿’†x‚Ìƒƒ“ƒo[‚Í‰½‚©–ğE‚ğ‚ ‚½‚¦‚é‚±‚Æ‚É‚æ‚èQ‰Á‹–‰ÂA<span onclick="text_set('’Ç•ú')">w’Ç•úx</span>‚ÅQ‰Á‹‘”Û‚É‚Å‚«‚Ü‚·B|;
-	$p .= qq|’N‚Ì–ğE‚ğ•Ï‚¦‚Ü‚·‚©H<br />|;
+	$p .= qq|<span onclick="text_set('ï¼ ã‚ãŸãˆã‚‹>â—‹â—‹â—‹ï¼ ã‚„ãã—ã‚‡ã>â–³â–³â–³')">ã€ï¼ ã‚ãŸãˆã‚‹>â—‹â—‹â—‹ï¼ ã‚„ãã—ã‚‡ã>â–³â–³â–³ã€</span>â—‹â—‹â—‹ã«ã¯åå‰ã€â–³â–³â–³ã«ã¯å½¹è·å(å…¨è§’ï¼–æ–‡å­—[åŠè§’12æ–‡å­—]ã¾ã§)ã‚’è¨˜å…¥ã€‚<br />|;
+	$p .= qq|<span onclick="text_set('ï¼ ã‚„ãã—ã‚‡ã>')">ï¼ ã‚„ãã—ã‚‡ã</span>ã«<span onclick="text_set('è¿½æ”¾')">ã€è¿½æ”¾ã€</span>ã¨è¨˜å…¥ã™ã‚‹ã¨è¿½ã„å‡ºã™ã“ã¨ãŒã§ãã¾ã™ã€‚<br />|;
+	$p .= qq|ã€å‚åŠ ç”³\è«‹ä¸­ã€ã®ãƒ¡ãƒ³ãƒãƒ¼ã¯ä½•ã‹å½¹è·ã‚’ã‚ãŸãˆã‚‹ã“ã¨ã«ã‚ˆã‚Šå‚åŠ è¨±å¯ã€<span onclick="text_set('è¿½æ”¾')">ã€è¿½æ”¾ã€</span>ã§å‚åŠ æ‹’å¦ã«ã§ãã¾ã™ã€‚|;
+	$p .= qq|èª°ã®å½¹è·ã‚’å¤‰ãˆã¾ã™ã‹ï¼Ÿ<br />|;
 	
 	my $is_find = 0;
-	open my $fh, "+< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	open my $fh, "+< $guilddir/$gid/member.cgi" or &error("$guilddir/$gid/member.cgiãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“");
 	eval { flock $fh, 2; };
 	my $head_line = <$fh>;
 	my($guild_master) = (split /<>/, $head_line)[0];
 	unless ($m eq $guild_master) {
-		$mes = "–ğE‚ğ‚ ‚½‚¦‚é‚±‚Æ‚ª‚Å‚«‚éŒ ŒÀ‚ÍƒMƒ‹ƒ}ƒX‚¾‚¯‚Å‚·";
+		$mes = "å½¹è·ã‚’ã‚ãŸãˆã‚‹ã“ã¨ãŒã§ãã‚‹æ¨©é™ã¯ã‚®ãƒ«ãƒã‚¹ã ã‘ã§ã™";
 		return;
 	}
 	my @lines = ($head_line);
 	while (my $line = <$fh>) {
 		my($name, $position) = split /<>/, $line;
-		$p .= qq|<span onclick="text_set('—‚ ‚½‚¦‚é>$name—‚â‚­‚µ‚å‚­>')">$name—$position</span>,|;
+		$p .= qq|<span onclick="text_set('ï¼ ã‚ãŸãˆã‚‹>$nameï¼ ã‚„ãã—ã‚‡ã>')">$nameï¼ $position</span>,|;
 		if ($name eq $yname) {
 			$is_find = 1;
-			if ($position eq 'Q‰Á\\¿’†') {
+			if ($position eq 'å‚åŠ ç”³\è«‹ä¸­') {
 				my $yid = unpack 'H*', $name;
-				# íœ‚È‚Ç‚Å‚¢‚È‚¢
+				# å‰Šé™¤ãªã©ã§ã„ãªã„
 				unless (-f "$userdir/$yid/user.cgi") {
-					$npc_com = "$name‚Æ‚¢‚¤ƒvƒŒƒCƒ„[‚Í‚¢‚È‚­‚È‚Á‚Ä‚µ‚Ü‚¢‚Ü‚µ‚½";
+					$npc_com = "$nameã¨ã„ã†ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯ã„ãªããªã£ã¦ã—ã¾ã„ã¾ã—ãŸ";
 					next;
 				}
 				
 				my %datas = &get_you_datas($yid, 1);
-				# \¿’†‚É‘¼‚ÌƒMƒ‹ƒh‚É“ü‚Á‚½ê‡
+				# ç”³è«‹ä¸­ã«ä»–ã®ã‚®ãƒ«ãƒ‰ã«å…¥ã£ãŸå ´åˆ
 				if ($datas{guild}){
-					$npc_com = "$name‚Í‘¼‚ÌƒMƒ‹ƒh‚ÉQ‰Á‚µ‚½‚æ‚¤‚Å‚·";
+					$npc_com = "$nameã¯ä»–ã®ã‚®ãƒ«ãƒ‰ã«å‚åŠ ã—ãŸã‚ˆã†ã§ã™";
 					next;
 				}
 
-				# Q‰Á‹‘”Û
-				if ($new_position eq '’Ç•ú') {
-					$npc_com = "$name‚ÌQ‰Á‚ğ‹‘”Û‚µ‚Ü‚µ‚½";
-					&send_letter($name, "y{•s‡Ši{zc”O‚È‚ª‚ç $m{guild} (ƒMƒ‹ƒ}ƒX $m) ‚©‚çQ‰Á‚ğ‹‘”Û‚³‚ê‚Ü‚µ‚½");
+				# å‚åŠ æ‹’å¦
+				if ($new_position eq 'è¿½æ”¾') {
+					$npc_com = "$nameã®å‚åŠ ã‚’æ‹’å¦ã—ã¾ã—ãŸ";
+					&send_letter($name, "ã€ï¼‹ä¸åˆæ ¼ï¼‹ã€‘æ®‹å¿µãªãŒã‚‰ $m{guild} (ã‚®ãƒ«ãƒã‚¹ $m) ã‹ã‚‰å‚åŠ ã‚’æ‹’å¦ã•ã‚Œã¾ã—ãŸ");
 					next;
 				}
 				
-				$npc_com = "$name‚ğ$m{guild}‚ÉQ‰Á‚·‚é‚±‚Æ‚ğ‹–‰Â‚µ‚Ü‚µ‚½";
+				$npc_com = "$nameã‚’$m{guild}ã«å‚åŠ ã™ã‚‹ã“ã¨ã‚’è¨±å¯ã—ã¾ã—ãŸ";
 				&regist_you_data($name, 'guild', $m{guild});
-				&send_letter($name, "y{Q‰Á‹–‰ÂØ{z$m{guild} (ƒMƒ‹ƒ}ƒX $m) ‚©‚çQ‰Á‹–‰Â‚ğ‚à‚ç‚¢‚Ü‚µ‚½");
-				&write_memory("$m{guild}ƒMƒ‹ƒh‚É‰Á“ü", $name);
+				&send_letter($name, "ã€ï¼‹å‚åŠ è¨±å¯è¨¼ï¼‹ã€‘$m{guild} (ã‚®ãƒ«ãƒã‚¹ $m) ã‹ã‚‰å‚åŠ è¨±å¯ã‚’ã‚‚ã‚‰ã„ã¾ã—ãŸ");
+				&write_memory("$m{guild}ã‚®ãƒ«ãƒ‰ã«åŠ å…¥", $name);
 				$line = "$name<>$new_position<>\n";
 			}
-			elsif ($new_position eq '’Ç•ú') {
-				$npc_com = "$name‚ğ$m{guild}‚©‚ç’Ç•ú‚µ‚Ü‚µ‚½";
+			elsif ($new_position eq 'è¿½æ”¾') {
+				$npc_com = "$nameã‚’$m{guild}ã‹ã‚‰è¿½æ”¾ã—ã¾ã—ãŸ";
 				&regist_you_data($name, 'guild', '');
-				&send_letter($name, "y{’Ç•ú{z$m{guild} (ƒMƒ‹ƒ}ƒX $m) ‚©‚ç’Ç•ú‚³‚ê‚Ü‚µ‚½");
+				&send_letter($name, "ã€ï¼‹è¿½æ”¾ï¼‹ã€‘$m{guild} (ã‚®ãƒ«ãƒã‚¹ $m) ã‹ã‚‰è¿½æ”¾ã•ã‚Œã¾ã—ãŸ");
 				next;
 			}
 			else {
@@ -238,7 +238,7 @@ sub ataeru {
 sub is_used_guild_color {
 	my $select_color = shift;
 	
-	opendir my $dh, $guilddir or &error("$guilddirƒfƒBƒŒƒNƒgƒŠ‚ªŠJ‚¯‚Ü‚¹‚ñ");
+	opendir my $dh, $guilddir or &error("$guilddirãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒé–‹ã‘ã¾ã›ã‚“");
 	while (my $dir_name = readdir $dh) {
 		next if $dir_name =~ /^\./;
 		open my $fh, "< $guilddir/$dir_name/data.cgi";
@@ -253,4 +253,4 @@ sub is_used_guild_color {
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯

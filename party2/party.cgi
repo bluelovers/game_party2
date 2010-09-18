@@ -1,18 +1,18 @@
 #!/usr/local/bin/perl
 require 'config.cgi';
 #================================================
-# ƒƒCƒ“CGI Created by Merino
+# ãƒ¡ã‚¤ãƒ³CGI Created by Merino
 #================================================
 &decode;
 &access_check;
 &header;
 &read_user;
-&error("Œ»İƒƒ“ƒeƒiƒ“ƒX’†‚Å‚·B‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢(–ñ $mente_min •ªŠÔ)") if $mente_min;
+&error("ç¾åœ¨ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ä¸­ã§ã™ã€‚ã—ã°ã‚‰ããŠå¾…ã¡ãã ã•ã„(ç´„ $mente_min åˆ†é–“)") if $mente_min;
 require './lib/_data.cgi';
-if    ($m{sleep} > 0)          { require "./lib/sleep.cgi";   } # S‘©ŠÔ
+if    ($m{sleep} > 0)          { require "./lib/sleep.cgi";   } # æ‹˜æŸæ™‚é–“
 #elsif (-f "./lib/$m{lib}.cgi") { require "./lib/$m{lib}.cgi"; }
 elsif ($m{lib})                { require "./lib/$m{lib}.cgi"; }
-else                           { require './lib/park.cgi';    } # ƒfƒtƒHƒ‹ƒgêŠ
+else                           { require './lib/park.cgi';    } # ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå ´æ‰€
 &read_member;
 &set_action;
 if ($com) {
@@ -24,4 +24,4 @@ if ($com) {
 &footer;
 
 
-1; # login.cgi‚Å“Ç‚İ‚ñ‚Å‚¢‚é‚½‚ß1
+1; # login.cgiã§èª­ã¿è¾¼ã‚“ã§ã„ã‚‹ãŸã‚1

@@ -1,24 +1,24 @@
 #=================================================
-# Œð—¬Lê Created by Merino
+# äº¤æµåºƒå ´ Created by Merino
 #=================================================
-# êŠ–¼
-$this_title = 'ƒƒ_ƒ‹‰¤‚Ìé';
+# å ´æ‰€å
+$this_title = 'ãƒ¡ãƒ€ãƒ«çŽ‹ã®åŸŽ';
 
-# NPC–¼
-$npc_name   = '@ÒÀÞÙ‰¤';
+# NPCå
+$npc_name   = '@ãƒ¡ãƒ€ãƒ«çŽ‹';
 
-# ƒƒO‚ÉŽg‚¤ƒtƒ@ƒCƒ‹(.cgi”²‚«)
+# ãƒ­ã‚°ã«ä½¿ã†ãƒ•ã‚¡ã‚¤ãƒ«(.cgiæŠœã)
 $this_file  = "$logdir/medal";
 
-# ”wŒi‰æ‘œ
+# èƒŒæ™¯ç”»åƒ
 $bgimg   = "$bgimgdir/medal.gif";
 
 
-# ŒðŠ·ƒŠƒXƒg
+# äº¤æ›ãƒªã‚¹ãƒˆ
 my @prizes = (
-# Ží—Þ 1=•Ší,2=–h‹ï,3=“¹‹ï 
-# [0]*•K—v–‡”,[1]Ží—Þ,[2]No
-#*ŒðŠ·‚Í•K—v–‡”‚Å”»’f‚µ‚Ä‚¢‚é‚Ì‚ÅA“¯‚¶–‡”‚ª•¡”‚Íƒ_ƒ
+# ç¨®é¡ž 1=æ­¦å™¨,2=é˜²å…·,3=é“å…· 
+# [0]*å¿…è¦æžšæ•°,[1]ç¨®é¡ž,[2]No
+#*äº¤æ›ã¯å¿…è¦æžšæ•°ã§åˆ¤æ–­ã—ã¦ã„ã‚‹ã®ã§ã€åŒã˜æžšæ•°ãŒè¤‡æ•°ã¯ãƒ€ãƒ¡
 	[0,		0,		0,	],
 	[3,		2,		32,	],
 	[5,		3,		13,	],
@@ -38,75 +38,75 @@ my @prizes = (
 );
 
 #=================================================
-# ‚Í‚È‚·Œ¾—t
+# ã¯ãªã™è¨€è‘‰
 #=================================================
 @words = (
-	"‚í‚µ‚Íƒƒ_ƒ‹‰¤‚¶‚áA¬‚³‚Èƒƒ_ƒ‹‚ðW‚ß‚Ä‚¨‚é",
-	"¬‚³‚Èƒƒ_ƒ‹‚ðŽ‚Á‚Ä‚«‚½‚ç‘ã‚í‚è‚É–J”ü‚ð‚â‚ë‚¤",
-	"¢ŠE’†‚Ì¬‚³‚Èƒƒ_ƒ‹‚Í‚í‚µ‚Ì‚à‚ñ‚¶‚áI",
-	"‚í‚µ‚Ì–²‚Í¬‚³‚Èƒƒ_ƒ‹‚ðŽR‚Ù‚ÇW‚ß‚Ä‚¾‚Ècƒ€ƒjƒƒƒ€ƒjƒƒc",
-	"¬‚³‚Èƒƒ_ƒ‹‚ð‚æ‚±‚³‚ñ‚©‚¢I",
-	"Ž©•ª‚Ì‰Æ‚Å¬‚³‚Èƒƒ_ƒ‹‚ðŽg‚¤‚ÆA‚í‚µ‚ÌŠ‚Éƒƒ_ƒ‹‚ª“Í‚¯‚ç‚ê‚é‚Ì‚¶‚á",
-	"¬‚³‚Èƒƒ_ƒ‹‚Íƒ‚ƒ“ƒXƒ^[‚ÌZˆ‚Ì‰œ[‚­‚É‚ ‚é‚ç‚µ‚¢‚Ì‚¶‚á",
-	"$m‚©‚ç‚Í¬‚³‚Èƒƒ_ƒ‹‚ð$m{medal}–‡‚ ‚¸‚©‚Á‚Ä‚¨‚é‚¼",
+	"ã‚ã—ã¯ãƒ¡ãƒ€ãƒ«çŽ‹ã˜ã‚ƒã€å°ã•ãªãƒ¡ãƒ€ãƒ«ã‚’é›†ã‚ã¦ãŠã‚‹",
+	"å°ã•ãªãƒ¡ãƒ€ãƒ«ã‚’æŒã£ã¦ããŸã‚‰ä»£ã‚ã‚Šã«è¤’ç¾Žã‚’ã‚„ã‚ã†",
+	"ä¸–ç•Œä¸­ã®å°ã•ãªãƒ¡ãƒ€ãƒ«ã¯ã‚ã—ã®ã‚‚ã‚“ã˜ã‚ƒï¼",
+	"ã‚ã—ã®å¤¢ã¯å°ã•ãªãƒ¡ãƒ€ãƒ«ã‚’å±±ã»ã©é›†ã‚ã¦ã ãªâ€¦ãƒ ãƒ‹ãƒ£ãƒ ãƒ‹ãƒ£â€¦",
+	"å°ã•ãªãƒ¡ãƒ€ãƒ«ã‚’ã‚ˆã“ã•ã‚“ã‹ã„ï¼",
+	"è‡ªåˆ†ã®å®¶ã§å°ã•ãªãƒ¡ãƒ€ãƒ«ã‚’ä½¿ã†ã¨ã€ã‚ã—ã®æ‰€ã«ãƒ¡ãƒ€ãƒ«ãŒå±Šã‘ã‚‰ã‚Œã‚‹ã®ã˜ã‚ƒ",
+	"å°ã•ãªãƒ¡ãƒ€ãƒ«ã¯ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®ä½å‡¦ã®å¥¥æ·±ãã«ã‚ã‚‹ã‚‰ã—ã„ã®ã˜ã‚ƒ",
+	"$mã‹ã‚‰ã¯å°ã•ãªãƒ¡ãƒ€ãƒ«ã‚’$m{medal}æžšã‚ãšã‹ã£ã¦ãŠã‚‹ãž",
 );
 
 
 #=================================================
-# ’Ç‰ÁƒAƒNƒVƒ‡ƒ“
+# è¿½åŠ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 #=================================================
-push @actions, '‚±‚¤‚©‚ñ';
-$actions{'‚±‚¤‚©‚ñ'} = sub{ &koukan; }; 
+push @actions, 'ã“ã†ã‹ã‚“';
+$actions{'ã“ã†ã‹ã‚“'} = sub{ &koukan; }; 
 
 
 #=================================================
-# ƒXƒe[ƒ^ƒX•\Ž¦
+# ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¡¨ç¤º
 #=================================================
 sub header_html {
-	print qq|<div class="mes">y$this_titlez ƒƒ_ƒ‹ <b>$m{medal}</b>–‡</div>|;
+	print qq|<div class="mes">ã€$this_titleã€‘ ãƒ¡ãƒ€ãƒ« <b>$m{medal}</b>æžš</div>|;
 }
 
 #=================================================
-# —‚±‚¤‚©‚ñ
+# ï¼ ã“ã†ã‹ã‚“
 #=================================================
 sub koukan {
 	my $target = shift;
 	
-	my $p = qq|<table class="table1"><tr><th>Ü•i</th><th>ÒÀÞÙ</th></tr>|;
+	my $p = qq|<table class="table1"><tr><th>è³žå“</th><th>ãƒ¡ãƒ€ãƒ«</th></tr>|;
 	for my $i (1 .. $#prizes) {
-		if ("$prizes[$i][0]–‡" eq $target) {
+		if ("$prizes[$i][0]æžš" eq $target) {
 			if ($m{medal} >= $prizes[$i][0]) {
 				if ($prizes[$i][1] eq '1') {
 					&send_item($m, $prizes[$i][1], $prizes[$i][2]);
-					$npc_com = "ƒƒ_ƒ‹$target‚ÌÜ•i‚ÆŒðŠ·‚·‚é‚Ì‚¶‚á‚ÈI$weas[ $prizes[$i][2] ][1]‚Í$m‚Ì—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚¢‚½‚¼I";
+					$npc_com = "ãƒ¡ãƒ€ãƒ«$targetã®è³žå“ã¨äº¤æ›ã™ã‚‹ã®ã˜ã‚ƒãªï¼$weas[ $prizes[$i][2] ][1]ã¯$mã®é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠã„ãŸãžï¼";
 				}
 				elsif ($prizes[$i][1] eq '2') {
 					&send_item($m, $prizes[$i][1], $prizes[$i][2]);
-					$npc_com = "ƒƒ_ƒ‹$target‚ÌÜ•i‚ÆŒðŠ·‚·‚é‚Ì‚¶‚á‚ÈI$arms[ $prizes[$i][2] ][1]‚Í$m‚Ì—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚¢‚½‚¼I";
+					$npc_com = "ãƒ¡ãƒ€ãƒ«$targetã®è³žå“ã¨äº¤æ›ã™ã‚‹ã®ã˜ã‚ƒãªï¼$arms[ $prizes[$i][2] ][1]ã¯$mã®é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠã„ãŸãžï¼";
 				}
 				else {
 					&send_item($m, $prizes[$i][1], $prizes[$i][2]);
-					$npc_com = "ƒƒ_ƒ‹$target‚ÌÜ•i‚ÆŒðŠ·‚·‚é‚Ì‚¶‚á‚ÈI$ites[ $prizes[$i][2] ][1]‚Í$m‚Ì—a‚©‚èŠ‚É‘—‚Á‚Ä‚¨‚¢‚½‚¼I";
+					$npc_com = "ãƒ¡ãƒ€ãƒ«$targetã®è³žå“ã¨äº¤æ›ã™ã‚‹ã®ã˜ã‚ƒãªï¼$ites[ $prizes[$i][2] ][1]ã¯$mã®é ã‹ã‚Šæ‰€ã«é€ã£ã¦ãŠã„ãŸãžï¼";
 				}
 				$m{medal} -= $prizes[$i][0];
 			}
 			else {
-				$mes = "¬‚³‚Èƒƒ_ƒ‹$target‚ÌÜ•i‚ÆŒðŠ·‚·‚é‚É‚Íƒƒ_ƒ‹‚ª‘«‚è‚È‚¢‚¼";
+				$mes = "å°ã•ãªãƒ¡ãƒ€ãƒ«$targetã®è³žå“ã¨äº¤æ›ã™ã‚‹ã«ã¯ãƒ¡ãƒ€ãƒ«ãŒè¶³ã‚Šãªã„ãž";
 			}
 			return;
 		}
 	
-		$p .= qq|<tr onclick="text_set('—‚±‚¤‚©‚ñ>$prizes[$i][0]–‡ ')"><td>|;
+		$p .= qq|<tr onclick="text_set('ï¼ ã“ã†ã‹ã‚“>$prizes[$i][0]æžš ')"><td>|;
 		$p .= $prizes[$i][1] eq '1' ? $weas[$prizes[$i][2]][1]
 		    : $prizes[$i][1] eq '2' ? $arms[$prizes[$i][2]][1]
 		    :                         $ites[$prizes[$i][2]][1]
 		    ;
-		$p .= qq|</td><td align="right">$prizes[$i][0]–‡</td></tr>|;
+		$p .= qq|</td><td align="right">$prizes[$i][0]æžš</td></tr>|;
 	}
 	$p  .= qq|</table>|;
-	$mes = qq|‚Ç‚ê‚ÆŒðŠ·‚·‚é‚ñ‚¶‚áH<br />$p|;
+	$mes = qq|ã©ã‚Œã¨äº¤æ›ã™ã‚‹ã‚“ã˜ã‚ƒï¼Ÿ<br />$p|;
 	$act_time = 0;
 }
 
 
-1; # íœ•s‰Â
+1; # å‰Šé™¤ä¸å¯
